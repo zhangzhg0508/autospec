@@ -1,0 +1,51 @@
+From acb1d4eae99a1ca2f31e824ba275225c1e5e6937 Mon Sep 17 00:00:00 2001
+From: "chen.dq" <chen.dq@neusoft.com>
+Date: Tue, 3 Sep 2019 06:47:27 +0000
+Subject: [PATCH grubby] grubby: Autospec creation for version 8.28.1
+
+---
+ grubby.spec    | 11 ++++++-----
+ install_append |  4 ++--
+ release        |  2 +-
+ 3 files changed, 9 insertions(+), 8 deletions(-)
+
+diff --git a/grubby.spec b/grubby.spec
+index 9c649f8..9772fea 100644
+--- a/grubby.spec
++++ b/grubby.spec
+@@ -243,12 +243,13 @@ make  %{?_smp_mflags}
+ 
+ 
+ %install
+ rm -rf %{buildroot}
+ make install DESTDIR=$RPM_BUILD_ROOT PREFIX=%{_prefix} mandir=%{_mandir}
+ ## install_append content
+ install -d -m 0755 $RPM_BUILD_ROOT/usr/libexec/grubby/
+-install -m 0755 %{SOURCE1} $RPM_BUILD_ROOT/usr/libexec/grubby/
++tar -xzvf %{SOURCE1}
++install -m 0755 prune_debug $RPM_BUILD_ROOT/usr/libexec/grubby/
+ install -d -m 0755 $RPM_BUILD_ROOT/%{pythonroot}/grubby
+ install -m 644 grub_cfg_update.py $RPM_BUILD_ROOT/%{pythonroot}/grubby/grub_cfg_update.py
+ install -m 644 __init__.py $RPM_BUILD_ROOT/%{pythonroot}/grubby/__init__.py
+@@ -271,7 +272,7 @@ rm -rf $RPM_BUILD_ROOT
+ 
+ %files libexec
+ %defattr(-,root,root,-)
+-/usr/libexec/grubby/prune_debug.tar.bz2
++/usr/libexec/grubby/prune_debug
+ 
+ %files man
+ %defattr(0644,root,root,0755)
+diff --git a/install_append b/install_append
+index 6f03c0c..46b3ff0 100644
+--- a/install_append
++++ b/install_append
+@@ -1,6 +1,6 @@
+ install -d -m 0755 $RPM_BUILD_ROOT/usr/libexec/grubby/
+-#tar -xzvf %{SOURCE1}
+-install -m 0755 %{SOURCE1} $RPM_BUILD_ROOT/usr/libexec/grubby/
++tar -xzvf %{SOURCE1}
++install -m 0755 prune_debug $RPM_BUILD_ROOT/usr/libexec/grubby/
+ 
+ install -d -m 0755 $RPM_BUILD_ROOT/%{pythonroot}/grubby
+ install -m 644 grub_cfg_update.py $RPM_BUILD_ROOT/%{pythonroot}/grubby/grub_cfg_update.py

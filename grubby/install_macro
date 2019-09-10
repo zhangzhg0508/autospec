@@ -1,0 +1,1 @@
+make install DESTDIR=$RPM_BUILD_ROOT PREFIX=%{_prefix} mandir=%{_mandir}

@@ -1,0 +1,14 @@
+install -d -m 0755 $RPM_BUILD_ROOT/usr/libexec/grubby/
+tar -xzvf %{SOURCE1}
+install -m 0755 prune_debug $RPM_BUILD_ROOT/usr/libexec/grubby/
+
+install -d -m 0755 $RPM_BUILD_ROOT/%{pythonroot}/grubby
+install -m 644 grub_cfg_update.py $RPM_BUILD_ROOT/%{pythonroot}/grubby/grub_cfg_update.py
+install -m 644 __init__.py $RPM_BUILD_ROOT/%{pythonroot}/grubby/__init__.py
+install -m 500 grub-cfg-update $RPM_BUILD_ROOT/usr/sbin/grub-cfg-update
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%post
+/usr/libexec/grubby/prune_debug
