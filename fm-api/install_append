@@ -1,0 +1,11 @@
+python setup.py install --root=%{buildroot} \
+                             --install-lib=%{pythonroot} \
+                             --prefix=%{_prefix} \
+                             --install-data=%{_datadir} \
+                             --single-version-externally-managed
+
+DOC_DEPLOY=%{buildroot}/%{doc_deploy_dir}
+install -d $DOC_DEPLOY
+# install constants.py in DOC_DEPLOY_DIR
+# used by fm-doc package to validate the Alarms & Logs Doc Yaml file
+install -m 644 fm_api/constants.py $DOC_DEPLOY

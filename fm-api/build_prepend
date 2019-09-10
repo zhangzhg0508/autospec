@@ -1,0 +1,4 @@
+%define pythonroot %{_libdir}/python2.7/site-packages
+%define doc_deploy_dir /usr/share/doc
+#%define doc_deploy_dir /opt/deploy/doc/cgcs_doc
+python setup.py build
