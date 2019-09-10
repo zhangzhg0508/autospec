@@ -1,0 +1,36 @@
+# This file contains additional build requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+# Installing additional tools, memtop, occtop and schedtop are already in the image
+install -m 755 buddyinfo.py %{buildroot}%{local_bindir}
+install -m 755 chewmem %{buildroot}%{local_bindir}
+# Installing data collection scripts
+install -m 755 ceph.sh %{buildroot}%{local_bindir}
+install -m 755 cleanup-engtools.sh %{buildroot}%{local_bindir}
+install -m 755 collect-engtools.sh %{buildroot}%{local_bindir}
+install -m 755 diskstats.sh %{buildroot}%{local_bindir}
+install -m 755 engtools_util.sh %{buildroot}%{local_bindir}
+install -m 755 filestats.sh %{buildroot}%{local_bindir}
+install -m 755 iostat.sh %{buildroot}%{local_bindir}
+install -m 755 linux_benchmark.sh %{buildroot}%{local_bindir}
+install -m 755 memstats.sh %{buildroot}%{local_bindir}
+install -m 755 netstats.sh %{buildroot}%{local_bindir}
+install -m 755 postgres.sh %{buildroot}%{local_bindir}
+install -m 755 rabbitmq.sh %{buildroot}%{local_bindir}
+install -m 755 remote/rbzip2-engtools.sh %{buildroot}%{local_bindir}
+install -m 755 remote/rstart-engtools.sh %{buildroot}%{local_bindir} 
+install -m 755 remote/rstop-engtools.sh %{buildroot}%{local_bindir} 
+install -m 755 remote/rsync-engtools-data.sh %{buildroot}%{local_bindir}
+install -m 755 slab.sh %{buildroot}%{local_bindir}
+install -m 755 ticker.sh %{buildroot}%{local_bindir}
+install -m 755 top.sh %{buildroot}%{local_bindir}
+install -m 755 vswitch.sh %{buildroot}%{local_bindir}
+install -m 755 live_stream.py %{buildroot}%{local_bindir}
+# Installing conf file
+install -d 755 %{buildroot}%{local_confdir}
+install -m 644 -p -D cfg/engtools.conf %{buildroot}%{local_confdir}
+# Installing init script
+install -d 755 %{buildroot}%{local_initdir}
+install -m 755 init.d/collect-engtools.sh %{buildroot}%{local_initdir}
+# Installing service file
+install -d 755 %{buildroot}%{local_systemddir}
+install -m 644 -p -D collect-engtools.service %{buildroot}%{local_systemddir}

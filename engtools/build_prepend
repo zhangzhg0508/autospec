@@ -1,0 +1,10 @@
+# This file contains additional build requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+# Don't try fancy stuff like debuginfo, which is useless on binary-only
+# packages. Don't strip binary too
+# Be sure buildpolicy set to do nothing
+
+%define local_bindir /usr/bin/
+%define local_initdir /usr/local/etc/init.d/
+%define local_confdir /usr/local/etc/engtools/
+%define local_systemddir /usr/lib/systemd/system/
