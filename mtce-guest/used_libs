@@ -1,0 +1,7 @@
+libc.so.6
+libcrypto.so.1.1
+libevent-2.1.so.6
+libgcc_s.so.1
+libjson-c.so.4
+librt.so.1
+libstdc++.so.6

@@ -1,0 +1,41 @@
+From f325847532020bfa80d70419e292ce08f170f7ab Mon Sep 17 00:00:00 2001
+From: "yongx.fu" <yongx.fu@intel.com>
+Date: Thu, 8 Aug 2019 09:22:22 +0800
+Subject: [PATCH] change sysconfig dir
+
+---
+ scripts/goenabled                 | 2 +-
+ scripts/goenabled-storage.service | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/scripts/goenabled b/scripts/goenabled
+index 954d945..1f9652a 100644
+--- a/scripts/goenabled
++++ b/scripts/goenabled
+@@ -14,7 +14,7 @@
+ # Short-Description: Maintenance Storage "Go Enable" script.
+ ### END INIT INFO
+ 
+-GOENABLED_PATH=${GOENABLED_PATH:-"/etc/goenabled.d"}
++GOENABLED_PATH=${GOENABLED_PATH:-"/usr/local/etc/goenabled.d"}
+ GOENABLED_FILE=${GOENABLED_FILE:-"/var/run/.goenabled_storage"}
+ GOENABLED_TAG=${GOENABLED_TAG:-"GOENABLED"}
+ STORAGE_CONFIG_COMPLETE="/var/run/.storage_config_complete"
+diff --git a/scripts/goenabled-storage.service b/scripts/goenabled-storage.service
+index 6a837e5..fbae017 100644
+--- a/scripts/goenabled-storage.service
++++ b/scripts/goenabled-storage.service
+@@ -6,8 +6,8 @@ Before=pmon.service
+ [Service]
+ Type=oneshot
+ RemainAfterExit=yes
+-ExecStart=/etc/init.d/goenabledStorage start
+-ExecStop=/etc/init.d/goenabledStorage stop
++ExecStart=/usr/local/etc/init.d/goenabledStorage start
++ExecStop=/usr/local/etc/init.d/goenabledStorage stop
+ 
+ [Install]
+ WantedBy=multi-user.target
+-- 
+2.22.0
+

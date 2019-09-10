@@ -1,0 +1,4 @@
+libamon.so.1:active_monitor_dispatch
+libamon.so.1:active_monitor_finalize
+libamon.so.1:active_monitor_get_sel_obj
+libamon.so.1:active_monitor_initialize

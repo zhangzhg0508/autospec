@@ -1,0 +1,41 @@
+From 52bf3bd2902874c8dcdfd33cd24187d1fa064af3 Mon Sep 17 00:00:00 2001
+From: "chen.dq" <chen.dq@neusoft.com>
+Date: Wed, 4 Sep 2019 06:17:53 +0000
+Subject: [PATCH] change-sysconfig-dir
+
+---
+ scripts/hbsAgent         | 2 +-
+ scripts/hbsAgent.service | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/scripts/hbsAgent b/scripts/hbsAgent
+index d05177d..2e82da7 100644
+--- a/scripts/hbsAgent
++++ b/scripts/hbsAgent
+@@ -17,7 +17,7 @@
+ # Short-Description: Heartbeat Agent Daemon
+ ### END INIT INFO
+ 
+-. /etc/init.d/functions
++. /usr/local/etc/init.d/functions
+ 
+ DAEMON_NAME="hbsAgent"
+ DAEMON="/usr/local/bin/${DAEMON_NAME}"
+diff --git a/scripts/hbsAgent.service b/scripts/hbsAgent.service
+index de3cb8d..115dcdf 100644
+--- a/scripts/hbsAgent.service
++++ b/scripts/hbsAgent.service
+@@ -5,8 +5,8 @@ Before=pmon.service
+ 
+ [Service]
+ Type=forking
+-ExecStart=/etc/rc.d/init.d/hbsAgent start
+-ExecStop=/etc/rc.d/init.d/hbsAgent start
++ExecStart=/usr/local/etc/init.d/hbsAgent start
++ExecStop=/usr/local/etc/init.d/hbsAgent start
+ PIDFile=/var/run/hbsAgent.pid
+ KillMode=process
+ SendSIGKILL=no
+-- 
+2.23.0
+

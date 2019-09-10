@@ -1,0 +1,3 @@
+%post
+systemctl enable goenabled-worker.service
+systemctl enable qemu_clean.service

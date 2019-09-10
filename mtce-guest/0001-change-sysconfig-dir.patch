@@ -1,0 +1,145 @@
+From cdbcc1de2547267e95349f4d05b10673e35e8d69 Mon Sep 17 00:00:00 2001
+From: "chen.dq" <chen.dq@neusoft.com>
+Date: Wed, 4 Sep 2019 06:30:27 +0000
+Subject: [PATCH] change-sysconfig-dir
+
+---
+ Makefile                    | 2 +-
+ README.txt                  | 4 ++--
+ scripts/guestAgent          | 4 ++--
+ scripts/guestAgent.ocf      | 2 +-
+ scripts/guestAgent.service  | 6 +++---
+ scripts/guestServer         | 4 ++--
+ scripts/guestServer.pmon    | 2 +-
+ scripts/guestServer.service | 6 +++---
+ 8 files changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 40dd933..93fcf34 100644
+--- a/Makefile
++++ b/Makefile
+@@ -7,7 +7,7 @@
+ DESTDIR ?= /
+ PREFIX ?= /usr/local
+ LOCALBINDIR ?= /usr/local/bin
+-SYSCONFDIR ?= /etc
++SYSCONFDIR ?= /usr/local/etc
+ UNITDIR ?= /var/lib/systemd/system
+ 
+ SRCS =	guestClass.cpp guestInstClass.cpp \
+diff --git a/README.txt b/README.txt
+index 58a776e..eb42aa7 100644
+--- a/README.txt
++++ b/README.txt
+@@ -17,8 +17,8 @@ orchestration under VIM (system management) control.
+ 
+    Package: cgts-mtce-common-guestServer-1.0-r54.0.x86_64.rpm
+    Binary: /usr/local/bin/guestServer
+-   Init: /etc/init.d/guestServer
+-   Managed: /etc/pmon.d/guestServer.pmon
++   Init: /usr/local/etc/init.d/guestServer
++   Managed: /usr/local/etc/pmon.d/guestServer.pmon
+ 
+ 3. Controller Function: Guest heartbeat control and event proxy
+ 
+diff --git a/scripts/guestAgent b/scripts/guestAgent
+index 364e1e7..312100d 100644
+--- a/scripts/guestAgent
++++ b/scripts/guestAgent
+@@ -15,12 +15,12 @@
+ # Short-Description: Maintenance Client Daemon 
+ ### END INIT INFO
+ 
+-. /etc/init.d/functions
++. /usr/local/etc/init.d/functions
+ 
+ DAEMON_NAME="guestAgent"
+ DAEMON="/usr/local/bin/${DAEMON_NAME}"
+ PIDFILE="/var/run/${DAEMON_NAME}.pid"
+-PLATFORM_CONF="/etc/platform/platform.conf"
++PLATFORM_CONF="/usr/local/etc/platform/platform.conf"
+ 
+ IFACE=""
+ 
+diff --git a/scripts/guestAgent.ocf b/scripts/guestAgent.ocf
+index 34708a8..d71a158 100644
+--- a/scripts/guestAgent.ocf
++++ b/scripts/guestAgent.ocf
+@@ -27,7 +27,7 @@
+ 
+ # Fill in some defaults if no values are specified
+ OCF_RESKEY_binary_default="guestAgent"
+-OCF_RESKEY_config_default="/etc/mtc/guestAgent.ini"
++OCF_RESKEY_config_default="/usr/local/etc/mtc/guestAgent.ini"
+ OCF_RESKEY_dbg_default="false"
+ OCF_RESKEY_mode_default="normal"
+ OCF_RESKEY_user_default="admin"
+diff --git a/scripts/guestAgent.service b/scripts/guestAgent.service
+index e88a965..b372157 100644
+--- a/scripts/guestAgent.service
++++ b/scripts/guestAgent.service
+@@ -4,9 +4,9 @@ After=network.target syslog.service
+ 
+ [Service]
+ Type=forking
+-ExecStart=/etc/rc.d/init.d/guestAgent start
+-ExecStop=/etc/rc.d/init.d/guestAgent stop
+-ExecReload=/etc/rc.d/init.d/guestAgent reload
++ExecStart=/usr/local/etc/init.d/guestAgent start
++ExecStop=/usr/local/etc/init.d/guestAgent stop
++ExecReload=/usr/local/etc/init.d/guestAgent reload
+ PIDFile=/var/run/guestAgent.pid
+ 
+ Restart=no
+diff --git a/scripts/guestServer b/scripts/guestServer
+index 5e8d087..97b065a 100644
+--- a/scripts/guestServer
++++ b/scripts/guestServer
+@@ -15,12 +15,12 @@
+ # Short-Description: Maintenance Client Daemon 
+ ### END INIT INFO
+ 
+-. /etc/init.d/functions
++. /usr/local/etc/init.d/functions
+ 
+ DAEMON_NAME="guestServer"
+ DAEMON="/usr/local/bin/${DAEMON_NAME}"
+ PIDFILE="/var/run/${DAEMON_NAME}.pid"
+-PLATFORM_CONF="/etc/platform/platform.conf"
++PLATFORM_CONF="/usr/local/etc/platform/platform.conf"
+ 
+ IFACE=""
+ 
+diff --git a/scripts/guestServer.pmon b/scripts/guestServer.pmon
+index e1083b9..63c9fb7 100644
+--- a/scripts/guestServer.pmon
++++ b/scripts/guestServer.pmon
+@@ -2,7 +2,7 @@
+ process  = guestServer
+ service  = guestServer
+ pidfile  = /var/run/guestServer.pid
+-script   = /etc/init.d/guestServer
++script   = /usr/local/etc/init.d/guestServer
+ style    = lsb            ; ocf or lsb
+ severity = major          ; minor, major, critical
+ restarts = 3              ; restart retries before error assertion
+diff --git a/scripts/guestServer.service b/scripts/guestServer.service
+index 6e2dd3a..24f8a59 100644
+--- a/scripts/guestServer.service
++++ b/scripts/guestServer.service
+@@ -5,9 +5,9 @@ Before=pmon.service
+ 
+ [Service]
+ Type=forking
+-ExecStart=/etc/rc.d/init.d/guestServer start
+-ExecStop=/etc/rc.d/init.d/guestServer stop
+-ExecReload=/etc/rc.d/init.d/guestServer reload
++ExecStart=/usr/local/etc/init.d/guestServer start
++ExecStop=/usr/local/etc/init.d/guestServer stop
++ExecReload=/usr/local/etc/init.d/guestServer reload
+ PIDFile=/var/run/guestServer.pid
+ 
+ # Failure handling
+-- 
+2.23.0
+

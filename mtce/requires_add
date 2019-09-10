@@ -1,0 +1,42 @@
+# This file contains additional runtime requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+util-linux
+/bin/bash
+systemd
+dpkg
+time
+libevent-2.1.so.6()(64bit)
+expect
+libfmcommon.so.1()(64bit)
+libstdc++.so.6(GLIBCXX_3.4.14)(64bit)
+libstdc++.so.6(GLIBCXX_3.4.9)(64bit)
+fm-common >= 1.0
+libamon.so.1()(64bit)
+libc.so.6(GLIBC_2.2.5)(64bit)
+libstdc++.so.6(GLIBCXX_3.4.11)(64bit)
+/bin/sh
+#mtce-pmon >= 1.0
+librt.so.1()(64bit)
+libc.so.6(GLIBC_2.3)(64bit)
+libc.so.6(GLIBC_2.14)(64bit)
+libjson-c.so.4()(64bit)
+libpthread.so.0(GLIBC_2.2.5)(64bit)
+librt.so.1(GLIBC_2.3.3)(64bit)
+libgcc_s.so.1(GCC_3.0)(64bit)
+libstdc++.so.6(CXXABI_1.3)(64bit)
+libevent >= 2.0.21
+librt.so.1(GLIBC_2.2.5)(64bit)
+libuuid.so.1()(64bit)
+libm.so.6()(64bit)
+rtld(GNU_HASH)
+libstdc++.so.6()(64bit)
+libc.so.6(GLIBC_2.4)(64bit)
+libc.so.6()(64bit)
+libssh2.so.1()(64bit)
+libgcc_s.so.1()(64bit)
+libstdc++.so.6(GLIBCXX_3.4)(64bit)
+libstdc++.so.6(GLIBCXX_3.4.15)(64bit)
+libpthread.so.0()(64bit)
+/usr/bin/expect
+rtslib-fb
+/usr/bin/ipmitool

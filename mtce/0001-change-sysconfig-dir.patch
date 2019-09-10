@@ -1,0 +1,293 @@
+From 4ab50a84f8ba4f36c473e5623989650dc4b6af24 Mon Sep 17 00:00:00 2001
+From: "chen.dq" <chen.dq@neusoft.com>
+Date: Tue, 3 Sep 2019 02:06:09 +0000
+Subject: [PATCH] change-sysconfig-dir
+
+---
+ alarm/scripts/mtcalarm.pmon.conf | 2 +-
+ alarm/scripts/mtcalarm.service   | 6 +++---
+ fsmon/scripts/fsmon.conf         | 2 +-
+ fsmon/scripts/fsmon.service      | 6 +++---
+ hostw/scripts/hostw.service      | 6 +++---
+ hwmon/scripts/hwmon.service      | 6 +++---
+ lmon/scripts/lmon.service        | 6 +++---
+ pmon/scripts/pmon.service        | 6 +++---
+ scripts/config.service           | 4 ++--
+ scripts/goenabled.service        | 4 ++--
+ scripts/hbsClient.service        | 6 +++---
+ scripts/hwclock.service          | 4 ++--
+ scripts/mtcClient.conf           | 2 +-
+ scripts/mtcClient.service        | 6 +++---
+ scripts/mtclog.service           | 6 +++---
+ scripts/mtclogd.conf             | 2 +-
+ scripts/runservices.service      | 4 ++--
+ 17 files changed, 39 insertions(+), 39 deletions(-)
+
+diff --git a/alarm/scripts/mtcalarm.pmon.conf b/alarm/scripts/mtcalarm.pmon.conf
+index 8e132dc..d77783f 100644
+--- a/alarm/scripts/mtcalarm.pmon.conf
++++ b/alarm/scripts/mtcalarm.pmon.conf
+@@ -2,7 +2,7 @@
+ process  = mtcalarmd
+ service  = mtcalarm
+ pidfile  = /var/run/mtcalarmd.pid
+-script   = /etc/init.d/mtcalarmd
++script   = /usr/local/etc/init.d/mtcalarmd
+ style    = lsb            ; ocf or lsb
+ severity = major          ; minor, major, critical
+ restarts = 3              ; restart retries before error assertion
+diff --git a/alarm/scripts/mtcalarm.service b/alarm/scripts/mtcalarm.service
+index d97fa7b..7a1a0a1 100644
+--- a/alarm/scripts/mtcalarm.service
++++ b/alarm/scripts/mtcalarm.service
+@@ -5,9 +5,9 @@ Before=pmon.service
+ 
+ [Service]
+ Type=forking
+-ExecStart=/etc/rc.d/init.d/mtcalarm start
+-ExecStop=/etc/rc.d/init.d/mtcalarm stop
+-ExecReload=/etc/rc.d/init.d/mtcalarm reload
++ExecStart=/usr/loacl/etc/init.d/mtcalarm start
++ExecStop=/usr/loacl/etc/init.d/mtcalarm stop
++ExecReload=/usr/loacl/etc/init.d/mtcalarm reload
+ PIDFile=/var/run/mtcalarmd.pid
+ 
+ [Install]
+diff --git a/fsmon/scripts/fsmon.conf b/fsmon/scripts/fsmon.conf
+index 1b56626..95d13f6 100644
+--- a/fsmon/scripts/fsmon.conf
++++ b/fsmon/scripts/fsmon.conf
+@@ -1,7 +1,7 @@
+ [process]
+ process  = fsmond
+ service  = fsmon
+-script   = /etc/init.d/fsmon
++script   = /usr/local/etc/init.d/fsmon
+ style     = lsb
+ pidfile  = /var/run/fsmond.pid
+ severity = major          ; minor, major, critical
+diff --git a/fsmon/scripts/fsmon.service b/fsmon/scripts/fsmon.service
+index 5c8282a..43b00d0 100644
+--- a/fsmon/scripts/fsmon.service
++++ b/fsmon/scripts/fsmon.service
+@@ -5,9 +5,9 @@ Before=pmon.service
+ 
+ [Service]
+ Type=forking
+-ExecStart=/etc/rc.d/init.d/fsmon start
+-ExecStop=/etc/rc.d/init.d/fsmon stop
+-ExecReload=/etc/rc.d/init.d/fsmon reload
++ExecStart=/usr/local/etc/init.d/fsmon start
++ExecStop=/usr/local/etc/init.d/fsmon stop
++ExecReload=/usr/local/etc/init.d/fsmon reload
+ PIDFile=/var/run/fsmond.pid
+ 
+ # Failure handling
+diff --git a/hostw/scripts/hostw.service b/hostw/scripts/hostw.service
+index 9fc4ba1..9e42a0e 100644
+--- a/hostw/scripts/hostw.service
++++ b/hostw/scripts/hostw.service
+@@ -5,9 +5,9 @@ After=syslog.service network.target hbsClient.service mtcClient.service sm.servi
+ 
+ [Service]
+ Type=forking
+-ExecStart=/etc/rc.d/init.d/hostw start
+-ExecStop=/etc/rc.d/init.d/hostw stop
+-ExecReload=/etc/rc.d/init.d/hostw reload
++ExecStart=/usr/local/etc/init.d/hostw start
++ExecStop=/usr/local/etc/init.d/hostw stop
++ExecReload=/usr/local/etc/init.d/hostw reload
+ PIDFile=/var/run/hostwd.pid
+ 
+ # Failure handling
+diff --git a/hwmon/scripts/hwmon.service b/hwmon/scripts/hwmon.service
+index 8c8f5b9..21d21bf 100644
+--- a/hwmon/scripts/hwmon.service
++++ b/hwmon/scripts/hwmon.service
+@@ -4,9 +4,9 @@ After=network.target syslog.service
+ 
+ [Service]
+ Type=forking
+-ExecStart=/etc/rc.d/init.d/hwmon start
+-ExecStop=/etc/rc.d/init.d/hwmon stop
+-ExecReload=/etc/rc.d/init.d/hwmon reload
++ExecStart=/usr/local/etc/init.d/hwmon start
++ExecStop=/usr/local/etc/init.d/hwmon stop
++ExecReload=/usr/local/etc/init.d/hwmon reload
+ PIDFile=/var/run/hwmond.pid
+ 
+ Restart=no
+diff --git a/lmon/scripts/lmon.service b/lmon/scripts/lmon.service
+index 84b14d4..94c5fe5 100644
+--- a/lmon/scripts/lmon.service
++++ b/lmon/scripts/lmon.service
+@@ -7,9 +7,9 @@ Before=pmon.service
+ 
+ [Service]
+ Type=forking
+-ExecStart=/etc/rc.d/init.d/lmon start
+-ExecStop=/etc/rc.d/init.d/lmon stop
+-ExecReload=/etc/rc.d/init.d/lmon reload
++ExecStart=/usr/local/etc/init.d/lmon start
++ExecStop=/usr/local/etc/init.d/lmon stop
++ExecReload=/usr/local/etc/init.d/lmon reload
+ PIDFile=/var/run/lmond.pid
+ KillMode=process
+ 
+diff --git a/pmon/scripts/pmon.service b/pmon/scripts/pmon.service
+index 298ded8..6328724 100644
+--- a/pmon/scripts/pmon.service
++++ b/pmon/scripts/pmon.service
+@@ -9,9 +9,9 @@ Before=hostw.service
+ 
+ [Service]
+ Type=forking
+-ExecStart=/etc/rc.d/init.d/pmon start
+-ExecStop=/etc/rc.d/init.d/pmon stop
+-ExecReload=/etc/rc.d/init.d/pmon reload
++ExecStart=/usr/local/etc/init.d/pmon start
++ExecStop=/usr/local/etc/init.d/pmon stop
++ExecReload=/usr/local/etc/init.d/pmon reload
+ PIDFile=/var/run/pmond.pid
+ KillMode=process
+ 
+diff --git a/scripts/config.service b/scripts/config.service
+index f4fc0a5..2f5df4f 100644
+--- a/scripts/config.service
++++ b/scripts/config.service
+@@ -6,8 +6,8 @@ Before=sshd.service
+ [Service]
+ Type=oneshot
+ RemainAfterExit=yes
+-ExecStart=/etc/init.d/config start
+-ExecStop=/etc/init.d/config stop
++ExecStart=/usr/local/etc/init.d/config start
++ExecStop=/usr/local/etc/init.d/config stop
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff --git a/scripts/goenabled.service b/scripts/goenabled.service
+index 8f23390..e57a831 100644
+--- a/scripts/goenabled.service
++++ b/scripts/goenabled.service
+@@ -6,8 +6,8 @@ Before=pmon.service
+ [Service]
+ Type=oneshot
+ RemainAfterExit=yes
+-ExecStart=/etc/init.d/goenabled start
+-ExecStop=/etc/init.d/goenabled stop
++ExecStart=/usr/local/etc/init.d/goenabled start
++ExecStop=/usr/local/etc/init.d/goenabled stop
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff --git a/scripts/hbsClient.service b/scripts/hbsClient.service
+index 9a31fc7..dd3173c 100644
+--- a/scripts/hbsClient.service
++++ b/scripts/hbsClient.service
+@@ -5,9 +5,9 @@ Before=pmon.service mtcClient.service
+ 
+ [Service]
+ Type=forking
+-ExecStart=/etc/rc.d/init.d/hbsClient start
+-ExecStop=/etc/rc.d/init.d/hbsClient stop
+-ExecReload=/etc/rc.d/init.d/hbsClient reload
++ExecStart=/usr/local/etc/init.d/hbsClient start
++ExecStop=/usr/local/etc/init.d/hbsClient stop
++ExecReload=/usr/local/etc/init.d/hbsClient reload
+ PIDFile=/var/run/hbsClient.pid
+ 
+ # Failure handling
+diff --git a/scripts/hwclock.service b/scripts/hwclock.service
+index 4919957..57eab08 100644
+--- a/scripts/hwclock.service
++++ b/scripts/hwclock.service
+@@ -6,8 +6,8 @@ Before=config.service
+ [Service]
+ Type=oneshot
+ RemainAfterExit=yes
+-ExecStart=/etc/init.d/hwclock.sh start
+-ExecStop=/etc/init.d/hwclock.sh stop
++ExecStart=/usr/local/etc/init.d/hwclock.sh start
++ExecStop=/usr/local/etc/init.d/hwclock.sh stop
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff --git a/scripts/mtcClient.conf b/scripts/mtcClient.conf
+index 174bd4c..015faf9 100644
+--- a/scripts/mtcClient.conf
++++ b/scripts/mtcClient.conf
+@@ -2,7 +2,7 @@
+ process  = mtcClient
+ service  = mtcClient
+ pidfile  = /var/run/mtcClient.pid
+-script   = /etc/init.d/mtcClient
++script   = /usr/local/etc/init.d/mtcClient
+ style    = lsb            ; ocf or lsb
+ severity = major          ; minor, major, critical
+ restarts = 1              ; restart retries before error assertion
+diff --git a/scripts/mtcClient.service b/scripts/mtcClient.service
+index 28c0c4f..c70c918 100644
+--- a/scripts/mtcClient.service
++++ b/scripts/mtcClient.service
+@@ -5,9 +5,9 @@ Before=pmon.service
+ 
+ [Service]
+ Type=forking
+-ExecStart=/etc/rc.d/init.d/mtcClient start
+-ExecStop=/etc/rc.d/init.d/mtcClient stop
+-ExecReload=/etc/rc.d/init.d/mtcClient reload
++ExecStart=/usr/local/etc/init.d/mtcClient start
++ExecStop=/usr/local/etc/init.d/mtcClient stop
++ExecReload=/usr/local/etc/init.d/mtcClient reload
+ PIDFile=/var/run/mtcClient.pid
+ KillMode=process
+ SendSIGKILL=no
+diff --git a/scripts/mtclog.service b/scripts/mtclog.service
+index c7ec2e0..70ecc6b 100644
+--- a/scripts/mtclog.service
++++ b/scripts/mtclog.service
+@@ -5,9 +5,9 @@ Before=pmon.service
+ 
+ [Service]
+ Type=forking
+-ExecStart=/etc/rc.d/init.d/mtclog start
+-ExecStop=/etc/rc.d/init.d/mtclog stop
+-ExecReload=/etc/rc.d/init.d/mtclog reload
++ExecStart=/usr/local/etc/init.d/mtclog start
++ExecStop=/usr/local/etc/init.d/mtclog stop
++ExecReload=/usr/local/etc/init.d/mtclog reload
+ PIDFile=/var/run/mtclogd.pid
+ 
+ # Failure handling
+diff --git a/scripts/mtclogd.conf b/scripts/mtclogd.conf
+index 1ee07e6..4c47963 100755
+--- a/scripts/mtclogd.conf
++++ b/scripts/mtclogd.conf
+@@ -2,7 +2,7 @@
+ process  = mtclogd
+ service  = mtclog
+ pidfile  = /var/run/mtclogd.pid
+-script   = /etc/init.d/mtclog
++script   = /usr/local/etc/init.d/mtclog
+ style    = lsb            ; ocf or lsb
+ severity = minor          ; minor, major, critical
+ restarts = 3              ; restart retries before error assertion
+diff --git a/scripts/runservices.service b/scripts/runservices.service
+index f29a5b3..e1cd363 100644
+--- a/scripts/runservices.service
++++ b/scripts/runservices.service
+@@ -4,8 +4,8 @@ After=network.target syslog.service
+ 
+ [Service]
+ Type=simple
+-ExecStart=/etc/rc.d/init.d/runservices start
+-ExecStop=/etc/rc.d/init.d/runservices stop
++ExecStart=/usr/local/etc/init.d/runservices start
++ExecStop=/usr/local/etc/init.d/runservices stop
+ 
+ [Install]
+ WantedBy=multi-user.target
+-- 
+2.23.0
+

@@ -1,0 +1,2 @@
+%post
+/bin/systemctl enable guestServer.service

@@ -1,0 +1,7 @@
+%post
+if [ $1 -eq 1 ] ; then
+    systemctl enable lighttpd.service
+    systemctl enable qemu_clean.service
+    systemctl enable hbsAgent.service
+fi
+exit 0

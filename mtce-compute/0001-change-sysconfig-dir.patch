@@ -1,0 +1,41 @@
+From 3254973c8a5c95951a677bb4ae0073affbcee3d5 Mon Sep 17 00:00:00 2001
+From: "yongx.fu" <yongx.fu@intel.com>
+Date: Thu, 8 Aug 2019 10:40:49 +0800
+Subject: [PATCH] change sysconfig dir
+
+---
+ scripts/goenabled                | 2 +-
+ scripts/goenabled-worker.service | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/scripts/goenabled b/scripts/goenabled
+index c2651b1..362b30f 100644
+--- a/scripts/goenabled
++++ b/scripts/goenabled
+@@ -20,7 +20,7 @@
+ # Platform paths and flags
+ . /usr/bin/tsconfig
+ 
+-GOENABLED_PATH=${GOENABLED_PATH:-"/etc/goenabled.d"}
++GOENABLED_PATH=${GOENABLED_PATH:-"/usr/local/etc/goenabled.d"}
+ GOENABLED_FILE=${GOENABLED_FILE:-"/var/run/.goenabled_subf"}
+ GOENABLED_TAG=${GOENABLED_TAG:-"GOENABLED"}
+ 
+diff --git a/scripts/goenabled-worker.service b/scripts/goenabled-worker.service
+index 42aef5e..6a786a9 100644
+--- a/scripts/goenabled-worker.service
++++ b/scripts/goenabled-worker.service
+@@ -5,8 +5,8 @@ After=config.service worker-config-gate.service
+ [Service]
+ Type=oneshot
+ RemainAfterExit=yes
+-ExecStart=/etc/init.d/goenabledWorker start
+-ExecStop=/etc/init.d/goenabledWorker stop
++ExecStart=/usr/local/etc/init.d/goenabledWorker start
++ExecStop=/usr/local/etc/init.d/goenabledWorker stop
+ 
+ [Install]
+ WantedBy=multi-user.target
+-- 
+2.22.0
+

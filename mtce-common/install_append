@@ -1,0 +1,44 @@
+install -m 644 -p -D %{_buildsubdir}/daemon/libdaemon.a %{buildroot}%{_libdir}
+install -m 644 -p -D %{_buildsubdir}/common/libcommon.a %{buildroot}%{_libdir}
+install -m 644 -p -D %{_buildsubdir}/common/libthreadUtil.a %{buildroot}%{_libdir}
+install -m 644 -p -D %{_buildsubdir}/common/libipmiUtil.a %{buildroot}%{_libdir}
+install -m 644 -p -D %{_buildsubdir}/common/libpingUtil.a %{buildroot}%{_libdir}
+install -m 644 -p -D %{_buildsubdir}/common/libnodeBase.a %{buildroot}%{_libdir}
+install -m 644 -p -D %{_buildsubdir}/common/libregexUtil.a %{buildroot}%{_libdir}
+install -m 644 -p -D %{_buildsubdir}/common/libhostUtil.a %{buildroot}%{_libdir}
+
+# mtce-common headers required to bring in nodeBase.h
+install -m 755 -d %{buildroot}%{_includedir}
+install -m 755 -d %{buildroot}%{_includedir}/mtce-common
+install -m 644 -p -D %{_buildsubdir}/common/fitCodes.h %{buildroot}%{_includedir}/mtce-common
+install -m 644 -p -D %{_buildsubdir}/common/logMacros.h %{buildroot}%{_includedir}/mtce-common
+install -m 644 -p -D %{_buildsubdir}/common/returnCodes.h %{buildroot}%{_includedir}/mtce-common
+install -m 644 -p -D %{_buildsubdir}/common/nodeTimers.h %{buildroot}%{_includedir}/mtce-common
+
+# mtce-common headers required to build mtce-guest
+install -m 644 -p -D %{_buildsubdir}/common/hostClass.h %{buildroot}%{_includedir}/mtce-common
+install -m 644 -p -D %{_buildsubdir}/common/httpUtil.h %{buildroot}%{_includedir}/mtce-common
+install -m 644 -p -D %{_buildsubdir}/common/jsonUtil.h %{buildroot}%{_includedir}/mtce-common
+install -m 644 -p -D %{_buildsubdir}/common/msgClass.h %{buildroot}%{_includedir}/mtce-common
+install -m 644 -p -D %{_buildsubdir}/common/nodeBase.h %{buildroot}%{_includedir}/mtce-common
+install -m 644 -p -D %{_buildsubdir}/common/nodeEvent.h %{buildroot}%{_includedir}/mtce-common
+install -m 644 -p -D %{_buildsubdir}/common/nodeMacro.h %{buildroot}%{_includedir}/mtce-common
+install -m 644 -p -D %{_buildsubdir}/common/nodeUtil.h %{buildroot}%{_includedir}/mtce-common
+install -m 644 -p -D %{_buildsubdir}/common/timeUtil.h %{buildroot}%{_includedir}/mtce-common
+
+# mtce-daemon headers required to build mtce-guest
+install -m 755 -d %{buildroot}%{_includedir}/mtce-daemon
+install -m 644 -p -D %{_buildsubdir}/daemon/daemon_ini.h %{buildroot}%{_includedir}/mtce-daemon
+install -m 644 -p -D %{_buildsubdir}/daemon/daemon_common.h %{buildroot}%{_includedir}/mtce-daemon
+install -m 644 -p -D %{_buildsubdir}/daemon/daemon_option.h %{buildroot}%{_includedir}/mtce-daemon
+
+# remaining mtce-common headers required to build mtce
+install -m 644 -p -D %{_buildsubdir}/common/alarmUtil.h %{buildroot}%{_includedir}/mtce-common
+install -m 644 -p -D %{_buildsubdir}/common/hostUtil.h %{buildroot}%{_includedir}/mtce-common
+install -m 644 -p -D %{_buildsubdir}/common/ipmiUtil.h %{buildroot}%{_includedir}/mtce-common
+install -m 644 -p -D %{_buildsubdir}/common/nlEvent.h %{buildroot}%{_includedir}/mtce-common
+install -m 644 -p -D %{_buildsubdir}/common/pingUtil.h %{buildroot}%{_includedir}/mtce-common
+install -m 644 -p -D %{_buildsubdir}/common/regexUtil.h %{buildroot}%{_includedir}/mtce-common
+install -m 644 -p -D %{_buildsubdir}/common/threadUtil.h %{buildroot}%{_includedir}/mtce-common
+install -m 644 -p -D %{_buildsubdir}/common/tokenUtil.h %{buildroot}%{_includedir}/mtce-common
+install -m 644 -p -D %{_buildsubdir}/common/secretUtil.h %{buildroot}%{_includedir}/mtce-common

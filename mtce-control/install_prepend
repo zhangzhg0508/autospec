@@ -1,0 +1,3 @@
+%define _sysconfdir /usr/local/etc
+%define _unitdir /usr/lib/systemd/system/
+

@@ -1,0 +1,6 @@
+%define debug_package %{nil}
+%global _buildsubdir %{_builddir}/%{name}-%{version}
+%define _sysconfdir /usr/local/etc
+VER=%{version}
+MAJOR=$(echo $VER | awk -F . '{print $1}')
+MINOR=$(echo $VER | awk -F . '{print $2}')
