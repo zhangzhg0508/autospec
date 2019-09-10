@@ -1,0 +1,5 @@
+%install_python nfv-common
+%install_python nfv-plugins
+%install_python nfv-tools
+%install_python nfv-vim
+%install_python nfv-client

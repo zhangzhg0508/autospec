@@ -1,0 +1,19 @@
+%define debug_package %{nil}
+%define local_bindir /usr/bin/
+%define pythonroot /usr/lib64/python2.7/site-packages
+
+%define build_python() ( pushd %1; %{__python} setup.py build; %{__python} setup.py bdist_wheel; popd)
+
+%define install_python() ( pushd %1; %{__python} setup.py install --root=$RPM_BUILD_ROOT --install-lib=%{pythonroot} --prefix=/usr --install-data=/usr/share --single-version-externally-managed; mkdir -p $RPM_BUILD_ROOT/wheels; install -m 644 dist/*.whl $RPM_BUILD_ROOT/wheels/; popd)
+
+sed -i -e 's|@SYSCONFDIR@|%{_sysconfdir}|g' nfv-vim/scripts/vim
+sed -i -e 's|@SYSCONFDIR@|%{_sysconfdir}|g' nfv-vim/scripts/vim-api
+sed -i -e 's|@SYSCONFDIR@|%{_sysconfdir}|g' nfv-vim/scripts/vim-webserver
+sed -i -e 's|@SYSCONFDIR@|%{_sysconfdir}|g' nfv-vim/nfv_vim/config.ini
+sed -i -e 's|@PYTHONROOT@|%{pythonroot}|g' nfv-vim/nfv_vim/config.ini
+
+%build_python nfv-common
+%build_python nfv-plugins
+%build_python nfv-tools
+%build_python nfv-vim
+%build_python nfv-client
