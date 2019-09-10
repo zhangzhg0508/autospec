@@ -1,0 +1,37 @@
+2019-08-21 03:22:06,085 - Mock Version: 1.2.14
+2019-08-21 03:22:06,330 - Start: dnf update
+2019-08-21 03:22:20,058 - Finish: dnf update
+2019-08-21 03:22:20,064 - Finish: chroot init
+2019-08-21 03:22:20,067 - Start: buildsrpm
+2019-08-21 03:22:20,082 - Start: rpmbuild -bs
+2019-08-21 03:22:20,122 - Finish: rpmbuild -bs
+2019-08-21 03:22:20,124 - Finish: buildsrpm
+2019-08-21 03:22:20,125 - Finish: run
+2019-08-21 03:22:23,852 - Mock Version: 1.2.14
+2019-08-21 03:22:24,102 - Start: dnf update
+2019-08-21 03:22:37,988 - Finish: dnf update
+2019-08-21 03:22:37,994 - Finish: chroot init
+2019-08-21 03:22:37,995 - Start: build phase for nfv-vim-1-1.src.rpm
+2019-08-21 03:22:37,998 - Start: build setup for nfv-vim-1-1.src.rpm
+2019-08-21 03:22:39,149 - Finish: build setup for nfv-vim-1-1.src.rpm
+2019-08-21 03:22:39,149 - Start: rpmbuild nfv-vim-1-1.src.rpm
+2019-08-21 03:22:46,153 - Mock Version: 1.2.14
+2019-08-21 03:22:46,380 - Start: dnf update
+2019-08-21 03:22:59,315 - Finish: dnf update
+2019-08-21 03:22:59,321 - Finish: chroot init
+2019-08-21 03:22:59,324 - Start: buildsrpm
+2019-08-21 03:22:59,332 - Start: rpmbuild -bs
+2019-08-21 03:22:59,370 - Finish: rpmbuild -bs
+2019-08-21 03:22:59,373 - Finish: buildsrpm
+2019-08-21 03:22:59,374 - Finish: run
+2019-08-21 03:23:03,173 - Mock Version: 1.2.14
+2019-08-21 03:23:03,452 - Start: dnf update
+2019-08-21 03:23:15,923 - Finish: dnf update
+2019-08-21 03:23:15,929 - Finish: chroot init
+2019-08-21 03:23:15,930 - Start: build phase for nfv-vim-1-1.src.rpm
+2019-08-21 03:23:15,932 - Start: build setup for nfv-vim-1-1.src.rpm
+2019-08-21 03:23:17,073 - Finish: build setup for nfv-vim-1-1.src.rpm
+2019-08-21 03:23:17,073 - Start: rpmbuild nfv-vim-1-1.src.rpm
+2019-08-21 03:23:24,011 - Finish: rpmbuild nfv-vim-1-1.src.rpm
+2019-08-21 03:23:24,013 - Finish: build phase for nfv-vim-1-1.src.rpm
+2019-08-21 03:23:24,013 - Finish: run
