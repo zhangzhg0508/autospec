@@ -1,0 +1,54 @@
+Configure miss: whether to build dselect
+Configure miss: whether to build update-alternatives
+Configure miss: gpatch
+Configure miss: po4a
+Configure miss: whether to build with code coverage
+Configure miss: md5.h usability
+Configure miss: md5.h presence
+Configure miss: md5.h
+Configure miss: SELINUX
+Configure miss: proc_stat_list_create in -lps
+Configure miss: kvm_openfiles in -lkvm
+Configure miss: kvm.h usability
+Configure miss: kvm.h presence
+Configure miss: kvm.h
+Configure miss: sys/pstat.h usability
+Configure miss: sys/pstat.h presence
+Configure miss: sys/proc.h
+Configure miss: whether makedev is declared
+Configure miss: whether F_ALLOCSP64 is declared
+Configure miss: whether F_PREALLOCATE is declared
+Configure miss: whether gcc accepts -Wno-tautological-constant-out-of-range-compare
+Configure miss: whether g++ accepts -Wno-tautological-constant-out-of-range-compare
+Configure miss: gpatch
+Configure miss: po4a
+Configure miss: whether to build with code coverage
+Configure miss: md5.h usability
+Configure miss: md5.h presence
+Configure miss: md5.h
+Configure miss: SELINUX
+Configure miss: ncurses/ncurses.h usability
+Configure miss: ncurses/ncurses.h presence
+Configure miss: ncurses/ncurses.h
+Configure miss: ncurses/term.h usability
+Configure miss: ncurses/term.h presence
+Configure miss: ncurses/term.h
+Configure miss: ncursesw/ncurses.h usability
+Configure miss: ncursesw/ncurses.h presence
+Configure miss: ncursesw/ncurses.h
+Configure miss: ncursesw/term.h usability
+Configure miss: ncursesw/term.h presence
+Configure miss: ncursesw/term.h
+Configure miss: proc_stat_list_create in -lps
+Configure miss: kvm_openfiles in -lkvm
+Configure miss: kvm.h usability
+Configure miss: kvm.h presence
+Configure miss: kvm.h
+Configure miss: sys/pstat.h usability
+Configure miss: sys/pstat.h presence
+Configure miss: sys/proc.h
+Configure miss: whether makedev is declared
+Configure miss: whether F_ALLOCSP64 is declared
+Configure miss: whether F_PREALLOCATE is declared
+Configure miss: whether gcc accepts -Wno-tautological-constant-out-of-range-compare
+Configure miss: whether g++ accepts -Wno-tautological-constant-out-of-range-compare

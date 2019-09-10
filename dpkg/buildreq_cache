@@ -1,0 +1,8 @@
+1.18.24
+bzip2-dev
+doxygen
+ncurses-dev
+pkgconfig(ncurses)
+pkgconfig(ncursesw)
+pkgconfig(zlib)
+xz-dev

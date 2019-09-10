@@ -1,0 +1,37 @@
+2019-08-30 09:24:12,417 - Mock Version: 1.2.14
+2019-08-30 09:24:12,686 - Start: dnf update
+2019-08-30 09:24:30,560 - Finish: dnf update
+2019-08-30 09:24:30,567 - Finish: chroot init
+2019-08-30 09:24:30,570 - Start: buildsrpm
+2019-08-30 09:24:30,579 - Start: rpmbuild -bs
+2019-08-30 09:24:30,634 - Finish: rpmbuild -bs
+2019-08-30 09:24:30,639 - Finish: buildsrpm
+2019-08-30 09:24:30,640 - Finish: run
+2019-08-30 09:24:34,316 - Mock Version: 1.2.14
+2019-08-30 09:24:34,565 - Start: dnf update
+2019-08-30 09:24:48,634 - Finish: dnf update
+2019-08-30 09:24:48,641 - Finish: chroot init
+2019-08-30 09:24:48,642 - Start: build phase for dpkg-1.18.24-1.src.rpm
+2019-08-30 09:24:48,644 - Start: build setup for dpkg-1.18.24-1.src.rpm
+2019-08-30 09:24:49,838 - Finish: build setup for dpkg-1.18.24-1.src.rpm
+2019-08-30 09:24:49,838 - Start: rpmbuild dpkg-1.18.24-1.src.rpm
+2019-08-30 09:25:30,991 - Mock Version: 1.2.14
+2019-08-30 09:25:31,220 - Start: dnf update
+2019-08-30 09:25:47,671 - Finish: dnf update
+2019-08-30 09:25:47,677 - Finish: chroot init
+2019-08-30 09:25:47,680 - Start: buildsrpm
+2019-08-30 09:25:47,693 - Start: rpmbuild -bs
+2019-08-30 09:25:47,748 - Finish: rpmbuild -bs
+2019-08-30 09:25:47,756 - Finish: buildsrpm
+2019-08-30 09:25:47,756 - Finish: run
+2019-08-30 09:25:51,566 - Mock Version: 1.2.14
+2019-08-30 09:25:51,796 - Start: dnf update
+2019-08-30 09:26:07,083 - Finish: dnf update
+2019-08-30 09:26:07,090 - Finish: chroot init
+2019-08-30 09:26:07,091 - Start: build phase for dpkg-1.18.24-1.src.rpm
+2019-08-30 09:26:07,093 - Start: build setup for dpkg-1.18.24-1.src.rpm
+2019-08-30 09:26:08,303 - Finish: build setup for dpkg-1.18.24-1.src.rpm
+2019-08-30 09:26:08,303 - Start: rpmbuild dpkg-1.18.24-1.src.rpm
+2019-08-30 09:26:45,694 - Finish: rpmbuild dpkg-1.18.24-1.src.rpm
+2019-08-30 09:26:45,695 - Finish: build phase for dpkg-1.18.24-1.src.rpm
+2019-08-30 09:26:45,696 - Finish: run

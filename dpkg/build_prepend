@@ -1,0 +1,7 @@
+%define local_bindir /usr/bin/
+
+./configure --prefix=$RPM_BUILD_ROOT \
+            --disable-dselect \
+            --disable-update-alternatives \
+            --without-liblzma
+make -j"%(nproc)"

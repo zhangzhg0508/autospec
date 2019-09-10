@@ -1,0 +1,1 @@
+install -p -D -m 700 utils/start-stop-daemon %{buildroot}%{local_bindir}/start-stop-daemon

@@ -1,0 +1,293 @@
+From c049987868b1af43931083012d5669ff79253674 Mon Sep 17 00:00:00 2001
+From: "chen.dq" <chen.dq@neusoft.com>
+Date: Fri, 30 Aug 2019 09:26:46 +0000
+Subject: [PATCH dpkg] dpkg: Autospec creation for version 1.18.24
+
+---
+ .gitignore         | 14 ++++++++
+ ChangeLog          |  5 +++
+ Makefile           |  5 +++
+ NEWS               |  1 +
+ build_prepend      |  7 ++++
+ buildreq_add       |  5 +++
+ buildreq_ban       |  2 ++
+ buildreq_cache     |  8 +++++
+ configure_misses   | 54 ++++++++++++++++++++++++++++
+ dpkg.spec          | 87 ++++++++++++++++++++++++++++++++++++++++++++++
+ dpkgbk.spec        | 45 ++++++++++++++++++++++++
+ excludes           |  2 ++
+ install_append     |  1 +
+ install_macro      |  1 +
+ make_check_command |  1 +
+ options.conf       | 58 +++++++++++++++++++++++++++++++
+ pkgconfig_add      |  2 ++
+ pkgconfig_ban      |  2 ++
+ release            |  1 +
+ requires_add       |  2 ++
+ requires_ban       |  2 ++
+ testresults        |  5 +++
+ upstream           |  1 +
+ used_libs          |  1 +
+ whatrequires       |  1 +
+ 25 files changed, 313 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 ChangeLog
+ create mode 100644 Makefile
+ create mode 100644 NEWS
+ create mode 100644 build_prepend
+ create mode 100644 buildreq_add
+ create mode 100644 buildreq_ban
+ create mode 100644 buildreq_cache
+ create mode 100644 configure_misses
+ create mode 100644 dpkg.spec
+ create mode 100644 dpkgbk.spec
+ create mode 100644 excludes
+ create mode 100644 install_append
+ create mode 100644 install_macro
+ create mode 100644 make_check_command
+ create mode 100644 options.conf
+ create mode 100644 pkgconfig_add
+ create mode 100644 pkgconfig_ban
+ create mode 100644 release
+ create mode 100644 requires_add
+ create mode 100644 requires_ban
+ create mode 100644 testresults
+ create mode 100644 upstream
+ create mode 100644 used_libs
+ create mode 100644 whatrequires
+
+diff --git a/build_prepend b/build_prepend
+new file mode 100644
+index 0000000..fa93746
+--- /dev/null
++++ b/build_prepend
+@@ -0,0 +1,7 @@
++%define local_bindir /usr/bin/
++
++./configure --prefix=$RPM_BUILD_ROOT \
++            --disable-dselect \
++            --disable-update-alternatives \
++            --without-liblzma
++make -j"%(nproc)"
+diff --git a/buildreq_add b/buildreq_add
+new file mode 100644
+index 0000000..345b9fb
+--- /dev/null
++++ b/buildreq_add
+@@ -0,0 +1,5 @@
++gcc
++ncurses
++perl-Perl-Version
+diff --git a/configure_misses b/configure_misses
+new file mode 100644
+index 0000000..9006c25
+--- /dev/null
++++ b/configure_misses
+@@ -0,0 +1,54 @@
++Configure miss: whether to build dselect
++Configure miss: whether to build update-alternatives
++Configure miss: gpatch
++Configure miss: po4a
++Configure miss: whether to build with code coverage
++Configure miss: md5.h usability
++Configure miss: md5.h presence
++Configure miss: md5.h
++Configure miss: SELINUX
++Configure miss: proc_stat_list_create in -lps
++Configure miss: kvm_openfiles in -lkvm
++Configure miss: kvm.h usability
++Configure miss: kvm.h presence
++Configure miss: kvm.h
++Configure miss: sys/pstat.h usability
++Configure miss: sys/pstat.h presence
++Configure miss: sys/proc.h
++Configure miss: whether makedev is declared
++Configure miss: whether F_ALLOCSP64 is declared
++Configure miss: whether F_PREALLOCATE is declared
++Configure miss: whether gcc accepts -Wno-tautological-constant-out-of-range-compare
++Configure miss: whether g++ accepts -Wno-tautological-constant-out-of-range-compare
++Configure miss: gpatch
++Configure miss: po4a
++Configure miss: whether to build with code coverage
++Configure miss: md5.h usability
++Configure miss: md5.h presence
++Configure miss: md5.h
++Configure miss: SELINUX
++Configure miss: ncurses/ncurses.h usability
++Configure miss: ncurses/ncurses.h presence
++Configure miss: ncurses/ncurses.h
++Configure miss: ncurses/term.h usability
++Configure miss: ncurses/term.h presence
++Configure miss: ncurses/term.h
++Configure miss: ncursesw/ncurses.h usability
++Configure miss: ncursesw/ncurses.h presence
++Configure miss: ncursesw/ncurses.h
++Configure miss: ncursesw/term.h usability
++Configure miss: ncursesw/term.h presence
++Configure miss: ncursesw/term.h
++Configure miss: proc_stat_list_create in -lps
++Configure miss: kvm_openfiles in -lkvm
++Configure miss: kvm.h usability
++Configure miss: kvm.h presence
++Configure miss: kvm.h
++Configure miss: sys/pstat.h usability
++Configure miss: sys/pstat.h presence
++Configure miss: sys/proc.h
++Configure miss: whether makedev is declared
++Configure miss: whether F_ALLOCSP64 is declared
++Configure miss: whether F_PREALLOCATE is declared
++Configure miss: whether gcc accepts -Wno-tautological-constant-out-of-range-compare
++Configure miss: whether g++ accepts -Wno-tautological-constant-out-of-range-compare
+\ No newline at end of file
+diff --git a/dpkg.spec b/dpkg.spec
+new file mode 100644
+index 0000000..ee6cd72
+--- /dev/null
++++ b/dpkg.spec
+@@ -0,0 +1,87 @@
++#
++# This file is auto-generated. DO NOT EDIT
++# Generated by: autospec.py
++#
++Name     : dpkg
++Summary  : Debian package management system library
++License  : GPL-2.0
++Requires: dpkg-bin = %{version}-%{release}
++BuildRequires : bzip2-dev
++BuildRequires : doxygen
++BuildRequires : gcc
++BuildRequires : ncurses
++BuildRequires : ncurses-dev
++BuildRequires : perl-Perl-Version
++BuildRequires : pkgconfig(ncurses)
++BuildRequires : pkgconfig(ncursesw)
++BuildRequires : pkgconfig(zlib)
++BuildRequires : xz-dev
++
++%description
++dpkg - Debian's package maintenance system
++The primary interface for the dpkg suite is the âdselectâ program;
++a more low-level and less user-friendly interface is available in
++the form of the âdpkgâ command.
++
++%package bin
++
++
++
++%prep
++
++%build
++## build_prepend content
++%define local_bindir /usr/bin/
++./configure --prefix=$RPM_BUILD_ROOT \
++--disable-dselect \
++--disable-update-alternatives \
++--without-liblzma
++make -j"%(nproc)"
++## build_prepend end
++%configure --disable-static
++make  %{?_smp_mflags}
++
++%check
++
++%install
++rm -rf %{buildroot}
++install -d -m 755 %{buildroot}%{local_bindir}
++## install_append content
++install -p -D -m 700 utils/start-stop-daemon %{buildroot}%{local_bindir}/start-stop-daemon
++## install_append end
++
++%files
++%defattr(-,root,root,-)
++
++%files bin
++%defattr(-,root,root,-)
++/usr/bin/start-stop-daemon
+diff --git a/dpkgbk.spec b/dpkgbk.spec
+new file mode 100644
+index 0000000..e0ada75
+--- /dev/null
++++ b/dpkgbk.spec
+@@ -0,0 +1,45 @@
++%define tis_patch_ver 1
++%define _tis_build_type std
++Name: dpkg
++Version: 1.18.24
++Release: 0%{?_tis_dist}.%{tis_patch_ver}
++License: GPLv2 and GPLv2+ and LGPLv2+ and Public Domain and BSD
++Group: base
++Packager: Wind River <info@windriver.com>
++URL: unknown
++Source0: %{name}_%{version}.tar.xz
++
++BuildRequires: gcc
++BuildRequires: gcc-c++
++BuildRequires: ncurses-static
++BuildRequires: perl-version
++
++%description
++dpkg
++
++%define local_bindir /usr/bin/
++
++%prep
++%setup
++
++%build
++./configure --prefix=$RPM_BUILD_ROOT \
++            --disable-dselect \
++            --disable-update-alternatives \
++            --without-liblzma
++make -j"%(nproc)"
++
++%install
++# Don't install everything, it's too dangerous
++# make install
++
++install -d -m 755 %{buildroot}%{local_bindir}
++install -p -D -m 700 utils/start-stop-daemon %{buildroot}%{local_bindir}/start-stop-daemon
++
++%clean
++rm -rf $RPM_BUILD_ROOT 
++
++%files
++%defattr(-,root,root,-)
++%{local_bindir}/*
+diff --git a/install_append b/install_append
+new file mode 100644
+index 0000000..643cf82
+--- /dev/null
++++ b/install_append
+@@ -0,0 +1 @@
++install -p -D -m 700 utils/start-stop-daemon %{buildroot}%{local_bindir}/start-stop-daemon
+diff --git a/install_macro b/install_macro
+new file mode 100644
+index 0000000..798d067
+--- /dev/null
++++ b/install_macro
+@@ -0,0 +1 @@
++install -d -m 755 %{buildroot}%{local_bindir}
+diff --git a/make_check_command b/make_check_command
+new file mode 100644
+index 0000000..de51944
+--- /dev/null
++++ b/make_check_command
+@@ -0,0 +1 @@
++export LANG=C.UTF-8
+diff --git a/options.conf b/options.conf
+new file mode 100644
+index 0000000..a350eda
+--- /dev/null
++++ b/options.conf
+@@ -0,0 +1,58 @@
++name = dpkg
++url = file:///home/clear/tar/dpkg_1.18.24.tar.xz
++use_lto = true
++verify_required = false
+diff --git a/used_libs b/used_libs
+new file mode 100644
+index 0000000..631aa1d
+--- /dev/null
++++ b/used_libs
+@@ -0,0 +1 @@
++libc.so.6
