@@ -1,0 +1,37 @@
+2019-09-09 03:37:31,050 - Mock Version: 1.2.14
+2019-09-09 03:37:31,352 - Start: dnf update
+2019-09-09 03:37:43,269 - Finish: dnf update
+2019-09-09 03:37:43,275 - Finish: chroot init
+2019-09-09 03:37:43,278 - Start: buildsrpm
+2019-09-09 03:37:43,287 - Start: rpmbuild -bs
+2019-09-09 03:37:43,322 - Finish: rpmbuild -bs
+2019-09-09 03:37:43,324 - Finish: buildsrpm
+2019-09-09 03:37:43,324 - Finish: run
+2019-09-09 03:37:47,110 - Mock Version: 1.2.14
+2019-09-09 03:37:47,335 - Start: dnf update
+2019-09-09 03:37:59,107 - Finish: dnf update
+2019-09-09 03:37:59,113 - Finish: chroot init
+2019-09-09 03:37:59,115 - Start: build phase for logmgmt-1.0-3.src.rpm
+2019-09-09 03:37:59,117 - Start: build setup for logmgmt-1.0-3.src.rpm
+2019-09-09 03:38:00,360 - Finish: build setup for logmgmt-1.0-3.src.rpm
+2019-09-09 03:38:00,360 - Start: rpmbuild logmgmt-1.0-3.src.rpm
+2019-09-09 03:38:05,029 - Mock Version: 1.2.14
+2019-09-09 03:38:05,254 - Start: dnf update
+2019-09-09 03:38:17,095 - Finish: dnf update
+2019-09-09 03:38:17,101 - Finish: chroot init
+2019-09-09 03:38:17,104 - Start: buildsrpm
+2019-09-09 03:38:17,113 - Start: rpmbuild -bs
+2019-09-09 03:38:17,150 - Finish: rpmbuild -bs
+2019-09-09 03:38:17,151 - Finish: buildsrpm
+2019-09-09 03:38:17,152 - Finish: run
+2019-09-09 03:38:20,897 - Mock Version: 1.2.14
+2019-09-09 03:38:21,177 - Start: dnf update
+2019-09-09 03:38:34,872 - Finish: dnf update
+2019-09-09 03:38:34,879 - Finish: chroot init
+2019-09-09 03:38:34,881 - Start: build phase for logmgmt-1.0-3.src.rpm
+2019-09-09 03:38:34,885 - Start: build setup for logmgmt-1.0-3.src.rpm
+2019-09-09 03:38:36,355 - Finish: build setup for logmgmt-1.0-3.src.rpm
+2019-09-09 03:38:36,355 - Start: rpmbuild logmgmt-1.0-3.src.rpm
+2019-09-09 03:38:37,183 - Finish: rpmbuild logmgmt-1.0-3.src.rpm
+2019-09-09 03:38:37,184 - Finish: build phase for logmgmt-1.0-3.src.rpm
+2019-09-09 03:38:37,185 - Finish: run

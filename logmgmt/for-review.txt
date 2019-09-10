@@ -1,0 +1,37 @@
+From 3698748066a8a504f594823a2361bcd90d489e96 Mon Sep 17 00:00:00 2001
+From: "chen.dq" <chen.dq@neusoft.com>
+Date: Mon, 9 Sep 2019 03:38:38 +0000
+Subject: [PATCH logmgmt] logmgmt: Autospec creation for version 1.0
+
+---
+ logmgmt.spec | 6 ++++--
+ release      | 2 +-
+ requires_add | 2 ++
+ 3 files changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/logmgmt.spec b/logmgmt.spec
+index 77da14e..79c006c 100644
+--- a/logmgmt.spec
++++ b/logmgmt.spec
+@@ -13,6 +13,8 @@ License  : Apache-2.0
+ Requires: logmgmt-bin = %{version}-%{release}
+ Requires: logmgmt-python = %{version}-%{release}
+ Requires: logmgmt-python3 = %{version}-%{release}
++Requires: python-daemon
++Requires: systemd
+ BuildRequires : buildreq-distutils3
+ BuildRequires : pip
+ BuildRequires : setuptools
+diff --git a/requires_add b/requires_add
+index ecd3915..81a3727 100644
+--- a/requires_add
++++ b/requires_add
+@@ -1,2 +1,4 @@
+ # This file contains additional runtime requirements that did not get
+ # picked up automatically. One name per line, no whitespace.
++systemd
++python-daemon
+-- 
+2.23.0
+
+
