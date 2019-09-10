@@ -1,0 +1,37 @@
+2019-08-21 03:15:10,637 - Mock Version: 1.2.14
+2019-08-21 03:15:10,961 - Start: dnf update
+2019-08-21 03:15:25,770 - Finish: dnf update
+2019-08-21 03:15:25,776 - Finish: chroot init
+2019-08-21 03:15:25,779 - Start: buildsrpm
+2019-08-21 03:15:25,785 - Start: rpmbuild -bs
+2019-08-21 03:15:25,820 - Finish: rpmbuild -bs
+2019-08-21 03:15:25,822 - Finish: buildsrpm
+2019-08-21 03:15:25,823 - Finish: run
+2019-08-21 03:15:29,566 - Mock Version: 1.2.14
+2019-08-21 03:15:29,811 - Start: dnf update
+2019-08-21 03:15:42,487 - Finish: dnf update
+2019-08-21 03:15:42,493 - Finish: chroot init
+2019-08-21 03:15:42,494 - Start: build phase for nfv-common-1-1.src.rpm
+2019-08-21 03:15:42,497 - Start: build setup for nfv-common-1-1.src.rpm
+2019-08-21 03:15:43,635 - Finish: build setup for nfv-common-1-1.src.rpm
+2019-08-21 03:15:43,635 - Start: rpmbuild nfv-common-1-1.src.rpm
+2019-08-21 03:15:48,628 - Mock Version: 1.2.14
+2019-08-21 03:15:48,837 - Start: dnf update
+2019-08-21 03:16:01,720 - Finish: dnf update
+2019-08-21 03:16:01,726 - Finish: chroot init
+2019-08-21 03:16:01,729 - Start: buildsrpm
+2019-08-21 03:16:01,736 - Start: rpmbuild -bs
+2019-08-21 03:16:01,771 - Finish: rpmbuild -bs
+2019-08-21 03:16:01,773 - Finish: buildsrpm
+2019-08-21 03:16:01,774 - Finish: run
+2019-08-21 03:16:05,501 - Mock Version: 1.2.14
+2019-08-21 03:16:05,718 - Start: dnf update
+2019-08-21 03:16:17,911 - Finish: dnf update
+2019-08-21 03:16:17,917 - Finish: chroot init
+2019-08-21 03:16:17,919 - Start: build phase for nfv-common-1-1.src.rpm
+2019-08-21 03:16:17,921 - Start: build setup for nfv-common-1-1.src.rpm
+2019-08-21 03:16:19,060 - Finish: build setup for nfv-common-1-1.src.rpm
+2019-08-21 03:16:19,060 - Start: rpmbuild nfv-common-1-1.src.rpm
+2019-08-21 03:16:21,496 - Finish: rpmbuild nfv-common-1-1.src.rpm
+2019-08-21 03:16:21,498 - Finish: build phase for nfv-common-1-1.src.rpm
+2019-08-21 03:16:21,498 - Finish: run
