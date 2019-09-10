@@ -1,0 +1,315 @@
+Mock Version: 1.2.14
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/libfdt.spec'], chrootPath='/var/lib/mock/clear-libfdt/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f23ce617fd0>timeout=0uid=1000gid=1000user='mockbuild'printOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/libfdt.spec'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/libfdt-1.4.4-6.src.rpm
+Child return code was: 0
+LEAVE do --> 
+
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/libfdt.spec '], chrootPath='/var/lib/mock/clear-libfdt/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f23ce617fd0>timeout=0uid=1000gid=1000user='mockbuild'private_network=TrueprintOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/libfdt.spec '] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.DXwNTG
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
++ rm -rf dtc-1.4.4
++ /usr/bin/gzip -dc /builddir/build/SOURCES/dtc-1.4.4.tar.gz
++ /usr/bin/tar -xf -
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd dtc-1.4.4
++ /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ exit 0
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.syUS0J
++ umask 022
++ cd /builddir/build/BUILD
++ cd dtc-1.4.4
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CFLAGS
++ http_proxy=http://127.0.0.1:9/
++ export http_proxy
++ https_proxy=http://127.0.0.1:9/
++ export https_proxy
++ ftp_proxy=http://127.0.0.1:9/
++ export ftp_proxy
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export no_proxy
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CXXFLAGS
++ FFLAGS='-g -O3 -feliminate-unused-debug-types  -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -m64 -fasynchronous-unwind-tables -Wp,-D_REENTRANT -ftree-loop-distribute-patterns -Wl,-z -Wl,now -Wl,-z -Wl,relro -malign-data=abi -fno-semantic-interposition -ftree-vectorize  -ftree-loop-vectorize -Wl,--enable-new-dtags '
++ export FFLAGS
++ LD_AS_NEEDED=1
++ export LD_AS_NEEDED
++ PKG_CONFIG_LIBDIR=/usr/lib64/pkgconfig
++ export PKG_CONFIG_LIBDIR
++ PATH=/usr/lib64/ccache/bin:/usr/local/bin:/usr/bin
++ export PATH
++ export http_proxy=http://127.0.0.1:9/
++ http_proxy=http://127.0.0.1:9/
++ export https_proxy=http://127.0.0.1:9/
++ https_proxy=http://127.0.0.1:9/
++ export no_proxy=localhost,127.0.0.1,0.0.0.0
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export LANG=C.UTF-8
++ LANG=C.UTF-8
++ export SOURCE_DATE_EPOCH=1567751521
++ SOURCE_DATE_EPOCH=1567751521
++ export GCC_IGNORE_WERROR=1
++ GCC_IGNORE_WERROR=1
++ export AR=gcc-ar
++ AR=gcc-ar
++ export RANLIB=gcc-ranlib
++ RANLIB=gcc-ranlib
++ export NM=gcc-nm
++ NM=gcc-nm
++ export 'CFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ export 'FCFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FCFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'FFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'CXXFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ make -j4
+	 DEP tests/dumptrees.c
+	 DEP tests/trees.S
+	 DEP tests/testutils.c
+	 DEP tests/value-labels.c
+	 DEP tests/asm_tree_dump.c
+	 DEP tests/truncated_property.c
+	 DEP tests/check_path.c
+	 DEP tests/overlay_bad_fixup.c
+	 DEP tests/overlay.c
+	 DEP tests/subnode_iterate.c
+	 DEP tests/property_iterate.c
+	 DEP tests/integer-expressions.c
+	 DEP tests/utilfdt_test.c
+	 DEP tests/path_offset_aliases.c
+	 DEP tests/add_subnode_with_nops.c
+	 DEP tests/dtbs_equal_unordered.c
+	 DEP tests/dtb_reverse.c
+	 DEP tests/dtbs_equal_ordered.c
+	 DEP tests/extra-terminating-null.c
+	 DEP tests/incbin.c
+	 DEP tests/boot-cpuid.c
+	 DEP tests/phandle_format.c
+	 DEP tests/path-references.c
+	 DEP tests/references.c
+	 DEP tests/string_escapes.c
+	 DEP tests/propname_escapes.c
+	 DEP tests/appendprop2.c
+	 DEP tests/appendprop1.c
+	 DEP tests/del_node.c
+	 DEP tests/del_property.c
+	 DEP tests/setprop.c
+	 DEP tests/set_name.c
+	 DEP tests/rw_tree1.c
+	 DEP tests/open_pack.c
+	 DEP tests/nopulate.c
+	 DEP tests/mangle-layout.c
+	 DEP tests/move_and_save.c
+	 DEP tests/sw_tree1.c
+	 DEP tests/nop_node.c
+	 DEP tests/nop_property.c
+	 DEP tests/setprop_inplace.c
+	 DEP tests/stringlist.c
+	 DEP tests/addr_size_cells.c
+	 DEP tests/notfound.c
+	 DEP tests/sized_cells.c
+	 DEP tests/char_literal.c
+	 DEP tests/get_alias.c
+	 DEP tests/node_offset_by_compatible.c
+	 DEP tests/node_check_compatible.c
+	 DEP tests/node_offset_by_phandle.c
+	 DEP tests/node_offset_by_prop_value.c
+	 DEP tests/parent_offset.c
+	 DEP tests/supernode_atdepth_offset.c
+	 DEP tests/get_path.c
+	 DEP tests/get_phandle.c
+	 DEP tests/getprop.c
+	 DEP tests/get_name.c
+	 DEP tests/path_offset.c
+	 DEP tests/subnode_offset.c
+	 DEP tests/find_property.c
+	 DEP tests/root_node.c
+	 DEP tests/get_mem_rsv.c
+	 DEP libfdt/fdt_overlay.c
+	 DEP libfdt/fdt_addresses.c
+	 DEP libfdt/fdt_empty_tree.c
+	 DEP libfdt/fdt_strerror.c
+	 DEP libfdt/fdt_rw.c
+	 DEP libfdt/fdt_sw.c
+	 DEP libfdt/fdt_wip.c
+	 DEP libfdt/fdt_ro.c
+	 DEP libfdt/fdt.c
+	 DEP util.c
+	 DEP fdtput.c
+	 DEP fdtget.c
+	 DEP fdtdump.c
+	 LEX convert-dtsv0-lexer.lex.c
+	 DEP srcpos.c
+	 BISON dtc-parser.tab.c
+	 LEX dtc-lexer.lex.c
+	 DEP treesource.c
+	 DEP livetree.c
+	 DEP fstree.c
+	 DEP flattree.c
+	 DEP dtc.c
+	 DEP data.c
+	 DEP checks.c
+	 DEP convert-dtsv0-lexer.lex.c
+	 DEP dtc-parser.tab.c
+	 DEP dtc-lexer.lex.c
+	CHK version_gen.h
+	UPD version_gen.h
+	 DEP util.c
+	CHK version_gen.h
+	 CC srcpos.o
+	 CC util.o
+	 CC convert-dtsv0-lexer.lex.o
+	 CC dtc.o
+	 CC checks.o
+	 CC data.o
+	 CC flattree.o
+	 CC fstree.o
+	 CC livetree.o
+	 CC treesource.o
+	 CC dtc-lexer.lex.o
+	 CC dtc-parser.tab.o
+	 CC fdtdump.o
+	 CC fdtget.o
+	 CC libfdt/fdt.o
+	 CC libfdt/fdt_wip.o
+	 CC libfdt/fdt_ro.o
+	 CC libfdt/fdt_sw.o
+	 CC libfdt/fdt_rw.o
+	 CC libfdt/fdt_strerror.o
+	 CC libfdt/fdt_empty_tree.o
+	 CC libfdt/fdt_addresses.o
+	 CC libfdt/fdt_overlay.o
+	 CC fdtput.o
+	 LD convert-dtsv0
+	 LD dtc
+	 LD fdtdump
+	 AR libfdt/libfdt.a
+	 LD libfdt/libfdt-1.4.4.so
+	 LD fdtget
+	 LD fdtput
++ exit 0
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.boU3DJ
++ umask 022
++ cd /builddir/build/BUILD
++ cd dtc-1.4.4
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ rm -rf /builddir/build/BUILDROOT/libfdt-1.4.4-6.x86_64
++ mkdir -p /builddir/build/BUILDROOT/libfdt-1.4.4-6.x86_64
++ export SOURCE_DATE_EPOCH=1567751521
++ SOURCE_DATE_EPOCH=1567751521
++ rm -rf /builddir/build/BUILDROOT/libfdt-1.4.4-6.x86_64
++ make install PREFIX=/builddir/build/BUILDROOT/libfdt-1.4.4-6.x86_64/usr/
+	CHK version_gen.h
+	 INSTALL-BIN
+	 INSTALL-LIB
+	 INSTALL-INC
++ install -p -D -m 755 README.license /builddir/build/BUILDROOT/libfdt-1.4.4-6.x86_64/usr/share/license
++ rm -f /builddir/build/BUILDROOT/libfdt-1.4.4-6.x86_64/usr/share/info/dir
+++ find /builddir/build/BUILDROOT/libfdt-1.4.4-6.x86_64 -path 'etc/*' '!' -type d
++ test -z ''
++ rm -rf '/builddir/build/BUILDROOT/libfdt-1.4.4-6.x86_64/etc/*'
++ rm -rf '/builddir/build/BUILDROOT/libfdt-1.4.4-6.x86_64/usr/share/factory/*'
++ xargs rm -rf --
++ find /builddir/build/BUILDROOT/libfdt-1.4.4-6.x86_64 -name __pycache__
++ '[' -d /builddir/build/BUILDROOT/libfdt-1.4.4-6.x86_64/usr/share/mime ']'
+++ getconf _NPROCESSORS_ONLN
++ RPM_XARGS_PFLAG=-P4
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -5
++ find /builddir/build/BUILDROOT/libfdt-1.4.4-6.x86_64 -name '*.so.avx512' -print0
++ find /builddir/build/BUILDROOT/libfdt-1.4.4-6.x86_64/usr/lib64/haswell/avx512_1 -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/libfdt-1.4.4-6.x86_64/usr/lib64/haswell/avx512_1’: No such file or directory
++ find /builddir/build/BUILDROOT/libfdt-1.4.4-6.x86_64 -name '*.so.avx2' -print0
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -2
++ find /builddir/build/BUILDROOT/libfdt-1.4.4-6.x86_64/usr/lib64/haswell '!' -path '/usr/lib64/haswell/avx512_1/*' -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/libfdt-1.4.4-6.x86_64/usr/lib64/haswell’: No such file or directory
++ find /builddir/build/BUILDROOT/libfdt-1.4.4-6.x86_64/usr/lib64/ -maxdepth 1 -name '*.so*' -type f -print0
++ sort -u
+find: ‘/builddir/build/BUILDROOT/libfdt-1.4.4-6.x86_64/usr/lib64/’: No such file or directory
++ xargs -0rtn1 -P4 /usr/lib/rpm/clr/brp-create-abi
++ '[' -d /builddir/build/BUILDROOT/libfdt-1.4.4-6.x86_64/usr/lib/debug ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/libfdt-1.4.4-6.x86_64/usr/lib/debug ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/libfdt-1.4.4-6.x86_64/usr/src/debug ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/libfdt-1.4.4-6.x86_64/usr/lib/debug.force ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/libfdt-1.4.4-6.x86_64/usr/src/debug.force ']'
++ :
++ /usr/lib/rpm/check-buildroot
++ /usr/lib/rpm/clr/brp-strip /usr/bin/strip
++ /usr/lib/rpm/clr/brp-strip-static-archive /usr/bin/strip
++ /usr/lib/rpm/clr/brp-strip-comment-note /usr/bin/strip /usr/bin/objdump
++ /usr/lib/rpm/clr/brp-python-bytecompile
++ find /builddir/build/BUILDROOT/libfdt-1.4.4-6.x86_64 -print0
++ xargs -0 touch -h -d @1567751521
++ /usr/lib/rpm/clr/brp-java-repack-jars
+Processing files: libfdt-1.4.4-6.x86_64
+Processing files: libfdt-abi-1.4.4-6.x86_64
+Checking for unpackaged file(s): /usr/lib/rpm/check-files /builddir/build/BUILDROOT/libfdt-1.4.4-6.x86_64
+warning: Empty %files file /builddir/build/BUILD/dtc-1.4.4/abifiles.list
+RPM build errors:
+error: Installed (but unpackaged) file(s) found:
+   /usr/bin/convert-dtsv0
+   /usr/bin/dtc
+   /usr/bin/dtdiff
+   /usr/bin/fdtdump
+   /usr/bin/fdtget
+   /usr/bin/fdtput
+   /usr/include/fdt.h
+   /usr/include/libfdt.h
+   /usr/include/libfdt_env.h
+   /usr/lib/libfdt-1.4.4.so
+   /usr/lib/libfdt.a
+   /usr/lib/libfdt.so
+   /usr/lib/libfdt.so.1
+   /usr/share/license
+    Empty %files file /builddir/build/BUILD/dtc-1.4.4/abifiles.list
+    Installed (but unpackaged) file(s) found:
+   /usr/bin/convert-dtsv0
+   /usr/bin/dtc
+   /usr/bin/dtdiff
+   /usr/bin/fdtdump
+   /usr/bin/fdtget
+   /usr/bin/fdtput
+   /usr/include/fdt.h
+   /usr/include/libfdt.h
+   /usr/include/libfdt_env.h
+   /usr/lib/libfdt-1.4.4.so
+   /usr/lib/libfdt.a
+   /usr/lib/libfdt.so
+   /usr/lib/libfdt.so.1
+   /usr/share/license
+Child return code was: 1
+EXCEPTION: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/libfdt.spec 
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/mockbuild/trace_decorator.py", line 84, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python3.7/site-packages/mockbuild/util.py", line 531, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+mockbuild.exception.Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/libfdt.spec 
+LEAVE do --> EXCEPTION RAISED
+

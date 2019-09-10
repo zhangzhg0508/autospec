@@ -1,0 +1,37 @@
+INFO: mock.py version 1.2.14 starting (python version = 3.7.4)...
+Start: init plugins
+INFO: selinux disabled
+Finish: init plugins
+Start: run
+INFO: Start(results/libfdt-1.4.4-6.src.rpm)  Config(clear)
+Start: clean chroot
+Finish: clean chroot
+Start: chroot init
+INFO: calling preinit hooks
+INFO: enabled root cache
+Start: unpacking root cache
+Finish: unpacking root cache
+INFO: enabled dnf cache
+Start: Waiting for yumcache lock
+Finish: Waiting for yumcache lock
+Start: cleaning dnf metadata
+Finish: cleaning dnf metadata
+INFO: enabled ccache
+Mock Version: 1.2.14
+INFO: Mock Version: 1.2.14
+Start: dnf update
+Start: Waiting for yumcache lock
+Finish: Waiting for yumcache lock
+Finish: dnf update
+Finish: chroot init
+Start: build phase for libfdt-1.4.4-6.src.rpm
+Start: build setup for libfdt-1.4.4-6.src.rpm
+Start: Waiting for yumcache lock
+Finish: Waiting for yumcache lock
+Finish: build setup for libfdt-1.4.4-6.src.rpm
+Start: rpmbuild libfdt-1.4.4-6.src.rpm
+Finish: rpmbuild libfdt-1.4.4-6.src.rpm
+Finish: build phase for libfdt-1.4.4-6.src.rpm
+INFO: Done(results/libfdt-1.4.4-6.src.rpm) Config(clear) 0 minutes 28 seconds
+INFO: Results and/or logs in: results/
+Finish: run

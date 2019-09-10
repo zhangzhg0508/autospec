@@ -1,0 +1,6 @@
+install -p -D -m 755 README.license %{buildroot}/usr/share/license
+
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+

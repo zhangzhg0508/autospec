@@ -1,0 +1,41 @@
+2019-09-06 06:32:05,617 - Mock Version: 1.2.14
+2019-09-06 06:32:05,878 - Start: dnf update
+2019-09-06 06:32:18,474 - Finish: dnf update
+2019-09-06 06:32:18,480 - Finish: chroot init
+2019-09-06 06:32:18,484 - Start: buildsrpm
+2019-09-06 06:32:18,495 - Start: rpmbuild -bs
+2019-09-06 06:32:18,533 - Finish: rpmbuild -bs
+2019-09-06 06:32:18,534 - Finish: buildsrpm
+2019-09-06 06:32:18,535 - Finish: run
+2019-09-06 06:32:23,197 - Mock Version: 1.2.14
+2019-09-06 06:32:23,437 - Start: dnf update
+2019-09-06 06:32:36,089 - Finish: dnf update
+2019-09-06 06:32:36,095 - Finish: chroot init
+2019-09-06 06:32:36,097 - Start: build phase for libfdt-1.4.4-6.src.rpm
+2019-09-06 06:32:36,099 - Start: build setup for libfdt-1.4.4-6.src.rpm
+2019-09-06 06:32:37,074 - Finish: build setup for libfdt-1.4.4-6.src.rpm
+2019-09-06 06:32:37,074 - Start: rpmbuild libfdt-1.4.4-6.src.rpm
+2019-09-06 06:32:54,335 - Mock Version: 1.2.14
+2019-09-06 06:32:54,678 - Start: dnf update
+2019-09-06 06:33:07,743 - Finish: dnf update
+2019-09-06 06:33:07,753 - Finish: chroot init
+2019-09-06 06:33:07,758 - Start: buildsrpm
+2019-09-06 06:33:07,777 - Start: rpmbuild -bs
+2019-09-06 06:33:07,826 - Finish: rpmbuild -bs
+2019-09-06 06:33:07,829 - Finish: buildsrpm
+2019-09-06 06:33:07,831 - Finish: run
+2019-09-06 06:33:21,057 - Mock Version: 1.2.14
+2019-09-06 06:33:21,486 - Start: dnf update
+2019-09-06 06:33:21,489 - Start: Waiting for yumcache lock
+2019-09-06 06:33:21,660 - Finish: Waiting for yumcache lock
+2019-09-06 06:33:33,892 - Finish: dnf update
+2019-09-06 06:33:33,898 - Finish: chroot init
+2019-09-06 06:33:33,900 - Start: build phase for libfdt-1.4.4-6.src.rpm
+2019-09-06 06:33:33,903 - Start: build setup for libfdt-1.4.4-6.src.rpm
+2019-09-06 06:33:33,983 - Start: Waiting for yumcache lock
+2019-09-06 06:33:34,271 - Finish: Waiting for yumcache lock
+2019-09-06 06:33:35,212 - Finish: build setup for libfdt-1.4.4-6.src.rpm
+2019-09-06 06:33:35,212 - Start: rpmbuild libfdt-1.4.4-6.src.rpm
+2019-09-06 06:33:36,416 - Finish: rpmbuild libfdt-1.4.4-6.src.rpm
+2019-09-06 06:33:36,418 - Finish: build phase for libfdt-1.4.4-6.src.rpm
+2019-09-06 06:33:36,419 - Finish: run

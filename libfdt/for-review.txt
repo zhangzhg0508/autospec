@@ -1,0 +1,91 @@
+From 2996073899888db3eec23b7261fd54adeb3a270f Mon Sep 17 00:00:00 2001
+From: "chen.dq" <chen.dq@neusoft.com>
+Date: Fri, 6 Sep 2019 06:33:37 +0000
+Subject: [PATCH libfdt] libfdt: Autospec creation for version 1.4.4
+
+---
+ install_append |  2 +-
+ libfdt.spec    | 24 +++++++++++++++++++-----
+ release        |  2 +-
+ 3 files changed, 21 insertions(+), 7 deletions(-)
+
+diff --git a/install_append b/install_append
+index 936d06c..ba876b9 100644
+--- a/install_append
++++ b/install_append
+@@ -1,4 +1,4 @@
+-install -p -D -m 755 README.license %{buildroot}/%license
++install -p -D -m 755 README.license %{buildroot}/usr/share/license
+ 
+ 
+ %clean
+diff --git a/libfdt.spec b/libfdt.spec
+index c5c4567..6a60be9 100644
+--- a/libfdt.spec
++++ b/libfdt.spec
+@@ -4,13 +4,14 @@
+ #
+ Name     : libfdt
+ Version  : 1.4.4
+ URL      : file:///home/clear/tar/dtc-1.4.4.tar.gz
+ Source0  : file:///home/clear/tar/dtc-1.4.4.tar.gz
+ Summary  : No detailed summary available
+ Group    : Development/Tools
+ License  : Apache-2.0
+ Requires: libfdt-bin = %{version}-%{release}
++Requires: libfdt-data = %{version}-%{release}
+ Requires: libfdt-plugins = %{version}-%{release}
+ BuildRequires : bison
+ BuildRequires : flex
+@@ -24,15 +25,25 @@ utility library for reading and manipulating the binary format.
+ %package bin
+ Summary: bin components for the libfdt package.
+ Group: Binaries
++Requires: libfdt-data = %{version}-%{release}
+ 
+ %description bin
+ bin components for the libfdt package.
+ 
+ 
++%package data
++
++
++
+ %package dev
+ Summary: dev components for the libfdt package.
+ Group: Development
+ Requires: libfdt-bin = %{version}-%{release}
++Requires: libfdt-data = %{version}-%{release}
+ Provides: libfdt-devel = %{version}-%{release}
+ Requires: libfdt = %{version}-%{release}
+ 
+@@ -82,18 +93,17 @@ make  %{?_smp_mflags}
+ 
+ 
+ %install
+ rm -rf %{buildroot}
+ make install PREFIX=%{buildroot}%{prefix}
+ ## install_append content
+-install -p -D -m 755 README.license %{buildroot}/%license
++install -p -D -m 755 README.license %{buildroot}/usr/share/license
+ %clean
+ rm -rf $RPM_BUILD_ROOT
+ ## install_append end
+ 
+ %files
+ %defattr(-,root,root,-)
+-/Apache-2.0
+ 
+ %files bin
+ %defattr(-,root,root,-)
+@@ -104,6 +114,10 @@ rm -rf $RPM_BUILD_ROOT
+ /usr/bin/fdtget
+ /usr/bin/fdtput
+ 
++%files data
++%defattr(-,root,root,-)
++/usr/share/license
++
+ %files dev
+ %defattr(-,root,root,-)
+ /usr/include/*.h
