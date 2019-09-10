@@ -1,0 +1,45 @@
+%{__python} setup.py install --root=%{buildroot} \
+                             --install-lib=%{pythonroot} \
+                             --prefix=/usr \
+                             --install-data=/usr/share \
+                             --single-version-externally-managed
+
+install -d -m 755 %{buildroot}%{local_etc_goenabledd}
+install -p -D -m 755 etc/inventory/inventory_goenabled_check.sh %{buildroot}%{local_etc_goenabledd}/inventory_goenabled_check.sh
+
+install -d -m 755 %{buildroot}%{local_etc_inventory}
+install -p -D -m 755 etc/inventory/policy.json %{buildroot}%{local_etc_inventory}/policy.json
+
+install -d -m 755 %{buildroot}%{local_etc_motdd}
+install -p -D -m 755 etc/inventory/motd-system %{buildroot}%{local_etc_motdd}/10-system-config
+
+install -m 755 -p -D scripts/inventory-api %{buildroot}/usr/lib/ocf/resource.d/platform/inventory-api
+install -m 755 -p -D scripts/inventory-conductor %{buildroot}/usr/lib/ocf/resource.d/platform/inventory-conductor
+
+install -m 644 -p -D scripts/inventory-api.service %{buildroot}%{_unitdir}/inventory-api.service
+install -m 644 -p -D scripts/inventory-conductor.service %{buildroot}%{_unitdir}/inventory-conductor.service
+
+# TODO(jkung) activate  inventory-agent with puppet integration)
+# install -d -m 755 %{buildroot}%{local_etc_initd}
+# install -p -D -m 755 scripts/inventory-agent-initd %{buildroot}%{local_etc_initd}/inventory-agent
+
+# install -d -m 755 %{buildroot}%{local_etc_pmond}
+# install -p -D -m 644 etc/inventory/inventory-agent-pmond.conf %{buildroot}%{local_etc_pmond}/inventory-agent-pmond.conf
+# install -p -D -m 644 scripts/inventory-agent.service %{buildroot}%{_unitdir}/inventory-agent.service
+
+# Install sql migration
+install -m 644 inventory/db/sqlalchemy/migrate_repo/migrate.cfg %{buildroot}%{pythonroot}/inventory/db/sqlalchemy/migrate_repo/migrate.cfg
+
+# install default config files
+cd %{_builddir}/%{name}-%{version} && oslo-config-generator --config-file inventory/config-generator.conf --output-file %{_builddir}/%{name}-%{version}/inventory.conf.sample
+# install -p -D -m 644 %{_builddir}/%{name}-%{version}/inventory.conf.sample %{buildroot}%{_sysconfdir}/inventory/inventory.conf
+
+
+# TODO(jkung) activate  inventory-agent
+# %post
+# /usr/bin/systemctl enable inventory-agent.service >/dev/null 2>&1
+
+
+%clean
+echo "CLEAN CALLED"
+rm -rf $RPM_BUILD_ROOT

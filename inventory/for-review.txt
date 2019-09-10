@@ -1,0 +1,74 @@
+From 8f7e445ee26a3f3187c7be307a037b7ba383e50b Mon Sep 17 00:00:00 2001
+From: "chen.dq" <chen.dq@neusoft.com>
+Date: Thu, 5 Sep 2019 07:11:05 +0000
+Subject: [PATCH inventory] inventory: Autospec creation for version 1.0
+
+---
+ build_prepend  |  1 +
+ inventory.spec | 20 ++++++++++++++++++--
+ release        |  2 +-
+ 3 files changed, 20 insertions(+), 3 deletions(-)
+
+diff --git a/build_prepend b/build_prepend
+index b806c47..05e5410 100644
+--- a/build_prepend
++++ b/build_prepend
+@@ -7,6 +7,7 @@
+ 
+ %define local_etc_initd /usr/local/etc/init.d/
+ %define local_etc_pmond /usr/local/etc/pmon.d/
++%define _unitdir /usr/lib/systemd/system/
+ 
+ %define debug_package %{nil}
+ echo "Start inventory build"
+diff --git a/inventory.spec b/inventory.spec
+index 6ebb829..67e54f7 100644
+--- a/inventory.spec
++++ b/inventory.spec
+@@ -13,6 +13,7 @@ License  : Apache-2.0
+ Requires: inventory-bin = %{version}-%{release}
+ Requires: inventory-python = %{version}-%{release}
+ Requires: inventory-python3 = %{version}-%{release}
++Requires: inventory-services = %{version}-%{release}
+ Requires: SQLAlchemy
+ Requires: WSME
+ Requires: WebOb
+@@ -85,6 +86,7 @@ https://github.com/openstack/sqlalchemy-migrate
+ %package bin
+ Summary: bin components for the inventory package.
+ Group: Binaries
++Requires: inventory-services = %{version}-%{release}
+ 
+ %description bin
+ bin components for the inventory package.
+@@ -108,6 +110,14 @@ Requires: python3-core
+ python3 components for the inventory package.
+ 
+ 
++%package services
++Group: Systemd services
++
++%description services
++services components for the inventory package.
++
++
+ %prep
+ %setup -q -n inventory-1.0
+ 
+@@ -121,6 +131,7 @@ python3 components for the inventory package.
+ %define ocf_resourced        /usr/lib/ocf/resource.d
+ %define local_etc_initd /usr/local/etc/init.d/
+ %define local_etc_pmond /usr/local/etc/pmon.d/
++%define _unitdir /usr/lib/systemd/system/
+ %define debug_package %{nil}
+ echo "Start inventory build"
+ export PBR_VERSION=%{version}
+@@ -204,3 +215,8 @@ rm -rf $RPM_BUILD_ROOT
+ %files python3
+ %defattr(-,root,root,-)
+ /usr/lib/python3*/*
++
++%files services
++%defattr(-,root,root,-)
++/usr/lib/systemd/system/inventory-api.service
++/usr/lib/systemd/system/inventory-conductor.service

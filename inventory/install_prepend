@@ -1,0 +1,2 @@
+echo "Start inventory install"
+export PBR_VERSION=%{version}

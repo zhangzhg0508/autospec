@@ -1,0 +1,39 @@
+# This file contains additional build requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+cgts-client
+setuptools
+jsonpatch
+keystoneauth1
+keystonemiddleware
+mock
+python-neutronclient
+oslo.concurrency
+oslo.config
+oslo.context
+oslo.db
+oslo.i18n
+oslo.log
+oslo.messaging
+oslo.middleware
+oslo.policy
+oslo.rootwrap
+oslo.serialization
+oslo.service
+oslo.utils
+oslo.versionedobjects
+#BuildRequires:  python-oslo-db-tests
+oslotest
+osprofiler
+os-testr
+pbr
+pecan
+psutil
+requests
+retrying
+six
+SQLAlchemy
+stevedore
+WebOb
+WSME
+systemd
+systemd-devel
