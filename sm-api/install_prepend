@@ -1,0 +1,3 @@
+%global _buildsubdir %{_builddir}/%{name}-%{version}
+%global _sysconfdir "/usr/local/etc"
+%global _unitdir "/usr/lib/systemd/system"

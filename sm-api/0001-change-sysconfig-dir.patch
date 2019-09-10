@@ -1,0 +1,52 @@
+From e092442a63d5fd8535387fff9c9826323df8298a Mon Sep 17 00:00:00 2001
+From: Mingyuan Qi <mingyuan.qi@intel.com>
+Date: Fri, 7 Sep 2018 23:05:27 +0800
+Subject: [PATCH] change sysconfig dir
+
+---
+ scripts/sm-api.conf    | 2 +-
+ scripts/sm-api.service | 4 ++--
+ scripts/sm_api.ini     | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/scripts/sm-api.conf b/scripts/sm-api.conf
+index 08dd867..15d959d 100644
+--- a/scripts/sm-api.conf
++++ b/scripts/sm-api.conf
+@@ -6,7 +6,7 @@
+ [process]
+ process  = sm-api
+ pidfile  = /var/run/sm-api.pid
+-script   = /etc/init.d/sm-api
++script   = /usr/local/etc/init.d/sm-api
+ style    = lsb            ; ocf or lsb
+ severity = major          ; minor, major, critical
+ restarts = 3              ; restarts before error assertion
+diff --git a/scripts/sm-api.service b/scripts/sm-api.service
+index 11a3510..6309780 100644
+--- a/scripts/sm-api.service
++++ b/scripts/sm-api.service
+@@ -7,8 +7,8 @@ Before=sm-eru.service pmon.service
+ Type=forking
+ RemainAfterExit=yes
+ User=root
+-ExecStart=/etc/init.d/sm-api start
+-ExecStop=/etc/init.d/sm-api stop
++ExecStart=/usr/local/etc/init.d/sm-api start
++ExecStop=/usr/local/etc/init.d/sm-api stop
+ PIDFile=/var/run/sm-api.pid
+ 
+ [Install]
+diff --git a/scripts/sm_api.ini b/scripts/sm_api.ini
+index 198fd00..89a597c 100644
+--- a/scripts/sm_api.ini
++++ b/scripts/sm_api.ini
+@@ -7,4 +7,4 @@
+ use_syslog=
+ 
+ [database]
+-database=/etc/sm/sm.database.v1
++database=/usr/local/etc/sm/sm.database.v1
+-- 
+2.18.0
+
