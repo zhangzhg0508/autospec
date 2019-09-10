@@ -1,0 +1,37 @@
+2019-08-30 06:28:08,127 - Mock Version: 1.2.14
+2019-08-30 06:28:08,372 - Start: dnf update
+2019-08-30 06:28:23,538 - Finish: dnf update
+2019-08-30 06:28:23,544 - Finish: chroot init
+2019-08-30 06:28:23,547 - Start: buildsrpm
+2019-08-30 06:28:23,553 - Start: rpmbuild -bs
+2019-08-30 06:28:23,588 - Finish: rpmbuild -bs
+2019-08-30 06:28:23,590 - Finish: buildsrpm
+2019-08-30 06:28:23,591 - Finish: run
+2019-08-30 06:28:27,294 - Mock Version: 1.2.14
+2019-08-30 06:28:27,510 - Start: dnf update
+2019-08-30 06:28:42,561 - Finish: dnf update
+2019-08-30 06:28:42,567 - Finish: chroot init
+2019-08-30 06:28:42,568 - Start: build phase for distributedcloud-client-1.0.0-1.src.rpm
+2019-08-30 06:28:42,571 - Start: build setup for distributedcloud-client-1.0.0-1.src.rpm
+2019-08-30 06:28:47,537 - Finish: build setup for distributedcloud-client-1.0.0-1.src.rpm
+2019-08-30 06:28:47,538 - Start: rpmbuild distributedcloud-client-1.0.0-1.src.rpm
+2019-08-30 06:28:55,867 - Mock Version: 1.2.14
+2019-08-30 06:28:56,105 - Start: dnf update
+2019-08-30 06:29:10,713 - Finish: dnf update
+2019-08-30 06:29:10,719 - Finish: chroot init
+2019-08-30 06:29:10,722 - Start: buildsrpm
+2019-08-30 06:29:10,729 - Start: rpmbuild -bs
+2019-08-30 06:29:10,764 - Finish: rpmbuild -bs
+2019-08-30 06:29:10,767 - Finish: buildsrpm
+2019-08-30 06:29:10,767 - Finish: run
+2019-08-30 06:29:14,553 - Mock Version: 1.2.14
+2019-08-30 06:29:14,778 - Start: dnf update
+2019-08-30 06:29:30,913 - Finish: dnf update
+2019-08-30 06:29:30,920 - Finish: chroot init
+2019-08-30 06:29:30,921 - Start: build phase for distributedcloud-client-1.0.0-1.src.rpm
+2019-08-30 06:29:30,924 - Start: build setup for distributedcloud-client-1.0.0-1.src.rpm
+2019-08-30 06:29:36,153 - Finish: build setup for distributedcloud-client-1.0.0-1.src.rpm
+2019-08-30 06:29:36,153 - Start: rpmbuild distributedcloud-client-1.0.0-1.src.rpm
+2019-08-30 06:29:38,709 - Finish: rpmbuild distributedcloud-client-1.0.0-1.src.rpm
+2019-08-30 06:29:38,710 - Finish: build phase for distributedcloud-client-1.0.0-1.src.rpm
+2019-08-30 06:29:38,711 - Finish: run

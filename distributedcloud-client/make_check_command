@@ -1,0 +1,1 @@
+rm -rf {test-,}requirements.txt tools/{pip,test}-requires
