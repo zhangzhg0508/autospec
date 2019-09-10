@@ -1,0 +1,25 @@
+From efcddfd81773ef271ecad3511d96aeaa07a1e6c2 Mon Sep 17 00:00:00 2001
+From: "yongx.fu" <yongx.fu@intel.com>
+Date: Wed, 21 Aug 2019 09:33:33 +0800
+Subject: [PATCH 2/3] put lsqlite3 flag after lsm_db
+
+---
+ src/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index 1306c58..063d1d9 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -122,7 +122,7 @@ SRCS+=sm_configure.cpp
+ OBJS= $(SRCS:.c=.o)
+ CCFLAGS= -g -O2 -Wall -Wformat  -std=c++11
+ EXTRACCFLAGS= -D__STDC_FORMAT_MACROS -Wformat -Wformat-security
+-LDLIBS= -lsqlite3 -lglib-2.0 -luuid -lpthread -lrt -lsm_common -lsm_db -lfmcommon -ljson-c -lcrypto -lssl
++LDLIBS= -lglib-2.0 -luuid -lpthread -lrt -lsm_common -lsm_db -lfmcommon -lsqlite3 -ljson-c -lcrypto -lssl
+ LDFLAGS = -rdynamic
+ 
+ .c.o:
+-- 
+2.23.0
+

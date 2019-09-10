@@ -1,0 +1,159 @@
+From 621cf6d8579efc0bf3f581fc8f0cb394eea700ee Mon Sep 17 00:00:00 2001
+From: "yongx.fu" <yongx.fu@intel.com>
+Date: Wed, 21 Aug 2019 09:46:20 +0800
+Subject: [PATCH 3/3] change sysconfig dir to clear path
+
+---
+ scripts/Makefile            | 14 +++++++-------
+ scripts/sm                  |  4 ++--
+ scripts/sm-shutdown.service |  2 +-
+ scripts/sm.conf             |  2 +-
+ scripts/sm.notification     |  2 +-
+ scripts/sm.service          |  4 ++--
+ scripts/sm.troubleshoot     | 16 ++++++++--------
+ 7 files changed, 22 insertions(+), 22 deletions(-)
+
+diff --git a/scripts/Makefile b/scripts/Makefile
+index cbaa6b7..195ded9 100644
+--- a/scripts/Makefile
++++ b/scripts/Makefile
+@@ -1,11 +1,11 @@
+ install:
+-	install -d ${DEST_DIR}/etc/init.d
+-	install sm ${DEST_DIR}/etc/init.d/sm
+-	install sm.shutdown ${DEST_DIR}/etc/init.d/sm-shutdown
+-	install -d ${DEST_DIR}/etc/pmon.d
+-	install -m 644 sm.conf ${DEST_DIR}/etc/pmon.d/sm.conf
+-	install -d ${DEST_DIR}/etc/logrotate.d
+-	install -m 644 sm.logrotate ${DEST_DIR}/etc/logrotate.d/sm.logrotate
++	install -d ${DEST_DIR}/usr/local/etc/init.d
++	install sm ${DEST_DIR}/usr/local/etc/init.d/sm
++	install sm.shutdown ${DEST_DIR}/usr/local/etc/init.d/sm-shutdown
++	install -d ${DEST_DIR}/usr/local/etc/pmon.d
++	install -m 644 sm.conf ${DEST_DIR}/usr/local/etc/pmon.d/sm.conf
++	install -d ${DEST_DIR}/usr/local/etc/logrotate.d
++	install -m 644 sm.logrotate ${DEST_DIR}/usr/local/etc/logrotate.d/sm.logrotate
+ 	install -d 755 ${DEST_DIR}/usr/local/sbin
+ 	install sm.notify ${DEST_DIR}/usr/local/sbin/sm-notify
+ 	install sm.troubleshoot ${DEST_DIR}/usr/local/sbin/sm-troubleshoot
+diff --git a/scripts/sm b/scripts/sm
+index c2b221c..3290111 100755
+--- a/scripts/sm
++++ b/scripts/sm
+@@ -20,7 +20,7 @@
+ # Default-Stop: 0 6
+ ### END INIT INFO
+ 
+-. /etc/init.d/functions
++. /usr/local/etc/init.d/functions
+ 
+ RETVAL=0
+ 
+@@ -35,7 +35,7 @@ then
+ fi
+ 
+ PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/bin
+-WORKER_RESERVED_FILE=/etc/platform/worker_reserved.conf
++WORKER_RESERVED_FILE=/usr/local/etc/platform/worker_reserved.conf
+ SM_PLATFORM_CORES_FILE=/var/run/sm/.platform_cores
+ 
+ export PATH
+diff --git a/scripts/sm-shutdown.service b/scripts/sm-shutdown.service
+index 5b093df..bad60b6 100644
+--- a/scripts/sm-shutdown.service
++++ b/scripts/sm-shutdown.service
+@@ -5,7 +5,7 @@ After=sm.service
+ [Service]
+ Type=oneshot
+ User=root
+-ExecStop=/etc/init.d/sm-shutdown stop
++ExecStop=/usr/local/etc/init.d/sm-shutdown stop
+ RemainAfterExit=yes
+ 
+ [Install]
+diff --git a/scripts/sm.conf b/scripts/sm.conf
+index 97747ec..fef558e 100644
+--- a/scripts/sm.conf
++++ b/scripts/sm.conf
+@@ -6,7 +6,7 @@
+ [process]
+ process  = sm
+ pidfile  = /var/run/sm.pid
+-script   = /etc/init.d/sm
++script   = /usr/local/etc/init.d/sm
+ style    = lsb            ; lsb
+ severity = critical       ; minor, major, critical
+ restarts = 3              ; restarts before error assertion
+diff --git a/scripts/sm.notification b/scripts/sm.notification
+index 942d872..9b7419d 100644
+--- a/scripts/sm.notification
++++ b/scripts/sm.notification
+@@ -77,7 +77,7 @@ def main():
+     # support. Scripts will be run in a separate process so it does not
+     # block sm.
+     if 'worker' in tsconfig.subfunctions:
+-        worker_services_script = "/etc/init.d/worker_services"
++        worker_services_script = "/usr/local/etc/init.d/worker_services"
+         if sg_name == 'vim-services':
+             if sg_desired_state == "active" and sg_state == "active":
+                 if want_log_file:
+diff --git a/scripts/sm.service b/scripts/sm.service
+index 94513de..f12e6d9 100644
+--- a/scripts/sm.service
++++ b/scripts/sm.service
+@@ -7,8 +7,8 @@ Before=sm-shutdown.service sm-api.service pmon.service
+ Type=forking
+ RemainAfterExit=yes
+ User=root
+-ExecStart=/etc/init.d/sm start
+-ExecStop=/etc/init.d/sm stop
++ExecStart=/usr/local/etc/init.d/sm start
++ExecStop=/usr/local/etc/init.d/sm stop
+ PIDFile=/var/run/sm.pid
+ KillMode=process
+ 
+diff --git a/scripts/sm.troubleshoot b/scripts/sm.troubleshoot
+index 6a2b2f3..d36ed22 100644
+--- a/scripts/sm.troubleshoot
++++ b/scripts/sm.troubleshoot
+@@ -28,8 +28,8 @@ function delimiter()
+ delimiter "uname -a"
+ timeout --signal KILL 5s uname -a
+ 
+-delimiter "cat /etc/motd"
+-timeout --signal KILL 5s cat /etc/motd
++delimiter "cat /usr/local/etc/motd"
++timeout --signal KILL 5s cat /usr/local/etc/motd
+ 
+ delimiter "ntpq -n -p"
+ timeout --signal KILL 5s /usr/sbin/ntpq -n -p
+@@ -49,8 +49,8 @@ timeout --signal KILL 5s /usr/sbin/chkconfig --list
+ delimiter "sm-dump"
+ timeout --signal KILL 5s sm-dump
+ 
+-delimiter "find /etc/init.d/ -type f -exec sha512sum {} \;"
+-timeout --signal KILL 5s find /etc/init.d/ -type f -exec sha512sum {} \;
++delimiter "find /usr/local/etc/init.d/ -type f -exec sha512sum {} \;"
++timeout --signal KILL 5s find /usr/local/etc/init.d/ -type f -exec sha512sum {} \;
+ 
+ delimiter "find /usr/lib/ocf/ -type f -exec sha512sum {} \;"
+ timeout --signal KILL 5s find /usr/lib/ocf/ -type f -exec sha512sum {} \;
+@@ -100,11 +100,11 @@ timeout --signal KILL 5s /sbin/tc -s qdisc show
+ delimiter "iptables -nvL"
+ timeout --signal KILL 5s /usr/sbin/iptables -nvL
+ 
+-delimiter "cat /etc/hosts"
+-timeout --signal KILL 5s cat /etc/hosts
++delimiter "cat /usr/local/etc/hosts"
++timeout --signal KILL 5s cat /usr/local/etc/hosts
+ 
+-delimiter "cat /etc/services"
+-timeout --signal KILL 5s cat /etc/services
++delimiter "cat /usr/local/etc/services"
++timeout --signal KILL 5s cat /usr/local/etc/services
+ 
+ delimiter "netstat -anpo"
+ timeout --signal KILL 5s netstat -anpo
+-- 
+2.23.0
+

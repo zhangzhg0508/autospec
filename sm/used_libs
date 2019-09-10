@@ -1,0 +1,10 @@
+libc.so.6
+libfmcommon.so.1
+libgcc_s.so.1
+libglib-2.0.so.0
+libjson-c.so.4
+libpthread.so.0
+libsm_common.so.1
+libsm_db.so.1
+libsqlite3.so.0
+libstdc++.so.6

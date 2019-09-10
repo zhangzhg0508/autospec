@@ -1,0 +1,3 @@
+0001-fix-snprintf-compiler-error.patch
+0002-put-lsqlite3-flag-after-lsm_db.patch
+0003-change-sysconfig-dir-to-clear-path.patch

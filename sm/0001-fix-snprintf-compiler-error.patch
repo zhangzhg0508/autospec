@@ -1,0 +1,50 @@
+From 9cebc48765e2062fdc5df693edd098573881fdfe Mon Sep 17 00:00:00 2001
+From: "yongx.fu" <yongx.fu@intel.com>
+Date: Wed, 21 Aug 2019 09:30:13 +0800
+Subject: [PATCH 1/3] fix snprintf compiler error
+
+---
+ src/Makefile | 2 +-
+ src/sm_msg.c | 6 ++++++
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index 171c292..1306c58 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -120,7 +120,7 @@ SRCS+=sm_cluster_hbs_info_msg.cpp
+ SRCS+=sm_configure.cpp
+ 
+ OBJS= $(SRCS:.c=.o)
+-CCFLAGS= -g -O2 -Wall -Werror -Wformat  -std=c++11
++CCFLAGS= -g -O2 -Wall -Wformat  -std=c++11
+ EXTRACCFLAGS= -D__STDC_FORMAT_MACROS -Wformat -Wformat-security
+ LDLIBS= -lsqlite3 -lglib-2.0 -luuid -lpthread -lrt -lsm_common -lsm_db -lfmcommon -ljson-c -lcrypto -lssl
+ LDFLAGS = -rdynamic
+diff --git a/src/sm_msg.c b/src/sm_msg.c
+index e3093a9..a15b52c 100644
+--- a/src/sm_msg.c
++++ b/src/sm_msg.c
+@@ -2524,6 +2524,9 @@ static SmErrorT sm_msg_open_ipv4_udp_multicast_socket(
+ 
+     // Bind socket to interface.
+     memset(&ifr, 0, sizeof(ifr));
++    if (sizeof(interface->interface_name) > sizeof(ifr.ifr_name)) {
++        return( SM_FAILED );
++    }
+     snprintf( ifr.ifr_name, sizeof(ifr.ifr_name), "%s",
+               interface->interface_name );
+     
+@@ -2705,6 +2708,9 @@ static SmErrorT sm_msg_open_ipv6_udp_multicast_socket(
+ 
+     // Bind socket to interface.
+     memset( &ifr, 0, sizeof(ifr) );
++    if (sizeof(interface->interface_name) > sizeof(ifr.ifr_name)) {
++        return( SM_FAILED );
++    }
+     snprintf( ifr.ifr_name, sizeof(ifr.ifr_name), "%s",
+               interface->interface_name );
+ 
+-- 
+2.23.0
+

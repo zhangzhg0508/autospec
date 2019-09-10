@@ -1,0 +1,4 @@
+%define _unitdir /usr/lib/systemd/system/
+
+VER=%{version}
+MAJOR=`echo $VER | awk -F . '{print $1}'`

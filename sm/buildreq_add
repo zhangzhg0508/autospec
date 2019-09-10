@@ -1,0 +1,15 @@
+# This file contains additional build requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+fm-common-dev
+sm-db-dev
+sm-common-dev
+mtce-dev
+glib-dev
+glibc
+sqlite-autoconf-dev
+gcc
+json-c
+json-c-dev
+openssl-dev
+systemd
+systemd-devel

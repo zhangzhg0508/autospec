@@ -1,0 +1,1 @@
+make DEST_DIR=%{buildroot} UNIT_DIR=%{_unitdir} install
