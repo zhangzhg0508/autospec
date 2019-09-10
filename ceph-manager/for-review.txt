@@ -1,0 +1,48 @@
+From 72c9a0d1f6e78cee55e5ea166e5f25d8f9878a70 Mon Sep 17 00:00:00 2001
+From: "chen.dq" <chen.dq@neusoft.com>
+Date: Thu, 29 Aug 2019 03:33:44 +0000
+Subject: [PATCH ceph-manager] ceph-manager: Autospec creation for version 1.0
+
+---
+ buildreq_add        | 2 +-
+ ceph-manager.spec   | 5 +++--
+ ceph-managerbk.spec | 2 +-
+ release             | 2 +-
+ 4 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/buildreq_add b/buildreq_add
+index 4412bf7..ab0c23f 100644
+--- a/buildreq_add
++++ b/buildreq_add
+@@ -2,5 +2,5 @@
+ # picked up automatically. One name per line, no whitespace.
+ setuptools
+ pip
+-#systemd-units
++systemd
+ systemd-devel
+diff --git a/ceph-manager.spec b/ceph-manager.spec
+index 125fc00..510b658 100644
+--- a/ceph-manager.spec
++++ b/ceph-manager.spec
+@@ -20,6 +20,7 @@ BuildRequires : pluggy
+ BuildRequires : py-python
+ BuildRequires : pytest
+ BuildRequires : setuptools
++BuildRequires : systemd
+ BuildRequires : systemd-devel
+ BuildRequires : tox
+ BuildRequires : virtualenv
+diff --git a/ceph-managerbk.spec b/ceph-managerbk.spec
+index 5c3970b..f2e322b 100644
+--- a/ceph-managerbk.spec
++++ b/ceph-managerbk.spec
+@@ -13,7 +13,7 @@ Source0: %{name}-%{version}.tar.gz
+ BuildRequires: python-setuptools
+ BuildRequires: python2-pip
+ BuildRequires: python2-wheel
+-BuildRequires: systemd-units
++BuildRequires: systemd
+ BuildRequires: systemd-devel
+ Requires: sysinv
+ 
