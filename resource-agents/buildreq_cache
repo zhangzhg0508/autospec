@@ -1,0 +1,6 @@
+4.1.1
+docbook-xml
+libxml2-dev
+libxslt-bin
+pkgconfig(systemd)
+systemd-dev

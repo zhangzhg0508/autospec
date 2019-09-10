@@ -1,0 +1,15 @@
+Configure miss: heartbeat/glue_config.h usability
+Configure miss: heartbeat/glue_config.h presence
+Configure miss: heartbeat/glue_config.h
+Configure miss: ssh
+Configure miss: scp
+Configure miss: md5
+Configure miss: ping
+Configure miss: ifconfig
+Configure miss: mailx
+Configure miss: mail
+Configure miss: route
+Configure miss: ifconfig option to list interfaces... checking for socket in -lsocket
+Configure miss: getopt_long in -lgnugetopt
+Configure miss: if libnet is required
+Configure miss: whether gcc supports "-Wunsigned-char"

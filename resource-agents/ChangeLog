@@ -1,0 +1,1042 @@
+* Mon Mar  5 2018 resource-agents contributors
+- stable release 4.1.1
+- VirtualDomain: properly migrate VMs on node shutdown (bsc#1074014)
+- mpathpersist: fixed issue with reservation key parsing in status()
+- pgsql: create stats temp directory if it doesnt exist
+- pgsql: improved validation for replication mode
+
+* Mon Feb 26 2018 resource-agents contributors
+- release candidate 4.1.1 rc1
+- awseip/awsvip: improvements (incl multi NIC support)
+- Filesystem: add support for cvfs
+- redis: add support for tunneling replication traffic
+- Raid1: ignore transient devices after stopping a device
+- tomcat: fix invalid stop option
+- oracle: log warning when using using sysdba instead of "monuser"
+- crm_*: use new parameter names
+- syslog-ng: fix to make commercial version supported as well
+- lvmlockd: change lvm.conf to use lvmlockd
+- mariadb: new RA for MariaDB master/slave replication setup with GTID
+- mpathpersist: new RA
+- lxd-info/machine-info: new RAs
+- IPsrcaddr: only check for ifconfig on BSD/Solaris
+- CTDB: cope with deprecated "idmap backend" smb.conf option
+- CTDB: add new possible location for CTDB_SYSCONFIG
+- oracle: fix alter user syntax for set_mon_user_profile
+- db2: improve monitor and simplify STANDBY/.../DISCONNECTED
+- ocf-shellfuncs: fix fallback name for ocf_attribute_target()
+- CTDB: fix initial probe
+- jira: new RA
+- azure-lb: new RA
+- IPsrcaddr: match exact route to avoid failing
+
+* Tue Nov 28 2017 resource-agents contributors
+- stable release 4.1.0
+- ipsec: new RA
+- apache: improved stop action
+- db2: fix HADR promote when master failed
+- ethmonitor: add intel omnipath support
+
+* Tue Nov 14 2017 resource-agents contributors
+- release candidate 4.1.0 rc1
+- nfsserver: allow stop to timeout
+- LVM-activate: add new RA for LVM activation
+- docker: add docker-native healthcheck query
+- aws-vpc-route53: Fix tempfile race (bsc#1059312)
+- aws-vpc-move-ip: cleanup and improvements
+- pgsql: add support for PostgreSQL 10
+- rabbitmq-cluster/redis/galera use ocf_attribute_target
+- ocf-shellfuncs: add ocf_attribute_target()
+- rabbitmq-cluster: Use RMQ_CTL var everywhere instead of rabbitmqctl
+- CI: add libxml2-utils to package list
+- systemd-tmpfiles: create the resource-agents directory
+- rkt: new RA
+- lvmlockd: new RA
+- galera: fix instance name in master_exists()
+- Route: remove debug output
+- Route: add family attribute to set address family
+- galera: honor "safe_to_bootstrap" flag in grastate.dat
+- VirtualDomain: add shutdown_mode attribute
+- aws-vpc-route53: new RA (fate#322781)
+- awseip/awsvip: fixes and improvements
+- ZFS: new RA
+- minio: new RA
+- CTDB: don't fail on empty persistent directory (bsc#1052577)
+- sapdb.sh: add hdbnameserver to monitor services
+- VirtualDomain: new attributes migrateuri, remoteuri, migration_user
+- Raid1: handle case when mddev is a symlink
+- portblock: suppress dd output
+- kamailio: fixes and enhancements for v5.0
+- ocf-shellfuncs: improve locking (ocf_take_lock())
+- anything: create PID directory if it doesnt exist
+- anything: allow multiple instances of binfiles to be run (pidfile will be unique)
+- mysql: properly detect read-only state
+- iSCSILogicalUnit: add emulate_tpu, emulate_3pc and emulate_caw parameters
+- fs.sh: fix builds when srcdir and builddir are seperated
+- LVM: warn when cache mode is not writethrough
+- nginx: fix return code when configfile check fails
+- SAPInstance: Add IS_ERS parameter (bsc#1036486)
+- systemd: add resource-agents-deps target
+- ocf-shellfuncs: simplify ocf_run returned rc
+- docker: add mount_points parameter to create directories used by container if they doesnt exist
+- IPaddr2: add option for specifying IPv6's preferred_lft
+- galera: fix master target during promotion with cluster_host_map
+- rabbitmq-cluster: backup and restore policies
+- DB2: fix HADR support for DB2 V98+
+- pgsql: fix regex to detect async mode
+- rabbitmq-cluster: fix to work on Pacemaker remote nodes
+- oraasm: new RA for Oracle ASM Disk Groups
+- pgsql: fix undefined variable
+- ovsmonitor: new RA
+- NodeUtilization: new RA
+- CTDB: fix for --logfile being replaced with --logging
+- pgsql: allow dynamic membership
+- redis: wait for pid file to appear after start
+- redis: add check and default for redis-check-rdb
+- named: add support for rndc options
+- docker: deal with image name correctly
+- iSCSILogicalUnit: replace openssl with md5sum
+- ra-dev-guide: fix description of OCF_ERR_ARGS
+- clvm: remove reload action from metadata
+- galera: fix the first bootstrap when cluster has no data
+- galera: fix permission of temporary log file for mariadb 10.1.21+
+- kamailio: add kamctl, kamgroup and extra_options parameters
+- ocf_log: use same log format as pacemaker
+- pgsql: replace "crm_failcount" with "crm_resource"
+- ocf-shellfuncs: ocf_run: avoid shell glob expansion of log messages
+- iSCSILogicalUnit: add lio-t IPv6-support
+- iSCSILogicalUnit/iSCSITarget: protect targetcli invocations with locks
+- mysql: set correct master score after maintenance mode
+- varnish: add support for v4.0
+
+* Thu Feb  2 2017 resource-agents contributors
+- stable release 4.0.1
+- galera: remove "long SST monitoring" support due to corner-case issues
+- exportfs: improve regexp handling of clientspec (only strip brackets from edges to support IPv6)
+
+* Tue Jan 31 2017 resource-agents contributors
+- stable release 4.0.0
+- LVM: fix partial activation detection
+- Filesystem: add ZFS support
+- specfile: add metadata.rng
+- redis: use "CLIENT KILL type normal" to notify clients of master being demoted
+- IPaddr2: add IPv4 collision detection
+- galera: add "cluster_host_map" parameter to map Pacemaker hostnames to Galera hostnames
+- multiple RA: fix grammar, spelling and typos
+- pgsql: add support for PostgreSQL 9.6
+- rabbitmq-cluster: reset Mnesia and fetch data when joining cluster
+
+* Tue Jan 10 2017 resource-agents contributors
+- release candidate 4.0.0 rc1
+- CI: add metadata verification
+- ocf_mkstatedir: fix path check
+- IPaddr2: return success on stop with invalid IP
+- Filesystem: check if there are any mounts mounted under the mountpoint
+- specfile: make requirements general and update comments
+- portblock: use -w (wait) to avoid "insufficient privileges" error
+- rabbitmq-cluster: fix dump/restore users for RabbitMQ ver. 3.6.x and newer
+- Updated mailing list/wiki references
+- pgsql: fix tr replacement for replication slot names
+- IPaddr2: log refresh arp packets at debug level instead of info
+- IPaddr2: add option to enable sending refresh arp packets in monitor
+- findif.sh: fix to ifcheck() to not suppress stdout of "ip"
+- galera: prevent promote right after demote
+- galera: make last commit parsing compatible with MariaDB 10.1.18+
+- specfile: add requires netstat
+- multiple RA: fixed issues discovered by ShellCheck
+- apache: reduce log spam for success
+- rgmanager: fix RNG schema for cluster config
+- LVM: add error messages for partial_activation
+- slapd: improved stop processing
+- docker: clarify limitations of monitor_cmd in parameter description
+- redis: restore rundir security context
+- docker: reduce monitor log spam
+- nfsserver: dont stop rpcbind, as other services might use it
+- Filesystem: improved exit reason if mount fails
+- Delay: set default startdelay lower than start timeout to avoid timeout with default values
+- docker: use docker exec for monitor_cmd if supported
+- sapdb.sh add support for HANA Multi-Tenant Databases
+- lvm.sh: fix status clustered to check specified logical volume
+- sg_persist: do not spill info output to stderr
+- sg_persist: allow to run resource agent in debug mode
+- sg_persist: fix matching of hex node ids
+- tomcat: add systemd support and option to disable it
+- oracle: add quotes for monuser and monpassword and inform user to start monuser with C## if it's a container database
+- rabbitmq-cluster: allow automatic cluster recovery before forcing it
+- nfsserver: systemd tests to make sure all services are running and monitored
+- rabbitmq-cluster: add POSIX error codes to detect node failure
+- rabbitmq-cluster: forget node before 2nd joining attempt
+- exportfs: add IPv6 support
+- galera: source settings from /etc/default/clustercheck
+- pgsql: fix to adjust stop_escalate time when it is longer than the timeout
+- heartbeat/Makefile.am: add missing agents
+- exportfs: fix monitor reporting wrong state after the node has been fenced
+- Rename ra-dev-guide.txt to ra-dev-guide.asc
+- awseip: add support to associate secondary private IP with elastic IP
+- garbd: new RA
+- ldirectord: fix for IPv4/IPv6 mixed environments
+- ocf-tester: fix to allow non-shell based agents.
+- nfsserver: add support to detect which init script to use
+- ldirectord: run initial check of all services on start to make sure all services always have the correct state
+- sapdb.sh: pass start/stop timeouts to saphostctrl
+- SAPDatabase: Add START_TIMEOUT and STOP_TIMEOUT parameters
+- rabbitmq-cluster: backup and restore RabbitMQ users during resource restart
+- iSCSILogicalUnit: add support for rbd store.
+- awseip: new RA to manage AWS EC2 elastic IP
+- awsvip: new RA to manage AWS EC2 secondary private IP
+- oracle: inform user that monprofile must start with C## for container databases
+- tickle_tcp: fix "Failed to open raw socket (Invalid argument)" issue
+- symlink: handle missing directories in target
+- mysql: handle non-standard mysql server port
+- VirtualDomain: fix unnecessary error when probing nonexistent domain
+- sapdb.sh fix to evaluate parameter DBOSUSER in start and stop
+- oracle: fix to be able to recover from ORA-01081
+- oralsnr: fix status check fail when username is more than 8 characters long
+- galera: don't bootstrap from a node with no grastate.dat when possible
+- galera: fix monitoring of joining node for long running SST
+- pgagent: new RA
+- ocf_shellfuncs: set OCF_RESOURCE_INSTANCE default to "RESOURCE_ID" for meta-data
+- ldirectord: add new "servicename" and "comment" options for alert e-mails
+- clusterfs.sh / fs.sh: fix .clumanager/statd ownership
+- rabbitmq-cluster: forget stopped rmq nodes with notify=true
+- apache: ensure readable $TESTCONFFILE and improved error handling for testurl/testregex
+- SAPDatabase: support Oracle 12c
+- apache: add Debian support
+- iSCSITarget: iSER enabled portal support
+- SAPInstance: update SAP WebAS version support statement
+- ldirectord: don't send "inaccessible real server" e-mails per child in fork=yes mode
+
+* Wed Feb  3 2016 resource-agents contributors
+- stable release 3.9.7
+- ldirectord: fix unset failcount error
+- iscsi: add portal check to open_iscsi_get_session_id()
+- galera: use mysql's --tc-heuristic-recover if crash recovery is needed
+- nfsserver: fix monitor for systemd
+
+* Wed Jan 20 2016 resource-agents contributors
+- release candidate 3.9.7 rc1
+- nfsserver.sh: add hostname attribute for NFS export (required for NFSv4+Kerberos support)
+- oradg.sh: new RA for Oracle Data Guard
+- ocf_shellfuncs: suppress bash specific trace_ra log on dash
+- sg_persist: remove uncalled for ocf_run calls
+- multiple RA: replace error log messages with calls to ocf_exit_reason
+- nfsserver: only do redhat specific stuff on redhat
+- exportfs: don't increment fsid for single directory
+- Filesystem: add tmpfs support
+- netfs.sh: move defaults to metadata
+- nfsserver: /var/lock/subsys is non-standard, check for it first
+- nagios: new RA
+- docker: check for errors in the container name
+- mysql: fix grep failure on MySQL 5.6 or higher when checking read_only variable
+- VirtualDomain: new attributes migration_speed and migration_downtime
+- fs: remove not-working tmpfs support
+- vm.sh: add migrate_options parameter
+- nfsserver: Use rpc-statd.service for NFS locking in EXEC_MODE=3 (bsc#955114)
+- nfsserver: Add EXEC_MODE for systemd without nfs-lock.service (bsc#955114)
+- IPaddr2: Add IPv6 DAD collision detection
+- Filesystem: add overlay as supported filesystem
+- ldirectord: dns_check and fallbackcommand enhancements
+- IPaddr2: fix potential syntax error on if-then-else
+- SAPDatabase: add Oracle 12 to list of supported databases (bsc#953991)
+- mysql-common.sh: fix issue where "removing old PID file" wasnt logged
+- mysql-common.sh: when mysql has been stopped, mysql stop returns success
+- mysql.sh: wait up to startup_wait seconds before failing if mysqld startup is slow
+- orainstance.sh: fix 90s wait/killing of databases containing the name of the database being killed, and added cleanup code to kill remaining listener process
+- ip.sh: Use DAD to check for IPv6 address collision
+- iSCSITarget: fix to only create one IQN and add portals to it
+- galera: document the bootstrap flow
+- galera: start joining nodes during 'monitor' to allow long-running SST
+- galera: add support for MYSQL_HOST and MYSQL_PORT from /etc/sysconfig/clustercheck
+- redis: fix password parser
+- pgsql fix exec_sql errors like "unknown variable select pg_ " in dash
+- pgsql: fix get_my_location() sql regression
+- docker: fix image variable name
+- pgsql: Fix return code override in pgsql_real_start()
+- slapd: add "maxfiles" parameter to set max number of open files (for ulimit -n)
+- redis: use required client password when set
+- send_arp: fix for infiniband, re-merge from upstream iputils arping
+- CTDB: Preserve smb.conf permissions (bsc#935253)
+- lxc: fix emergency stop functionality on 1.0
+- tomcat: use runuser instead of su for SELinux enforcing mode
+- pgsql: use runuser intead of su command for SELinux enforcing mode
+- docker: image name check fixes
+- iSCSITarget: properly create portals for lio-t implementation
+- iSCSILogicalUnit: when deleting a LUN or initiator fails with lio-t, proceed with warning
+- iSCSILogicalUnit: return OCF_NOT_RUNNING on monitor if backing path does not exist
+- iSCSILogicalUnit: add check for leftover target/core entries for lio-t
+- pgsql: delete old replication slot when creating a new slot.
+- Filesystem: support RozoFS
+- orainstance.sh: interpret listener stop results correctly
+- dhcpd: use correct default chroot for RHEL based systems
+- LVM: allow vgck failures if partial_activation is true
+- redis: avoid 0 byte dump.rdb start failures
+- docker: fix container_exist test
+- redis: fixed start operation if replication sync takes > 20 seconds
+- ethmonitor: add link_status_only option for skipping RX counter and arping tests
+- clvm: fix issue with only first option of daemon_options being used
+- IPsrcaddr: return correct error code during stop when misconfigured
+- clvm: activate_vgs option for enable/disable of automatic vg activation
+- galera: properly redetect bootstrap after demote
+- galera: clear last know sequence number any time promote is even attempted
+- asterisk: fix return code
+- galera: retrieve last sequence number without using read-only mode
+- redis: add wait_last_known_master option
+- redis: only connect to active master instances
+- redis: do not attempt to demote if redis is dead
+- redis: reliable shutdown.
+- pgsql: add support for replication slots
+- redis: set executable bit to be able to greate docs (make rpm)
+- rabbitmq-cluster: fix rmq_join_list() to only return online nodes
+- rabbitmq-cluster: new RA
+- Filesystem: support overlayfs
+- sg_persist: use default binary setting in meta-data
+- dnsupdate: use nsupdate_opts parameter
+- nfsserver: merge options into existing /etc/sysconfig/nfs
+- portblock: portno param can be a string like 137,138
+- portblock: replace ancient heartbeat config with crm configure
+- portblock: clarify TCP RST vs ICMP port unreachable
+- VirtualDomain: enforce C locale in force_stop
+- redis: retry on unknown error when starting
+- redis: remove stop timeout and add placeholder master during election period
+- CTDB: Change default socket location to CTDB's expected default.
+- multiple RA: make sure that the pidfile directory exist
+- multiple RA: create state-directory writable by the application
+- orainstance.sh: Handle ORA-* error messages
+- redis: new RA
+
+* Thu Jan 29 2015 resource-agents contributors
+- stable release 3.9.6
+- VirtualDomain: add migrate_options parameter
+- VirtualDomain: enforce C locale in status
+- ocf-shellfuncs: add printenv to RA trace
+- nginx: allow different URLs for level 10 and 20 monitor
+
+* Tue Jan 20 2015 resource-agents contributors
+- release candidate 3.9.6 rc1
+- VirtualDomain: add sync_config_on_stop to sync the config to
+  other nodes
+- mysql.sh: Allow MySQL to run as user other than mysql
+- fs-lib.sh: Fix missed detection of write failure
+- iscsi: run iscsi discovery only when necessary
+- VirtualDomain: save the config before virsh undefine
+  (bnc#891915)
+- sg_persist: new RA
+- ldirectord: Add Install section for systemd unit file.
+- kamilio: new RA
+- findif.sh: Use the most specific matching route
+- LVM: volgrpname is unique (meta-data update)
+- ldirectord: Get correct user for sending email (bnc#910497)
+- iSCSILogicalUnit: do not set write_back when creating
+  backstore/block
+- portblock: Feature: reset_tcp_on_unblock_stop
+- nfsserver: prevent error messages on platforms without rpcuser
+- Xen: fix regression with xm and quoting (lf#2671)
+- lxc: re-add LXCpre1.0 logic
+- lxc: fix for missing lxc-ps command
+- Route: some unique attributes are not unique (meta-data)
+- IPaddr2 findif: accept dotted quad netmask
+- VirtualDomain: For Xen, prefer xl to xen-list (boo#901453)
+- Xen: Use xl list $domain return code in status check
+  (boo#901453)
+- pgsql: PostgreSQL 9.3 compatibility for unix_socket_directories
+- lvm_by_vg.sh: Only strip tag on stop if we are owner
+- ocf-shellfuncs: set HA_LOGD depending on HA_use_logd
+- mysql: avoid use of check_binary in common validation function.
+- mysql: report error when validation fails during monitor yet
+  pid is still active
+- docker: new RA
+- mysql: do not report success on 'stop' if validation fails
+- anything: fix output redirection
+- mysql: fix unexpected operation error that caused by MySQL
+  client timeout.
+- Middle: anything: Prevent stop failure, even if the job takes
+  time to stop.
+- doc: Add pcs to man page example section
+- multiple RA: exit reason support
+- Build: add --compat-habindir option for HA_BIN backward
+  compatibility
+- iSCSITarget: monitor operation must pass before start is
+  considered complete
+- iSCSILogicalUnit: monitor operation must pass before start is
+  considered complete
+- iSCSILogicalUnit:  Fixes the check for pre-existing LUN ACLs
+- iSCSITarget: fixes syntax error caused by targetcli update
+- Filesystem: when loading kernel modules wait for filesystem to
+  initialize
+- ethmonitor: add infiniband status monitoring support
+- Xinetd: refine exit codes when xinetd is stopped
+- Xen: Properly quote domain name in call to create
+- Xen: Use xenstore-ls to get status if available
+- Xen: Replace use of xm with xl (bnc#882548)
+- oracle: fix setting monitor user profile for other languages
+  (nls)
+- apache: Revised fix for init script reference on SUSE
+  (bnc#884674)
+- VirtualDomain: Try xenstore-ls if no emulator is set
+  (bnc#885292)
+- galera: new RA
+- VirtualDomain: Add support for qemu-dm as emulator (bnc#885292)
+- CTDB: add ctdb_rundir parameter and create on startup
+- VirtualDomain: new parameter save_config_on_stop to enable
+  saving running VM's configuration
+- fs-lib.sh: Force kill processes with access to shared libraries
+  on mount point
+- iSCSILogicalUnit: add targetcli support
+- Filesystem: Add force_unmount option
+- nfsserver: regenerate statd state file before starting nfs
+- nfsnotify: new RA
+- nfsserver: introducing nfs_no_notify option for suppressing
+  reboot notifications
+- nfsserver: Keep statd directories synced with ha backup
+- oracle: reset MONUSR password if expired
+- oracle: try as sysdba if monitor as MONUSR fails
+- oracle: Make monitoring user configurable (bnc#850589)
+- oralistener.sh: Do not fail during stop if listener has already
+  stopped
+- nfsserver: Add options for explicitly setting nfs daemon ports
+- vsftpd: new RA
+- fs-lib.sh: Fix usage of findmnt to work for filesystems
+  containing bind mounts
+- exportfs: allow multiple exports
+- ldirectord: Update .spec file with systemd support (bnc#863250)
+- ldirectord: Add systemd unit file (bnc#863250)
+- nfsserver: Do not require shared info directory when cloned
+- nfsserver: Allow dynamically setting rpc.nfsd options.
+- iscsi: iscsi status fails with open-iscsi with support for
+  flash (bnc#878039)
+- Med: rgmanager/fs: typo preventing passing some mount opts
+- nfsserver.sh: add an optional option for the rpc.statd
+  listening port
+- Feature: addition of bind-mount resource agent for rgmanager
+- exportfs: Do not fail during monitor and stop operations if dir
+  has trailing slash
+- nfsserver: Do not fail monitor if lock services are enabled
+- nfsserver: let systemd service files handle lock notifications
+- vm.sh: 'no_kill' option for preventing auto destruction of vm
+  after timeout period
+- vm.sh: Monitor kvm resources without requiring libvirtd to be
+  up
+- nfsserver: preserve statd directory permissions during
+  sm-notify or else lock recovery fails
+- kamailio: new RA
+- nfsserver.sh: On stop, kill sm-notify so /var/lib/nfs/statd can
+  be unmounted
+- db2: Report OCF_ERR_GENERIC instead of OCF_NOT_RUNNING when
+  instance is not completely up
+- named.sh: Fix issues running named daemon as a non-root user
+- db2.sh: rgmanager wrapper for the heartbeat db2 agent
+- CTDB: do not fail monitor operation when ctdb socket does not
+  exist
+- exportfs: set unlock_on_stop_default=1 (bnc#864263)
+- dnsupdate: new RA
+- clvm: new RA
+- mysql: handle $secs_behind = NULL
+- dhcpd: Added a restart-function
+- high: conntrackd: allow probe to return OCF_RUNNING_MASTER
+- VirtualDomain: check process table for qemu-system-* too, not
+  just qemu-kvm
+- VirtualDomain: avoid running "virsh uri" if hypervisor is set
+- apache.sh: Add ability to set custom httpd binary
+- db2: Allow db2 agent to work without crm_master binary
+- VirtualDomain: Attempt to determine vm status even when libvirt
+  is unavailable
+- VirtualDomain: Fixes parsing domain name from xml file.
+- fs-lib.sh: Fixes failure to unmount local fs when process runs
+  with cwd inside fs mount
+- ldirectord: Fix sockaddr_in6 redefined error
+- Pure-FTPd: Create pid directory if needed
+- VirtualDomain: support more virsh domstate output formats
+- varnish: Added support for ulimit -l and ulimit -n
+- lxc: support up-to-date lxc-ps versions
+- tomcat: Override default tomcat config with resource options
+- nfsserver: nfsserver not starting due to missing etab file
+- tomcat: Avoid unnecessary force kill of tomcat on stop
+- tomcat: Avoid race condition in reading pid file on stop
+- slapd: find the correct default slapd config in fedora
+- tomcat: Detect start script location
+- pgsql: Support for non-standard port and library locations
+- fix netfs unmount/self_fence integration
+- Med: oracledb.sh: Remove quotes around listener name
+- IPaddr2/findif.sh: Do a sanity check only on start and
+  validate-all
+- ldirectord: Disable HTTPS SSL certificate hostname checking
+- tomcat: Monitor rotatelogs process and restart when it is
+  stopped
+- jboss: Monitor rotatelogs process and restart when it is
+  stopped
+- mysql: Fix for the issue of detecting an unconfigured slave
+  with empty master_host since setting empty master_host is not
+  allowed with 5.5
+- IPaddr2/findif.sh: Robust parameter checking for 'nic'
+- VirtualDomain: Ensure it is possible to manage a libvirt domain
+  defined outside of VirtualDomain
+- VirtualDomain: Fix ability to use default libvirt hypervisor
+  without explicitly setting agent attribute
+- tomcat-6.sh: Fixes setting TOMCAT_USER correctly
+- tomcat-s.sh: Do not fail on stop if config validation fails.
+- fs-lib.sh: Removes usage of fuser -kvm from fs-lib.sh based
+  agents.
+- ldirectord: Use an alarm for LDAP check to ensure it times out
+- exportfs: stop with no directory should succeed
+- Xen: retry domain lookup in repeating monitor and stop
+- Fixes lvm metadata corruption caused when activating by lv
+  using tags.
+- ldirector: fix using service name instead of port number
+  (bnc#836759)
+- Filesystem: remove SLES10 compatibility code
+- Raid1: disallow md raid arrays as clone resources to avoid data
+  corruption
+- apache: put back config file existence test
+- VirtualDomain: Do not attempt graceful shutdown if force_stop
+  is enabled
+- Med: oracledb.sh: Fix process name grep in exit_idle
+- VirtualDomain: use virsh create instead of define to start it
+  non-persistent
+- eDir88: multiple IP support
+- apache: better handling of not installed apache
+- jboss: add jboss_base_dir parameter to support multi-instances
+  on JBoss 6
+- jboss: stop the JBoss daemon by sending a signal on JBoss 6
+- jboss: add run_command parameter to change the start up script
+- jboss: add jboss_version parameter to support JBoss 6
+- tomcat: use root as the default for tomcat_user instead of
+  RUNASIS mode
+- tomcat: multiple tomcat instances based on CATALINE_BASE
+- pound: add parameter maxfiles to set ulimit
+- apache: remove unnecessary and imperfect checks from
+  validate_all (bnc#827927)
+- pgsql: set only one node into sync mode when using 3 nodes or
+  higher
+- Med: oracledb.sh: Set RESTART_RETRIES back to 0
+- Raid1: stop arrays even with block device file missing
+  (bnc#821861)
+- oracle/oralsnr: use /bin/sh in sudo calls (bnc#825517)
+- apache: Properly check meta_timeout variable during graceful
+  stop
+- Raid1: set MDADM_NO_UDEV appropriately if udev is not used
+- Raid1: wait for udevd to settle (bnc#821861)
+- iSCSILogicalUnit: add tgt specific parameters bstype, bsoflags,
+  device_type
+- apache: Attempt graceful stop before -TERM signal
+- LVM: Warn user if initrd is older than lvm.conf when using
+  exclusive activation with tags
+- LVM: Exclusive activation without clvmd using filtering with
+  tags.
+- named: Attempt to autogen /etc/rndc.key using rndc-confgen tool
+- mysql: really use log setting (bnc#823095)
+- mysql: test properly for failed process start (bnc#823095)
+- Med: Don't preserve SELinux context when copying files to
+  /var/lib/nfs/sm
+- Med: Cleanup oracledb.sh rgmanager agent and add support for
+  Oracle 11g
+- Med: Cleanup oralistener.sh and add support for Oracle 11g
+- Med: Cleanup orainstance.sh and add support for Oracle 11g
+- fs-lib.sh: Faster filesystem start/stop through use of
+  'findmnt' command for 'is_mounted' function
+- named.sh: Addition of update-source option.
+- LVM: Retry exclusive activation after deactivating vg
+  cluster-wide
+- LVM: Retry deactivating vg allowing udev to settle
+- ip.sh: Fixes usage of ipv6 addresses with uppercase lettering
+- LVM: Verify setup on start plus verify exclusive activation is
+  possible.
+- Route: add IPv6 support
+- build: Place resource state information in /var/run/... by
+  default
+- DRBD: remove deprecated drbd agent.
+- fs-lib.sh: Always honor self_fence option when
+  force_unmount="on"
+- postgres-8: Shutdown postgres with SIGINT before forcing
+  SIGQUIT
+- tools: send_arp.libnet: reuse ARP packets (debian#701914)
+- ethmonitor: correctly detect when the network is unplugged.
+- Raid1: do not test for device existence in the stop operation
+  (bnc#821861)
+- mysql: Attempt to auto-detect mysql binary default location.
+- VirtualDomain: Support saving and restoring virtual machine
+  snapshot state files
+- nfsserver: Cleanup shared nfs dir mount
+- nfsserver: Enable file locking daemon when systemd is being
+  used
+- nfsserver: Maintain SELinux permissions on failover for nfs v3
+  lock state
+- nfsserver: Improve support for v3 file lock recovery
+- nfsserver: Add systemd unit-file support when init scripts are
+  not present
+- VirtualDomain: Properly detect defined lxc domains
+
+* Thu Feb  7 2013 Linux-HA contributors
+- stable release 3.9.5
+- IPaddr2: support nic:iflabel format in nic parameter
+- VirtualDomain: allow for custom migrateport
+* Wed Jan 30 2013 Linux-HA contributors
+- release candidate 3.9.5 rc1
+- ocf-shellfuncs: RA tracing
+- IPaddr2: make sure that some ARP send program runs
+- pgsql: add check_wal_receiver parameter
+- pgsql: support starting as Hot Standby
+- nfsserver: improve rpc.statd support
+- nfsserver: add option -n for rpc.statd (bnc#794479)
+- nfsserver: make the retry time for sm-notify configurable
+- nfsserver: make sm-notify running in the foreground configurable
+- exportfs: handle '<world>' exportfs embelishment for '*' (bnc#791690)
+- jboss: set JAVA_OPTS correctly
+- pound: use correct default for control-binary
+- pound: No error when stopping pound and no pound is running
+- Squid: support systems using IPv6
+- Xinetd: do not fail in stop if the daemon is not running
+- Xinetd: improve finding Xinetd process (thanks to Vadym Chepkov)
+- SendArp: add background parameter
+- SendArp: fix monitor
+- ocft: print the actual case names when testing
+- ocft: make only the updated test-case file
+- ocft: add "incremental" mode (ocft test -i)
+- include a copy of LGPL license file
+
+* Tue Nov 22 2012 Linux-HA contributors
+- stable release 3.9.4
+- IPaddr2: fix waiting the completion of IPv6 address allocation
+- zabbixserver: RA for zabbix servers management
+* Tue Nov 13 2012 Linux-HA contributors
+- release candidate 3.9.4 rc1
+- ocf-rarun: add the RA driver
+- IPaddr2: use better test for infiniband (bnc#783353)
+- IPaddr2: replace the findif binary by findif.sh
+- IPaddr2: add IPv6 support
+- IPaddr2: really send arps in background if requested
+- IPaddr2: use send_arp instead of ipoibarping if not available
+- Filesystem: include ceph in the list of non-blockdev filesystems
+- Raid1: stop processes using raiddev
+- Raid1: manage multiple arrays
+- Raid1: discover block size for dd (bnc#781137)
+- exportfs: cleanup exportfs cache on stop (bnc#770210)
+- iscsi: don't fail on stop of the iscsi server fails
+- iscsi: use iscsiadm -m session -r in stop
+- iscsi: do discovery in start only
+- iscsi: check session status in monitor
+- iscsi: add try_recovery parameter
+- oracle: ignore password expiry warning in monitor (bnc#770250)
+- oracle: connect as a regular user in monitor
+- pgsql: add option recovery_end_command
+- Xen: repair node_ip_attribute use
+- SAPDatabase: improvement of cleanup of saphostctrl process
+- SAPInstance: monitor-master not advertised (bnc#782482)
+- SAPInstance: don't wait for timeout if the stop attempt failed
+- SAPInstance: failes on sapcontrol message Unauthorized (bnc#782486)
+- mysql-proxy: copy in-depth monitoring action from the mysql resource agent
+- mysql-proxy: add test_table, test_user and test_passwd parameters
+- mysql-proxy: implement "parameters" parameter
+- mysql-proxy: add the 'plugins' parameter
+- mysql-proxy: version specific checks 
+- mysql-proxy: admin plugin auto loading
+- mysql-proxy: perform SELECT for OCF_CHECK_LEVEL 20 only
+- mysql-proxy: create pid/socket directories if needed
+- conntrackd: resync from other hosts in start
+- slapd: Gracefully handle config check during probe
+- tomcat: Correction of the time-out level of the stop processing.
+- tomcat: Correction of the process alive monitoring.
+- ldirectord: Added READDQUIESCENT parameter 
+- sfex: fix sfex_init for 64-bit big endian platforms
+- SendArp: exit with the right code when not properly configured
+- Squid: fix getting PIDs of squid processes (lf#2653)
+- portblock: use end-of-word instead of space at the end of the line
+- named: use pgrep instead of searching in ps(1) output
+- named: fix monitor if named_rootdir is set to /
+- VIPArip: fix exit codes
+- VIPArip: make start idempotent
+- tools: add test-findif.sh
+- tools: add send_ua binary for IPv6 support in IPaddr2
+- ocft: new test for Raid1
+
+* Fri May 25 2012 Linux-HA contributors
+- stable release 3.9.3
+- dhcpd: new RA to manage ISC DHCP servers
+- Filesystem: add nfs4 to the list of well known types
+- IPaddr2: fix regression introduce in d93b5fd, nic=lo always
+  "stopped"
+- iSCSILogicalUnit: correctly match for target IQN and backing
+  device name (iet and tgt)
+- jboss: implememnt rotating of console log
+- mysql: improve handling of reset slave
+- oracle, oralsnr: get rid of eval
+- slapd: pass bind_dn correctly to ldapsearch
+* Wed May 16 2012 Linux-HA contributors
+- release candidate 3.9.3 rc1
+- asterisk: new resource agent
+- named: new RA to manage bind servers
+- pound: new RA for Pound HTTP/HTTPS reverse-proxy and
+  load-balancer
+- rsyslog: new RA to manage rsyslog servers
+- slapd: new RA to manage OpenLDAP servers
+- varnish: new resource agent
+- apache: add support for IPv6 in monitor
+- apache: create /var/run/apache2 if it doesn't exist
+- apache: fix sysconfig includes & enable status for default SUSE
+  conf
+- conntrackd: test for socket existence in monitor instead of
+  process grep
+- conntrackd: rename parameter "conntrackd" to "binary"
+- CTDB: Add smb_fileid_algorithm parameter (bnc#696978)
+- CTDB: Improve monitor op (check output of ctdb status,
+  bnc#712192)
+- CTDB: Set ctdb_start_as_disabled=no by default (bnc#712410,
+  required by samba 3.6)
+- exportfs: allow expanding the fsid parameter to produce correct
+  exportfs options
+- exportfs: don't grow /var/lib/nfs/rmtab indefinitely
+- exportfs: fix monitor action for special characters and common
+  suffixes
+- Filesystem: add support for glusterfs (lf#2620)
+- Filesystem: add tmpfs to the list of supported filesystems
+- Filesystem: allow to force cloning for local mounts
+- Filesystem: don't use direct dd option in monitor depth 20 for
+  non-blockdevice fs
+- Filesystem: fix determining if the device is a block device
+- Filesystem: improve read/write checks for CHECK_LEVEL 10, 20
+- Filesystem: repair the fast_stop parameter use (its value was
+  always false)
+- Filesystem: support ceph
+- Filesystem: remove a status file only when OCF_CHECK_LEVEL is
+  set to 20
+- IPaddr: add back the local_start/stop_script code
+- IPaddr: remove colon at the end of the interface name
+- IPv6addr: always use the provided nic and cidr_netmask when
+  specified
+- IPv6addr: handle a link-local address properly in send_ua
+- iscsi: do not rely on iscsid.startup being set correctly
+  (bnc#751783)
+- iscsi: proceed if iscsid is not running if iscsid.startup is
+  present in iscsid.conf
+- iSCSILogicalUnit: fix default for scsi_sn
+- iSCSITarget: treat an empty "implementation" parameter
+  specially
+- jboss: add the java_opts parameter for java options
+- ldirectord: precedence error with perl v5.8.8 in IPv6 code
+- LVM: drop vgck(8) from monitor
+- LVM: force dmevent monitoring for clones
+- LVM: use ls instead of vgdisplay in status
+- lxc: fix LXC_status to work with lxc-0.7.5 or later
+- mysql: improve replication support
+- mysql: check mysql status more thoroughly before stopping
+- mysql: fix validation return codes
+- mysql: support 5.5 slave status message format
+- nfsserver: Support of multiple IP addresses (bnc#684143)
+- nfsserver: don't run sm-notify in foreground (bnc#759616)
+- ocf-shellfuncs: fix loglevel variable scope in ha_log
+- ocft: new tests for named, IPv6addr, oracle, Xinetd
+- ocft: several improvements
+- oracle: improve managing IPC objects
+- oracle: improve matching instance specific files and processes
+- pgsql: support for replication
+- postfix: multiple fixes
+- Raid1: support for multiple MD arrays, as specified in raidconf
+- SAPDatabase: add support for Sybase ASE and SAP HANA database
+- SAPDatabase: correcting the unique values of RAs parameters
+- SAPDatabase: replace method for checking responsiveness of
+  saphostexec
+- SAPDatabase: version 2.00 make use of saphostagent
+- SAPInstance : correcting the unique values of RAs parameters
+- slapd: always set the exit code correctly in monitor
+- tomcat: remove pidfile before start, it may prevent some tomcat
+  releases from starting
+- VirtualDomain: add a functionality that modifies utilization of
+  resource automatically
+- VirtualDomain: if the configuration file is missing on stop
+  exit with success
+- VirtualDomain: honor virsh "in shutdown" state
+- Xen: add support for HVM ACPI graceful shutdown
+- Xen: wait in migrate_from for the migration to finish instead
+  of bailing out immediately
+- Tools: findif: Use most specific matching route (bnc#740738)
+- Tools: send_arp.libnet: fix for big endian platforms
+  (bnc#721334)
+- doc: add the RA developer's guide
+
+* Wed Jun 29 2011 Dejan Muhamedagic <dejan@suse.de> and others
+- stable release 3.9.2
+- ethermon: new resource agent
+- iscsi: fix regression in 3.9.1 for open-iscsi version 2.0-872 (lf#2562)
+- pgsql: fix regression in 3.9.1 in directories on probes
+- VirtualDomain: if there's no config exit on stop with success
+- doc: add sfex_init(8) man page
+* Wed Jun 15 2011 Dejan Muhamedagic <dejan@suse.de> and others
+- stable release 3.9.1
+- ocf-tester: tolerate OCF_ERR_INSTALLED on probes and missing binaries
+- pgsql: improve configuration check and probe handling
+* Wed Jun 01 2011 Dejan Muhamedagic <dejan@suse.de> and others
+- release candidate 3.9.1 rc1
+- first release since establishing joined repository with RHCS agents
+- build: new spec file and autoconf to support both agents' sets
+- build: use ./configure --with-ras-set=linux-ha to configure for
+  heartbeat RA set
+- build: create compatibility symlinks in autofoo not in spec
+- build: GNUmakefile removed
+- lxc: new RA to manage lxc linux containers
+- symlink: new RA to manage symbolic links
+- db2: new implementation with master/slave mode
+- oracle: improve oracle process list test (bnc#673027)
+- exportfs: backup and restore rmtab to ensure smooth client
+  failover on node failures
+- CTDB: Allow stop to succeed when using pkill on ctdbd (bnc#695829)
+- mysql: --skip-slave-start option is default now
+- mysql: set connect timeout to 10 seconds rather than 1 second
+- mysql: keep replication state (prevents data loss on master reset)
+- mysql: don't rely on state information from pacemaker, but
+  check if the instance is in the read-only mode
+- mysql: if test parameters are all set, assume OCF_CHECK_LEVEL=10
+- mysql: support for master/slave for more than two nodes
+- mysql: don't wait for replication to finish, when not replicating
+- mysql: store replication state in separate attributes for each master
+- VirtualDomain: correctly create migration URI when target is an FQDN
+- VirtualDomain: properly wait until domain_name is non-empty
+- ldirectord: add a support of "netmask" directive for IPv6
+- ldirectord: fix fwmark behavior for IPv6
+- ldirectord: ignore children in Net::DNS
+- iscsi: add support for open-iscsi version 2.0-872 (lf#2562)
+- postfix: issue error if 'postfix abort' failed
+- postfix: improve exit codes on installation problems
+- postfix: use monitor to test if postfix works after the start action
+- ocft: fix make command for compatibility with mawk/Debian (lf#2600)
+- ocft: test case for pgsql
+- ocft: test case for postfix
+- ocft: test case for iscsi
+- doc: improve man pages output
+- doc: add examples for master/slave resource agents
+
+* Wed Feb 16 2011 Dejan Muhamedagic <dejan@suse.de> and others
+- stable release 1.0.4
+- ocft: testcases for db2, LVM, and Filesystem
+* Fri Feb 11 2011 Dejan Muhamedagic <dejan@suse.de> and others
+- release candidate 1.0.4
+- add GPLv3 license file (bnc#655700)
+- ocf-shellfuncs: allow ocf_run to return the actual exit code
+- ocf-shellfuncs: handle properly syslog facility set to none (bnc#621818)
+- ocf-shellfuncs: correctly identify root by id only (bnc#602312)
+- RA: add OCF_ROOT/lib/heartbeat directory (development)
+- RA: set the HA_RSCTMP directory to /var/run/resource-agents (lf#2378)
+- build: install jboss
+- conntrackd: new RA
+- exportfs: new RA
+- nginx: new RA
+- fio: new RA for IO load simulation
+- Filesystem: allow cloning of some filesystems as read-only (lf#2440)
+- Filesystem: add fast_stop parameter (lf#2402)
+- Filesystem: Clarify metadata and improve non-clone warning
+- Filesystem: new run_fsck parameter
+- LVM: add partial_activation parameter (lf#2490)
+- IPaddr2: fix reference to Infiniband arping binary (bnc#668447)
+- IPaddr2: optionally flush kernel routing table on interface stop
+- IPaddr2: exit with the right code when not properly configured
+- IPaddr2: exit early and with the right code if the ip parameter is not set
+- IPaddr2: unique_clone_address should work without CIP (lf#2442)
+- IPaddr: return the correct code if interface delete failed
+- IPv6addr: allow link-local addresses in case the interface name is provided
+- IPv6addr: interface index in /proc/net/if_inet6 may be longer than 2
+  chars (lf#2462)
+- IPsrcaddr: exit with the right code when not properly configured
+- IPsrcaddr: add the cidr_netmask parameter
+- Tools: findif: differentiate between error conditions
+- nfsserver: fix the default string for the notification parameter
+- nfsserver: don't use -v in the notify cmd with rpc.statd
+- iSCSITarget: fix race for target IDs when using IET (lf#2432)
+- iSCSITarget: follow changed IET access policy
+- Raid1: Support attempting to re-add mirrors on deep monitor action
+  (bnc#619121)
+- Raid1: Fix graceful stop code path
+- Raid1: Handle stop for failed arrays properly (bnc#618775)
+- sfex: output log messages also to stderr in sfex_init
+- sfex: add the sfex_stat command
+- sfex: wait in the start and stop actions until sfex_daemon starts/exits
+- Xen: implement stop of a migrating domain (bnc#656227)
+- Xen: check the allow_mem_management boolean properly (bnc#637525)
+- Xen: Always run destroy in stop sequence.
+- Xen: use xen-list command for status check if available (bnc#628735)
+- Xen: use xen-destroy for stop, if available.
+- Xen: Allow node configurable attribute to specify which IP to 
+  use for live migration (bnc#628735)
+- VirtualDomain: fix spurious stop failures
+- VirtualDomain: don't timeout in stop before escalating to "forced stop"
+- ManageVE: add migration capability
+- MailTo: don't check if user exists for email address (might be an
+  alias or remote)
+- CTDB: Remove hard-coded timeout on start op
+- CTDB: Don't manage Samba and Winbind by default
+- CTDB: Deprecate (and make optional) smb_private_dir param (bnc#623788)
+- tomcat: Ensure name of tomcat resource is only used on start operation
+  and expose JAVA_OPTS variable for use
+- tomcat: Fix to ensure default OCF_RESKEY_xx values are observed
+- tomcat: Add CATALINA_BASE parameter, defaults to CATALINA_HOME,
+  permits multiple tomcat instances
+- tomcat: Use Tomcat stop TIMEOUT -force to improve stop
+- Dummy: migrate_from/to: correct OCF_RESKEY_CRM_meta_migrate_xxx
+  variable names
+- Dummy: make method reload work
+- anything: add the workdir parameter
+- mysql: clone and master-slave functionality
+- mysql: add replication monitoring
+- mysql: check for write permissions after creating pid and socket directory
+- mysql: make client binary path configurable
+- pgsql: cd to pgdata before running commands (fixes permission error)
+- pgsql: add optional username, password, and sqlcode parameters for monitor
+- pgsql: add new "config" parameter
+- pgsql: properly implement pghost parameter
+- pgsql: socketdir parameter to manage non-default UNIX socket directories
+- oracle: reduce output from sqlplus to the last line for queries (bnc#567815)
+- db2: Replace call to db2_local_ps with db2nps
+- db2: guard against a hanging db2stop by spawning this into the
+  background. Use db2_kill after grace period.
+- db2: add multi partition support
+- db2: improve behaviour on probes
+- db2: support for v9.x instances (bnc#608952)
+- SAPDatabase,SAPInstance: improve LD_LIBRARY_PATH processing (bnc#640026)
+- SAPInstance: prevent premature expansion of [:upper:] [:lower:] when
+  producing sidadm uid
+- SAPInstance: Moved testing of SAP profile directory and START profile
+  to a later stage (only when needed), for more robustness
+- SAPInstance: fix return codes in probes
+- SAPInstance: New parameter: SHUTDOWN_METHOD
+- SAPInstance: ensure enqueue failover in monitor_clone on process
+  failure
+- SAPInstance: don't rely on op target rc when monitoring clones (lf#2371)
+- SAPDatabase: prevent premature expansion of [:upper:] and [:lower:]
+  when producing sidadm/orasid/db2sid uids
+- SAPdatabase: Changed Oracle recovery method from "recover automatic
+  database" to "end backup"
+- SAPDatabase: Adapt process search pattern for DB/2 9.5
+- SAPDatabase: start listener only if database processes are found
+- SAPDatabase: avoid continuous output to syslog in monitor with SAP
+  7.20 and J2EE_ONLY=1
+- ldirectord: http: connect to server instead of protocol (Debian#594958)
+- ldirectord: add implicit support for submission RFC4409
+- ldirectord: example configuration for a submission virtual service
+- ldirectord: Shutdown write-side of client connection after writing has
+  finished
+- ldirectord: port number mismatch of imaps and pops
+- ldirectord: Oracle compatibility
+- ldirectord: don't exit on timeout in HTTP/HTTPS check
+- ldirectord: allow underscore in service name
+- ldirectord: use $1 instead of \1 in pattern replace (bnc#605086)
+- Tools: ocf-tester: Extend to cover initial probe (monitor_0) test.
+- Tools: ocf-tester: set and export some common meta variables (lf#2524)
+- Tools: ocf-tester: meta-data also should never be affected by missing
+  binaries.
+- Tools: ocf-tester: show output from the agent in case of error
+
+* Tue Apr 13 2010 Dejan Muhamedagic <dejan@suse.de> and others
+- stable release 1.0.3
+- meta-data: improve timeouts in most resource agents (reduce the number of warnings by the shell)
+- RA: log messages to stderr if attached to a terminal
+- ocf-shellfuncs: tests to check for clone/ms resources
+- ocf-shellfuncs: don't output to stderr if using syslog (prevents double logging from the RA and lrmd)
+- make sure that OCF_RESKEY_CRM_meta_interval is always defined (lf#2284)
+- ocft: new RA test suite
+- VirtualDomain: bail out early if config file can't be read
+  during probe (nbc#593988)
+- VirtualDomain: spin on define until we definitely have a domain name
+- VirtualDomain: fix incorrect use of __OCF_ACTION (the stop operation may timeout otherwise)
+- Filesystem: prefer /proc/mounts to /etc/mtab for non-bind mounts (lf#2388)
+- IPaddr2: don't bring the interface down on stop (otherwise IPv6 addresses may be removed)
+- oracle/oralsnr: improve exit codes if the environment isn't valid
+- oracle/oralsnr: improve logging
+- Route: don't assume that OCF_RESKEY_CRM_meta_clone_node_max is set to a number (lf#2375)
+- Route: add route table parameter (lf#2335)
+- sfex: don't use pid file (lf#2363,bnc#585416)
+- SFEX daemon: fix logging
+- ldirectord: fix the configfile default (bnc#589457)
+- drbd: fix metadata (bnc#588684)
+- IPsrcaddr: modify the interface route (lf#2367)
+- ldirectord: Allow multiple email addresses (lf#2168)
+- vmware: fix set_environment() invocation (lf#2342)
+- vmware: updated to version 0.2
+- apache: return the right exit code from monitor (bnc#578628)
+- iSCSILogicalUnit: fix monitor for STGT
+
+* Mon Feb 01 2010 Dejan Muhamedagic <dejan@suse.de> and others
+- stable release 1.0.2
+- EvmsSCC, Evmsd, LinuxSCSI, drbd, pingd: marked as deprecated (lf#2244)
+- CTDB: new resource agent for clustered samba
+- postfix: new resource agent
+- proftpd: new resource agent
+- AoEtarget: new resource agent to export ATA-over-Ethernet (AoE) targets
+- Squid: new resource agent
+- VirtualDomain: new resource agent (manage virtual domains using libvirt/virsh)
+- anything: new resource agent for arbitrary daemons
+- mysql-proxy: new resource agent
+- iSCSITarget/iSCSILogicalUnit: two new resource agents
+- portblock: fast reconnect/tickle ACK (new feature)
+- IPv6addr: new nic and cidr_netmask parameters
+- mysql-proxy: log_level and keepalive parameters
+- Filesystem: implement deep monitor operation
+- apache: monitor operation of depth 10 for web applications (lf#2234)
+- SAPDatabase + SAPInstance: New versions from SAP
+- CTDB: auto-generate cluster-specific part of smb.conf (lf#2308)
+- ClusterMon: don't fail in stop if the process is missing (bnc#569957)
+- Filesystem: allow configuring smbfs mounts as clones
+- IPaddr2: CLUSTERIP/iptables rule not always inserted on failed monitor (lf#2281)
+- IPaddr2: behave if the interface is down (lf#2147)
+- IPaddr2: check binaries when it makes sense
+- IPaddr2: fix invalid default value for OCF_RESKEY_clusterip_hash (bnc#553753)
+- IPaddr2: include netmask in search for the right interface
+- IPaddr2: remove all colons from the mac address before passing it to send_arp (lf#2165)
+- IPsrcaddr: replace 0/0 with proper ip prefix
+- IPv6addr: recognize network masks properly
+- IPv6addr: supply checksum for ICMPv6 packets
+- IPv6addr: ifdef out the ip offset hack for libnet v1.1.4 (lf#2034)
+- IPv6addr: supply checksum for ICMPv6 packets
+- LVM: Make monitor operation quiet in logs (bnc#546353)
+- MailTo: Provide a default for MAILCMD (bnc#534803, bnc#556366)
+- MailTo: allow multiple word subject line
+- Raid1: improve monitor function (bnc#546551)
+- Route: improve validate (lf#2232)
+- Squid: make the regexp match more precisely output of netstat
+- VIParip: Pathname needed to be configurable (lf#1331)
+- VirtualDomain: avoid needlessly invoking "virsh define"
+- VirtualDomain: destroy domain shortly before timeout expiry
+- VirtualDomain: fix forceful stop (lf#2283)
+- VirtualDomain: loop on status if libvirtd is unreachable
+- Xen: Remove instance_attribute "allow_migrate" (bnc#539968)
+- apache: make sure that proxies are not used for monitor
+- iSCSILogicalUnit: add support for SCSI ID, SCSI SN, Vendor ID, and Product ID
+- iSCSILogicalUnit: add support for per-LU parameters
+- iSCSILogicalUnit: set default for SCSI SN, truncate SCSI ID default to 24 bytes
+- iSCSILogicalUnit: use a 16-byte default SCSI ID
+- iSCSITarget, iSCSILogicalUnit: add support for tgt
+- iSCSITarget: reintroduce "tid" parameter
+- iSCSITarget, iSCSILogicalUnit: identify targets by IQN, not by tid
+- iSCSITarget, iSCSILogicalUnit: support LIO
+- iSCSITarget: add support for CHAP authentication
+- iSCSITarget: add support for restricting target access
+- iSCSITarget: be more persistent deleting targets on stop
+- include ldirectord (formerly known as heartbeat-ldirectord)
+- iscsi: replace wrong variable reference (bnc#499291)
+- jboss: Added JBoss support
+- ldirectord: fix setting defaults for configfile and ldirectord (lf#2328)
+- ldirectord: fix various bugs in OCF RA (lf#1949)
+- mysql: escalate stop to KILL if regular shutdown doesn't work
+- mysql: handle monitor and stop properly on invalid environment
+- nfsserver: use default values (lf#2321)
+- nfsserver: validate should not check if nfs_shared_infodir exists (lf#2219)
+- nfsserver: use check_binary properly in validate (lf#2211)
+- nfsserver: exit properly in nfsserver_validate (lf#2173)
+- oracle/oralsnr: export variables properly
+- oracle: drop spurious output from sqlplus
+- pgsql: remove the previous backup_label if it exists
+- portblock: add per-IP filtering capability
+- portblock: fix invalid exit codes on monitor
+- postfix: fix double stop
+- scsi2reservation: fix wrong logic in check for scsi_reserve
+- vmware: make meta-data work and several cleanups (lf#2212)
+- shellfuncs: make the mktemp wrappers work
+- ocf-shellfuncs: add mercurial repository version information
+- ocf-shellfuncs: add ocf_is_probe function
+- doc: add resource agents' man pages including examples
+
+* Thu Oct 23 2008 Lars Marowsky-Bree <lmb@suse.de> and MANY others
+- beta release 2.99.2
+- LVM: stop correctly in case vol group does not exist
+
+* Tue Sep 23 2008 Lars Marowsky-Bree <lmb@suse.de> and MANY others
+- beta release 2.99.1
+
+* Tue Aug 19 2008 Andrew Beekhof <abeekhof@suse.de> and MANY others
+- beta release 2.99.0
