@@ -1,0 +1,16 @@
+mkdir -p %{buildroot}/%{_bindir}
+mkdir -p %{buildroot}/%{_libdir}
+mkdir -p %{buildroot}/%{_includedir}/%{name}/
+pushd utils
+# Pick out executables and copy with namespacing
+for f in *; do
+	if [[ -x $f && -f $f && ! $f =~ .*\..* ]]; then
+		cp -p $f %{buildroot}/%{_bindir}/${BIN_PREFIX}$f
+	fi;
+done
+cp -p *.so %{buildroot}/%{_libdir}
+cp -p %{name}/*.h %{buildroot}/%{_includedir}/%{name}/
+popd
+
+%post -p /sbin/ldconfig 
+%postun -p /sbin/ldconfig
