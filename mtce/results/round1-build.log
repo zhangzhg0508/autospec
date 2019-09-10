@@ -1,0 +1,1079 @@
+Mock Version: 1.2.14
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/mtce.spec'], chrootPath='/var/lib/mock/clear-mtce/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7fee0d659f50>timeout=0uid=1000gid=1000user='mockbuild'printOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/mtce.spec'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/mtce-1.0-17.src.rpm
+Child return code was: 0
+LEAVE do --> 
+
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/mtce.spec '], chrootPath='/var/lib/mock/clear-mtce/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7fee0d659f50>timeout=0uid=1000gid=1000user='mockbuild'private_network=TrueprintOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/mtce.spec '] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.ELPD77
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
++ rm -rf mtce-1.0
++ /usr/bin/gzip -dc /builddir/build/SOURCES/mtce-1.0.tar.gz
++ /usr/bin/tar -xf -
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd mtce-1.0
++ /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
+Patch #1 (0001-change-sysconfig-dir.patch):
++ echo 'Patch #1 (0001-change-sysconfig-dir.patch):'
++ /usr/bin/cat /builddir/build/SOURCES/0001-change-sysconfig-dir.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file alarm/scripts/mtcalarm.pmon.conf
+patching file alarm/scripts/mtcalarm.service
+patching file fsmon/scripts/fsmon.conf
+patching file fsmon/scripts/fsmon.service
+patching file hostw/scripts/hostw.service
+patching file hwmon/scripts/hwmon.service
+patching file lmon/scripts/lmon.service
+patching file pmon/scripts/pmon.service
+patching file scripts/config.service
+patching file scripts/goenabled.service
+patching file scripts/hbsClient.service
+patching file scripts/hwclock.service
+patching file scripts/mtcClient.conf
+patching file scripts/mtcClient.service
+patching file scripts/mtclog.service
+patching file scripts/mtclogd.conf
+patching file scripts/runservices.service
++ exit 0
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.XL4bza
++ umask 022
++ cd /builddir/build/BUILD
++ cd mtce-1.0
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CFLAGS
++ http_proxy=http://127.0.0.1:9/
++ export http_proxy
++ https_proxy=http://127.0.0.1:9/
++ export https_proxy
++ ftp_proxy=http://127.0.0.1:9/
++ export ftp_proxy
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export no_proxy
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CXXFLAGS
++ FFLAGS='-g -O3 -feliminate-unused-debug-types  -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -m64 -fasynchronous-unwind-tables -Wp,-D_REENTRANT -ftree-loop-distribute-patterns -Wl,-z -Wl,now -Wl,-z -Wl,relro -malign-data=abi -fno-semantic-interposition -ftree-vectorize  -ftree-loop-vectorize -Wl,--enable-new-dtags '
++ export FFLAGS
++ LD_AS_NEEDED=1
++ export LD_AS_NEEDED
++ PKG_CONFIG_LIBDIR=/usr/lib64/pkgconfig
++ export PKG_CONFIG_LIBDIR
++ PATH=/usr/lib64/ccache/bin:/usr/local/bin:/usr/bin
++ export PATH
++ VER=1.0
+++ awk -F . '{print $1}'
+++ echo 1.0
++ MAJOR=1
+++ echo 1.0
+++ awk -F . '{print $2}'
++ MINOR=0
++ export http_proxy=http://127.0.0.1:9/
++ http_proxy=http://127.0.0.1:9/
++ export https_proxy=http://127.0.0.1:9/
++ https_proxy=http://127.0.0.1:9/
++ export no_proxy=localhost,127.0.0.1,0.0.0.0
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export LANG=C.UTF-8
++ LANG=C.UTF-8
++ export SOURCE_DATE_EPOCH=1567648354
++ SOURCE_DATE_EPOCH=1567648354
++ export GCC_IGNORE_WERROR=1
++ GCC_IGNORE_WERROR=1
++ export AR=gcc-ar
++ AR=gcc-ar
++ export RANLIB=gcc-ranlib
++ RANLIB=gcc-ranlib
++ export NM=gcc-nm
++ NM=gcc-nm
++ export 'CFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ export 'FCFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FCFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'FFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'CXXFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ make -j4 MAJOR=1 MINOR=0 build
+(cd public ; make lib VER=1 VER_MJR=1)
+make[1]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[1]: Entering directory '/builddir/build/BUILD/mtce-1.0/public'
+Makefile:42: warning: overriding recipe for target 'libamon.so.1'
+Makefile:39: warning: ignoring old recipe for target 'libamon.so.1'
+gcc -fPIC -g -O2 -Wall -Wextra -Werror -MM amon.c >amon.d
+make[1]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+Makefile:42: warning: overriding recipe for target 'libamon.so.1'
+Makefile:39: warning: ignoring old recipe for target 'libamon.so.1'
+cppcheck --language=c++ --enable=warning -U__AREA__ -DWANT_FIT_TESTING *.cpp *.h
+Checking amon.h ...
+Checking amon.h: WANT_FIT_TESTING=1...
+gcc -I. -fPIC -g -O2 -Wall -Wextra -Werror  -c amon.c -o amon.o
+amon.c: In function ‘active_monitor_dispatch’:
+amon.c:260:39: warning: ‘%8x’ directive writing 8 bytes into a region of size between 0 and 99 [-Wformat-overflow=]
+  260 |             sprintf( amon.tx_buf, "%s %8x %d%c", str, magic, seq, '\0' );
+      |                                       ^~~
+amon.c:260:13: note: ‘sprintf’ output between 13 and 122 bytes into a destination of size 100
+  260 |             sprintf( amon.tx_buf, "%s %8x %d%c", str, magic, seq, '\0' );
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+make[1]: Circular libamon.so.1 <- libamon.so.1 dependency dropped.
+gcc -shared -Wl,-soname,libamon.so.1 -o libamon.so.1 amon.o
+ln -sf libamon.so.1 libamon.so
+make[1]: Leaving directory '/builddir/build/BUILD/mtce-1.0/public'
+(cd common ; make lib VER=1 VER_MJR=1)
+make[1]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[1]: Entering directory '/builddir/build/BUILD/mtce-1.0/common'
+g++ -g -O2 -Wall -Wextra -Werror -std=c++11 -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../alarm -I../heartbeat -I../maintenance  -c nodeClass.cpp -o nodeClass.o
+nodeClass.cpp: In member function ‘nodeLinkClass::node* nodeLinkClass::getEventBaseNode(libEvent_enum, event_base*)’:
+nodeClass.cpp:823:16: warning: this statement may fall through [-Wimplicit-fallthrough=]
+  823 |                if ( ptr->sysinvEvent.base == base_ptr )
+      |                ^~
+nodeClass.cpp:831:12: note: here
+  831 |            case VIM_HOST_DISABLED:
+      |            ^~~~
+nodeClass.cpp:836:16: warning: this statement may fall through [-Wimplicit-fallthrough=]
+  836 |                if ( ptr->vimEvent.base == base_ptr )
+      |                ^~
+nodeClass.cpp:844:12: note: here
+  844 |            case BARBICAN_GET_SECRET:
+      |            ^~~~
+ar rcs libmtcecommon.a  
+make[1]: Leaving directory '/builddir/build/BUILD/mtce-1.0/common'
+(cd alarm  ; make build VER=1 VER_MJR=1)
+make[1]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[1]: Entering directory '/builddir/build/BUILD/mtce-1.0/alarm'
+cppcheck --language=c++ --enable=warning -U__AREA__ -DWANT_FIT_TESTING *.cpp *.h
+Checking alarm.cpp ...
+Checking alarm.cpp: WANT_FIT_TESTING=1...
+1/7 files checked 11% done
+Checking alarm.h ...
+Checking alarm.h: WANT_FIT_TESTING=1...
+2/7 files checked 24% done
+Checking alarmData.cpp ...
+Checking alarmData.cpp: WANT_FIT_TESTING=1...
+3/7 files checked 38% done
+Checking alarmHdlr.cpp ...
+Checking alarmHdlr.cpp: WANT_FIT_TESTING=1...
+4/7 files checked 47% done
+Checking alarmInit.cpp ...
+Checking alarmInit.cpp: WANT_FIT_TESTING=1...
+alarmInit.cpp:137:13: warning: Identical condition 'rc', second condition is always false [identicalConditionAfterEarlyExit]
+    return (rc);
+            ^
+alarmInit.cpp:132:9: note: first condition
+    if (rc)
+        ^
+alarmInit.cpp:137:13: note: second condition
+    return (rc);
+            ^
+5/7 files checked 63% done
+Checking alarmMgr.cpp ...
+Checking alarmMgr.cpp: WANT_FIT_TESTING=1...
+6/7 files checked 69% done
+Checking alarmUtil.cpp ...
+Checking alarmUtil.cpp: WANT_FIT_TESTING=1...
+7/7 files checked 100% done
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../smash -I../maintenance -I../public -g -O2 -Wall -Wextra -Werror  -c alarmInit.cpp -o alarmInit.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../smash -I../maintenance -I../public -g -O2 -Wall -Wextra -Werror  -c alarmData.cpp -o alarmData.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../smash -I../maintenance -I../public -g -O2 -Wall -Wextra -Werror  -c alarmHdlr.cpp -o alarmHdlr.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../smash -I../maintenance -I../public -g -O2 -Wall -Wextra -Werror  -c alarmMgr.cpp -o alarmMgr.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../smash -I../maintenance -I../public -g -O2 -Wall -Wextra -Werror  -c alarmUtil.cpp -o alarmUtil.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../smash -I../maintenance -I../public -g -O2 -Wall -Wextra -Werror  -c alarm.cpp -o alarm.o
+ar rcs libalarm.a alarm.o 
+g++ -g -O2 -Wall -Wextra -Werror alarmInit.o alarmData.o alarmHdlr.o alarmMgr.o alarmUtil.o alarm.o -L../daemon -L../common -lstdc++ -ldaemon -lcommon -lfmcommon -ljson-c -lrt -lcrypto -luuid  -o mtcalarmd
+make[1]: Leaving directory '/builddir/build/BUILD/mtce-1.0/alarm'
+(cd heartbeat ; make build VER=1 VER_MJR=1)
+make[1]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[1]: Entering directory '/builddir/build/BUILD/mtce-1.0/heartbeat'
+cppcheck --language=c++ --enable=warning -U__AREA__ -DWANT_FIT_TESTING *.cpp *.h
+Checking hbsAgent.cpp ...
+Checking hbsAgent.cpp: WANT_FIT_TESTING=1...
+1/11 files checked 39% done
+Checking hbsAlarm.cpp ...
+Checking hbsAlarm.cpp: WANT_FIT_TESTING=1...
+2/11 files checked 40% done
+Checking hbsAlarm.h ...
+Checking hbsAlarm.h: WANT_FIT_TESTING=1...
+3/11 files checked 40% done
+Checking hbsBase.h ...
+Checking hbsBase.h: WANT_FIT_TESTING=1...
+4/11 files checked 45% done
+Checking hbsClient.cpp ...
+Checking hbsClient.cpp: WANT_FIT_TESTING=1...
+5/11 files checked 71% done
+Checking hbsCluster.cpp ...
+Checking hbsCluster.cpp: WANT_FIT_TESTING=1...
+hbsCluster.cpp:220:40: warning: Comparison of a boolean expression with an integer. [compareBoolExpressionWithInt]
+    if ( ctrl.cluster.storage0_enabled != enabled )
+                                       ^
+hbsCluster.cpp:463:50: warning: Comparison of a boolean expression with an integer. [compareBoolExpressionWithInt]
+            if (history_ptr->storage0_responding == false)
+                                                 ^
+hbsCluster.cpp:486:48: warning: Comparison of a boolean expression with an integer. [compareBoolExpressionWithInt]
+        if (( history_ptr->storage0_responding == true ) &&
+                                               ^
+hbsCluster.cpp:498:47: warning: Comparison of a boolean expression with an integer. [compareBoolExpressionWithInt]
+        if ( history_ptr->storage0_responding == true )
+                                              ^
+6/11 files checked 84% done
+Checking hbsCluster.h ...
+Checking hbsCluster.h: WANT_FIT_TESTING=1...
+7/11 files checked 86% done
+Checking hbsPmon.cpp ...
+Checking hbsPmon.cpp: WANT_FIT_TESTING=1...
+8/11 files checked 88% done
+Checking hbsStubs.cpp ...
+Checking hbsStubs.cpp: WANT_FIT_TESTING=1...
+9/11 files checked 92% done
+Checking hbsUtil.cpp ...
+Checking hbsUtil.cpp: WANT_FIT_TESTING=1...
+10/11 files checked 98% done
+Checking mtceHbsCluster.h ...
+Checking mtceHbsCluster.h: WANT_FIT_TESTING=1...
+11/11 files checked 100% done
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../common -I../alarm -I../maintenance -I../public -g -O2 -Wall -Wextra -Werror  -c hbsAlarm.cpp -o hbsAlarm.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../common -I../alarm -I../maintenance -I../public -g -O2 -Wall -Wextra -Werror  -c hbsClient.cpp -o hbsClient.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../common -I../alarm -I../maintenance -I../public -g -O2 -Wall -Wextra -Werror  -c hbsAgent.cpp -o hbsAgent.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../common -I../alarm -I../maintenance -I../public -g -O2 -Wall -Wextra -Werror  -c hbsPmon.cpp -o hbsPmon.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../common -I../alarm -I../maintenance -I../public -g -O2 -Wall -Wextra -Werror  -c hbsUtil.cpp -o hbsUtil.o
+hbsUtil.cpp: In function ‘void hbs_cluster_log(std::string&, mtce_hbs_cluster_type&, std::string, bool)’:
+hbsUtil.cpp:220:64: warning: ‘%d’ directive output may be truncated writing between 1 and 5 bytes into a region of size between 4 and 8 [-Wformat-truncation=]
+  220 |                     snprintf (&str[0], MAX_ENTRY_STR_LEN , "%d:%d ", // -%d",
+      |                                                                ^~
+hbsUtil.cpp:220:60: note: directive argument in the range [0, 65535]
+  220 |                     snprintf (&str[0], MAX_ENTRY_STR_LEN , "%d:%d ", // -%d",
+      |                                                            ^~~~~~~~
+hbsUtil.cpp:220:30: note: ‘snprintf’ output between 5 and 13 bytes into a destination of size 10
+  220 |                     snprintf (&str[0], MAX_ENTRY_STR_LEN , "%d:%d ", // -%d",
+      |                     ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  221 |                                history_ptr->entry[this_index].hosts_enabled,
+      |                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  222 |                                history_ptr->entry[this_index].hosts_responding );
+      |                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+hbsUtil.cpp:205:64: warning: ‘%d’ directive output may be truncated writing between 1 and 5 bytes into a region of size between 4 and 8 [-Wformat-truncation=]
+  205 |                     snprintf (&str[0], MAX_ENTRY_STR_LEN , "%d:%d ", // -%d",
+      |                                                                ^~
+hbsUtil.cpp:205:60: note: directive argument in the range [0, 65535]
+  205 |                     snprintf (&str[0], MAX_ENTRY_STR_LEN , "%d:%d ", // -%d",
+      |                                                            ^~~~~~~~
+hbsUtil.cpp:205:30: note: ‘snprintf’ output between 5 and 13 bytes into a destination of size 10
+  205 |                     snprintf (&str[0], MAX_ENTRY_STR_LEN , "%d:%d ", // -%d",
+      |                     ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  206 |                                history_ptr->entry[this_index].hosts_enabled,
+      |                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  207 |                                history_ptr->entry[this_index].hosts_responding );
+      |                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../common -I../alarm -I../maintenance -I../public -g -O2 -Wall -Wextra -Werror  -c hbsCluster.cpp -o hbsCluster.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../common -I../alarm -I../maintenance -I../public -g -O2 -Wall -Wextra -Werror  -c hbsStubs.cpp -o hbsStubs.o
+g++ -g -O2 -Wall -Wextra -Werror hbsAlarm.o hbsAgent.o hbsUtil.o hbsCluster.o hbsStubs.o ../common/nodeClass.o -L../public -L../alarm -lstdc++ -ldaemon -lcommon -lthreadUtil -lpthread -lfmcommon -lalarm -lrt -lamon -lcrypto -luuid -ljson-c -levent  -o hbsAgent
+g++ -g -O2 -Wall -Wextra -Werror hbsClient.o hbsPmon.o hbsUtil.o -L../public -L../alarm -lstdc++ -ldaemon -lcommon -lthreadUtil -lpthread -lfmcommon -lalarm -lrt -lamon -lcrypto -luuid -ljson-c -levent  -o hbsClient
+make[1]: Leaving directory '/builddir/build/BUILD/mtce-1.0/heartbeat'
+(cd maintenance ; make build VER=1 VER_MJR=1)
+make[1]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[1]: Entering directory '/builddir/build/BUILD/mtce-1.0/maintenance'
+cppcheck --enable=warning --language=c++ -U__AREA__ -UWANT_FIT_TESTING *.cpp *.h
+Checking ipmiClient.h ...
+1/34 files checked 1% done
+Checking mtcAlarm.cpp ...
+mtcAlarm.cpp:363:8: warning: Redundant assignment of 'id' to itself. [selfAssignment]
+    id = id ;
+       ^
+2/34 files checked 5% done
+Checking mtcAlarm.h ...
+3/34 files checked 5% done
+Checking mtcBrdMgmt.cpp ...
+4/34 files checked 5% done
+Checking mtcBrdMgmt.h ...
+5/34 files checked 5% done
+Checking mtcCmdHdlr.cpp ...
+6/34 files checked 9% done
+Checking mtcCompMsg.cpp ...
+7/34 files checked 12% done
+Checking mtcCtrlMsg.cpp ...
+8/34 files checked 18% done
+Checking mtcHttpSvr.cpp ...
+9/34 files checked 22% done
+Checking mtcHttpSvr.h ...
+10/34 files checked 22% done
+Checking mtcHttpUtil.cpp ...
+11/34 files checked 27% done
+Checking mtcHttpUtil.h ...
+12/34 files checked 28% done
+Checking mtcInvApi.cpp ...
+Checking mtcInvApi.cpp: WANT_KEY_VALUE_FROM_DATABASE...
+13/34 files checked 35% done
+Checking mtcInvApi.h ...
+14/34 files checked 35% done
+Checking mtcIpmiUtil.cpp ...
+15/34 files checked 37% done
+Checking mtcIpmiUtil.h ...
+16/34 files checked 37% done
+Checking mtcNodeComp.cpp ...
+Checking mtcNodeComp.cpp: WANT_SELECTS...
+17/34 files checked 44% done
+Checking mtcNodeComp.h ...
+18/34 files checked 44% done
+Checking mtcNodeCtrl.cpp ...
+19/34 files checked 51% done
+Checking mtcNodeFsm.cpp ...
+20/34 files checked 52% done
+Checking mtcNodeFsm.h ...
+21/34 files checked 53% done
+Checking mtcNodeHdlrs.cpp ...
+Checking mtcNodeHdlrs.cpp: WANT_PURGE_LOG...
+22/34 files checked 86% done
+Checking mtcNodeHdlrs.h ...
+23/34 files checked 87% done
+Checking mtcNodeMnfa.cpp ...
+24/34 files checked 88% done
+Checking mtcNodeMsg.h ...
+25/34 files checked 89% done
+Checking mtcSmgrApi.cpp ...
+26/34 files checked 90% done
+Checking mtcSmgrApi.h ...
+27/34 files checked 90% done
+Checking mtcStubs.cpp ...
+28/34 files checked 90% done
+Checking mtcSubfHdlrs.cpp ...
+29/34 files checked 93% done
+Checking mtcThreads.cpp ...
+30/34 files checked 95% done
+Checking mtcThreads.h ...
+31/34 files checked 95% done
+Checking mtcVimApi.cpp ...
+32/34 files checked 96% done
+Checking mtcVimApi.h ...
+33/34 files checked 96% done
+Checking mtcWorkQueue.cpp ...
+34/34 files checked 100% done
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../common -I../alarm -I../heartbeat -I../hwmon -I../public -g -O2 -Wall -Wextra -Werror -Wno-missing-braces  -c mtcAlarm.cpp -o mtcAlarm.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../common -I../alarm -I../heartbeat -I../hwmon -I../public -g -O2 -Wall -Wextra -Werror -Wno-missing-braces  -c mtcThreads.cpp -o mtcThreads.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../common -I../alarm -I../heartbeat -I../hwmon -I../public -g -O2 -Wall -Wextra -Werror -Wno-missing-braces  -c mtcIpmiUtil.cpp -o mtcIpmiUtil.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../common -I../alarm -I../heartbeat -I../hwmon -I../public -g -O2 -Wall -Wextra -Werror -Wno-missing-braces  -c mtcNodeHdlrs.cpp -o mtcNodeHdlrs.o
+mtcNodeHdlrs.cpp: In member function ‘int nodeLinkClass::offline_handler(nodeLinkClass::node*)’:
+mtcNodeHdlrs.cpp:3232:36: warning: this statement may fall through [-Wimplicit-fallthrough=]
+ 3232 |             node_ptr->offlineStage = MTC_OFFLINE__SEND_MTCALIVE ;
+      |             ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mtcNodeHdlrs.cpp:3235:9: note: here
+ 3235 |         case MTC_OFFLINE__SEND_MTCALIVE:
+      |         ^~~~
+mtcNodeHdlrs.cpp: In member function ‘int nodeLinkClass::reset_handler(nodeLinkClass::node*)’:
+mtcNodeHdlrs.cpp:3871:44: warning: this statement may fall through [-Wimplicit-fallthrough=]
+ 3871 |             node_ptr->power_action_retries = MTC_RESET_ACTION_RETRY_COUNT ;
+mtcNodeHdlrs.cpp:3874:9: note: here
+ 3874 |         case MTC_RESET__REQ_SEND:
+      |         ^~~~
+mtcNodeHdlrs.cpp: In member function ‘int nodeLinkClass::power_handler(nodeLinkClass::node*)’:
+mtcNodeHdlrs.cpp:4693:44: warning: this statement may fall through [-Wimplicit-fallthrough=]
+ 4693 |             node_ptr->power_action_retries = MTC_POWER_ACTION_RETRY_COUNT ;
+mtcNodeHdlrs.cpp:4696:9: note: here
+ 4696 |         case MTC_POWEROFF__REQ_SEND:
+      |         ^~~~
+mtcNodeHdlrs.cpp:4852:30: warning: this statement may fall through [-Wimplicit-fallthrough=]
+ 4852 |             powerStageChange ( node_ptr , MTC_POWERON__POWER_STATUS );
+      |             ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mtcNodeHdlrs.cpp:4855:9: note: here
+ 4855 |         case MTC_POWERON__POWER_STATUS:
+      |         ^~~~
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../common -I../alarm -I../heartbeat -I../hwmon -I../public -g -O2 -Wall -Wextra -Werror -Wno-missing-braces  -c mtcSubfHdlrs.cpp -o mtcSubfHdlrs.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../common -I../alarm -I../heartbeat -I../hwmon -I../public -g -O2 -Wall -Wextra -Werror -Wno-missing-braces  -c mtcNodeFsm.cpp -o mtcNodeFsm.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../common -I../alarm -I../heartbeat -I../hwmon -I../public -g -O2 -Wall -Wextra -Werror -Wno-missing-braces  -c mtcCompMsg.cpp -o mtcCompMsg.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../common -I../alarm -I../heartbeat -I../hwmon -I../public -g -O2 -Wall -Wextra -Werror -Wno-missing-braces  -c mtcCtrlMsg.cpp -o mtcCtrlMsg.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../common -I../alarm -I../heartbeat -I../hwmon -I../public -g -O2 -Wall -Wextra -Werror -Wno-missing-braces  -c mtcNodeCtrl.cpp -o mtcNodeCtrl.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../common -I../alarm -I../heartbeat -I../hwmon -I../public -g -O2 -Wall -Wextra -Werror -Wno-missing-braces  -c mtcNodeComp.cpp -o mtcNodeComp.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../common -I../alarm -I../heartbeat -I../hwmon -I../public -g -O2 -Wall -Wextra -Werror -Wno-missing-braces  -c mtcHttpUtil.cpp -o mtcHttpUtil.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../common -I../alarm -I../heartbeat -I../hwmon -I../public -g -O2 -Wall -Wextra -Werror -Wno-missing-braces  -c mtcHttpSvr.cpp -o mtcHttpSvr.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../common -I../alarm -I../heartbeat -I../hwmon -I../public -g -O2 -Wall -Wextra -Werror -Wno-missing-braces  -c mtcWorkQueue.cpp -o mtcWorkQueue.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../common -I../alarm -I../heartbeat -I../hwmon -I../public -g -O2 -Wall -Wextra -Werror -Wno-missing-braces  -c mtcInvApi.cpp -o mtcInvApi.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../common -I../alarm -I../heartbeat -I../hwmon -I../public -g -O2 -Wall -Wextra -Werror -Wno-missing-braces  -c mtcSmgrApi.cpp -o mtcSmgrApi.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../common -I../alarm -I../heartbeat -I../hwmon -I../public -g -O2 -Wall -Wextra -Werror -Wno-missing-braces  -c mtcCmdHdlr.cpp -o mtcCmdHdlr.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../common -I../alarm -I../heartbeat -I../hwmon -I../public -g -O2 -Wall -Wextra -Werror -Wno-missing-braces  -c mtcNodeMnfa.cpp -o mtcNodeMnfa.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../common -I../alarm -I../heartbeat -I../hwmon -I../public -g -O2 -Wall -Wextra -Werror -Wno-missing-braces  -c mtcVimApi.cpp -o mtcVimApi.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../common -I../alarm -I../heartbeat -I../hwmon -I../public -g -O2 -Wall -Wextra -Werror -Wno-missing-braces  -c mtcStubs.cpp -o mtcStubs.o
+g++ mtcAlarm.o mtcThreads.o mtcIpmiUtil.o mtcNodeCtrl.o mtcNodeFsm.o mtcNodeHdlrs.o mtcSubfHdlrs.o mtcCtrlMsg.o mtcWorkQueue.o mtcInvApi.o mtcSmgrApi.o mtcHttpUtil.o mtcHttpSvr.o mtcCmdHdlr.o mtcNodeMnfa.o mtcVimApi.o mtcStubs.o ../common/nodeClass.o -L../public -L../alarm -lstdc++ -ldaemon -lcommon -lthreadUtil -lipmiUtil -lfmcommon -lalarm -lpthread -lrt -levent -ljson-c -lamon -lcrypto -luuid  -o mtcAgent
+g++ mtcNodeComp.o mtcCompMsg.o -L../public -L../alarm -lstdc++ -ldaemon -lcommon -lthreadUtil -lipmiUtil -lfmcommon -lalarm -lpthread -lrt -levent -ljson-c -lamon -lcrypto -luuid  -o mtcClient
+make[1]: Leaving directory '/builddir/build/BUILD/mtce-1.0/maintenance'
+(cd hwmon  ; make build VER=1 VER_MJR=1)
+make[1]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[1]: Entering directory '/builddir/build/BUILD/mtce-1.0/hwmon'
+cppcheck --enable=warning --language=c++ -U__AREA__ -DWANT_FIT_TESTING *.cpp *.h
+Checking hp380.cpp ...
+Checking hp380.cpp: WANT_FIT_TESTING=1...
+1/28 files checked 0% done
+Checking hwmon.h ...
+Checking hwmon.h: WANT_FIT_TESTING=1...
+2/28 files checked 2% done
+Checking hwmonAlarm.cpp ...
+Checking hwmonAlarm.cpp: WANT_FIT_TESTING=1...
+3/28 files checked 6% done
+Checking hwmonAlarm.h ...
+Checking hwmonAlarm.h: WANT_FIT_TESTING=1...
+4/28 files checked 7% done
+Checking hwmonClass.cpp ...
+Checking hwmonClass.cpp: WANT_FIT_TESTING=1...
+5/28 files checked 20% done
+Checking hwmonClass.h ...
+Checking hwmonClass.h: WANT_FIT_TESTING=1...
+6/28 files checked 24% done
+Checking hwmonFsm.cpp ...
+Checking hwmonFsm.cpp: WANT_FIT_TESTING=1...
+7/28 files checked 25% done
+Checking hwmonGroup.cpp ...
+Checking hwmonGroup.cpp: WANT_FIT_TESTING=1...
+8/28 files checked 30% done
+Checking hwmonGroup.h ...
+Checking hwmonGroup.h: WANT_FIT_TESTING=1...
+9/28 files checked 30% done
+Checking hwmonHdlr.cpp ...
+Checking hwmonHdlr.cpp: WANT_FIT_TESTING=1...
+hwmonHdlr.cpp:560:56: warning: Identical inner 'if' condition is always true. [identicalInnerCondition]
+                if ( host_ptr->group[g].group_interval != host_ptr->interval )
+                                                       ^
+hwmonHdlr.cpp:557:37: note: outer condition: host_ptr->interval!=host_ptr->group[g].group_interval
+            if ( host_ptr->interval != host_ptr->group[g].group_interval )
+                                    ^
+hwmonHdlr.cpp:560:56: note: identical inner condition: host_ptr->group[g].group_interval!=host_ptr->interval
+                if ( host_ptr->group[g].group_interval != host_ptr->interval )
+                                                       ^
+10/28 files checked 47% done
+Checking hwmonHttp.cpp ...
+Checking hwmonHttp.cpp: WANT_FIT_TESTING=1...
+11/28 files checked 61% done
+Checking hwmonHttp.h ...
+Checking hwmonHttp.h: WANT_FIT_TESTING=1...
+12/28 files checked 62% done
+Checking hwmonHttpClient.cpp ...
+Checking hwmonHttpClient.cpp: WANT_FIT_TESTING=1...
+13/28 files checked 62% done
+Checking hwmonInit.cpp ...
+Checking hwmonInit.cpp: WANT_FIT_TESTING=1...
+14/28 files checked 64% done
+Checking hwmonIpmi.cpp ...
+Checking hwmonIpmi.cpp: WANT_FIT_TESTING=1...
+15/28 files checked 69% done
+Checking hwmonIpmi.h ...
+Checking hwmonIpmi.h: WANT_FIT_TESTING=1...
+16/28 files checked 70% done
+Checking hwmonJson.cpp ...
+Checking hwmonJson.cpp: WANT_FIT_TESTING=1...
+17/28 files checked 70% done
+Checking hwmonJson.h ...
+Checking hwmonJson.h: WANT_FIT_TESTING=1...
+18/28 files checked 70% done
+Checking hwmonModel.cpp ...
+Checking hwmonModel.cpp: WANT_FIT_TESTING=1...
+19/28 files checked 74% done
+Checking hwmonModel.h ...
+Checking hwmonModel.h: WANT_FIT_TESTING=1...
+20/28 files checked 74% done
+Checking hwmonMsg.cpp ...
+Checking hwmonMsg.cpp: WANT_FIT_TESTING=1...
+21/28 files checked 75% done
+Checking hwmonParse.cpp ...
+Checking hwmonParse.cpp: WANT_FIT_TESTING=1...
+22/28 files checked 75% done
+Checking hwmonSensor.cpp ...
+Checking hwmonSensor.cpp: WANT_FIT_TESTING=1...
+23/28 files checked 90% done
+Checking hwmonSensor.h ...
+Checking hwmonSensor.h: WANT_FIT_TESTING=1...
+24/28 files checked 90% done
+Checking hwmonThreads.cpp ...
+Checking hwmonThreads.cpp: WANT_FIT_TESTING=1...
+25/28 files checked 95% done
+Checking hwmonThreads.h ...
+Checking hwmonThreads.h: WANT_FIT_TESTING=1...
+26/28 files checked 96% done
+Checking hwmonUtil.cpp ...
+Checking hwmonUtil.cpp: WANT_FIT_TESTING=1...
+27/28 files checked 99% done
+Checking hwmonUtil.h ...
+Checking hwmonUtil.h: WANT_FIT_TESTING=1...
+28/28 files checked 100% done
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../maintenance -g -O2 -Wall -Wextra -Werror -std=c++11 -pthread  -c hwmonUtil.cpp -o hwmonUtil.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../maintenance -g -O2 -Wall -Wextra -Werror -std=c++11 -pthread  -c hwmonIpmi.cpp -o hwmonIpmi.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../maintenance -g -O2 -Wall -Wextra -Werror -std=c++11 -pthread  -c hwmonModel.cpp -o hwmonModel.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../maintenance -g -O2 -Wall -Wextra -Werror -std=c++11 -pthread  -c hwmonGroup.cpp -o hwmonGroup.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../maintenance -g -O2 -Wall -Wextra -Werror -std=c++11 -pthread  -c hwmonSensor.cpp -o hwmonSensor.o
+hwmonSensor.cpp: In member function ‘int hwmonHostClass::load_profile_groups(hwmonHostClass::hwmon_host*, sensor_group_type*, int, bool&)’:
+hwmonSensor.cpp:23:32: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   23 | #define DELIMITER ((const char)',')
+      |                                ^~~
+hwmonSensor.cpp:346:55: note: in expansion of macro ‘DELIMITER’
+  346 |         rc = get_delimited_list ( sensor_group_types, DELIMITER , sensor_group_types_list, true ) ;
+      |                                                       ^~~~~~~~~
+hwmonSensor.cpp:23:32: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   23 | #define DELIMITER ((const char)',')
+      |                                ^~~
+hwmonSensor.cpp:381:54: note: in expansion of macro ‘DELIMITER’
+  381 |             rc = get_delimited_list ( sensor_groups, DELIMITER , sensor_groups_list, true ) ;
+      |                                                      ^~~~~~~~~
+hwmonSensor.cpp: In member function ‘int hwmonHostClass::load_profile_sensors(hwmonHostClass::hwmon_host*, sensor_type*, int, bool&)’:
+hwmonSensor.cpp:23:32: warning: type qualifiers ignored on cast result type [-Wignored-qualifiers]
+   23 | #define DELIMITER ((const char)',')
+      |                                ^~~
+hwmonSensor.cpp:552:77: note: in expansion of macro ‘DELIMITER’
+  552 |             int rc = get_delimited_list ( host_ptr->group[g].sensor_labels, DELIMITER , sensor_sensors_list, false );
+      |                                                                             ^~~~~~~~~
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../maintenance -g -O2 -Wall -Wextra -Werror -std=c++11 -pthread  -c hwmonThreads.cpp -o hwmonThreads.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../maintenance -g -O2 -Wall -Wextra -Werror -std=c++11 -pthread  -c hwmonAlarm.cpp -o hwmonAlarm.o
+hwmonAlarm.cpp: In function ‘int hwmon_alarm_util(std::string&, hwmonAlarm_id_type, EFmAlarmStateT, EFmAlarmSeverityT, std::string&, std::string)’:
+hwmonAlarm.cpp:263:34: warning: ‘%s’ directive output may be truncated writing up to 254 bytes into a region of size between 0 and 254 [-Wformat-truncation=]
+  263 |                              "%s:%s alarm clear\n",
+      |                                  ^~
+  264 |                               alarm.alarm_id,
+  265 |                               alarm.entity_instance_id);
+      |                               ~~~~~~~~~~~~~~~~~~~~~~~~
+hwmonAlarm.cpp:262:25: note: ‘snprintf’ output between 15 and 523 bytes into a destination of size 255
+  262 |                 snprintf(alarm.reason_text, FM_MAX_BUFFER_LENGTH,
+      |                 ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  263 |                              "%s:%s alarm clear\n",
+      |                              ~~~~~~~~~~~~~~~~~~~~~~
+  264 |                               alarm.alarm_id,
+      |                               ~~~~~~~~~~~~~~~
+  265 |                               alarm.entity_instance_id);
+      |                               ~~~~~~~~~~~~~~~~~~~~~~~~~
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../maintenance -g -O2 -Wall -Wextra -Werror -std=c++11 -pthread  -c hwmonHdlr.cpp -o hwmonHdlr.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../maintenance -g -O2 -Wall -Wextra -Werror -std=c++11 -pthread  -c hwmonJson.cpp -o hwmonJson.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../maintenance -g -O2 -Wall -Wextra -Werror -std=c++11 -pthread  -c hwmonClass.cpp -o hwmonClass.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../maintenance -g -O2 -Wall -Wextra -Werror -std=c++11 -pthread  -c hwmonHttp.cpp -o hwmonHttp.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../maintenance -g -O2 -Wall -Wextra -Werror -std=c++11 -pthread  -c hwmonInit.cpp -o hwmonInit.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../maintenance -g -O2 -Wall -Wextra -Werror -std=c++11 -pthread  -c hwmonMsg.cpp -o hwmonMsg.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../maintenance -g -O2 -Wall -Wextra -Werror -std=c++11 -pthread  -c hwmonFsm.cpp -o hwmonFsm.o
+g++ -g -O2 -Wall -Wextra -Werror -std=c++11 -pthread hwmonUtil.o hwmonIpmi.o hwmonModel.o hwmonGroup.o hwmonSensor.o hwmonThreads.o hwmonAlarm.o hwmonHdlr.o hwmonJson.o hwmonClass.o hwmonHttp.o hwmonInit.o hwmonMsg.o hwmonFsm.o -L../daemon -L../common -lstdc++ -ldaemon -lfmcommon -lcommon -lthreadUtil -lipmiUtil -lpthread -levent -ljson-c -lrt -lcrypto  -o hwmond
+make[1]: Leaving directory '/builddir/build/BUILD/mtce-1.0/hwmon'
+(cd mtclog ; make build VER=1 VER_MJR=1)
+make[1]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[1]: Entering directory '/builddir/build/BUILD/mtce-1.0/mtclog'
+removed '../common/nodeClass.o'
+cppcheck --language=c++ --enable=warning -U__AREA__ -DWANT_FIT_TESTING *.cpp *.h
+Checking mtclog.cpp ...
+Checking mtclog.cpp: WANT_FIT_TESTING=1...
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../maintenance -g -O2 -Wall -Wextra -Werror  -c mtclog.cpp -o mtclog.o
+g++ -g -O2 -Wall -Wextra -Werror mtclog.o -L../daemon -L../common -lstdc++ -ldaemon -lcommon -lrt -lcrypto  -o mtclogd
+make[1]: Leaving directory '/builddir/build/BUILD/mtce-1.0/mtclog'
+(cd lmon   ; make build VER=1 VER_MJR=1)
+make[1]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[1]: Entering directory '/builddir/build/BUILD/mtce-1.0/lmon'
+cppcheck --language=c++ --enable=warning -U__AREA__ *.cpp *.h
+Checking lmon.h ...
+1/4 files checked 7% done
+Checking lmonHdlr.cpp ...
+Checking lmonHdlr.cpp: WANT_BOND_STR...
+Checking lmonHdlr.cpp: WANT_TYPE_STR...
+2/4 files checked 64% done
+Checking lmonInit.cpp ...
+3/4 files checked 72% done
+Checking lmonUtil.cpp ...
+4/4 files checked 100% done
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -g -O2 -Wall -Wextra -Werror  -c lmonInit.cpp -o lmonInit.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -g -O2 -Wall -Wextra -Werror  -c lmonUtil.cpp -o lmonUtil.o
+lmonUtil.cpp: In function ‘int lmon_interfaces_init(interface_ctrl_type*)’:
+lmonUtil.cpp:377:24: warning: ‘char* strncpy(char*, const char*, size_t)’ specified bound 256 equals destination size [-Wstringop-truncation]
+  377 |                 strncpy(line_buf, line.c_str(), MAX_CHARS_ON_LINE);
+      |                 ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -g -O2 -Wall -Wextra -Werror  -c lmonHdlr.cpp -o lmonHdlr.o
+g++ -g -O2 -Wall -Wextra -Werror lmonInit.o lmonUtil.o lmonHdlr.o -L../../../mtce-common/src/daemon -L../../../mtce-common/src/common -lstdc++ -ldaemon -lcommon -ljson-c -lcrypto -lrt -levent  -o lmond
+make[1]: Leaving directory '/builddir/build/BUILD/mtce-1.0/lmon'
+(cd pmon   ; make build VER=1 VER_MJR=1)
+make[1]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[1]: Entering directory '/builddir/build/BUILD/mtce-1.0/pmon'
+cppcheck --language=c++ --enable=warning -U__AREA__ *.cpp *.h
+Checking pmon.h ...
+1/7 files checked 12% done
+Checking pmonAlarm.cpp ...
+2/7 files checked 19% done
+Checking pmonAlarm.h ...
+3/7 files checked 20% done
+Checking pmonFsm.cpp ...
+4/7 files checked 41% done
+Checking pmonHdlr.cpp ...
+5/7 files checked 78% done
+Checking pmonInit.cpp ...
+6/7 files checked 86% done
+Checking pmonMsg.cpp ...
+7/7 files checked 100% done
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../hostw -g -O2 -Wall -Wextra -Werror  -c pmonAlarm.cpp -o pmonAlarm.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../hostw -g -O2 -Wall -Wextra -Werror  -c pmonInit.cpp -o pmonInit.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../hostw -g -O2 -Wall -Wextra -Werror  -c pmonMsg.cpp -o pmonMsg.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../hostw -g -O2 -Wall -Wextra -Werror  -c pmonHdlr.cpp -o pmonHdlr.o
+pmonHdlr.cpp: In function ‘bool service_file_exists(std::string, char*, int)’:
+pmonHdlr.cpp:550:14: warning: null destination pointer [-Wformat-truncation=]
+  550 |     snprintf ( path_n_name_ptr, max_len, "%s/%s",
+      |     ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  551 |                                           SYSTEMD_SERVICE_FILE_DIR2,
+      |                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+  552 |                                           service_filename.data());
+      |                                           ~~~~~~~~~~~~~~~~~~~~~~~~
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -I../hostw -g -O2 -Wall -Wextra -Werror  -c pmonFsm.cpp -o pmonFsm.o
+g++ -g -O2 -Wall -Wextra -Werror pmonAlarm.o pmonInit.o pmonMsg.o pmonHdlr.o pmonFsm.o -L../daemon -L../common -lstdc++ -ldaemon -lcommon -lrt -lcrypto -lfmcommon -ljson-c  -o pmond
+make[1]: Leaving directory '/builddir/build/BUILD/mtce-1.0/pmon'
+(cd fsmon  ; make build VER=1 VER_MJR=1)
+make[1]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[1]: Entering directory '/builddir/build/BUILD/mtce-1.0/fsmon'
+cppcheck --language=c++ --enable=warning -U__AREA__ -DWANT_FIT_TESTING *.cpp *.h
+Checking fsmon.h ...
+Checking fsmon.h: WANT_FIT_TESTING=1...
+1/3 files checked 17% done
+Checking fsmonHdlr.cpp ...
+Checking fsmonHdlr.cpp: WANT_FIT_TESTING=1...
+2/3 files checked 60% done
+Checking fsmonInit.cpp ...
+Checking fsmonInit.cpp: WANT_FIT_TESTING=1...
+3/3 files checked 100% done
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -g -O2 -Wall -Wextra -Werror  -c fsmonInit.cpp -o fsmonInit.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -g -O2 -Wall -Wextra -Werror  -c fsmonHdlr.cpp -o fsmonHdlr.o
+g++ -g -O2 -Wall -Wextra -Werror fsmonInit.o fsmonHdlr.o -L../daemon -L../common -lstdc++ -ldaemon -lcommon -lrt -lcrypto  -o fsmond
+make[1]: Leaving directory '/builddir/build/BUILD/mtce-1.0/fsmon'
+(cd hostw  ; make build VER=1 VER_MJR=1)
+make[1]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[1]: Entering directory '/builddir/build/BUILD/mtce-1.0/hostw'
+cppcheck --language=c++ --enable=warning -U__AREA__ -DWANT_FIT_TESTING *.cpp *.h
+Checking hostw.h ...
+Checking hostw.h: WANT_FIT_TESTING=1...
+1/5 files checked 20% done
+Checking hostwHdlr.cpp ...
+Checking hostwHdlr.cpp: WANT_FIT_TESTING=1...
+2/5 files checked 55% done
+Checking hostwInit.cpp ...
+Checking hostwInit.cpp: WANT_FIT_TESTING=1...
+3/5 files checked 93% done
+Checking hostwMsg.cpp ...
+Checking hostwMsg.cpp: WANT_FIT_TESTING=1...
+4/5 files checked 98% done
+Checking hostwMsg.h ...
+Checking hostwMsg.h: WANT_FIT_TESTING=1...
+5/5 files checked 100% done
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -g -Wall -Wextra -Werror  -c hostwInit.cpp -o hostwInit.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -g -Wall -Wextra -Werror  -c hostwHdlr.cpp -o hostwHdlr.o
+g++ -I. -I/usr/include/mtce-daemon -I/usr/include/mtce-common -g -Wall -Wextra -Werror  -c hostwMsg.cpp -o hostwMsg.o
+g++ -g -Wall -Wextra -Werror hostwInit.o hostwHdlr.o hostwMsg.o -L../daemon -L../common -lstdc++ -ldaemon -lcommon -lrt -lcrypto  -o hostwd
+make[1]: Leaving directory '/builddir/build/BUILD/mtce-1.0/hostw'
+(cd fsync  ; make build VER=1 VER_MJR=1)
+make[1]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[1]: Entering directory '/builddir/build/BUILD/mtce-1.0/fsync'
+gcc -I. -g -O2 -Wall -Wextra -Werror  -c fsync.c -o fsync.o
+gcc fsync.o -L. -o fsync
+make[1]: Leaving directory '/builddir/build/BUILD/mtce-1.0/fsync'
++ exit 0
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.WSlDO6
++ umask 022
++ cd /builddir/build/BUILD
++ cd mtce-1.0
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ rm -rf /builddir/build/BUILDROOT/mtce-1.0-17.x86_64
++ mkdir -p /builddir/build/BUILDROOT/mtce-1.0-17.x86_64
++ export SOURCE_DATE_EPOCH=1567648354
++ SOURCE_DATE_EPOCH=1567648354
++ rm -rf /builddir/build/BUILDROOT/mtce-1.0-17.x86_64
++ VER=1.0
+++ echo 1.0
+++ awk -F . '{print $1}'
++ MAJOR=1
+++ echo 1.0
+++ awk -F . '{print $2}'
++ MINOR=0
++ install -m 755 -d /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc
++ install -m 755 -d /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr
++ install -m 755 -d /builddir/build/BUILDROOT/mtce-1.0-17.x86_64//usr/bin
++ install -m 755 -d /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local
++ install -m 755 -d /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/bin
++ install -m 755 -d /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/sbin
++ install -m 755 -d /builddir/build/BUILDROOT/mtce-1.0-17.x86_64//usr/bin
++ install -m 755 -d /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/lib
++ install -m 755 -d /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/mtc
++ install -m 755 -d /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/mtc/tmp
++ install -m 755 -d /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib
++ install -m 755 -d /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib/ocf
++ install -m 755 -d /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib/ocf/resource.d
++ install -m 755 -d /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib/ocf/resource.d/platform
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/scripts/mtcAgent /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib/ocf/resource.d/platform/mtcAgent
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/hwmon/scripts/ocf/hwmon /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib/ocf/resource.d/platform/hwmon
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/scripts/mtc.ini /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/mtc.ini
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/scripts/mtc.conf /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/mtc.conf
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/fsmon/scripts/fsmond.conf /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/mtc/fsmond.conf
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/hwmon/scripts/hwmond.conf /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/mtc/hwmond.conf
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/pmon/scripts/pmond.conf /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/mtc/pmond.conf
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/lmon/scripts/lmond.conf /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/mtc/lmond.conf
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/hostw/scripts/hostwd.conf /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/mtc/hostwd.conf
++ install -m 755 -d /builddir/build/BUILDROOT/mtce-1.0-17.x86_64//usr/local/etc/etc/bmc/server_profiles.d
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/scripts/sensor_hp360_v1_ilo_v4.profile /builddir/build/BUILDROOT/mtce-1.0-17.x86_64//usr/local/etc/bmc/server_profiles.d/sensor_hp360_v1_ilo_v4.profile
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/scripts/sensor_hp380_v1_ilo_v4.profile /builddir/build/BUILDROOT/mtce-1.0-17.x86_64//usr/local/etc/bmc/server_profiles.d/sensor_hp380_v1_ilo_v4.profile
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/scripts/sensor_quanta_v1_ilo_v4.profile /builddir/build/BUILDROOT/mtce-1.0-17.x86_64//usr/local/etc/bmc/server_profiles.d/sensor_quanta_v1_ilo_v4.profile
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/maintenance/mtcAgent /builddir/build/BUILDROOT/mtce-1.0-17.x86_64//usr/local/bin/mtcAgent
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/maintenance/mtcClient /builddir/build/BUILDROOT/mtce-1.0-17.x86_64//usr/local/bin/mtcClient
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/heartbeat/hbsAgent /builddir/build/BUILDROOT/mtce-1.0-17.x86_64//usr/local/bin/hbsAgent
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/heartbeat/hbsClient /builddir/build/BUILDROOT/mtce-1.0-17.x86_64//usr/local/bin/hbsClient
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/pmon/pmond /builddir/build/BUILDROOT/mtce-1.0-17.x86_64//usr/local/bin/pmond
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/lmon/lmond /builddir/build/BUILDROOT/mtce-1.0-17.x86_64//usr/local/bin/lmond
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/hostw/hostwd /builddir/build/BUILDROOT/mtce-1.0-17.x86_64//usr/local/bin/hostwd
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/fsmon/fsmond /builddir/build/BUILDROOT/mtce-1.0-17.x86_64//usr/local/bin/fsmond
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/hwmon/hwmond /builddir/build/BUILDROOT/mtce-1.0-17.x86_64//usr/local/bin/hwmond
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/mtclog/mtclogd /builddir/build/BUILDROOT/mtce-1.0-17.x86_64//usr/local/bin/mtclogd
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/alarm/mtcalarmd /builddir/build/BUILDROOT/mtce-1.0-17.x86_64//usr/local/bin/mtcalarmd
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/scripts/wipedisk /builddir/build/BUILDROOT/mtce-1.0-17.x86_64//usr/local/bin/wipedisk
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/fsync/fsync /builddir/build/BUILDROOT/mtce-1.0-17.x86_64//usr/bin/fsync
++ install -m 700 -p -D /builddir/build/BUILD/mtce-1.0/pmon/scripts/pmon-restart /builddir/build/BUILDROOT/mtce-1.0-17.x86_64//usr/local/sbin/pmon-restart
++ install -m 700 -p -D /builddir/build/BUILD/mtce-1.0/pmon/scripts/pmon-start /builddir/build/BUILDROOT/mtce-1.0-17.x86_64//usr/local/sbin/pmon-start
++ install -m 700 -p -D /builddir/build/BUILD/mtce-1.0/pmon/scripts/pmon-stop /builddir/build/BUILDROOT/mtce-1.0-17.x86_64//usr/local/sbin/pmon-stop
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/scripts/mtcClient /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/init.d/mtcClient
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/scripts/hbsClient /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/init.d/hbsClient
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/hwmon/scripts/lsb/hwmon /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/init.d/hwmon
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/fsmon/scripts/fsmon /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/init.d/fsmon
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/scripts/mtclog /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/init.d/mtclog
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/pmon/scripts/pmon /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/init.d/pmon
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/lmon/scripts/lmon /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/init.d/lmon
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/hostw/scripts/hostw /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/init.d/hostw
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/alarm/scripts/mtcalarm.init /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/init.d/mtcalarm
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/scripts/hwclock.sh /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/init.d/hwclock.sh
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/scripts/hwclock.service /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib/systemd/system//hwclock.service
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/fsmon/scripts/fsmon.service /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib/systemd/system//fsmon.service
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/hwmon/scripts/hwmon.service /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib/systemd/system//hwmon.service
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/pmon/scripts/pmon.service /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib/systemd/system//pmon.service
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/hostw/scripts/hostw.service /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib/systemd/system//hostw.service
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/scripts/mtcClient.service /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib/systemd/system//mtcClient.service
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/scripts/hbsClient.service /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib/systemd/system//hbsClient.service
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/scripts/mtclog.service /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib/systemd/system//mtclog.service
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/scripts/goenabled.service /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib/systemd/system//goenabled.service
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/scripts/runservices.service /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib/systemd/system//runservices.service
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/alarm/scripts/mtcalarm.service /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib/systemd/system//mtcalarm.service
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/lmon/scripts/lmon.service /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib/systemd/system//lmon.service
++ install -m 755 -d /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/goenabled.d
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/scripts/goenabled /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/init.d/goenabled
++ install -m 755 -d /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/services.d
++ install -m 755 -d /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/services.d/controller
++ install -m 755 -d /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/services.d/worker
++ install -m 755 -d /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/services.d/storage
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/scripts/mtcTest /builddir/build/BUILDROOT/mtce-1.0-17.x86_64//usr/local/etc/services.d/worker
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/scripts/mtcTest /builddir/build/BUILDROOT/mtce-1.0-17.x86_64//usr/local/etc/services.d/controller
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/scripts/mtcTest /builddir/build/BUILDROOT/mtce-1.0-17.x86_64//usr/local/etc/services.d/storage
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/scripts/runservices /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/init.d/runservices
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/scripts/dmemchk.sh /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/sbin
++ install -m 755 -d /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/pmon.d
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/scripts/mtcClient.conf /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/pmon.d/mtcClient.conf
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/scripts/hbsClient.conf /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/pmon.d/hbsClient.conf
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/pmon/scripts/acpid.conf /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/pmon.d/acpid.conf
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/pmon/scripts/sshd.conf /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/pmon.d/sshd.conf
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/pmon/scripts/syslog-ng.conf /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/pmon.d/syslog-ng.conf
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/pmon/scripts/nslcd.conf /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/pmon.d/nslcd.conf
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/fsmon/scripts/fsmon.conf /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/pmon.d/fsmon.conf
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/scripts/mtclogd.conf /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/pmon.d/mtclogd.conf
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/alarm/scripts/mtcalarm.pmon.conf /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/pmon.d/mtcalarm.conf
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/lmon/scripts/lmon.pmon.conf /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/pmon.d/lmon.conf
++ install -m 755 -d /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/logrotate.d
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/scripts/mtce.logrotate /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/logrotate.d/mtce.logrotate
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/hostw/scripts/hostw.logrotate /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/logrotate.d/hostw.logrotate
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/pmon/scripts/pmon.logrotate /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/logrotate.d/pmon.logrotate
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/lmon/scripts/lmon.logrotate /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/logrotate.d/lmon.logrotate
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/fsmon/scripts/fsmon.logrotate /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/logrotate.d/fsmon.logrotate
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/hwmon/scripts/hwmon.logrotate /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/logrotate.d/hwmon.logrotate
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/alarm/scripts/mtcalarm.logrotate /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/etc/logrotate.d/mtcalarm.logrotate
++ install -m 644 -p -D /builddir/build/BUILD/mtce-1.0/heartbeat/mtceHbsCluster.h /builddir/build/BUILDROOT/mtce-1.0-17.x86_64//usr/include/mtceHbsCluster.h
++ install -m 755 -p -D /builddir/build/BUILD/mtce-1.0/public/libamon.so.1 /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib64/libamon.so.1
++ cd /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib64
++ ln -s libamon.so.1 libamon.so.1.0
++ cd /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib64
++ ln -s libamon.so.1 libamon.so
++ cd /builddir/build/BUILD/mtce-1.0
++ install -m 755 -d /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/var
++ install -m 755 -d /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/var/run
++ rm -f /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/share/info/dir
+++ find /builddir/build/BUILDROOT/mtce-1.0-17.x86_64 -path 'etc/*' '!' -type d
++ test -z ''
++ rm -rf '/builddir/build/BUILDROOT/mtce-1.0-17.x86_64/etc/*'
++ rm -rf '/builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/share/factory/*'
++ find /builddir/build/BUILDROOT/mtce-1.0-17.x86_64 -name __pycache__
++ xargs rm -rf --
++ '[' -d /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/share/mime ']'
+++ getconf _NPROCESSORS_ONLN
++ RPM_XARGS_PFLAG=-P4
++ find /builddir/build/BUILDROOT/mtce-1.0-17.x86_64 -name '*.so.avx512' -print0
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -5
++ find /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib64/haswell/avx512_1 -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib64/haswell/avx512_1’: No such file or directory
++ find /builddir/build/BUILDROOT/mtce-1.0-17.x86_64 -name '*.so.avx2' -print0
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -2
++ find /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib64/haswell '!' -path '/usr/lib64/haswell/avx512_1/*' -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib64/haswell’: No such file or directory
++ find /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib64/ -maxdepth 1 -name '*.so*' -type f -print0
++ xargs -0rtn1 -P4 /usr/lib/rpm/clr/brp-create-abi
++ sort -u
+/usr/lib/rpm/clr/brp-create-abi /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib64/libamon.so.1 
++ /usr/lib/rpm/find-debuginfo.sh --strict-build-id /builddir/build/BUILD/mtce-1.0
+extracting debug info from /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/bin/lmond
+extracting debug info from /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/bin/mtcAgent
+extracting debug info from /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/bin/mtcClient
+extracting debug info from /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/bin/hwmond
+extracting debug info from /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/bin/hbsAgent
+extracting debug info from /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/bin/hbsClient
+extracting debug info from /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/bin/pmond
+extracting debug info from /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/bin/mtclogd
+extracting debug info from /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/bin/mtcalarmd
+extracting debug info from /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/bin/hostwd
+extracting debug info from /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/local/bin/fsmond
+extracting debug info from /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/bin/fsync
+extracting debug info from /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib64/libamon.so.1
+symlinked /usr/lib/debug/usr/lib64/libamon.so.1.debug to /usr/lib/debug/usr/lib64/libamon.so.1.0.debug
+symlinked /usr/lib/debug/usr/lib64/libamon.so.1.debug to /usr/lib/debug/usr/lib64/libamon.so.debug
+cpio: glibc-2.30/csu: Cannot stat: No such file or directory
+cpio: glibc-2.30/csu/elf-init.c: Cannot stat: No such file or directory
+cpio: glibc-2.30/csu/init.c: Cannot stat: No such file or directory
+cpio: glibc-2.30/sysdeps/x86_64/crti.S: Cannot stat: No such file or directory
+cpio: glibc-2.30/sysdeps/x86_64/crtn.S: Cannot stat: No such file or directory
+cpio: glibc-2.30/sysdeps/x86_64/start.S: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/alarmUtil.cpp: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/alarmUtil.h: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/hostClass.cpp: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/hostClass.h: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/hostUtil.cpp: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/hostUtil.h: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/httpUtil.cpp: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/httpUtil.h: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/ipmiUtil.cpp: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/ipmiUtil.h: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/jsonUtil.cpp: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/jsonUtil.h: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/keyClass.cpp: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/keyClass.h: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/logMacros.h: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/msgClass.cpp: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/msgClass.h: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/nlEvent.cpp: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/nodeBase.cpp: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/nodeBase.h: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/nodeEvent.cpp: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/nodeEvent.h: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/nodeTimers.cpp: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/nodeTimers.h: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/nodeUtil.cpp: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/nodeUtil.h: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/pingUtil.cpp: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/pingUtil.h: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/secretUtil.cpp: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/secretUtil.h: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/threadUtil.cpp: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/threadUtil.h: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/timeUtil.cpp: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/timeUtil.h: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/tokenUtil.cpp: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/common/tokenUtil.h: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/daemon: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/daemon/daemon_common.h: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/daemon/daemon_config.cpp: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/daemon/daemon_debug.cpp: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/daemon/daemon_files.cpp: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/daemon/daemon_ini.cpp: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/daemon/daemon_ini.h: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/daemon/daemon_main.cpp: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/daemon/daemon_option.h: Cannot stat: No such file or directory
+cpio: mtce-common-1.0/daemon/daemon_signal.cpp: Cannot stat: No such file or directory
+4936 blocks
++ '[' -d /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib/debug ']'
++ mkdir -p /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/share
++ '[' -d /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib/debug ']'
++ mv /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib/debug /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/share
++ '[' -d /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/src/debug ']'
++ mv /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/src/debug /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/share/debug/src
++ '[' -d /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/lib/debug.force ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/mtce-1.0-17.x86_64/usr/src/debug.force ']'
++ :
++ /usr/lib/rpm/check-buildroot
++ /usr/lib/rpm/clr/brp-strip-static-archive /usr/bin/strip
++ /usr/lib/rpm/clr/brp-strip-comment-note /usr/bin/strip /usr/bin/objdump
++ /usr/lib/rpm/clr/brp-python-bytecompile
++ find /builddir/build/BUILDROOT/mtce-1.0-17.x86_64 -print0
++ xargs -0 touch -h -d @1567648354
++ /usr/lib/rpm/clr/brp-java-repack-jars
+Processing files: mtce-1.0-17.x86_64
+Processing files: mtce-debuginfo-1.0-17.x86_64
+Processing files: mtce-abi-1.0-17.x86_64
+Checking for unpackaged file(s): /usr/lib/rpm/check-files /builddir/build/BUILDROOT/mtce-1.0-17.x86_64
+warning: Empty %files file /builddir/build/BUILD/mtce-1.0/abifiles.list
+RPM build errors:
+error: Installed (but unpackaged) file(s) found:
+   /usr/bin/fsync
+   /usr/include/mtceHbsCluster.h
+   /usr/lib/ocf/resource.d/platform/hwmon
+   /usr/lib/ocf/resource.d/platform/mtcAgent
+   /usr/lib/systemd/system/fsmon.service
+   /usr/lib/systemd/system/goenabled.service
+   /usr/lib/systemd/system/hbsClient.service
+   /usr/lib/systemd/system/hostw.service
+   /usr/lib/systemd/system/hwclock.service
+   /usr/lib/systemd/system/hwmon.service
+   /usr/lib/systemd/system/lmon.service
+   /usr/lib/systemd/system/mtcClient.service
+   /usr/lib/systemd/system/mtcalarm.service
+   /usr/lib/systemd/system/mtclog.service
+   /usr/lib/systemd/system/pmon.service
+   /usr/lib/systemd/system/runservices.service
+   /usr/lib64/libamon.so
+   /usr/lib64/libamon.so.1
+   /usr/lib64/libamon.so.1.0
+   /usr/local/bin/fsmond
+   /usr/local/bin/hbsAgent
+   /usr/local/bin/hbsClient
+   /usr/local/bin/hostwd
+   /usr/local/bin/hwmond
+   /usr/local/bin/lmond
+   /usr/local/bin/mtcAgent
+   /usr/local/bin/mtcClient
+   /usr/local/bin/mtcalarmd
+   /usr/local/bin/mtclogd
+   /usr/local/bin/pmond
+   /usr/local/bin/wipedisk
+   /usr/local/etc/bmc/server_profiles.d/sensor_hp360_v1_ilo_v4.profile
+   /usr/local/etc/bmc/server_profiles.d/sensor_hp380_v1_ilo_v4.profile
+   /usr/local/etc/bmc/server_profiles.d/sensor_quanta_v1_ilo_v4.profile
+   /usr/local/etc/init.d/fsmon
+   /usr/local/etc/init.d/goenabled
+   /usr/local/etc/init.d/hbsClient
+   /usr/local/etc/init.d/hostw
+   /usr/local/etc/init.d/hwclock.sh
+   /usr/local/etc/init.d/hwmon
+   /usr/local/etc/init.d/lmon
+   /usr/local/etc/init.d/mtcClient
+   /usr/local/etc/init.d/mtcalarm
+   /usr/local/etc/init.d/mtclog
+   /usr/local/etc/init.d/pmon
+   /usr/local/etc/init.d/runservices
+   /usr/local/etc/logrotate.d/fsmon.logrotate
+   /usr/local/etc/logrotate.d/hostw.logrotate
+   /usr/local/etc/logrotate.d/hwmon.logrotate
+   /usr/local/etc/logrotate.d/lmon.logrotate
+   /usr/local/etc/logrotate.d/mtcalarm.logrotate
+   /usr/local/etc/logrotate.d/mtce.logrotate
+   /usr/local/etc/logrotate.d/pmon.logrotate
+   /usr/local/etc/mtc.conf
+   /usr/local/etc/mtc.ini
+   /usr/local/etc/mtc/fsmond.conf
+   /usr/local/etc/mtc/hostwd.conf
+   /usr/local/etc/mtc/hwmond.conf
+   /usr/local/etc/mtc/lmond.conf
+   /usr/local/etc/mtc/pmond.conf
+   /usr/local/etc/pmon.d/acpid.conf
+   /usr/local/etc/pmon.d/fsmon.conf
+   /usr/local/etc/pmon.d/hbsClient.conf
+   /usr/local/etc/pmon.d/lmon.conf
+   /usr/local/etc/pmon.d/mtcClient.conf
+   /usr/local/etc/pmon.d/mtcalarm.conf
+   /usr/local/etc/pmon.d/mtclogd.conf
+   /usr/local/etc/pmon.d/nslcd.conf
+   /usr/local/etc/pmon.d/sshd.conf
+   /usr/local/etc/pmon.d/syslog-ng.conf
+   /usr/local/etc/services.d/controller/mtcTest
+   /usr/local/etc/services.d/storage/mtcTest
+   /usr/local/etc/services.d/worker/mtcTest
+   /usr/local/sbin/dmemchk.sh
+   /usr/local/sbin/pmon-restart
+   /usr/local/sbin/pmon-start
+   /usr/local/sbin/pmon-stop
+    Empty %files file /builddir/build/BUILD/mtce-1.0/abifiles.list
+    Installed (but unpackaged) file(s) found:
+   /usr/bin/fsync
+   /usr/include/mtceHbsCluster.h
+   /usr/lib/ocf/resource.d/platform/hwmon
+   /usr/lib/ocf/resource.d/platform/mtcAgent
+   /usr/lib/systemd/system/fsmon.service
+   /usr/lib/systemd/system/goenabled.service
+   /usr/lib/systemd/system/hbsClient.service
+   /usr/lib/systemd/system/hostw.service
+   /usr/lib/systemd/system/hwclock.service
+   /usr/lib/systemd/system/hwmon.service
+   /usr/lib/systemd/system/lmon.service
+   /usr/lib/systemd/system/mtcClient.service
+   /usr/lib/systemd/system/mtcalarm.service
+   /usr/lib/systemd/system/mtclog.service
+   /usr/lib/systemd/system/pmon.service
+   /usr/lib/systemd/system/runservices.service
+   /usr/lib64/libamon.so
+   /usr/lib64/libamon.so.1
+   /usr/lib64/libamon.so.1.0
+   /usr/local/bin/fsmond
+   /usr/local/bin/hbsAgent
+   /usr/local/bin/hbsClient
+   /usr/local/bin/hostwd
+   /usr/local/bin/hwmond
+   /usr/local/bin/lmond
+   /usr/local/bin/mtcAgent
+   /usr/local/bin/mtcClient
+   /usr/local/bin/mtcalarmd
+   /usr/local/bin/mtclogd
+   /usr/local/bin/pmond
+   /usr/local/bin/wipedisk
+   /usr/local/etc/bmc/server_profiles.d/sensor_hp360_v1_ilo_v4.profile
+   /usr/local/etc/bmc/server_profiles.d/sensor_hp380_v1_ilo_v4.profile
+   /usr/local/etc/bmc/server_profiles.d/sensor_quanta_v1_ilo_v4.profile
+   /usr/local/etc/init.d/fsmon
+   /usr/local/etc/init.d/goenabled
+   /usr/local/etc/init.d/hbsClient
+   /usr/local/etc/init.d/hostw
+   /usr/local/etc/init.d/hwclock.sh
+   /usr/local/etc/init.d/hwmon
+   /usr/local/etc/init.d/lmon
+   /usr/local/etc/init.d/mtcClient
+   /usr/local/etc/init.d/mtcalarm
+   /usr/local/etc/init.d/mtclog
+   /usr/local/etc/init.d/pmon
+   /usr/local/etc/init.d/runservices
+   /usr/local/etc/logrotate.d/fsmon.logrotate
+   /usr/local/etc/logrotate.d/hostw.logrotate
+   /usr/local/etc/logrotate.d/hwmon.logrotate
+   /usr/local/etc/logrotate.d/lmon.logrotate
+   /usr/local/etc/logrotate.d/mtcalarm.logrotate
+   /usr/local/etc/logrotate.d/mtce.logrotate
+   /usr/local/etc/logrotate.d/pmon.logrotate
+   /usr/local/etc/mtc.conf
+   /usr/local/etc/mtc.ini
+   /usr/local/etc/mtc/fsmond.conf
+   /usr/local/etc/mtc/hostwd.conf
+   /usr/local/etc/mtc/hwmond.conf
+   /usr/local/etc/mtc/lmond.conf
+   /usr/local/etc/mtc/pmond.conf
+   /usr/local/etc/pmon.d/acpid.conf
+   /usr/local/etc/pmon.d/fsmon.conf
+   /usr/local/etc/pmon.d/hbsClient.conf
+   /usr/local/etc/pmon.d/lmon.conf
+   /usr/local/etc/pmon.d/mtcClient.conf
+   /usr/local/etc/pmon.d/mtcalarm.conf
+   /usr/local/etc/pmon.d/mtclogd.conf
+   /usr/local/etc/pmon.d/nslcd.conf
+   /usr/local/etc/pmon.d/sshd.conf
+   /usr/local/etc/pmon.d/syslog-ng.conf
+   /usr/local/etc/services.d/controller/mtcTest
+   /usr/local/etc/services.d/storage/mtcTest
+   /usr/local/etc/services.d/worker/mtcTest
+   /usr/local/sbin/dmemchk.sh
+   /usr/local/sbin/pmon-restart
+   /usr/local/sbin/pmon-start
+   /usr/local/sbin/pmon-stop
+Child return code was: 1
+EXCEPTION: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/mtce.spec 
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/mockbuild/trace_decorator.py", line 84, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python3.7/site-packages/mockbuild/util.py", line 531, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+mockbuild.exception.Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/mtce.spec 
+LEAVE do --> EXCEPTION RAISED
+

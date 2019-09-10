@@ -1,0 +1,54 @@
+From 4120c96a82f6e40137bd8a862150c8894b4afc87 Mon Sep 17 00:00:00 2001
+From: "chen.dq" <chen.dq@neusoft.com>
+Date: Fri, 30 Aug 2019 03:31:02 +0000
+Subject: [PATCH mtce-storage] mtce-storage: Autospec creation for version 1.0
+
+---
+ install_append    | 2 +-
+ mtce-storage.spec | 9 +++++----
+ release           | 2 +-
+ requires_add      | 1 +
+ 4 files changed, 8 insertions(+), 6 deletions(-)
+
+diff --git a/install_append b/install_append
+index 8c9eb94..471d1b3 100644
+--- a/install_append
++++ b/install_append
+@@ -1,2 +1,2 @@
+ %post
+-/bin/systemctl enable goenabled-storage.service
++systemctl enable goenabled-storage.service
+diff --git a/mtce-storage.spec b/mtce-storage.spec
+index 3543db8..9ad68aa 100644
+--- a/mtce-storage.spec
++++ b/mtce-storage.spec
+@@ -13,6 +13,7 @@ License  : Apache-2.0
+ Requires: mtce-storage-data = %{version}-%{release}
+ Requires: mtce-storage-services = %{version}-%{release}
+ Requires: bash
++Requires: systemd
+ BuildRequires : systemd
+ BuildRequires : systemd-devel
+ Patch1: 0001-change-sysconfig-dir.patch
+@@ -67,7 +68,7 @@ rm -rf %{buildroot}
+ make install buildroot=%{buildroot} _sysconfdir=%{_sysconfdir} _unitdir=%{_unitdir} _datarootdir=%{_datarootdir}
+ ## install_append content
+ %post
+-/bin/systemctl enable goenabled-storage.service
++systemctl enable goenabled-storage.service
+ ## install_append end
+ 
+ %files
+diff --git a/requires_add b/requires_add
+index 415e404..4ae5edf 100644
+--- a/requires_add
++++ b/requires_add
+@@ -2,3 +2,4 @@
+ # picked up automatically. One name per line, no whitespace.
+ bash
+ #/bin/systemctl
++systemd
+-- 
+2.23.0
+
+

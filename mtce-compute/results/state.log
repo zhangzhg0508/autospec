@@ -1,0 +1,37 @@
+2019-08-30 03:26:02,614 - Mock Version: 1.2.14
+2019-08-30 03:26:02,828 - Start: dnf update
+2019-08-30 03:26:16,165 - Finish: dnf update
+2019-08-30 03:26:16,171 - Finish: chroot init
+2019-08-30 03:26:16,174 - Start: buildsrpm
+2019-08-30 03:26:16,207 - Start: rpmbuild -bs
+2019-08-30 03:26:16,239 - Finish: rpmbuild -bs
+2019-08-30 03:26:16,241 - Finish: buildsrpm
+2019-08-30 03:26:16,242 - Finish: run
+2019-08-30 03:26:20,188 - Mock Version: 1.2.14
+2019-08-30 03:26:20,667 - Start: dnf update
+2019-08-30 03:26:32,983 - Finish: dnf update
+2019-08-30 03:26:32,989 - Finish: chroot init
+2019-08-30 03:26:32,991 - Start: build phase for mtce-compute-1.0-5.src.rpm
+2019-08-30 03:26:32,993 - Start: build setup for mtce-compute-1.0-5.src.rpm
+2019-08-30 03:26:34,073 - Finish: build setup for mtce-compute-1.0-5.src.rpm
+2019-08-30 03:26:34,073 - Start: rpmbuild mtce-compute-1.0-5.src.rpm
+2019-08-30 03:26:38,102 - Mock Version: 1.2.14
+2019-08-30 03:26:38,337 - Start: dnf update
+2019-08-30 03:26:51,012 - Finish: dnf update
+2019-08-30 03:26:51,018 - Finish: chroot init
+2019-08-30 03:26:51,021 - Start: buildsrpm
+2019-08-30 03:26:51,032 - Start: rpmbuild -bs
+2019-08-30 03:26:51,066 - Finish: rpmbuild -bs
+2019-08-30 03:26:51,068 - Finish: buildsrpm
+2019-08-30 03:26:51,068 - Finish: run
+2019-08-30 03:26:55,136 - Mock Version: 1.2.14
+2019-08-30 03:26:55,442 - Start: dnf update
+2019-08-30 03:27:08,154 - Finish: dnf update
+2019-08-30 03:27:08,160 - Finish: chroot init
+2019-08-30 03:27:08,162 - Start: build phase for mtce-compute-1.0-5.src.rpm
+2019-08-30 03:27:08,165 - Start: build setup for mtce-compute-1.0-5.src.rpm
+2019-08-30 03:27:09,303 - Finish: build setup for mtce-compute-1.0-5.src.rpm
+2019-08-30 03:27:09,303 - Start: rpmbuild mtce-compute-1.0-5.src.rpm
+2019-08-30 03:27:09,550 - Finish: rpmbuild mtce-compute-1.0-5.src.rpm
+2019-08-30 03:27:09,552 - Finish: build phase for mtce-compute-1.0-5.src.rpm
+2019-08-30 03:27:09,553 - Finish: run

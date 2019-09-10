@@ -1,0 +1,40 @@
+From 5160804370982c826e7326e4d75481959eed00f7 Mon Sep 17 00:00:00 2001
+From: "chen.dq" <chen.dq@neusoft.com>
+Date: Thu, 5 Sep 2019 01:54:52 +0000
+Subject: [PATCH mtce] mtce: Autospec creation for version 1.0
+
+---
+ mtce.spec    | 7 ++++---
+ release      | 2 +-
+ requires_add | 2 +-
+ 3 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/mtce.spec b/mtce.spec
+index 2cc368c..28a0783 100644
+--- a/mtce.spec
++++ b/mtce.spec
+@@ -18,6 +18,7 @@ Requires: /bin/bash
+ Requires: /bin/sh
+ Requires: /usr/bin/expect
+ Requires: /usr/bin/ipmitool
++Requires: dpkg
+ Requires: expect
+ Requires: fm-common >= 1.0
+ Requires: libamon.so.1()(64bit)
+diff --git a/requires_add b/requires_add
+index 70e8089..6667d4a 100644
+--- a/requires_add
++++ b/requires_add
+@@ -3,7 +3,7 @@
+ util-linux
+ /bin/bash
+ systemd
+-#dpkg
++dpkg
+ time
+ libevent-2.1.so.6()(64bit)
+ expect
+-- 
+2.23.0
+
+

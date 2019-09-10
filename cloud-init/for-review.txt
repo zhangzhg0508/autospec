@@ -1,0 +1,72 @@
+From aa3d42e07e0f7ad0894ab121257bb1711e7ad5ca Mon Sep 17 00:00:00 2001
+From: "chen.dq" <chen.dq@neusoft.com>
+Date: Wed, 4 Sep 2019 02:02:41 +0000
+Subject: [PATCH cloud-init] cloud-init: Autospec creation for version 0.7.9
+
+---
+ cloud-init.spec | 18 +++++++++---------
+ release         |  2 +-
+ requires_add    | 15 ++++++++-------
+ 3 files changed, 18 insertions(+), 17 deletions(-)
+
+diff --git a/cloud-init.spec b/cloud-init.spec
+index 216e1d1..3ae0ec8 100644
+--- a/cloud-init.spec
++++ b/cloud-init.spec
+@@ -16,19 +16,19 @@ Requires: cloud-init-python = %{version}-%{release}
+ Requires: cloud-init-python3 = %{version}-%{release}
+ Requires: cloud-init-services = %{version}-%{release}
+ Requires: PyYAML
++Requires: configobj
+ Requires: dmidecode
+ Requires: e2fsprogs
+ Requires: iproute2
++Requires: jinja2
++Requires: jsonpatch
+ Requires: net-tools
++Requires: prettytable
+ Requires: procps
+ Requires: pyserial
+-Requires: python-configobj
+-Requires: python-jinja2
+-Requires: python-jsonpatch
+-Requires: python-prettytable
+-Requires: python-requests
+-Requires: python-setuptools
+-Requires: shadow-utils
++Requires: requests
++Requires: setuptools
++Requires: shadow
+ Requires: systemd
+ BuildRequires : buildreq-distutils3
+ BuildRequires : git
+diff --git a/requires_add b/requires_add
+index 81dbc91..7b2edff 100644
+--- a/requires_add
++++ b/requires_add
+@@ -7,13 +7,14 @@ iproute2
+ net-tools
+ #policycoreutils-python
+ procps
+-python-configobj
+-python-jinja2
+-python-jsonpatch
+-python-prettytable
+-python-requests
+-python-setuptools
++configobj
++jinja2
++jsonpatch
++prettytable
++requests
++setuptools
+ PyYAML
+ pyserial
+-shadow-utils
++#shadow-utils
++shadow
+ systemd
+-- 
+2.23.0
+
+

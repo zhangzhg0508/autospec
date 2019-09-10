@@ -1,0 +1,37 @@
+2019-09-05 01:58:05,403 - Mock Version: 1.2.14
+2019-09-05 01:58:05,651 - Start: dnf update
+2019-09-05 01:58:19,192 - Finish: dnf update
+2019-09-05 01:58:19,198 - Finish: chroot init
+2019-09-05 01:58:19,201 - Start: buildsrpm
+2019-09-05 01:58:19,252 - Start: rpmbuild -bs
+2019-09-05 01:58:19,287 - Finish: rpmbuild -bs
+2019-09-05 01:58:19,288 - Finish: buildsrpm
+2019-09-05 01:58:19,289 - Finish: run
+2019-09-05 01:58:23,337 - Mock Version: 1.2.14
+2019-09-05 01:58:23,551 - Start: dnf update
+2019-09-05 01:58:35,519 - Finish: dnf update
+2019-09-05 01:58:35,525 - Finish: chroot init
+2019-09-05 01:58:35,527 - Start: build phase for mtce-guest-1.0-10.src.rpm
+2019-09-05 01:58:35,529 - Start: build setup for mtce-guest-1.0-10.src.rpm
+2019-09-05 01:58:37,121 - Finish: build setup for mtce-guest-1.0-10.src.rpm
+2019-09-05 01:58:37,121 - Start: rpmbuild mtce-guest-1.0-10.src.rpm
+2019-09-05 01:58:42,814 - Mock Version: 1.2.14
+2019-09-05 01:58:43,056 - Start: dnf update
+2019-09-05 01:58:55,210 - Finish: dnf update
+2019-09-05 01:58:55,216 - Finish: chroot init
+2019-09-05 01:58:55,219 - Start: buildsrpm
+2019-09-05 01:58:55,234 - Start: rpmbuild -bs
+2019-09-05 01:58:55,268 - Finish: rpmbuild -bs
+2019-09-05 01:58:55,270 - Finish: buildsrpm
+2019-09-05 01:58:55,270 - Finish: run
+2019-09-05 01:58:59,037 - Mock Version: 1.2.14
+2019-09-05 01:58:59,262 - Start: dnf update
+2019-09-05 01:59:11,377 - Finish: dnf update
+2019-09-05 01:59:11,383 - Finish: chroot init
+2019-09-05 01:59:11,385 - Start: build phase for mtce-guest-1.0-10.src.rpm
+2019-09-05 01:59:11,387 - Start: build setup for mtce-guest-1.0-10.src.rpm
+2019-09-05 01:59:12,935 - Finish: build setup for mtce-guest-1.0-10.src.rpm
+2019-09-05 01:59:12,935 - Start: rpmbuild mtce-guest-1.0-10.src.rpm
+2019-09-05 01:59:14,636 - Finish: rpmbuild mtce-guest-1.0-10.src.rpm
+2019-09-05 01:59:14,637 - Finish: build phase for mtce-guest-1.0-10.src.rpm
+2019-09-05 01:59:14,638 - Finish: run

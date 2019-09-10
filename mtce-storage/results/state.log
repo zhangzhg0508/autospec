@@ -1,0 +1,37 @@
+2019-08-30 03:29:52,890 - Mock Version: 1.2.14
+2019-08-30 03:29:53,128 - Start: dnf update
+2019-08-30 03:30:06,459 - Finish: dnf update
+2019-08-30 03:30:06,469 - Finish: chroot init
+2019-08-30 03:30:06,473 - Start: buildsrpm
+2019-08-30 03:30:06,524 - Start: rpmbuild -bs
+2019-08-30 03:30:06,559 - Finish: rpmbuild -bs
+2019-08-30 03:30:06,560 - Finish: buildsrpm
+2019-08-30 03:30:06,561 - Finish: run
+2019-08-30 03:30:10,611 - Mock Version: 1.2.14
+2019-08-30 03:30:10,880 - Start: dnf update
+2019-08-30 03:30:23,423 - Finish: dnf update
+2019-08-30 03:30:23,429 - Finish: chroot init
+2019-08-30 03:30:23,431 - Start: build phase for mtce-storage-1.0-9.src.rpm
+2019-08-30 03:30:23,433 - Start: build setup for mtce-storage-1.0-9.src.rpm
+2019-08-30 03:30:24,501 - Finish: build setup for mtce-storage-1.0-9.src.rpm
+2019-08-30 03:30:24,501 - Start: rpmbuild mtce-storage-1.0-9.src.rpm
+2019-08-30 03:30:28,862 - Mock Version: 1.2.14
+2019-08-30 03:30:29,095 - Start: dnf update
+2019-08-30 03:30:42,246 - Finish: dnf update
+2019-08-30 03:30:42,252 - Finish: chroot init
+2019-08-30 03:30:42,256 - Start: buildsrpm
+2019-08-30 03:30:42,270 - Start: rpmbuild -bs
+2019-08-30 03:30:42,304 - Finish: rpmbuild -bs
+2019-08-30 03:30:42,306 - Finish: buildsrpm
+2019-08-30 03:30:42,307 - Finish: run
+2019-08-30 03:30:46,222 - Mock Version: 1.2.14
+2019-08-30 03:30:46,526 - Start: dnf update
+2019-08-30 03:31:00,473 - Finish: dnf update
+2019-08-30 03:31:00,479 - Finish: chroot init
+2019-08-30 03:31:00,481 - Start: build phase for mtce-storage-1.0-9.src.rpm
+2019-08-30 03:31:00,484 - Start: build setup for mtce-storage-1.0-9.src.rpm
+2019-08-30 03:31:01,577 - Finish: build setup for mtce-storage-1.0-9.src.rpm
+2019-08-30 03:31:01,577 - Start: rpmbuild mtce-storage-1.0-9.src.rpm
+2019-08-30 03:31:01,784 - Finish: rpmbuild mtce-storage-1.0-9.src.rpm
+2019-08-30 03:31:01,786 - Finish: build phase for mtce-storage-1.0-9.src.rpm
+2019-08-30 03:31:01,786 - Finish: run

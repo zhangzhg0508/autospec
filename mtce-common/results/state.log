@@ -1,0 +1,22 @@
+2019-09-05 01:48:45,483 - Mock Version: 1.2.14
+2019-09-05 01:48:45,572 - Start: dnf install
+2019-09-05 01:48:54,439 - Finish: dnf install
+2019-09-05 01:48:54,778 - Start: creating cache
+2019-09-05 01:49:00,824 - Finish: creating cache
+2019-09-05 01:49:00,825 - Finish: chroot init
+2019-09-05 01:49:00,857 - Start: buildsrpm
+2019-09-05 01:49:00,888 - Start: rpmbuild -bs
+2019-09-05 01:49:00,923 - Finish: rpmbuild -bs
+2019-09-05 01:49:00,924 - Finish: buildsrpm
+2019-09-05 01:49:00,925 - Finish: run
+2019-09-05 01:49:04,879 - Mock Version: 1.2.14
+2019-09-05 01:49:05,092 - Start: dnf update
+2019-09-05 01:49:17,520 - Finish: dnf update
+2019-09-05 01:49:17,526 - Finish: chroot init
+2019-09-05 01:49:17,528 - Start: build phase for mtce-common-1.0-32.src.rpm
+2019-09-05 01:49:17,530 - Start: build setup for mtce-common-1.0-32.src.rpm
+2019-09-05 01:49:18,964 - Finish: build setup for mtce-common-1.0-32.src.rpm
+2019-09-05 01:49:18,964 - Start: rpmbuild mtce-common-1.0-32.src.rpm
+2019-09-05 01:49:38,864 - Finish: rpmbuild mtce-common-1.0-32.src.rpm
+2019-09-05 01:49:38,866 - Finish: build phase for mtce-common-1.0-32.src.rpm
+2019-09-05 01:49:38,867 - Finish: run

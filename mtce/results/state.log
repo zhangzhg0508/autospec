@@ -1,0 +1,39 @@
+2019-09-05 01:53:26,675 - Mock Version: 1.2.14
+2019-09-05 01:53:26,765 - Start: dnf install
+2019-09-05 01:53:36,012 - Finish: dnf install
+2019-09-05 01:53:36,336 - Start: creating cache
+2019-09-05 01:53:42,768 - Finish: creating cache
+2019-09-05 01:53:42,769 - Finish: chroot init
+2019-09-05 01:53:42,800 - Start: buildsrpm
+2019-09-05 01:53:42,819 - Start: rpmbuild -bs
+2019-09-05 01:53:42,855 - Finish: rpmbuild -bs
+2019-09-05 01:53:42,857 - Finish: buildsrpm
+2019-09-05 01:53:42,858 - Finish: run
+2019-09-05 01:53:46,706 - Mock Version: 1.2.14
+2019-09-05 01:53:46,942 - Start: dnf update
+2019-09-05 01:53:59,303 - Finish: dnf update
+2019-09-05 01:53:59,309 - Finish: chroot init
+2019-09-05 01:53:59,311 - Start: build phase for mtce-1.0-17.src.rpm
+2019-09-05 01:53:59,313 - Start: build setup for mtce-1.0-17.src.rpm
+2019-09-05 01:54:01,208 - Finish: build setup for mtce-1.0-17.src.rpm
+2019-09-05 01:54:01,208 - Start: rpmbuild mtce-1.0-17.src.rpm
+2019-09-05 01:54:12,153 - Mock Version: 1.2.14
+2019-09-05 01:54:12,368 - Start: dnf update
+2019-09-05 01:54:24,694 - Finish: dnf update
+2019-09-05 01:54:24,700 - Finish: chroot init
+2019-09-05 01:54:24,703 - Start: buildsrpm
+2019-09-05 01:54:24,723 - Start: rpmbuild -bs
+2019-09-05 01:54:24,760 - Finish: rpmbuild -bs
+2019-09-05 01:54:24,762 - Finish: buildsrpm
+2019-09-05 01:54:24,763 - Finish: run
+2019-09-05 01:54:28,473 - Mock Version: 1.2.14
+2019-09-05 01:54:28,798 - Start: dnf update
+2019-09-05 01:54:40,963 - Finish: dnf update
+2019-09-05 01:54:40,969 - Finish: chroot init
+2019-09-05 01:54:40,970 - Start: build phase for mtce-1.0-17.src.rpm
+2019-09-05 01:54:40,973 - Start: build setup for mtce-1.0-17.src.rpm
+2019-09-05 01:54:42,862 - Finish: build setup for mtce-1.0-17.src.rpm
+2019-09-05 01:54:42,862 - Start: rpmbuild mtce-1.0-17.src.rpm
+2019-09-05 01:54:50,863 - Finish: rpmbuild mtce-1.0-17.src.rpm
+2019-09-05 01:54:50,864 - Finish: build phase for mtce-1.0-17.src.rpm
+2019-09-05 01:54:50,865 - Finish: run

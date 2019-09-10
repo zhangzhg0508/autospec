@@ -1,0 +1,47 @@
+From 944163e37f9b91268c46a2e0a1e3a769053146a8 Mon Sep 17 00:00:00 2001
+From: "chen.dq" <chen.dq@neusoft.com>
+Date: Thu, 5 Sep 2019 01:59:15 +0000
+Subject: [PATCH mtce-guest] mtce-guest: Autospec creation for version 1.0
+
+---
+ mtce-guest.spec | 7 ++++---
+ release         | 2 +-
+ requires_add    | 4 ++--
+ 3 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/mtce-guest.spec b/mtce-guest.spec
+index 62e70b3..25e2416 100644
+--- a/mtce-guest.spec
++++ b/mtce-guest.spec
+@@ -14,6 +14,7 @@ License  : Apache-2.0
+ Requires: mtce-guest-services = %{version}-%{release}
+ Requires: /bin/bash
+ Requires: /bin/sh
++Requires: dpkg
+ Requires: fm-common >= 1.0
+ Requires: libc.so.6()(64bit)
+ Requires: libc.so.6(GLIBC_2.14)(64bit)
+diff --git a/requires_add b/requires_add
+index 155de4b..1dcf8fe 100644
+--- a/requires_add
++++ b/requires_add
+@@ -1,6 +1,6 @@
+ # This file contains additional runtime requirements that did not get
+ # picked up automatically. One name per line, no whitespace.
+-#dpkg
++dpkg
+ time
+ libjson-c.so.4()(64bit)
+ libstdc++.so.6(CXXABI_1.3)(64bit)
+@@ -30,6 +30,6 @@ libstdc++.so.6(GLIBCXX_3.4.15)(64bit)
+ libpthread.so.0()(64bit)
+ util-linux
+ /bin/bash
+-#Requires: /bin/systemctl
++#/bin/systemctl
+ libc.so.6(GLIBC_2.4)(64bit)
+ systemd
+-- 
+2.23.0
+
+

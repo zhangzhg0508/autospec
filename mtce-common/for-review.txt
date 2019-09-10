@@ -1,0 +1,40 @@
+From be6ca6311a91f72e8a95db8b1d71b9ccaa9141be Mon Sep 17 00:00:00 2001
+From: "chen.dq" <chen.dq@neusoft.com>
+Date: Thu, 5 Sep 2019 01:46:31 +0000
+Subject: [PATCH mtce-common] mtce-common: Autospec creation for version 1.0
+
+---
+ mtce-common.spec | 7 ++++---
+ release          | 2 +-
+ requires_add     | 2 +-
+ 3 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/mtce-common.spec b/mtce-common.spec
+index a7f0187..949e502 100644
+--- a/mtce-common.spec
++++ b/mtce-common.spec
+@@ -14,6 +14,7 @@ License  : Apache-2.0
+ Requires: /bin/bash
+ Requires: /bin/sh
+ Requires: /usr/bin/expect
++Requires: dpkg
+ Requires: expect
+ Requires: fm-common >= 1.0
+ Requires: libc.so.6()(64bit)
+diff --git a/requires_add b/requires_add
+index 6c56fda..99c61f4 100644
+--- a/requires_add
++++ b/requires_add
+@@ -4,7 +4,7 @@ util-linux
+ /bin/bash
+ #/bin/systemctl
+ systemd
+-#dpkg
++dpkg
+ time
+ libevent-2.1.so.6()(64bit)
+ expect
+-- 
+2.23.0
+
+

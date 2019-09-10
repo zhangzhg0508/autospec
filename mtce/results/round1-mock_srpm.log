@@ -1,0 +1,32 @@
+INFO: mock.py version 1.2.14 starting (python version = 3.7.4)...
+Start: init plugins
+INFO: selinux disabled
+Finish: init plugins
+Start: run
+INFO: Start(mtce.spec)  Config(clear)
+Start: clean chroot
+Finish: clean chroot
+Start: chroot init
+INFO: calling preinit hooks
+INFO: enabled root cache
+INFO: /home/clear/clearlinux/repo/clear.cfg newer than root cache; cache will be rebuilt
+INFO: enabled dnf cache
+Start: cleaning dnf metadata
+Finish: cleaning dnf metadata
+Mock Version: 1.2.14
+INFO: Mock Version: 1.2.14
+WARNING: File /etc/hosts not present. It is not copied into the chroot.
+WARNING: File /etc/localtime not present. It is not copied into the chroot.
+Start: dnf install
+Finish: dnf install
+Start: creating cache
+Finish: creating cache
+Finish: chroot init
+INFO: Installed packages:
+Start: buildsrpm
+Start: rpmbuild -bs
+Finish: rpmbuild -bs
+Finish: buildsrpm
+INFO: Done(mtce.spec) Config(clear) 0 minutes 17 seconds
+INFO: Results and/or logs in: results/
+Finish: run

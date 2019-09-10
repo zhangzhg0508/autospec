@@ -1,0 +1,37 @@
+2019-09-04 06:18:52,333 - Mock Version: 1.2.14
+2019-09-04 06:18:52,606 - Start: dnf update
+2019-09-04 06:19:04,851 - Finish: dnf update
+2019-09-04 06:19:04,857 - Finish: chroot init
+2019-09-04 06:19:04,860 - Start: buildsrpm
+2019-09-04 06:19:04,923 - Start: rpmbuild -bs
+2019-09-04 06:19:04,956 - Finish: rpmbuild -bs
+2019-09-04 06:19:04,957 - Finish: buildsrpm
+2019-09-04 06:19:04,958 - Finish: run
+2019-09-04 06:19:08,741 - Mock Version: 1.2.14
+2019-09-04 06:19:08,987 - Start: dnf update
+2019-09-04 06:19:21,018 - Finish: dnf update
+2019-09-04 06:19:21,024 - Finish: chroot init
+2019-09-04 06:19:21,025 - Start: build phase for mtce-control-1.0-9.src.rpm
+2019-09-04 06:19:21,028 - Start: build setup for mtce-control-1.0-9.src.rpm
+2019-09-04 06:19:22,089 - Finish: build setup for mtce-control-1.0-9.src.rpm
+2019-09-04 06:19:22,089 - Start: rpmbuild mtce-control-1.0-9.src.rpm
+2019-09-04 06:19:26,144 - Mock Version: 1.2.14
+2019-09-04 06:19:26,417 - Start: dnf update
+2019-09-04 06:19:38,408 - Finish: dnf update
+2019-09-04 06:19:38,414 - Finish: chroot init
+2019-09-04 06:19:38,417 - Start: buildsrpm
+2019-09-04 06:19:38,430 - Start: rpmbuild -bs
+2019-09-04 06:19:38,464 - Finish: rpmbuild -bs
+2019-09-04 06:19:38,465 - Finish: buildsrpm
+2019-09-04 06:19:38,466 - Finish: run
+2019-09-04 06:19:42,203 - Mock Version: 1.2.14
+2019-09-04 06:19:42,477 - Start: dnf update
+2019-09-04 06:19:54,669 - Finish: dnf update
+2019-09-04 06:19:54,675 - Finish: chroot init
+2019-09-04 06:19:54,676 - Start: build phase for mtce-control-1.0-9.src.rpm
+2019-09-04 06:19:54,679 - Start: build setup for mtce-control-1.0-9.src.rpm
+2019-09-04 06:19:55,747 - Finish: build setup for mtce-control-1.0-9.src.rpm
+2019-09-04 06:19:55,747 - Start: rpmbuild mtce-control-1.0-9.src.rpm
+2019-09-04 06:19:55,957 - Finish: rpmbuild mtce-control-1.0-9.src.rpm
+2019-09-04 06:19:55,958 - Finish: build phase for mtce-control-1.0-9.src.rpm
+2019-09-04 06:19:55,959 - Finish: run

@@ -1,0 +1,45 @@
+From 47efed9c9f0cb4886e72d1939cfed3f3578885f7 Mon Sep 17 00:00:00 2001
+From: "chen.dq" <chen.dq@neusoft.com>
+Date: Wed, 4 Sep 2019 06:19:56 +0000
+Subject: [PATCH mtce-control] mtce-control: Autospec creation for version 1.0
+
+---
+ 0001-change-sysconfig-dir.patch | 20 +++++++++++++++++---
+ mtce-control.spec               |  6 +++---
+ release                         |  2 +-
+ 3 files changed, 21 insertions(+), 7 deletions(-)
+
+diff --git a/0001-change-sysconfig-dir.patch b/0001-change-sysconfig-dir.patch
+index 03170d5..14a0d89 100644
+--- a/0001-change-sysconfig-dir.patch
++++ b/0001-change-sysconfig-dir.patch
+@@ -1,12 +1,26 @@
+-From da85aa211a642c2b3d29a765957318f9df8fb4b0 Mon Sep 17 00:00:00 2001
++From 52bf3bd2902874c8dcdfd33cd24187d1fa064af3 Mon Sep 17 00:00:00 2001
+ From: "chen.dq" <chen.dq@neusoft.com>
+-Date: Mon, 2 Sep 2019 07:59:14 +0000
++Date: Wed, 4 Sep 2019 06:17:53 +0000
+ Subject: [PATCH] change-sysconfig-dir
+ 
+ ---
++ scripts/hbsAgent         | 2 +-
+  scripts/hbsAgent.service | 4 ++--
+- 1 file changed, 2 insertions(+), 2 deletions(-)
++ 2 files changed, 3 insertions(+), 3 deletions(-)
+ 
++diff --git a/scripts/hbsAgent b/scripts/hbsAgent
++index d05177d..2e82da7 100644
++--- a/scripts/hbsAgent
+++++ b/scripts/hbsAgent
++@@ -17,7 +17,7 @@
++ # Short-Description: Heartbeat Agent Daemon
++ ### END INIT INFO
++ 
++-. /etc/init.d/functions
+++. /usr/local/etc/init.d/functions
++ 
++ DAEMON_NAME="hbsAgent"
++ DAEMON="/usr/local/bin/${DAEMON_NAME}"
+ diff --git a/scripts/hbsAgent.service b/scripts/hbsAgent.service
+ index de3cb8d..115dcdf 100644
+ --- a/scripts/hbsAgent.service
