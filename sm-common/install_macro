@@ -1,0 +1,1 @@
+make DEST_DIR=$RPM_BUILD_ROOT BIN_DIR=%{_bindir} UNIT_DIR=%{_unitdir} LIB_DIR=%{_libdir} INC_DIR=%{_includedir} VER=$VER VER_MJR=$MAJOR install

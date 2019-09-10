@@ -1,0 +1,72 @@
+From cb055a598ae904fbad860b1785ae4ad479607711 Mon Sep 17 00:00:00 2001
+From: Mingyuan Qi <mingyuan.qi@intel.com>
+Date: Fri, 7 Sep 2018 19:59:33 +0800
+Subject: [PATCH 2/2] change sysconfig dir
+
+change sysconfig dir to /usr/local/etc
+---
+ scripts/sm-eru.conf         | 2 +-
+ scripts/sm-eru.service      | 4 ++--
+ scripts/sm-watchdog.conf    | 2 +-
+ scripts/sm-watchdog.service | 4 ++--
+ 4 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/scripts/sm-eru.conf b/scripts/sm-eru.conf
+index 3daf316..42e6a48 100644
+--- a/scripts/sm-eru.conf
++++ b/scripts/sm-eru.conf
+@@ -6,7 +6,7 @@
+ [process]
+ process  = sm-eru
+ pidfile  = /var/run/sm-eru.pid
+-script   = /etc/init.d/sm-eru
++script   = /usr/local/etc/init.d/sm-eru
+ style    = lsb            ; lsb
+ severity = minor          ; minor, major, critical
+ restarts = 3              ; restarts before error assertion
+diff --git a/scripts/sm-eru.service b/scripts/sm-eru.service
+index 0c35ffe..b3fe032 100644
+--- a/scripts/sm-eru.service
++++ b/scripts/sm-eru.service
+@@ -7,8 +7,8 @@ Before=pmon.service
+ Type=forking
+ RemainAfterExit=yes
+ User=root
+-ExecStart=/etc/init.d/sm-eru start
+-ExecStop=/etc/init.d/sm-eru stop
++ExecStart=/usr/local/etc/init.d/sm-eru start
++ExecStop=/usr/local/etc/init.d/sm-eru stop
+ PIDFile=/var/run/sm-eru.pid
+ 
+ [Install]
+diff --git a/scripts/sm-watchdog.conf b/scripts/sm-watchdog.conf
+index 8ae37ad..28a66c3 100644
+--- a/scripts/sm-watchdog.conf
++++ b/scripts/sm-watchdog.conf
+@@ -6,7 +6,7 @@
+ [process]
+ process  = sm-watchdog
+ pidfile  = /var/run/sm-watchdog.pid
+-script   = /etc/init.d/sm-watchdog
++script   = /usr/local/etc/init.d/sm-watchdog
+ style    = lsb            ; lsb
+ severity = major          ; minor, major, critical
+ restarts = 3              ; restarts before error assertion
+diff --git a/scripts/sm-watchdog.service b/scripts/sm-watchdog.service
+index 5fd147a..edc583a 100644
+--- a/scripts/sm-watchdog.service
++++ b/scripts/sm-watchdog.service
+@@ -7,8 +7,8 @@ Before=sm.service pmon.service
+ Type=forking
+ RemainAfterExit=yes
+ User=root
+-ExecStart=/etc/init.d/sm-watchdog start
+-ExecStop=/etc/init.d/sm-watchdog stop
++ExecStart=/usr/local/etc/init.d/sm-watchdog start
++ExecStop=/usr/local/etc/init.d/sm-watchdog stop
+ PIDFile=/var/run/sm-watchdog.pid
+ 
+ [Install]
+-- 
+2.18.0
+

@@ -1,0 +1,5 @@
+/usr/local/etc/init.d/sm-eru
+/usr/local/etc/pmon.d/sm-eru.conf
+/usr/bin/sm-eru
+/usr/bin/sm-eru-dump
+/usr/lib/systemd/system/sm-eru.service
