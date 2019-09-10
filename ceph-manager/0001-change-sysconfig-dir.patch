@@ -1,0 +1,29 @@
+From c036ff22e83e64df5b546a84d4aa49be205b5f18 Mon Sep 17 00:00:00 2001
+From: "chen.dq" <chen.dq@neusoft.com>
+Date: Thu, 29 Aug 2019 02:06:51 +0000
+Subject: [PATCH] change-sysconfig-dir
+
+---
+ files/ceph-manager.service | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/files/ceph-manager.service b/files/ceph-manager.service
+index e8bf26c..a20562b 100644
+--- a/files/ceph-manager.service
++++ b/files/ceph-manager.service
+@@ -7,9 +7,9 @@ Type=forking
+ Restart=no
+ KillMode=process
+ RemainAfterExit=yes
+-ExecStart=/etc/rc.d/init.d/ceph-manager start
+-ExecStop=/etc/rc.d/init.d/ceph-manager stop
+-ExecReload=/etc/rc.d/init.d/ceph-manager reload
++ExecStart=/usr/local/etc/rc.d/init.d/ceph-manager start
++ExecStop=/usr/local/etc/rc.d/init.d/ceph-manager stop
++ExecReload=/usr/local/etc/rc.d/init.d/ceph-manager reload
+ PIDFile=/var/run/ceph/ceph-manager.pid
+ 
+ [Install]
+-- 
+2.23.0
+

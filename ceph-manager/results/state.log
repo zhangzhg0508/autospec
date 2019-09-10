@@ -1,0 +1,41 @@
+2019-08-29 03:32:12,640 - Mock Version: 1.2.14
+2019-08-29 03:32:12,933 - Start: dnf update
+2019-08-29 03:32:28,454 - Finish: dnf update
+2019-08-29 03:32:28,460 - Finish: chroot init
+2019-08-29 03:32:28,464 - Start: buildsrpm
+2019-08-29 03:32:28,488 - Start: rpmbuild -bs
+2019-08-29 03:32:28,528 - Finish: rpmbuild -bs
+2019-08-29 03:32:28,530 - Finish: buildsrpm
+2019-08-29 03:32:28,531 - Finish: run
+2019-08-29 03:32:33,315 - Mock Version: 1.2.14
+2019-08-29 03:32:33,581 - Start: dnf update
+2019-08-29 03:32:47,101 - Finish: dnf update
+2019-08-29 03:32:47,116 - Finish: chroot init
+2019-08-29 03:32:47,117 - Start: build phase for ceph-manager-1.0-3.src.rpm
+2019-08-29 03:32:47,120 - Start: build setup for ceph-manager-1.0-3.src.rpm
+2019-08-29 03:32:48,971 - Finish: build setup for ceph-manager-1.0-3.src.rpm
+2019-08-29 03:32:48,971 - Start: rpmbuild ceph-manager-1.0-3.src.rpm
+2019-08-29 03:32:55,612 - Mock Version: 1.2.14
+2019-08-29 03:32:55,865 - Start: dnf update
+2019-08-29 03:33:07,982 - Finish: dnf update
+2019-08-29 03:33:07,988 - Finish: chroot init
+2019-08-29 03:33:07,991 - Start: buildsrpm
+2019-08-29 03:33:08,001 - Start: rpmbuild -bs
+2019-08-29 03:33:08,046 - Finish: rpmbuild -bs
+2019-08-29 03:33:08,048 - Finish: buildsrpm
+2019-08-29 03:33:08,049 - Finish: run
+2019-08-29 03:33:12,363 - Mock Version: 1.2.14
+2019-08-29 03:33:12,643 - Start: dnf update
+2019-08-29 03:33:25,053 - Finish: dnf update
+2019-08-29 03:33:25,056 - Start: Waiting for rootcache lock
+2019-08-29 03:33:27,265 - Finish: Waiting for rootcache lock
+2019-08-29 03:33:27,272 - Finish: chroot init
+2019-08-29 03:33:27,275 - Start: build phase for ceph-manager-1.0-3.src.rpm
+2019-08-29 03:33:27,281 - Start: build setup for ceph-manager-1.0-3.src.rpm
+2019-08-29 03:33:28,076 - Start: Waiting for yumcache lock
+2019-08-29 03:33:40,165 - Finish: Waiting for yumcache lock
+2019-08-29 03:33:41,432 - Finish: build setup for ceph-manager-1.0-3.src.rpm
+2019-08-29 03:33:41,432 - Start: rpmbuild ceph-manager-1.0-3.src.rpm
+2019-08-29 03:33:43,109 - Finish: rpmbuild ceph-manager-1.0-3.src.rpm
+2019-08-29 03:33:43,111 - Finish: build phase for ceph-manager-1.0-3.src.rpm
+2019-08-29 03:33:43,112 - Finish: run
