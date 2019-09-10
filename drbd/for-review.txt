@@ -1,0 +1,108 @@
+From 45f805b570c5aa138ddaa70527a62f07d8773933 Mon Sep 17 00:00:00 2001
+From: "zhiguo.zhang" <zhiguox.zhang@intel.com>
+Date: Tue, 3 Sep 2019 03:51:30 +0000
+Subject: [PATCH drbd] drbd: Autospec creation for version 8.4.3
+
+---
+ 0010-Maor-minor-function-not-find.patch | 12 ++++++++++++
+ drbd-8.4.3/user/legacy/drbdadm_adjust.c |  1 +
+ drbd.spec                               | 26 ++++++++++++++++++++++---
+ release                                 |  2 +-
+ series                                  | 12 ++++++++++++
+ upstream                                |  2 +-
+ 6 files changed, 50 insertions(+), 5 deletions(-)
+ create mode 100644 0010-Maor-minor-function-not-find.patch
+ create mode 100644 series
+
+diff --git a/0010-Maor-minor-function-not-find.patch b/0010-Maor-minor-function-not-find.patch
+new file mode 100644
+index 0000000..ec692f7
+--- /dev/null
++++ b/0010-Maor-minor-function-not-find.patch
+@@ -0,0 +1,12 @@
++diff --git a/user/legacy/drbdadm_adjust.c b/user/legacy/drbdadm_adjust.c
++index c79163c..6990ffb 100644
++--- a/user/legacy/drbdadm_adjust.c
+++++ b/user/legacy/drbdadm_adjust.c
++@@ -27,6 +27,7 @@
++ #include <sys/types.h>
++ #include <sys/stat.h>
++ #include <sys/wait.h>
+++#include <sys/sysmacros.h>
++ #include <unistd.h>
++ #include <fcntl.h>
++ 
+diff --git a/drbd-8.4.3/user/legacy/drbdadm_adjust.c b/drbd-8.4.3/user/legacy/drbdadm_adjust.c
+index c79163c..6990ffb 100644
+--- a/drbd-8.4.3/user/legacy/drbdadm_adjust.c
++++ b/drbd-8.4.3/user/legacy/drbdadm_adjust.c
+@@ -27,6 +27,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/wait.h>
++#include <sys/sysmacros.h>
+ #include <unistd.h>
+ #include <fcntl.h>
+ 
+diff --git a/drbd.spec b/drbd.spec
+index 9de575d..08d1e48 100644
+--- a/drbd.spec
++++ b/drbd.spec
+@@ -16,6 +16,16 @@ Requires: drbd-man = %{version}-%{release}
+ Requires: drbd-services = %{version}-%{release}
+ BuildRequires : flex
+ BuildRequires : libxslt-bin
++Patch1: 0001-skip_wait_con_int_on_simplex.patch
++Patch2: 0002-drbd-conditional-crm-dependency.patch
++Patch3: 0003-drbd_report_condition.patch
++Patch4: 0004-drbdadm-ipaddr-change.patch
++Patch5: 0005-drbd_reconnect_standby_standalone.patch
++Patch6: 0006-avoid-kernel-userspace-version-check.patch
++Patch7: 0007-Update-OCF-to-attempt-connect-in-certain-states.patch
++Patch8: 0008-Increase-short-cmd-timeout-to-15-secs.patch
++Patch9: 0009-Check-for-mounted-device-before-demoting-Primary-DRB.patch
++Patch10: 0010-Maor-minor-function-not-find.patch
+ 
+ %description
+ DRBD
+@@ -51,13 +61,23 @@ services components for the drbd package.
+ 
+ %prep
+ %setup -q -n drbd-8.4.3
++%patch1 -p1
++%patch2 -p1
++%patch3 -p1
++%patch4 -p1
++%patch5 -p1
++%patch6 -p1
++%patch7 -p1
++%patch8 -p1
++%patch9 -p1
++%patch10 -p1
+ 
+ %build
+ export http_proxy=http://127.0.0.1:9/
+ export https_proxy=http://127.0.0.1:9/
+ export no_proxy=localhost,127.0.0.1,0.0.0.0
+ export LANG=C.UTF-8
+ export GCC_IGNORE_WERROR=1
+ export AR=gcc-ar
+ export RANLIB=gcc-ranlib
+diff --git a/series b/series
+new file mode 100644
+index 0000000..61edc11
+--- /dev/null
++++ b/series
+@@ -0,0 +1,12 @@
++# This file contains build requirements that get picked up but are
++# undesirable. One entry per line, no whitespace.
++0001-skip_wait_con_int_on_simplex.patch
++0002-drbd-conditional-crm-dependency.patch
++0003-drbd_report_condition.patch
++0004-drbdadm-ipaddr-change.patch
++0005-drbd_reconnect_standby_standalone.patch
++0006-avoid-kernel-userspace-version-check.patch
++0007-Update-OCF-to-attempt-connect-in-certain-states.patch
++0008-Increase-short-cmd-timeout-to-15-secs.patch
++0009-Check-for-mounted-device-before-demoting-Primary-DRB.patch
++0010-Maor-minor-function-not-find.patch

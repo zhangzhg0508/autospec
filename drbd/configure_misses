@@ -1,0 +1,6 @@
+Configure miss: dpkg-buildpackage
+Configure miss: /etc/gentoo-release
+Configure miss: /etc/redhat-release
+Configure miss: /etc/slackware-version
+Configure miss: /etc/debian_version
+Configure miss: /etc/SuSE-release
