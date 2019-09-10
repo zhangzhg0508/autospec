@@ -1,0 +1,37 @@
+2019-08-21 03:18:00,022 - Mock Version: 1.2.14
+2019-08-21 03:18:00,289 - Start: dnf update
+2019-08-21 03:18:14,075 - Finish: dnf update
+2019-08-21 03:18:14,081 - Finish: chroot init
+2019-08-21 03:18:14,084 - Start: buildsrpm
+2019-08-21 03:18:14,091 - Start: rpmbuild -bs
+2019-08-21 03:18:14,128 - Finish: rpmbuild -bs
+2019-08-21 03:18:14,130 - Finish: buildsrpm
+2019-08-21 03:18:14,130 - Finish: run
+2019-08-21 03:18:18,023 - Mock Version: 1.2.14
+2019-08-21 03:18:18,321 - Start: dnf update
+2019-08-21 03:18:30,830 - Finish: dnf update
+2019-08-21 03:18:30,836 - Finish: chroot init
+2019-08-21 03:18:30,837 - Start: build phase for nfv-plugins-1-1.src.rpm
+2019-08-21 03:18:30,840 - Start: build setup for nfv-plugins-1-1.src.rpm
+2019-08-21 03:18:31,955 - Finish: build setup for nfv-plugins-1-1.src.rpm
+2019-08-21 03:18:31,955 - Start: rpmbuild nfv-plugins-1-1.src.rpm
+2019-08-21 03:18:36,728 - Mock Version: 1.2.14
+2019-08-21 03:18:36,976 - Start: dnf update
+2019-08-21 03:18:49,787 - Finish: dnf update
+2019-08-21 03:18:49,793 - Finish: chroot init
+2019-08-21 03:18:49,796 - Start: buildsrpm
+2019-08-21 03:18:49,801 - Start: rpmbuild -bs
+2019-08-21 03:18:49,837 - Finish: rpmbuild -bs
+2019-08-21 03:18:49,839 - Finish: buildsrpm
+2019-08-21 03:18:49,840 - Finish: run
+2019-08-21 03:18:53,608 - Mock Version: 1.2.14
+2019-08-21 03:18:53,864 - Start: dnf update
+2019-08-21 03:19:06,213 - Finish: dnf update
+2019-08-21 03:19:06,219 - Finish: chroot init
+2019-08-21 03:19:06,221 - Start: build phase for nfv-plugins-1-1.src.rpm
+2019-08-21 03:19:06,223 - Start: build setup for nfv-plugins-1-1.src.rpm
+2019-08-21 03:19:07,351 - Finish: build setup for nfv-plugins-1-1.src.rpm
+2019-08-21 03:19:07,351 - Start: rpmbuild nfv-plugins-1-1.src.rpm
+2019-08-21 03:19:08,845 - Finish: rpmbuild nfv-plugins-1-1.src.rpm
+2019-08-21 03:19:08,847 - Finish: build phase for nfv-plugins-1-1.src.rpm
+2019-08-21 03:19:08,847 - Finish: run
