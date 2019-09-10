@@ -1,0 +1,43 @@
+From 2518fc4426fd8afa99d56b43e6eb569cdce2b3fd Mon Sep 17 00:00:00 2001
+From: "zhiguo.zhang" <zhiguox.zhang@intel.com>
+Date: Thu, 22 Aug 2019 07:04:13 +0000
+Subject: [PATCH cgts-client] cgts-client: Autospec creation for version 1.0
+
+---
+ build_prepend    | 2 +-
+ cgts-client.spec | 7 ++++---
+ release          | 2 +-
+ 3 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/build_prepend b/build_prepend
+index 04764ab..091cc66 100644
+--- a/build_prepend
++++ b/build_prepend
+@@ -1,5 +1,5 @@
+ %define local_bindir /usr/bin/
+-%define local_etc_bash_completiond /etc/bash_completion.d/
++%define local_etc_bash_completiond /usr/local/etc/bash_completion.d/
+ %define pythonroot /usr/lib64/python3.7/site-packages
+ %define debug_package %{nil}
+ export PBR_VERSION=%{version}
+diff --git a/cgts-client.spec b/cgts-client.spec
+index 2f5539a..88a169e 100644
+--- a/cgts-client.spec
++++ b/cgts-client.spec
+@@ -59,7 +59,7 @@ python3 components for the cgts-client package.
+ %build
+ ## build_prepend content
+ %define local_bindir /usr/bin/
+-%define local_etc_bash_completiond /etc/bash_completion.d/
++%define local_etc_bash_completiond /usr/local/etc/bash_completion.d/
+ %define pythonroot /usr/lib64/python3.7/site-packages
+ %define debug_package %{nil}
+ export PBR_VERSION=%{version}
+@@ -103,6 +103,7 @@ install -p -D -m 664 tools/system.bash_completion %{buildroot}%{local_etc_bash_c
+ 
+ %files
+ %defattr(-,root,root,-)
++/usr/local/etc/bash_completion.d/system.bash_completion
+ 
+ %files bin
+ %defattr(-,root,root,-)

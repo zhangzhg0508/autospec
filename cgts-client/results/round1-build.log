@@ -1,0 +1,1924 @@
+Mock Version: 1.2.14
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/cgts-client.spec'], chrootPath='/var/lib/mock/clear-cgts-client/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f9da8f30210>timeout=0uid=1000gid=1000user='mockbuild'printOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/cgts-client.spec'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/cgts-client-1.0-5.src.rpm
+Child return code was: 0
+LEAVE do --> 
+
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/cgts-client.spec '], chrootPath='/var/lib/mock/clear-cgts-client/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f9da8f30210>timeout=0uid=1000gid=1000user='mockbuild'private_network=TrueprintOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/cgts-client.spec '] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.P5wmAO
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
++ rm -rf cgts-client-1.0
++ /usr/bin/gzip -dc /builddir/build/SOURCES/cgts-client-1.0.tar.gz
++ /usr/bin/tar -xf -
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd cgts-client-1.0
++ /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ exit 0
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.vnMeHP
++ umask 022
++ cd /builddir/build/BUILD
++ cd cgts-client-1.0
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CFLAGS
++ http_proxy=http://127.0.0.1:9/
++ export http_proxy
++ https_proxy=http://127.0.0.1:9/
++ export https_proxy
++ ftp_proxy=http://127.0.0.1:9/
++ export ftp_proxy
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export no_proxy
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CXXFLAGS
++ FFLAGS='-g -O3 -feliminate-unused-debug-types  -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -m64 -fasynchronous-unwind-tables -Wp,-D_REENTRANT -ftree-loop-distribute-patterns -Wl,-z -Wl,now -Wl,-z -Wl,relro -malign-data=abi -fno-semantic-interposition -ftree-vectorize  -ftree-loop-vectorize -Wl,--enable-new-dtags '
++ export FFLAGS
++ LD_AS_NEEDED=1
++ export LD_AS_NEEDED
++ PKG_CONFIG_LIBDIR=/usr/lib64/pkgconfig
++ export PKG_CONFIG_LIBDIR
++ PATH=/usr/lib64/ccache/bin:/usr/local/bin:/usr/bin
++ export PATH
++ export PBR_VERSION=1.0
++ PBR_VERSION=1.0
++ export http_proxy=http://127.0.0.1:9/
++ http_proxy=http://127.0.0.1:9/
++ export https_proxy=http://127.0.0.1:9/
++ https_proxy=http://127.0.0.1:9/
++ export no_proxy=localhost,127.0.0.1,0.0.0.0
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export LANG=C.UTF-8
++ LANG=C.UTF-8
++ export SOURCE_DATE_EPOCH=1566457367
++ SOURCE_DATE_EPOCH=1566457367
++ export GCC_IGNORE_WERROR=1
++ GCC_IGNORE_WERROR=1
++ export AR=gcc-ar
++ AR=gcc-ar
++ export RANLIB=gcc-ranlib
++ RANLIB=gcc-ranlib
++ export NM=gcc-nm
++ NM=gcc-nm
++ export 'CFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ export 'FCFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FCFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'FFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'CXXFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ export MAKEFLAGS=-j4
++ MAKEFLAGS=-j4
++ python3 setup.py build
+running build
+running build_py
+creating build
+creating build/lib
+creating build/lib/cgtsclient
+creating build/lib/cgtsclient/openstack
+copying cgtsclient/openstack/__init__.py -> build/lib/cgtsclient/openstack
+creating build/lib/cgtsclient/tests
+copying cgtsclient/tests/test_utils.py -> build/lib/cgtsclient/tests
+copying cgtsclient/tests/__init__.py -> build/lib/cgtsclient/tests
+copying cgtsclient/tests/test_shell.py -> build/lib/cgtsclient/tests
+copying cgtsclient/tests/utils.py -> build/lib/cgtsclient/tests
+copying cgtsclient/exc.py -> build/lib/cgtsclient
+copying cgtsclient/__init__.py -> build/lib/cgtsclient
+copying cgtsclient/shell.py -> build/lib/cgtsclient
+copying cgtsclient/client.py -> build/lib/cgtsclient
+creating build/lib/cgtsclient/openstack/common
+copying cgtsclient/openstack/common/gettextutils.py -> build/lib/cgtsclient/openstack/common
+copying cgtsclient/openstack/common/__init__.py -> build/lib/cgtsclient/openstack/common
+copying cgtsclient/openstack/common/importutils.py -> build/lib/cgtsclient/openstack/common
+creating build/lib/cgtsclient/common
+copying cgtsclient/common/wrapping_formatters.py -> build/lib/cgtsclient/common
+copying cgtsclient/common/__init__.py -> build/lib/cgtsclient/common
+copying cgtsclient/common/base.py -> build/lib/cgtsclient/common
+copying cgtsclient/common/utils.py -> build/lib/cgtsclient/common
+copying cgtsclient/common/constants.py -> build/lib/cgtsclient/common
+copying cgtsclient/common/http.py -> build/lib/cgtsclient/common
+copying cgtsclient/common/cli_no_wrap.py -> build/lib/cgtsclient/common
+creating build/lib/cgtsclient/v1
+copying cgtsclient/v1/datanetwork_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/storage_backend_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/ceph_mon.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/service_parameter.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/sm_service_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/sm_servicegroup.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/address_pool_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/datanetwork.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/upgrade.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/iuser.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/ethernetport.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/storage_ceph_external.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/iHost_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/iservicegroup.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/idns_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/health_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/drbdconfig.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/iprofile_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/drbdconfig_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/imemory.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/icpu_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/app_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/network_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/remotelogging.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/ptp.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/upgrade_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/iextoam_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/iservice_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/ihost.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/iextoam.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/host_fs_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/storage_lvm.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/interface_network.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/inode.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/storage_backend.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/interface_datanetwork.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/label.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/ceph_mon_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/istor_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/iinterface_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/itrapdest_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/options.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/isensorgroup_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/load_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/isystem_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/imemory_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/helm_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/__init__.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/isensor.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/idns.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/registry_image_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/inode_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/pci_device.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/cluster.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/lldp_neighbour.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/network.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/icommunity.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/port_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/lldp_agent_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/icommunity_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/ilvg_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/controller_fs_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/isensorgroup.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/route_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/host_fs.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/ilvg.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/pci_device_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/storage_tier.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/certificate.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/storage_tier_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/ipv_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/load.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/port.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/address_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/license_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/sdn_controller.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/sm_service_nodes_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/iservice.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/icpu.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/helm.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/storage_file.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/ipv.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/idisk.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/fernet.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/service_parameter_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/sm_servicegroup_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/intp_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/partition_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/istor.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/lldp_neighbour_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/controller_fs.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/interface_network_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/sm_service.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/iprofile.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/partition.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/storage_external.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/iservicegroup_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/sdn_controller_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/health.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/address_pool.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/ptp_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/idisk_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/isensor_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/route.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/intp.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/cluster_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/license.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/certificate_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/iuser_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/client.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/isystem.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/label_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/lldp_agent.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/itrapdest.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/interface_datanetwork_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/registry_image.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/iinterface.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/app.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/remotelogging_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/address.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/storage_ceph.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/ethernetport_shell.py -> build/lib/cgtsclient/v1
+copying cgtsclient/v1/sm_service_nodes.py -> build/lib/cgtsclient/v1
+creating build/lib/cgtsclient/openstack/common/rootwrap
+copying cgtsclient/openstack/common/rootwrap/wrapper.py -> build/lib/cgtsclient/openstack/common/rootwrap
+copying cgtsclient/openstack/common/rootwrap/__init__.py -> build/lib/cgtsclient/openstack/common/rootwrap
+copying cgtsclient/openstack/common/rootwrap/filters.py -> build/lib/cgtsclient/openstack/common/rootwrap
+copying cgtsclient/openstack/common/rootwrap/cmd.py -> build/lib/cgtsclient/openstack/common/rootwrap
+running egg_info
+creating cgtsclient.egg-info
+writing cgtsclient.egg-info/PKG-INFO
+writing dependency_links to cgtsclient.egg-info/dependency_links.txt
+writing entry points to cgtsclient.egg-info/entry_points.txt
+writing requirements to cgtsclient.egg-info/requires.txt
+writing top-level names to cgtsclient.egg-info/top_level.txt
+[pbr] Processing SOURCES.txt
+writing manifest file 'cgtsclient.egg-info/SOURCES.txt'
+warning: no files found matching 'AUTHORS'
+warning: no files found matching 'ChangeLog'
+warning: no previously-included files found matching '.gitignore'
+warning: no previously-included files found matching '.gitreview'
+warning: no previously-included files matching '*.pyc' found anywhere in distribution
+writing manifest file 'cgtsclient.egg-info/SOURCES.txt'
++ exit 0
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.5gcCUQ
++ umask 022
++ cd /builddir/build/BUILD
++ cd cgts-client-1.0
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ rm -rf /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64
++ mkdir -p /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64
++ export MAKEFLAGS=-j4
++ MAKEFLAGS=-j4
++ rm -rf /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64
++ export PBR_VERSION=1.0
++ PBR_VERSION=1.0
++ python3 -tt setup.py build install --root=/builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64
+running build
+running build_py
+running egg_info
+writing cgtsclient.egg-info/PKG-INFO
+writing dependency_links to cgtsclient.egg-info/dependency_links.txt
+writing entry points to cgtsclient.egg-info/entry_points.txt
+writing requirements to cgtsclient.egg-info/requires.txt
+writing top-level names to cgtsclient.egg-info/top_level.txt
+[pbr] Reusing existing SOURCES.txt
+running install
+[pbr] Generating AUTHORS
+[pbr] AUTHORS complete (0.0s)
+running install_lib
+creating /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64
+creating /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr
+creating /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib
+creating /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7
+creating /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages
+creating /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient
+copying build/lib/cgtsclient/exc.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient
+creating /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/openstack
+copying build/lib/cgtsclient/openstack/__init__.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/openstack
+creating /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/openstack/common
+creating /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/openstack/common/rootwrap
+copying build/lib/cgtsclient/openstack/common/rootwrap/wrapper.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/openstack/common/rootwrap
+copying build/lib/cgtsclient/openstack/common/rootwrap/__init__.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/openstack/common/rootwrap
+copying build/lib/cgtsclient/openstack/common/rootwrap/filters.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/openstack/common/rootwrap
+copying build/lib/cgtsclient/openstack/common/rootwrap/cmd.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/openstack/common/rootwrap
+copying build/lib/cgtsclient/openstack/common/gettextutils.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/openstack/common
+copying build/lib/cgtsclient/openstack/common/__init__.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/openstack/common
+copying build/lib/cgtsclient/openstack/common/importutils.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/openstack/common
+creating /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/tests
+copying build/lib/cgtsclient/tests/test_utils.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/tests
+copying build/lib/cgtsclient/tests/__init__.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/tests
+copying build/lib/cgtsclient/tests/test_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/tests
+copying build/lib/cgtsclient/tests/utils.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/tests
+copying build/lib/cgtsclient/__init__.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient
+creating /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/datanetwork_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/storage_backend_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/ceph_mon.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/service_parameter.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/sm_service_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/sm_servicegroup.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/address_pool_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/datanetwork.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/upgrade.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/iuser.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/ethernetport.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/storage_ceph_external.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/iHost_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/iservicegroup.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/idns_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/health_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/drbdconfig.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/iprofile_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/drbdconfig_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/imemory.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/icpu_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/app_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/network_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/remotelogging.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/ptp.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/upgrade_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/iextoam_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/iservice_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/ihost.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/iextoam.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/host_fs_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/storage_lvm.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/interface_network.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/inode.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/storage_backend.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/interface_datanetwork.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/label.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/ceph_mon_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/istor_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/iinterface_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/itrapdest_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/options.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/isensorgroup_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/load_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/isystem_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/imemory_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/helm_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/__init__.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/isensor.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/idns.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/registry_image_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/inode_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/pci_device.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/cluster.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/lldp_neighbour.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/network.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/icommunity.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/port_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/lldp_agent_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/icommunity_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/ilvg_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/controller_fs_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/isensorgroup.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/route_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/host_fs.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/ilvg.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/pci_device_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/storage_tier.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/certificate.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/storage_tier_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/ipv_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/load.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/port.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/address_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/license_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/sdn_controller.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/sm_service_nodes_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/iservice.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/icpu.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/helm.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/storage_file.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/ipv.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/idisk.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/fernet.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/service_parameter_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/sm_servicegroup_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/intp_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/partition_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/istor.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/lldp_neighbour_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/controller_fs.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/interface_network_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/sm_service.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/iprofile.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/partition.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/storage_external.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/iservicegroup_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/sdn_controller_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/health.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/address_pool.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/ptp_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/idisk_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/isensor_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/route.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/intp.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/cluster_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/license.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/certificate_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/iuser_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/client.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/isystem.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/label_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/lldp_agent.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/itrapdest.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/interface_datanetwork_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/registry_image.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/iinterface.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/app.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/remotelogging_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/address.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/storage_ceph.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/ethernetport_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/sm_service_nodes.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1
+creating /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/common
+copying build/lib/cgtsclient/common/wrapping_formatters.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/common
+copying build/lib/cgtsclient/common/__init__.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/common
+copying build/lib/cgtsclient/common/base.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/common
+copying build/lib/cgtsclient/common/utils.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/common
+copying build/lib/cgtsclient/common/constants.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/common
+copying build/lib/cgtsclient/common/http.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/common
+copying build/lib/cgtsclient/common/cli_no_wrap.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/common
+copying build/lib/cgtsclient/shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient
+copying build/lib/cgtsclient/client.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/exc.py to exc.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/openstack/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/wrapper.py to wrapper.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/filters.py to filters.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/cmd.py to cmd.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/openstack/common/gettextutils.py to gettextutils.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/openstack/common/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/openstack/common/importutils.py to importutils.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/tests/test_utils.py to test_utils.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/tests/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/tests/test_shell.py to test_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/tests/utils.py to utils.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/datanetwork_shell.py to datanetwork_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/storage_backend_shell.py to storage_backend_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/ceph_mon.py to ceph_mon.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/service_parameter.py to service_parameter.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/sm_service_shell.py to sm_service_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/sm_servicegroup.py to sm_servicegroup.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/address_pool_shell.py to address_pool_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/datanetwork.py to datanetwork.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/upgrade.py to upgrade.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/iuser.py to iuser.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/ethernetport.py to ethernetport.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/storage_ceph_external.py to storage_ceph_external.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/iHost_shell.py to iHost_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/iservicegroup.py to iservicegroup.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/idns_shell.py to idns_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/health_shell.py to health_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/drbdconfig.py to drbdconfig.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/iprofile_shell.py to iprofile_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/drbdconfig_shell.py to drbdconfig_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/imemory.py to imemory.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/icpu_shell.py to icpu_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/app_shell.py to app_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/network_shell.py to network_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/remotelogging.py to remotelogging.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/ptp.py to ptp.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/upgrade_shell.py to upgrade_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/iextoam_shell.py to iextoam_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/iservice_shell.py to iservice_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/ihost.py to ihost.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/iextoam.py to iextoam.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/host_fs_shell.py to host_fs_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/storage_lvm.py to storage_lvm.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/interface_network.py to interface_network.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/inode.py to inode.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/storage_backend.py to storage_backend.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/interface_datanetwork.py to interface_datanetwork.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/label.py to label.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/ceph_mon_shell.py to ceph_mon_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/istor_shell.py to istor_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/iinterface_shell.py to iinterface_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/itrapdest_shell.py to itrapdest_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/options.py to options.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/isensorgroup_shell.py to isensorgroup_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/load_shell.py to load_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/isystem_shell.py to isystem_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/imemory_shell.py to imemory_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/helm_shell.py to helm_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/isensor.py to isensor.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/idns.py to idns.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/registry_image_shell.py to registry_image_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/inode_shell.py to inode_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/pci_device.py to pci_device.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/cluster.py to cluster.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/lldp_neighbour.py to lldp_neighbour.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/network.py to network.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/icommunity.py to icommunity.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/port_shell.py to port_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/lldp_agent_shell.py to lldp_agent_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/icommunity_shell.py to icommunity_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/ilvg_shell.py to ilvg_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/controller_fs_shell.py to controller_fs_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/isensorgroup.py to isensorgroup.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/route_shell.py to route_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/host_fs.py to host_fs.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/ilvg.py to ilvg.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/pci_device_shell.py to pci_device_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/storage_tier.py to storage_tier.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/certificate.py to certificate.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/storage_tier_shell.py to storage_tier_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/ipv_shell.py to ipv_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/load.py to load.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/port.py to port.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/address_shell.py to address_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/license_shell.py to license_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/sdn_controller.py to sdn_controller.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/sm_service_nodes_shell.py to sm_service_nodes_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/iservice.py to iservice.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/icpu.py to icpu.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/helm.py to helm.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/storage_file.py to storage_file.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/ipv.py to ipv.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/idisk.py to idisk.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/fernet.py to fernet.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/service_parameter_shell.py to service_parameter_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/sm_servicegroup_shell.py to sm_servicegroup_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/intp_shell.py to intp_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/shell.py to shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/partition_shell.py to partition_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/istor.py to istor.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/lldp_neighbour_shell.py to lldp_neighbour_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/controller_fs.py to controller_fs.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/interface_network_shell.py to interface_network_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/sm_service.py to sm_service.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/iprofile.py to iprofile.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/partition.py to partition.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/storage_external.py to storage_external.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/iservicegroup_shell.py to iservicegroup_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/sdn_controller_shell.py to sdn_controller_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/health.py to health.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/address_pool.py to address_pool.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/ptp_shell.py to ptp_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/idisk_shell.py to idisk_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/isensor_shell.py to isensor_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/route.py to route.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/intp.py to intp.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/cluster_shell.py to cluster_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/license.py to license.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/certificate_shell.py to certificate_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/iuser_shell.py to iuser_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/client.py to client.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/isystem.py to isystem.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/label_shell.py to label_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/lldp_agent.py to lldp_agent.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/itrapdest.py to itrapdest.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/interface_datanetwork_shell.py to interface_datanetwork_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/registry_image.py to registry_image.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/iinterface.py to iinterface.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/app.py to app.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/remotelogging_shell.py to remotelogging_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/address.py to address.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/storage_ceph.py to storage_ceph.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/ethernetport_shell.py to ethernetport_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/v1/sm_service_nodes.py to sm_service_nodes.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/common/wrapping_formatters.py to wrapping_formatters.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/common/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/common/base.py to base.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/common/utils.py to utils.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/common/constants.py to constants.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/common/http.py to http.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/common/cli_no_wrap.py to cli_no_wrap.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/shell.py to shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient/client.py to client.cpython-37.pyc
+running install_egg_info
+Copying cgtsclient.egg-info to /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info
+running install_scripts
+Installing system script to /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/bin
+/usr/lib/python3.7/site-packages/pbr/packaging.py:435: EasyInstallDeprecationWarning: Use get_header
+  header = easy_install.get_script_header("", executable, is_wininst)
++ echo '----[' mark ']----'
+----[ mark ]----
++ cat /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info/requires.txt
+python-neutronclient
+----[ mark ]----
++ echo '----[' mark ']----'
++ /usr/bin/python setup.py install --root=/builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64 --install-lib=/usr/lib64/python3.7/site-packages --prefix=/usr --install-data=/usr/share --single-version-externally-managed
+running install
+[pbr] Generating AUTHORS
+[pbr] AUTHORS complete (0.0s)
+running build
+running build_py
+running egg_info
+writing cgtsclient.egg-info/PKG-INFO
+writing dependency_links to cgtsclient.egg-info/dependency_links.txt
+writing entry points to cgtsclient.egg-info/entry_points.txt
+writing requirements to cgtsclient.egg-info/requires.txt
+writing top-level names to cgtsclient.egg-info/top_level.txt
+[pbr] Reusing existing SOURCES.txt
+running install_lib
+creating /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64
+creating /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7
+creating /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages
+creating /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient
+copying build/lib/cgtsclient/exc.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient
+creating /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/openstack
+copying build/lib/cgtsclient/openstack/__init__.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/openstack
+creating /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/openstack/common
+creating /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/openstack/common/rootwrap
+copying build/lib/cgtsclient/openstack/common/rootwrap/wrapper.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/openstack/common/rootwrap
+copying build/lib/cgtsclient/openstack/common/rootwrap/__init__.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/openstack/common/rootwrap
+copying build/lib/cgtsclient/openstack/common/rootwrap/filters.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/openstack/common/rootwrap
+copying build/lib/cgtsclient/openstack/common/rootwrap/cmd.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/openstack/common/rootwrap
+copying build/lib/cgtsclient/openstack/common/gettextutils.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/openstack/common
+copying build/lib/cgtsclient/openstack/common/__init__.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/openstack/common
+copying build/lib/cgtsclient/openstack/common/importutils.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/openstack/common
+creating /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/tests
+copying build/lib/cgtsclient/tests/test_utils.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/tests
+copying build/lib/cgtsclient/tests/__init__.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/tests
+copying build/lib/cgtsclient/tests/test_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/tests
+copying build/lib/cgtsclient/tests/utils.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/tests
+copying build/lib/cgtsclient/__init__.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient
+creating /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/datanetwork_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/storage_backend_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/ceph_mon.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/service_parameter.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/sm_service_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/sm_servicegroup.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/address_pool_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/datanetwork.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/upgrade.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/iuser.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/ethernetport.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/storage_ceph_external.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/iHost_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/iservicegroup.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/idns_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/health_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/drbdconfig.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/iprofile_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/drbdconfig_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/imemory.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/icpu_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/app_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/network_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/remotelogging.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/ptp.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/upgrade_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/iextoam_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/iservice_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/ihost.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/iextoam.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/host_fs_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/storage_lvm.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/interface_network.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/inode.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/storage_backend.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/interface_datanetwork.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/label.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/ceph_mon_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/istor_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/iinterface_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/itrapdest_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/options.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/isensorgroup_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/load_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/isystem_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/imemory_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/helm_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/__init__.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/isensor.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/idns.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/registry_image_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/inode_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/pci_device.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/cluster.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/lldp_neighbour.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/network.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/icommunity.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/port_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/lldp_agent_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/icommunity_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/ilvg_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/controller_fs_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/isensorgroup.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/route_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/host_fs.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/ilvg.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/pci_device_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/storage_tier.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/certificate.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/storage_tier_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/ipv_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/load.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/port.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/address_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/license_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/sdn_controller.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/sm_service_nodes_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/iservice.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/icpu.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/helm.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/storage_file.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/ipv.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/idisk.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/fernet.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/service_parameter_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/sm_servicegroup_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/intp_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/partition_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/istor.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/lldp_neighbour_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/controller_fs.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/interface_network_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/sm_service.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/iprofile.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/partition.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/storage_external.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/iservicegroup_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/sdn_controller_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/health.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/address_pool.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/ptp_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/idisk_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/isensor_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/route.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/intp.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/cluster_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/license.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/certificate_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/iuser_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/client.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/isystem.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/label_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/lldp_agent.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/itrapdest.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/interface_datanetwork_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/registry_image.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/iinterface.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/app.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/remotelogging_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/address.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/storage_ceph.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/ethernetport_shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+copying build/lib/cgtsclient/v1/sm_service_nodes.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1
+creating /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/common
+copying build/lib/cgtsclient/common/wrapping_formatters.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/common
+copying build/lib/cgtsclient/common/__init__.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/common
+copying build/lib/cgtsclient/common/base.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/common
+copying build/lib/cgtsclient/common/utils.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/common
+copying build/lib/cgtsclient/common/constants.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/common
+copying build/lib/cgtsclient/common/http.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/common
+copying build/lib/cgtsclient/common/cli_no_wrap.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/common
+copying build/lib/cgtsclient/shell.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient
+copying build/lib/cgtsclient/client.py -> /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/exc.py to exc.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/openstack/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/wrapper.py to wrapper.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/filters.py to filters.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/cmd.py to cmd.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/openstack/common/gettextutils.py to gettextutils.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/openstack/common/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/openstack/common/importutils.py to importutils.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/tests/test_utils.py to test_utils.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/tests/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/tests/test_shell.py to test_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/tests/utils.py to utils.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/datanetwork_shell.py to datanetwork_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/storage_backend_shell.py to storage_backend_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/ceph_mon.py to ceph_mon.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/service_parameter.py to service_parameter.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/sm_service_shell.py to sm_service_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/sm_servicegroup.py to sm_servicegroup.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/address_pool_shell.py to address_pool_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/datanetwork.py to datanetwork.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/upgrade.py to upgrade.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/iuser.py to iuser.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/ethernetport.py to ethernetport.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/storage_ceph_external.py to storage_ceph_external.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/iHost_shell.py to iHost_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/iservicegroup.py to iservicegroup.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/idns_shell.py to idns_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/health_shell.py to health_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/drbdconfig.py to drbdconfig.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/iprofile_shell.py to iprofile_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/drbdconfig_shell.py to drbdconfig_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/imemory.py to imemory.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/icpu_shell.py to icpu_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/app_shell.py to app_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/network_shell.py to network_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/remotelogging.py to remotelogging.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/ptp.py to ptp.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/upgrade_shell.py to upgrade_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/iextoam_shell.py to iextoam_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/iservice_shell.py to iservice_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/ihost.py to ihost.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/iextoam.py to iextoam.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/host_fs_shell.py to host_fs_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/storage_lvm.py to storage_lvm.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/interface_network.py to interface_network.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/inode.py to inode.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/storage_backend.py to storage_backend.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/interface_datanetwork.py to interface_datanetwork.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/label.py to label.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/ceph_mon_shell.py to ceph_mon_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/istor_shell.py to istor_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/iinterface_shell.py to iinterface_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/itrapdest_shell.py to itrapdest_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/options.py to options.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/isensorgroup_shell.py to isensorgroup_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/load_shell.py to load_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/isystem_shell.py to isystem_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/imemory_shell.py to imemory_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/helm_shell.py to helm_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/isensor.py to isensor.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/idns.py to idns.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/registry_image_shell.py to registry_image_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/inode_shell.py to inode_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/pci_device.py to pci_device.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/cluster.py to cluster.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/lldp_neighbour.py to lldp_neighbour.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/network.py to network.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/icommunity.py to icommunity.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/port_shell.py to port_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/lldp_agent_shell.py to lldp_agent_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/icommunity_shell.py to icommunity_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/ilvg_shell.py to ilvg_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/controller_fs_shell.py to controller_fs_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/isensorgroup.py to isensorgroup.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/route_shell.py to route_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/host_fs.py to host_fs.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/ilvg.py to ilvg.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/pci_device_shell.py to pci_device_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/storage_tier.py to storage_tier.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/certificate.py to certificate.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/storage_tier_shell.py to storage_tier_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/ipv_shell.py to ipv_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/load.py to load.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/port.py to port.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/address_shell.py to address_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/license_shell.py to license_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/sdn_controller.py to sdn_controller.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/sm_service_nodes_shell.py to sm_service_nodes_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/iservice.py to iservice.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/icpu.py to icpu.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/helm.py to helm.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/storage_file.py to storage_file.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/ipv.py to ipv.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/idisk.py to idisk.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/fernet.py to fernet.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/service_parameter_shell.py to service_parameter_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/sm_servicegroup_shell.py to sm_servicegroup_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/intp_shell.py to intp_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/shell.py to shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/partition_shell.py to partition_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/istor.py to istor.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/lldp_neighbour_shell.py to lldp_neighbour_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/controller_fs.py to controller_fs.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/interface_network_shell.py to interface_network_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/sm_service.py to sm_service.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/iprofile.py to iprofile.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/partition.py to partition.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/storage_external.py to storage_external.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/iservicegroup_shell.py to iservicegroup_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/sdn_controller_shell.py to sdn_controller_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/health.py to health.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/address_pool.py to address_pool.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/ptp_shell.py to ptp_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/idisk_shell.py to idisk_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/isensor_shell.py to isensor_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/route.py to route.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/intp.py to intp.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/cluster_shell.py to cluster_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/license.py to license.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/certificate_shell.py to certificate_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/iuser_shell.py to iuser_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/client.py to client.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/isystem.py to isystem.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/label_shell.py to label_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/lldp_agent.py to lldp_agent.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/itrapdest.py to itrapdest.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/interface_datanetwork_shell.py to interface_datanetwork_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/registry_image.py to registry_image.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/iinterface.py to iinterface.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/app.py to app.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/remotelogging_shell.py to remotelogging_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/address.py to address.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/storage_ceph.py to storage_ceph.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/ethernetport_shell.py to ethernetport_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/v1/sm_service_nodes.py to sm_service_nodes.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/common/wrapping_formatters.py to wrapping_formatters.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/common/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/common/base.py to base.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/common/utils.py to utils.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/common/constants.py to constants.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/common/http.py to http.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/common/cli_no_wrap.py to cli_no_wrap.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/shell.py to shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient/client.py to client.cpython-37.pyc
+running install_egg_info
+Copying cgtsclient.egg-info to /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info
+running install_scripts
+Installing system script to /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/bin
+/usr/lib/python3.7/site-packages/pbr/packaging.py:435: EasyInstallDeprecationWarning: Use get_header
+  header = easy_install.get_script_header("", executable, is_wininst)
++ install -d -m 755 /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/local/etc/bash_completion.d/
++ install -p -D -m 664 tools/system.bash_completion /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/local/etc/bash_completion.d//system.bash_completion
++ rm -f /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/share/info/dir
+++ find /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64 -path 'etc/*' '!' -type d
++ test -z ''
++ rm -rf '/builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/etc/*'
++ rm -rf '/builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/share/factory/*'
++ xargs rm -rf --
++ find /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64 -name __pycache__
++ '[' -d /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/share/mime ']'
+++ getconf _NPROCESSORS_ONLN
++ RPM_XARGS_PFLAG=-P4
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -5
++ find /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64 -name '*.so.avx512' -print0
++ find /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/haswell/avx512_1 -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/haswell/avx512_1’: No such file or directory
++ find /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64 -name '*.so.avx2' -print0
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -2
++ find /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/haswell '!' -path '/usr/lib64/haswell/avx512_1/*' -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/haswell’: No such file or directory
++ find /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib64/ -maxdepth 1 -name '*.so*' -type f -print0
++ xargs -0rtn1 -P4 /usr/lib/rpm/clr/brp-create-abi
++ sort -u
++ '[' -d /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/debug ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/debug ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/src/debug ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/debug.force ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/src/debug.force ']'
++ :
++ /usr/lib/rpm/check-buildroot
++ /usr/lib/rpm/clr/brp-strip /usr/bin/strip
++ /usr/lib/rpm/clr/brp-strip-static-archive /usr/bin/strip
++ /usr/lib/rpm/clr/brp-strip-comment-note /usr/bin/strip /usr/bin/objdump
++ /usr/lib/rpm/clr/brp-python-bytecompile
+[BYTECOMPILE] Building for /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64/usr/lib/python3.7 using /usr/bin/python3.7
++ find /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64 -print0
++ xargs -0 touch -h -d '@1549052798 '
++ /usr/lib/rpm/clr/brp-java-repack-jars
+Executing(%check): /bin/sh -e /var/tmp/rpm-tmp.ku7G5N
++ umask 022
++ cd /builddir/build/BUILD
++ cd cgts-client-1.0
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ export http_proxy=http://127.0.0.1:9/
++ http_proxy=http://127.0.0.1:9/
++ export https_proxy=http://127.0.0.1:9/
++ https_proxy=http://127.0.0.1:9/
++ export no_proxy=localhost,127.0.0.1,0.0.0.0
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ rm -rf cgtsclient.egg-info
++ exit 0
+Processing files: cgts-client-1.0-5.x86_64
+Processing files: cgts-client-abi-1.0-5.x86_64
+warning: Empty %files file /builddir/build/BUILD/cgts-client-1.0/abifiles.list
+Checking for unpackaged file(s): /usr/lib/rpm/check-files /builddir/build/BUILDROOT/cgts-client-1.0-5.x86_64
+RPM build errors:
+error: Installed (but unpackaged) file(s) found:
+   /usr/bin/system
+   /usr/lib/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info/PKG-INFO
+   /usr/lib/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info/SOURCES.txt
+   /usr/lib/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info/dependency_links.txt
+   /usr/lib/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info/entry_points.txt
+   /usr/lib/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info/not-zip-safe
+   /usr/lib/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info/requires.txt
+   /usr/lib/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info/top_level.txt
+   /usr/lib/python3.7/site-packages/cgtsclient/__init__.py
+   /usr/lib/python3.7/site-packages/cgtsclient/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/__pycache__/client.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/__pycache__/exc.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/__pycache__/shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/client.py
+   /usr/lib/python3.7/site-packages/cgtsclient/common/__init__.py
+   /usr/lib/python3.7/site-packages/cgtsclient/common/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/common/__pycache__/base.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/common/__pycache__/cli_no_wrap.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/common/__pycache__/constants.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/common/__pycache__/http.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/common/__pycache__/utils.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/common/__pycache__/wrapping_formatters.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/common/base.py
+   /usr/lib/python3.7/site-packages/cgtsclient/common/cli_no_wrap.py
+   /usr/lib/python3.7/site-packages/cgtsclient/common/constants.py
+   /usr/lib/python3.7/site-packages/cgtsclient/common/http.py
+   /usr/lib/python3.7/site-packages/cgtsclient/common/utils.py
+   /usr/lib/python3.7/site-packages/cgtsclient/common/wrapping_formatters.py
+   /usr/lib/python3.7/site-packages/cgtsclient/exc.py
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/__init__.py
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/common/__init__.py
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/common/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/common/__pycache__/gettextutils.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/common/__pycache__/importutils.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/common/gettextutils.py
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/common/importutils.py
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/__init__.py
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/__pycache__/cmd.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/__pycache__/filters.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/__pycache__/wrapper.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/cmd.py
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/filters.py
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/wrapper.py
+   /usr/lib/python3.7/site-packages/cgtsclient/shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/tests/__init__.py
+   /usr/lib/python3.7/site-packages/cgtsclient/tests/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/tests/__pycache__/test_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/tests/__pycache__/test_utils.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/tests/__pycache__/utils.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/tests/test_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/tests/test_utils.py
+   /usr/lib/python3.7/site-packages/cgtsclient/tests/utils.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__init__.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/address.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/address_pool.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/address_pool_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/address_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/app.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/app_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/ceph_mon.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/ceph_mon_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/certificate.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/certificate_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/client.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/cluster.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/cluster_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/controller_fs.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/controller_fs_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/datanetwork.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/datanetwork_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/drbdconfig.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/drbdconfig_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/ethernetport.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/ethernetport_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/fernet.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/health.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/health_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/helm.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/helm_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/host_fs.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/host_fs_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/iHost_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/icommunity.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/icommunity_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/icpu.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/icpu_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/idisk.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/idisk_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/idns.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/idns_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/iextoam.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/iextoam_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/ihost.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/iinterface.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/iinterface_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/ilvg.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/ilvg_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/imemory.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/imemory_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/inode.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/inode_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/interface_datanetwork.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/interface_datanetwork_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/interface_network.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/interface_network_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/intp.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/intp_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/iprofile.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/iprofile_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/ipv.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/ipv_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/isensor.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/isensor_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/isensorgroup.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/isensorgroup_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/iservice.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/iservice_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/iservicegroup.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/iservicegroup_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/istor.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/istor_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/isystem.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/isystem_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/itrapdest.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/itrapdest_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/iuser.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/iuser_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/label.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/label_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/license.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/license_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/lldp_agent.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/lldp_agent_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/lldp_neighbour.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/lldp_neighbour_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/load.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/load_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/network.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/network_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/options.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/partition.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/partition_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/pci_device.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/pci_device_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/port.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/port_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/ptp.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/ptp_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/registry_image.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/registry_image_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/remotelogging.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/remotelogging_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/route.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/route_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/sdn_controller.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/sdn_controller_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/service_parameter.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/service_parameter_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/sm_service.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/sm_service_nodes.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/sm_service_nodes_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/sm_service_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/sm_servicegroup.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/sm_servicegroup_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/storage_backend.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/storage_backend_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/storage_ceph.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/storage_ceph_external.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/storage_external.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/storage_file.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/storage_lvm.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/storage_tier.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/storage_tier_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/upgrade.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/upgrade_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/address.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/address_pool.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/address_pool_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/address_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/app.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/app_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/ceph_mon.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/ceph_mon_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/certificate.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/certificate_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/client.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/cluster.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/cluster_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/controller_fs.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/controller_fs_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/datanetwork.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/datanetwork_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/drbdconfig.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/drbdconfig_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/ethernetport.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/ethernetport_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/fernet.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/health.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/health_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/helm.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/helm_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/host_fs.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/host_fs_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/iHost_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/icommunity.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/icommunity_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/icpu.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/icpu_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/idisk.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/idisk_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/idns.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/idns_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/iextoam.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/iextoam_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/ihost.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/iinterface.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/iinterface_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/ilvg.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/ilvg_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/imemory.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/imemory_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/inode.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/inode_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/interface_datanetwork.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/interface_datanetwork_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/interface_network.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/interface_network_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/intp.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/intp_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/iprofile.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/iprofile_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/ipv.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/ipv_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/isensor.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/isensor_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/isensorgroup.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/isensorgroup_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/iservice.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/iservice_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/iservicegroup.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/iservicegroup_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/istor.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/istor_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/isystem.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/isystem_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/itrapdest.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/itrapdest_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/iuser.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/iuser_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/label.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/label_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/license.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/license_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/lldp_agent.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/lldp_agent_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/lldp_neighbour.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/lldp_neighbour_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/load.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/load_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/network.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/network_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/options.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/partition.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/partition_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/pci_device.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/pci_device_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/port.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/port_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/ptp.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/ptp_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/registry_image.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/registry_image_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/remotelogging.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/remotelogging_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/route.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/route_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/sdn_controller.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/sdn_controller_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/service_parameter.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/service_parameter_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/sm_service.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/sm_service_nodes.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/sm_service_nodes_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/sm_service_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/sm_servicegroup.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/sm_servicegroup_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/storage_backend.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/storage_backend_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/storage_ceph.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/storage_ceph_external.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/storage_external.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/storage_file.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/storage_lvm.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/storage_tier.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/storage_tier_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/upgrade.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/upgrade_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info/PKG-INFO
+   /usr/lib64/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info/SOURCES.txt
+   /usr/lib64/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info/dependency_links.txt
+   /usr/lib64/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info/entry_points.txt
+   /usr/lib64/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info/not-zip-safe
+   /usr/lib64/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info/requires.txt
+   /usr/lib64/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info/top_level.txt
+   /usr/lib64/python3.7/site-packages/cgtsclient/__init__.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/client.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/common/__init__.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/common/base.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/common/cli_no_wrap.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/common/constants.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/common/http.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/common/utils.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/common/wrapping_formatters.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/exc.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/openstack/__init__.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/openstack/common/__init__.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/openstack/common/gettextutils.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/openstack/common/importutils.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/__init__.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/cmd.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/filters.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/wrapper.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/tests/__init__.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/tests/test_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/tests/test_utils.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/tests/utils.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/__init__.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/address.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/address_pool.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/address_pool_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/address_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/app.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/app_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/ceph_mon.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/ceph_mon_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/certificate.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/certificate_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/client.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/cluster.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/cluster_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/controller_fs.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/controller_fs_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/datanetwork.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/datanetwork_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/drbdconfig.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/drbdconfig_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/ethernetport.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/ethernetport_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/fernet.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/health.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/health_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/helm.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/helm_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/host_fs.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/host_fs_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/iHost_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/icommunity.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/icommunity_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/icpu.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/icpu_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/idisk.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/idisk_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/idns.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/idns_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/iextoam.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/iextoam_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/ihost.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/iinterface.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/iinterface_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/ilvg.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/ilvg_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/imemory.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/imemory_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/inode.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/inode_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/interface_datanetwork.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/interface_datanetwork_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/interface_network.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/interface_network_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/intp.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/intp_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/iprofile.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/iprofile_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/ipv.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/ipv_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/isensor.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/isensor_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/isensorgroup.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/isensorgroup_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/iservice.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/iservice_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/iservicegroup.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/iservicegroup_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/istor.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/istor_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/isystem.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/isystem_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/itrapdest.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/itrapdest_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/iuser.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/iuser_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/label.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/label_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/license.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/license_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/lldp_agent.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/lldp_agent_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/lldp_neighbour.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/lldp_neighbour_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/load.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/load_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/network.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/network_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/options.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/partition.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/partition_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/pci_device.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/pci_device_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/port.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/port_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/ptp.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/ptp_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/registry_image.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/registry_image_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/remotelogging.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/remotelogging_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/route.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/route_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/sdn_controller.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/sdn_controller_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/service_parameter.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/service_parameter_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/sm_service.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/sm_service_nodes.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/sm_service_nodes_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/sm_service_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/sm_servicegroup.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/sm_servicegroup_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/storage_backend.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/storage_backend_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/storage_ceph.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/storage_ceph_external.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/storage_external.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/storage_file.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/storage_lvm.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/storage_tier.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/storage_tier_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/upgrade.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/upgrade_shell.py
+   /usr/local/etc/bash_completion.d/system.bash_completion
+    Empty %files file /builddir/build/BUILD/cgts-client-1.0/abifiles.list
+    Installed (but unpackaged) file(s) found:
+   /usr/bin/system
+   /usr/lib/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info/PKG-INFO
+   /usr/lib/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info/SOURCES.txt
+   /usr/lib/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info/dependency_links.txt
+   /usr/lib/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info/entry_points.txt
+   /usr/lib/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info/not-zip-safe
+   /usr/lib/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info/requires.txt
+   /usr/lib/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info/top_level.txt
+   /usr/lib/python3.7/site-packages/cgtsclient/__init__.py
+   /usr/lib/python3.7/site-packages/cgtsclient/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/__pycache__/client.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/__pycache__/exc.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/__pycache__/shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/client.py
+   /usr/lib/python3.7/site-packages/cgtsclient/common/__init__.py
+   /usr/lib/python3.7/site-packages/cgtsclient/common/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/common/__pycache__/base.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/common/__pycache__/cli_no_wrap.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/common/__pycache__/constants.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/common/__pycache__/http.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/common/__pycache__/utils.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/common/__pycache__/wrapping_formatters.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/common/base.py
+   /usr/lib/python3.7/site-packages/cgtsclient/common/cli_no_wrap.py
+   /usr/lib/python3.7/site-packages/cgtsclient/common/constants.py
+   /usr/lib/python3.7/site-packages/cgtsclient/common/http.py
+   /usr/lib/python3.7/site-packages/cgtsclient/common/utils.py
+   /usr/lib/python3.7/site-packages/cgtsclient/common/wrapping_formatters.py
+   /usr/lib/python3.7/site-packages/cgtsclient/exc.py
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/__init__.py
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/common/__init__.py
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/common/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/common/__pycache__/gettextutils.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/common/__pycache__/importutils.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/common/gettextutils.py
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/common/importutils.py
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/__init__.py
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/__pycache__/cmd.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/__pycache__/filters.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/__pycache__/wrapper.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/cmd.py
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/filters.py
+   /usr/lib/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/wrapper.py
+   /usr/lib/python3.7/site-packages/cgtsclient/shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/tests/__init__.py
+   /usr/lib/python3.7/site-packages/cgtsclient/tests/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/tests/__pycache__/test_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/tests/__pycache__/test_utils.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/tests/__pycache__/utils.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/tests/test_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/tests/test_utils.py
+   /usr/lib/python3.7/site-packages/cgtsclient/tests/utils.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__init__.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/address.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/address_pool.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/address_pool_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/address_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/app.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/app_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/ceph_mon.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/ceph_mon_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/certificate.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/certificate_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/client.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/cluster.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/cluster_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/controller_fs.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/controller_fs_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/datanetwork.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/datanetwork_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/drbdconfig.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/drbdconfig_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/ethernetport.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/ethernetport_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/fernet.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/health.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/health_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/helm.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/helm_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/host_fs.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/host_fs_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/iHost_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/icommunity.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/icommunity_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/icpu.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/icpu_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/idisk.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/idisk_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/idns.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/idns_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/iextoam.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/iextoam_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/ihost.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/iinterface.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/iinterface_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/ilvg.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/ilvg_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/imemory.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/imemory_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/inode.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/inode_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/interface_datanetwork.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/interface_datanetwork_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/interface_network.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/interface_network_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/intp.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/intp_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/iprofile.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/iprofile_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/ipv.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/ipv_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/isensor.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/isensor_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/isensorgroup.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/isensorgroup_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/iservice.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/iservice_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/iservicegroup.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/iservicegroup_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/istor.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/istor_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/isystem.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/isystem_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/itrapdest.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/itrapdest_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/iuser.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/iuser_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/label.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/label_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/license.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/license_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/lldp_agent.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/lldp_agent_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/lldp_neighbour.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/lldp_neighbour_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/load.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/load_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/network.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/network_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/options.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/partition.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/partition_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/pci_device.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/pci_device_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/port.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/port_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/ptp.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/ptp_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/registry_image.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/registry_image_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/remotelogging.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/remotelogging_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/route.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/route_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/sdn_controller.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/sdn_controller_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/service_parameter.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/service_parameter_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/sm_service.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/sm_service_nodes.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/sm_service_nodes_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/sm_service_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/sm_servicegroup.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/sm_servicegroup_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/storage_backend.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/storage_backend_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/storage_ceph.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/storage_ceph_external.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/storage_external.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/storage_file.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/storage_lvm.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/storage_tier.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/storage_tier_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/upgrade.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/__pycache__/upgrade_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/address.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/address_pool.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/address_pool_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/address_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/app.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/app_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/ceph_mon.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/ceph_mon_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/certificate.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/certificate_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/client.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/cluster.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/cluster_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/controller_fs.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/controller_fs_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/datanetwork.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/datanetwork_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/drbdconfig.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/drbdconfig_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/ethernetport.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/ethernetport_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/fernet.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/health.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/health_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/helm.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/helm_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/host_fs.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/host_fs_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/iHost_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/icommunity.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/icommunity_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/icpu.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/icpu_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/idisk.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/idisk_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/idns.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/idns_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/iextoam.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/iextoam_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/ihost.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/iinterface.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/iinterface_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/ilvg.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/ilvg_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/imemory.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/imemory_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/inode.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/inode_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/interface_datanetwork.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/interface_datanetwork_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/interface_network.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/interface_network_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/intp.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/intp_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/iprofile.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/iprofile_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/ipv.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/ipv_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/isensor.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/isensor_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/isensorgroup.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/isensorgroup_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/iservice.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/iservice_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/iservicegroup.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/iservicegroup_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/istor.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/istor_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/isystem.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/isystem_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/itrapdest.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/itrapdest_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/iuser.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/iuser_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/label.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/label_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/license.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/license_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/lldp_agent.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/lldp_agent_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/lldp_neighbour.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/lldp_neighbour_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/load.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/load_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/network.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/network_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/options.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/partition.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/partition_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/pci_device.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/pci_device_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/port.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/port_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/ptp.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/ptp_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/registry_image.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/registry_image_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/remotelogging.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/remotelogging_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/route.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/route_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/sdn_controller.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/sdn_controller_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/service_parameter.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/service_parameter_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/sm_service.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/sm_service_nodes.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/sm_service_nodes_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/sm_service_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/sm_servicegroup.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/sm_servicegroup_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/storage_backend.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/storage_backend_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/storage_ceph.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/storage_ceph_external.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/storage_external.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/storage_file.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/storage_lvm.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/storage_tier.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/storage_tier_shell.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/upgrade.py
+   /usr/lib/python3.7/site-packages/cgtsclient/v1/upgrade_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info/PKG-INFO
+   /usr/lib64/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info/SOURCES.txt
+   /usr/lib64/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info/dependency_links.txt
+   /usr/lib64/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info/entry_points.txt
+   /usr/lib64/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info/not-zip-safe
+   /usr/lib64/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info/requires.txt
+   /usr/lib64/python3.7/site-packages/cgtsclient-1.0-py3.7.egg-info/top_level.txt
+   /usr/lib64/python3.7/site-packages/cgtsclient/__init__.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/client.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/common/__init__.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/common/base.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/common/cli_no_wrap.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/common/constants.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/common/http.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/common/utils.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/common/wrapping_formatters.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/exc.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/openstack/__init__.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/openstack/common/__init__.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/openstack/common/gettextutils.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/openstack/common/importutils.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/__init__.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/cmd.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/filters.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/openstack/common/rootwrap/wrapper.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/tests/__init__.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/tests/test_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/tests/test_utils.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/tests/utils.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/__init__.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/address.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/address_pool.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/address_pool_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/address_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/app.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/app_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/ceph_mon.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/ceph_mon_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/certificate.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/certificate_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/client.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/cluster.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/cluster_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/controller_fs.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/controller_fs_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/datanetwork.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/datanetwork_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/drbdconfig.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/drbdconfig_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/ethernetport.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/ethernetport_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/fernet.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/health.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/health_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/helm.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/helm_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/host_fs.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/host_fs_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/iHost_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/icommunity.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/icommunity_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/icpu.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/icpu_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/idisk.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/idisk_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/idns.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/idns_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/iextoam.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/iextoam_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/ihost.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/iinterface.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/iinterface_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/ilvg.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/ilvg_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/imemory.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/imemory_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/inode.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/inode_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/interface_datanetwork.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/interface_datanetwork_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/interface_network.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/interface_network_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/intp.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/intp_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/iprofile.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/iprofile_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/ipv.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/ipv_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/isensor.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/isensor_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/isensorgroup.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/isensorgroup_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/iservice.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/iservice_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/iservicegroup.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/iservicegroup_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/istor.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/istor_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/isystem.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/isystem_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/itrapdest.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/itrapdest_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/iuser.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/iuser_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/label.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/label_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/license.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/license_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/lldp_agent.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/lldp_agent_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/lldp_neighbour.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/lldp_neighbour_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/load.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/load_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/network.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/network_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/options.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/partition.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/partition_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/pci_device.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/pci_device_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/port.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/port_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/ptp.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/ptp_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/registry_image.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/registry_image_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/remotelogging.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/remotelogging_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/route.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/route_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/sdn_controller.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/sdn_controller_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/service_parameter.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/service_parameter_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/sm_service.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/sm_service_nodes.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/sm_service_nodes_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/sm_service_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/sm_servicegroup.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/sm_servicegroup_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/storage_backend.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/storage_backend_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/storage_ceph.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/storage_ceph_external.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/storage_external.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/storage_file.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/storage_lvm.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/storage_tier.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/storage_tier_shell.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/upgrade.py
+   /usr/lib64/python3.7/site-packages/cgtsclient/v1/upgrade_shell.py
+   /usr/local/etc/bash_completion.d/system.bash_completion
+Child return code was: 1
+EXCEPTION: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/cgts-client.spec 
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/mockbuild/trace_decorator.py", line 84, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python3.7/site-packages/mockbuild/util.py", line 531, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+mockbuild.exception.Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/cgts-client.spec 
+LEAVE do --> EXCEPTION RAISED
+

@@ -1,0 +1,37 @@
+2019-08-22 07:02:51,659 - Mock Version: 1.2.14
+2019-08-22 07:02:51,929 - Start: dnf update
+2019-08-22 07:03:05,027 - Finish: dnf update
+2019-08-22 07:03:05,036 - Finish: chroot init
+2019-08-22 07:03:05,041 - Start: buildsrpm
+2019-08-22 07:03:05,058 - Start: rpmbuild -bs
+2019-08-22 07:03:05,098 - Finish: rpmbuild -bs
+2019-08-22 07:03:05,099 - Finish: buildsrpm
+2019-08-22 07:03:05,100 - Finish: run
+2019-08-22 07:03:09,554 - Mock Version: 1.2.14
+2019-08-22 07:03:09,794 - Start: dnf update
+2019-08-22 07:03:22,813 - Finish: dnf update
+2019-08-22 07:03:22,823 - Finish: chroot init
+2019-08-22 07:03:22,825 - Start: build phase for cgts-client-1.0-5.src.rpm
+2019-08-22 07:03:22,829 - Start: build setup for cgts-client-1.0-5.src.rpm
+2019-08-22 07:03:24,380 - Finish: build setup for cgts-client-1.0-5.src.rpm
+2019-08-22 07:03:24,380 - Start: rpmbuild cgts-client-1.0-5.src.rpm
+2019-08-22 07:03:32,244 - Mock Version: 1.2.14
+2019-08-22 07:03:32,787 - Start: dnf update
+2019-08-22 07:03:46,414 - Finish: dnf update
+2019-08-22 07:03:46,420 - Finish: chroot init
+2019-08-22 07:03:46,424 - Start: buildsrpm
+2019-08-22 07:03:46,436 - Start: rpmbuild -bs
+2019-08-22 07:03:46,475 - Finish: rpmbuild -bs
+2019-08-22 07:03:46,477 - Finish: buildsrpm
+2019-08-22 07:03:46,478 - Finish: run
+2019-08-22 07:03:50,671 - Mock Version: 1.2.14
+2019-08-22 07:03:50,901 - Start: dnf update
+2019-08-22 07:04:04,109 - Finish: dnf update
+2019-08-22 07:04:04,119 - Finish: chroot init
+2019-08-22 07:04:04,121 - Start: build phase for cgts-client-1.0-5.src.rpm
+2019-08-22 07:04:04,125 - Start: build setup for cgts-client-1.0-5.src.rpm
+2019-08-22 07:04:05,599 - Finish: build setup for cgts-client-1.0-5.src.rpm
+2019-08-22 07:04:05,599 - Start: rpmbuild cgts-client-1.0-5.src.rpm
+2019-08-22 07:04:12,004 - Finish: rpmbuild cgts-client-1.0-5.src.rpm
+2019-08-22 07:04:12,005 - Finish: build phase for cgts-client-1.0-5.src.rpm
+2019-08-22 07:04:12,006 - Finish: run
