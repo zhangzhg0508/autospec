@@ -1,0 +1,3 @@
+VER=%{version}
+MAJOR=`echo $VER | awk -F . '{print $1}'`
+MINOR=`echo $VER | awk -F . '{print $2}'`

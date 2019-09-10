@@ -1,0 +1,1 @@
+make DESTDIR=%{buildroot} BINDIR=%{local_bindir} SYSCONFDIR=%{_sysconfdir} UNITDIR=%{_unitdir} MAJOR=$MAJOR MINOR=$MINOR install

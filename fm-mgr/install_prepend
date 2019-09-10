@@ -1,0 +1,7 @@
+%global _sysconfdir	'/usr/local/etc'
+%define local_dir /usr/local
+%define local_bindir %{local_dir}/bin
+%define _unitdir /usr/lib/systemd/system/
+VER=%{version}
+MAJOR=`echo $VER | awk -F . '{print $1}'`
+MINOR=`echo $VER | awk -F . '{print $2}'`

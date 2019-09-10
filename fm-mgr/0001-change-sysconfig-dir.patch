@@ -1,0 +1,61 @@
+From a4eca4fac47a09d70f16f5acaa5a0d11191720da Mon Sep 17 00:00:00 2001
+From: "yongx.fu" <yongx.fu@intel.com>
+Date: Thu, 8 Aug 2019 13:21:41 +0800
+Subject: [PATCH] change sysconfig dir
+
+---
+ Makefile       | 2 +-
+ fminit         | 4 ++--
+ fminit.service | 4 ++--
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 0d683c3..58b754e 100755
+--- a/Makefile
++++ b/Makefile
+@@ -11,7 +11,7 @@ MINOR ?= 0
+ 
+ DESTDIR ?= /
+ BINDIR ?= /usr/local/bin
+-SYSCONFDIR ?= /etc
++SYSCONFDIR ?= /usr/local/etc
+ UNITDIR ?= /usr/lib/systemd/system
+ 
+ 
+diff --git a/fminit b/fminit
+index f6719b6..c1e64d8 100755
+--- a/fminit
++++ b/fminit
+@@ -17,12 +17,12 @@
+ # Short-Description: Fault Manager
+ ### END INIT INFO
+ 
+-. /etc/init.d/functions
++. /usr/local/etc/init.d/functions
+ 
+ FMMGR_NAME="fmManager"
+ FMMGR="/usr/local/bin/${FMMGR_NAME}"
+ PIDFILE=/var/run/${FMMGR_NAME}.pid
+-CONFIGFILE=/etc/fm/fm.conf
++CONFIGFILE=/usr/local/etc/fm/fm.conf
+ 
+ # Linux Standard Base (LSB) Error Codes
+ RETVAL=0
+diff --git a/fminit.service b/fminit.service
+index 7d7cc96..43fa05d 100644
+--- a/fminit.service
++++ b/fminit.service
+@@ -7,8 +7,8 @@ Type=forking
+ Restart=no
+ KillMode=process
+ RemainAfterExit=yes
+-ExecStart=/etc/rc.d/init.d/fminit start
+-ExecStop=/etc/rc.d/init.d/fminit stop
++ExecStart=/usr/local/etc/rc.d/init.d/fminit start
++ExecStop=/usr/local/etc/rc.d/init.d/fminit stop
+ ExecReload=/etc/rc.d/init.d/fminit reload
+ PIDFile=/var/run/fmManager.pid
+ 
+-- 
+2.22.0
+
