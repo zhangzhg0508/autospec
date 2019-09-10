@@ -1,0 +1,35 @@
+From b931ba9d7e4801bce5f6af3bd752b1d4f0d3a887 Mon Sep 17 00:00:00 2001
+From: Mingyuan Qi <mingyuan.qi@intel.com>
+Date: Tue, 11 Sep 2018 01:05:08 +0800
+Subject: [PATCH 2/2] add python setup to Makefile
+
+---
+ sources/Makefile | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/sources/Makefile b/sources/Makefile
+index 8348e90..f77c0f6 100755
+--- a/sources/Makefile
++++ b/sources/Makefile
+@@ -9,7 +9,7 @@ INCLUDES = -I./ -I$(shell pg_config --includedir)
+ CCFLAGS = -g -O2 -Wall -Werror -fPIC
+ 
+ LIBFMCOMMON_SO := libfmcommon.so
+-build: lib fmClientCli
++build: lib fmClientCli fmpy
+ 
+ .cpp.o:
+ 	$(CXX) $(CCFLAGS) $(INCLUDES) $(EXTRACCFLAGS) -c $< -o $@
+@@ -21,7 +21,8 @@ lib: $(OBJS)
+ 
+ fmClientCli: $(CLI_OBJS) lib
+ 	$(CXX) -o $@ $(CLI_OBJS) -L./ -lfmcommon 
+-	
++fmpy: lib
++	python2 setup.py build
+ clean:
+ 	@rm -f $(OBJ) *.o *.so fmClientCli  
+ 
+-- 
+2.18.0
+

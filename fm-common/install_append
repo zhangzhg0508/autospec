@@ -1,0 +1,19 @@
+pushd sources
+python2 setup.py install --root=%{buildroot} \
+                             --install-lib=%{pythonroot} \
+                             --prefix=/usr \
+                             --install-data=/usr/share
+
+install -d $RPM_BUILD_ROOT/usr/bin
+install -m 755 fm_db_sync_event_suppression.py $RPM_BUILD_ROOT/usr/bin/fm_db_sync_event_suppression.py
+
+# install the headers that used by fm-mgr package
+install -m 644 -p -D fmConfig.h %{buildroot}%{_includedir}/fmConfig.h
+install -m 644 -p -D fmLog.h %{buildroot}%{_includedir}/fmLog.h
+
+CGCS_DOC_DEPLOY=$RPM_BUILD_ROOT/%{cgcs_doc_deploy_dir}
+install -d $CGCS_DOC_DEPLOY
+# install fmAlarm.h in CGCS_DOC_DEPLOY_DIR
+# used by fm-doc package to validate the Alarms & Logs Doc Yaml file
+install -m 644 fmAlarm.h $CGCS_DOC_DEPLOY
+popd

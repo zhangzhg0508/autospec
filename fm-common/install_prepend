@@ -1,0 +1,10 @@
+VER=%{version}
+MAJOR=`echo $VER | awk -F . '{print $1}'`
+MINOR=`echo $VER | awk -F . '{print $2}'`
+
+%define tis_patch_ver 9
+%define _tis_build_type std
+%define local_dir /usr/local
+%define local_bindir %{local_dir}/bin
+%define cgcs_doc_deploy_dir /usr/share/doc/cgcs_doc
+%define pythonroot /usr/lib64/python2.7/site-packages
