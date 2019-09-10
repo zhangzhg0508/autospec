@@ -1,0 +1,2 @@
+install -d %{buildroot}/usr/bin
+install -m 755 %{_buildsubdir}/usr/bin/smc %{buildroot}/usr/bin

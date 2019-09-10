@@ -1,0 +1,1 @@
+%global _buildsubdir %{_builddir}/%{name}-%{version}
