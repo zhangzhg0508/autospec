@@ -1,0 +1,31 @@
+# This file contains additional build requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+install -d -m 755 %{buildroot}%{_tmpfilesdir}
+install -d -m 755 %{buildroot}/var/log/dcmanager
+install -d -m 755 %{buildroot}/var/cache/dcmanager
+install -d -m 755 %{buildroot}%{_sysconfdir}/dcmanager/
+tar -xvJf %{SOURCE9}
+install -p -D -m 644 dcmanager.conf %{buildroot}%{_tmpfilesdir}
+install -p -D -m 640 dcmanager.conf %{buildroot}%{_sysconfdir}/dcmanager/dcmanager.conf
+
+install -d -m 755 %{buildroot}/var/log/dcorch
+install -d -m 755 %{buildroot}/var/cache/dcorch
+install -d -m 755 %{buildroot}%{_sysconfdir}/dcorch/
+install -p -D -m 644 dcorch.conf %{buildroot}%{_tmpfilesdir}
+install -p -D -m 640 dcorch.conf %{buildroot}%{_sysconfdir}/dcorch/dcorch.conf
+
+install -d -m 755 %{buildroot}/var/log/dcdbsync
+install -d -m 755 %{buildroot}/var/cache/dcdbsync
+install -d -m 755 %{buildroot}%{_sysconfdir}/dcdbsync/
+install -p -D -m 644 dcdbsync.conf %{buildroot}%{_tmpfilesdir}
+install -p -D -m 640 dcdbsync.conf %{buildroot}%{_sysconfdir}/dcdbsync/dcdbsync.conf
+
+# install ocf scripts
+install -d -m 755 ${RPM_BUILD_ROOT}/usr/lib/ocf/resource.d/openstack
+install -p -D -m 755 ocf/* ${RPM_BUILD_ROOT}/usr/lib/ocf/resource.d/openstack/
+
+# install ansible overrides dir
+install -d -m 600 ${RPM_BUILD_ROOT}/opt/dc/ansible
+
+
+

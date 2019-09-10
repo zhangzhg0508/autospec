@@ -1,0 +1,4 @@
+# This file contains additional build requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+%define _sysconfdir /usr/local/etc/
+export PBR_VERSION=%{version}
