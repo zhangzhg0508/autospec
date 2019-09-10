@@ -1,0 +1,25 @@
+From eefd24d402ac1843275c86d07f86f0c2ed7ee724 Mon Sep 17 00:00:00 2001
+From: "yongx.fu" <yongx.fu@intel.com>
+Date: Wed, 21 Aug 2019 10:16:52 +0800
+Subject: [PATCH 2/2] modify sm_common lib flag location
+
+---
+ src/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index 440bf6c..c4d4f76 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -30,7 +30,7 @@ SRCS+=sm_db_configuration.c
+ OBJS = $(SRCS:.c=.o)
+ CCFLAGS= -fPIC -g -O2 -Wall -Werror -std=c++11 -Wformat -Wformat-security
+ EXTRACCFLAGS= -D__STDC_FORMAT_MACROS
+-LDLIBS= -lsqlite3 -lglib-2.0 -luuid -lrt -lsm_common
++LDLIBS= -lsm_common -lsqlite3 -lglib-2.0 -luuid -lrt
+ LDFLAGS = -shared -rdynamic
+ RLIBS= -L/usr/lib64/R/lib/ -lR /usr/lib64/R/library/uuid/libs/uuid.so
+ 
+-- 
+2.23.0
+

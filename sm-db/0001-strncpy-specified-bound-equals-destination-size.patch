@@ -1,0 +1,33 @@
+From 565084a951210f626b17ce4b79f7e68c363a615c Mon Sep 17 00:00:00 2001
+From: "yongx.fu" <yongx.fu@intel.com>
+Date: Wed, 21 Aug 2019 10:13:18 +0800
+Subject: [PATCH 1/2] strncpy specified bound equals destination size
+
+---
+ src/sm_db_configuration.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/sm_db_configuration.c b/src/sm_db_configuration.c
+index c257d13..314e850 100644
+--- a/src/sm_db_configuration.c
++++ b/src/sm_db_configuration.c
+@@ -28,12 +28,14 @@ SmErrorT sm_db_configuration_convert( const char* col_name,
+     if( 0 ==  strcmp( SM_CONFIGURATION_TABLE_COLUMN_KEY,
+                       col_name ) )
+     {
+-        strncpy( record->key, col_data, SM_CONFIGURATION_KEY_MAX_CHAR );
++        strncpy( record->key, col_data, SM_CONFIGURATION_KEY_MAX_CHAR - 1 );
++	record->key[SM_CONFIGURATION_KEY_MAX_CHAR - 1] = '\0';
+     }
+     else if( 0 == strcmp( SM_CONFIGURATION_TABLE_COLUMN_VALUE,
+                           col_name ) )
+     {
+-        strncpy( record->value, col_data, SM_CONFIGURATION_VALUE_MAX_CHAR );
++        strncpy( record->key, col_data, SM_CONFIGURATION_KEY_MAX_CHAR - 1 );
++	record->key[SM_CONFIGURATION_KEY_MAX_CHAR - 1] = '\0';
+     }
+     else if( 0 == strcmp( SM_CONFIGURATION_TABLE_COLUMN_ID,
+                           col_name ) )
+-- 
+2.23.0
+
