@@ -1,0 +1,43 @@
+From 13d7d4bf4a94b8cc95beccee0aad96d73d246acf Mon Sep 17 00:00:00 2001
+From: Lars Kellogg-Stedman <lars@redhat.com>
+Date: Thu, 12 Jan 2017 16:21:10 -0500
+Subject: [PATCH] do not use git to determine version
+
+trying to use git to determine the current cloud-init version will
+fail when building the package.
+
+X-downstream-only: true
+---
+ tools/read-version | 19 ++-----------------
+ 1 file changed, 2 insertions(+), 17 deletions(-)
+
+diff --git a/tools/read-version b/tools/read-version
+index 3b30b49..1ce3ac6 100755
+--- a/tools/read-version
++++ b/tools/read-version
+@@ -52,23 +52,8 @@ output_json = '--json' in sys.argv
+ src_version = ci_version.version_string()
+ version_long = None
+ 
+-if os.path.isdir(os.path.join(_tdir, ".git")) and which("git"):
+-    flags = []
+-    if use_tags:
+-        flags = ['--tags']
+-    cmd = ['git', 'describe'] + flags
+-
+-    version = tiny_p(cmd).strip()
+-
+-    if not version.startswith(src_version):
+-        sys.stderr.write("git describe version (%s) differs from "
+-                         "cloudinit.version (%s)\n" % (version, src_version))
+-        sys.exit(1)
+-
+-    version_long = tiny_p(cmd + ["--long"]).strip()
+-else:
+-    version = src_version
+-    version_long = None
++version = src_version
++version_long = None
+ 
+ # version is X.Y.Z[+xxx.gHASH]
+ # version_long is None or X.Y.Z-xxx-gHASH

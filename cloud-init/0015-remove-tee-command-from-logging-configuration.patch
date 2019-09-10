@@ -1,0 +1,29 @@
+From daa38854c690f4523d0665785180a5a62431eba7 Mon Sep 17 00:00:00 2001
+From: Lars Kellogg-Stedman <lars@redhat.com>
+Date: Fri, 7 Apr 2017 19:09:13 -0400
+Subject: [PATCH] remove 'tee' command from logging configuration
+
+the default logging configuration passes all cloud-init output through
+'tee' in order to generate /var/log/cloud-init-output.log.  This is
+redundant on modern systems, since stdout/stderr are captured by
+systemd and available via journalctl.
+
+Resolves: rhbz#1424612
+X-downstream-only: true
+---
+ config/cloud.cfg.d/05_logging.cfg | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/config/cloud.cfg.d/05_logging.cfg b/config/cloud.cfg.d/05_logging.cfg
+index 937b07f..4be8866 100644
+--- a/config/cloud.cfg.d/05_logging.cfg
++++ b/config/cloud.cfg.d/05_logging.cfg
+@@ -64,8 +64,3 @@ log_cfgs:
+  - [ *log_base, *log_file ]
+ # A file path can also be used.
+ # - /etc/log.conf
+-
+-# This tells cloud-init to redirect its stdout and stderr to
+-# 'tee -a /var/log/cloud-init-output.log' so the user can see output
+-# there without needing to look on the console.
+-output: {all: '| tee -a /var/log/cloud-init-output.log'}

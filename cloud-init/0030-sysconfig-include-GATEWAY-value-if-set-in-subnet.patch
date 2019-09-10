@@ -1,0 +1,142 @@
+From 8fd2f03c40606ad25135385f7badf42e48d713b6 Mon Sep 17 00:00:00 2001
+From: Ryan Harper <ryan.harper@canonical.com>
+Date: Fri, 9 Jun 2017 12:35:11 -0500
+Subject: [PATCH 2/2] sysconfig: include GATEWAY value if set in subnet
+
+Render the GATEWAY= value in interface files which have a gateway in the
+subnet configuration.
+
+LP: #1686856
+(cherry picked from commit d1e8eb73aca6a3f5cee415774dcf540e934ec250)
+
+Resolves: rhbz#1465730
+Signed-off-by: Ryan McCabe <rmccabe@redhat.com>
+(cherry picked from commit 158f53f223b763ddfbfa5967c58866424ae02689)
+
+Resolves: rhbz#1492726
+Signed-off-by: Ryan McCabe <rmccabe@redhat.com>
+---
+ cloudinit/net/sysconfig.py                     |  3 ++
+ tests/unittests/test_distros/test_netconfig.py |  2 ++
+ tests/unittests/test_net.py                    | 50 +++++++++++++++++++++++++-
+ 3 files changed, 54 insertions(+), 1 deletion(-)
+
+diff --git a/cloudinit/net/sysconfig.py b/cloudinit/net/sysconfig.py
+index 25c29104..ca031691 100644
+--- a/cloudinit/net/sysconfig.py
++++ b/cloudinit/net/sysconfig.py
+@@ -347,6 +347,9 @@ class Renderer(renderer.Renderer):
+                             iface_cfg['NETMASK' + str(ipv4_index)] = \
+                                 subnet['netmask']
+ 
++                if 'gateway' in subnet:
++                    iface_cfg['GATEWAY'] = subnet['gateway']
++
+     @classmethod
+     def _render_subnet_routes(cls, iface_cfg, route_cfg, subnets):
+         for i, subnet in enumerate(subnets, start=len(iface_cfg.children)):
+diff --git a/tests/unittests/test_distros/test_netconfig.py b/tests/unittests/test_distros/test_netconfig.py
+index 861cf8ef..108d5741 100644
+--- a/tests/unittests/test_distros/test_netconfig.py
++++ b/tests/unittests/test_distros/test_netconfig.py
+@@ -260,6 +260,7 @@ BOOTPROTO=none
+ DEVICE=eth0
+ IPADDR=192.168.1.5
+ NETMASK=255.255.255.0
++GATEWAY=192.168.1.254
+ ONBOOT=yes
+ TYPE=Ethernet
+ USERCTL=no
+@@ -396,6 +397,7 @@ IPV6_AUTOCONF=no
+ BOOTPROTO=none
+ DEVICE=eth0
+ IPV6ADDR=2607:f0d0:1002:0011::2/64
++GATEWAY=2607:f0d0:1002:0011::1
+ IPV6INIT=yes
+ ONBOOT=yes
+ TYPE=Ethernet
+diff --git a/tests/unittests/test_net.py b/tests/unittests/test_net.py
+index 7e389c10..4a32eb88 100644
+--- a/tests/unittests/test_net.py
++++ b/tests/unittests/test_net.py
+@@ -615,6 +615,7 @@ pre-down route del -net 10.0.0.0 netmask 255.0.0.0 gw 11.0.0.1 metric 3 || true
+     }
+ }
+ 
++
+ CONFIG_V1_EXPLICIT_LOOPBACK = {
+     'version': 1,
+     'config': [{'name': 'eth0', 'type': 'physical',
+@@ -624,6 +625,30 @@ CONFIG_V1_EXPLICIT_LOOPBACK = {
+                ]}
+ 
+ 
++CONFIG_V1_SIMPLE_SUBNET = {
++    'version': 1,
++    'config': [{'mac_address': '52:54:00:12:34:00',
++                'name': 'interface0',
++                'subnets': [{'address': '10.0.2.15',
++                             'gateway': '10.0.2.2',
++                             'netmask': '255.255.255.0',
++                             'type': 'static'}],
++                'type': 'physical'}]}
++
++
++DEFAULT_DEV_ATTRS = {
++    'eth1000': {
++        "bridge": False,
++        "carrier": False,
++        "dormant": False,
++        "operstate": "down",
++        "address": "07-1C-C6-75-A4-BE",
++        "device/driver": None,
++        "device/device": None,
++    }
++}
++
++
+ def _setup_test(tmp_dir, mock_get_devicelist, mock_read_sys_net,
+                 mock_sys_dev_path):
+     mock_get_devicelist.return_value = ['eth1000']
+@@ -793,6 +818,30 @@ USERCTL=no
+                 with open(os.path.join(render_dir, fn)) as fh:
+                     self.assertEqual(expected_content, fh.read())
+ 
++    def test_network_config_v1_samples(self):
++        ns = network_state.parse_net_config_data(CONFIG_V1_SIMPLE_SUBNET)
++        render_dir = self.tmp_path("render")
++        os.makedirs(render_dir)
++        renderer = sysconfig.Renderer()
++        renderer.render_network_state(render_dir, ns)
++        found = dir2dict(render_dir)
++        nspath = '/etc/sysconfig/network-scripts/'
++        self.assertNotIn(nspath + 'ifcfg-lo', found.keys())
++        expected = """\
++# Created by cloud-init on instance boot automatically, do not edit.
++#
++BOOTPROTO=none
++DEVICE=interface0
++GATEWAY=10.0.2.2
++HWADDR=52:54:00:12:34:00
++IPADDR=10.0.2.15
++NETMASK=255.255.255.0
++ONBOOT=yes
++TYPE=Ethernet
++USERCTL=no
++"""
++        self.assertEqual(expected, found[nspath + 'ifcfg-interface0'])
++
+     def test_config_with_explicit_loopback(self):
+         ns = network_state.parse_net_config_data(CONFIG_V1_EXPLICIT_LOOPBACK)
+         render_dir = self.tmp_path("render")
+@@ -807,7 +856,6 @@ USERCTL=no
+ #
+ BOOTPROTO=dhcp
+ DEVICE=eth0
+-NM_CONTROLLED=no
+ ONBOOT=yes
+ TYPE=Ethernet
+ USERCTL=no
+-- 
+2.13.6
+

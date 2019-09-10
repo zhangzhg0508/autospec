@@ -1,0 +1,68 @@
+rm -rf $RPM_BUILD_ROOT
+%{__python} setup.py install -O1 --skip-build --root $RPM_BUILD_ROOT
+
+# Don't ship the tests
+rm -r $RPM_BUILD_ROOT%{python_sitelib}/tests
+
+mkdir -p $RPM_BUILD_ROOT/var/lib/cloud
+
+# /run/cloud-init needs a tmpfiles.d entry
+mkdir -p $RPM_BUILD_ROOT/run/cloud-init
+mkdir -p $RPM_BUILD_ROOT/%{_tmpfilesdir}
+cp -p rhel/cloud-init-tmpfiles.conf $RPM_BUILD_ROOT/%{_tmpfilesdir}/%{name}.conf
+
+# We supply our own config file since our software differs from Ubuntu's.
+cp -p rhel/cloud.cfg $RPM_BUILD_ROOT/%{_sysconfdir}/cloud/cloud.cfg
+
+mkdir -p $RPM_BUILD_ROOT/%{_sysconfdir}/rsyslog.d
+cp -p tools/21-cloudinit.conf $RPM_BUILD_ROOT/%{_sysconfdir}/rsyslog.d/21-cloudinit.conf
+
+# Make installed NetworkManager hook name less generic
+mv $RPM_BUILD_ROOT/etc/NetworkManager/dispatcher.d/hook-network-manager \
+   $RPM_BUILD_ROOT/etc/NetworkManager/dispatcher.d/cloud-init-azure-hook
+
+# Install our own systemd units (rhbz#1440831)
+mkdir -p $RPM_BUILD_ROOT%{_unitdir}
+cp rhel/systemd/* $RPM_BUILD_ROOT%{_unitdir}/
+
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+
+%post
+if [ $1 -eq 1 ] ; then
+    # Initial installation
+    # Enabled by default per "runs once then goes away" exception
+    /bin/systemctl enable cloud-config.service     >/dev/null 2>&1 || :
+    /bin/systemctl enable cloud-final.service      >/dev/null 2>&1 || :
+    /bin/systemctl enable cloud-init.service       >/dev/null 2>&1 || :
+    /bin/systemctl enable cloud-init-local.service >/dev/null 2>&1 || :
+elif [ $1 -eq 2 ]; then
+    # Upgrade. If the upgrade is from a version older than 0.7.9-8,
+    # there will be stale systemd config
+    /bin/systemctl is-enabled cloud-config.service >/dev/null 2>&1 &&
+      /bin/systemctl reenable cloud-config.service >/dev/null 2>&1 || :
+
+    /bin/systemctl is-enabled cloud-final.service >/dev/null 2>&1 &&
+      /bin/systemctl reenable cloud-final.service >/dev/null 2>&1 || :
+
+    /bin/systemctl is-enabled cloud-init.service >/dev/null 2>&1 &&
+      /bin/systemctl reenable cloud-init.service >/dev/null 2>&1 || :
+
+    /bin/systemctl is-enabled cloud-init-local.service >/dev/null 2>&1 &&
+      /bin/systemctl reenable cloud-init-local.service >/dev/null 2>&1 || :
+fi
+
+%preun
+if [ $1 -eq 0 ] ; then
+    # Package removal, not upgrade
+    /bin/systemctl --no-reload disable cloud-config.service >/dev/null 2>&1 || :
+    /bin/systemctl --no-reload disable cloud-final.service  >/dev/null 2>&1 || :
+    /bin/systemctl --no-reload disable cloud-init.service   >/dev/null 2>&1 || :
+    /bin/systemctl --no-reload disable cloud-init-local.service >/dev/null 2>&1 || :
+    # One-shot services -> no need to stop
+fi
+
+%postun
+/bin/systemctl daemon-reload >/dev/null 2>&1 || :

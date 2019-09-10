@@ -1,0 +1,112 @@
+From 2d29c7af0c45186d3031c0ecd9ae0b8881a33c0b Mon Sep 17 00:00:00 2001
+From: Lars Kellogg-Stedman <lars@redhat.com>
+Date: Thu, 2 Mar 2017 11:08:26 -0500
+Subject: [PATCH] net: support both ipv4 and ipv6 gateways in sysconfig.
+
+Previously, cloud-init would throw an exception if an interface had
+both ipv4 and ipv6 addresses and a default gateway for each address
+family.  This change allows cloud-init to correctly configure
+interfaces in this situation.
+
+LP: #1669504
+(cherry picked from commit 1d751a6f46f044e3c3827f3cef0e4a2e71d50fe7)
+---
+ cloudinit/net/sysconfig.py | 33 ++++++++++++++++++++++++---------
+ 1 file changed, 24 insertions(+), 9 deletions(-)
+
+diff --git a/cloudinit/net/sysconfig.py b/cloudinit/net/sysconfig.py
+index 0b5f13c..29c906f 100644
+--- a/cloudinit/net/sysconfig.py
++++ b/cloudinit/net/sysconfig.py
+@@ -87,7 +87,8 @@ class Route(ConfigMap):
+     def __init__(self, route_name, base_sysconf_dir):
+         super(Route, self).__init__()
+         self.last_idx = 1
+-        self.has_set_default = False
++        self.has_set_default_ipv4 = False
++        self.has_set_default_ipv6 = False
+         self._route_name = route_name
+         self._base_sysconf_dir = base_sysconf_dir
+ 
+@@ -95,7 +96,8 @@ class Route(ConfigMap):
+         r = Route(self._route_name, self._base_sysconf_dir)
+         r._conf = self._conf.copy()
+         r.last_idx = self.last_idx
+-        r.has_set_default = self.has_set_default
++        r.has_set_default_ipv4 = self.has_set_default_ipv4
++        r.has_set_default_ipv6 = self.has_set_default_ipv6
+         return r
+ 
+     @property
+@@ -119,10 +121,10 @@ class NetInterface(ConfigMap):
+         super(NetInterface, self).__init__()
+         self.children = []
+         self.routes = Route(iface_name, base_sysconf_dir)
+-        self._kind = kind
++        self.kind = kind
++
+         self._iface_name = iface_name
+         self._conf['DEVICE'] = iface_name
+-        self._conf['TYPE'] = self.iface_types[kind]
+         self._base_sysconf_dir = base_sysconf_dir
+ 
+     @property
+@@ -140,6 +142,8 @@ class NetInterface(ConfigMap):
+ 
+     @kind.setter
+     def kind(self, kind):
++        if kind not in self.iface_types:
++            raise ValueError(kind)
+         self._kind = kind
+         self._conf['TYPE'] = self.iface_types[kind]
+ 
+@@ -172,7 +176,7 @@ class Renderer(renderer.Renderer):
+         ('BOOTPROTO', 'none'),
+     ])
+ 
+-    # If these keys exist, then there values will be used to form
++    # If these keys exist, then their values will be used to form
+     # a BONDING_OPTS grouping; otherwise no grouping will be set.
+     bond_tpl_opts = tuple([
+         ('bond_mode', "mode=%s"),
+@@ -198,6 +202,7 @@ class Renderer(renderer.Renderer):
+     def _render_iface_shared(cls, iface, iface_cfg):
+         for k, v in cls.iface_defaults:
+             iface_cfg[k] = v
++
+         for (old_key, new_key) in [('mac_address', 'HWADDR'), ('mtu', 'MTU')]:
+             old_value = iface.get(old_key)
+             if old_value is not None:
+@@ -226,10 +231,20 @@ class Renderer(renderer.Renderer):
+         if 'netmask' in subnet:
+             iface_cfg['NETMASK'] = subnet['netmask']
+         for route in subnet.get('routes', []):
++            if subnet.get('ipv6'):
++                gw_cfg = 'IPV6_DEFAULTGW'
++            else:
++                gw_cfg = 'GATEWAY'
++
+             if _is_default_route(route):
+-                if route_cfg.has_set_default:
+-                    raise ValueError("Duplicate declaration of default"
+-                                     " route found for interface '%s'"
++                if (
++                        (subnet.get('ipv4') and
++                         route_cfg.has_set_default_ipv4) or
++                        (subnet.get('ipv6') and
++                         route_cfg.has_set_default_ipv6)
++                ):
++                    raise ValueError("Duplicate declaration of default "
++                                     "route found for interface '%s'"
+                                      % (iface_cfg.name))
+                 # NOTE(harlowja): ipv6 and ipv4 default gateways
+                 gw_key = 'GATEWAY0'
+@@ -241,7 +256,7 @@ class Renderer(renderer.Renderer):
+                 # also provided the default route?
+                 iface_cfg['DEFROUTE'] = True
+                 if 'gateway' in route:
+-                    iface_cfg['GATEWAY'] = route['gateway']
++                    iface_cfg[gw_cfg] = route['gateway']
+                 route_cfg.has_set_default = True
+             else:
+                 gw_key = 'GATEWAY%s' % route_cfg.last_idx

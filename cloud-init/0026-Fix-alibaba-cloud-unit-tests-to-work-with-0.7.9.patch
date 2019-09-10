@@ -1,0 +1,29 @@
+From 1a674be4e78d77ed40e3a07385c4cce617476129 Mon Sep 17 00:00:00 2001
+From: Ryan McCabe <rmccabe@redhat.com>
+Date: Tue, 5 Sep 2017 13:02:00 -0400
+Subject: [PATCH 5/5] Fix alibaba cloud unit tests to work with 0.7.9
+
+Resolves: rhbz#1482547
+X-downstream-only: Yes
+
+Signed-off-by: Ryan McCabe <rmccabe@redhat.com>
+---
+ tests/unittests/test_datasource/test_aliyun.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/unittests/test_datasource/test_aliyun.py b/tests/unittests/test_datasource/test_aliyun.py
+index 990bff2c..90454c8d 100644
+--- a/tests/unittests/test_datasource/test_aliyun.py
++++ b/tests/unittests/test_datasource/test_aliyun.py
+@@ -165,7 +165,7 @@ class TestAliYunDatasource(test_helpers.HttprettyTestCase):
+                          public_keys['key-pair-0']['openssh-key'])
+ 
+ 
+-class TestIsAliYun(test_helpers.CiTestCase):
++class TestIsAliYun(test_helpers.HttprettyTestCase):
+     ALIYUN_PRODUCT = 'Alibaba Cloud ECS'
+     read_dmi_data_expected = [mock.call('system-product-name')]
+ 
+-- 
+2.13.5
+

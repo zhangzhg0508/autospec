@@ -1,0 +1,56 @@
+From b1961175270372dd2a3c2801b0c231af3574a857 Mon Sep 17 00:00:00 2001
+From: Vitaly Kuznetsov <vkuznets@redhat.com>
+Date: Tue, 17 Apr 2018 13:07:54 +0200
+Subject: [PATCH 2/3] DataSourceAzure.py: use hostnamectl to set hostname
+
+RH-Author: Vitaly Kuznetsov <vkuznets@redhat.com>
+Message-id: <20180417130754.12918-3-vkuznets@redhat.com>
+Patchwork-id: 79659
+O-Subject: [RHEL7.6/7.5.z cloud-init PATCH 2/2] DataSourceAzure.py: use hostnamectl to set hostname
+Bugzilla: 1568717
+RH-Acked-by: Eduardo Otubo <otubo@redhat.com>
+RH-Acked-by: Mohammed Gamal <mgamal@redhat.com>
+RH-Acked-by: Cathy Avery <cavery@redhat.com>
+
+The right way to set hostname in RHEL7 is:
+
+ $ hostnamectl set-hostname HOSTNAME
+
+DataSourceAzure, however, uses:
+ $ hostname HOSTSNAME
+
+instead and this causes problems. We can't simply change
+'BUILTIN_DS_CONFIG' in DataSourceAzure.py as 'hostname' is being used
+for both getting and setting the hostname.
+
+Long term, this should be fixed in a different way. Cloud-init
+has distro-specific hostname setting/getting (see
+cloudinit/distros/rhel.py) and DataSourceAzure.py needs to be switched
+to use these.
+
+Resolves: rhbz#1434109
+
+X-downstream-only: yes
+
+Signed-off-by: Vitaly Kuznetsov <vkuznets@redhat.com>
+Signed-off-by: Miroslav Rezanina <mrezanin@redhat.com>
+---
+ cloudinit/sources/DataSourceAzure.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cloudinit/sources/DataSourceAzure.py b/cloudinit/sources/DataSourceAzure.py
+index 48a3e1d..6ce700f 100644
+--- a/cloudinit/sources/DataSourceAzure.py
++++ b/cloudinit/sources/DataSourceAzure.py
+@@ -71,7 +71,7 @@ def get_hostname(hostname_command='hostname'):
+ 
+ 
+ def set_hostname(hostname, hostname_command='hostname'):
+-    util.subp([hostname_command, hostname])
++    util.subp(['hostnamectl', 'set-hostname', str(hostname)])
+ 
+ 
+ @contextlib.contextmanager
+-- 
+1.8.3.1
+

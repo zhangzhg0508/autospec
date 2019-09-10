@@ -1,0 +1,66 @@
+From daa2bd7c780b91c81154c700aeea25755c53e0a6 Mon Sep 17 00:00:00 2001
+From: Ryan McCabe <rmccabe@redhat.com>
+Date: Thu, 18 May 2017 23:20:52 -0400
+Subject: [PATCH] Add missing sysconfig unit test data
+
+This includes portions of upstream commit:
+ef18b8ac4cf7e3dfd98830fbdb298380a192a0fc
+
+Resolves: rhbz#1438082
+X-downstream-only: true
+---
+ cloudinit/net/sysconfig.py                     |  2 +-
+ tests/unittests/test_distros/test_netconfig.py | 27 ++++++++++++++++++++++++++
+ 2 files changed, 28 insertions(+), 1 deletion(-)
+
+diff --git a/cloudinit/net/sysconfig.py b/cloudinit/net/sysconfig.py
+index 240ed23..ef80d99 100644
+--- a/cloudinit/net/sysconfig.py
++++ b/cloudinit/net/sysconfig.py
+@@ -246,7 +246,7 @@ class Renderer(renderer.Renderer):
+     def __init__(self, config=None):
+         if not config:
+             config = {}
+-        self.sysconf_dir = config.get('sysconf_dir', 'etc/sysconfig/')
++        self.sysconf_dir = config.get('sysconf_dir', 'etc/sysconfig')
+         self.netrules_path = config.get(
+             'netrules_path', 'etc/udev/rules.d/70-persistent-net.rules')
+         self.dns_path = config.get('dns_path', 'etc/resolv.conf')
+diff --git a/tests/unittests/test_distros/test_netconfig.py b/tests/unittests/test_distros/test_netconfig.py
+index 85982cf..23ff570 100644
+--- a/tests/unittests/test_distros/test_netconfig.py
++++ b/tests/unittests/test_distros/test_netconfig.py
+@@ -67,6 +67,33 @@ iface eth1 inet6 static
+     gateway 2607:f0d0:1002:0011::1
+ '''
+ 
++V1_NET_CFG = {'config': [{'name': 'eth0',
++
++                          'subnets': [{'address': '192.168.1.5',
++                                       'broadcast': '192.168.1.0',
++                                       'gateway': '192.168.1.254',
++                                       'netmask': '255.255.255.0',
++                                       'type': 'static'}],
++                          'type': 'physical'},
++                         {'name': 'eth1',
++                          'subnets': [{'control': 'auto', 'type': 'dhcp4'}],
++                          'type': 'physical'}],
++              'version': 1}
++
++V1_NET_CFG_IPV6 = {'config': [{'name': 'eth0',
++                               'subnets': [{'address':
++                                            '2607:f0d0:1002:0011::2',
++                                            'gateway':
++                                            '2607:f0d0:1002:0011::1',
++                                            'netmask': '64',
++                                            'type': 'static'}],
++                               'type': 'physical'},
++                              {'name': 'eth1',
++                               'subnets': [{'control': 'auto',
++                                            'type': 'dhcp4'}],
++                               'type': 'physical'}],
++                   'version': 1}
++
+ 
+ class WriteBuffer(object):
+     def __init__(self):

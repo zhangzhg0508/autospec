@@ -1,0 +1,89 @@
+From 3774ec0a9873b4dfbc647ee57f16fe461706c1b2 Mon Sep 17 00:00:00 2001
+From: Ryan McCabe <rmccabe@redhat.com>
+Date: Tue, 21 Nov 2017 11:50:18 -0500
+Subject: [PATCH] Render DNS and DOMAIN lines for sysconfig
+
+Currently when dns and dns search info is provided, it is not
+rendered when outputting to sysconfig format.
+
+This patch causes the DNS and DOMAIN lines to be written out rendering
+sysconfig.
+
+This is a backport of upstream commit
+bbe91cdc6917adb503b455e6860c21ea7b3f567f which will not apply to the
+0.7.9 tree.
+
+Signed-off-by: Ryan McCabe <rmccabe@redhat.com>
+Resolves: rhbz#1489270
+---
+ cloudinit/net/sysconfig.py  | 17 +++++++++++++++++
+ tests/unittests/test_net.py | 11 ++++++++---
+ 2 files changed, 25 insertions(+), 3 deletions(-)
+
+diff --git a/cloudinit/net/sysconfig.py b/cloudinit/net/sysconfig.py
+index ca031691..e34c8491 100644
+--- a/cloudinit/net/sysconfig.py
++++ b/cloudinit/net/sysconfig.py
+@@ -350,6 +350,23 @@ class Renderer(renderer.Renderer):
+                 if 'gateway' in subnet:
+                     iface_cfg['GATEWAY'] = subnet['gateway']
+ 
++                if 'dns_search' in subnet:
++                    if isinstance(subnet['dns_search'], (list, tuple)):
++                        # Currently limited to 6 entries per resolv.conf(5)
++                        search_list = subnet['dns_search'][:6]
++                        iface_cfg['DOMAIN'] = ' '.join(search_list)
++                    else:
++                        iface_cfg['DOMAIN'] = subnet['dns_search']
++
++                if 'dns_nameservers' in subnet:
++                    if isinstance(subnet['dns_search'], (list, tuple)):
++                        # Currently limited to 3 entries per resolv.conf(5)
++                        dns_list = subnet['dns_nameservers'][:3]
++                        for i, k in enumerate(dns_list, 1):
++                            iface_cfg['DNS' + str(i)] = k
++                    else:
++                        iface_cfg['DNS1'] = subnet['dns_nameservers']
++
+     @classmethod
+     def _render_subnet_routes(cls, iface_cfg, route_cfg, subnets):
+         for i, subnet in enumerate(subnets, start=len(iface_cfg.children)):
+diff --git a/tests/unittests/test_net.py b/tests/unittests/test_net.py
+index 4a32eb88..551370d4 100644
+--- a/tests/unittests/test_net.py
++++ b/tests/unittests/test_net.py
+@@ -820,7 +820,9 @@ USERCTL=no
+ 
+     def test_network_config_v1_samples(self):
+         ns = network_state.parse_net_config_data(CONFIG_V1_SIMPLE_SUBNET)
+-        render_dir = self.tmp_path("render")
++        tmp_dir = tempfile.mkdtemp()
++        self.addCleanup(shutil.rmtree, tmp_dir)
++        render_dir = os.path.join(tmp_dir, "render")
+         os.makedirs(render_dir)
+         renderer = sysconfig.Renderer()
+         renderer.render_network_state(render_dir, ns)
+@@ -844,7 +846,9 @@ USERCTL=no
+ 
+     def test_config_with_explicit_loopback(self):
+         ns = network_state.parse_net_config_data(CONFIG_V1_EXPLICIT_LOOPBACK)
+-        render_dir = self.tmp_path("render")
++        tmp_dir = tempfile.mkdtemp()
++        self.addCleanup(shutil.rmtree, tmp_dir)
++        render_dir = os.path.join(tmp_dir, "render")
+         os.makedirs(render_dir)
+         renderer = sysconfig.Renderer()
+         renderer.render_network_state(render_dir, ns)
+@@ -904,7 +908,8 @@ iface eth1000 inet dhcp
+         self.assertEqual(expected.lstrip(), contents.lstrip())
+ 
+     def test_config_with_explicit_loopback(self):
+-        tmp_dir = self.tmp_dir()
++        tmp_dir = tempfile.mkdtemp()
++        self.addCleanup(shutil.rmtree, tmp_dir)
+         ns = network_state.parse_net_config_data(CONFIG_V1_EXPLICIT_LOOPBACK)
+         renderer = eni.Renderer()
+         renderer.render_network_state(tmp_dir, ns)
+-- 
+2.13.6
+

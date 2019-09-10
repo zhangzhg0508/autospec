@@ -1,0 +1,74 @@
+From cee7eef674c4fe7e4a23e5c358df23064796e9e2 Mon Sep 17 00:00:00 2001
+From: Ryan McCabe <rmccabe@redhat.com>
+Date: Thu, 30 Nov 2017 08:59:03 -0500
+Subject: [PATCH] sysconfig: Render IPV6_DEFAULTGW correctly
+
+Downstream backport of the fixes introduced in upstream commit
+97abd83513bee191b58f095f4d683b18acce0b49 which will not apply to
+the RHEL 0.7.9 tree.
+
+Signed-off-by: Ryan McCabe <rmccabe@redhat.com>
+Resolves: rhbz#1492726
+---
+ cloudinit/net/sysconfig.py                     | 6 +++++-
+ tests/unittests/test_distros/test_netconfig.py | 4 +++-
+ tests/unittests/test_net.py                    | 1 +
+ 3 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/cloudinit/net/sysconfig.py b/cloudinit/net/sysconfig.py
+index e34c8491..380daedf 100644
+--- a/cloudinit/net/sysconfig.py
++++ b/cloudinit/net/sysconfig.py
+@@ -348,7 +348,11 @@ class Renderer(renderer.Renderer):
+                                 subnet['netmask']
+ 
+                 if 'gateway' in subnet:
+-                    iface_cfg['GATEWAY'] = subnet['gateway']
++                    iface_cfg['DEFROUTE'] = True
++                    if ":" in subnet['gateway']:
++                        iface_cfg['IPV6_DEFAULTGW'] = subnet['gateway']
++                    else:
++                        iface_cfg['GATEWAY'] = subnet['gateway']
+ 
+                 if 'dns_search' in subnet:
+                     if isinstance(subnet['dns_search'], (list, tuple)):
+diff --git a/tests/unittests/test_distros/test_netconfig.py b/tests/unittests/test_distros/test_netconfig.py
+index 108d5741..10e25a72 100644
+--- a/tests/unittests/test_distros/test_netconfig.py
++++ b/tests/unittests/test_distros/test_netconfig.py
+@@ -257,6 +257,7 @@ NETWORKING=yes
+ # Created by cloud-init on instance boot automatically, do not edit.
+ #
+ BOOTPROTO=none
++DEFROUTE=yes
+ DEVICE=eth0
+ IPADDR=192.168.1.5
+ NETMASK=255.255.255.0
+@@ -395,10 +396,11 @@ IPV6_AUTOCONF=no
+ # Created by cloud-init on instance boot automatically, do not edit.
+ #
+ BOOTPROTO=none
++DEFROUTE=yes
+ DEVICE=eth0
+ IPV6ADDR=2607:f0d0:1002:0011::2/64
+-GATEWAY=2607:f0d0:1002:0011::1
+ IPV6INIT=yes
++IPV6_DEFAULTGW=2607:f0d0:1002:0011::1
+ ONBOOT=yes
+ TYPE=Ethernet
+ USERCTL=no
+diff --git a/tests/unittests/test_net.py b/tests/unittests/test_net.py
+index 551370d4..34af5daa 100644
+--- a/tests/unittests/test_net.py
++++ b/tests/unittests/test_net.py
+@@ -833,6 +833,7 @@ USERCTL=no
+ # Created by cloud-init on instance boot automatically, do not edit.
+ #
+ BOOTPROTO=none
++DEFROUTE=yes
+ DEVICE=interface0
+ GATEWAY=10.0.2.2
+ HWADDR=52:54:00:12:34:00
+-- 
+2.14.3
+

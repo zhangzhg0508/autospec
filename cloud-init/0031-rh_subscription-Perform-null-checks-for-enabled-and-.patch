@@ -1,0 +1,190 @@
+From fc4ca923d02886669f2f0e0916732133e1969bb6 Mon Sep 17 00:00:00 2001
+From: Dave Mulford <dmulford@redhat.com>
+Date: Mon, 9 Oct 2017 15:28:15 -0500
+Subject: [PATCH] rh_subscription: Perform null checks for enabled and disabled
+ repos.
+
+The rh_subscription module doesn't perform null checks when attempting to
+iterate on the enabled and disable repos arrays. When only one is
+specified, cloud-init fails to run.
+
+(cherry picked from commit 9bc4ce0596544ffa56d9d67245b00e07006a8662)
+
+Resolves: rhbz#1498974
+Signed-off-by: Ryan McCabe <rmccabe@redhat.com>
+---
+ cloudinit/config/cc_rh_subscription.py  | 46 ++++++++++++++++++++-------------
+ tests/unittests/test_rh_subscription.py | 15 +++++++++++
+ 2 files changed, 43 insertions(+), 18 deletions(-)
+
+diff --git a/cloudinit/config/cc_rh_subscription.py b/cloudinit/config/cc_rh_subscription.py
+index 7f36cf8f..a9d21e78 100644
+--- a/cloudinit/config/cc_rh_subscription.py
++++ b/cloudinit/config/cc_rh_subscription.py
+@@ -38,14 +38,16 @@ Subscription`` example config.
+         server-hostname: <hostname>
+ """
+ 
++from cloudinit import log as logging
+ from cloudinit import util
+ 
++LOG = logging.getLogger(__name__)
++
+ distros = ['fedora', 'rhel']
+ 
+ 
+ def handle(name, cfg, _cloud, log, _args):
+-    sm = SubscriptionManager(cfg)
+-    sm.log = log
++    sm = SubscriptionManager(cfg, log=log)
+     if not sm.is_configured():
+         log.debug("%s: module not configured.", name)
+         return None
+@@ -86,10 +88,9 @@ def handle(name, cfg, _cloud, log, _args):
+                 if not return_stat:
+                     raise SubscriptionError("Unable to attach pools {0}"
+                                             .format(sm.pools))
+-            if (sm.enable_repo is not None) or (sm.disable_repo is not None):
+-                return_stat = sm.update_repos(sm.enable_repo, sm.disable_repo)
+-                if not return_stat:
+-                    raise SubscriptionError("Unable to add or remove repos")
++            return_stat = sm.update_repos()
++            if not return_stat:
++                raise SubscriptionError("Unable to add or remove repos")
+             sm.log_success("rh_subscription plugin completed successfully")
+         except SubscriptionError as e:
+             sm.log_warn(str(e))
+@@ -108,7 +109,10 @@ class SubscriptionManager(object):
+                      'rhsm-baseurl', 'server-hostname',
+                      'auto-attach', 'service-level']
+ 
+-    def __init__(self, cfg):
++    def __init__(self, cfg, log=None):
++        if log is None:
++            log = LOG
++        self.log = log
+         self.cfg = cfg
+         self.rhel_cfg = self.cfg.get('rh_subscription', {})
+         self.rhsm_baseurl = self.rhel_cfg.get('rhsm-baseurl')
+@@ -130,7 +134,7 @@ class SubscriptionManager(object):
+ 
+     def log_warn(self, msg):
+         '''Simple wrapper for logging warning messages. Useful for unittests'''
+-        self.log.warn(msg)
++        self.log.warning(msg)
+ 
+     def _verify_keys(self):
+         '''
+@@ -245,7 +249,7 @@ class SubscriptionManager(object):
+             return False
+ 
+         reg_id = return_out.split("ID: ")[1].rstrip()
+-        self.log.debug("Registered successfully with ID {0}".format(reg_id))
++        self.log.debug("Registered successfully with ID %s", reg_id)
+         return True
+ 
+     def _set_service_level(self):
+@@ -347,7 +351,7 @@ class SubscriptionManager(object):
+             try:
+                 self._sub_man_cli(cmd)
+                 self.log.debug("Attached the following pools to your "
+-                               "system: %s" % (", ".join(pool_list))
++                               "system: %s", (", ".join(pool_list))
+                                .replace('--pool=', ''))
+                 return True
+             except util.ProcessExecutionError as e:
+@@ -355,18 +359,24 @@ class SubscriptionManager(object):
+                               "due to {1}".format(pool, e))
+                 return False
+ 
+-    def update_repos(self, erepos, drepos):
++    def update_repos(self):
+         '''
+         Takes a list of yum repo ids that need to be disabled or enabled; then
+         it verifies if they are already enabled or disabled and finally
+         executes the action to disable or enable
+         '''
+ 
+-        if (erepos is not None) and (not isinstance(erepos, list)):
++        erepos = self.enable_repo
++        drepos = self.disable_repo
++        if erepos is None:
++            erepos = []
++        if drepos is None:
++            drepos = []
++        if not isinstance(erepos, list):
+             self.log_warn("Repo IDs must in the format of a list.")
+             return False
+ 
+-        if (drepos is not None) and (not isinstance(drepos, list)):
++        if not isinstance(drepos, list):
+             self.log_warn("Repo IDs must in the format of a list.")
+             return False
+ 
+@@ -399,14 +409,14 @@ class SubscriptionManager(object):
+             for fail in enable_list_fail:
+                 # Check if the repo exists or not
+                 if fail in active_repos:
+-                    self.log.debug("Repo {0} is already enabled".format(fail))
++                    self.log.debug("Repo %s is already enabled", fail)
+                 else:
+                     self.log_warn("Repo {0} does not appear to "
+                                   "exist".format(fail))
+         if len(disable_list_fail) > 0:
+             for fail in disable_list_fail:
+-                self.log.debug("Repo {0} not disabled "
+-                               "because it is not enabled".format(fail))
++                self.log.debug("Repo %s not disabled "
++                               "because it is not enabled", fail)
+ 
+         cmd = ['repos']
+         if len(disable_list) > 0:
+@@ -422,10 +432,10 @@ class SubscriptionManager(object):
+             return False
+ 
+         if len(enable_list) > 0:
+-            self.log.debug("Enabled the following repos: %s" %
++            self.log.debug("Enabled the following repos: %s",
+                            (", ".join(enable_list)).replace('--enable=', ''))
+         if len(disable_list) > 0:
+-            self.log.debug("Disabled the following repos: %s" %
++            self.log.debug("Disabled the following repos: %s",
+                            (", ".join(disable_list)).replace('--disable=', ''))
+         return True
+ 
+diff --git a/tests/unittests/test_rh_subscription.py b/tests/unittests/test_rh_subscription.py
+index ca14cd46..7b35b9d0 100644
+--- a/tests/unittests/test_rh_subscription.py
++++ b/tests/unittests/test_rh_subscription.py
+@@ -2,6 +2,7 @@
+ 
+ """Tests for registering RHEL subscription via rh_subscription."""
+ 
++import copy
+ import logging
+ 
+ from cloudinit.config import cc_rh_subscription
+@@ -68,6 +69,20 @@ class GoodTests(TestCase):
+         self.assertEqual(self.SM.log_success.call_count, 1)
+         self.assertEqual(self.SM._sub_man_cli.call_count, 2)
+ 
++    @mock.patch.object(cc_rh_subscription.SubscriptionManager, "_getRepos")
++    @mock.patch.object(cc_rh_subscription.SubscriptionManager, "_sub_man_cli")
++    def test_update_repos_disable_with_none(self, m_sub_man_cli, m_get_repos):
++        cfg = copy.deepcopy(self.config)
++        m_get_repos.return_value = ([], ['repo1'])
++        m_sub_man_cli.return_value = (b'', b'')
++        cfg['rh_subscription'].update(
++            {'enable-repo': ['repo1'], 'disable-repo': None})
++        mysm = cc_rh_subscription.SubscriptionManager(cfg)
++        self.assertEqual(True, mysm.update_repos())
++        m_get_repos.assert_called_with()
++        self.assertEqual(m_sub_man_cli.call_args_list,
++                         [mock.call(['repos', '--enable=repo1'])])
++
+     def test_full_registration(self):
+         '''
+         Registration with auto-attach, service-level, adding pools,
+-- 
+2.13.6
+

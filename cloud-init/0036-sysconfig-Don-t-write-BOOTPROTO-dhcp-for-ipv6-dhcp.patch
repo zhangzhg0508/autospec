@@ -1,0 +1,32 @@
+From cbc09ba2f8e6fa967232039e6f6a3363d54ba592 Mon Sep 17 00:00:00 2001
+From: Ryan McCabe <rmccabe@redhat.com>
+Date: Mon, 4 Dec 2017 13:43:30 -0500
+Subject: [PATCH] sysconfig: Don't write BOOTPROTO=dhcp for ipv6 dhcp
+
+Don't write BOOTPROTO=dhcp for ipv6 dhcp, as BOOTPROTO applies
+only to ipv4. Explicitly write IPV6_AUTOCONF=no for dhcp on ipv6.
+
+X-downstream-only: yes
+
+Resolves: rhbz#1519271
+Signed-off-by: Ryan McCabe <rmccabe@redhat.com>
+---
+ cloudinit/net/sysconfig.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cloudinit/net/sysconfig.py b/cloudinit/net/sysconfig.py
+index e34c8491..bff844cd 100644
+--- a/cloudinit/net/sysconfig.py
++++ b/cloudinit/net/sysconfig.py
+@@ -287,7 +287,7 @@ class Renderer(renderer.Renderer):
+             if subnet_type == 'dhcp6':
+                 iface_cfg['IPV6INIT'] = True
+                 iface_cfg['DHCPV6C'] = True
+-                iface_cfg['BOOTPROTO'] = 'dhcp'
++                iface_cfg['IPV6_AUTOCONF'] = False
+             elif subnet_type in ['dhcp4', 'dhcp']:
+                 iface_cfg['BOOTPROTO'] = 'dhcp'
+             elif subnet_type == 'static':
+-- 
+2.14.3
+

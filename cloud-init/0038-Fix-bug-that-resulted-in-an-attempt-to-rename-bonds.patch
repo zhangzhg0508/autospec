@@ -1,0 +1,252 @@
+From 4ada8f2ec17d11835b44ab3d7786e5f3a732df41 Mon Sep 17 00:00:00 2001
+From: Scott Moser <smoser@brickies.net>
+Date: Fri, 31 Mar 2017 10:56:04 -0400
+Subject: [PATCH] Fix bug that resulted in an attempt to rename bonds or vlans.
+
+When cloud-init ran in the init stage (after networking had come up).
+A bug could occur where cloud-init would attempt and fail to rename
+network devices that had "inherited" mac addresses.
+
+The intent of apply_network_config_names was always to rename only
+the devices that were "physical" per the network config.  (This would
+include veth devices in a container).  The bug was in creating
+the dictionary of interfaces by mac address.  If there were multiple
+interfaces with the same mac address then renames could fail.
+This situation was guaranteed to occur with bonds or vlans or other
+devices that inherit their mac.
+
+The solution is to change get_interfaces_by_mac to skip interfaces
+that have an inherited mac.
+
+Also drop the 'devs' argument to get_interfaces_by_mac.  It was
+non-obvious what the result should be if a device in the input
+list was filtered out. ie should the following have an entry for
+bond0 or not.  get_interfaces_by_mac(devs=['bond0'])
+
+LP: #1669860
+(cherry picked from commit bf7723e8092bb1f8a442aa2399dd870e130a27d9)
+
+Resolves: rhbz#1512247
+Signed-off-by: Ryan McCabe <rmccabe@redhat.com>
+(cherry picked from commit f9e8f13f916fe740e46c9a0e9dd2dbb3cdb39975)
+---
+ cloudinit/net/__init__.py   | 78 ++++++++++++++++++++++++++++++++++-----------
+ tests/unittests/test_net.py | 76 +++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 135 insertions(+), 19 deletions(-)
+ mode change 100755 => 100644 cloudinit/net/__init__.py
+
+diff --git a/cloudinit/net/__init__.py b/cloudinit/net/__init__.py
+old mode 100755
+new mode 100644
+index ea649cc2..ab7e8996
+--- a/cloudinit/net/__init__.py
++++ b/cloudinit/net/__init__.py
+@@ -82,6 +82,10 @@ def is_wireless(devname):
+     return os.path.exists(sys_dev_path(devname, "wireless"))
+ 
+ 
++def is_bridge(devname):
++    return os.path.exists(sys_dev_path(devname, "bridge"))
++
++
+ def is_connected(devname):
+     # is_connected isn't really as simple as that.  2 is
+     # 'physically connected'. 3 is 'not connected'. but a wlan interface will
+@@ -132,7 +136,7 @@ def generate_fallback_config():
+     for interface in potential_interfaces:
+         if interface.startswith("veth"):
+             continue
+-        if os.path.exists(sys_dev_path(interface, "bridge")):
++        if is_bridge(interface):
+             # skip any bridges
+             continue
+         carrier = read_sys_net_int(interface, 'carrier')
+@@ -187,7 +191,11 @@ def apply_network_config_names(netcfg, strict_present=True, strict_busy=True):
+     """read the network config and rename devices accordingly.
+     if strict_present is false, then do not raise exception if no devices
+     match.  if strict_busy is false, then do not raise exception if the
+-    device cannot be renamed because it is currently configured."""
++    device cannot be renamed because it is currently configured.
++
++    renames are only attempted for interfaces of type 'physical'.  It is
++    expected that the network system will create other devices with the
++    correct name in place."""
+     renames = []
+     for ent in netcfg.get('config', {}):
+         if ent.get('type') != 'physical':
+@@ -201,13 +209,35 @@ def apply_network_config_names(netcfg, strict_present=True, strict_busy=True):
+     return _rename_interfaces(renames)
+ 
+ 
++def interface_has_own_mac(ifname, strict=False):
++    """return True if the provided interface has its own address.
++
++    Based on addr_assign_type in /sys.  Return true for any interface
++    that does not have a 'stolen' address. Examples of such devices
++    are bonds or vlans that inherit their mac from another device.
++    Possible values are:
++      0: permanent address    2: stolen from another device
++      1: randomly generated   3: set using dev_set_mac_address"""
++
++    assign_type = read_sys_net_int(ifname, "addr_assign_type")
++    if strict and assign_type is None:
++        raise ValueError("%s had no addr_assign_type.")
++    return assign_type in (0, 1, 3)
++
++
+ def _get_current_rename_info(check_downable=True):
+-    """Collect information necessary for rename_interfaces."""
+-    names = get_devicelist()
++    """Collect information necessary for rename_interfaces.
++
++    returns a dictionary by mac address like:
++       {mac:
++         {'name': name
++          'up': boolean: is_up(name),
++          'downable': None or boolean indicating that the
++                      device has only automatically assigned ip addrs.}}
++    """
+     bymac = {}
+-    for n in names:
+-        bymac[get_interface_mac(n)] = {
+-            'name': n, 'up': is_up(n), 'downable': None}
++    for mac, name in get_interfaces_by_mac().items():
++        bymac[mac] = {'name': name, 'up': is_up(name), 'downable': None}
+ 
+     if check_downable:
+         nmatch = re.compile(r"[0-9]+:\s+(\w+)[@:]")
+@@ -346,22 +376,32 @@ def get_interface_mac(ifname):
+     return read_sys_net_safe(ifname, path)
+ 
+ 
+-def get_interfaces_by_mac(devs=None):
+-    """Build a dictionary of tuples {mac: name}"""
+-    if devs is None:
+-        try:
+-            devs = get_devicelist()
+-        except OSError as e:
+-            if e.errno == errno.ENOENT:
+-                devs = []
+-            else:
+-                raise
++def get_interfaces_by_mac():
++    """Build a dictionary of tuples {mac: name}.
++
++    Bridges and any devices that have a 'stolen' mac are excluded."""
++    try:
++        devs = get_devicelist()
++    except OSError as e:
++        if e.errno == errno.ENOENT:
++            devs = []
++        else:
++            raise
+     ret = {}
+     for name in devs:
++        if not interface_has_own_mac(name):
++            continue
++        if is_bridge(name):
++            continue
+         mac = get_interface_mac(name)
+         # some devices may not have a mac (tun0)
+-        if mac:
+-            ret[mac] = name
++        if not mac:
++            continue
++        if mac in ret:
++            raise RuntimeError(
++                "duplicate mac found! both '%s' and '%s' have mac '%s'" %
++                (name, ret[mac], mac))
++        ret[mac] = name
+     return ret
+ 
+ # vi: ts=4 expandtab
+diff --git a/tests/unittests/test_net.py b/tests/unittests/test_net.py
+index 551370d4..cadaf596 100644
+--- a/tests/unittests/test_net.py
++++ b/tests/unittests/test_net.py
+@@ -1173,6 +1173,82 @@ class TestEniRoundTrip(TestCase):
+             expected, [line for line in found if line])
+ 
+ 
++class TestGetInterfacesByMac(TestCase):
++    _data = {'devices': ['enp0s1', 'enp0s2', 'bond1', 'bridge1',
++                         'bridge1-nic', 'tun0'],
++             'bonds': ['bond1'],
++             'bridges': ['bridge1'],
++             'own_macs': ['enp0s1', 'enp0s2', 'bridge1-nic', 'bridge1'],
++             'macs': {'enp0s1': 'aa:aa:aa:aa:aa:01',
++                      'enp0s2': 'aa:aa:aa:aa:aa:02',
++                      'bond1': 'aa:aa:aa:aa:aa:01',
++                      'bridge1': 'aa:aa:aa:aa:aa:03',
++                      'bridge1-nic': 'aa:aa:aa:aa:aa:03',
++                      'tun0': None}}
++    data = {}
++
++    def _se_get_devicelist(self):
++        return self.data['devices']
++
++    def _se_get_interface_mac(self, name):
++        return self.data['macs'][name]
++
++    def _se_is_bridge(self, name):
++        return name in self.data['bridges']
++
++    def _se_interface_has_own_mac(self, name):
++        return name in self.data['own_macs']
++
++    def _mock_setup(self):
++        self.data = copy.deepcopy(self._data)
++        mocks = ('get_devicelist', 'get_interface_mac', 'is_bridge',
++                 'interface_has_own_mac')
++        self.mocks = {}
++        for n in mocks:
++            m = mock.patch('cloudinit.net.' + n,
++                           side_effect=getattr(self, '_se_' + n))
++            self.addCleanup(m.stop)
++            self.mocks[n] = m.start()
++
++    def test_raise_exception_on_duplicate_macs(self):
++        self._mock_setup()
++        self.data['macs']['bridge1-nic'] = self.data['macs']['enp0s1']
++        self.assertRaises(RuntimeError, net.get_interfaces_by_mac)
++
++    def test_excludes_any_without_mac_address(self):
++        self._mock_setup()
++        ret = net.get_interfaces_by_mac()
++        self.assertIn('tun0', self._se_get_devicelist())
++        self.assertNotIn('tun0', ret.values())
++
++    def test_excludes_stolen_macs(self):
++        self._mock_setup()
++        ret = net.get_interfaces_by_mac()
++        self.mocks['interface_has_own_mac'].assert_has_calls(
++            [mock.call('enp0s1'), mock.call('bond1')], any_order=True)
++        self.assertEqual(
++            {'aa:aa:aa:aa:aa:01': 'enp0s1', 'aa:aa:aa:aa:aa:02': 'enp0s2',
++             'aa:aa:aa:aa:aa:03': 'bridge1-nic'},
++            ret)
++
++    def test_excludes_bridges(self):
++        self._mock_setup()
++        # add a device 'b1', make all return they have their "own mac",
++        # set everything other than 'b1' to be a bridge.
++        # then expect b1 is the only thing left.
++        self.data['macs']['b1'] = 'aa:aa:aa:aa:aa:b1'
++        self.data['devices'].append('b1')
++        self.data['bonds'] = []
++        self.data['own_macs'] = self.data['devices']
++        self.data['bridges'] = [f for f in self.data['devices'] if f != "b1"]
++        ret = net.get_interfaces_by_mac()
++        self.assertEqual({'aa:aa:aa:aa:aa:b1': 'b1'}, ret)
++        self.mocks['is_bridge'].assert_has_calls(
++            [mock.call('bridge1'), mock.call('enp0s1'), mock.call('bond1'),
++             mock.call('b1')],
++            any_order=True)
++
++
+ def _gzip_data(data):
+     with io.BytesIO() as iobuf:
+         gzfp = gzip.GzipFile(mode="wb", fileobj=iobuf)
+-- 
+2.14.3
+

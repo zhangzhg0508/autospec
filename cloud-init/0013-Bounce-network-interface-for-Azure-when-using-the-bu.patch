@@ -1,0 +1,143 @@
+From 9c2b33562da7e5ca3359a2e70b893d19c44eb66c Mon Sep 17 00:00:00 2001
+From: Brent Baude <bbaude@redhat.com>
+Date: Mon, 20 Mar 2017 12:31:15 -0500
+Subject: [PATCH] Bounce network interface for Azure when using the built-in
+ path.
+
+When deploying on Azure and using only cloud-init, you must "bounce" the
+network interface to trigger a DDNS update. This allows dhclient to
+register the hostname with Azure so that DNS works correctly on their
+private networks (i.e. between vm and vm).
+
+The agent path was already doing the bounce so this creates parity
+between the built-in path and the agent.
+
+LP: #1674685
+Resolves: rhbz#1434109
+(cherry picked from commit 86715c88aab8561e1ddadac95671f6095d16f9e7)
+---
+ cloudinit/sources/DataSourceAzure.py | 78 +++++++++++++++++++++---------------
+ cloudinit/sources/__init__.py        |  2 +-
+ 2 files changed, 47 insertions(+), 33 deletions(-)
+
+diff --git a/cloudinit/sources/DataSourceAzure.py b/cloudinit/sources/DataSourceAzure.py
+index c5af8b8..48a3e1d 100644
+--- a/cloudinit/sources/DataSourceAzure.py
++++ b/cloudinit/sources/DataSourceAzure.py
+@@ -111,50 +111,62 @@ class DataSourceAzureNet(sources.DataSource):
+         root = sources.DataSource.__str__(self)
+         return "%s [seed=%s]" % (root, self.seed)
+ 
+-    def get_metadata_from_agent(self):
+-        temp_hostname = self.metadata.get('local-hostname')
++    def bounce_network_with_azure_hostname(self):
++        # When using cloud-init to provision, we have to set the hostname from
++        # the metadata and "bounce" the network to force DDNS to update via
++        # dhclient
++        azure_hostname = self.metadata.get('local-hostname')
++        LOG.debug("Hostname in metadata is {}".format(azure_hostname))
+         hostname_command = self.ds_cfg['hostname_bounce']['hostname_command']
+-        agent_cmd = self.ds_cfg['agent_command']
+-        LOG.debug("Getting metadata via agent.  hostname=%s cmd=%s",
+-                  temp_hostname, agent_cmd)
+-        with temporary_hostname(temp_hostname, self.ds_cfg,
++
++        with temporary_hostname(azure_hostname, self.ds_cfg,
+                                 hostname_command=hostname_command) \
+                 as previous_hostname:
+             if (previous_hostname is not None and
+-               util.is_true(self.ds_cfg.get('set_hostname'))):
++                    util.is_true(self.ds_cfg.get('set_hostname'))):
+                 cfg = self.ds_cfg['hostname_bounce']
++
++                # "Bouncing" the network
+                 try:
+-                    perform_hostname_bounce(hostname=temp_hostname,
++                    perform_hostname_bounce(hostname=azure_hostname,
+                                             cfg=cfg,
+                                             prev_hostname=previous_hostname)
+                 except Exception as e:
+                     LOG.warn("Failed publishing hostname: %s", e)
+                     util.logexc(LOG, "handling set_hostname failed")
+ 
+-            try:
+-                invoke_agent(agent_cmd)
+-            except util.ProcessExecutionError:
+-                # claim the datasource even if the command failed
+-                util.logexc(LOG, "agent command '%s' failed.",
+-                            self.ds_cfg['agent_command'])
+-
+-            ddir = self.ds_cfg['data_dir']
+-
+-            fp_files = []
+-            key_value = None
+-            for pk in self.cfg.get('_pubkeys', []):
+-                if pk.get('value', None):
+-                    key_value = pk['value']
+-                    LOG.debug("ssh authentication: using value from fabric")
+-                else:
+-                    bname = str(pk['fingerprint'] + ".crt")
+-                    fp_files += [os.path.join(ddir, bname)]
+-                    LOG.debug("ssh authentication: "
+-                              "using fingerprint from fabirc")
+-
+-            missing = util.log_time(logfunc=LOG.debug, msg="waiting for files",
+-                                    func=wait_for_files,
+-                                    args=(fp_files,))
++    def get_metadata_from_agent(self):
++        temp_hostname = self.metadata.get('local-hostname')
++        agent_cmd = self.ds_cfg['agent_command']
++        LOG.debug("Getting metadata via agent.  hostname=%s cmd=%s",
++                  temp_hostname, agent_cmd)
++
++        self.bounce_network_with_azure_hostname()
++
++        try:
++            invoke_agent(agent_cmd)
++        except util.ProcessExecutionError:
++            # claim the datasource even if the command failed
++            util.logexc(LOG, "agent command '%s' failed.",
++                        self.ds_cfg['agent_command'])
++
++        ddir = self.ds_cfg['data_dir']
++
++        fp_files = []
++        key_value = None
++        for pk in self.cfg.get('_pubkeys', []):
++            if pk.get('value', None):
++                key_value = pk['value']
++                LOG.debug("ssh authentication: using value from fabric")
++            else:
++                bname = str(pk['fingerprint'] + ".crt")
++                fp_files += [os.path.join(ddir, bname)]
++                LOG.debug("ssh authentication: "
++                          "using fingerprint from fabirc")
++
++        missing = util.log_time(logfunc=LOG.debug, msg="waiting for files",
++                                func=wait_for_files,
++                                args=(fp_files,))
+         if len(missing):
+             LOG.warn("Did not find files, but going on: %s", missing)
+ 
+@@ -220,6 +232,8 @@ class DataSourceAzureNet(sources.DataSource):
+         write_files(ddir, files, dirmode=0o700)
+ 
+         if self.ds_cfg['agent_command'] == AGENT_START_BUILTIN:
++            self.bounce_network_with_azure_hostname()
++
+             metadata_func = partial(get_metadata_from_fabric,
+                                     fallback_lease_file=self.
+                                     dhclient_lease_file)
+diff --git a/cloudinit/sources/__init__.py b/cloudinit/sources/__init__.py
+index 3d01072..1829450 100644
+--- a/cloudinit/sources/__init__.py
++++ b/cloudinit/sources/__init__.py
+@@ -210,7 +210,7 @@ class DataSource(object):
+         else:
+             hostname = toks[0]
+ 
+-        if fqdn:
++        if fqdn and domain != defdomain:
+             return "%s.%s" % (hostname, domain)
+         else:
+             return hostname

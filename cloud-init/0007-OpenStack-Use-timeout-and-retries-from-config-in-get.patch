@@ -1,0 +1,113 @@
+From c98408a2cf874435c7423a1574a9ffc81053707a Mon Sep 17 00:00:00 2001
+From: Lars Kellogg-Stedman <lars@redhat.com>
+Date: Tue, 17 Jan 2017 08:53:22 -0500
+Subject: [PATCH] OpenStack: Use timeout and retries from config in get_data.
+
+This modifies get_data in DataSourceOpenStack.py to get the timeout
+and retries values from the data source configuration, rather than
+from keyword arguments.  This permits get_data to use the same timeout
+as other methods, and allows an operator to increase the timeout in
+environments where the metadata service takes longer than five seconds
+to respond.
+
+LP: #1657130
+Resolves: rhbz#1408589
+(cherry picked from commit 4cf53f1544f8f5629330eab3efef1a18255c277a)
+---
+ cloudinit/sources/DataSourceOpenStack.py          | 15 ++++++++++++---
+ tests/unittests/test_datasource/test_openstack.py |  8 ++++----
+ 2 files changed, 16 insertions(+), 7 deletions(-)
+
+diff --git a/cloudinit/sources/DataSourceOpenStack.py b/cloudinit/sources/DataSourceOpenStack.py
+index 2a58f1c..e1ea21f 100644
+--- a/cloudinit/sources/DataSourceOpenStack.py
++++ b/cloudinit/sources/DataSourceOpenStack.py
+@@ -45,6 +45,7 @@ class DataSourceOpenStack(openstack.SourceMixin, sources.DataSource):
+         # max_wait < 0 indicates do not wait
+         max_wait = -1
+         timeout = 10
++        retries = 5
+ 
+         try:
+             max_wait = int(self.ds_cfg.get("max_wait", max_wait))
+@@ -55,7 +56,13 @@ class DataSourceOpenStack(openstack.SourceMixin, sources.DataSource):
+             timeout = max(0, int(self.ds_cfg.get("timeout", timeout)))
+         except Exception:
+             util.logexc(LOG, "Failed to get timeout, using %s", timeout)
+-        return (max_wait, timeout)
++
++        try:
++            retries = int(self.ds_cfg.get("retries", retries))
++        except Exception:
++            util.logexc(LOG, "Failed to get max wait. using %s", retries)
++
++        return (max_wait, timeout, retries)
+ 
+     def wait_for_metadata_service(self):
+         urls = self.ds_cfg.get("metadata_urls", [DEF_MD_URL])
+@@ -76,7 +83,7 @@ class DataSourceOpenStack(openstack.SourceMixin, sources.DataSource):
+             md_urls.append(md_url)
+             url2base[md_url] = url
+ 
+-        (max_wait, timeout) = self._get_url_settings()
++        (max_wait, timeout, retries) = self._get_url_settings()
+         start_time = time.time()
+         avail_url = url_helper.wait_for_url(urls=md_urls, max_wait=max_wait,
+                                             timeout=timeout)
+@@ -89,13 +96,15 @@ class DataSourceOpenStack(openstack.SourceMixin, sources.DataSource):
+         self.metadata_address = url2base.get(avail_url)
+         return bool(avail_url)
+ 
+-    def get_data(self, retries=5, timeout=5):
++    def get_data(self):
+         try:
+             if not self.wait_for_metadata_service():
+                 return False
+         except IOError:
+             return False
+ 
++        (max_wait, timeout, retries) = self._get_url_settings()
++
+         try:
+             results = util.log_time(LOG.debug,
+                                     'Crawl of openstack metadata service',
+diff --git a/tests/unittests/test_datasource/test_openstack.py b/tests/unittests/test_datasource/test_openstack.py
+index e5b6fcc..28e1833 100644
+--- a/tests/unittests/test_datasource/test_openstack.py
++++ b/tests/unittests/test_datasource/test_openstack.py
+@@ -232,7 +232,7 @@ class TestOpenStackDataSource(test_helpers.HttprettyTestCase):
+                                        None,
+                                        helpers.Paths({}))
+         self.assertIsNone(ds_os.version)
+-        found = ds_os.get_data(timeout=0.1, retries=0)
++        found = ds_os.get_data()
+         self.assertTrue(found)
+         self.assertEqual(2, ds_os.version)
+         md = dict(ds_os.metadata)
+@@ -256,7 +256,7 @@ class TestOpenStackDataSource(test_helpers.HttprettyTestCase):
+                                        None,
+                                        helpers.Paths({}))
+         self.assertIsNone(ds_os.version)
+-        found = ds_os.get_data(timeout=0.1, retries=0)
++        found = ds_os.get_data()
+         self.assertFalse(found)
+         self.assertIsNone(ds_os.version)
+ 
+@@ -275,7 +275,7 @@ class TestOpenStackDataSource(test_helpers.HttprettyTestCase):
+             'timeout': 0,
+         }
+         self.assertIsNone(ds_os.version)
+-        found = ds_os.get_data(timeout=0.1, retries=0)
++        found = ds_os.get_data()
+         self.assertFalse(found)
+         self.assertIsNone(ds_os.version)
+ 
+@@ -298,7 +298,7 @@ class TestOpenStackDataSource(test_helpers.HttprettyTestCase):
+             'timeout': 0,
+         }
+         self.assertIsNone(ds_os.version)
+-        found = ds_os.get_data(timeout=0.1, retries=0)
++        found = ds_os.get_data()
+         self.assertFalse(found)
+         self.assertIsNone(ds_os.version)
+ 

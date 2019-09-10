@@ -1,0 +1,50 @@
+From dcdb2961701ccb0025c8ab45fe76fbaa27ba8133 Mon Sep 17 00:00:00 2001
+From: Scott Moser <smoser@brickies.net>
+Date: Fri, 24 Feb 2017 14:19:20 -0500
+Subject: [PATCH 3/5] Identify Brightbox as an Ec2 datasource user.
+
+Brightbox will identify their platform to the guest by setting the
+product serial to a string that ends with 'brightbox.com'.
+
+LP: #1661693
+(cherry picked from commit 5dd5b2cb539a84ed59f2b3181020d2bd18989718)
+
+Resolves: rhbz#1482547
+
+Signed-off-by: Ryan McCabe <rmccabe@redhat.com>
+---
+ cloudinit/sources/DataSourceEc2.py | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/cloudinit/sources/DataSourceEc2.py b/cloudinit/sources/DataSourceEc2.py
+index 26da263a..c7df8060 100644
+--- a/cloudinit/sources/DataSourceEc2.py
++++ b/cloudinit/sources/DataSourceEc2.py
+@@ -30,6 +30,7 @@ STRICT_ID_DEFAULT = "warn"
+ class Platforms(object):
+     ALIYUN = "AliYun"
+     AWS = "AWS"
++    BRIGHTBOX = "Brightbox"
+     SEEDED = "Seeded"
+     UNKNOWN = "Unknown"
+ 
+@@ -325,10 +326,15 @@ def identify_aws(data):
+     return None
+ 
+ 
++def identify_brightbox(data):
++    if data['serial'].endswith('brightbox.com'):
++        return Platforms.BRIGHTBOX
++
++
+ def identify_platform():
+     # identify the platform and return an entry in Platforms.
+     data = _collect_platform_data()
+-    checks = (identify_aws, lambda x: Platforms.UNKNOWN)
++    checks = (identify_aws, identify_brightbox, lambda x: Platforms.UNKNOWN)
+     for checker in checks:
+         try:
+             result = checker(data)
+-- 
+2.13.5
+

@@ -1,0 +1,258 @@
+From 326a466c0bdd89a161ba78b49e990c80ffacbb13 Mon Sep 17 00:00:00 2001
+From: Lars Kellogg-Stedman <lars@redhat.com>
+Date: Mon, 1 May 2017 21:27:40 -0400
+Subject: [PATCH] systemd: replace generator with unit conditionals
+
+In order to avoid problems caused by changes to upstream unit files,
+this patch completely separates our systemd units from those
+distributed by upstream.  The RHEL unit files can be found in the
+rhel/systemd directory.
+
+This commit replaces the generator with Conditional* statements in the
+unit files. You are still able to disable cloud-init by setting
+cloud-init=disabled on the kernel command line or by touching
+/etc/cloud/cloud-init.disable.
+
+We also retarget the cloud-init services from cloud-init.target back
+to multi-user.target, which resolves the root cause of rhbz#1440831.
+
+Resolves: rhbz#1440831
+X-downstream-only: true
+---
+ rhel/systemd/cloud-config.service     | 18 ++++++++++++
+ rhel/systemd/cloud-config.target      | 11 +++++++
+ rhel/systemd/cloud-final.service      | 19 ++++++++++++
+ rhel/systemd/cloud-init-local.service | 26 +++++++++++++++++
+ rhel/systemd/cloud-init.service       | 25 ++++++++++++++++
+ setup.py                              | 54 -----------------------------------
+ 6 files changed, 99 insertions(+), 54 deletions(-)
+ create mode 100644 rhel/systemd/cloud-config.service
+ create mode 100644 rhel/systemd/cloud-config.target
+ create mode 100644 rhel/systemd/cloud-final.service
+ create mode 100644 rhel/systemd/cloud-init-local.service
+ create mode 100644 rhel/systemd/cloud-init.service
+
+diff --git a/rhel/systemd/cloud-config.service b/rhel/systemd/cloud-config.service
+new file mode 100644
+index 0000000..12ca9df
+--- /dev/null
++++ b/rhel/systemd/cloud-config.service
+@@ -0,0 +1,18 @@
++[Unit]
++Description=Apply the settings specified in cloud-config
++After=network-online.target cloud-config.target
++Wants=network-online.target cloud-config.target
++ConditionPathExists=!/etc/cloud/cloud-init.disabled
++ConditionKernelCommandLine=!cloud-init=disabled
++
++[Service]
++Type=oneshot
++ExecStart=/usr/bin/cloud-init modules --mode=config
++RemainAfterExit=yes
++TimeoutSec=0
++
++# Output needs to appear in instance console output
++StandardOutput=journal+console
++
++[Install]
++WantedBy=multi-user.target
+diff --git a/rhel/systemd/cloud-config.target b/rhel/systemd/cloud-config.target
+new file mode 100644
+index 0000000..ae9b7d0
+--- /dev/null
++++ b/rhel/systemd/cloud-config.target
+@@ -0,0 +1,11 @@
++# cloud-init normally emits a "cloud-config" upstart event to inform third
++# parties that cloud-config is available, which does us no good when we're
++# using systemd.  cloud-config.target serves as this synchronization point
++# instead.  Services that would "start on cloud-config" with upstart can
++# instead use "After=cloud-config.target" and "Wants=cloud-config.target"
++# as appropriate.
++
++[Unit]
++Description=Cloud-config availability
++Wants=cloud-init-local.service cloud-init.service
++After=cloud-init-local.service cloud-init.service
+diff --git a/rhel/systemd/cloud-final.service b/rhel/systemd/cloud-final.service
+new file mode 100644
+index 0000000..32a83d8
+--- /dev/null
++++ b/rhel/systemd/cloud-final.service
+@@ -0,0 +1,19 @@
++[Unit]
++Description=Execute cloud user/final scripts
++After=network-online.target cloud-config.service rc-local.service
++Wants=network-online.target cloud-config.service
++ConditionPathExists=!/etc/cloud/cloud-init.disabled
++ConditionKernelCommandLine=!cloud-init=disabled
++
++[Service]
++Type=oneshot
++ExecStart=/usr/bin/cloud-init modules --mode=final
++RemainAfterExit=yes
++TimeoutSec=0
++KillMode=process
++
++# Output needs to appear in instance console output
++StandardOutput=journal+console
++
++[Install]
++WantedBy=multi-user.target
+diff --git a/rhel/systemd/cloud-init-local.service b/rhel/systemd/cloud-init-local.service
+new file mode 100644
+index 0000000..8174937
+--- /dev/null
++++ b/rhel/systemd/cloud-init-local.service
+@@ -0,0 +1,26 @@
++[Unit]
++Description=Initial cloud-init job (pre-networking)
++DefaultDependencies=no
++Wants=network-pre.target
++After=systemd-remount-fs.service
++Before=NetworkManager.service network.service
++Before=network-pre.target
++Before=shutdown.target
++Before=sysinit.target
++Conflicts=shutdown.target
++RequiresMountsFor=/var/lib/cloud
++ConditionPathExists=!/etc/cloud/cloud-init.disabled
++ConditionKernelCommandLine=!cloud-init=disabled
++
++[Service]
++Type=oneshot
++ExecStart=/usr/bin/cloud-init init --local
++ExecStart=/bin/touch /run/cloud-init/network-config-ready
++RemainAfterExit=yes
++TimeoutSec=0
++
++# Output needs to appear in instance console output
++StandardOutput=journal+console
++
++[Install]
++WantedBy=multi-user.target
+diff --git a/rhel/systemd/cloud-init.service b/rhel/systemd/cloud-init.service
+new file mode 100644
+index 0000000..68fc5f1
+--- /dev/null
++++ b/rhel/systemd/cloud-init.service
+@@ -0,0 +1,25 @@
++[Unit]
++Description=Initial cloud-init job (metadata service crawler)
++Wants=cloud-init-local.service
++Wants=sshd-keygen.service
++Wants=sshd.service
++After=cloud-init-local.service
++After=NetworkManager.service network.service
++Before=network-online.target
++Before=sshd-keygen.service
++Before=sshd.service
++Before=systemd-user-sessions.service
++ConditionPathExists=!/etc/cloud/cloud-init.disabled
++ConditionKernelCommandLine=!cloud-init=disabled
++
++[Service]
++Type=oneshot
++ExecStart=/usr/bin/cloud-init init
++RemainAfterExit=yes
++TimeoutSec=0
++
++# Output needs to appear in instance console output
++StandardOutput=journal+console
++
++[Install]
++WantedBy=multi-user.target
+diff --git a/setup.py b/setup.py
+index cc20c60..83723bf 100755
+--- a/setup.py
++++ b/setup.py
+@@ -63,9 +63,6 @@ INITSYS_FILES = {
+     'sysvinit_freebsd': [f for f in glob('sysvinit/freebsd/*') if is_f(f)],
+     'sysvinit_deb': [f for f in glob('sysvinit/debian/*') if is_f(f)],
+     'sysvinit_openrc': [f for f in glob('sysvinit/gentoo/*') if is_f(f)],
+-    'systemd': [f for f in (glob('systemd/*.service') +
+-                            glob('systemd/*.target')) if is_f(f)],
+-    'systemd.generators': [f for f in glob('systemd/*-generator') if is_f(f)],
+     'upstart': [f for f in glob('upstart/*') if is_f(f)],
+ }
+ INITSYS_ROOTS = {
+@@ -73,9 +70,6 @@ INITSYS_ROOTS = {
+     'sysvinit_freebsd': '/usr/local/etc/rc.d',
+     'sysvinit_deb': '/etc/init.d',
+     'sysvinit_openrc': '/etc/init.d',
+-    'systemd': pkg_config_read('systemd', 'systemdsystemunitdir'),
+-    'systemd.generators': pkg_config_read('systemd',
+-                                          'systemdsystemgeneratordir'),
+     'upstart': '/etc/init/',
+ }
+ INITSYS_TYPES = sorted([f.partition(".")[0] for f in INITSYS_ROOTS.keys()])
+@@ -117,50 +111,8 @@ def read_requires():
+     return str(deps).splitlines()
+ 
+ 
+-# TODO: Is there a better way to do this??
+-class InitsysInstallData(install):
+-    init_system = None
+-    user_options = install.user_options + [
+-        # This will magically show up in member variable 'init_sys'
+-        ('init-system=', None,
+-         ('init system(s) to configure (%s) [default: None]' %
+-          (", ".join(INITSYS_TYPES)))),
+-    ]
+-
+-    def initialize_options(self):
+-        install.initialize_options(self)
+-        self.init_system = ""
+-
+-    def finalize_options(self):
+-        install.finalize_options(self)
+-
+-        if self.init_system and isinstance(self.init_system, str):
+-            self.init_system = self.init_system.split(",")
+-
+-        if len(self.init_system) == 0:
+-            raise DistutilsArgError(
+-                ("You must specify one of (%s) when"
+-                 " specifying init system(s)!") % (", ".join(INITSYS_TYPES)))
+-
+-        bad = [f for f in self.init_system if f not in INITSYS_TYPES]
+-        if len(bad) != 0:
+-            raise DistutilsArgError(
+-                "Invalid --init-system: %s" % (','.join(bad)))
+-
+-        for system in self.init_system:
+-            # add data files for anything that starts with '<system>.'
+-            datakeys = [k for k in INITSYS_ROOTS
+-                        if k.partition(".")[0] == system]
+-            for k in datakeys:
+-                self.distribution.data_files.append(
+-                    (INITSYS_ROOTS[k], INITSYS_FILES[k]))
+-        # Force that command to reinitalize (with new file list)
+-        self.distribution.reinitialize_command('install_data', True)
+-
+-
+ if in_virtualenv():
+     data_files = []
+-    cmdclass = {}
+ else:
+     data_files = [
+         (ETC + '/cloud', glob('config/*.cfg')),
+@@ -176,11 +128,6 @@ else:
+             [f for f in glob('doc/examples/seed/*') if is_f(f)]),
+         ('/usr/lib/udev/rules.d', [f for f in glob('udev/*.rules')]),
+     ]
+-    # Use a subclass for install that handles
+-    # adding on the right init system configuration files
+-    cmdclass = {
+-        'install': InitsysInstallData,
+-    }
+ 
+ 
+ requirements = read_requires()
+@@ -198,7 +145,6 @@ setuptools.setup(
+     scripts=['tools/cloud-init-per'],
+     license='Dual-licensed under GPLv3 or Apache 2.0',
+     data_files=data_files,
+-    cmdclass=cmdclass,
+     entry_points={
+         'console_scripts': [
+             'cloud-init = cloudinit.cmd.main:main'

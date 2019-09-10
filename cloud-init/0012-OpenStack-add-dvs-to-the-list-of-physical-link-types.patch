@@ -1,0 +1,27 @@
+From 615df299937ae99ecd571fec91dd2ad4651a6688 Mon Sep 17 00:00:00 2001
+From: Scott Moser <smoser@brickies.net>
+Date: Mon, 3 Apr 2017 10:04:43 -0400
+Subject: [PATCH] OpenStack: add 'dvs' to the list of physical link types.
+
+Links presented in network_data.json to the guest running on ESXi
+are of type 'dvs'.
+
+LP: #1674946
+Resolves: rhbz#1442783
+(cherry picked from commit 61eb03fef92f435434d974fb46439189ef0b5f97)
+---
+ cloudinit/sources/helpers/openstack.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/cloudinit/sources/helpers/openstack.py b/cloudinit/sources/helpers/openstack.py
+index 096062d..61cd36b 100644
+--- a/cloudinit/sources/helpers/openstack.py
++++ b/cloudinit/sources/helpers/openstack.py
+@@ -52,6 +52,7 @@ OS_VERSIONS = (
+ PHYSICAL_TYPES = (
+     None,
+     'bridge',
++    'dvs',
+     'ethernet',
+     'hw_veb',
+     'hyperv',

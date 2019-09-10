@@ -1,0 +1,197 @@
+From 0efc7b53fd849b1faea9fca1ecc85dfe384de035 Mon Sep 17 00:00:00 2001
+From: Lars Kellogg-Stedman <lars@redhat.com>
+Date: Thu, 1 Dec 2016 19:40:36 -0500
+Subject: [PATCH] configuration changes for RHEL package
+
+remove python dependencies from setup.py (because we handle these via
+packages instead) and make any changes to default values to handle
+RHEL environments.
+
+install README and configfiles for rhel.
+
+X-downstream-only: true
+---
+ cloudinit/config/cc_chef.py   |  6 ++--
+ cloudinit/settings.py         |  7 +++--
+ rhel/README.rhel              |  5 ++++
+ rhel/cloud-init-tmpfiles.conf |  1 +
+ rhel/cloud.cfg                | 66 +++++++++++++++++++++++++++++++++++++++++++
+ setup.py                      |  4 +--
+ 6 files changed, 81 insertions(+), 8 deletions(-)
+ create mode 100644 rhel/README.rhel
+ create mode 100644 rhel/cloud-init-tmpfiles.conf
+ create mode 100644 rhel/cloud.cfg
+
+diff --git a/cloudinit/config/cc_chef.py b/cloudinit/config/cc_chef.py
+index f6564e5..38f01b7 100644
+--- a/cloudinit/config/cc_chef.py
++++ b/cloudinit/config/cc_chef.py
+@@ -33,7 +33,7 @@ file).
+ 
+     chef:
+        directories: (defaulting to /etc/chef, /var/log/chef, /var/lib/chef,
+-                     /var/cache/chef, /var/backups/chef, /var/run/chef)
++                     /var/cache/chef, /var/backups/chef, /run/chef)
+        validation_cert: (optional string to be written to file validation_key)
+                         special value 'system' means set use existing file
+        validation_key: (optional the path for validation_cert. default
+@@ -85,7 +85,7 @@ CHEF_DIRS = tuple([
+     '/var/lib/chef',
+     '/var/cache/chef',
+     '/var/backups/chef',
+-    '/var/run/chef',
++    '/run/chef',
+ ])
+ REQUIRED_CHEF_DIRS = tuple([
+     '/etc/chef',
+@@ -109,7 +109,7 @@ CHEF_RB_TPL_DEFAULTS = {
+     'json_attribs': CHEF_FB_PATH,
+     'file_cache_path': "/var/cache/chef",
+     'file_backup_path': "/var/backups/chef",
+-    'pid_file': "/var/run/chef/client.pid",
++    'pid_file': "/run/chef/client.pid",
+     'show_time': True,
+ }
+ CHEF_RB_TPL_BOOL_KEYS = frozenset(['show_time'])
+diff --git a/cloudinit/settings.py b/cloudinit/settings.py
+index b1fdd31..6d31bb6 100644
+--- a/cloudinit/settings.py
++++ b/cloudinit/settings.py
+@@ -37,13 +37,16 @@ CFG_BUILTIN = {
+     ],
+     'def_log_file': '/var/log/cloud-init.log',
+     'log_cfgs': [],
+-    'syslog_fix_perms': ['syslog:adm', 'root:adm'],
++    'mount_default_fields': [None, None, 'auto', 'defaults,nofail', '0', '2'],
++    'ssh_deletekeys': False,
++    'ssh_genkeytypes': [],
++    'syslog_fix_perms': [],
+     'system_info': {
+         'paths': {
+             'cloud_dir': '/var/lib/cloud',
+             'templates_dir': '/etc/cloud/templates/',
+         },
+-        'distro': 'ubuntu',
++        'distro': 'rhel',
+     },
+     'vendor_data': {'enabled': True, 'prefix': []},
+ }
+diff --git a/rhel/README.rhel b/rhel/README.rhel
+new file mode 100644
+index 0000000..aa29630
+--- /dev/null
++++ b/rhel/README.rhel
+@@ -0,0 +1,5 @@
++The following cloud-init modules are currently unsupported on this OS:
++ - apt_update_upgrade ('apt_update', 'apt_upgrade', 'apt_mirror', 'apt_preserve_sources_list', 'apt_old_mirror', 'apt_sources', 'debconf_selections', 'packages' options)
++ - byobu ('byobu_by_default' option)
++ - chef
++ - grub_dpkg
+diff --git a/rhel/cloud-init-tmpfiles.conf b/rhel/cloud-init-tmpfiles.conf
+new file mode 100644
+index 0000000..0c6d2a3
+--- /dev/null
++++ b/rhel/cloud-init-tmpfiles.conf
+@@ -0,0 +1 @@
++d /run/cloud-init 0700 root root - -
+diff --git a/rhel/cloud.cfg b/rhel/cloud.cfg
+new file mode 100644
+index 0000000..986f241
+--- /dev/null
++++ b/rhel/cloud.cfg
+@@ -0,0 +1,66 @@
++users:
++ - default
++
++disable_root: 1
++ssh_pwauth:   0
++
++mount_default_fields: [~, ~, 'auto', 'defaults,nofail', '0', '2']
++resize_rootfs_tmp: /dev
++ssh_deletekeys:   0
++ssh_genkeytypes:  ~
++syslog_fix_perms: ~
++
++cloud_init_modules:
++ - migrator
++ - bootcmd
++ - write-files
++ - growpart
++ - resizefs
++ - set_hostname
++ - update_hostname
++ - update_etc_hosts
++ - rsyslog
++ - users-groups
++ - ssh
++
++cloud_config_modules:
++ - mounts
++ - locale
++ - set-passwords
++ - rh_subscription
++ - yum-add-repo
++ - package-update-upgrade-install
++ - timezone
++ - puppet
++ - chef
++ - salt-minion
++ - mcollective
++ - disable-ec2-metadata
++ - runcmd
++
++cloud_final_modules:
++ - rightscale_userdata
++ - scripts-per-once
++ - scripts-per-boot
++ - scripts-per-instance
++ - scripts-user
++ - ssh-authkey-fingerprints
++ - keys-to-console
++ - phone-home
++ - final-message
++
++system_info:
++  default_user:
++    name: cloud-user
++    lock_passwd: true
++    gecos: Cloud User
++    groups: [wheel, adm, systemd-journal]
++    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
++    shell: /bin/bash
++  distro: rhel
++  paths:
++    cloud_dir: /var/lib/cloud
++    templates_dir: /etc/cloud/templates
++  ssh_svcname: sshd
++
++# vim:syntax=yaml
+diff --git a/setup.py b/setup.py
+index 0403607..cc20c60 100755
+--- a/setup.py
++++ b/setup.py
+@@ -167,7 +167,6 @@ else:
+         (ETC + '/cloud/cloud.cfg.d', glob('config/cloud.cfg.d/*')),
+         (ETC + '/cloud/templates', glob('templates/*')),
+         (ETC + '/NetworkManager/dispatcher.d/', ['tools/hook-network-manager']),
+-        (ETC + '/dhcp/dhclient-exit-hooks.d/', ['tools/hook-dhclient']),
+         (USR_LIB_EXEC + '/cloud-init', ['tools/uncloud-init',
+                                         'tools/write-ssh-key-fingerprints']),
+         (USR + '/share/doc/cloud-init', [f for f in glob('doc/*') if is_f(f)]),
+@@ -175,7 +174,7 @@ else:
+             [f for f in glob('doc/examples/*') if is_f(f)]),
+         (USR + '/share/doc/cloud-init/examples/seed',
+             [f for f in glob('doc/examples/seed/*') if is_f(f)]),
+-        (LIB + '/udev/rules.d', [f for f in glob('udev/*.rules')]),
++        ('/usr/lib/udev/rules.d', [f for f in glob('udev/*.rules')]),
+     ]
+     # Use a subclass for install that handles
+     # adding on the right init system configuration files
+@@ -199,7 +198,6 @@ setuptools.setup(
+     scripts=['tools/cloud-init-per'],
+     license='Dual-licensed under GPLv3 or Apache 2.0',
+     data_files=data_files,
+-    install_requires=requirements,
+     cmdclass=cmdclass,
+     entry_points={
+         'console_scripts': [

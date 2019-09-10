@@ -1,0 +1,59 @@
+From c4df9de80715ff76c39faea00d27acdb8a75aac7 Mon Sep 17 00:00:00 2001
+From: Lars Kellogg-Stedman <lars@redhat.com>
+Date: Sat, 4 Mar 2017 17:07:16 -0500
+Subject: [PATCH] net: do not raise exception for > 3 nameservers
+
+log a warning rather than raising ValueError if we see more than three
+nameserver addresses.
+
+LP: #1670052
+(cherry picked from commit 657fd40f9ee692a817ec4614cd0d6cb0539ffabf)
+---
+ cloudinit/distros/parsers/resolv_conf.py    | 11 +++++++----
+ tests/unittests/test_distros/test_resolv.py |  2 +-
+ 2 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/cloudinit/distros/parsers/resolv_conf.py b/cloudinit/distros/parsers/resolv_conf.py
+index ff6ee30..d1f8a04 100644
+--- a/cloudinit/distros/parsers/resolv_conf.py
++++ b/cloudinit/distros/parsers/resolv_conf.py
+@@ -6,9 +6,11 @@
+ 
+ from six import StringIO
+ 
++from cloudinit.distros.parsers import chop_comment
++from cloudinit import log as logging
+ from cloudinit import util
+ 
+-from cloudinit.distros.parsers import chop_comment
++LOG = logging.getLogger(__name__)
+ 
+ 
+ # See: man resolv.conf
+@@ -79,9 +81,10 @@ class ResolvConf(object):
+         if len(new_ns) == len(current_ns):
+             return current_ns
+         if len(current_ns) >= 3:
+-            # Hard restriction on only 3 name servers
+-            raise ValueError(("Adding %r would go beyond the "
+-                              "'3' maximum name servers") % (ns))
++            LOG.warn("ignoring nameserver %r: adding would "
++                     "exceed the maximum of "
++                     "'3' name servers (see resolv.conf(5))" % (ns))
++            return current_ns[:3]
+         self._remove_option('nameserver')
+         for n in new_ns:
+             self._contents.append(('option', ['nameserver', n, '']))
+diff --git a/tests/unittests/test_distros/test_resolv.py b/tests/unittests/test_distros/test_resolv.py
+index 6b535a9..c9d0347 100644
+--- a/tests/unittests/test_distros/test_resolv.py
++++ b/tests/unittests/test_distros/test_resolv.py
+@@ -46,7 +46,7 @@ class TestResolvHelper(TestCase):
+         self.assertNotIn('10.3', rp.nameservers)
+         self.assertEqual(len(rp.nameservers), 3)
+         rp.add_nameserver('10.2')
+-        self.assertRaises(ValueError, rp.add_nameserver, '10.3')
++        rp.add_nameserver('10.3')
+         self.assertNotIn('10.3', rp.nameservers)
+ 
+     def test_search_domains(self):

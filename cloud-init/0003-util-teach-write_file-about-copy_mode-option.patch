@@ -1,0 +1,145 @@
+From 29ed6e1c54a6ffbc3017660af5e2a81850e46b43 Mon Sep 17 00:00:00 2001
+From: Lars Kellogg-Stedman <lars@redhat.com>
+Date: Mon, 10 Apr 2017 15:52:37 -0400
+Subject: [PATCH] util: teach write_file about copy_mode option
+
+On centos/fedora/rhel/derivatives, /etc/ssh/sshd_config has mode 0600,
+but cloud-init unilaterally sets file modes to 0644 when no explicit
+mode is passed to util.write_file. On ubuntu/debian, this file has
+mode 0644.  With this patch, write_file learns about the copy_mode
+option, which will cause it to use the mode of the existing file by
+default, falling back to the explicit mode parameter if the file does
+not exist.
+
+LP: #1644064
+Resolves: rhbz#1295984
+(cherry picked from commit 721348a622a660b65acfdf7fdf53203b47f80748)
+---
+ cloudinit/atomic_helper.py           | 12 +++++++++++-
+ cloudinit/config/cc_set_passwords.py |  3 ++-
+ cloudinit/util.py                    | 10 +++++++++-
+ tests/unittests/test_util.py         | 33 +++++++++++++++++++++++++++++++--
+ 4 files changed, 53 insertions(+), 5 deletions(-)
+
+diff --git a/cloudinit/atomic_helper.py b/cloudinit/atomic_helper.py
+index fb2df8d..587b994 100644
+--- a/cloudinit/atomic_helper.py
++++ b/cloudinit/atomic_helper.py
+@@ -2,13 +2,23 @@
+ 
+ import json
+ import os
++import stat
+ import tempfile
+ 
+ _DEF_PERMS = 0o644
+ 
+ 
+-def write_file(filename, content, mode=_DEF_PERMS, omode="wb"):
++def write_file(filename, content, mode=_DEF_PERMS,
++               omode="wb", copy_mode=False):
+     # open filename in mode 'omode', write content, set permissions to 'mode'
++
++    if copy_mode:
++        try:
++            file_stat = os.stat(filename)
++            mode = stat.S_IMODE(file_stat.st_mode)
++        except OSError:
++            pass
++
+     tf = None
+     try:
+         tf = tempfile.NamedTemporaryFile(dir=os.path.dirname(filename),
+diff --git a/cloudinit/config/cc_set_passwords.py b/cloudinit/config/cc_set_passwords.py
+index cf1f59e..2745df8 100755
+--- a/cloudinit/config/cc_set_passwords.py
++++ b/cloudinit/config/cc_set_passwords.py
+@@ -174,7 +174,8 @@ def handle(_name, cfg, cloud, log, args):
+                                                      pw_auth))
+ 
+         lines = [str(l) for l in new_lines]
+-        util.write_file(ssh_util.DEF_SSHD_CFG, "\n".join(lines))
++        util.write_file(ssh_util.DEF_SSHD_CFG, "\n".join(lines),
++                        copy_mode=True)
+ 
+         try:
+             cmd = cloud.distro.init_cmd  # Default service
+diff --git a/cloudinit/util.py b/cloudinit/util.py
+index 5725129..f90653d 100644
+--- a/cloudinit/util.py
++++ b/cloudinit/util.py
+@@ -1732,7 +1732,7 @@ def chmod(path, mode):
+             os.chmod(path, real_mode)
+ 
+ 
+-def write_file(filename, content, mode=0o644, omode="wb"):
++def write_file(filename, content, mode=0o644, omode="wb", copy_mode=False):
+     """
+     Writes a file with the given content and sets the file mode as specified.
+     Resotres the SELinux context if possible.
+@@ -1742,6 +1742,14 @@ def write_file(filename, content, mode=0o644, omode="wb"):
+     @param mode: The filesystem mode to set on the file.
+     @param omode: The open mode used when opening the file (w, wb, a, etc.)
+     """
++
++    if copy_mode:
++        try:
++            file_stat = os.stat(filename)
++            mode = stat.S_IMODE(file_stat.st_mode)
++        except OSError:
++            pass
++
+     ensure_dir(os.path.dirname(filename))
+     if 'b' in omode.lower():
+         content = encode_text(content)
+diff --git a/tests/unittests/test_util.py b/tests/unittests/test_util.py
+index ab74311..5d21b4b 100644
+--- a/tests/unittests/test_util.py
++++ b/tests/unittests/test_util.py
+@@ -103,8 +103,8 @@ class TestWriteFile(helpers.TestCase):
+         self.assertTrue(os.path.isdir(dirname))
+         self.assertTrue(os.path.isfile(path))
+ 
+-    def test_custom_mode(self):
+-        """Verify custom mode works properly."""
++    def test_explicit_mode(self):
++        """Verify explicit file mode works properly."""
+         path = os.path.join(self.tmp, "NewFile.txt")
+         contents = "Hey there"
+ 
+@@ -115,6 +115,35 @@ class TestWriteFile(helpers.TestCase):
+         file_stat = os.stat(path)
+         self.assertEqual(0o666, stat.S_IMODE(file_stat.st_mode))
+ 
++    def test_copy_mode_no_existing(self):
++        """Verify that file is created with mode 0o644 if copy_mode
++        is true and there is no prior existing file."""
++        path = os.path.join(self.tmp, "NewFile.txt")
++        contents = "Hey there"
++
++        util.write_file(path, contents, copy_mode=True)
++
++        self.assertTrue(os.path.exists(path))
++        self.assertTrue(os.path.isfile(path))
++        file_stat = os.stat(path)
++        self.assertEqual(0o644, stat.S_IMODE(file_stat.st_mode))
++
++    def test_copy_mode_with_existing(self):
++        """Verify that file is created using mode of existing file
++        if copy_mode is true."""
++        path = os.path.join(self.tmp, "NewFile.txt")
++        contents = "Hey there"
++
++        open(path, 'w').close()
++        os.chmod(path, 0o666)
++
++        util.write_file(path, contents, copy_mode=True)
++
++        self.assertTrue(os.path.exists(path))
++        self.assertTrue(os.path.isfile(path))
++        file_stat = os.stat(path)
++        self.assertEqual(0o666, stat.S_IMODE(file_stat.st_mode))
++
+     def test_custom_omode(self):
+         """Verify custom omode works properly."""
+         path = os.path.join(self.tmp, "NewFile.txt")

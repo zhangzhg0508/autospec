@@ -1,0 +1,61 @@
+From 9a7480d13ab3be53f0152a19c68d596490d5d290 Mon Sep 17 00:00:00 2001
+From: Andreas Karis <akaris@redhat.com>
+Date: Tue, 6 Jun 2017 12:55:50 -0400
+Subject: [PATCH] RHEL/CentOS: Fix default routes for IPv4/IPv6 configuration.
+
+Since f38fa413176, default routes get added to both ifcfg-* and route-*
+and route6-* files. Default routes should only go to ifcfg-* files,
+otherwise the information is redundant.
+
+LP: #1696176
+Resolves: rhbz#1438082
+
+Signed-off-by: Ryan McCabe <rmccabe@redhat.com>
+(cherry picked from commit f99745cf916e707eaa1ded6f12e8b69837b7242d)
+---
+ cloudinit/net/sysconfig.py  | 12 +++++++-----
+ tests/unittests/test_net.py |  8 --------
+ 2 files changed, 7 insertions(+), 13 deletions(-)
+
+diff --git a/cloudinit/net/sysconfig.py b/cloudinit/net/sysconfig.py
+index 6a0dd43..c67e6aa 100644
+--- a/cloudinit/net/sysconfig.py
++++ b/cloudinit/net/sysconfig.py
+@@ -381,11 +381,13 @@ class Renderer(renderer.Renderer):
+                     nm_key = 'NETMASK%s' % route_cfg.last_idx
+                     addr_key = 'ADDRESS%s' % route_cfg.last_idx
+                     route_cfg.last_idx += 1
+-                for (old_key, new_key) in [('gateway', gw_key),
+-                                           ('netmask', nm_key),
+-                                           ('network', addr_key)]:
+-                    if old_key in route:
+-                        route_cfg[new_key] = route[old_key]
++                    # add default routes only to ifcfg files, not
++                    # to route-* or route6-*
++                    for (old_key, new_key) in [('gateway', gw_key),
++                                               ('netmask', nm_key),
++                                               ('network', addr_key)]:
++                        if old_key in route:
++                            route_cfg[new_key] = route[old_key]
+ 
+     @classmethod
+     def _render_bonding_opts(cls, iface_cfg, iface):
+diff --git a/tests/unittests/test_net.py b/tests/unittests/test_net.py
+index 172d604..45ab732 100755
+--- a/tests/unittests/test_net.py
++++ b/tests/unittests/test_net.py
+@@ -148,14 +148,6 @@ ONBOOT=yes
+ TYPE=Ethernet
+ USERCTL=no
+ """.lstrip()),
+-            ('etc/sysconfig/network-scripts/route-eth0',
+-             """
+-# Created by cloud-init on instance boot automatically, do not edit.
+-#
+-ADDRESS0=0.0.0.0
+-GATEWAY0=172.19.3.254
+-NETMASK0=0.0.0.0
+-""".lstrip()),
+             ('etc/resolv.conf',
+              """
+ ; Created by cloud-init on instance boot automatically, do not edit.

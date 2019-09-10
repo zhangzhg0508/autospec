@@ -1,0 +1,41 @@
+From 949f87447031d8d83b8108aaa11046eb8a50650b Mon Sep 17 00:00:00 2001
+From: Lars Kellogg-Stedman <lars@redhat.com>
+Date: Thu, 8 Dec 2016 15:24:24 -0500
+Subject: [PATCH] url_helper: fail gracefully if oauthlib is not available
+
+We are unable to ship python-oauthlib in RHEL.  Allow imports of
+url_helper to succeed even when oauthlib is unavailable.
+
+X-downstream-only: true
+---
+ cloudinit/url_helper.py | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/cloudinit/url_helper.py b/cloudinit/url_helper.py
+index 312b046..19c8148 100644
+--- a/cloudinit/url_helper.py
++++ b/cloudinit/url_helper.py
+@@ -17,7 +17,11 @@ import time
+ from email.utils import parsedate
+ from functools import partial
+ 
+-import oauthlib.oauth1 as oauth1
++try:
++    import oauthlib.oauth1 as oauth1
++except ImportError:
++    oauth1 = None
++
+ from requests import exceptions
+ 
+ from six.moves.urllib.parse import (
+@@ -481,6 +485,10 @@ class OauthUrlHelper(object):
+ 
+ def oauth_headers(url, consumer_key, token_key, token_secret, consumer_secret,
+                   timestamp=None):
++
++    if oauth1 is None:
++        raise NotImplementedError('oauth support is not available')
++
+     if timestamp:
+         timestamp = str(timestamp)
+     else:

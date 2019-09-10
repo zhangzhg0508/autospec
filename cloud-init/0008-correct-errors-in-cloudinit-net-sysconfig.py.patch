@@ -1,0 +1,34 @@
+From 0dab936fd1332749f905a20a44003f441eb76783 Mon Sep 17 00:00:00 2001
+From: Lars Kellogg-Stedman <lars@redhat.com>
+Date: Thu, 16 Feb 2017 15:09:51 -0500
+Subject: [PATCH] correct errors in cloudinit/net/sysconfig.py
+
+There were some logic errors in sysconfig.py that appear to be the
+result of accidentally typing "iface" where it should have been
+"iface_cfg".  This patch corrects those problems so that the module
+can run successfully.
+
+LP: #1665441
+Resolves: rhbz#1389530
+(cherry picked from commit 07ef7f29c5ce9a97939eb32ca80fc1d8c2609216)
+---
+ cloudinit/net/sysconfig.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/cloudinit/net/sysconfig.py b/cloudinit/net/sysconfig.py
+index 3c9f2d2..0b5f13c 100644
+--- a/cloudinit/net/sysconfig.py
++++ b/cloudinit/net/sysconfig.py
+@@ -282,10 +282,10 @@ class Renderer(renderer.Renderer):
+                 cls._render_subnet(iface_cfg, route_cfg, iface_subnets[0])
+             elif len(iface_subnets) > 1:
+                 for i, iface_subnet in enumerate(iface_subnets,
+-                                                 start=len(iface.children)):
++                                                 start=len(iface_cfg.children)):
+                     iface_sub_cfg = iface_cfg.copy()
+                     iface_sub_cfg.name = "%s:%s" % (iface_name, i)
+-                    iface.children.append(iface_sub_cfg)
++                    iface_cfg.children.append(iface_sub_cfg)
+                     cls._render_subnet(iface_sub_cfg, route_cfg, iface_subnet)
+ 
+     @classmethod

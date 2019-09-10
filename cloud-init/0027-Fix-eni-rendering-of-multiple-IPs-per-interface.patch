@@ -1,0 +1,185 @@
+From 335d2b7270c151fd981d9e500f239ab75a59a4b3 Mon Sep 17 00:00:00 2001
+From: Ryan Harper <ryan.harper@canonical.com>
+Date: Wed, 25 Jan 2017 15:45:40 -0600
+Subject: [PATCH] Fix eni rendering of multiple IPs per interface
+
+The iface:alias syntax for eni rendering is brittle with ipv6.
+Replace it with using multiple iface stanzas with the same iface
+name which is supported.  Side-effect is that one can no longer
+do 'ifup $iface:$alias' but requires instead use of ip address
+{add|delete} instead.
+
+LP: #1657940
+(cherry picked from commit 2de1c247e285cce0b25ab70abdc56ccd41019c27)
+
+Signed-off-by: Ryan McCabe <rmccabe@redhat.com>
+Resolves: rhbz#bz1497954
+---
+ cloudinit/net/eni.py        | 33 ++++++++++++++++++--------------
+ tests/unittests/test_net.py | 46 +++++++++++++++++++++++++++++++++------------
+ 2 files changed, 53 insertions(+), 26 deletions(-)
+
+diff --git a/cloudinit/net/eni.py b/cloudinit/net/eni.py
+index b06ffac9..5b249f1f 100644
+--- a/cloudinit/net/eni.py
++++ b/cloudinit/net/eni.py
+@@ -90,8 +90,6 @@ def _iface_add_attrs(iface, index):
+ 
+ def _iface_start_entry(iface, index, render_hwaddress=False):
+     fullname = iface['name']
+-    if index != 0:
+-        fullname += ":%s" % index
+ 
+     control = iface['control']
+     if control == "auto":
+@@ -113,6 +111,16 @@ def _iface_start_entry(iface, index, render_hwaddress=False):
+     return lines
+ 
+ 
++def _subnet_is_ipv6(subnet):
++    # 'static6' or 'dhcp6'
++    if subnet['type'].endswith('6'):
++        # This is a request for DHCPv6.
++        return True
++    elif subnet['type'] == 'static' and ":" in subnet['address']:
++        return True
++    return False
++
++
+ def _parse_deb_config_data(ifaces, contents, src_dir, src_path):
+     """Parses the file contents, placing result into ifaces.
+ 
+@@ -354,21 +362,23 @@ class Renderer(renderer.Renderer):
+         sections = []
+         subnets = iface.get('subnets', {})
+         if subnets:
+-            for index, subnet in zip(range(0, len(subnets)), subnets):
++            for index, subnet in enumerate(subnets):
+                 iface['index'] = index
+                 iface['mode'] = subnet['type']
+                 iface['control'] = subnet.get('control', 'auto')
+                 subnet_inet = 'inet'
+-                if iface['mode'].endswith('6'):
+-                    # This is a request for DHCPv6.
+-                    subnet_inet += '6'
+-                elif iface['mode'] == 'static' and ":" in subnet['address']:
+-                    # This is a static IPv6 address.
++                if _subnet_is_ipv6(subnet):
+                     subnet_inet += '6'
+                 iface['inet'] = subnet_inet
+-                if iface['mode'].startswith('dhcp'):
++                if subnet['type'].startswith('dhcp'):
+                     iface['mode'] = 'dhcp'
+ 
++                # do not emit multiple 'auto $IFACE' lines as older (precise)
++                # ifupdown complains
++                if True in ["auto %s" % (iface['name']) in line
++                            for line in sections]:
++                    iface['control'] = 'alias'
++
+                 lines = list(
+                     _iface_start_entry(
+                         iface, index, render_hwaddress=render_hwaddress) +
+@@ -378,11 +388,6 @@ class Renderer(renderer.Renderer):
+                 for route in subnet.get('routes', []):
+                     lines.extend(self._render_route(route, indent="    "))
+ 
+-                if len(subnets) > 1 and index == 0:
+-                    tmpl = "    post-up ifup %s:%s\n"
+-                    for i in range(1, len(subnets)):
+-                        lines.append(tmpl % (iface['name'], i))
+-
+                 sections.append(lines)
+         else:
+             # ifenslave docs say to auto the slave devices
+diff --git a/tests/unittests/test_net.py b/tests/unittests/test_net.py
+index ffa911cc..4c0e3ad3 100644
+--- a/tests/unittests/test_net.py
++++ b/tests/unittests/test_net.py
+@@ -376,11 +376,9 @@ NETWORK_CONFIGS = {
+ 
+             auto eth99
+             iface eth99 inet dhcp
+-                post-up ifup eth99:1
+ 
+-
+-            auto eth99:1
+-            iface eth99:1 inet static
++            # control-alias eth99
++            iface eth99 inet static
+                 address 192.168.21.3/24
+                 dns-nameservers 8.8.8.8 8.8.4.4
+                 dns-search barley.maas sach.maas
+@@ -418,6 +416,27 @@ NETWORK_CONFIGS = {
+                     - wark.maas
+         """),
+     },
++    'v4_and_v6': {
++        'expected_eni': textwrap.dedent("""\
++            auto lo
++            iface lo inet loopback
++
++            auto iface0
++            iface iface0 inet dhcp
++
++            # control-alias iface0
++            iface iface0 inet6 dhcp
++        """).rstrip(' '),
++        'yaml': textwrap.dedent("""\
++            version: 1
++            config:
++              - type: 'physical'
++                name: 'iface0'
++                subnets:
++                - {'type': 'dhcp4'}
++                - {'type': 'dhcp6'}
++        """).rstrip(' '),
++    },
+     'all': {
+         'expected_eni': ("""\
+ auto lo
+@@ -455,11 +474,9 @@ iface br0 inet static
+     address 192.168.14.2/24
+     bridge_ports eth3 eth4
+     bridge_stp off
+-    post-up ifup br0:1
+-
+ 
+-auto br0:1
+-iface br0:1 inet6 static
++# control-alias br0
++iface br0 inet6 static
+     address 2001:1::1/64
+ 
+ auto bond0.200
+@@ -476,11 +493,9 @@ iface eth0.101 inet static
+     mtu 1500
+     vlan-raw-device eth0
+     vlan_id 101
+-    post-up ifup eth0.101:1
+-
+ 
+-auto eth0.101:1
+-iface eth0.101:1 inet static
++# control-alias eth0.101
++iface eth0.101 inet static
+     address 192.168.2.10/24
+ 
+ post-up route add -net 10.0.0.0 netmask 255.0.0.0 gw 11.0.0.1 metric 3 || true
+@@ -1007,6 +1022,13 @@ class TestEniRoundTrip(TestCase):
+             entry['expected_eni'].splitlines(),
+             files['/etc/network/interfaces'].splitlines())
+ 
++    def testsimple_render_v4_and_v6(self):
++        entry = NETWORK_CONFIGS['v4_and_v6']
++        files = self._render_and_read(network_config=yaml.load(entry['yaml']))
++        self.assertEqual(
++            entry['expected_eni'].splitlines(),
++            files['/etc/network/interfaces'].splitlines())
++
+     def test_routes_rendered(self):
+         # as reported in bug 1649652
+         conf = [
+-- 
+2.13.6
+

@@ -1,0 +1,32 @@
+From b5bc8596569ba46c89247d1df5f3cd6e6a85dce1 Mon Sep 17 00:00:00 2001
+From: Joshua Powers <josh.powers@canonical.com>
+Date: Mon, 10 Apr 2017 16:30:33 -0700
+Subject: [PATCH] rsyslog: replace ~ with stop
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The discard action (tilde character) has been replaced by the
+“stop” RainerScript directive. It is considered more intuitive and
+offers slightly better performance.
+
+The tilde operator was deprecated in rsyslog 7. Distributions
+using rsyslog older than that will need to patch.
+
+LP: #1367899
+Resolves: rhbz#1315615
+(cherry picked from commit b613de733fa7cfbf94666410f252b640019be205)
+---
+ tools/21-cloudinit.conf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/21-cloudinit.conf b/tools/21-cloudinit.conf
+index c65325c..150d800 100644
+--- a/tools/21-cloudinit.conf
++++ b/tools/21-cloudinit.conf
+@@ -3,4 +3,4 @@
+ 
+ # comment out the following line to allow CLOUDINIT messages through.
+ # Doing so means you'll also get CLOUDINIT messages in /var/log/syslog
+-& ~
++& stop

@@ -1,0 +1,20 @@
+# This file contains additional runtime requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+dmidecode
+e2fsprogs
+iproute2
+#libselinux-python
+net-tools
+#policycoreutils-python
+procps
+configobj
+jinja2
+jsonpatch
+prettytable
+requests
+setuptools
+PyYAML
+pyserial
+#shadow-utils
+shadow
+systemd

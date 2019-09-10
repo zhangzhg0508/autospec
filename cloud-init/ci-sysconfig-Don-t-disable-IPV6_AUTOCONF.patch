@@ -1,0 +1,49 @@
+From 69de56ef080be2d017a84d1fd48ddd1fc7f2124f Mon Sep 17 00:00:00 2001
+From: Vitaly Kuznetsov <vkuznets@redhat.com>
+Date: Thu, 26 Apr 2018 09:27:49 +0200
+Subject: [PATCH 3/3] sysconfig: Don't disable IPV6_AUTOCONF
+
+RH-Author: Vitaly Kuznetsov <vkuznets@redhat.com>
+Message-id: <20180426092749.7251-2-vkuznets@redhat.com>
+Patchwork-id: 79904
+O-Subject: [RHEL7.6/7.5.z cloud-init PATCH 1/1] sysconfig: Don't disable IPV6_AUTOCONF
+Bugzilla: 1578702
+RH-Acked-by: Mohammed Gamal <mgamal@redhat.com>
+RH-Acked-by: Cathy Avery <cavery@redhat.com>
+RH-Acked-by: Eduardo Otubo <otubo@redhat.com>
+
+Downstream-only commit 118458a3fb ("sysconfig: Don't write BOOTPROTO=dhcp
+for ipv6 dhcp") did two things:
+1) Disabled BOOTPROTO='dhcp' for dhcp6 setups. This change seems to be
+   correct as BOOTPROTO is unrelated to IPv6. The change was since merged
+   upstream (commit a57928d3c314d9568712cd190cb1e721e14c108b).
+2) Explicitly disabled AUTOCONF and this broke many valid configurations
+   using it instead of DHCPV6C. Revert this part of the change. In case
+   DHCPV6C-only support is needed something like a new 'dhcpv6c_only'
+   network type needs to be suggested upstream.
+
+X-downstream-only: yes
+
+Resolves: rhbz#1558854
+
+Signed-off-by: Vitaly Kuznetsov <vkuznets@redhat.com>
+Signed-off-by: Miroslav Rezanina <mrezanin@redhat.com>
+---
+ cloudinit/net/sysconfig.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/cloudinit/net/sysconfig.py b/cloudinit/net/sysconfig.py
+index ec41251..9fd4d92 100644
+--- a/cloudinit/net/sysconfig.py
++++ b/cloudinit/net/sysconfig.py
+@@ -287,7 +287,6 @@ class Renderer(renderer.Renderer):
+             if subnet_type == 'dhcp6':
+                 iface_cfg['IPV6INIT'] = True
+                 iface_cfg['DHCPV6C'] = True
+-                iface_cfg['IPV6_AUTOCONF'] = False
+             elif subnet_type in ['dhcp4', 'dhcp']:
+                 iface_cfg['BOOTPROTO'] = 'dhcp'
+             elif subnet_type == 'static':
+-- 
+1.8.3.1
+

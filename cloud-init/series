@@ -1,0 +1,51 @@
+0001-configuration-changes-for-RHEL-package.patch
+0002-do-not-use-git-to-determine-version.patch
+0003-util-teach-write_file-about-copy_mode-option.patch
+0004-Do-not-write-NM_CONTROLLED-no-in-generated-interface.patch
+0005-url_helper-fail-gracefully-if-oauthlib-is-not-availa.patch
+0006-rsyslog-replace-with-stop.patch
+0007-OpenStack-Use-timeout-and-retries-from-config-in-get.patch
+0008-correct-errors-in-cloudinit-net-sysconfig.py.patch
+0009-net-do-not-raise-exception-for-3-nameservers.patch
+0010-net-support-both-ipv4-and-ipv6-gateways-in-sysconfig.patch
+0011-systemd-replace-generator-with-unit-conditionals.patch
+0012-OpenStack-add-dvs-to-the-list-of-physical-link-types.patch
+0013-Bounce-network-interface-for-Azure-when-using-the-bu.patch
+0014-limit-permissions-on-def_log_file.patch
+0015-remove-tee-command-from-logging-configuration.patch
+0016-add-power-state-change-module-to-cloud_final_modules.patch
+0017-sysconfig-Raise-ValueError-when-multiple-default-gat.patch
+0018-Fix-dual-stack-IPv4-IPv6-configuration-for-RHEL.patch
+0019-Add-missing-sysconfig-unit-test-data.patch
+0020-Fix-ipv6-subnet-detection.patch
+# Not applied to work around additional issues related to rhbz#1474226
+#Patch0021: 0021-azure-ensure-that-networkmanager-hook-script-runs.patch
+0022-RHEL-CentOS-Fix-default-routes-for-IPv4-IPv6-configu.patch
+0023-DatasourceEc2-add-warning-message-when-not-on-AWS.patch
+0024-Identify-Brightbox-as-an-Ec2-datasource-user.patch
+0025-AliYun-Enable-platform-identification-and-enable-by-.patch
+0026-Fix-alibaba-cloud-unit-tests-to-work-with-0.7.9.patch
+0027-Fix-eni-rendering-of-multiple-IPs-per-interface.patch
+0028-systemd-create-run-cloud-init-enabled.patch
+0029-support-loopback-as-a-device-type.patch
+0030-sysconfig-include-GATEWAY-value-if-set-in-subnet.patch
+0031-rh_subscription-Perform-null-checks-for-enabled-and-.patch
+0032-net-Allow-for-NetworkManager-configuration.patch
+0033-Render-DNS-and-DOMAIN-lines-for-sysconfig.patch
+0034-Start_cloud_init_after_dbus.patch
+0035-sysconfig-Render-IPV6_DEFAULTGW-correctly.patch
+0036-sysconfig-Don-t-write-BOOTPROTO-dhcp-for-ipv6-dhcp.patch
+0037-sysconfig-Fix-traceback.patch
+0038-Fix-bug-that-resulted-in-an-attempt-to-rename-bonds.patch
+0039-azure-Fix-publishing-of-hostname.patch
+# For bz#1568717 - Add patch to bounce NICs in Azure/update DNS [rhel-7.5.z]
+ci-Revert-azure-Fix-publishing-of-hostname.patch
+# For bz#1568717 - Add patch to bounce NICs in Azure/update DNS [rhel-7.5.z]
+ci-DataSourceAzure.py-use-hostnamectl-to-set-hostname.patch
+# For bz#1578702 - cloud-init-0.7.9-9.el7_4.6 breaks IPv4/IPv6 dual-stack EC2 instances in AWS [rhel-7.5.z]
+ci-sysconfig-Don-t-disable-IPV6_AUTOCONF.patch
+
+cloud-init-add-centos-os.patch
+
+# WRS patches
+cloud-init-interactive-parted.patch

@@ -1,0 +1,57 @@
+From bc2e1a64e64bddf04fd3e27c79432facbedca182 Mon Sep 17 00:00:00 2001
+From: Ryan McCabe <rmccabe@redhat.com>
+Date: Tue, 13 Jun 2017 11:45:07 -0400
+Subject: [PATCH] Fix ipv6 subnet detection
+
+Add better ipv6 subnet detection that was added as part of a
+much larger patch set in upstream commit
+ef18b8ac4cf7e3dfd98830fbdb298380a192a0fc
+
+Related: rhbz#1438082
+X-approved-upstream: true
+
+Signed-off-by: Ryan McCabe <rmccabe@redhat.com>
+---
+ cloudinit/net/sysconfig.py | 15 +++++++++++++--
+ 1 file changed, 13 insertions(+), 2 deletions(-)
+
+diff --git a/cloudinit/net/sysconfig.py b/cloudinit/net/sysconfig.py
+index ef80d99..6a0dd43 100644
+--- a/cloudinit/net/sysconfig.py
++++ b/cloudinit/net/sysconfig.py
+@@ -11,6 +11,17 @@ from cloudinit import util
+ from . import renderer
+ 
+ 
++def _subnet_is_ipv6(subnet):
++    """Common helper for checking network_state subnets for ipv6."""
++    # 'static6' or 'dhcp6'
++    if subnet['type'].endswith('6'):
++        # This is a request for DHCPv6.
++        return True
++    elif subnet['type'] == 'static' and ":" in subnet['address']:
++        return True
++    return False
++
++
+ def _make_header(sep='#'):
+     lines = [
+         "Created by cloud-init on instance boot automatically, do not edit.",
+@@ -286,7 +297,7 @@ class Renderer(renderer.Renderer):
+                 # but should remain 'none'
+                 # if iface_cfg['BOOTPROTO'] == 'none':
+                 #    iface_cfg['BOOTPROTO'] = 'static'
+-                if subnet.get('ipv6'):
++                if _subnet_is_ipv6(subnet):
+                     iface_cfg['IPV6INIT'] = True
+             else:
+                 raise ValueError("Unknown subnet type '%s' found"
+@@ -303,7 +314,7 @@ class Renderer(renderer.Renderer):
+             elif subnet_type in ['dhcp4', 'dhcp']:
+                 continue
+             elif subnet_type == 'static':
+-                if subnet.get('ipv6'):
++                if _subnet_is_ipv6(subnet):
+                     ipv6_index = ipv6_index + 1
+                     if 'netmask' in subnet and str(subnet['netmask']) != "":
+                         ipv6_cidr = (subnet['address'] +

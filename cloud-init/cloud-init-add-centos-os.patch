@@ -1,0 +1,43 @@
+diff --git a/cloudinit/distros/__init__.py b/cloudinit/distros/__init__.py
+index f56c0cf..1fd48a7 100755
+--- a/cloudinit/distros/__init__.py
++++ b/cloudinit/distros/__init__.py
+@@ -32,7 +32,7 @@ from cloudinit.distros.parsers import hosts
+ 
+ OSFAMILIES = {
+     'debian': ['debian', 'ubuntu'],
+-    'redhat': ['fedora', 'rhel'],
++    'redhat': ['centos', 'fedora', 'rhel'],
+     'gentoo': ['gentoo'],
+     'freebsd': ['freebsd'],
+     'suse': ['sles'],
+diff --git a/cloudinit/distros/centos.py b/cloudinit/distros/centos.py
+new file mode 100644
+index 0000000..4b803d2
+--- /dev/null
++++ b/cloudinit/distros/centos.py
+@@ -0,0 +1,12 @@
++# This file is part of cloud-init. See LICENSE file for license information.
++
++from cloudinit.distros import rhel
++from cloudinit import log as logging
++
++LOG = logging.getLogger(__name__)
++
++
++class Distro(rhel.Distro):
++    pass
++
++# vi: ts=4 expandtab
+diff -uNr cloud-init-0.7.9__orig/rhel/cloud.cfg cloud-init-0.7.9/rhel/cloud.cfg
+--- cloud-init-0.7.9__orig/rhel/cloud.cfg	2017-09-05 22:20:14.302075947 +0100
++++ cloud-init-0.7.9/rhel/cloud.cfg	2017-09-05 22:20:37.912076373 +0100
+@@ -52,7 +52,7 @@
+ 
+ system_info:
+   default_user:
+-    name: cloud-user
++    name: centos
+     lock_passwd: true
+     gecos: Cloud User
+     groups: [wheel, adm, systemd-journal]

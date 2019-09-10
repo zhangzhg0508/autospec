@@ -1,0 +1,33 @@
+From d3a5f6f36ca673bc69d2e020c65fb85bf0dfc519 Mon Sep 17 00:00:00 2001
+From: Ryan McCabe <rmccabe@redhat.com>
+Date: Tue, 13 Feb 2018 22:42:17 -0500
+Subject: [PATCH] azure: Fix publishing of hostname
+
+Set the DHCP_HOSTNAME env var before bouncing the interfaces
+to ensure that the hostname is published correctly.
+
+Resolves: rhbz#1434109
+
+X-downstream-only: yes
+Signed-off-by: Ryan McCabe <rmccabe@redhat.com>
+---
+ cloudinit/sources/DataSourceAzure.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/cloudinit/sources/DataSourceAzure.py b/cloudinit/sources/DataSourceAzure.py
+index 48a3e1df..a0ebd2ba 100644
+--- a/cloudinit/sources/DataSourceAzure.py
++++ b/cloudinit/sources/DataSourceAzure.py
+@@ -27,7 +27,8 @@ AGENT_START = ['service', 'walinuxagent', 'start']
+ AGENT_START_BUILTIN = "__builtin__"
+ BOUNCE_COMMAND = [
+     'sh', '-xc',
+-    "i=$interface; x=0; ifdown $i || x=$?; ifup $i || x=$?; exit $x"
++    "i=$interface; DHCP_HOSTNAME=$hostname; x=0; "
++    "ifdown $i || x=$?; ifup $i || x=$?; exit $x"
+ ]
+ # azure systems will always have a resource disk, and 66-azure-ephemeral.rules
+ # ensures that it gets linked to this path.
+-- 
+2.14.3
+

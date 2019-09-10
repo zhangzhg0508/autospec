@@ -1,0 +1,166 @@
+From 8e8e1dffc528b738f92cd508d7a6faf58e40af00 Mon Sep 17 00:00:00 2001
+From: Scott Moser <smoser@brickies.net>
+Date: Wed, 15 Mar 2017 12:06:40 -0400
+Subject: [PATCH 1/2] support 'loopback' as a device type.
+
+As reported in bug 1671927, sysconfig had an issue with rendering
+a loopback device.  The problem was that some as yet unknown issue was
+causing the openstack config drive to parse the provided ENI file rather
+than reading the network_data.json.  Parsing an ENI file would add a
+a 'lo' device of type 'physical', and sysconfig was failing to render
+that.
+
+The change here is:
+ a.) add a 'loopback' type rather than 'physical' for network config.
+     {'name': 'lo', 'type': 'loopback', 'subnets': ['type': 'loopback']}
+ b.) support skipping that type in the eni and sysconfig renderers.
+ c.) make network_state just piggy back on 'physical' renderer for
+     loopback (this was what was happening before).
+
+Tests are added for eni and sysconfig renderer.
+
+(cherry picked from commit 1a2ca7530518d819cbab7287b12f942743427e38)
+
+Related: rhbz#1492726
+Signed-off-by: Ryan McCabe <rmccabe@redhat.com>
+---
+ cloudinit/net/eni.py           | 16 +++++++++------
+ cloudinit/net/network_state.py |  4 ++++
+ cloudinit/net/sysconfig.py     |  2 ++
+ tests/unittests/test_net.py    | 44 ++++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 60 insertions(+), 6 deletions(-)
+
+diff --git a/cloudinit/net/eni.py b/cloudinit/net/eni.py
+index 5b249f1f..69ecbb5d 100644
+--- a/cloudinit/net/eni.py
++++ b/cloudinit/net/eni.py
+@@ -273,8 +273,11 @@ def _ifaces_to_net_config_data(ifaces):
+         # devname is 'eth0' for name='eth0:1'
+         devname = name.partition(":")[0]
+         if devname not in devs:
+-            devs[devname] = {'type': 'physical', 'name': devname,
+-                             'subnets': []}
++            if devname == "lo":
++                dtype = "loopback"
++            else:
++                dtype = "physical"
++            devs[devname] = {'type': dtype, 'name': devname, 'subnets': []}
+             # this isnt strictly correct, but some might specify
+             # hwaddress on a nic for matching / declaring name.
+             if 'hwaddress' in data:
+@@ -423,10 +426,11 @@ class Renderer(renderer.Renderer):
+             bonding
+         '''
+         order = {
+-            'physical': 0,
+-            'bond': 1,
+-            'bridge': 2,
+-            'vlan': 3,
++            'loopback': 0,
++            'physical': 1,
++            'bond': 2,
++            'bridge': 3,
++            'vlan': 4,
+         }
+ 
+         sections = []
+diff --git a/cloudinit/net/network_state.py b/cloudinit/net/network_state.py
+index 11ef585b..90b2835a 100644
+--- a/cloudinit/net/network_state.py
++++ b/cloudinit/net/network_state.py
+@@ -212,6 +212,10 @@ class NetworkStateInterpreter(object):
+                     LOG.debug(self.dump_network_state())
+ 
+     @ensure_command_keys(['name'])
++    def handle_loopback(self, command):
++        return self.handle_physical(command)
++
++    @ensure_command_keys(['name'])
+     def handle_physical(self, command):
+         '''
+         command = {
+diff --git a/cloudinit/net/sysconfig.py b/cloudinit/net/sysconfig.py
+index efd101ca..25c29104 100644
+--- a/cloudinit/net/sysconfig.py
++++ b/cloudinit/net/sysconfig.py
+@@ -500,6 +500,8 @@ class Renderer(renderer.Renderer):
+         '''Given state, return /etc/sysconfig files + contents'''
+         iface_contents = {}
+         for iface in network_state.iter_interfaces():
++            if iface['type'] == "loopback":
++                continue
+             iface_name = iface['name']
+             iface_cfg = NetInterface(iface_name, base_sysconf_dir)
+             cls._render_iface_shared(iface, iface_cfg)
+diff --git a/tests/unittests/test_net.py b/tests/unittests/test_net.py
+index 4c0e3ad3..7e389c10 100644
+--- a/tests/unittests/test_net.py
++++ b/tests/unittests/test_net.py
+@@ -615,6 +615,14 @@ pre-down route del -net 10.0.0.0 netmask 255.0.0.0 gw 11.0.0.1 metric 3 || true
+     }
+ }
+ 
++CONFIG_V1_EXPLICIT_LOOPBACK = {
++    'version': 1,
++    'config': [{'name': 'eth0', 'type': 'physical',
++               'subnets': [{'control': 'auto', 'type': 'dhcp'}]},
++               {'name': 'lo', 'type': 'loopback',
++                'subnets': [{'control': 'auto', 'type': 'loopback'}]},
++               ]}
++
+ 
+ def _setup_test(tmp_dir, mock_get_devicelist, mock_read_sys_net,
+                 mock_sys_dev_path):
+@@ -785,6 +793,27 @@ USERCTL=no
+                 with open(os.path.join(render_dir, fn)) as fh:
+                     self.assertEqual(expected_content, fh.read())
+ 
++    def test_config_with_explicit_loopback(self):
++        ns = network_state.parse_net_config_data(CONFIG_V1_EXPLICIT_LOOPBACK)
++        render_dir = self.tmp_path("render")
++        os.makedirs(render_dir)
++        renderer = sysconfig.Renderer()
++        renderer.render_network_state(render_dir, ns)
++        found = dir2dict(render_dir)
++        nspath = '/etc/sysconfig/network-scripts/'
++        self.assertNotIn(nspath + 'ifcfg-lo', found.keys())
++        expected = """\
++# Created by cloud-init on instance boot automatically, do not edit.
++#
++BOOTPROTO=dhcp
++DEVICE=eth0
++NM_CONTROLLED=no
++ONBOOT=yes
++TYPE=Ethernet
++USERCTL=no
++"""
++        self.assertEqual(expected, found[nspath + 'ifcfg-eth0'])
++
+ 
+ class TestEniNetRendering(TestCase):
+ 
+@@ -826,6 +855,21 @@ iface eth1000 inet dhcp
+ """
+         self.assertEqual(expected.lstrip(), contents.lstrip())
+ 
++    def test_config_with_explicit_loopback(self):
++        tmp_dir = self.tmp_dir()
++        ns = network_state.parse_net_config_data(CONFIG_V1_EXPLICIT_LOOPBACK)
++        renderer = eni.Renderer()
++        renderer.render_network_state(tmp_dir, ns)
++        expected = """\
++auto lo
++iface lo inet loopback
++
++auto eth0
++iface eth0 inet dhcp
++"""
++        self.assertEqual(
++            expected, dir2dict(tmp_dir)['/etc/network/interfaces'])
++
+ 
+ class TestEniNetworkStateToEni(TestCase):
+     mycfg = {
+-- 
+2.13.6
+
