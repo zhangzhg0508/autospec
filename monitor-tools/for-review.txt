@@ -1,0 +1,24 @@
+From a02dddc160d75d20b5b65a7001f8fe5c4651d7e0 Mon Sep 17 00:00:00 2001
+From: "chen.dq" <chen.dq@neusoft.com>
+Date: Mon, 9 Sep 2019 06:56:16 +0000
+Subject: [PATCH monitor-tools] monitor-tools: Autospec creation for version
+ 1.0
+
+---
+ monitor-tools.spec | 8 ++++----
+ release            | 2 +-
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/monitor-tools.spec b/monitor-tools.spec
+index b5b72c7..9ba2924 100644
+--- a/monitor-tools.spec
++++ b/monitor-tools.spec
+@@ -58,7 +58,7 @@ install %{_buildsubdir}/memtop %{buildroot}/usr/bin
+ install %{_buildsubdir}/schedtop %{buildroot}/usr/bin
+ install %{_buildsubdir}/occtop %{buildroot}/usr/bin
+ %post
+-grep schedstats /etc/sysctl.conf
++grep schedstats /usr/local/etc/sysctl.conf
+ if [ $? -ne 0 ]; then
+ echo -e "\nkernel.sched_schedstats=1" >> /etc/sysctl.conf
+ sysctl -p &>/dev/null

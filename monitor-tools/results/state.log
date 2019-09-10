@@ -1,0 +1,37 @@
+2019-09-09 06:55:11,954 - Mock Version: 1.2.14
+2019-09-09 06:55:12,164 - Start: dnf update
+2019-09-09 06:55:24,730 - Finish: dnf update
+2019-09-09 06:55:24,736 - Finish: chroot init
+2019-09-09 06:55:24,739 - Start: buildsrpm
+2019-09-09 06:55:24,748 - Start: rpmbuild -bs
+2019-09-09 06:55:24,782 - Finish: rpmbuild -bs
+2019-09-09 06:55:24,784 - Finish: buildsrpm
+2019-09-09 06:55:24,784 - Finish: run
+2019-09-09 06:55:28,543 - Mock Version: 1.2.14
+2019-09-09 06:55:28,787 - Start: dnf update
+2019-09-09 06:55:41,050 - Finish: dnf update
+2019-09-09 06:55:41,057 - Finish: chroot init
+2019-09-09 06:55:41,058 - Start: build phase for monitor-tools-1.0-2.src.rpm
+2019-09-09 06:55:41,060 - Start: build setup for monitor-tools-1.0-2.src.rpm
+2019-09-09 06:55:41,774 - Finish: build setup for monitor-tools-1.0-2.src.rpm
+2019-09-09 06:55:41,775 - Start: rpmbuild monitor-tools-1.0-2.src.rpm
+2019-09-09 06:55:45,771 - Mock Version: 1.2.14
+2019-09-09 06:55:45,995 - Start: dnf update
+2019-09-09 06:55:58,474 - Finish: dnf update
+2019-09-09 06:55:58,480 - Finish: chroot init
+2019-09-09 06:55:58,483 - Start: buildsrpm
+2019-09-09 06:55:58,493 - Start: rpmbuild -bs
+2019-09-09 06:55:58,527 - Finish: rpmbuild -bs
+2019-09-09 06:55:58,528 - Finish: buildsrpm
+2019-09-09 06:55:58,529 - Finish: run
+2019-09-09 06:56:02,447 - Mock Version: 1.2.14
+2019-09-09 06:56:02,708 - Start: dnf update
+2019-09-09 06:56:15,060 - Finish: dnf update
+2019-09-09 06:56:15,066 - Finish: chroot init
+2019-09-09 06:56:15,068 - Start: build phase for monitor-tools-1.0-2.src.rpm
+2019-09-09 06:56:15,070 - Start: build setup for monitor-tools-1.0-2.src.rpm
+2019-09-09 06:56:15,823 - Finish: build setup for monitor-tools-1.0-2.src.rpm
+2019-09-09 06:56:15,824 - Start: rpmbuild monitor-tools-1.0-2.src.rpm
+2019-09-09 06:56:16,021 - Finish: rpmbuild monitor-tools-1.0-2.src.rpm
+2019-09-09 06:56:16,023 - Finish: build phase for monitor-tools-1.0-2.src.rpm
+2019-09-09 06:56:16,024 - Finish: run

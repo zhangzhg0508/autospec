@@ -1,0 +1,2 @@
+rm -rf $RPM_BUILD_ROOT 
+%global _buildsubdir %{_builddir}/%{name}-%{version}

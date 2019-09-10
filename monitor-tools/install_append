@@ -1,0 +1,11 @@
+install %{_buildsubdir}/memtop %{buildroot}/usr/bin
+install %{_buildsubdir}/schedtop %{buildroot}/usr/bin
+install %{_buildsubdir}/occtop %{buildroot}/usr/bin
+
+%post
+grep schedstats /usr/local/etc/sysctl.conf
+if [ $? -ne 0 ]; then
+  echo -e "\nkernel.sched_schedstats=1" >> /etc/sysctl.conf
+  sysctl -p &>/dev/null
+fi
+exit 0
