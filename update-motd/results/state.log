@@ -1,0 +1,37 @@
+2019-09-11 16:21:23,549 - Mock Version: 1.2.14
+2019-09-11 16:21:23,788 - Start: dnf update
+2019-09-11 16:21:34,170 - Finish: dnf update
+2019-09-11 16:21:34,176 - Finish: chroot init
+2019-09-11 16:21:34,179 - Start: buildsrpm
+2019-09-11 16:21:34,187 - Start: rpmbuild -bs
+2019-09-11 16:21:34,225 - Finish: rpmbuild -bs
+2019-09-11 16:21:34,226 - Finish: buildsrpm
+2019-09-11 16:21:34,227 - Finish: run
+2019-09-11 16:21:37,294 - Mock Version: 1.2.14
+2019-09-11 16:21:37,550 - Start: dnf update
+2019-09-11 16:21:48,267 - Finish: dnf update
+2019-09-11 16:21:48,273 - Finish: chroot init
+2019-09-11 16:21:48,274 - Start: build phase for update-motd-1.0-2.src.rpm
+2019-09-11 16:21:48,276 - Start: build setup for update-motd-1.0-2.src.rpm
+2019-09-11 16:21:48,948 - Finish: build setup for update-motd-1.0-2.src.rpm
+2019-09-11 16:21:48,948 - Start: rpmbuild update-motd-1.0-2.src.rpm
+2019-09-11 16:21:52,298 - Mock Version: 1.2.14
+2019-09-11 16:21:52,547 - Start: dnf update
+2019-09-11 16:22:03,145 - Finish: dnf update
+2019-09-11 16:22:03,150 - Finish: chroot init
+2019-09-11 16:22:03,153 - Start: buildsrpm
+2019-09-11 16:22:03,161 - Start: rpmbuild -bs
+2019-09-11 16:22:03,199 - Finish: rpmbuild -bs
+2019-09-11 16:22:03,201 - Finish: buildsrpm
+2019-09-11 16:22:03,201 - Finish: run
+2019-09-11 16:22:06,281 - Mock Version: 1.2.14
+2019-09-11 16:22:06,540 - Start: dnf update
+2019-09-11 16:22:16,671 - Finish: dnf update
+2019-09-11 16:22:16,677 - Finish: chroot init
+2019-09-11 16:22:16,678 - Start: build phase for update-motd-1.0-2.src.rpm
+2019-09-11 16:22:16,680 - Start: build setup for update-motd-1.0-2.src.rpm
+2019-09-11 16:22:17,354 - Finish: build setup for update-motd-1.0-2.src.rpm
+2019-09-11 16:22:17,354 - Start: rpmbuild update-motd-1.0-2.src.rpm
+2019-09-11 16:22:17,512 - Finish: rpmbuild update-motd-1.0-2.src.rpm
+2019-09-11 16:22:17,513 - Finish: build phase for update-motd-1.0-2.src.rpm
+2019-09-11 16:22:17,514 - Finish: run

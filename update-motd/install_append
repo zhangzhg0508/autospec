@@ -1,0 +1,14 @@
+install -m 700 motd-update %{buildroot}%{_sbindir}/motd-update
+
+install -d %{buildroot}%{_sysconfdir}
+
+install -d %{buildroot}%{_sysconfdir}/motd.d
+install -m 755 motd-header %{buildroot}%{_sysconfdir}/motd.d/00-header
+install -m 755 motd-footer %{buildroot}%{_sysconfdir}/motd.d/99-footer
+install -m 644 motd.head %{buildroot}%{_sysconfdir}/motd.head
+
+install -d %{buildroot}%{_sysconfdir}/cron.d
+install -m 600 motd-update.cron %{buildroot}%{_sysconfdir}/cron.d/motd-update
+install -m 700 customize-banner %{buildroot}%{_sbindir}/customize-banner
+install -m 700 apply_banner_customization %{buildroot}%{_sbindir}/apply_banner_customization
+install -m 700 install_banner_customization %{buildroot}%{_sbindir}/install_banner_customization

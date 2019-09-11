@@ -1,0 +1,49 @@
+From ce363b86f098fa41ae481199a18c916b22cbc49a Mon Sep 17 00:00:00 2001
+From: lgdfy <im.fuyong@gmail.com>
+Date: Wed, 11 Sep 2019 16:22:17 +0800
+Subject: [PATCH update-motd] update-motd: Autospec creation for version 1.0
+
+---
+ install_prepend  |  1 +
+ release          |  2 +-
+ update-motd.spec | 13 ++++++++++---
+ 3 files changed, 12 insertions(+), 4 deletions(-)
+ create mode 100644 install_prepend
+
+diff --git a/install_prepend b/install_prepend
+new file mode 100644
+index 0000000..d6cdd6a
+--- /dev/null
++++ b/install_prepend
+@@ -0,0 +1 @@
++%define _sysconfdir	/usr/local/etc
+diff --git a/update-motd.spec b/update-motd.spec
+index 55b94de..932d91a 100644
+--- a/update-motd.spec
++++ b/update-motd.spec
+@@ -47,8 +47,11 @@ make  %{?_smp_mflags}
+ 
+ 
+ %install
+ rm -rf %{buildroot}
++## install_prepend content
++%define _sysconfdir	/usr/local/etc
++## install_prepend end
+ install -d %{buildroot}%{_sbindir}
+ ## install_append content
+ install -m 700 motd-update %{buildroot}%{_sbindir}/motd-update
+@@ -66,6 +69,10 @@ install -m 700 install_banner_customization %{buildroot}%{_sbindir}/install_bann
+ 
+ %files
+ %defattr(-,root,root,-)
++/usr/local/etc/cron.d/motd-update
++/usr/local/etc/motd.d/00-header
++/usr/local/etc/motd.d/99-footer
++/usr/local/etc/motd.head
+ 
+ %files bin
+ %defattr(-,root,root,-)
+-- 
+2.23.0
+
+
