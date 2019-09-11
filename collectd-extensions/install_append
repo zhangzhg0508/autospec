@@ -1,0 +1,39 @@
+install -m 755 -d %{buildroot}%{_sysconfdir}
+install -m 755 -d %{buildroot}%{local_unit_dir}
+install -m 755 -d %{buildroot}%{local_plugin_dir}
+install -m 755 -d %{buildroot}%{local_config_extensions_dir}
+install -m 755 -d %{buildroot}%{local_python_extensions_dir}
+pushd src
+# support files ; service and pmon conf
+install -m 644 collectd.service %{buildroot}%{local_unit_dir}
+install -m 600 collectd.conf.pmon %{buildroot}%{local_config_extensions_dir}
+
+# collectd python plugin files - notifiers
+install -m 700 fm_notifier.py %{buildroot}%{local_python_extensions_dir}
+install -m 700 mtce_notifier.py %{buildroot}%{local_python_extensions_dir}
+install -m 700 plugin_common.py %{buildroot}%{local_python_extensions_dir}
+
+# collectd python plugin files - resource plugins
+install -m 700 cpu.py %{buildroot}%{local_python_extensions_dir}
+install -m 700 memory.py %{buildroot}%{local_python_extensions_dir}
+install -m 700 example.py %{buildroot}%{local_python_extensions_dir}
+install -m 700 ntpq.py %{buildroot}%{local_python_extensions_dir}
+install -m 700 interface.py %{buildroot}%{local_python_extensions_dir}
+install -m 700 remotels.py %{buildroot}%{local_python_extensions_dir}
+install -m 700 ptp.py %{buildroot}%{local_python_extensions_dir}
+
+
+# collectd plugin conf files into /etc/collectd.d
+install -m 600 python_plugins.conf %{buildroot}%{local_plugin_dir}
+install -m 600 cpu.conf %{buildroot}%{local_plugin_dir}
+install -m 600 memory.conf %{buildroot}%{local_plugin_dir}
+install -m 600 df.conf %{buildroot}%{local_plugin_dir}
+install -m 600 example.conf %{buildroot}%{local_plugin_dir}
+install -m 600 ntpq.conf %{buildroot}%{local_plugin_dir}
+install -m 600 interface.conf %{buildroot}%{local_plugin_dir}
+install -m 600 remotels.conf %{buildroot}%{local_plugin_dir}
+install -m 600 ptp.conf %{buildroot}%{local_plugin_dir}
+popd
+
+%clean
+rm -rf $RPM_BUILD_ROOT

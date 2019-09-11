@@ -1,0 +1,6 @@
+%define debug_package %{nil}
+%define _sysconfdir /usr/local/etc
+%define local_unit_dir %{_sysconfdir}/systemd/system
+%define local_plugin_dir %{_sysconfdir}/collectd.d
+%define local_python_extensions_dir /opt/collectd/extensions/python
+%define local_config_extensions_dir /opt/collectd/extensions/config
