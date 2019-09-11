@@ -1,0 +1,37 @@
+2019-09-11 06:54:38,219 - Mock Version: 1.2.14
+2019-09-11 06:54:38,492 - Start: dnf update
+2019-09-11 06:54:49,818 - Finish: dnf update
+2019-09-11 06:54:49,823 - Finish: chroot init
+2019-09-11 06:54:49,826 - Start: buildsrpm
+2019-09-11 06:54:49,831 - Start: rpmbuild -bs
+2019-09-11 06:54:49,869 - Finish: rpmbuild -bs
+2019-09-11 06:54:49,870 - Finish: buildsrpm
+2019-09-11 06:54:49,871 - Finish: run
+2019-09-11 06:54:52,850 - Mock Version: 1.2.14
+2019-09-11 06:54:53,100 - Start: dnf update
+2019-09-11 06:55:03,638 - Finish: dnf update
+2019-09-11 06:55:03,644 - Finish: chroot init
+2019-09-11 06:55:03,645 - Start: build phase for collector-1.0-1.src.rpm
+2019-09-11 06:55:03,647 - Start: build setup for collector-1.0-1.src.rpm
+2019-09-11 06:55:04,313 - Finish: build setup for collector-1.0-1.src.rpm
+2019-09-11 06:55:04,313 - Start: rpmbuild collector-1.0-1.src.rpm
+2019-09-11 06:55:07,853 - Mock Version: 1.2.14
+2019-09-11 06:55:08,106 - Start: dnf update
+2019-09-11 06:55:18,714 - Finish: dnf update
+2019-09-11 06:55:18,720 - Finish: chroot init
+2019-09-11 06:55:18,723 - Start: buildsrpm
+2019-09-11 06:55:18,728 - Start: rpmbuild -bs
+2019-09-11 06:55:18,766 - Finish: rpmbuild -bs
+2019-09-11 06:55:18,768 - Finish: buildsrpm
+2019-09-11 06:55:18,768 - Finish: run
+2019-09-11 06:55:22,044 - Mock Version: 1.2.14
+2019-09-11 06:55:22,308 - Start: dnf update
+2019-09-11 06:55:33,353 - Finish: dnf update
+2019-09-11 06:55:33,359 - Finish: chroot init
+2019-09-11 06:55:33,361 - Start: build phase for collector-1.0-1.src.rpm
+2019-09-11 06:55:33,363 - Start: build setup for collector-1.0-1.src.rpm
+2019-09-11 06:55:34,042 - Finish: build setup for collector-1.0-1.src.rpm
+2019-09-11 06:55:34,042 - Start: rpmbuild collector-1.0-1.src.rpm
+2019-09-11 06:55:34,328 - Finish: rpmbuild collector-1.0-1.src.rpm
+2019-09-11 06:55:34,329 - Finish: build phase for collector-1.0-1.src.rpm
+2019-09-11 06:55:34,330 - Finish: run
