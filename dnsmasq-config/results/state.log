@@ -1,0 +1,37 @@
+2019-09-11 08:40:48,320 - Mock Version: 1.2.14
+2019-09-11 08:40:48,582 - Start: dnf update
+2019-09-11 08:40:59,870 - Finish: dnf update
+2019-09-11 08:40:59,876 - Finish: chroot init
+2019-09-11 08:40:59,879 - Start: buildsrpm
+2019-09-11 08:40:59,887 - Start: rpmbuild -bs
+2019-09-11 08:40:59,924 - Finish: rpmbuild -bs
+2019-09-11 08:40:59,926 - Finish: buildsrpm
+2019-09-11 08:40:59,926 - Finish: run
+2019-09-11 08:41:02,985 - Mock Version: 1.2.14
+2019-09-11 08:41:03,254 - Start: dnf update
+2019-09-11 08:41:14,128 - Finish: dnf update
+2019-09-11 08:41:14,134 - Finish: chroot init
+2019-09-11 08:41:14,136 - Start: build phase for dnsmasq-config-1.0-1.src.rpm
+2019-09-11 08:41:14,138 - Start: build setup for dnsmasq-config-1.0-1.src.rpm
+2019-09-11 08:41:14,857 - Finish: build setup for dnsmasq-config-1.0-1.src.rpm
+2019-09-11 08:41:14,857 - Start: rpmbuild dnsmasq-config-1.0-1.src.rpm
+2019-09-11 08:41:18,175 - Mock Version: 1.2.14
+2019-09-11 08:41:18,429 - Start: dnf update
+2019-09-11 08:41:30,824 - Finish: dnf update
+2019-09-11 08:41:30,830 - Finish: chroot init
+2019-09-11 08:41:30,833 - Start: buildsrpm
+2019-09-11 08:41:30,838 - Start: rpmbuild -bs
+2019-09-11 08:41:30,887 - Finish: rpmbuild -bs
+2019-09-11 08:41:30,889 - Finish: buildsrpm
+2019-09-11 08:41:30,889 - Finish: run
+2019-09-11 08:41:34,102 - Mock Version: 1.2.14
+2019-09-11 08:41:34,356 - Start: dnf update
+2019-09-11 08:41:45,434 - Finish: dnf update
+2019-09-11 08:41:45,439 - Finish: chroot init
+2019-09-11 08:41:45,441 - Start: build phase for dnsmasq-config-1.0-1.src.rpm
+2019-09-11 08:41:45,443 - Start: build setup for dnsmasq-config-1.0-1.src.rpm
+2019-09-11 08:41:46,112 - Finish: build setup for dnsmasq-config-1.0-1.src.rpm
+2019-09-11 08:41:46,113 - Start: rpmbuild dnsmasq-config-1.0-1.src.rpm
+2019-09-11 08:41:46,213 - Finish: rpmbuild dnsmasq-config-1.0-1.src.rpm
+2019-09-11 08:41:46,215 - Finish: build phase for dnsmasq-config-1.0-1.src.rpm
+2019-09-11 08:41:46,215 - Finish: run
