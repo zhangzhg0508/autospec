@@ -4,7 +4,7 @@
 #
 Name     : sysinv
 Version  : 1.0
-Release  : 12
+Release  : 13
 URL      : file:///home/clr/stx-tar/sysinv-1.0.tar.gz
 Source0  : file:///home/clr/stx-tar/sysinv-1.0.tar.gz
 Summary  : No detailed summary available
@@ -33,6 +33,7 @@ Requires: pbr
 Requires: pecan
 Requires: pyudev
 Requires: six
+Requires: tsconfig
 BuildRequires : buildreq-distutils
 BuildRequires : buildreq-distutils3
 BuildRequires : pbr
@@ -94,7 +95,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1568168858
+export SOURCE_DATE_EPOCH=1568183900
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib

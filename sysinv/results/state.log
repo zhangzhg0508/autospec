@@ -1,0 +1,37 @@
+2019-09-11 14:37:00,269 - Mock Version: 1.2.14
+2019-09-11 14:37:00,530 - Start: dnf update
+2019-09-11 14:37:11,129 - Finish: dnf update
+2019-09-11 14:37:11,135 - Finish: chroot init
+2019-09-11 14:37:11,138 - Start: buildsrpm
+2019-09-11 14:37:11,152 - Start: rpmbuild -bs
+2019-09-11 14:37:11,196 - Finish: rpmbuild -bs
+2019-09-11 14:37:11,198 - Finish: buildsrpm
+2019-09-11 14:37:11,199 - Finish: run
+2019-09-11 14:37:14,280 - Mock Version: 1.2.14
+2019-09-11 14:37:14,527 - Start: dnf update
+2019-09-11 14:37:24,629 - Finish: dnf update
+2019-09-11 14:37:24,635 - Finish: chroot init
+2019-09-11 14:37:24,636 - Start: build phase for sysinv-1.0-13.src.rpm
+2019-09-11 14:37:24,638 - Start: build setup for sysinv-1.0-13.src.rpm
+2019-09-11 14:37:26,486 - Finish: build setup for sysinv-1.0-13.src.rpm
+2019-09-11 14:37:26,486 - Start: rpmbuild sysinv-1.0-13.src.rpm
+2019-09-11 14:37:38,072 - Mock Version: 1.2.14
+2019-09-11 14:37:38,301 - Start: dnf update
+2019-09-11 14:37:48,574 - Finish: dnf update
+2019-09-11 14:37:48,582 - Finish: chroot init
+2019-09-11 14:37:48,586 - Start: buildsrpm
+2019-09-11 14:37:48,602 - Start: rpmbuild -bs
+2019-09-11 14:37:48,646 - Finish: rpmbuild -bs
+2019-09-11 14:37:48,649 - Finish: buildsrpm
+2019-09-11 14:37:48,649 - Finish: run
+2019-09-11 14:37:51,997 - Mock Version: 1.2.14
+2019-09-11 14:37:52,249 - Start: dnf update
+2019-09-11 14:38:02,743 - Finish: dnf update
+2019-09-11 14:38:02,749 - Finish: chroot init
+2019-09-11 14:38:02,750 - Start: build phase for sysinv-1.0-13.src.rpm
+2019-09-11 14:38:02,753 - Start: build setup for sysinv-1.0-13.src.rpm
+2019-09-11 14:38:04,692 - Finish: build setup for sysinv-1.0-13.src.rpm
+2019-09-11 14:38:04,692 - Start: rpmbuild sysinv-1.0-13.src.rpm
+2019-09-11 14:38:19,679 - Finish: rpmbuild sysinv-1.0-13.src.rpm
+2019-09-11 14:38:19,681 - Finish: build phase for sysinv-1.0-13.src.rpm
+2019-09-11 14:38:19,681 - Finish: run

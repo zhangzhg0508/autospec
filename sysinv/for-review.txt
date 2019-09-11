@@ -1,0 +1,33 @@
+From b2d41d83c944f09b1a08fdf203d0ab20525dad33 Mon Sep 17 00:00:00 2001
+From: lgdfy <im.fuyong@gmail.com>
+Date: Wed, 11 Sep 2019 14:38:21 +0800
+Subject: [PATCH sysinv] sysinv: Autospec creation for version 1.0
+
+---
+ release      | 2 +-
+ requires_add | 2 +-
+ sysinv.spec  | 5 +++--
+ 3 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/requires_add b/requires_add
+index a2585ce..73d4c1b 100644
+--- a/requires_add
++++ b/requires_add
+@@ -20,4 +20,4 @@ oslo.db
+ oslo.log
+ oslo.utils
+ pecan
+-#tsconfig
++tsconfig
+diff --git a/sysinv.spec b/sysinv.spec
+index 55483ea..52230a6 100644
+--- a/sysinv.spec
++++ b/sysinv.spec
+@@ -33,6 +33,7 @@ Requires: pbr
+ Requires: pecan
+ Requires: pyudev
+ Requires: six
++Requires: tsconfig
+ BuildRequires : buildreq-distutils
+ BuildRequires : buildreq-distutils3
+ BuildRequires : pbr
