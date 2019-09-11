@@ -1,0 +1,34 @@
+0.3e - a buffer overflow and a string bug, both found by RazoR (Nikolay Alexandrov), fixed.
+0.3d - a format string vulnerability, found by Kim Streich, is fixed.
+0.3b-0.3c - bugfixes.
+0.3a	- The admin has the opportunity, to create separate cmds file for each user. 
+	This way the sysadmin has complete control over sensitive applications, which
+	should only be allowed to a selected few.
+ 	- The admin has the opportunity, to create separate xtns file for each user. 
+	- The extensions policy has been changed. Now both globals.xtns and the user
+	extension files will list the extensions, that are _allowed_ ! In earlier versions,
+	the forbidden extensions were listed, that is allow everything, except to deny a few.
+	From this version on, it's deny everything, except allow the ones, listed in these files.
+	- While the code for the search of illegal/dangerous material stored in user space is
+	back, it will not erase any files any more. Instead, it will remove all
+	rights from that file, so it can not be executed, or read. Files, with the +x bit set,
+	will be chmodded to -x. This is another "defense line" to stop the user to execute
+	programs, stored in user space.
+	- The access to all linux binaries, and source code files, stored in user space, if any, 
+	will be blocked.
+	- Absolute path for restricted users can not be longer then 255 characters. All files,
+	that are longer (with full path), will be renamed.
+	- Minor bug fixes.
+
+0.2a	- Major bug fixes. 
+	- User activities are logged with syslog.
+	- hhsytem revised, hardened. /bin/sh isnt involved anymore into program starting.
+	If the home directory is in the PATH, it's ignored.
+	- erasing illegal content is temporarily suspended and removed.
+
+0.1b	- Major bug fixes.
+	- The config files are accidentally missing from this release!
+
+0.1a	- The first version of the program.
+
+2005.05.23.
