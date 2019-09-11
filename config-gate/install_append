@@ -1,0 +1,10 @@
+install -d 755 -d %{buildroot}%{_sbindir}
+install -m 755 -d %{buildroot}%{_unitdir}
+install -p -D -m 555 wait_for_config_init.sh %{buildroot}%{_sbindir}/wait_for_config_init.sh
+install -p -D -m 555 wait_for_worker_config_init.sh %{buildroot}%{_sbindir}/wait_for_worker_config_init.sh
+install -p -D -m 444 config.service %{buildroot}%{_unitdir}/config.service
+install -p -D -m 444 worker-config-gate.service %{buildroot}%{_unitdir}/worker-config-gate.service
+
+%post
+systemctl enable config.service
+systemctl enable worker-config-gate.service

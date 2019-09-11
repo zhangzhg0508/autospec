@@ -1,0 +1,37 @@
+2019-09-11 07:43:21,030 - Mock Version: 1.2.14
+2019-09-11 07:43:21,270 - Start: dnf update
+2019-09-11 07:43:31,858 - Finish: dnf update
+2019-09-11 07:43:31,874 - Finish: chroot init
+2019-09-11 07:43:31,882 - Start: buildsrpm
+2019-09-11 07:43:31,899 - Start: rpmbuild -bs
+2019-09-11 07:43:31,941 - Finish: rpmbuild -bs
+2019-09-11 07:43:31,942 - Finish: buildsrpm
+2019-09-11 07:43:31,943 - Finish: run
+2019-09-11 07:43:35,816 - Mock Version: 1.2.14
+2019-09-11 07:43:36,099 - Start: dnf update
+2019-09-11 07:43:47,260 - Finish: dnf update
+2019-09-11 07:43:47,266 - Finish: chroot init
+2019-09-11 07:43:47,268 - Start: build phase for config-gate-1.0-5.src.rpm
+2019-09-11 07:43:47,270 - Start: build setup for config-gate-1.0-5.src.rpm
+2019-09-11 07:43:48,030 - Finish: build setup for config-gate-1.0-5.src.rpm
+2019-09-11 07:43:48,030 - Start: rpmbuild config-gate-1.0-5.src.rpm
+2019-09-11 07:43:52,159 - Mock Version: 1.2.14
+2019-09-11 07:43:52,428 - Start: dnf update
+2019-09-11 07:44:03,477 - Finish: dnf update
+2019-09-11 07:44:03,492 - Finish: chroot init
+2019-09-11 07:44:03,494 - Start: buildsrpm
+2019-09-11 07:44:03,505 - Start: rpmbuild -bs
+2019-09-11 07:44:03,556 - Finish: rpmbuild -bs
+2019-09-11 07:44:03,557 - Finish: buildsrpm
+2019-09-11 07:44:03,558 - Finish: run
+2019-09-11 07:44:07,117 - Mock Version: 1.2.14
+2019-09-11 07:44:07,406 - Start: dnf update
+2019-09-11 07:44:18,312 - Finish: dnf update
+2019-09-11 07:44:18,323 - Finish: chroot init
+2019-09-11 07:44:18,325 - Start: build phase for config-gate-1.0-5.src.rpm
+2019-09-11 07:44:18,327 - Start: build setup for config-gate-1.0-5.src.rpm
+2019-09-11 07:44:18,992 - Finish: build setup for config-gate-1.0-5.src.rpm
+2019-09-11 07:44:18,992 - Start: rpmbuild config-gate-1.0-5.src.rpm
+2019-09-11 07:44:19,159 - Finish: rpmbuild config-gate-1.0-5.src.rpm
+2019-09-11 07:44:19,161 - Finish: build phase for config-gate-1.0-5.src.rpm
+2019-09-11 07:44:19,162 - Finish: run

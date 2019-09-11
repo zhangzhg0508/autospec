@@ -1,0 +1,24 @@
+From 9efdd2a238ebb622ec1b6a7bea324a12f4fa0eb0 Mon Sep 17 00:00:00 2001
+From: chen-dq <chen.dq@neusoft.com>
+Date: Wed, 11 Sep 2019 07:42:26 +0000
+Subject: [PATCH] modify_makefile
+
+---
+ Makefile | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index e345de6..8b97195 100644
+--- a/Makefile
++++ b/Makefile
+@@ -10,7 +10,3 @@ SYSTEMDDIR ?= /usr/lib/systemd/system/
+ install:
+ 	install -d -m 755 $(SBINDIR)
+ 	install -d -m 755 $(SYSTEMDDIR)
+-	install -p -D -m 555 wait_for_config_init.sh $(SBINDIR)/wait_for_config_init.sh
+-	install -p -D -m 555 wait_for_worker_config_init.sh $(SBINDIR)/wait_for_worker_config_init.sh
+-	install -p -D -m 444 config.service $(SYSTEMDDIR)/config.service
+-	install -p -D -m 444 worker-config-gate.service $(SYSTEMDDIR)/worker-config-gate.service
+-- 
+2.23.0
+

@@ -1,0 +1,82 @@
+From 0b2f5ec429ae6488cfec659b0425a48840bda89c Mon Sep 17 00:00:00 2001
+From: chen-dq <chen.dq@neusoft.com>
+Date: Wed, 11 Sep 2019 07:44:19 +0000
+Subject: [PATCH config-gate] config-gate: Autospec creation for version 1.0
+
+---
+ 0001-modify_makefile.patch | 24 ++++++++++++++++++++++++
+ config-gate.spec           | 10 ++++++----
+ release                    |  2 +-
+ series                     |  1 +
+ upstream                   |  2 +-
+ 5 files changed, 33 insertions(+), 6 deletions(-)
+ create mode 100644 0001-modify_makefile.patch
+ create mode 100644 series
+
+diff --git a/0001-modify_makefile.patch b/0001-modify_makefile.patch
+new file mode 100644
+index 0000000..28369c6
+--- /dev/null
++++ b/0001-modify_makefile.patch
+@@ -0,0 +1,24 @@
++From 9efdd2a238ebb622ec1b6a7bea324a12f4fa0eb0 Mon Sep 17 00:00:00 2001
++From: chen-dq <chen.dq@neusoft.com>
++Date: Wed, 11 Sep 2019 07:42:26 +0000
++Subject: [PATCH] modify_makefile
++
++---
++ Makefile | 4 ----
++ 1 file changed, 4 deletions(-)
++
++diff --git a/Makefile b/Makefile
++index e345de6..8b97195 100644
++--- a/Makefile
+++++ b/Makefile
++@@ -10,7 +10,3 @@ SYSTEMDDIR ?= /usr/lib/systemd/system/
++ install:
++ 	install -d -m 755 $(SBINDIR)
++ 	install -d -m 755 $(SYSTEMDDIR)
++-	install -p -D -m 555 wait_for_config_init.sh $(SBINDIR)/wait_for_config_init.sh
++-	install -p -D -m 555 wait_for_worker_config_init.sh $(SBINDIR)/wait_for_worker_config_init.sh
++-	install -p -D -m 444 config.service $(SYSTEMDDIR)/config.service
++-	install -p -D -m 444 worker-config-gate.service $(SYSTEMDDIR)/worker-config-gate.service
++-- 
++2.23.0
++
+diff --git a/config-gate.spec b/config-gate.spec
+index 23fe069..a614d1e 100644
+--- a/config-gate.spec
++++ b/config-gate.spec
+@@ -13,6 +13,7 @@ License  : Apache-2.0
+ Requires: config-gate-bin = %{version}-%{release}
+ Requires: config-gate-services = %{version}-%{release}
+ Requires: systemd
++Patch1: 0001-modify_makefile.patch
+ 
+ %description
+ No detailed description available
+@@ -36,6 +37,7 @@ services components for the config-gate package.
+ 
+ %prep
+ %setup -q -n config-gate-1.0
++%patch1 -p1
+ 
+ %build
+ ## build_prepend content
+@@ -59,9 +61,9 @@ make  %{?_smp_mflags}
+ 
+ 
+ %install
+ rm -rf %{buildroot}
+-make install SBINDIR=%{buildroot}%{_sbindir} SYSTEMDDIR=%{buildroot}%{local_etc_systemd}
++make install SBINDIR=%{buildroot}%{_sbindir} SYSTEMDDIR=%{buildroot}%{_unitdir}
+ ## install_append content
+ install -d 755 -d %{buildroot}%{_sbindir}
+ install -m 755 -d %{buildroot}%{_unitdir}
+diff --git a/series b/series
+new file mode 100644
+index 0000000..2d871e9
+--- /dev/null
++++ b/series
+@@ -0,0 +1 @@
++0001-modify_makefile.patch
