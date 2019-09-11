@@ -1,0 +1,40 @@
+From 1c5937a9f852293459f26813f3f166d6650af44f Mon Sep 17 00:00:00 2001
+From: "Richard W.M. Jones" <rjones@redhat.com>
+Date: Thu, 16 May 2013 13:01:11 +0100
+Subject: [PATCH 2/2] wd_identify, wd_keepalive: Document -c/--config-file in
+ --help output.
+
+---
+ src/wd_identify.c  | 2 +-
+ src/wd_keepalive.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/wd_identify.c b/src/wd_identify.c
+index 4eb71fd..41ba0ac 100644
+--- a/src/wd_identify.c
++++ b/src/wd_identify.c
+@@ -31,7 +31,7 @@ char *devname = NULL, *progname = NULL;
+ static void usage(void)
+ {
+     fprintf(stderr, "%s version %d.%d, usage:\n", progname, MAJOR_VERSION, MINOR_VERSION);
+-    fprintf(stderr, "%s \n", progname);
++    fprintf(stderr, "%s [-c | --config-file <config_file>]\n", progname);
+     exit(1);
+ }
+ 
+diff --git a/src/wd_keepalive.c b/src/wd_keepalive.c
+index 960036a..18e8698 100644
+--- a/src/wd_keepalive.c
++++ b/src/wd_keepalive.c
+@@ -57,7 +57,7 @@ int mlocked = FALSE, realtime = FALSE;
+ static void usage(void)
+ {
+     fprintf(stderr, "%s version %d.%d, usage:\n", progname, MAJOR_VERSION, MINOR_VERSION);
+-    fprintf(stderr, "%s \n", progname);
++    fprintf(stderr, "%s [-c | --config-file <config_file>]\n", progname);
+     exit(1);
+ }
+ 
+-- 
+1.8.1.4
+

@@ -1,0 +1,5 @@
+0001-watchdog-Clearer-help-output.patch
+0002-wd_identify-wd_keepalive-Document-c-config-file-in-h.patch
+0003-watchdog-5.13-rhsel.patch
+0004-watchdog-5.13-rhseldoc.patch
+fix-ping-failure.patch

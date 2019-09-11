@@ -1,0 +1,34 @@
+diff -up watchdog-5.13/src/test_binary.c.rhsel watchdog-5.13/src/test_binary.c
+--- watchdog-5.13/src/test_binary.c.rhsel	2013-10-24 15:53:53.375647812 +0200
++++ watchdog-5.13/src/test_binary.c	2013-10-24 15:54:05.201666469 +0200
+@@ -101,11 +101,11 @@ int check_bin(char *tbinary, time_t time
+ 	 * to cause trouble, so make them go to their respective files */	
+ 	strcpy(filename_buf, logdir);
+ 	strcat(filename_buf, "/test-bin.stdout");
+-	if (!freopen(filename_buf, "a+", stdout))
++	if (!freopen(filename_buf, "a", stdout))
+ 	    exit (errno);
+ 	strcpy(filename_buf, logdir);
+ 	strcat(filename_buf, "/test-bin.stderr");
+-	if (!freopen(filename_buf, "a+", stderr))
++	if (!freopen(filename_buf, "a", stderr))
+ 	    exit (errno);
+ 
+ 	/* now start binary */
+diff -up watchdog-5.13/src/watchdog.c.rhsel watchdog-5.13/src/watchdog.c
+--- watchdog-5.13/src/watchdog.c.rhsel	2013-10-24 15:58:09.245051038 +0200
++++ watchdog-5.13/src/watchdog.c	2013-10-24 15:58:15.958061605 +0200
+@@ -148,11 +148,11 @@ static int repair(char *rbinary, int res
+ 	 * So make stdout and stderr go to their respective files */
+ 	strcpy(filename_buf, logdir);
+ 	strcat(filename_buf, "/repair-bin.stdout");
+-	if (!freopen(filename_buf, "a+", stdout))
++	if (!freopen(filename_buf, "a", stdout))
+ 		exit (errno);
+ 	strcpy(filename_buf, logdir);
+ 	strcat(filename_buf, "/repair-bin.stderr");
+-	if (!freopen(filename_buf, "a+", stderr))
++	if (!freopen(filename_buf, "a", stderr))
+ 		exit (errno);
+ 
+         /* now start binary */

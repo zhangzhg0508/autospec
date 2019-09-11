@@ -1,0 +1,44 @@
+install -d -m0755 ${RPM_BUILD_ROOT}%{_sysconfdir}
+install -d -m0755 ${RPM_BUILD_ROOT}%{_sysconfdir}/watchdog.d
+make DESTDIR=${RPM_BUILD_ROOT} install
+install -Dp -m0644 %{name}.sysconfig ${RPM_BUILD_ROOT}%{_sysconfdir}/sysconfig/watchdog
+install -Dp -m0644 %{SOURCE2} ${RPM_BUILD_ROOT}%{_unitdir}/watchdog.service
+install -Dp -m0644 %{SOURCE1} ${RPM_BUILD_ROOT}%{_unitdir}/watchdog-ping.service
+install -Dd -m0755 ${RPM_BUILD_ROOT}%{_libexecdir}/watchdog/scripts
+
+
+%post
+if [ $1 -eq 1 ] ; then 
+    # Initial installation 
+    /bin/systemctl daemon-reload >/dev/null 2>&1 || :
+fi
+
+
+%preun 
+if [ $1 -eq 0 ] ; then
+    # Package removal, not upgrade
+    /bin/systemctl --no-reload disable watchdog.service > /dev/null 2>&1 || :
+    /bin/systemctl --no-reload disable watchdog-ping.service > /dev/null 2>&1 || :
+    /bin/systemctl stop watchdog.service > /dev/null 2>&1 || :
+    /bin/systemctl stop watchdog-ping.service > /dev/null 2>&1 || :
+fi
+
+
+%postun 
+/bin/systemctl daemon-reload >/dev/null 2>&1 || :
+if [ $1 -ge 1 ] ; then
+    # Package upgrade, not uninstall
+    /bin/systemctl try-restart watchdog.service >/dev/null 2>&1 || :
+    /bin/systemctl try-restart watchdog-ping.service >/dev/null 2>&1 || :
+fi
+
+%triggerun -- watchdog < 5.9-4
+# Save the current service runlevel info
+# User must manually run systemd-sysv-convert --apply watchdog
+# to migrate them to systemd targets
+/usr/bin/systemd-sysv-convert --save watchdog >/dev/null 2>&1 ||:
+
+# Run these because the SysV package being removed won't do them
+/sbin/chkconfig --del watchdog >/dev/null 2>&1 || :
+/bin/systemctl try-restart watchdog.service >/dev/null 2>&1 || :
+/bin/systemctl try-restart watchdog-ping.service >/dev/null 2>&1 || :

@@ -1,0 +1,137 @@
+diff -up ./watchdog.8.rhseldoc ./watchdog.8
+--- ./watchdog.8.rhseldoc	2013-02-01 12:15:44.000000000 +0100
++++ ./watchdog.8	2013-11-07 14:57:52.460258672 +0100
+@@ -190,6 +190,7 @@ by
+ .BR watchdog . 
+ So you can for instance restart the server from your
+ .IR repair-binary .
++See the Systemd section below for additinal information.
+ .PP
+ .B watchdog 
+ will try periodically to fork itself to see whether the process
+@@ -216,6 +217,8 @@ a given interface for traffic. If no tra
+ considered unreachable causing a soft reboot or action from the 
+ repair binary.
+ .PP
++To start the watchdog when network is available see the Systemd section below.
++.PP
+ .B watchdog can run an external command for user-defined tests. A return code
+ not equal 0 means an error occured and watchdog should react. If the external
+ command is killed by an uncaught signal this is considered an error by watchdog
+@@ -317,6 +320,9 @@ Child process did not return in time.
+ .TP
+ \-10 
+ Free for personal use.
++.PP
++With enforcing SELinux policy please use the /usr/libexec/watchdog/scripts/
++for your test-binary configuration.
+ .SH "REPAIR BINARY"
+ The repair binary is started with one parameter: the error number that
+ caused 
+@@ -333,6 +339,9 @@ are using the real-time properties since
+ .B watchdog 
+ will wait for
+ the return of this binary before proceeding.
++.PP
++With enforcing SELinux policy please use the /usr/libexec/watchdog/scripts/
++for your repair-binary configuration.
+ .SH "TEST DIRECTORY"
+ Executables placed in the test directory are discovered by watchdog on 
+ startup and are automatically executed.  They are bounded time-wise by
+@@ -365,6 +374,27 @@ return a non-zero value so the machine w
+ Note that the watchdog daemon may interpret and act upon any of the reserved
+ return codes noted in the Check Binary section prior to calling a given
+ command in "repair" mode.
++.SH SYSTEMD
++To start watchdog after the network is available:
++.PP
++.br
++systemctl disable watchdog
++.br
++systemctl enable NetworkManager-wait-online
++.br
++systemctl enable watchdog-ping
++.PP
++
++When using custom service pid check with custom service
++systemd unit file please be aware the "Requires="
++does dependent service deactivation.
++Using "Before=watchdog.service" or "Before=watchdog-ping.service"
++in the custom service unit file may be the desired operation instead.
++See systemd.unit documentation for more details.
++
++.SH SELINUX
++The directories /etc/watchdog.d/ and /usr/libexec/watchdog/scripts/ are
++recognized locations for custom executables.
+ .SH BUGS
+ None known so far.
+ .SH AUTHORS
+@@ -383,4 +413,4 @@ The watchdog device.
+ The pid file of the running 
+ .BR watchdog .
+ .SH "SEE ALSO"
+-.BR watchdog.conf (5)
++.BR watchdog.conf (5), systemd.unit (5)
+diff -up ./watchdog.conf.5.rhseldoc ./watchdog.conf.5
+--- ./watchdog.conf.5.rhseldoc	2013-02-01 12:15:44.000000000 +0100
++++ ./watchdog.conf.5	2013-11-07 14:51:20.358128245 +0100
+@@ -84,6 +84,7 @@ no matter what.
+ pidfile = <pidfilename>
+ Set pidfile name for server test mode.
+ This option can be given as often as you like to check several servers.
++See the Systemd section in watchdog (8) for more information.
+ .TP
+ ping = <ip-addr>
+ Set IP address for ping mode.
+@@ -97,6 +98,8 @@ interfaces.
+ .TP
+ test-binary = <testbin>
+ Execute the given binary to do some user defined tests.
++With enforcing SELinux policy please use the /usr/libexec/watchdog/scripts/
++for your test-binary configuration.
+ .TP
+ test-timeout = <timeout in seconds>
+ User defined tests may only run for <timeout> seconds. Set to 0 for unlimited.
+@@ -104,6 +107,8 @@ User defined tests may only run for <tim
+ repair-binary = <repbin>
+ Execute the given binary in case of a problem instead of shutting down the
+ system.
++With enforcing SELinux policy please use the /usr/libexec/watchdog/scripts/
++for your repair-binary configuration.
+ .TP
+ repair-timeout = <timeout in seconds>
+ repair command may only run for <timeout> seconds. Set to 0 for unlimited.
+@@ -122,6 +127,7 @@ Set the schedule priority for realtime m
+ .TP
+ test-directory = <test directory>
+ Set the directory to run user test/repair scripts.  Default is '/etc/watchdog.d'
++The /etc/watchdog.d/ is recognized by SELinux policy.
+ See the Test Directory section in watchdog(8) for more information.
+ .TP
+ log-dir = <log directory>
+diff -up ./watchdog.conf.rhseldoc ./watchdog.conf
+--- ./watchdog.conf.rhseldoc	2013-02-01 12:15:44.000000000 +0100
++++ ./watchdog.conf	2013-11-07 14:47:49.955156208 +0100
+@@ -15,6 +15,8 @@
+ # To get the real size, check how large the pagesize is on your machine.
+ #min-memory		= 1
+ 
++# With enforcing SELinux policy please use the /usr/libexec/watchdog/scripts/
++# or /etc/watchdog.d/ for your test-binary and repair-binary configuration.
+ #repair-binary		= /usr/sbin/repair
+ #repair-timeout		= 
+ #test-binary		= 
+@@ -37,6 +39,13 @@
+ realtime		= yes
+ priority		= 1
+ 
++# When using custom service pid check with custom service
++# systemd unit file please be aware the "Requires="
++# does dependent service deactivation.
++# Using "Before=watchdog.service" or "Before=watchdog-ping.service"
++# in the custom service unit file may be the desired operation instead.
++# See man 5 systemd.unit for more details.
++#
+ # Check if rsyslogd is still running by enabling the following line
+ #pidfile		= /var/run/rsyslogd.pid   
+ 

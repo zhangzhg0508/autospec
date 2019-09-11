@@ -1,0 +1,54 @@
+From 2053c6f5f1c597637d4791af4c34eeac144e7802 Mon Sep 17 00:00:00 2001
+From: "Richard W.M. Jones" <rjones@redhat.com>
+Date: Thu, 16 May 2013 12:57:33 +0100
+Subject: [PATCH 1/2] watchdog: Clearer --help output.
+
+Document all the (non-obsolete) options in the --help output,
+including long variants.
+
+The new output is:
+
+./src/watchdog: unrecognized option '--help'
+watchdog version 5.13, usage:
+watchdog [options]
+options:
+  -F | --foreground          run in foreground
+  -f | --force               don't sanity-check config
+  -c | --config-file <file>  specify location of config file
+  -s | --sync                sync filesystem
+  -b | --softboot            soft-boot on error
+  -q | --no-action           do not reboot or halt
+  -v | --verbose             verbose messages
+---
+ src/watchdog.c | 14 ++++++++++----
+ 1 file changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/src/watchdog.c b/src/watchdog.c
+index 6f93de8..2231f8a 100644
+--- a/src/watchdog.c
++++ b/src/watchdog.c
+@@ -103,11 +103,17 @@ int mlocked = FALSE, realtime = FALSE;
+ static void usage(void)
+ {
+     fprintf(stderr, "%s version %d.%d, usage:\n", progname, MAJOR_VERSION, MINOR_VERSION);
++    fprintf(stderr, "%s [options]\n", progname);
++    fprintf(stderr, "options:\n");
++    fprintf(stderr, "  -F | --foreground          run in foreground\n");
++    fprintf(stderr, "  -f | --force               don't sanity-check config\n");
++    fprintf(stderr, "  -c | --config-file <file>  specify location of config file\n");
++    fprintf(stderr, "  -s | --sync                sync filesystem\n");
++    fprintf(stderr, "  -b | --softboot            soft-boot on error\n");
++    fprintf(stderr, "  -q | --no-action           do not reboot or halt\n");
+ #if USE_SYSLOG
+-    fprintf(stderr, "%s [-F] [-f] [-c <config_file>] [-v] [-s] [-b] [-q]\n", progname);
+-#else				/* USE_SYSLOG */
+-    fprintf(stderr, "%s [-F] [-f] [-c <config_file>] [-s] [-b] [-q]\n", progname);
+-#endif				/* USE_SYSLOG */
++    fprintf(stderr, "  -v | --verbose             verbose messages\n");
++#endif
+     exit(1);
+ }
+ 
+-- 
+1.8.1.4
+

@@ -1,0 +1,13 @@
+[Unit]
+Description=watchdog daemon
+Wants=ipmi.service
+After=ipmi.service
+# man systemd.special
+# auto added After=basic.target
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/watchdog
+
+[Install]
+WantedBy=multi-user.target
