@@ -1,0 +1,9 @@
+make install BINDIR=%{buildroot}%{local_bindir} \
+     INITDDIR=%{buildroot}%{local_etc_initd} \
+     GOENABLEDDIR=%{buildroot}%{local_etc_goenabledd} \
+     PLATFORMCONFDIR=%{buildroot}%{local_etc_platform} \
+     SYSTEMDDIR=%{buildroot}%{_unitdir}
+
+%post
+/bin/systemctl enable affine-platform.sh.service >/dev/null 2>&1
+/bin/systemctl enable affine-tasks.service >/dev/null 2>&1

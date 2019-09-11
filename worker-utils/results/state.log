@@ -1,0 +1,37 @@
+2019-09-11 15:42:51,319 - Mock Version: 1.2.14
+2019-09-11 15:42:51,556 - Start: dnf update
+2019-09-11 15:43:01,885 - Finish: dnf update
+2019-09-11 15:43:01,891 - Finish: chroot init
+2019-09-11 15:43:01,893 - Start: buildsrpm
+2019-09-11 15:43:01,898 - Start: rpmbuild -bs
+2019-09-11 15:43:01,937 - Finish: rpmbuild -bs
+2019-09-11 15:43:01,938 - Finish: buildsrpm
+2019-09-11 15:43:01,939 - Finish: run
+2019-09-11 15:43:04,963 - Mock Version: 1.2.14
+2019-09-11 15:43:05,229 - Start: dnf update
+2019-09-11 15:43:15,250 - Finish: dnf update
+2019-09-11 15:43:15,255 - Finish: chroot init
+2019-09-11 15:43:15,257 - Start: build phase for worker-utils-1.0-1.src.rpm
+2019-09-11 15:43:15,259 - Start: build setup for worker-utils-1.0-1.src.rpm
+2019-09-11 15:43:16,295 - Finish: build setup for worker-utils-1.0-1.src.rpm
+2019-09-11 15:43:16,295 - Start: rpmbuild worker-utils-1.0-1.src.rpm
+2019-09-11 15:43:19,853 - Mock Version: 1.2.14
+2019-09-11 15:43:20,100 - Start: dnf update
+2019-09-11 15:43:30,406 - Finish: dnf update
+2019-09-11 15:43:30,411 - Finish: chroot init
+2019-09-11 15:43:30,414 - Start: buildsrpm
+2019-09-11 15:43:30,420 - Start: rpmbuild -bs
+2019-09-11 15:43:30,459 - Finish: rpmbuild -bs
+2019-09-11 15:43:30,460 - Finish: buildsrpm
+2019-09-11 15:43:30,461 - Finish: run
+2019-09-11 15:43:33,466 - Mock Version: 1.2.14
+2019-09-11 15:43:33,728 - Start: dnf update
+2019-09-11 15:43:43,654 - Finish: dnf update
+2019-09-11 15:43:43,660 - Finish: chroot init
+2019-09-11 15:43:43,661 - Start: build phase for worker-utils-1.0-1.src.rpm
+2019-09-11 15:43:43,663 - Start: build setup for worker-utils-1.0-1.src.rpm
+2019-09-11 15:43:44,698 - Finish: build setup for worker-utils-1.0-1.src.rpm
+2019-09-11 15:43:44,698 - Start: rpmbuild worker-utils-1.0-1.src.rpm
+2019-09-11 15:43:44,991 - Finish: rpmbuild worker-utils-1.0-1.src.rpm
+2019-09-11 15:43:44,992 - Finish: build phase for worker-utils-1.0-1.src.rpm
+2019-09-11 15:43:44,993 - Finish: run

@@ -1,0 +1,33 @@
+From 91520c67bfc59c94e939c5c82daa759bdd3b7740 Mon Sep 17 00:00:00 2001
+From: lgdfy <im.fuyong@gmail.com>
+Date: Wed, 11 Sep 2019 15:36:18 +0800
+Subject: [PATCH] change-sysconfig-dir
+
+---
+ Makefile | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 6358f40..3623877 100644
+--- a/Makefile
++++ b/Makefile
+@@ -2,11 +2,11 @@
+ # SPDX-License-Identifier: Apache-2.0
+ #
+ 
+-BINDIR ?= /usr/bin
+-INITDDIR ?= /usr/local/etc/init.d/
+-GOENABLEDDIR ?= /usr/local/etc/goenabled.d/
+-PLATFORMCONFDIR ?= /usr/local/etc/platform
+-SYSTEMDDIR ?= /usr/lib/systemd/system/
++BINDIR ?= %{buildroot}/usr/bin
++INITDDIR ?= %{buildroot}/usr/local/etc/init.d/
++GOENABLEDDIR ?= %{buildroot}/usr/local/etc/goenabled.d/
++PLATFORMCONFDIR ?= %{buildroot}/usr/local/etc/platform
++SYSTEMDDIR ?= %{buildroot}/usr/lib/systemd/system/
+ 
+ all:
+ 	python -m compileall topology.py
+-- 
+2.23.0
+

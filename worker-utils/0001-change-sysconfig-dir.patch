@@ -1,0 +1,61 @@
+From bacd0949f1ea0a0d9d03424bba3611119d915b5b Mon Sep 17 00:00:00 2001
+From: lgdfy <im.fuyong@gmail.com>
+Date: Wed, 11 Sep 2019 15:30:00 +0800
+Subject: [PATCH] change-sysconfig-dir
+
+---
+ Makefile                   | 6 +++---
+ affine-platform.sh.service | 6 +++---
+ affine-tasks.service       | 2 +-
+ 3 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 160d6b5..6358f40 100644
+--- a/Makefile
++++ b/Makefile
+@@ -3,9 +3,9 @@
+ #
+ 
+ BINDIR ?= /usr/bin
+-INITDDIR ?= /etc/init.d/
+-GOENABLEDDIR ?= /etc/goenabled.d/
+-PLATFORMCONFDIR ?= /etc/platform
++INITDDIR ?= /usr/local/etc/init.d/
++GOENABLEDDIR ?= /usr/local/etc/goenabled.d/
++PLATFORMCONFDIR ?= /usr/local/etc/platform
+ SYSTEMDDIR ?= /usr/lib/systemd/system/
+ 
+ all:
+diff --git a/affine-platform.sh.service b/affine-platform.sh.service
+index f124182..4e48fed 100644
+--- a/affine-platform.sh.service
++++ b/affine-platform.sh.service
+@@ -6,9 +6,9 @@ Before=workerconfig.service
+ [Service]
+ Type=oneshot
+ RemainAfterExit=yes
+-ExecStart=/etc/init.d/affine-platform.sh start
+-ExecStop=/etc/init.d/affine-platform.sh stop
+-ExecReload=/etc/init.d/affine-platform.sh restart
++ExecStart=/usr/local/etc/init.d/affine-platform.sh start
++ExecStop=/usr/local/etc/init.d/affine-platform.sh stop
++ExecReload=/usr/local/etc/init.d/affine-platform.sh restart
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff --git a/affine-tasks.service b/affine-tasks.service
+index f2e6565..f07df71 100644
+--- a/affine-tasks.service
++++ b/affine-tasks.service
+@@ -5,7 +5,7 @@ Before=workerconfig.service
+ 
+ [Service]
+ Type=simple
+-ExecStart=/etc/init.d/affine-tasks.sh start
++ExecStart=/usr/local/etc/init.d/affine-tasks.sh start
+ 
+ [Install]
+ WantedBy=multi-user.target
+-- 
+2.23.0
+

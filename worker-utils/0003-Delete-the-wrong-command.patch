@@ -1,0 +1,25 @@
+From af90bd57c12f7864076f8ba55810c284c175b02f Mon Sep 17 00:00:00 2001
+From: lgdfy <im.fuyong@gmail.com>
+Date: Wed, 11 Sep 2019 15:41:53 +0800
+Subject: [PATCH] Delete the wrong command
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 3623877..3e8b5cd 100644
+--- a/Makefile
++++ b/Makefile
+@@ -23,7 +23,7 @@ install:
+ 	install -p -D -m 755 task_affinity_functions.sh $(INITDDIR)/task_affinity_functions.sh
+ 	install -p -D -m 755 ps-sched.sh $(BINDIR)/ps-sched.sh
+ 	install -p -D -m 755 topology.py $(BINDIR)/topology.py
+-	install -p -D -m 755 topology.pyc $(BINDIR)/topology.pyc
++	#install -p -D -m 755 topology.pyc $(BINDIR)/topology.pyc
+ 	install -p -D -m 755 affine-interrupts.sh $(BINDIR)/affine-interrupts.sh
+ 	install -p -D -m 755 set-cpu-wakeup-latency.sh $(BINDIR)/set-cpu-wakeup-latency.sh
+ 	install -p -D -m 755 topology $(BINDIR)/topology
+-- 
+2.23.0
+

@@ -1,0 +1,6 @@
+%define local_bindir /usr/bin/
+%define local_etc_initd /usr/local/etc/init.d/
+%define local_etc_platform /usr/local/etc/platform/
+%define local_etc_goenabledd /usr/local/etc/goenabled.d/
+%define _unitdir /usr/lib/systemd/system/
+%define debug_package %{nil}
