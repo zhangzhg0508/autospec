@@ -1,0 +1,37 @@
+2019-09-02 16:54:15,663 - Mock Version: 1.2.14
+2019-09-02 16:54:15,911 - Start: dnf update
+2019-09-02 16:54:26,650 - Finish: dnf update
+2019-09-02 16:54:26,656 - Finish: chroot init
+2019-09-02 16:54:26,659 - Start: buildsrpm
+2019-09-02 16:54:26,664 - Start: rpmbuild -bs
+2019-09-02 16:54:26,707 - Finish: rpmbuild -bs
+2019-09-02 16:54:26,708 - Finish: buildsrpm
+2019-09-02 16:54:26,709 - Finish: run
+2019-09-02 16:54:30,169 - Mock Version: 1.2.14
+2019-09-02 16:54:30,427 - Start: dnf update
+2019-09-02 16:54:40,770 - Finish: dnf update
+2019-09-02 16:54:40,776 - Finish: chroot init
+2019-09-02 16:54:40,778 - Start: build phase for python-lefthandclient-2.1.0-1.src.rpm
+2019-09-02 16:54:40,781 - Start: build setup for python-lefthandclient-2.1.0-1.src.rpm
+2019-09-02 16:54:42,119 - Finish: build setup for python-lefthandclient-2.1.0-1.src.rpm
+2019-09-02 16:54:42,119 - Start: rpmbuild python-lefthandclient-2.1.0-1.src.rpm
+2019-09-02 16:54:46,225 - Mock Version: 1.2.14
+2019-09-02 16:54:46,491 - Start: dnf update
+2019-09-02 16:54:57,345 - Finish: dnf update
+2019-09-02 16:54:57,351 - Finish: chroot init
+2019-09-02 16:54:57,353 - Start: buildsrpm
+2019-09-02 16:54:57,359 - Start: rpmbuild -bs
+2019-09-02 16:54:57,399 - Finish: rpmbuild -bs
+2019-09-02 16:54:57,400 - Finish: buildsrpm
+2019-09-02 16:54:57,401 - Finish: run
+2019-09-02 16:55:00,569 - Mock Version: 1.2.14
+2019-09-02 16:55:00,830 - Start: dnf update
+2019-09-02 16:55:11,443 - Finish: dnf update
+2019-09-02 16:55:11,449 - Finish: chroot init
+2019-09-02 16:55:11,451 - Start: build phase for python-lefthandclient-2.1.0-1.src.rpm
+2019-09-02 16:55:11,453 - Start: build setup for python-lefthandclient-2.1.0-1.src.rpm
+2019-09-02 16:55:12,770 - Finish: build setup for python-lefthandclient-2.1.0-1.src.rpm
+2019-09-02 16:55:12,770 - Start: rpmbuild python-lefthandclient-2.1.0-1.src.rpm
+2019-09-02 16:55:13,329 - Finish: rpmbuild python-lefthandclient-2.1.0-1.src.rpm
+2019-09-02 16:55:13,330 - Finish: build phase for python-lefthandclient-2.1.0-1.src.rpm
+2019-09-02 16:55:13,331 - Finish: run
