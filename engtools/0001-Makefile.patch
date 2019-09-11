@@ -1,0 +1,21 @@
+From 3779490e5cf18af4047297023df733212a411a81 Mon Sep 17 00:00:00 2001
+From: "zhiguo.zhang" <zhiguox.zhang@intel.com>
+Date: Wed, 11 Sep 2019 08:45:42 +0000
+Subject: [PATCH engtools] Makefile
+
+---
+ Makefile | 2 ++
+ 1 file changed, 2 insertions(+)
+ create mode 100644 Makefile
+
+diff --git a/Makefile b/Makefile
+new file mode 100644
+index 0000000..dd331be
+--- /dev/null
++++ b/Makefile
+@@ -0,0 +1,2 @@
++clean:
++	@rm -f $(OBJ) *.o
+-- 
+2.23.0
+

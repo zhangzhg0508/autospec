@@ -4,7 +4,7 @@
 #
 Name     : engtools
 Version  : 1.0
-Release  : 2
+Release  : 4
 URL      : file:///home/clear/clearlinux/packages/engtools/engtools-1.0.tar.gz
 Source0  : file:///home/clear/clearlinux/packages/engtools/engtools-1.0.tar.gz
 Summary  : No detailed summary available
@@ -12,6 +12,7 @@ Group    : Development/Tools
 License  : Apache-2.0
 Requires: engtools-bin = %{version}-%{release}
 Requires: engtools-services = %{version}-%{release}
+Patch1: 0001-Makefile.patch
 
 %description
 No detailed description available
@@ -35,6 +36,7 @@ services components for the engtools package.
 
 %prep
 %setup -q -n engtools-1.0
+%patch1 -p1
 
 %build
 ## build_prepend content
@@ -47,7 +49,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1567500332
+export SOURCE_DATE_EPOCH=1568191866
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -60,7 +62,7 @@ make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1567500332
+export SOURCE_DATE_EPOCH=1568191866
 rm -rf %{buildroot}
 install -d 755 %{buildroot}%{local_bindir}
 ## install_append content
