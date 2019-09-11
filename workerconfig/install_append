@@ -1,0 +1,32 @@
+        install -d -m 755 %{buildroot}%{goenableddir}
+	install -d -m 755 %{buildroot}%{systemddir}
+	install -d -m 755 %{buildroot}%{systemddir}/config
+	install -p -D -m 700 worker_config %{buildroot}%{initddir}/worker_config
+	install -p -D -m 700 worker_services %{buildroot}%{initddir}/worker_services
+	install -p -D -m 755 config_goenabled_check.sh %{buildroot}%{goenableddir}/config_goenabled_check.sh
+	install -p -D -m 664 workerconfig.service %{buildroot}%{systemddir}/config/workerconfig-standalone.service
+	install -p -D -m 664 workerconfig-combined.service %{buildroot}%{systemddir}/config/workerconfig-combined.service
+
+%post
+if [ ! -e $D%{systemddir}/workerconfig.service ]; then
+    cp $D%{systemddir}/config/workerconfig-standalone.service $D%{systemddir}/workerconfig.service
+else
+    cmp -s $D%{systemddir}/config/workerconfig-standalone.service $D%{systemddir}/workerconfig.service
+    if [ $? -ne 0 ]; then
+        rm -f $D%{systemddir}/workerconfig.service
+        cp $D%{systemddir}/config/workerconfig-standalone.service $D%{systemddir}/workerconfig.service
+    fi
+fi
+systemctl enable workerconfig.service
+
+if [ ! -e $D%{systemddir}/workerconfig.service ]; then
+    cp $D%{systemddir}/config/workerconfig-combined.service $D%{systemddir}/workerconfig.service
+else
+    cmp -s $D%{systemddir}/config/workerconfig-combined.service $D%{systemddir}/workerconfig.service
+    if [ $? -ne 0 ]; then
+        rm -f $D%{systemddir}/workerconfig.service
+        cp $D%{systemddir}/config/workerconfig-combined.service $D%{systemddir}/workerconfig.service
+    fi
+fi
+systemctl enable workerconfig.service
+

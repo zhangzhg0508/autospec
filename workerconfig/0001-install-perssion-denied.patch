@@ -1,0 +1,43 @@
+From 84c21aa12734998cdaf6620cc9f912977b59ca84 Mon Sep 17 00:00:00 2001
+From: "zhiguo.zhang" <zhiguox.zhang@intel.com>
+Date: Wed, 11 Sep 2019 07:21:05 +0000
+Subject: [PATCH workerconfig] patch
+
+---
+ Makefile | 23 +++++++++++++----------
+ 1 file changed, 13 insertions(+), 10 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 8679162..9d101d3 100644
+--- a/Makefile
++++ b/Makefile
+@@ -6,13 +6,16 @@ INITDDIR ?= /usr/local/etc/init.d/
+ GOENABLEDDIR ?= /usr/local/etc/goenabled.d/
+ SYSTEMDDIR ?= /usr/lib/systemd/system/
+ 
+-install:
+-	install -d -m 755 $(INITDDIR)
+-	install -d -m 755 $(GOENABLEDDIR)
+-	install -d -m 755 $(SYSTEMDDIR)
+-	install -d -m 755 $(SYSTEMDDIR)/config
+-	install -p -D -m 700 worker_config $(INITDDIR)/worker_config
+-	install -p -D -m 700 worker_services $(INITDDIR)/worker_services
+-	install -p -D -m 755 config_goenabled_check.sh $(GOENABLEDDIR)/config_goenabled_check.sh
+-	install -p -D -m 664 workerconfig.service $(SYSTEMDDIR)/config/workerconfig-standalone.service
+-	install -p -D -m 664 workerconfig-combined.service $(SYSTEMDDIR)/config/workerconfig7-combined.service
++#install:
++#	install -d -m 755 $(INITDDIR)
++#	install -d -m 755 $(GOENABLEDDIR)
++#	install -d -m 755 $(SYSTEMDDIR)
++#	install -d -m 755 $(SYSTEMDDIR)/config
++#	install -p -D -m 700 worker_config $(INITDDIR)/worker_config
++#	install -p -D -m 700 worker_services $(INITDDIR)/worker_services
++#	install -p -D -m 755 config_goenabled_check.sh $(GOENABLEDDIR)/config_goenabled_check.sh
++#	install -p -D -m 664 workerconfig.service $(SYSTEMDDIR)/config/workerconfig-standalone.service
++#	install -p -D -m 664 workerconfig-combined.service $(SYSTEMDDIR)/config/workerconfig7-combined.service
++
++clean:
++	@rm -f $(OBJ) *.o
+-- 
+2.23.0
+

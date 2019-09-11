@@ -1,0 +1,7 @@
+%define initddir /usr/local/etc/init.d/
+%define goenableddir /usr/local/etc/goenabled.d/
+%define systemddir /usr/lib/systemd/system/
+%define debug_package %{nil}
+
+
+
