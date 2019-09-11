@@ -1,0 +1,62 @@
+From ce64fa801f7c1be41387cbb22864088c969b990e Mon Sep 17 00:00:00 2001
+From: chen-dq <chen.dq@neusoft.com>
+Date: Wed, 11 Sep 2019 06:46:45 +0000
+Subject: [PATCH collectd-extensions] collectd-extensions: Autospec creation
+ for version 1.0
+
+---
+ collectd-extensions.spec | 22 +++++++++++++++++++---
+ release                  |  2 +-
+ 2 files changed, 20 insertions(+), 4 deletions(-)
+
+diff --git a/collectd-extensions.spec b/collectd-extensions.spec
+index 27b4ecf..2ca7a77 100644
+--- a/collectd-extensions.spec
++++ b/collectd-extensions.spec
+@@ -4,12 +4,14 @@
+ #
+ Name     : collectd-extensions
+ Version  : 1.0
+ URL      : file:///home/clear/tar/collectd-extensions-1.0.tar.gz
+ Source0  : file:///home/clear/tar/collectd-extensions-1.0.tar.gz
++Source1  : collectd.service
+ Summary  : collectd-extensions
+ Group    : Development/Tools
+ License  : Apache-2.0
++Requires: collectd-extensions-services = %{version}-%{release}
+ Requires: /bin/systemctl
+ Requires: collectd
+ Requires: fm-api
+@@ -24,6 +26,14 @@ Patch1: 0001-add_makefile.patch
+ %description
+ No detailed description available
+ 
++%package services
++Group: Systemd services
++
++%description services
++services components for the collectd-extensions package.
++
++
+ %prep
+ %setup -q -n collectd-extensions-1.0
+ %patch1 -p1
+@@ -54,9 +64,11 @@ make  %{?_smp_mflags}
+ 
+ 
+ %install
+ rm -rf %{buildroot}
+ install -m 755 -d %{buildroot}%{_sysconfdir}
++mkdir -p %{buildroot}/usr/lib/systemd/system
++install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/systemd/system/collectd.service
+ ## install_append content
+ install -m 755 -d %{buildroot}%{_sysconfdir}
+ install -m 755 -d %{buildroot}%{local_unit_dir}
+@@ -113,3 +125,7 @@ rm -rf $RPM_BUILD_ROOT
+ /usr/local/etc/collectd.d/python_plugins.conf
+ /usr/local/etc/collectd.d/remotels.conf
+ /usr/local/etc/systemd/system/collectd.service
++
++%files services
++%defattr(-,root,root,-)
++/usr/lib/systemd/system/collectd.service

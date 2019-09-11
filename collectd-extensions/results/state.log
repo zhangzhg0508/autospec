@@ -1,0 +1,37 @@
+2019-09-11 06:45:48,256 - Mock Version: 1.2.14
+2019-09-11 06:45:48,488 - Start: dnf update
+2019-09-11 06:45:59,463 - Finish: dnf update
+2019-09-11 06:45:59,468 - Finish: chroot init
+2019-09-11 06:45:59,471 - Start: buildsrpm
+2019-09-11 06:45:59,480 - Start: rpmbuild -bs
+2019-09-11 06:45:59,519 - Finish: rpmbuild -bs
+2019-09-11 06:45:59,520 - Finish: buildsrpm
+2019-09-11 06:45:59,521 - Finish: run
+2019-09-11 06:46:02,590 - Mock Version: 1.2.14
+2019-09-11 06:46:02,833 - Start: dnf update
+2019-09-11 06:46:13,829 - Finish: dnf update
+2019-09-11 06:46:13,835 - Finish: chroot init
+2019-09-11 06:46:13,836 - Start: build phase for collectd-extensions-1.0-3.src.rpm
+2019-09-11 06:46:13,838 - Start: build setup for collectd-extensions-1.0-3.src.rpm
+2019-09-11 06:46:14,909 - Finish: build setup for collectd-extensions-1.0-3.src.rpm
+2019-09-11 06:46:14,909 - Start: rpmbuild collectd-extensions-1.0-3.src.rpm
+2019-09-11 06:46:18,651 - Mock Version: 1.2.14
+2019-09-11 06:46:19,038 - Start: dnf update
+2019-09-11 06:46:29,498 - Finish: dnf update
+2019-09-11 06:46:29,504 - Finish: chroot init
+2019-09-11 06:46:29,507 - Start: buildsrpm
+2019-09-11 06:46:29,516 - Start: rpmbuild -bs
+2019-09-11 06:46:29,554 - Finish: rpmbuild -bs
+2019-09-11 06:46:29,556 - Finish: buildsrpm
+2019-09-11 06:46:29,556 - Finish: run
+2019-09-11 06:46:32,570 - Mock Version: 1.2.14
+2019-09-11 06:46:32,825 - Start: dnf update
+2019-09-11 06:46:43,933 - Finish: dnf update
+2019-09-11 06:46:43,939 - Finish: chroot init
+2019-09-11 06:46:43,941 - Start: build phase for collectd-extensions-1.0-3.src.rpm
+2019-09-11 06:46:43,943 - Start: build setup for collectd-extensions-1.0-3.src.rpm
+2019-09-11 06:46:44,999 - Finish: build setup for collectd-extensions-1.0-3.src.rpm
+2019-09-11 06:46:44,999 - Start: rpmbuild collectd-extensions-1.0-3.src.rpm
+2019-09-11 06:46:45,357 - Finish: rpmbuild collectd-extensions-1.0-3.src.rpm
+2019-09-11 06:46:45,359 - Finish: build phase for collectd-extensions-1.0-3.src.rpm
+2019-09-11 06:46:45,359 - Finish: run
