@@ -1,0 +1,37 @@
+2019-09-11 09:15:08,344 - Mock Version: 1.2.14
+2019-09-11 09:15:08,594 - Start: dnf update
+2019-09-11 09:15:20,357 - Finish: dnf update
+2019-09-11 09:15:20,364 - Finish: chroot init
+2019-09-11 09:15:20,367 - Start: buildsrpm
+2019-09-11 09:15:20,375 - Start: rpmbuild -bs
+2019-09-11 09:15:20,416 - Finish: rpmbuild -bs
+2019-09-11 09:15:20,418 - Finish: buildsrpm
+2019-09-11 09:15:20,418 - Finish: run
+2019-09-11 09:15:23,806 - Mock Version: 1.2.14
+2019-09-11 09:15:24,063 - Start: dnf update
+2019-09-11 09:15:35,659 - Finish: dnf update
+2019-09-11 09:15:35,665 - Finish: chroot init
+2019-09-11 09:15:35,666 - Start: build phase for docker-config-1.0-2.src.rpm
+2019-09-11 09:15:35,669 - Start: build setup for docker-config-1.0-2.src.rpm
+2019-09-11 09:15:36,366 - Finish: build setup for docker-config-1.0-2.src.rpm
+2019-09-11 09:15:36,366 - Start: rpmbuild docker-config-1.0-2.src.rpm
+2019-09-11 09:15:39,674 - Mock Version: 1.2.14
+2019-09-11 09:15:39,924 - Start: dnf update
+2019-09-11 09:15:51,285 - Finish: dnf update
+2019-09-11 09:15:51,291 - Finish: chroot init
+2019-09-11 09:15:51,294 - Start: buildsrpm
+2019-09-11 09:15:51,302 - Start: rpmbuild -bs
+2019-09-11 09:15:51,339 - Finish: rpmbuild -bs
+2019-09-11 09:15:51,341 - Finish: buildsrpm
+2019-09-11 09:15:51,342 - Finish: run
+2019-09-11 09:15:54,411 - Mock Version: 1.2.14
+2019-09-11 09:15:54,677 - Start: dnf update
+2019-09-11 09:16:05,660 - Finish: dnf update
+2019-09-11 09:16:05,665 - Finish: chroot init
+2019-09-11 09:16:05,667 - Start: build phase for docker-config-1.0-2.src.rpm
+2019-09-11 09:16:05,669 - Start: build setup for docker-config-1.0-2.src.rpm
+2019-09-11 09:16:06,338 - Finish: build setup for docker-config-1.0-2.src.rpm
+2019-09-11 09:16:06,338 - Start: rpmbuild docker-config-1.0-2.src.rpm
+2019-09-11 09:16:06,461 - Finish: rpmbuild docker-config-1.0-2.src.rpm
+2019-09-11 09:16:06,463 - Finish: build phase for docker-config-1.0-2.src.rpm
+2019-09-11 09:16:06,463 - Finish: run

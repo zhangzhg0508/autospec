@@ -1,0 +1,11 @@
+From 6ce933f6adfa28ced9f701fceb9d28e5b12a162b Mon Sep 17 00:00:00 2001
+From: chen-dq <chen.dq@neusoft.com>
+Date: Wed, 11 Sep 2019 09:16:06 +0000
+Subject: [PATCH docker-config] docker-config: Autospec creation for version
+ 1.0
+
+---
+ docker-config.spec | 6 +++---
+ release            | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
