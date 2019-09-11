@@ -1,0 +1,37 @@
+2019-09-11 15:58:54,045 - Mock Version: 1.2.14
+2019-09-11 15:58:54,297 - Start: dnf update
+2019-09-11 15:59:05,771 - Finish: dnf update
+2019-09-11 15:59:05,777 - Finish: chroot init
+2019-09-11 15:59:05,779 - Start: buildsrpm
+2019-09-11 15:59:05,790 - Start: rpmbuild -bs
+2019-09-11 15:59:05,829 - Finish: rpmbuild -bs
+2019-09-11 15:59:05,830 - Finish: buildsrpm
+2019-09-11 15:59:05,831 - Finish: run
+2019-09-11 15:59:09,025 - Mock Version: 1.2.14
+2019-09-11 15:59:09,287 - Start: dnf update
+2019-09-11 15:59:19,445 - Finish: dnf update
+2019-09-11 15:59:19,451 - Finish: chroot init
+2019-09-11 15:59:19,452 - Start: build phase for util-linux-config-1.0-1.src.rpm
+2019-09-11 15:59:19,455 - Start: build setup for util-linux-config-1.0-1.src.rpm
+2019-09-11 15:59:20,154 - Finish: build setup for util-linux-config-1.0-1.src.rpm
+2019-09-11 15:59:20,154 - Start: rpmbuild util-linux-config-1.0-1.src.rpm
+2019-09-11 15:59:23,652 - Mock Version: 1.2.14
+2019-09-11 15:59:23,896 - Start: dnf update
+2019-09-11 15:59:34,781 - Finish: dnf update
+2019-09-11 15:59:34,786 - Finish: chroot init
+2019-09-11 15:59:34,789 - Start: buildsrpm
+2019-09-11 15:59:34,796 - Start: rpmbuild -bs
+2019-09-11 15:59:34,834 - Finish: rpmbuild -bs
+2019-09-11 15:59:34,836 - Finish: buildsrpm
+2019-09-11 15:59:34,836 - Finish: run
+2019-09-11 15:59:38,009 - Mock Version: 1.2.14
+2019-09-11 15:59:38,263 - Start: dnf update
+2019-09-11 15:59:48,389 - Finish: dnf update
+2019-09-11 15:59:48,395 - Finish: chroot init
+2019-09-11 15:59:48,397 - Start: build phase for util-linux-config-1.0-1.src.rpm
+2019-09-11 15:59:48,399 - Start: build setup for util-linux-config-1.0-1.src.rpm
+2019-09-11 15:59:49,071 - Finish: build setup for util-linux-config-1.0-1.src.rpm
+2019-09-11 15:59:49,071 - Start: rpmbuild util-linux-config-1.0-1.src.rpm
+2019-09-11 15:59:49,184 - Finish: rpmbuild util-linux-config-1.0-1.src.rpm
+2019-09-11 15:59:49,185 - Finish: build phase for util-linux-config-1.0-1.src.rpm
+2019-09-11 15:59:49,186 - Finish: run

@@ -1,0 +1,9 @@
+%{__install} -m 644 stx.su     %{buildroot}%{_datadir}/starlingx/stx.su
+%{__install} -m 644 stx.login  %{buildroot}%{_datadir}/starlingx/stx.login
+
+%post
+%define _pamconfdir %{_sysconfdir}/pam.d
+if [ $1 -eq 1 ] ; then
+        cp -f %{_datadir}/starlingx/stx.su     %{_pamconfdir}/su
+        cp -f %{_datadir}/starlingx/stx.login  %{_pamconfdir}/login
+fi
