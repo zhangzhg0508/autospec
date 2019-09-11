@@ -1,0 +1,2 @@
+%define _sysconfdir /usr/local/etc
+%global dhcpconfdir %{_sysconfdir}/dhcp

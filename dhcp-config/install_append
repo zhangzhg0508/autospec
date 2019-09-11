@@ -1,0 +1,3 @@
+%{__install} -p -m 0755 dhclient-enter-hooks %{buildroot}%{dhcpconfdir}/dhclient-enter-hooks
+%{__install} -p -m 0644 dhclient.conf %{buildroot}%{dhcpconfdir}/dhclient.conf
+ln -s  %{dhcpconfdir}/dhclient-enter-hooks  %{buildroot}%{_sysconfdir}/dhclient-enter-hooks
