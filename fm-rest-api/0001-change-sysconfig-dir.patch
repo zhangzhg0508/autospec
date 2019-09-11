@@ -1,0 +1,64 @@
+From 829d3838cc06c189a134c2d669d7ef9ae2dbd2cf Mon Sep 17 00:00:00 2001
+From: "yongx.fu" <yongx.fu@intel.com>
+Date: Wed, 14 Aug 2019 17:58:47 +0800
+Subject: [PATCH] change sysconfig dir
+
+---
+ fm-api-pmond.conf      | 2 +-
+ scripts/fm-api         | 4 ++--
+ scripts/fm-api.service | 4 ++--
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/fm-api-pmond.conf b/fm-api-pmond.conf
+index 017f4cb..1293acf 100644
+--- a/fm-api-pmond.conf
++++ b/fm-api-pmond.conf
+@@ -1,7 +1,7 @@
+ [process]
+ process  = fm-api
+ pidfile  = /var/run/fm-api.pid
+-script   = /etc/init.d/fm-api
++script   = /usr/local/etc/init.d/fm-api
+ style    = lsb            ; ocf or lsb
+ severity = major          ; minor, major, critical
+ restarts = 3              ; restarts before error assertion
+diff --git a/scripts/fm-api b/scripts/fm-api
+index 0988fc6..fd2e931 100644
+--- a/scripts/fm-api
++++ b/scripts/fm-api
+@@ -14,7 +14,7 @@
+ # Description:       Fault Management REST API Service
+ ### END INIT INFO
+ 
+-. /etc/init.d/functions
++. /usr/local/etc/init.d/functions
+ 
+ # Linux Standard Base (LSB) Error Codes
+ RETVAL=0
+@@ -27,7 +27,7 @@ NOT_RUNNING=7
+ NAME="fm-api"
+ DAEMON="/usr/bin/${NAME}"
+ PIDFILE="/var/run/${NAME}.pid"
+-CONFIGFILE="/etc/fm/fm.conf"
++CONFIGFILE="/usr/local/etc/fm/fm.conf"
+ 
+ if ! [ -x ${DAEMON} ] ; then
+     logger "${DAEMON} is missing"
+diff --git a/scripts/fm-api.service b/scripts/fm-api.service
+index 0256df7..180472e 100644
+--- a/scripts/fm-api.service
++++ b/scripts/fm-api.service
+@@ -7,8 +7,8 @@ After=network-online.target systemd-udev-settle.service
+ Type=simple
+ RemainAfterExit=yes
+ User=root
+-ExecStart=/etc/rc.d/init.d/fm-api start
+-ExecStop=/etc/rc.d/init.d/fm-api stop
++ExecStart=/usr/local/etc/rc.d/init.d/fm-api start
++ExecStop=/usr/local/etc/rc.d/init.d/fm-api stop
+ PIDFile=/var/run/fm-api.pid
+ 
+ [Install]
+-- 
+2.22.0
+

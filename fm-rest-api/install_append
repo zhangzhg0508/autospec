@@ -1,0 +1,27 @@
+echo "Start install"
+export PBR_VERSION=%{version}
+%{__python} setup.py install --root=%{buildroot} \
+                             --install-lib=%{pythonroot} \
+                             --prefix=/usr \
+                             --install-data=/usr/share \
+                             --single-version-externally-managed
+#mkdir -p $RPM_BUILD_ROOT/wheels
+#install -m 644 dist/*.whl $RPM_BUILD_ROOT/wheels/
+
+install -p -D -m 644 scripts/fm-api.service %{buildroot}%{_unitdir}/fm-api.service
+install -d -m 755 %{buildroot}%{local_initddir}
+install -p -D -m 755 scripts/fm-api %{buildroot}%{local_initddir}/fm-api
+
+install -d -m 755 %{buildroot}%{local_etc_pmond}
+install -p -D -m 644 fm-api-pmond.conf %{buildroot}%{local_etc_pmond}/fm-api.conf
+
+# install default config files
+cd %{_builddir}/%{name}-%{version} && oslo-config-generator --config-file fm/config-generator.conf --output-file %{_builddir}/%{name}-%{version}/fm.conf.sample
+install -p -D -m 644 %{_builddir}/%{name}-%{version}/fm.conf.sample %{buildroot}%{_sysconfdir}/fm/fm.conf
+
+%clean
+echo "CLEAN CALLED"
+rm -rf $RPM_BUILD_ROOT
+
+%post
+/bin/systemctl enable fm-api.service >/dev/null 2>&1
