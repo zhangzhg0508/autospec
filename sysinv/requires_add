@@ -1,0 +1,23 @@
+# This file contains additional runtime requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+parted
+docker
+eventlet
+ipaddr
+keyring
+kubernetes
+netaddr
+pyudev
+pbr
+WebTest
+WSME
+six
+Django
+mox3
+oslo.config
+oslo.concurrency
+oslo.db
+oslo.log
+oslo.utils
+pecan
+#tsconfig
