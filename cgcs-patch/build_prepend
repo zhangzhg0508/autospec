@@ -1,0 +1,4 @@
+%define pythonroot           /usr/lib64/python2.7/site-packages
+%define debug_package %{nil}
+%define _sysconfdir /usr/local/etc
+%define _unitdir /usr/lib/systemd/system/
