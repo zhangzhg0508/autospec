@@ -1,0 +1,6 @@
+%define local_etcdir /usr/local/etc
+%define local_incdir /usr/include
+
+%define debug_package %{nil}
+
+./collect.sh
