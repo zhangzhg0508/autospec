@@ -1,0 +1,39 @@
+From 81551bfa15b51a080e0b5f0d67def176b2b37e76 Mon Sep 17 00:00:00 2001
+From: lgdfy <im.fuyong@gmail.com>
+Date: Wed, 11 Sep 2019 14:58:22 +0800
+Subject: [PATCH tsconfig] tsconfig: Autospec creation for version 1.0
+
+---
+ buildreq_add  | 3 +++
+ release       | 2 +-
+ tsconfig.spec | 7 +++++--
+ 3 files changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/buildreq_add b/buildreq_add
+index 1797536..3c68de0 100644
+--- a/buildreq_add
++++ b/buildreq_add
+@@ -1,2 +1,5 @@
+ # This file contains additional build requirements that did not get
+ # picked up automatically. One name per line, no whitespace.
++buildreq-distutils
++setuptools
++pip
+diff --git a/tsconfig.spec b/tsconfig.spec
+index e13360b..e731458 100644
+--- a/tsconfig.spec
++++ b/tsconfig.spec
+@@ -13,10 +13,13 @@ License  : Apache-2.0
+ Requires: tsconfig-bin = %{version}-%{release}
+ Requires: tsconfig-python = %{version}-%{release}
+ Requires: tsconfig-python3 = %{version}-%{release}
++BuildRequires : buildreq-distutils
+ BuildRequires : buildreq-distutils3
++BuildRequires : pip
+ BuildRequires : pluggy
+ BuildRequires : py-python
+ BuildRequires : pytest
++BuildRequires : setuptools
+ BuildRequires : tox
+ BuildRequires : virtualenv
+ 

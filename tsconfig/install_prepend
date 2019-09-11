@@ -1,0 +1,5 @@
+%define debug_package %{nil}
+%define local_dir /usr/
+%define local_bindir %{local_dir}/bin/
+%define pythonroot /usr/lib64/python2.7/site-packages
+

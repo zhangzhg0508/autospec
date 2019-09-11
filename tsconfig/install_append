@@ -1,0 +1,3 @@
+python3 setup.py install --root=$RPM_BUILD_ROOT --install-lib=%{pythonroot} --prefix=/usr --install-data=/usr/share --single-version-externally-managed
+install -d -m 755 %{buildroot}%{local_bindir}
+install -p -D -m 700 scripts/tsconfig %{buildroot}%{local_bindir}/tsconfig
