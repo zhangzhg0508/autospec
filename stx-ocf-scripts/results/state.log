@@ -1,0 +1,39 @@
+2019-09-12 17:25:46,478 - Mock Version: 1.2.14
+2019-09-12 17:25:46,540 - Start: dnf install
+2019-09-12 17:25:54,820 - Finish: dnf install
+2019-09-12 17:25:56,640 - Start: creating cache
+2019-09-12 17:26:02,123 - Finish: creating cache
+2019-09-12 17:26:02,124 - Finish: chroot init
+2019-09-12 17:26:02,153 - Start: buildsrpm
+2019-09-12 17:26:02,158 - Start: rpmbuild -bs
+2019-09-12 17:26:02,196 - Finish: rpmbuild -bs
+2019-09-12 17:26:02,197 - Finish: buildsrpm
+2019-09-12 17:26:02,198 - Finish: run
+2019-09-12 17:26:05,295 - Mock Version: 1.2.14
+2019-09-12 17:26:05,555 - Start: dnf update
+2019-09-12 17:26:15,467 - Finish: dnf update
+2019-09-12 17:26:15,472 - Finish: chroot init
+2019-09-12 17:26:15,474 - Start: build phase for stx-ocf-scripts-1.0-1.src.rpm
+2019-09-12 17:26:15,476 - Start: build setup for stx-ocf-scripts-1.0-1.src.rpm
+2019-09-12 17:26:16,167 - Finish: build setup for stx-ocf-scripts-1.0-1.src.rpm
+2019-09-12 17:26:16,167 - Start: rpmbuild stx-ocf-scripts-1.0-1.src.rpm
+2019-09-12 17:26:19,982 - Mock Version: 1.2.14
+2019-09-12 17:26:20,235 - Start: dnf update
+2019-09-12 17:26:30,232 - Finish: dnf update
+2019-09-12 17:26:30,238 - Finish: chroot init
+2019-09-12 17:26:30,241 - Start: buildsrpm
+2019-09-12 17:26:30,246 - Start: rpmbuild -bs
+2019-09-12 17:26:30,285 - Finish: rpmbuild -bs
+2019-09-12 17:26:30,286 - Finish: buildsrpm
+2019-09-12 17:26:30,287 - Finish: run
+2019-09-12 17:26:33,384 - Mock Version: 1.2.14
+2019-09-12 17:26:33,645 - Start: dnf update
+2019-09-12 17:26:43,595 - Finish: dnf update
+2019-09-12 17:26:43,600 - Finish: chroot init
+2019-09-12 17:26:43,602 - Start: build phase for stx-ocf-scripts-1.0-1.src.rpm
+2019-09-12 17:26:43,604 - Start: build setup for stx-ocf-scripts-1.0-1.src.rpm
+2019-09-12 17:26:44,276 - Finish: build setup for stx-ocf-scripts-1.0-1.src.rpm
+2019-09-12 17:26:44,276 - Start: rpmbuild stx-ocf-scripts-1.0-1.src.rpm
+2019-09-12 17:26:44,565 - Finish: rpmbuild stx-ocf-scripts-1.0-1.src.rpm
+2019-09-12 17:26:44,566 - Finish: build phase for stx-ocf-scripts-1.0-1.src.rpm
+2019-09-12 17:26:44,566 - Finish: run
