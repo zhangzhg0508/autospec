@@ -1,0 +1,37 @@
+2019-08-21 17:04:46,938 - Mock Version: 1.2.14
+2019-08-21 17:04:47,217 - Start: dnf update
+2019-08-21 17:04:58,324 - Finish: dnf update
+2019-08-21 17:04:58,329 - Finish: chroot init
+2019-08-21 17:04:58,332 - Start: buildsrpm
+2019-08-21 17:04:58,339 - Start: rpmbuild -bs
+2019-08-21 17:04:58,378 - Finish: rpmbuild -bs
+2019-08-21 17:04:58,379 - Finish: buildsrpm
+2019-08-21 17:04:58,380 - Finish: run
+2019-08-21 17:05:01,457 - Mock Version: 1.2.14
+2019-08-21 17:05:01,714 - Start: dnf update
+2019-08-21 17:05:12,197 - Finish: dnf update
+2019-08-21 17:05:12,203 - Finish: chroot init
+2019-08-21 17:05:12,204 - Start: build phase for sm-tools-1.0-2.src.rpm
+2019-08-21 17:05:12,206 - Start: build setup for sm-tools-1.0-2.src.rpm
+2019-08-21 17:05:13,539 - Finish: build setup for sm-tools-1.0-2.src.rpm
+2019-08-21 17:05:13,539 - Start: rpmbuild sm-tools-1.0-2.src.rpm
+2019-08-21 17:05:17,665 - Mock Version: 1.2.14
+2019-08-21 17:05:17,918 - Start: dnf update
+2019-08-21 17:05:29,007 - Finish: dnf update
+2019-08-21 17:05:29,013 - Finish: chroot init
+2019-08-21 17:05:29,016 - Start: buildsrpm
+2019-08-21 17:05:29,023 - Start: rpmbuild -bs
+2019-08-21 17:05:29,064 - Finish: rpmbuild -bs
+2019-08-21 17:05:29,065 - Finish: buildsrpm
+2019-08-21 17:05:29,066 - Finish: run
+2019-08-21 17:05:32,148 - Mock Version: 1.2.14
+2019-08-21 17:05:32,404 - Start: dnf update
+2019-08-21 17:05:42,640 - Finish: dnf update
+2019-08-21 17:05:42,646 - Finish: chroot init
+2019-08-21 17:05:42,647 - Start: build phase for sm-tools-1.0-2.src.rpm
+2019-08-21 17:05:42,650 - Start: build setup for sm-tools-1.0-2.src.rpm
+2019-08-21 17:05:44,007 - Finish: build setup for sm-tools-1.0-2.src.rpm
+2019-08-21 17:05:44,007 - Start: rpmbuild sm-tools-1.0-2.src.rpm
+2019-08-21 17:05:44,900 - Finish: rpmbuild sm-tools-1.0-2.src.rpm
+2019-08-21 17:05:44,902 - Finish: build phase for sm-tools-1.0-2.src.rpm
+2019-08-21 17:05:44,902 - Finish: run

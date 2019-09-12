@@ -1,0 +1,105 @@
+From 84d0372cf70fc8d4a3fdcf0c50e9fa86500fdf7f Mon Sep 17 00:00:00 2001
+From: "yongx.fu" <yongx.fu@intel.com>
+Date: Wed, 21 Aug 2019 17:05:45 +0800
+Subject: [PATCH sm-tools] sm-tools: Autospec creation for version 1.0
+
+---
+ build_pattern |  1 +
+ release       |  2 +-
+ requires_add  |  1 +
+ sm-tools.spec | 39 ++++++++++++++++++---------------------
+ 4 files changed, 21 insertions(+), 22 deletions(-)
+ create mode 100644 build_pattern
+
+diff --git a/build_pattern b/build_pattern
+new file mode 100644
+index 0000000..afe4e52
+--- /dev/null
++++ b/build_pattern
+@@ -0,0 +1 @@
++distutils
+diff --git a/requires_add b/requires_add
+index ecd3915..3da0edf 100644
+--- a/requires_add
++++ b/requires_add
+@@ -1,2 +1,3 @@
+ # This file contains additional runtime requirements that did not get
+ # picked up automatically. One name per line, no whitespace.
++sm-tools-legacypython
+diff --git a/sm-tools.spec b/sm-tools.spec
+index 79ec2ac..53c394a 100644
+--- a/sm-tools.spec
++++ b/sm-tools.spec
+@@ -12,7 +12,8 @@ Group    : Development/Tools
+ License  : Apache-2.0
+ Requires: sm-tools-bin = %{version}-%{release}
+ Requires: sm-tools-python = %{version}-%{release}
+-Requires: sm-tools-python3 = %{version}-%{release}
++Requires: sm-tools-legacypython
++BuildRequires : buildreq-distutils
+ BuildRequires : buildreq-distutils3
+ 
+ %description
+@@ -26,22 +27,21 @@ Group: Binaries
+ bin components for the sm-tools package.
+ 
+ 
+-%package python
++%package legacypython
+ Group: Default
+-Requires: sm-tools-python3 = %{version}-%{release}
++Requires: python-core
+ 
+-%description python
+-python components for the sm-tools package.
++%description legacypython
++legacypython components for the sm-tools package.
+ 
+ 
+-%package python3
++%package python
+ Group: Default
+-Requires: python3-core
+ 
+-%description python3
+-python3 components for the sm-tools package.
++%description python
++python components for the sm-tools package.
+ 
+ 
+ %prep
+@@ -62,15 +62,12 @@ export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+ export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+ export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+ export MAKEFLAGS=%{?_smp_mflags}
+-python3 setup.py build
++python2 setup.py build -b py2
+ 
+ %install
+ export MAKEFLAGS=%{?_smp_mflags}
+ rm -rf %{buildroot}
+-python3 -tt setup.py build  install --root=%{buildroot}
+-echo ----[ mark ]----
+-cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
+-echo ----[ mark ]----
++python2 -tt setup.py build -b py2 install --root=%{buildroot}
+ 
+ %files
+ %defattr(-,root,root,-)
+@@ -88,9 +85,9 @@ echo ----[ mark ]----
+ /usr/bin/sm-restart-safe
+ /usr/bin/sm-unmanage
+ 
+-%files python
++%files legacypython
+ %defattr(-,root,root,-)
++/usr/lib/python2*/*
+ 
+-%files python3
++%files python
+ %defattr(-,root,root,-)
+-/usr/lib/python3*/*
+-- 
+2.23.0
+
+
