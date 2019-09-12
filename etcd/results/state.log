@@ -1,0 +1,37 @@
+2019-09-12 09:20:40,311 - Mock Version: 1.2.14
+2019-09-12 09:20:40,572 - Start: dnf update
+2019-09-12 09:20:51,759 - Finish: dnf update
+2019-09-12 09:20:51,764 - Finish: chroot init
+2019-09-12 09:20:51,768 - Start: buildsrpm
+2019-09-12 09:20:51,780 - Start: rpmbuild -bs
+2019-09-12 09:20:51,831 - Finish: rpmbuild -bs
+2019-09-12 09:20:51,835 - Finish: buildsrpm
+2019-09-12 09:20:51,835 - Finish: run
+2019-09-12 09:20:55,168 - Mock Version: 1.2.14
+2019-09-12 09:20:55,429 - Start: dnf update
+2019-09-12 09:21:06,070 - Finish: dnf update
+2019-09-12 09:21:06,076 - Finish: chroot init
+2019-09-12 09:21:06,078 - Start: build phase for etcd-3.2.24-2.src.rpm
+2019-09-12 09:21:06,080 - Start: build setup for etcd-3.2.24-2.src.rpm
+2019-09-12 09:21:10,426 - Finish: build setup for etcd-3.2.24-2.src.rpm
+2019-09-12 09:21:10,426 - Start: rpmbuild etcd-3.2.24-2.src.rpm
+2019-09-12 09:21:29,720 - Mock Version: 1.2.14
+2019-09-12 09:21:29,984 - Start: dnf update
+2019-09-12 09:21:41,275 - Finish: dnf update
+2019-09-12 09:21:41,280 - Finish: chroot init
+2019-09-12 09:21:41,283 - Start: buildsrpm
+2019-09-12 09:21:41,296 - Start: rpmbuild -bs
+2019-09-12 09:21:41,347 - Finish: rpmbuild -bs
+2019-09-12 09:21:41,352 - Finish: buildsrpm
+2019-09-12 09:21:41,353 - Finish: run
+2019-09-12 09:21:44,685 - Mock Version: 1.2.14
+2019-09-12 09:21:44,949 - Start: dnf update
+2019-09-12 09:21:55,879 - Finish: dnf update
+2019-09-12 09:21:55,884 - Finish: chroot init
+2019-09-12 09:21:55,886 - Start: build phase for etcd-3.2.24-2.src.rpm
+2019-09-12 09:21:55,888 - Start: build setup for etcd-3.2.24-2.src.rpm
+2019-09-12 09:22:00,249 - Finish: build setup for etcd-3.2.24-2.src.rpm
+2019-09-12 09:22:00,249 - Start: rpmbuild etcd-3.2.24-2.src.rpm
+2019-09-12 09:22:13,740 - Finish: rpmbuild etcd-3.2.24-2.src.rpm
+2019-09-12 09:22:13,742 - Finish: build phase for etcd-3.2.24-2.src.rpm
+2019-09-12 09:22:13,743 - Finish: run

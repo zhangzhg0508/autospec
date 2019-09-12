@@ -1,0 +1,1 @@
+-o bin/%{system_name} %{import_path}

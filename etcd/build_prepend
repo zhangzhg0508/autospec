@@ -1,0 +1,22 @@
+%define _sysconfdir /usr/local/etc
+%define _unitdir /usr/lib/systemd/system/
+%global provider        github
+%global provider_tld    com
+%global project         coreos
+%global repo            etcd
+# https://github.com/coreos/etcd
+%global provider_prefix %{provider}.%{provider_tld}/%{project}/%{repo}
+%global import_path     %{provider_prefix}
+%global commit          1674e682fe9fbecd66e9f20b77da852ad7f517a9
+%global shortcommit     %(c=%{commit}; echo ${c:0:7})
+
+%global system_name     etcd
+
+mkdir -p src/
+mv cmd/vendor/* $(pwd)/src
+#mkdir -p src/github.com/coreos
+rm -rf src/github.com/coreos/etcd
+ln -s ../../../ src/github.com/coreos/etcd
+export GOPATH=$(pwd)
+#export LDFLAGS="-X %{import_path}/version.GitSHA=%{shortcommit} -B 0x$(head -c20 /dev/urandom|od -An -tx1|tr -d ' \n')"
+go build -o bin/%{system_name}ctl %{import_path}/%{system_name}ctl
