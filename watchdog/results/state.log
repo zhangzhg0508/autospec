@@ -1,0 +1,37 @@
+2019-09-11 13:45:10,503 - Mock Version: 1.2.14
+2019-09-11 13:45:10,756 - Start: dnf update
+2019-09-11 13:45:24,884 - Finish: dnf update
+2019-09-11 13:45:24,890 - Finish: chroot init
+2019-09-11 13:45:24,893 - Start: buildsrpm
+2019-09-11 13:45:24,903 - Start: rpmbuild -bs
+2019-09-11 13:45:24,947 - Finish: rpmbuild -bs
+2019-09-11 13:45:24,948 - Finish: buildsrpm
+2019-09-11 13:45:24,949 - Finish: run
+2019-09-11 13:45:28,147 - Mock Version: 1.2.14
+2019-09-11 13:45:28,403 - Start: dnf update
+2019-09-11 13:46:09,838 - Finish: dnf update
+2019-09-11 13:46:09,844 - Finish: chroot init
+2019-09-11 13:46:09,845 - Start: build phase for watchdog-5.13-3.src.rpm
+2019-09-11 13:46:09,848 - Start: build setup for watchdog-5.13-3.src.rpm
+2019-09-11 13:46:10,876 - Finish: build setup for watchdog-5.13-3.src.rpm
+2019-09-11 13:46:10,876 - Start: rpmbuild watchdog-5.13-3.src.rpm
+2019-09-11 13:46:19,102 - Mock Version: 1.2.14
+2019-09-11 13:46:19,354 - Start: dnf update
+2019-09-11 13:46:29,858 - Finish: dnf update
+2019-09-11 13:46:29,863 - Finish: chroot init
+2019-09-11 13:46:29,866 - Start: buildsrpm
+2019-09-11 13:46:29,877 - Start: rpmbuild -bs
+2019-09-11 13:46:29,918 - Finish: rpmbuild -bs
+2019-09-11 13:46:29,920 - Finish: buildsrpm
+2019-09-11 13:46:29,921 - Finish: run
+2019-09-11 13:46:33,149 - Mock Version: 1.2.14
+2019-09-11 13:46:33,404 - Start: dnf update
+2019-09-11 13:46:44,352 - Finish: dnf update
+2019-09-11 13:46:44,358 - Finish: chroot init
+2019-09-11 13:46:44,359 - Start: build phase for watchdog-5.13-3.src.rpm
+2019-09-11 13:46:44,361 - Start: build setup for watchdog-5.13-3.src.rpm
+2019-09-11 13:46:45,399 - Finish: build setup for watchdog-5.13-3.src.rpm
+2019-09-11 13:46:45,399 - Start: rpmbuild watchdog-5.13-3.src.rpm
+2019-09-11 13:46:50,247 - Finish: rpmbuild watchdog-5.13-3.src.rpm
+2019-09-11 13:46:50,248 - Finish: build phase for watchdog-5.13-3.src.rpm
+2019-09-11 13:46:50,249 - Finish: run

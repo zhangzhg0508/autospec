@@ -1,0 +1,539 @@
+Mock Version: 1.2.14
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/watchdog.spec'], chrootPath='/var/lib/mock/clear-watchdog/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7faaf3190dd0>timeout=0uid=1000gid=1000user='mockbuild'printOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/watchdog.spec'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/watchdog-5.13-3.src.rpm
+Child return code was: 0
+LEAVE do --> 
+
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/watchdog.spec '], chrootPath='/var/lib/mock/clear-watchdog/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7faaf3190dd0>timeout=0uid=1000gid=1000user='mockbuild'private_network=TrueprintOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/watchdog.spec '] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.dHbzo2
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
++ rm -rf watchdog-5.13
++ /usr/bin/gzip -dc /builddir/build/SOURCES/watchdog-5.13.tar.gz
++ /usr/bin/tar -xf -
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd watchdog-5.13
++ /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ echo 'Patch #1 (0001-watchdog-Clearer-help-output.patch):'
+Patch #1 (0001-watchdog-Clearer-help-output.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0001-watchdog-Clearer-help-output.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file src/watchdog.c
++ echo 'Patch #2 (0002-wd_identify-wd_keepalive-Document-c-config-file-in-h.patch):'
+Patch #2 (0002-wd_identify-wd_keepalive-Document-c-config-file-in-h.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0002-wd_identify-wd_keepalive-Document-c-config-file-in-h.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file src/wd_identify.c
+patching file src/wd_keepalive.c
++ echo 'Patch #3 (0003-watchdog-5.13-rhsel.patch):'
+Patch #3 (0003-watchdog-5.13-rhsel.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0003-watchdog-5.13-rhsel.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file src/test_binary.c
+patching file src/watchdog.c
++ echo 'Patch #4 (0004-watchdog-5.13-rhseldoc.patch):'
+Patch #4 (0004-watchdog-5.13-rhseldoc.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0004-watchdog-5.13-rhseldoc.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file watchdog.8
+patching file watchdog.conf.5
+patching file watchdog.conf
++ echo 'Patch #5 (fix-ping-failure.patch):'
+Patch #5 (fix-ping-failure.patch):
++ /usr/bin/cat /builddir/build/SOURCES/fix-ping-failure.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file src/watchdog.c
++ exit 0
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.JW0Wo3
++ umask 022
++ cd /builddir/build/BUILD
++ cd watchdog-5.13
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CFLAGS
++ http_proxy=http://127.0.0.1:9/
++ export http_proxy
++ https_proxy=http://127.0.0.1:9/
++ export https_proxy
++ ftp_proxy=http://127.0.0.1:9/
++ export ftp_proxy
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export no_proxy
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CXXFLAGS
++ FFLAGS='-g -O3 -feliminate-unused-debug-types  -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -m64 -fasynchronous-unwind-tables -Wp,-D_REENTRANT -ftree-loop-distribute-patterns -Wl,-z -Wl,now -Wl,-z -Wl,relro -malign-data=abi -fno-semantic-interposition -ftree-vectorize  -ftree-loop-vectorize -Wl,--enable-new-dtags '
++ export FFLAGS
++ LD_AS_NEEDED=1
++ export LD_AS_NEEDED
++ PKG_CONFIG_LIBDIR=/usr/lib64/pkgconfig
++ export PKG_CONFIG_LIBDIR
++ PATH=/usr/lib64/ccache/bin:/usr/local/bin:/usr/bin
++ export PATH
++ export http_proxy=http://127.0.0.1:9/
++ http_proxy=http://127.0.0.1:9/
++ export https_proxy=http://127.0.0.1:9/
++ https_proxy=http://127.0.0.1:9/
++ export no_proxy=localhost,127.0.0.1,0.0.0.0
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export LANG=C.UTF-8
++ LANG=C.UTF-8
++ export SOURCE_DATE_EPOCH=1568180702
++ SOURCE_DATE_EPOCH=1568180702
++ export GCC_IGNORE_WERROR=1
++ GCC_IGNORE_WERROR=1
++ export AR=gcc-ar
++ AR=gcc-ar
++ export RANLIB=gcc-ranlib
++ RANLIB=gcc-ranlib
++ export NM=gcc-nm
++ NM=gcc-nm
++ export 'CFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ export 'FCFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FCFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'FFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'CXXFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -fPIC'
++ export CFLAGS
++ ./configure --build=x86_64-generic-linux-gnu --host=x86_64-generic-linux-gnu --target=x86_64-clr-linux-gnu --program-prefix= --prefix=/usr --exec-prefix=/usr --bindir=/usr/bin --sbindir=/usr/bin --sysconfdir=/etc --datadir=/usr/share --includedir=/usr/include --libdir=/usr/lib64 --libexecdir=/usr/libexec --localstatedir=/var --sharedstatedir=/usr/com --mandir=/usr/share/man --infodir=/usr/share/info --disable-static
+configure: WARNING: unrecognized options: --disable-static
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /usr/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether build environment is sane... yes
+checking whether to enable maintainer-specific portions of Makefiles... no
+checking for gawk... (cached) gawk
+checking for x86_64-generic-linux-gnu-gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking for style of include used by make... GNU
+checking dependency style of gcc... gcc3
+checking for sendmail... /usr/lib/sendmail
+checking for dirent.h that defines DIR... yes
+checking for library containing opendir... none required
+checking how to run the C preprocessor... gcc -E
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for ANSI C header files... yes
+checking for sys/wait.h that is POSIX.1 compatible... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking fcntl.h usability... yes
+checking fcntl.h presence... yes
+checking for fcntl.h... yes
+checking limits.h usability... yes
+checking limits.h presence... yes
+checking for limits.h... yes
+checking paths.h usability... yes
+checking paths.h presence... yes
+checking for paths.h... yes
+checking sys/ioctl.h usability... yes
+checking sys/ioctl.h presence... yes
+checking for sys/ioctl.h... yes
+checking sys/time.h usability... yes
+checking sys/time.h presence... yes
+checking for sys/time.h... yes
+checking syslog.h usability... yes
+checking syslog.h presence... yes
+checking for syslog.h... yes
+checking for unistd.h... (cached) yes
+checking for an ANSI C-conforming const... yes
+checking for inline... inline
+checking for pid_t... yes
+checking for size_t... yes
+checking for struct stat.st_rdev... yes
+checking whether time.h and sys/time.h may both be included... yes
+checking for working alloca.h... yes
+checking for alloca... yes
+checking whether gcc needs -traditional... no
+checking return type of signal handlers... void
+checking for vprintf... yes
+checking for _doprnt... no
+checking for gethostname... yes
+checking for select... yes
+checking for socket... yes
+checking for strcspn... yes
+checking for strdup... yes
+checking for strerror... yes
+checking for strstr... yes
+checking for strtoul... yes
+checking for uname... yes
+checking whether to log via syslog... yes
+checking whether to include NFS support... yes
+checking for minimum value accepted as reboot cause... 2
+checking for timer margin used by kernel... 60
+checking for config filename... /etc/watchdog.conf
+checking for test binary directory... /etc/watchdog.d
+checking for pid filename... "/var/run/watchdog.pid"
+checking for keepalive pid filename... "/var/run/wd_keepalive.pid"
+checking for random seed filename... "/var/run/random-seed"
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating src/Makefile
+config.status: creating include/config.h
+config.status: executing depfiles commands
+configure: WARNING: unrecognized options: --disable-static
++ make -j4
+Making all in src
+make[1]: Entering directory '/builddir/build/BUILD/watchdog-5.13/src'
+gcc -DHAVE_CONFIG_H -I. -I../include -I../include    -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -fPIC -MT file_stat.o -MD -MP -MF .deps/file_stat.Tpo -c -o file_stat.o file_stat.c
+gcc -DHAVE_CONFIG_H -I. -I../include -I../include    -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -fPIC -MT file_table.o -MD -MP -MF .deps/file_table.Tpo -c -o file_table.o file_table.c
+gcc -DHAVE_CONFIG_H -I. -I../include -I../include    -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -fPIC -MT fstab.o -MD -MP -MF .deps/fstab.Tpo -c -o fstab.o fstab.c
+gcc -DHAVE_CONFIG_H -I. -I../include -I../include    -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -fPIC -MT iface.o -MD -MP -MF .deps/iface.Tpo -c -o iface.o iface.c
+mv -f .deps/file_stat.Tpo .deps/file_stat.Po
+mv -f .deps/file_table.Tpo .deps/file_table.Po
+mv -f .deps/iface.Tpo .deps/iface.Po
+gcc -DHAVE_CONFIG_H -I. -I../include -I../include    -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -fPIC -MT ifdown.o -MD -MP -MF .deps/ifdown.Tpo -c -o ifdown.o ifdown.c
+gcc -DHAVE_CONFIG_H -I. -I../include -I../include    -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -fPIC -MT keep_alive.o -MD -MP -MF .deps/keep_alive.Tpo -c -o keep_alive.o keep_alive.c
+gcc -DHAVE_CONFIG_H -I. -I../include -I../include    -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -fPIC -MT load.o -MD -MP -MF .deps/load.Tpo -c -o load.o load.c
+mv -f .deps/fstab.Tpo .deps/fstab.Po
+gcc -DHAVE_CONFIG_H -I. -I../include -I../include    -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -fPIC -MT lomount.o -MD -MP -MF .deps/lomount.Tpo -c -o lomount.o lomount.c
+keep_alive.c: In function ‘write_heartbeat’:
+keep_alive.c:36:30: warning: ‘__sprintf_chk’ may write a terminating nul past the end of the destination [-Wformat-overflow=]
+   36 |         sprintf(tbufw, "%*s\n", TS_SIZE - 1, tbuf);
+      |                              ^
+In file included from /usr/include/stdio.h:867,
+                 from ../include/extern.h:2,
+                 from keep_alive.c:13:
+/usr/include/bits/stdio2.h:36:10: note: ‘__sprintf_chk’ output between 13 and 14 bytes into a destination of size 13
+   36 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   37 |       __bos (__s), __fmt, __va_arg_pack ());
+      |       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mv -f .deps/keep_alive.Tpo .deps/keep_alive.Po
+gcc -DHAVE_CONFIG_H -I. -I../include -I../include    -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -fPIC -MT memory.o -MD -MP -MF .deps/memory.Tpo -c -o memory.o memory.c
+mv -f .deps/load.Tpo .deps/load.Po
+mv -f .deps/ifdown.Tpo .deps/ifdown.Po
+gcc -DHAVE_CONFIG_H -I. -I../include -I../include    -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -fPIC -MT mntent.o -MD -MP -MF .deps/mntent.Tpo -c -o mntent.o mntent.c
+gcc -DHAVE_CONFIG_H -I. -I../include -I../include    -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -fPIC -MT mount.o -MD -MP -MF .deps/mount.Tpo -c -o mount.o mount.c
+mv -f .deps/lomount.Tpo .deps/lomount.Po
+gcc -DHAVE_CONFIG_H -I. -I../include -I../include    -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -fPIC -MT net.o -MD -MP -MF .deps/net.Tpo -c -o net.o net.c
+mv -f .deps/mntent.Tpo .deps/mntent.Po
+gcc -DHAVE_CONFIG_H -I. -I../include -I../include    -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -fPIC -MT nfsmount.o -MD -MP -MF .deps/nfsmount.Tpo -c -o nfsmount.o nfsmount.c
+mv -f .deps/memory.Tpo .deps/memory.Po
+gcc -DHAVE_CONFIG_H -I. -I../include -I../include    -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -fPIC -MT nfsmount_clnt.o -MD -MP -MF .deps/nfsmount_clnt.Tpo -c -o nfsmount_clnt.o nfsmount_clnt.c
+mv -f .deps/net.Tpo .deps/net.Po
+gcc -DHAVE_CONFIG_H -I. -I../include -I../include    -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -fPIC -MT nfsmount_xdr.o -MD -MP -MF .deps/nfsmount_xdr.Tpo -c -o nfsmount_xdr.o nfsmount_xdr.c
+mount.c: In function ‘try_mount_one’:
+mount.c:728:4: warning: ignoring return value of ‘setuid’, declared with attribute warn_unused_result [-Wunused-result]
+  728 |    setuid(getuid());
+      |    ^~~~~~~~~~~~~~~~
+mount.c:729:4: warning: ignoring return value of ‘setgid’, declared with attribute warn_unused_result [-Wunused-result]
+  729 |    setgid(getgid());
+      |    ^~~~~~~~~~~~~~~~
+mv -f .deps/mount.Tpo .deps/mount.Po
+gcc -DHAVE_CONFIG_H -I. -I../include -I../include    -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -fPIC -MT pidfile.o -MD -MP -MF .deps/pidfile.Tpo -c -o pidfile.o pidfile.c
+mv -f .deps/nfsmount_clnt.Tpo .deps/nfsmount_clnt.Po
+gcc -DHAVE_CONFIG_H -I. -I../include -I../include    -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -fPIC -MT shutdown.o -MD -MP -MF .deps/shutdown.Tpo -c -o shutdown.o shutdown.c
+In file included from /usr/include/string.h:494,
+                 from nfsmount.c:43:
+In function ‘strncpy’,
+    inlined from ‘nfsmount’ at nfsmount.c:759:2:
+/usr/include/bits/string_fortified.h:106:10: warning: ‘strncpy’ output may be truncated copying 256 bytes from a string of length 1023 [-Wstringop-truncation]
+  106 |   return __builtin___strncpy_chk (__dest, __src, __len, __bos (__dest));
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mv -f .deps/nfsmount.Tpo .deps/nfsmount.Po
+mv -f .deps/nfsmount_xdr.Tpo .deps/nfsmount_xdr.Po
+gcc -DHAVE_CONFIG_H -I. -I../include -I../include    -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -fPIC -MT sundries.o -MD -MP -MF .deps/sundries.Tpo -c -o sundries.o sundries.c
+gcc -DHAVE_CONFIG_H -I. -I../include -I../include    -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -fPIC -MT temp.o -MD -MP -MF .deps/temp.Tpo -c -o temp.o temp.c
+mv -f .deps/pidfile.Tpo .deps/pidfile.Po
+gcc -DHAVE_CONFIG_H -I. -I../include -I../include    -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -fPIC -MT test_binary.o -MD -MP -MF .deps/test_binary.Tpo -c -o test_binary.o test_binary.c
+mv -f .deps/sundries.Tpo .deps/sundries.Po
+mv -f .deps/temp.Tpo .deps/temp.Po
+gcc -DHAVE_CONFIG_H -I. -I../include -I../include    -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -fPIC -MT umount.o -MD -MP -MF .deps/umount.Tpo -c -o umount.o umount.c
+mv -f .deps/test_binary.Tpo .deps/test_binary.Po
+gcc -DHAVE_CONFIG_H -I. -I../include -I../include    -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -fPIC -MT version.o -MD -MP -MF .deps/version.Tpo -c -o version.o version.c
+gcc -DHAVE_CONFIG_H -I. -I../include -I../include    -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -fPIC -MT watchdog.o -MD -MP -MF .deps/watchdog.Tpo -c -o watchdog.o watchdog.c
+mv -f .deps/version.Tpo .deps/version.Po
+gcc -DHAVE_CONFIG_H -I. -I../include -I../include    -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -fPIC -MT wd_keepalive.o -MD -MP -MF .deps/wd_keepalive.Tpo -c -o wd_keepalive.o wd_keepalive.c
+mv -f .deps/umount.Tpo .deps/umount.Po
+gcc -DHAVE_CONFIG_H -I. -I../include -I../include    -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -fPIC -MT wd_identify.o -MD -MP -MF .deps/wd_identify.Tpo -c -o wd_identify.o wd_identify.c
+watchdog.c: In function ‘add_test_binaries’:
+watchdog.c:531:2: warning: ‘readdir_r’ is deprecated [-Wdeprecated-declarations]
+  531 |  ret = readdir_r(d, &dentry, &rdret);
+      |  ^~~
+In file included from watchdog.c:36:
+/usr/include/dirent.h:183:12: note: declared here
+  183 | extern int readdir_r (DIR *__restrict __dirp,
+      |            ^~~~~~~~~
+mv -f .deps/watchdog.Tpo .deps/watchdog.Po
+wd_keepalive.c: In function ‘main’:
+wd_keepalive.c:220:17: warning: unused variable ‘s’ [-Wunused-variable]
+  220 |     struct stat s;
+      |                 ^
+mv -f .deps/wd_keepalive.Tpo .deps/wd_keepalive.Po
+mv -f .deps/wd_identify.Tpo .deps/wd_identify.Po
+gcc  -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -fPIC   -o wd_keepalive wd_keepalive.o  
+gcc  -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -fPIC   -o wd_identify wd_identify.o  
+In file included from /usr/include/dirent.h:25,
+                 from shutdown.c:10:
+/usr/include/features.h:185:3: warning: #warning "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE" [-Wcpp]
+  185 | # warning "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE"
+      |   ^~~~~~~
+mv -f .deps/shutdown.Tpo .deps/shutdown.Po
+gcc  -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -fPIC   -o watchdog file_stat.o file_table.o fstab.o iface.o ifdown.o keep_alive.o load.o lomount.o memory.o mntent.o mount.o net.o nfsmount.o nfsmount_clnt.o nfsmount_xdr.o pidfile.o shutdown.o sundries.o temp.o test_binary.o umount.o version.o watchdog.o  
+make[1]: Leaving directory '/builddir/build/BUILD/watchdog-5.13/src'
+make[1]: Entering directory '/builddir/build/BUILD/watchdog-5.13'
+make[1]: Nothing to be done for 'all-am'.
+make[1]: Leaving directory '/builddir/build/BUILD/watchdog-5.13'
++ exit 0
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.YVfLy0
++ umask 022
++ cd /builddir/build/BUILD
++ cd watchdog-5.13
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ rm -rf /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64
++ mkdir -p /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64
++ export SOURCE_DATE_EPOCH=1568180702
++ SOURCE_DATE_EPOCH=1568180702
++ rm -rf /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64
++ /usr/bin/make DESTDIR=/builddir/build/BUILDROOT/watchdog-5.13-3.x86_64 INSTALLROOT=/builddir/build/BUILDROOT/watchdog-5.13-3.x86_64 install_prefix=/builddir/build/BUILDROOT/watchdog-5.13-3.x86_64 BUILDROOT=/builddir/build/BUILDROOT/watchdog-5.13-3.x86_64 BUILD_ROOT=/builddir/build/BUILDROOT/watchdog-5.13-3.x86_64 INSTALL_ROOT=/builddir/build/BUILDROOT/watchdog-5.13-3.x86_64 install
+Making install in src
+make[1]: Entering directory '/builddir/build/BUILD/watchdog-5.13/src'
+make[2]: Entering directory '/builddir/build/BUILD/watchdog-5.13/src'
+ /usr/bin/mkdir -p '/builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/bin'
+  /usr/bin/install -c watchdog wd_keepalive wd_identify '/builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/bin'
+make[2]: Nothing to be done for 'install-data-am'.
+make[2]: Leaving directory '/builddir/build/BUILD/watchdog-5.13/src'
+make[1]: Leaving directory '/builddir/build/BUILD/watchdog-5.13/src'
+make[1]: Entering directory '/builddir/build/BUILD/watchdog-5.13'
+make[2]: Entering directory '/builddir/build/BUILD/watchdog-5.13'
+make[2]: Nothing to be done for 'install-exec-am'.
+installing /etc/watchdog.conf
+ /usr/bin/mkdir -p '/builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/share/man/man5'
+ /usr/bin/install -c -m 644 watchdog.conf.5 '/builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/share/man/man5'
+ /usr/bin/mkdir -p '/builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/share/man/man8'
+ /usr/bin/install -c -m 644 watchdog.8 wd_keepalive.8 wd_identify.8 '/builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/share/man/man8'
+make[2]: Leaving directory '/builddir/build/BUILD/watchdog-5.13'
+make[1]: Leaving directory '/builddir/build/BUILD/watchdog-5.13'
++ rm -f /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/share/info/dir
++ rm -rf /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/lib64/haswell/pkgconfig
++ rm -rf /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/lib64/haswell/avx512_1/pkgconfig
++ rm -rf /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/local
++ rm -f '/builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/lib/perl5/*/*/perllocal.pod'
++ find /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64 -regex '.*\.la$'
++ xargs rm -f --
++ find /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64 -regex '.*\.pyo$'
++ xargs rm -f --
++ '[' -d /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/etc/dbus-1 ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/etc/dbus-1 ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/sbin ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/bin ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/sbin ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/sbin ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/bin ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/sbin ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/share/pkgconfig ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/lib/pkgconfig ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/share/pkgconfig ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/lib/pkgconfig ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/share/doc/watchdog-5.13 ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/sbin ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/sbin ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/bin ']'
++ :
++ chmod a+x '/builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/lib64/*'
+chmod: cannot access '/builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/lib64/*': No such file or directory
++ :
++ chmod a+x '/builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/lib/*'
+chmod: cannot access '/builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/lib/*': No such file or directory
++ :
++ find /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64 -regex '.*\.la$'
++ xargs rm -f --
++ find /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64 -regex '.*\.a$'
++ xargs rm -f --
++ find /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/ -print0
++ xargs -r0 touch -h -d @1568180702
++ mkdir -p /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/lib/systemd/system
++ install -m 0644 /builddir/build/SOURCES/watchdog-ping.service /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/lib/systemd/system/watchdog-ping.service
++ install -m 0644 /builddir/build/SOURCES/watchdog.service /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/lib/systemd/system/watchdog.service
++ install -d -m0755 /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/local/etc
++ install -d -m0755 /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/local/etc/watchdog.d
++ make DESTDIR=/builddir/build/BUILDROOT/watchdog-5.13-3.x86_64 install
+Making install in src
+make[1]: Entering directory '/builddir/build/BUILD/watchdog-5.13/src'
+make[2]: Entering directory '/builddir/build/BUILD/watchdog-5.13/src'
+ /usr/bin/mkdir -p '/builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/bin'
+  /usr/bin/install -c watchdog wd_keepalive wd_identify '/builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/bin'
+make[2]: Nothing to be done for 'install-data-am'.
+make[2]: Leaving directory '/builddir/build/BUILD/watchdog-5.13/src'
+make[1]: Leaving directory '/builddir/build/BUILD/watchdog-5.13/src'
+make[1]: Entering directory '/builddir/build/BUILD/watchdog-5.13'
+make[2]: Entering directory '/builddir/build/BUILD/watchdog-5.13'
+make[2]: Nothing to be done for 'install-exec-am'.
+NOT installing /etc/watchdog.conf - exists already
+ /usr/bin/mkdir -p '/builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/share/man/man5'
+ /usr/bin/install -c -m 644 watchdog.conf.5 '/builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/share/man/man5'
+ /usr/bin/mkdir -p '/builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/share/man/man8'
+ /usr/bin/install -c -m 644 watchdog.8 wd_keepalive.8 wd_identify.8 '/builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/share/man/man8'
+make[2]: Leaving directory '/builddir/build/BUILD/watchdog-5.13'
+make[1]: Leaving directory '/builddir/build/BUILD/watchdog-5.13'
++ install -Dp -m0644 watchdog.sysconfig /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/local/etc/sysconfig/watchdog
++ install -Dp -m0644 /builddir/build/SOURCES/watchdog.service /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/lib/systemd/system//watchdog.service
++ install -Dp -m0644 /builddir/build/SOURCES/watchdog-ping.service /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/lib/systemd/system//watchdog-ping.service
++ install -Dd -m0755 /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/libexec/watchdog/scripts
++ rm -f /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/share/info/dir
+++ find /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64 -path 'etc/*' '!' -type d
++ test -z ''
++ rm -rf /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/etc/watchdog.conf
++ rm -rf '/builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/share/factory/*'
++ find /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64 -name __pycache__
++ xargs rm -rf --
++ '[' -d /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/share/mime ']'
+++ getconf _NPROCESSORS_ONLN
++ RPM_XARGS_PFLAG=-P4
++ find /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64 -name '*.so.avx512' -print0
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -5
++ find /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/lib64/haswell/avx512_1 -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/lib64/haswell/avx512_1’: No such file or directory
++ find /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64 -name '*.so.avx2' -print0
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -2
++ find /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/lib64/haswell '!' -path '/usr/lib64/haswell/avx512_1/*' -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/lib64/haswell’: No such file or directory
++ find /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/lib64/ -maxdepth 1 -name '*.so*' -type f -print0
++ xargs -0rtn1 -P4 /usr/lib/rpm/clr/brp-create-abi
++ sort -u
+find: ‘/builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/lib64/’: No such file or directory
++ /usr/lib/rpm/find-debuginfo.sh --strict-build-id /builddir/build/BUILD/watchdog-5.13
+extracting debug info from /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/bin/watchdog
+extracting debug info from /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/bin/wd_identify
+extracting debug info from /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/bin/wd_keepalive
+cpio: glibc-2.30/csu: Cannot stat: No such file or directory
+cpio: glibc-2.30/csu/elf-init.c: Cannot stat: No such file or directory
+cpio: glibc-2.30/csu/init.c: Cannot stat: No such file or directory
+cpio: glibc-2.30/sysdeps/x86_64/crti.S: Cannot stat: No such file or directory
+cpio: glibc-2.30/sysdeps/x86_64/crtn.S: Cannot stat: No such file or directory
+cpio: glibc-2.30/sysdeps/x86_64/start.S: Cannot stat: No such file or directory
+432 blocks
++ '[' -d /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/lib/debug ']'
++ mkdir -p /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/share
++ '[' -d /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/lib/debug ']'
++ mv /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/lib/debug /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/share
++ '[' -d /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/src/debug ']'
++ mv /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/src/debug /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/share/debug/src
++ '[' -d /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/lib/debug.force ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64/usr/src/debug.force ']'
++ :
++ /usr/lib/rpm/check-buildroot
++ /usr/lib/rpm/clr/brp-strip-static-archive /usr/bin/strip
++ /usr/lib/rpm/clr/brp-strip-comment-note /usr/bin/strip /usr/bin/objdump
++ /usr/lib/rpm/clr/brp-python-bytecompile
++ find /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64 -print0
++ xargs -0 touch -h -d @1568180702
++ /usr/lib/rpm/clr/brp-java-repack-jars
+Executing(%check): /bin/sh -e /var/tmp/rpm-tmp.zf4sh1
++ umask 022
++ cd /builddir/build/BUILD
++ cd watchdog-5.13
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ export LANG=C.UTF-8
++ LANG=C.UTF-8
++ export http_proxy=http://127.0.0.1:9/
++ http_proxy=http://127.0.0.1:9/
++ export https_proxy=http://127.0.0.1:9/
++ https_proxy=http://127.0.0.1:9/
++ export no_proxy=localhost,127.0.0.1,0.0.0.0
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ make VERBOSE=1 V=1 -j4 check
+Making check in src
+make[1]: Entering directory '/builddir/build/BUILD/watchdog-5.13/src'
+make[1]: Nothing to be done for 'check'.
+make[1]: Leaving directory '/builddir/build/BUILD/watchdog-5.13/src'
+make[1]: Entering directory '/builddir/build/BUILD/watchdog-5.13'
+make[1]: Nothing to be done for 'check-am'.
+make[1]: Leaving directory '/builddir/build/BUILD/watchdog-5.13'
++ exit 0
+Processing files: watchdog-5.13-3.x86_64
+Processing files: watchdog-debuginfo-5.13-3.x86_64
+Processing files: watchdog-abi-5.13-3.x86_64
+Checking for unpackaged file(s): /usr/lib/rpm/check-files /builddir/build/BUILDROOT/watchdog-5.13-3.x86_64
+warning: Empty %files file /builddir/build/BUILD/watchdog-5.13/abifiles.list
+error: Installed (but unpackaged) file(s) found:
+   /usr/bin/watchdog
+   /usr/bin/wd_identify
+   /usr/bin/wd_keepalive
+   /usr/lib/systemd/system/watchdog-ping.service
+   /usr/lib/systemd/system/watchdog.service
+   /usr/local/etc/sysconfig/watchdog
+   /usr/share/man/man5/watchdog.conf.5
+   /usr/share/man/man8/watchdog.8
+   /usr/share/man/man8/wd_identify.8
+   /usr/share/man/man8/wd_keepalive.8
+    Empty %files file /builddir/build/BUILD/watchdog-5.13/abifiles.list
+    Installed (but unpackaged) file(s) found:
+   /usr/bin/watchdog
+   /usr/bin/wd_identify
+   /usr/bin/wd_keepalive
+   /usr/lib/systemd/system/watchdog-ping.service
+   /usr/lib/systemd/system/watchdog.service
+   /usr/local/etc/sysconfig/watchdog
+   /usr/share/man/man5/watchdog.conf.5
+   /usr/share/man/man8/watchdog.8
+   /usr/share/man/man8/wd_identify.8
+   /usr/share/man/man8/wd_keepalive.8
+RPM build errors:
+Child return code was: 1
+EXCEPTION: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/watchdog.spec 
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/mockbuild/trace_decorator.py", line 84, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python3.7/site-packages/mockbuild/util.py", line 531, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+mockbuild.exception.Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/watchdog.spec 
+LEAVE do --> EXCEPTION RAISED
+

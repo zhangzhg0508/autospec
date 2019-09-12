@@ -1,0 +1,10 @@
+From 0be8741ecec5866363308f92ad24bdb50f2558a0 Mon Sep 17 00:00:00 2001
+From: lgdfy <im.fuyong@gmail.com>
+Date: Wed, 11 Sep 2019 13:46:50 +0800
+Subject: [PATCH watchdog] watchdog: Autospec creation for version 5.13
+
+---
+ release       | 2 +-
+ watchdog.spec | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
