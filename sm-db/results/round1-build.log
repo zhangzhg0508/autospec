@@ -1,0 +1,279 @@
+Mock Version: 1.2.14
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/sm-db.spec'], chrootPath='/var/lib/mock/clear-sm-db/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f93c8eb0a90>timeout=0uid=1000gid=1000user='mockbuild'printOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/sm-db.spec'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/sm-db-1.0.0-2.src.rpm
+Child return code was: 0
+LEAVE do --> 
+
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/sm-db.spec '], chrootPath='/var/lib/mock/clear-sm-db/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f93c8eb0a90>timeout=0uid=1000gid=1000user='mockbuild'private_network=TrueprintOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/sm-db.spec '] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.3qxJGu
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
++ rm -rf sm-db-1.0.0
++ /usr/bin/gzip -dc /builddir/build/SOURCES/sm-db-1.0.0.tar.gz
++ /usr/bin/tar -xf -
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd sm-db-1.0.0
++ /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ echo 'Patch #1 (0001-strncpy-specified-bound-equals-destination-size.patch):'
+Patch #1 (0001-strncpy-specified-bound-equals-destination-size.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0001-strncpy-specified-bound-equals-destination-size.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file src/sm_db_configuration.c
++ echo 'Patch #2 (0002-modify-sm_common-lib-flag-location.patch):'
+Patch #2 (0002-modify-sm_common-lib-flag-location.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0002-modify-sm_common-lib-flag-location.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file src/Makefile
+Hunk #1 succeeded at 30 with fuzz 2.
++ exit 0
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.vi96It
++ umask 022
++ cd /builddir/build/BUILD
++ cd sm-db-1.0.0
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CFLAGS
++ http_proxy=http://127.0.0.1:9/
++ export http_proxy
++ https_proxy=http://127.0.0.1:9/
++ export https_proxy
++ ftp_proxy=http://127.0.0.1:9/
++ export ftp_proxy
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export no_proxy
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CXXFLAGS
++ FFLAGS='-g -O3 -feliminate-unused-debug-types  -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -m64 -fasynchronous-unwind-tables -Wp,-D_REENTRANT -ftree-loop-distribute-patterns -Wl,-z -Wl,now -Wl,-z -Wl,relro -malign-data=abi -fno-semantic-interposition -ftree-vectorize  -ftree-loop-vectorize -Wl,--enable-new-dtags '
++ export FFLAGS
++ LD_AS_NEEDED=1
++ export LD_AS_NEEDED
++ PKG_CONFIG_LIBDIR=/usr/lib64/pkgconfig
++ export PKG_CONFIG_LIBDIR
++ PATH=/usr/lib64/ccache/bin:/usr/local/bin:/usr/bin
++ export PATH
++ sqlite3 database/sm.db
++ sqlite3 database/sm.hb.db
++ VER=1.0.0
+++ echo 1.0.0
+++ awk -F . '{print $1}'
++ MAJOR=1
++ export http_proxy=http://127.0.0.1:9/
++ http_proxy=http://127.0.0.1:9/
++ export https_proxy=http://127.0.0.1:9/
++ https_proxy=http://127.0.0.1:9/
++ export no_proxy=localhost,127.0.0.1,0.0.0.0
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export LANG=C.UTF-8
++ LANG=C.UTF-8
++ export SOURCE_DATE_EPOCH=1566355563
++ SOURCE_DATE_EPOCH=1566355563
++ export GCC_IGNORE_WERROR=1
++ GCC_IGNORE_WERROR=1
++ export AR=gcc-ar
++ AR=gcc-ar
++ export RANLIB=gcc-ranlib
++ RANLIB=gcc-ranlib
++ export NM=gcc-nm
++ NM=gcc-nm
++ export 'CFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ export 'FCFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FCFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'FFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'CXXFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ make -j4 VER=1.0.0 VER_MJR=1
+make[1]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[1]: Entering directory '/builddir/build/BUILD/sm-db-1.0.0/src'
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -fPIC -g -O2 -Wall -Werror -std=c++11 -Wformat -Wformat-security -D__STDC_FORMAT_MACROS -c sm_db.c -o sm_db.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -fPIC -g -O2 -Wall -Werror -std=c++11 -Wformat -Wformat-security -D__STDC_FORMAT_MACROS -c sm_db_iterator.c -o sm_db_iterator.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -fPIC -g -O2 -Wall -Werror -std=c++11 -Wformat -Wformat-security -D__STDC_FORMAT_MACROS -c sm_db_foreach.c -o sm_db_foreach.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -fPIC -g -O2 -Wall -Werror -std=c++11 -Wformat -Wformat-security -D__STDC_FORMAT_MACROS -c sm_db_nodes.c -o sm_db_nodes.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -fPIC -g -O2 -Wall -Werror -std=c++11 -Wformat -Wformat-security -D__STDC_FORMAT_MACROS -c sm_db_node_history.c -o sm_db_node_history.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -fPIC -g -O2 -Wall -Werror -std=c++11 -Wformat -Wformat-security -D__STDC_FORMAT_MACROS -c sm_db_service_domains.c -o sm_db_service_domains.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -fPIC -g -O2 -Wall -Werror -std=c++11 -Wformat -Wformat-security -D__STDC_FORMAT_MACROS -c sm_db_service_domain_interfaces.c -o sm_db_service_domain_interfaces.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -fPIC -g -O2 -Wall -Werror -std=c++11 -Wformat -Wformat-security -D__STDC_FORMAT_MACROS -c sm_db_service_domain_members.c -o sm_db_service_domain_members.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -fPIC -g -O2 -Wall -Werror -std=c++11 -Wformat -Wformat-security -D__STDC_FORMAT_MACROS -c sm_db_service_domain_neighbors.c -o sm_db_service_domain_neighbors.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -fPIC -g -O2 -Wall -Werror -std=c++11 -Wformat -Wformat-security -D__STDC_FORMAT_MACROS -c sm_db_service_domain_assignments.c -o sm_db_service_domain_assignments.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -fPIC -g -O2 -Wall -Werror -std=c++11 -Wformat -Wformat-security -D__STDC_FORMAT_MACROS -c sm_db_service_groups.c -o sm_db_service_groups.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -fPIC -g -O2 -Wall -Werror -std=c++11 -Wformat -Wformat-security -D__STDC_FORMAT_MACROS -c sm_db_service_group_members.c -o sm_db_service_group_members.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -fPIC -g -O2 -Wall -Werror -std=c++11 -Wformat -Wformat-security -D__STDC_FORMAT_MACROS -c sm_db_services.c -o sm_db_services.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -fPIC -g -O2 -Wall -Werror -std=c++11 -Wformat -Wformat-security -D__STDC_FORMAT_MACROS -c sm_db_service_heartbeat.c -o sm_db_service_heartbeat.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -fPIC -g -O2 -Wall -Werror -std=c++11 -Wformat -Wformat-security -D__STDC_FORMAT_MACROS -c sm_db_service_dependency.c -o sm_db_service_dependency.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -fPIC -g -O2 -Wall -Werror -std=c++11 -Wformat -Wformat-security -D__STDC_FORMAT_MACROS -c sm_db_service_instances.c -o sm_db_service_instances.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -fPIC -g -O2 -Wall -Werror -std=c++11 -Wformat -Wformat-security -D__STDC_FORMAT_MACROS -c sm_db_service_actions.c -o sm_db_service_actions.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -fPIC -g -O2 -Wall -Werror -std=c++11 -Wformat -Wformat-security -D__STDC_FORMAT_MACROS -c sm_db_service_action_results.c -o sm_db_service_action_results.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -fPIC -g -O2 -Wall -Werror -std=c++11 -Wformat -Wformat-security -D__STDC_FORMAT_MACROS -c sm_db_build.c -o sm_db_build.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -fPIC -g -O2 -Wall -Werror -std=c++11 -Wformat -Wformat-security -D__STDC_FORMAT_MACROS -c sm_db_configuration.c -o sm_db_configuration.o
+g++ -shared -rdynamic -lsm_common -lsqlite3 -lglib-2.0 -luuid -lrt -Wl,-soname,libsm_db.so.1 -o libsm_db.so.1.0.0 sm_db.o sm_db_iterator.o sm_db_foreach.o sm_db_nodes.o sm_db_node_history.o sm_db_service_domains.o sm_db_service_domain_interfaces.o sm_db_service_domain_members.o sm_db_service_domain_neighbors.o sm_db_service_domain_assignments.o sm_db_service_groups.o sm_db_service_group_members.o sm_db_services.o sm_db_service_heartbeat.o sm_db_service_dependency.o sm_db_service_instances.o sm_db_service_actions.o sm_db_service_action_results.o sm_db_build.o sm_db_configuration.o
+ln -sf libsm_db.so.1.0.0 libsm_db.so.1
+ln -sf libsm_db.so.1 libsm_db.so
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -fPIC -g -O2 -Wall -Werror -std=c++11 -Wformat -Wformat-security -D__STDC_FORMAT_MACROS sm_db.o sm_db_iterator.o sm_db_foreach.o sm_db_nodes.o sm_db_node_history.o sm_db_service_domains.o sm_db_service_domain_interfaces.o sm_db_service_domain_members.o sm_db_service_domain_neighbors.o sm_db_service_domain_assignments.o sm_db_service_groups.o sm_db_service_group_members.o sm_db_services.o sm_db_service_heartbeat.o sm_db_service_dependency.o sm_db_service_instances.o sm_db_service_actions.o sm_db_service_action_results.o sm_db_build.o sm_db_configuration.o -lsm_common -lsqlite3 -lglib-2.0 -luuid -lrt -o sm_db_build
+make[1]: Leaving directory '/builddir/build/BUILD/sm-db-1.0.0/src'
++ exit 0
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.7EXMdw
++ umask 022
++ cd /builddir/build/BUILD
++ cd sm-db-1.0.0
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ rm -rf /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64
++ mkdir -p /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64
++ export SOURCE_DATE_EPOCH=1566355563
++ SOURCE_DATE_EPOCH=1566355563
++ rm -rf /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64
++ VER=1.0.0
+++ echo 1.0.0
+++ awk -F . '{print $1}'
++ MAJOR=1
++ make DEST_DIR=/builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64 VER=1.0.0 VER_MJR=1 install
+make[1]: Entering directory '/builddir/build/BUILD/sm-db-1.0.0/src'
+install -d /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/usr/lib64
+install libsm_db.so.1.0.0 /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/usr/lib64
+cp -P libsm_db.so libsm_db.so.1 /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/usr/lib64
+install -d /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/usr/include
+install -m 0644 *.h /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/usr/include
+install -d 755 /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/usr/bin
+make[1]: Leaving directory '/builddir/build/BUILD/sm-db-1.0.0/src'
+make[1]: Entering directory '/builddir/build/BUILD/sm-db-1.0.0/database'
+install -d /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/var/lib/sm
+install -d /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/var/lib/sm/patches
+install sm.hb.db /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/var/lib/sm
+install sm.db /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/var/lib/sm
+install -m 644 sm-patch.sql /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/var/lib/sm/patches
+make[1]: Leaving directory '/builddir/build/BUILD/sm-db-1.0.0/database'
++ rm -f /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/usr/share/info/dir
+++ find /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64 -path 'etc/*' '!' -type d
++ test -z ''
++ rm -rf '/builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/etc/*'
++ rm -rf '/builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/usr/share/factory/*'
++ find /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64 -name __pycache__
++ xargs rm -rf --
++ '[' -d /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/usr/share/mime ']'
+++ getconf _NPROCESSORS_ONLN
++ RPM_XARGS_PFLAG=-P4
++ find /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64 -name '*.so.avx512' -print0
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -5
++ find /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/usr/lib64/haswell/avx512_1 -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/usr/lib64/haswell/avx512_1’: No such file or directory
++ find /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64 -name '*.so.avx2' -print0
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -2
++ find /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/usr/lib64/haswell '!' -path '/usr/lib64/haswell/avx512_1/*' -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/usr/lib64/haswell’: No such file or directory
++ find /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/usr/lib64/ -maxdepth 1 -name '*.so*' -type f -print0
++ xargs -0rtn1 -P4 /usr/lib/rpm/clr/brp-create-abi
++ sort -u
+/usr/lib/rpm/clr/brp-create-abi /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/usr/lib64/libsm_db.so.1.0.0 
++ /usr/lib/rpm/find-debuginfo.sh --strict-build-id /builddir/build/BUILD/sm-db-1.0.0
+extracting debug info from /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/usr/lib64/libsm_db.so.1.0.0
+symlinked /usr/lib/debug/usr/lib64/libsm_db.so.1.0.0.debug to /usr/lib/debug/usr/lib64/libsm_db.so.1.debug
+symlinked /usr/lib/debug/usr/lib64/libsm_db.so.1.0.0.debug to /usr/lib/debug/usr/lib64/libsm_db.so.debug
+cpio: glibc-2.30/csu: Cannot stat: No such file or directory
+cpio: glibc-2.30/sysdeps/x86_64/crti.S: Cannot stat: No such file or directory
+cpio: glibc-2.30/sysdeps/x86_64/crtn.S: Cannot stat: No such file or directory
+783 blocks
++ '[' -d /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/usr/lib/debug ']'
++ mkdir -p /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/usr/share
++ '[' -d /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/usr/lib/debug ']'
++ mv /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/usr/lib/debug /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/usr/share
++ '[' -d /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/usr/src/debug ']'
++ mv /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/usr/src/debug /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/usr/share/debug/src
++ '[' -d /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/usr/lib/debug.force ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64/usr/src/debug.force ']'
++ :
++ /usr/lib/rpm/check-buildroot
++ /usr/lib/rpm/clr/brp-strip-static-archive /usr/bin/strip
++ /usr/lib/rpm/clr/brp-strip-comment-note /usr/bin/strip /usr/bin/objdump
++ /usr/lib/rpm/clr/brp-python-bytecompile
++ find /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64 -print0
++ xargs -0 touch -h -d @1566355563
++ /usr/lib/rpm/clr/brp-java-repack-jars
+Processing files: sm-db-1.0.0-2.x86_64
+Processing files: sm-db-debuginfo-1.0.0-2.x86_64
+Processing files: sm-db-abi-1.0.0-2.x86_64
+Checking for unpackaged file(s): /usr/lib/rpm/check-files /builddir/build/BUILDROOT/sm-db-1.0.0-2.x86_64
+warning: Empty %files file /builddir/build/BUILD/sm-db-1.0.0/abifiles.list
+error: Installed (but unpackaged) file(s) found:
+   /usr/include/sm_db.h
+   /usr/include/sm_db_configuration.h
+   /usr/include/sm_db_foreach.h
+   /usr/include/sm_db_iterator.h
+   /usr/include/sm_db_node_history.h
+   /usr/include/sm_db_nodes.h
+   /usr/include/sm_db_service_action_results.h
+   /usr/include/sm_db_service_actions.h
+   /usr/include/sm_db_service_dependency.h
+   /usr/include/sm_db_service_domain_assignments.h
+   /usr/include/sm_db_service_domain_interfaces.h
+   /usr/include/sm_db_service_domain_members.h
+   /usr/include/sm_db_service_domain_neighbors.h
+   /usr/include/sm_db_service_domains.h
+   /usr/include/sm_db_service_group_members.h
+   /usr/include/sm_db_service_groups.h
+   /usr/include/sm_db_service_heartbeat.h
+   /usr/include/sm_db_service_instances.h
+   /usr/include/sm_db_services.h
+   /usr/lib64/libsm_db.so
+   /usr/lib64/libsm_db.so.1
+   /usr/lib64/libsm_db.so.1.0.0
+   /var/lib/sm/patches/sm-patch.sql
+   /var/lib/sm/sm.db
+   /var/lib/sm/sm.hb.db
+    Empty %files file /builddir/build/BUILD/sm-db-1.0.0/abifiles.list
+    Installed (but unpackaged) file(s) found:
+   /usr/include/sm_db.h
+   /usr/include/sm_db_configuration.h
+   /usr/include/sm_db_foreach.h
+   /usr/include/sm_db_iterator.h
+   /usr/include/sm_db_node_history.h
+   /usr/include/sm_db_nodes.h
+   /usr/include/sm_db_service_action_results.h
+   /usr/include/sm_db_service_actions.h
+   /usr/include/sm_db_service_dependency.h
+   /usr/include/sm_db_service_domain_assignments.h
+   /usr/include/sm_db_service_domain_interfaces.h
+   /usr/include/sm_db_service_domain_members.h
+   /usr/include/sm_db_service_domain_neighbors.h
+   /usr/include/sm_db_service_domains.h
+   /usr/include/sm_db_service_group_members.h
+   /usr/include/sm_db_service_groups.h
+   /usr/include/sm_db_service_heartbeat.h
+   /usr/include/sm_db_service_instances.h
+   /usr/include/sm_db_services.h
+   /usr/lib64/libsm_db.so
+   /usr/lib64/libsm_db.so.1
+   /usr/lib64/libsm_db.so.1.0.0
+   /var/lib/sm/patches/sm-patch.sql
+   /var/lib/sm/sm.db
+   /var/lib/sm/sm.hb.db
+RPM build errors:
+Child return code was: 1
+EXCEPTION: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/sm-db.spec 
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/mockbuild/trace_decorator.py", line 84, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python3.7/site-packages/mockbuild/util.py", line 531, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+mockbuild.exception.Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/sm-db.spec 
+LEAVE do --> EXCEPTION RAISED
+

@@ -1,0 +1,37 @@
+2019-08-21 10:46:06,163 - Mock Version: 1.2.14
+2019-08-21 10:46:06,406 - Start: dnf update
+2019-08-21 10:46:17,631 - Finish: dnf update
+2019-08-21 10:46:17,637 - Finish: chroot init
+2019-08-21 10:46:17,639 - Start: buildsrpm
+2019-08-21 10:46:17,648 - Start: rpmbuild -bs
+2019-08-21 10:46:17,686 - Finish: rpmbuild -bs
+2019-08-21 10:46:17,688 - Finish: buildsrpm
+2019-08-21 10:46:17,688 - Finish: run
+2019-08-21 10:46:20,731 - Mock Version: 1.2.14
+2019-08-21 10:46:20,988 - Start: dnf update
+2019-08-21 10:46:31,749 - Finish: dnf update
+2019-08-21 10:46:31,754 - Finish: chroot init
+2019-08-21 10:46:31,756 - Start: build phase for sm-db-1.0.0-2.src.rpm
+2019-08-21 10:46:31,758 - Start: build setup for sm-db-1.0.0-2.src.rpm
+2019-08-21 10:46:32,776 - Finish: build setup for sm-db-1.0.0-2.src.rpm
+2019-08-21 10:46:32,776 - Start: rpmbuild sm-db-1.0.0-2.src.rpm
+2019-08-21 10:46:36,456 - Mock Version: 1.2.14
+2019-08-21 10:46:36,696 - Start: dnf update
+2019-08-21 10:46:47,989 - Finish: dnf update
+2019-08-21 10:46:47,994 - Finish: chroot init
+2019-08-21 10:46:47,997 - Start: buildsrpm
+2019-08-21 10:46:48,006 - Start: rpmbuild -bs
+2019-08-21 10:46:48,044 - Finish: rpmbuild -bs
+2019-08-21 10:46:48,046 - Finish: buildsrpm
+2019-08-21 10:46:48,046 - Finish: run
+2019-08-21 10:46:51,093 - Mock Version: 1.2.14
+2019-08-21 10:46:51,354 - Start: dnf update
+2019-08-21 10:47:01,669 - Finish: dnf update
+2019-08-21 10:47:01,674 - Finish: chroot init
+2019-08-21 10:47:01,676 - Start: build phase for sm-db-1.0.0-2.src.rpm
+2019-08-21 10:47:01,678 - Start: build setup for sm-db-1.0.0-2.src.rpm
+2019-08-21 10:47:02,701 - Finish: build setup for sm-db-1.0.0-2.src.rpm
+2019-08-21 10:47:02,701 - Start: rpmbuild sm-db-1.0.0-2.src.rpm
+2019-08-21 10:47:03,216 - Finish: rpmbuild sm-db-1.0.0-2.src.rpm
+2019-08-21 10:47:03,218 - Finish: build phase for sm-db-1.0.0-2.src.rpm
+2019-08-21 10:47:03,218 - Finish: run
