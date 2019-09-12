@@ -1,17 +1,17 @@
 Mock Version: 1.2.14
-ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/systemd-config.spec'], chrootPath='/var/lib/mock/clear-systemd-config/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7fafd4cf6dd0>timeout=0uid=1000gid=1000user='mockbuild'printOutput=False)
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/systemd-config.spec'], chrootPath='/var/lib/mock/clear-systemd-config/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f7897f97e10>timeout=0uid=1000gid=1000user='mockbuild'printOutput=False)
 Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/systemd-config.spec'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
 Building target platforms: x86_64
 Building for target x86_64
-Wrote: /builddir/build/SRPMS/systemd-config-1.0-2.src.rpm
+Wrote: /builddir/build/SRPMS/systemd-config-1.0-3.src.rpm
 Child return code was: 0
 LEAVE do --> 
 
-ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/systemd-config.spec '], chrootPath='/var/lib/mock/clear-systemd-config/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7fafd4cf6dd0>timeout=0uid=1000gid=1000user='mockbuild'private_network=TrueprintOutput=False)
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/systemd-config.spec '], chrootPath='/var/lib/mock/clear-systemd-config/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f7897f97e10>timeout=0uid=1000gid=1000user='mockbuild'private_network=TrueprintOutput=False)
 Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/systemd-config.spec '] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
 Building target platforms: x86_64
 Building for target x86_64
-Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.JUpGKe
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.0wezz1
 + umask 022
 + cd /builddir/build/BUILD
 + LANG=en_US.UTF-8
@@ -31,7 +31,7 @@ Patch #1 (0001-add-makefile.patch):
 + /usr/bin/patch -p1 --fuzz=2
 patching file Makefile
 + exit 0
-Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.9QJHxc
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.aotS70
 + umask 022
 + cd /builddir/build/BUILD
 + cd systemd-config-1.0
@@ -67,8 +67,8 @@ Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.9QJHxc
 + no_proxy=localhost,127.0.0.1,0.0.0.0
 + export LANG=C.UTF-8
 + LANG=C.UTF-8
-+ export SOURCE_DATE_EPOCH=1568256964
-+ SOURCE_DATE_EPOCH=1568256964
++ export SOURCE_DATE_EPOCH=1568257617
++ SOURCE_DATE_EPOCH=1568257617
 + export GCC_IGNORE_WERROR=1
 + GCC_IGNORE_WERROR=1
 + export AR=gcc-ar
@@ -89,7 +89,7 @@ Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.9QJHxc
 echo "no build"
 no build
 + exit 0
-Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.s4qZze
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.cUuqB3
 + umask 022
 + cd /builddir/build/BUILD
 + cd systemd-config-1.0
@@ -97,72 +97,72 @@ Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.s4qZze
 + export LANG
 + unset DISPLAY
 + unset PYTHONOPTIMIZE
-+ rm -rf /builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64
-+ mkdir -p /builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64
-+ export SOURCE_DATE_EPOCH=1568256964
-+ SOURCE_DATE_EPOCH=1568256964
-+ rm -rf /builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64
-+ install -d /builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64/usr/share/starlingx
-+ install -m644 60-persistent-storage.rules /builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64/usr/share/starlingx/60-persistent-storage.rules
-+ install -m644 journald.conf /builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64/usr/share/starlingx/journald.conf
-+ install -m644 systemd.conf.tmpfiles.d /builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64/usr/share/starlingx/systemd.conf.tmpfiles.d
-+ install -m644 tmp.conf.tmpfiles.d /builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64/usr/share/starlingx/tmp.conf.tmpfiles.d
-+ install -m644 tmp.mount /builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64/usr/share/starlingx/tmp.mount
-+ rm -f /builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64/usr/share/info/dir
-++ find /builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64 -path 'etc/*' '!' -type d
++ rm -rf /builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64
++ mkdir -p /builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64
++ export SOURCE_DATE_EPOCH=1568257617
++ SOURCE_DATE_EPOCH=1568257617
++ rm -rf /builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64
++ install -d /builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64/usr/share/starlingx
++ install -m644 60-persistent-storage.rules /builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64/usr/share/starlingx/60-persistent-storage.rules
++ install -m644 journald.conf /builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64/usr/share/starlingx/journald.conf
++ install -m644 systemd.conf.tmpfiles.d /builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64/usr/share/starlingx/systemd.conf.tmpfiles.d
++ install -m644 tmp.conf.tmpfiles.d /builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64/usr/share/starlingx/tmp.conf.tmpfiles.d
++ install -m644 tmp.mount /builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64/usr/share/starlingx/tmp.mount
++ rm -f /builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64/usr/share/info/dir
+++ find /builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64 -path 'etc/*' '!' -type d
 + test -z ''
-+ rm -rf '/builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64/etc/*'
-+ rm -rf '/builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64/usr/share/factory/*'
-+ find /builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64 -name __pycache__
++ rm -rf '/builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64/etc/*'
++ rm -rf '/builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64/usr/share/factory/*'
++ find /builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64 -name __pycache__
 + xargs rm -rf --
-+ '[' -d /builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64/usr/share/mime ']'
++ '[' -d /builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64/usr/share/mime ']'
 ++ getconf _NPROCESSORS_ONLN
 + RPM_XARGS_PFLAG=-P4
-+ find /builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64 -name '*.so.avx512' -print0
++ find /builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64 -name '*.so.avx512' -print0
 + xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -5
-+ find /builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64/usr/lib64/haswell/avx512_1 -name '*.so*' -print0
-find: ‘/builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64/usr/lib64/haswell/avx512_1’: No such file or directory
-+ find /builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64 -name '*.so.avx2' -print0
++ find /builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64/usr/lib64/haswell/avx512_1 -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64/usr/lib64/haswell/avx512_1’: No such file or directory
++ find /builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64 -name '*.so.avx2' -print0
 + xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -2
-+ find /builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64/usr/lib64/haswell '!' -path '/usr/lib64/haswell/avx512_1/*' -name '*.so*' -print0
-find: ‘/builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64/usr/lib64/haswell’: No such file or directory
-+ find /builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64/usr/lib64/ -maxdepth 1 -name '*.so*' -type f -print0
++ find /builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64/usr/lib64/haswell '!' -path '/usr/lib64/haswell/avx512_1/*' -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64/usr/lib64/haswell’: No such file or directory
++ find /builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64/usr/lib64/ -maxdepth 1 -name '*.so*' -type f -print0
 + xargs -0rtn1 -P4 /usr/lib/rpm/clr/brp-create-abi
 + sort -u
-find: ‘/builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64/usr/lib64/’: No such file or directory
-+ '[' -d /builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64/usr/lib/debug ']'
+find: ‘/builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64/usr/lib64/’: No such file or directory
++ '[' -d /builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64/usr/lib/debug ']'
 + :
-+ '[' -d /builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64/usr/lib/debug ']'
++ '[' -d /builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64/usr/lib/debug ']'
 + :
-+ '[' -d /builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64/usr/src/debug ']'
++ '[' -d /builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64/usr/src/debug ']'
 + :
-+ '[' -d /builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64/usr/lib/debug.force ']'
++ '[' -d /builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64/usr/lib/debug.force ']'
 + :
-+ '[' -d /builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64/usr/src/debug.force ']'
++ '[' -d /builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64/usr/src/debug.force ']'
 + :
 + /usr/lib/rpm/check-buildroot
 + /usr/lib/rpm/clr/brp-strip /usr/bin/strip
 + /usr/lib/rpm/clr/brp-strip-static-archive /usr/bin/strip
 + /usr/lib/rpm/clr/brp-strip-comment-note /usr/bin/strip /usr/bin/objdump
 + /usr/lib/rpm/clr/brp-python-bytecompile
-+ find /builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64 -print0
-+ xargs -0 touch -h -d @1568256964
++ find /builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64 -print0
++ xargs -0 touch -h -d @1568257617
 + /usr/lib/rpm/clr/brp-java-repack-jars
-Processing files: systemd-config-1.0-2.x86_64
-Processing files: systemd-config-data-1.0-2.x86_64
-Provides: systemd-config-data = 1.0-2 systemd-config-data(x86-64) = 1.0-2
+Processing files: systemd-config-1.0-3.x86_64
+Processing files: systemd-config-data-1.0-3.x86_64
+Provides: systemd-config-data = 1.0-3 systemd-config-data(x86-64) = 1.0-3
 Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
-Processing files: systemd-config-abi-1.0-2.x86_64
-Checking for unpackaged file(s): /usr/lib/rpm/check-files /builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64
+Processing files: systemd-config-abi-1.0-3.x86_64
+Checking for unpackaged file(s): /usr/lib/rpm/check-files /builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64
 warning: Empty %files file /builddir/build/BUILD/systemd-config-1.0/abifiles.list
-Wrote: /builddir/build/RPMS/systemd-config-1.0-2.x86_64.rpm
-Wrote: /builddir/build/RPMS/systemd-config-data-1.0-2.x86_64.rpm
-Wrote: /builddir/build/RPMS/systemd-config-abi-1.0-2.x86_64.rpm
-Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.7dT7Od
+Wrote: /builddir/build/RPMS/systemd-config-1.0-3.x86_64.rpm
+Wrote: /builddir/build/RPMS/systemd-config-data-1.0-3.x86_64.rpm
+Wrote: /builddir/build/RPMS/systemd-config-abi-1.0-3.x86_64.rpm
+Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.T9bGV3
 + umask 022
 + cd /builddir/build/BUILD
 + cd systemd-config-1.0
-+ /usr/bin/rm -rf /builddir/build/BUILDROOT/systemd-config-1.0-2.x86_64
++ /usr/bin/rm -rf /builddir/build/BUILDROOT/systemd-config-1.0-3.x86_64
 + exit 0
 Child return code was: 0
 LEAVE do --> 

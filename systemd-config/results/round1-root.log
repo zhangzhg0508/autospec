@@ -701,13 +701,13 @@ DEBUG util.py:399:  Complete!
 DEBUG util.py:526:  Child return code was: 0
 DEBUG util.py:108:  touching file: /var/lib/mock/clear-systemd-config/root/.initialized
 DEBUG util.py:546:  child environment: None
-DEBUG util.py:479:  Executing command: ['/bin/rpm', '-Uvh', '--nodeps', '/builddir/build/originals/systemd-config-1.0-2.src.rpm'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+DEBUG util.py:479:  Executing command: ['/bin/rpm', '-Uvh', '--nodeps', '/builddir/build/originals/systemd-config-1.0-3.src.rpm'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
 DEBUG util.py:273:  Unsharing. Flags: 134217728
 DEBUG util.py:399:  Updating / installing...
-DEBUG util.py:399:  systemd-config-1.0-2                  ########################################
+DEBUG util.py:399:  systemd-config-1.0-3                  ########################################
 DEBUG util.py:526:  Child return code was: 0
 DEBUG util.py:546:  child environment: None
-DEBUG util.py:479:  Executing command: ['/bin/rpm', '-qpl', '/builddir/build/originals/systemd-config-1.0-2.src.rpm'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+DEBUG util.py:479:  Executing command: ['/bin/rpm', '-qpl', '/builddir/build/originals/systemd-config-1.0-3.src.rpm'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
 DEBUG util.py:273:  Unsharing. Flags: 134217728
 DEBUG util.py:399:  0001-add-makefile.patch
 DEBUG util.py:399:  systemd-config-1.0.tar.gz
@@ -718,7 +718,7 @@ DEBUG util.py:273:  Unsharing. Flags: 134217728
 DEBUG package_manager.py:92:  ['/usr/bin/dnf', '--installroot', '/var/lib/mock/clear-systemd-config/root/', '--releasever', 'clear', '--setopt=deltarpm=false', 'install', 'ccache']
 DEBUG util.py:546:  child environment: None
 DEBUG util.py:479:  Executing command: ['/usr/bin/dnf', '--installroot', '/var/lib/mock/clear-systemd-config/root/', '--releasever', 'clear', '--setopt=deltarpm=false', 'install', 'ccache'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002', 'LC_MESSAGES': 'C'} and shell False
-DEBUG util.py:399:  Last metadata expiration check: 0:00:08 ago on Thu 12 Sep 2019 10:55:55 AM CST.
+DEBUG util.py:399:  Last metadata expiration check: 0:00:07 ago on Thu 12 Sep 2019 11:06:49 AM CST.
 DEBUG util.py:399:  Dependencies resolved.
 DEBUG util.py:399:  ================================================================================
 DEBUG util.py:399:   Package                 Architecture    Version           Repository      Size
@@ -749,10 +749,10 @@ DEBUG util.py:399:    ccache-data-3.6-38.x86_64             ccache-license-3.6-3
 DEBUG util.py:399:    ccache-man-3.6-38.x86_64             
 DEBUG util.py:399:  Complete!
 DEBUG util.py:526:  Child return code was: 0
-DEBUG package_manager.py:92:  ['/usr/bin/dnf', 'builddep', '--installroot', '/var/lib/mock/clear-systemd-config/root/', '--releasever', 'clear', '/var/lib/mock/clear-systemd-config/root//builddir/build/SRPMS/systemd-config-1.0-2.src.rpm']
+DEBUG package_manager.py:92:  ['/usr/bin/dnf', 'builddep', '--installroot', '/var/lib/mock/clear-systemd-config/root/', '--releasever', 'clear', '/var/lib/mock/clear-systemd-config/root//builddir/build/SRPMS/systemd-config-1.0-3.src.rpm']
 DEBUG util.py:546:  child environment: None
-DEBUG util.py:479:  Executing command: ['/usr/bin/dnf', 'builddep', '--installroot', '/var/lib/mock/clear-systemd-config/root/', '--releasever', 'clear', '/var/lib/mock/clear-systemd-config/root//builddir/build/SRPMS/systemd-config-1.0-2.src.rpm'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002', 'LC_MESSAGES': 'C'} and shell False
-DEBUG util.py:399:  Last metadata expiration check: 0:00:08 ago on Thu 12 Sep 2019 10:55:55 AM CST.
+DEBUG util.py:479:  Executing command: ['/usr/bin/dnf', 'builddep', '--installroot', '/var/lib/mock/clear-systemd-config/root/', '--releasever', 'clear', '/var/lib/mock/clear-systemd-config/root//builddir/build/SRPMS/systemd-config-1.0-3.src.rpm'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002', 'LC_MESSAGES': 'C'} and shell False
+DEBUG util.py:399:  Last metadata expiration check: 0:00:08 ago on Thu 12 Sep 2019 11:06:49 AM CST.
 DEBUG util.py:399:  Dependencies resolved.
 DEBUG util.py:399:  ================================================================================
 DEBUG util.py:399:   Package                   Architecture   Version           Repository     Size
