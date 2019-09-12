@@ -1,0 +1,37 @@
+2019-09-12 08:00:51,819 - Mock Version: 1.2.14
+2019-09-12 08:00:52,069 - Start: dnf update
+2019-09-12 08:01:03,492 - Finish: dnf update
+2019-09-12 08:01:03,499 - Finish: chroot init
+2019-09-12 08:01:03,502 - Start: buildsrpm
+2019-09-12 08:01:03,507 - Start: rpmbuild -bs
+2019-09-12 08:01:03,546 - Finish: rpmbuild -bs
+2019-09-12 08:01:03,548 - Finish: buildsrpm
+2019-09-12 08:01:03,549 - Finish: run
+2019-09-12 08:01:06,984 - Mock Version: 1.2.14
+2019-09-12 08:01:07,236 - Start: dnf update
+2019-09-12 08:01:17,786 - Finish: dnf update
+2019-09-12 08:01:17,792 - Finish: chroot init
+2019-09-12 08:01:17,794 - Start: build phase for filesystem-scripts-1.0-1.src.rpm
+2019-09-12 08:01:17,796 - Start: build setup for filesystem-scripts-1.0-1.src.rpm
+2019-09-12 08:01:18,856 - Finish: build setup for filesystem-scripts-1.0-1.src.rpm
+2019-09-12 08:01:18,856 - Start: rpmbuild filesystem-scripts-1.0-1.src.rpm
+2019-09-12 08:01:22,398 - Mock Version: 1.2.14
+2019-09-12 08:01:22,666 - Start: dnf update
+2019-09-12 08:01:33,517 - Finish: dnf update
+2019-09-12 08:01:33,523 - Finish: chroot init
+2019-09-12 08:01:33,525 - Start: buildsrpm
+2019-09-12 08:01:33,531 - Start: rpmbuild -bs
+2019-09-12 08:01:33,571 - Finish: rpmbuild -bs
+2019-09-12 08:01:33,572 - Finish: buildsrpm
+2019-09-12 08:01:33,573 - Finish: run
+2019-09-12 08:01:36,692 - Mock Version: 1.2.14
+2019-09-12 08:01:36,956 - Start: dnf update
+2019-09-12 08:01:47,412 - Finish: dnf update
+2019-09-12 08:01:47,418 - Finish: chroot init
+2019-09-12 08:01:47,419 - Start: build phase for filesystem-scripts-1.0-1.src.rpm
+2019-09-12 08:01:47,422 - Start: build setup for filesystem-scripts-1.0-1.src.rpm
+2019-09-12 08:01:48,495 - Finish: build setup for filesystem-scripts-1.0-1.src.rpm
+2019-09-12 08:01:48,495 - Start: rpmbuild filesystem-scripts-1.0-1.src.rpm
+2019-09-12 08:01:48,648 - Finish: rpmbuild filesystem-scripts-1.0-1.src.rpm
+2019-09-12 08:01:48,650 - Finish: build phase for filesystem-scripts-1.0-1.src.rpm
+2019-09-12 08:01:48,650 - Finish: run

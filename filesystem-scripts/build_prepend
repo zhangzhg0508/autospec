@@ -1,0 +1,6 @@
+%define local_bindir /usr/bin/
+%define local_etc_initd /usr/local/etc/init.d/
+%define local_ocfdir /usr/lib/ocf/resource.d/platform/
+%define _unitdir /usr/lib/systemd/system/
+
+%define debug_package %{nil}
