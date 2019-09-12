@@ -1,0 +1,2 @@
+%post
+systemctl enable storageconfig.service

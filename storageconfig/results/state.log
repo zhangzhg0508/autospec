@@ -1,0 +1,37 @@
+2019-09-12 17:55:53,313 - Mock Version: 1.2.14
+2019-09-12 17:55:53,574 - Start: dnf update
+2019-09-12 17:56:03,698 - Finish: dnf update
+2019-09-12 17:56:03,704 - Finish: chroot init
+2019-09-12 17:56:03,708 - Start: buildsrpm
+2019-09-12 17:56:03,713 - Start: rpmbuild -bs
+2019-09-12 17:56:03,756 - Finish: rpmbuild -bs
+2019-09-12 17:56:03,757 - Finish: buildsrpm
+2019-09-12 17:56:03,758 - Finish: run
+2019-09-12 17:56:06,857 - Mock Version: 1.2.14
+2019-09-12 17:56:07,120 - Start: dnf update
+2019-09-12 17:56:17,027 - Finish: dnf update
+2019-09-12 17:56:17,032 - Finish: chroot init
+2019-09-12 17:56:17,034 - Start: build phase for storageconfig-1.0-1.src.rpm
+2019-09-12 17:56:17,036 - Start: build setup for storageconfig-1.0-1.src.rpm
+2019-09-12 17:56:17,707 - Finish: build setup for storageconfig-1.0-1.src.rpm
+2019-09-12 17:56:17,707 - Start: rpmbuild storageconfig-1.0-1.src.rpm
+2019-09-12 17:56:21,223 - Mock Version: 1.2.14
+2019-09-12 17:56:21,498 - Start: dnf update
+2019-09-12 17:56:31,670 - Finish: dnf update
+2019-09-12 17:56:31,675 - Finish: chroot init
+2019-09-12 17:56:31,678 - Start: buildsrpm
+2019-09-12 17:56:31,684 - Start: rpmbuild -bs
+2019-09-12 17:56:31,723 - Finish: rpmbuild -bs
+2019-09-12 17:56:31,724 - Finish: buildsrpm
+2019-09-12 17:56:31,725 - Finish: run
+2019-09-12 17:56:34,791 - Mock Version: 1.2.14
+2019-09-12 17:56:35,042 - Start: dnf update
+2019-09-12 17:56:44,809 - Finish: dnf update
+2019-09-12 17:56:44,815 - Finish: chroot init
+2019-09-12 17:56:44,816 - Start: build phase for storageconfig-1.0-1.src.rpm
+2019-09-12 17:56:44,818 - Start: build setup for storageconfig-1.0-1.src.rpm
+2019-09-12 17:56:45,488 - Finish: build setup for storageconfig-1.0-1.src.rpm
+2019-09-12 17:56:45,488 - Start: rpmbuild storageconfig-1.0-1.src.rpm
+2019-09-12 17:56:45,626 - Finish: rpmbuild storageconfig-1.0-1.src.rpm
+2019-09-12 17:56:45,627 - Finish: build phase for storageconfig-1.0-1.src.rpm
+2019-09-12 17:56:45,627 - Finish: run

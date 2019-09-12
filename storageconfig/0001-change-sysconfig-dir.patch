@@ -1,0 +1,25 @@
+From 5639f40a7233bc54716788a0c0edf7d72176ba87 Mon Sep 17 00:00:00 2001
+From: "yongx.fu" <yongx.fu@intel.com>
+Date: Thu, 29 Aug 2019 17:04:15 +0800
+Subject: [PATCH] change-sysconfig-dir
+
+---
+ storageconfig.service | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/storageconfig.service b/storageconfig.service
+index b98f88b..b7fbba2 100644
+--- a/storageconfig.service
++++ b/storageconfig.service
+@@ -7,7 +7,7 @@ Before=config.service
+ 
+ [Service]
+ Type=simple
+-ExecStart=/etc/init.d/storage_config start
++ExecStart=/usr/local/etc/init.d/storage_config start
+ ExecStop=
+ ExecReload=
+ StandardOutput=syslog+console
+-- 
+2.23.0
+

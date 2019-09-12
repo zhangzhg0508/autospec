@@ -1,0 +1,29 @@
+From 39bb0ad3b158609058e3f15134c400fab50c5d95 Mon Sep 17 00:00:00 2001
+From: fuyong <fuyong@neusoft.com>
+Date: Thu, 12 Sep 2019 17:55:23 +0800
+Subject: [PATCH] fix Makefile dir
+
+---
+ Makefile | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index abec441..b09ed1d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -4,9 +4,9 @@
+ # Copyright (C) 2019 Intel Corporation
+ #
+ 
+-INITDDIR ?= /etc/init.d/
+-GOENABLEDDIR ?= /etc/goenabled.d/
+-SYSTEMDDIR ?= /etc/systemd/system/
++INITDDIR ?= %{buildroot}%/usr/local/etc/init.d/
++GOENABLEDDIR ?= %{buildroot}%/usr/local/etc/goenabled.d/
++SYSTEMDDIR ?= %{buildroot}%/usr/local/etc/systemd/system/
+ 
+ install:
+ 	install -d -m 755 $(INITDDIR)
+-- 
+2.23.0
+

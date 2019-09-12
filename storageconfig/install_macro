@@ -1,0 +1,1 @@
+make install INITDDIR=%{buildroot}%{local_etc_initd} GOENABLEDDIR=%{buildroot}%{local_etc_goenabledd} SYSTEMDDIR=%{buildroot}%{_unitdir}
