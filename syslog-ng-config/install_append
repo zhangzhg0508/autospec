@@ -1,0 +1,25 @@
+install -D -m644 syslog-ng.conf %{buildroot}%{_datadir}/starlingx/syslog-ng.conf
+install -D -m644 syslog-ng.logrotate %{buildroot}%{_datadir}/starlingx/syslog-ng.logrotate
+install -D -m644 remotelogging.conf %{buildroot}%{_sysconfdir}/syslog-ng/remotelogging.conf
+install -d %{buildroot}%{_sbindir}
+install -D -m700 fm_event_syslogger %{buildroot}%{_sbindir}/fm_event_syslogger
+install -D -m644 syslog-ng.service %{buildroot}%{_datadir}/starlingx/syslog-ng.service
+
+%post
+if [ $1 -eq 1 ] ; then
+	cp -f %{_datadir}/starlingx/syslog-ng.conf %{_sysconfdir}/syslog-ng/syslog-ng.conf
+	chmod 644 %{_sysconfdir}/syslog-ng/syslog-ng.conf
+	cp -f %{_datadir}/starlingx/syslog-ng.logrotate %{_sysconfdir}/logrotate.d/syslog
+	chmod 644 %{_sysconfdir}/logrotate.d/syslog
+	cp -f %{_datadir}/starlingx/syslog-ng.service %{_unitdir}/syslog-ng.service
+	chmod 644 %{_unitdir}/syslog-ng.service
+fi
+ldconfig
+%systemd_post syslog-ng.service
+
+%preun
+%systemd_preun syslog-ng.service
+
+%postun
+ldconfig
+%systemd_postun_with_restart syslog-ng.service

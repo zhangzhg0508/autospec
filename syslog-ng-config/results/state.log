@@ -1,0 +1,37 @@
+2019-09-12 11:19:30,400 - Mock Version: 1.2.14
+2019-09-12 11:19:30,633 - Start: dnf update
+2019-09-12 11:19:41,534 - Finish: dnf update
+2019-09-12 11:19:41,542 - Finish: chroot init
+2019-09-12 11:19:41,545 - Start: buildsrpm
+2019-09-12 11:19:41,553 - Start: rpmbuild -bs
+2019-09-12 11:19:41,593 - Finish: rpmbuild -bs
+2019-09-12 11:19:41,594 - Finish: buildsrpm
+2019-09-12 11:19:41,595 - Finish: run
+2019-09-12 11:19:44,920 - Mock Version: 1.2.14
+2019-09-12 11:19:45,175 - Start: dnf update
+2019-09-12 11:19:55,656 - Finish: dnf update
+2019-09-12 11:19:55,662 - Finish: chroot init
+2019-09-12 11:19:55,664 - Start: build phase for syslog-ng-config-1.0-1.src.rpm
+2019-09-12 11:19:55,666 - Start: build setup for syslog-ng-config-1.0-1.src.rpm
+2019-09-12 11:19:56,684 - Finish: build setup for syslog-ng-config-1.0-1.src.rpm
+2019-09-12 11:19:56,684 - Start: rpmbuild syslog-ng-config-1.0-1.src.rpm
+2019-09-12 11:20:00,202 - Mock Version: 1.2.14
+2019-09-12 11:20:00,436 - Start: dnf update
+2019-09-12 11:20:11,258 - Finish: dnf update
+2019-09-12 11:20:11,264 - Finish: chroot init
+2019-09-12 11:20:11,267 - Start: buildsrpm
+2019-09-12 11:20:11,273 - Start: rpmbuild -bs
+2019-09-12 11:20:11,313 - Finish: rpmbuild -bs
+2019-09-12 11:20:11,314 - Finish: buildsrpm
+2019-09-12 11:20:11,315 - Finish: run
+2019-09-12 11:20:14,445 - Mock Version: 1.2.14
+2019-09-12 11:20:14,716 - Start: dnf update
+2019-09-12 11:20:24,937 - Finish: dnf update
+2019-09-12 11:20:24,943 - Finish: chroot init
+2019-09-12 11:20:24,944 - Start: build phase for syslog-ng-config-1.0-1.src.rpm
+2019-09-12 11:20:24,946 - Start: build setup for syslog-ng-config-1.0-1.src.rpm
+2019-09-12 11:20:25,965 - Finish: build setup for syslog-ng-config-1.0-1.src.rpm
+2019-09-12 11:20:25,965 - Start: rpmbuild syslog-ng-config-1.0-1.src.rpm
+2019-09-12 11:20:26,106 - Finish: rpmbuild syslog-ng-config-1.0-1.src.rpm
+2019-09-12 11:20:26,108 - Finish: build phase for syslog-ng-config-1.0-1.src.rpm
+2019-09-12 11:20:26,109 - Finish: run
