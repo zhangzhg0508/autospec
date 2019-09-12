@@ -1,0 +1,37 @@
+2019-09-10 18:00:37,559 - Mock Version: 1.2.14
+2019-09-10 18:00:37,828 - Start: dnf update
+2019-09-10 18:00:47,850 - Finish: dnf update
+2019-09-10 18:00:47,855 - Finish: chroot init
+2019-09-10 18:00:47,858 - Start: buildsrpm
+2019-09-10 18:00:47,867 - Start: rpmbuild -bs
+2019-09-10 18:00:47,908 - Finish: rpmbuild -bs
+2019-09-10 18:00:47,909 - Finish: buildsrpm
+2019-09-10 18:00:47,910 - Finish: run
+2019-09-10 18:00:50,953 - Mock Version: 1.2.14
+2019-09-10 18:00:51,207 - Start: dnf update
+2019-09-10 18:01:00,941 - Finish: dnf update
+2019-09-10 18:01:00,946 - Finish: chroot init
+2019-09-10 18:01:00,948 - Start: build phase for fm-rest-api-1.0-5.src.rpm
+2019-09-10 18:01:00,950 - Start: build setup for fm-rest-api-1.0-5.src.rpm
+2019-09-10 18:01:04,753 - Finish: build setup for fm-rest-api-1.0-5.src.rpm
+2019-09-10 18:01:04,753 - Start: rpmbuild fm-rest-api-1.0-5.src.rpm
+2019-09-10 18:01:11,714 - Mock Version: 1.2.14
+2019-09-10 18:01:11,973 - Start: dnf update
+2019-09-10 18:01:22,665 - Finish: dnf update
+2019-09-10 18:01:22,671 - Finish: chroot init
+2019-09-10 18:01:22,674 - Start: buildsrpm
+2019-09-10 18:01:22,684 - Start: rpmbuild -bs
+2019-09-10 18:01:22,724 - Finish: rpmbuild -bs
+2019-09-10 18:01:22,725 - Finish: buildsrpm
+2019-09-10 18:01:22,726 - Finish: run
+2019-09-10 18:01:25,857 - Mock Version: 1.2.14
+2019-09-10 18:01:26,094 - Start: dnf update
+2019-09-10 18:01:36,506 - Finish: dnf update
+2019-09-10 18:01:36,513 - Finish: chroot init
+2019-09-10 18:01:36,515 - Start: build phase for fm-rest-api-1.0-5.src.rpm
+2019-09-10 18:01:36,517 - Start: build setup for fm-rest-api-1.0-5.src.rpm
+2019-09-10 18:01:40,498 - Finish: build setup for fm-rest-api-1.0-5.src.rpm
+2019-09-10 18:01:40,498 - Start: rpmbuild fm-rest-api-1.0-5.src.rpm
+2019-09-10 18:01:42,955 - Finish: rpmbuild fm-rest-api-1.0-5.src.rpm
+2019-09-10 18:01:42,956 - Finish: build phase for fm-rest-api-1.0-5.src.rpm
+2019-09-10 18:01:42,957 - Finish: run

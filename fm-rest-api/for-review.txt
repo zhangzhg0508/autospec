@@ -1,0 +1,32 @@
+From ca27bc791c58be2c6ab2df6d7f0288a464f069bf Mon Sep 17 00:00:00 2001
+From: lgdfy <im.fuyong@gmail.com>
+Date: Tue, 10 Sep 2019 18:01:44 +0800
+Subject: [PATCH fm-rest-api] fm-rest-api: Autospec creation for version 1.0
+
+---
+ buildreq_add     | 1 +
+ fm-rest-api.spec | 5 +++--
+ release          | 2 +-
+ 3 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/buildreq_add b/buildreq_add
+index 0ea017e..570fdf2 100644
+--- a/buildreq_add
++++ b/buildreq_add
+@@ -9,3 +9,4 @@ oslo.log
+ oslo.messaging
+ oslo.middleware
+ systemd
++buildreq-distutils
+diff --git a/fm-rest-api.spec b/fm-rest-api.spec
+index 8e55cb0..a642505 100644
+--- a/fm-rest-api.spec
++++ b/fm-rest-api.spec
+@@ -17,6 +17,7 @@ Requires: fm-rest-api-services = %{version}-%{release}
+ Requires: Paste
+ Requires: WebOb
+ Requires: eventlet
++BuildRequires : buildreq-distutils
+ BuildRequires : buildreq-distutils3
+ BuildRequires : oslo.config
+ BuildRequires : oslo.db
