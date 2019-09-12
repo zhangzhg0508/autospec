@@ -1,0 +1,53 @@
+From b465022bbcfb62c4eb71b37c43a7af5a4ff39b5e Mon Sep 17 00:00:00 2001
+From: fuyong <fuyong@neusoft.com>
+Date: Thu, 12 Sep 2019 10:56:33 +0800
+Subject: [PATCH systemd-config] systemd-config: Autospec creation for version
+ 1.0
+
+---
+ install_prepend => build_prepend |  0
+ release                          |  2 +-
+ systemd-config.spec              | 12 ++++++------
+ 3 files changed, 7 insertions(+), 7 deletions(-)
+ rename install_prepend => build_prepend (100%)
+
+diff --git a/systemd-config.spec b/systemd-config.spec
+index 0f9967c..62442c0 100644
+--- a/systemd-config.spec
++++ b/systemd-config.spec
+@@ -4,7 +4,7 @@
+ #
+ Name     : systemd-config
+ Version  : 1.0
+ URL      : file:///home/clr/stx-tar/systemd-config-1.0.tar.gz
+ Source0  : file:///home/clr/stx-tar/systemd-config-1.0.tar.gz
+ Summary  : No detailed summary available
+@@ -31,11 +31,14 @@ data components for the systemd-config package.
+ %patch1 -p1
+ 
+ %build
++## build_prepend content
++%define debug_package %{nil}
++## build_prepend end
+ export http_proxy=http://127.0.0.1:9/
+ export https_proxy=http://127.0.0.1:9/
+ export no_proxy=localhost,127.0.0.1,0.0.0.0
+ export LANG=C.UTF-8
+ export GCC_IGNORE_WERROR=1
+ export AR=gcc-ar
+ export RANLIB=gcc-ranlib
+@@ -48,11 +51,8 @@ make  %{?_smp_mflags}
+ 
+ 
+ %install
+ rm -rf %{buildroot}
+-## install_prepend content
+-%define debug_package %{nil}
+-## install_prepend end
+ install -d %{buildroot}%{_datadir}/starlingx
+ ## install_append content
+ install -m644 60-persistent-storage.rules %{buildroot}%{_datadir}/starlingx/60-persistent-storage.rules
+-- 
+2.23.0
+
+

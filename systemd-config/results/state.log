@@ -1,0 +1,37 @@
+2019-09-12 10:55:37,982 - Mock Version: 1.2.14
+2019-09-12 10:55:38,219 - Start: dnf update
+2019-09-12 10:55:49,428 - Finish: dnf update
+2019-09-12 10:55:49,433 - Finish: chroot init
+2019-09-12 10:55:49,436 - Start: buildsrpm
+2019-09-12 10:55:49,444 - Start: rpmbuild -bs
+2019-09-12 10:55:49,481 - Finish: rpmbuild -bs
+2019-09-12 10:55:49,483 - Finish: buildsrpm
+2019-09-12 10:55:49,483 - Finish: run
+2019-09-12 10:55:52,533 - Mock Version: 1.2.14
+2019-09-12 10:55:52,793 - Start: dnf update
+2019-09-12 10:56:02,872 - Finish: dnf update
+2019-09-12 10:56:02,878 - Finish: chroot init
+2019-09-12 10:56:02,879 - Start: build phase for systemd-config-1.0-2.src.rpm
+2019-09-12 10:56:02,881 - Start: build setup for systemd-config-1.0-2.src.rpm
+2019-09-12 10:56:03,875 - Finish: build setup for systemd-config-1.0-2.src.rpm
+2019-09-12 10:56:03,875 - Start: rpmbuild systemd-config-1.0-2.src.rpm
+2019-09-12 10:56:07,304 - Mock Version: 1.2.14
+2019-09-12 10:56:07,638 - Start: dnf update
+2019-09-12 10:56:18,244 - Finish: dnf update
+2019-09-12 10:56:18,250 - Finish: chroot init
+2019-09-12 10:56:18,253 - Start: buildsrpm
+2019-09-12 10:56:18,261 - Start: rpmbuild -bs
+2019-09-12 10:56:18,300 - Finish: rpmbuild -bs
+2019-09-12 10:56:18,301 - Finish: buildsrpm
+2019-09-12 10:56:18,302 - Finish: run
+2019-09-12 10:56:21,420 - Mock Version: 1.2.14
+2019-09-12 10:56:21,666 - Start: dnf update
+2019-09-12 10:56:31,743 - Finish: dnf update
+2019-09-12 10:56:31,748 - Finish: chroot init
+2019-09-12 10:56:31,750 - Start: build phase for systemd-config-1.0-2.src.rpm
+2019-09-12 10:56:31,752 - Start: build setup for systemd-config-1.0-2.src.rpm
+2019-09-12 10:56:32,853 - Finish: build setup for systemd-config-1.0-2.src.rpm
+2019-09-12 10:56:32,853 - Start: rpmbuild systemd-config-1.0-2.src.rpm
+2019-09-12 10:56:32,994 - Finish: rpmbuild systemd-config-1.0-2.src.rpm
+2019-09-12 10:56:32,995 - Finish: build phase for systemd-config-1.0-2.src.rpm
+2019-09-12 10:56:32,996 - Finish: run
