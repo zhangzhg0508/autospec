@@ -1,0 +1,5 @@
+
+install -m 444 %{SOURCE0} %{buildroot}%{_sysconfdir}/pki/wrs/dev_certificate_enable.bin
+
+%clean
+rm -rf $RPM_BUILD_ROOT

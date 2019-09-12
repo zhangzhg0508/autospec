@@ -1,0 +1,37 @@
+2019-09-12 02:29:46,941 - Mock Version: 1.2.14
+2019-09-12 02:29:47,186 - Start: dnf update
+2019-09-12 02:29:58,268 - Finish: dnf update
+2019-09-12 02:29:58,274 - Finish: chroot init
+2019-09-12 02:29:58,277 - Start: buildsrpm
+2019-09-12 02:29:58,282 - Start: rpmbuild -bs
+2019-09-12 02:29:58,322 - Finish: rpmbuild -bs
+2019-09-12 02:29:58,324 - Finish: buildsrpm
+2019-09-12 02:29:58,324 - Finish: run
+2019-09-12 02:30:01,512 - Mock Version: 1.2.14
+2019-09-12 02:30:01,892 - Start: dnf update
+2019-09-12 02:30:12,347 - Finish: dnf update
+2019-09-12 02:30:12,354 - Finish: chroot init
+2019-09-12 02:30:12,356 - Start: build phase for enable-dev-patch-1.0-1.src.rpm
+2019-09-12 02:30:12,358 - Start: build setup for enable-dev-patch-1.0-1.src.rpm
+2019-09-12 02:30:13,033 - Finish: build setup for enable-dev-patch-1.0-1.src.rpm
+2019-09-12 02:30:13,033 - Start: rpmbuild enable-dev-patch-1.0-1.src.rpm
+2019-09-12 02:30:16,365 - Mock Version: 1.2.14
+2019-09-12 02:30:16,630 - Start: dnf update
+2019-09-12 02:30:27,190 - Finish: dnf update
+2019-09-12 02:30:27,195 - Finish: chroot init
+2019-09-12 02:30:27,198 - Start: buildsrpm
+2019-09-12 02:30:27,203 - Start: rpmbuild -bs
+2019-09-12 02:30:27,241 - Finish: rpmbuild -bs
+2019-09-12 02:30:27,242 - Finish: buildsrpm
+2019-09-12 02:30:27,243 - Finish: run
+2019-09-12 02:30:30,275 - Mock Version: 1.2.14
+2019-09-12 02:30:30,518 - Start: dnf update
+2019-09-12 02:30:42,999 - Finish: dnf update
+2019-09-12 02:30:43,004 - Finish: chroot init
+2019-09-12 02:30:43,006 - Start: build phase for enable-dev-patch-1.0-1.src.rpm
+2019-09-12 02:30:43,008 - Start: build setup for enable-dev-patch-1.0-1.src.rpm
+2019-09-12 02:30:43,675 - Finish: build setup for enable-dev-patch-1.0-1.src.rpm
+2019-09-12 02:30:43,676 - Start: rpmbuild enable-dev-patch-1.0-1.src.rpm
+2019-09-12 02:30:43,776 - Finish: rpmbuild enable-dev-patch-1.0-1.src.rpm
+2019-09-12 02:30:43,777 - Finish: build phase for enable-dev-patch-1.0-1.src.rpm
+2019-09-12 02:30:43,778 - Finish: run
