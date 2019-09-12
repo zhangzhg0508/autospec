@@ -1,0 +1,38 @@
+From f660fb366085d13c233a74481034a11d0b840644 Mon Sep 17 00:00:00 2001
+From: lgdfy <im.fuyong@gmail.com>
+Date: Tue, 10 Sep 2019 17:31:38 +0800
+Subject: [PATCH fm-api] fm-api: Autospec creation for version 1.0
+
+---
+ buildreq_add | 5 +++--
+ fm-api.spec  | 7 +++++--
+ release      | 2 +-
+ 3 files changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/buildreq_add b/buildreq_add
+index 4e30d77..c828b9b 100644
+--- a/buildreq_add
++++ b/buildreq_add
+@@ -1,4 +1,5 @@
+ # This file contains additional build requirements that did not get
+ # picked up automatically. One name per line, no whitespace.
+-#python-setuptools
+-#python2-pip
++setuptools
++pip
++buildreq-distutils
+diff --git a/fm-api.spec b/fm-api.spec
+index 64e5f44..e918f55 100644
+--- a/fm-api.spec
++++ b/fm-api.spec
+@@ -12,7 +12,10 @@ Group    : Development/Tools
+ License  : Apache-2.0
+ Requires: fm-api-python = %{version}-%{release}
+ Requires: fm-api-python3 = %{version}-%{release}
++BuildRequires : buildreq-distutils
+ BuildRequires : buildreq-distutils3
++BuildRequires : pip
++BuildRequires : setuptools
+ 
+ %description
+ for applications to raise/clear/update active alarms.
