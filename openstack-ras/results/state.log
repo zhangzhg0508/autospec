@@ -1,0 +1,37 @@
+2019-09-09 15:29:34,139 - Mock Version: 1.2.14
+2019-09-09 15:29:34,389 - Start: dnf update
+2019-09-09 15:29:44,522 - Finish: dnf update
+2019-09-09 15:29:44,527 - Finish: chroot init
+2019-09-09 15:29:44,530 - Start: buildsrpm
+2019-09-09 15:29:44,535 - Start: rpmbuild -bs
+2019-09-09 15:29:44,573 - Finish: rpmbuild -bs
+2019-09-09 15:29:44,574 - Finish: buildsrpm
+2019-09-09 15:29:44,575 - Finish: run
+2019-09-09 15:29:47,631 - Mock Version: 1.2.14
+2019-09-09 15:29:47,893 - Start: dnf update
+2019-09-09 15:29:57,869 - Finish: dnf update
+2019-09-09 15:29:57,874 - Finish: chroot init
+2019-09-09 15:29:57,876 - Start: build phase for openstack-ras-1.0.0-1.src.rpm
+2019-09-09 15:29:57,878 - Start: build setup for openstack-ras-1.0.0-1.src.rpm
+2019-09-09 15:29:58,548 - Finish: build setup for openstack-ras-1.0.0-1.src.rpm
+2019-09-09 15:29:58,549 - Start: rpmbuild openstack-ras-1.0.0-1.src.rpm
+2019-09-09 15:30:01,971 - Mock Version: 1.2.14
+2019-09-09 15:30:02,226 - Start: dnf update
+2019-09-09 15:30:12,279 - Finish: dnf update
+2019-09-09 15:30:12,285 - Finish: chroot init
+2019-09-09 15:30:12,287 - Start: buildsrpm
+2019-09-09 15:30:12,293 - Start: rpmbuild -bs
+2019-09-09 15:30:12,332 - Finish: rpmbuild -bs
+2019-09-09 15:30:12,333 - Finish: buildsrpm
+2019-09-09 15:30:12,334 - Finish: run
+2019-09-09 15:30:15,483 - Mock Version: 1.2.14
+2019-09-09 15:30:15,744 - Start: dnf update
+2019-09-09 15:30:25,619 - Finish: dnf update
+2019-09-09 15:30:25,624 - Finish: chroot init
+2019-09-09 15:30:25,626 - Start: build phase for openstack-ras-1.0.0-1.src.rpm
+2019-09-09 15:30:25,628 - Start: build setup for openstack-ras-1.0.0-1.src.rpm
+2019-09-09 15:30:26,293 - Finish: build setup for openstack-ras-1.0.0-1.src.rpm
+2019-09-09 15:30:26,293 - Start: rpmbuild openstack-ras-1.0.0-1.src.rpm
+2019-09-09 15:30:26,580 - Finish: rpmbuild openstack-ras-1.0.0-1.src.rpm
+2019-09-09 15:30:26,581 - Finish: build phase for openstack-ras-1.0.0-1.src.rpm
+2019-09-09 15:30:26,581 - Finish: run
