@@ -1,0 +1,77 @@
+From 8faccaf5e2cf60bc28ed0cf1be97276b63924c48 Mon Sep 17 00:00:00 2001
+From: "yongx.fu" <yongx.fu@intel.com>
+Date: Thu, 22 Aug 2019 17:00:47 +0800
+Subject: [PATCH] change-sysconfig-dir
+
+---
+ sysinv-agent         | 12 ++++++------
+ sysinv-agent.conf    |  2 +-
+ sysinv-agent.service |  4 ++--
+ 3 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/sysinv-agent b/sysinv-agent
+index e962dca..fb7a91d 100755
+--- a/sysinv-agent
++++ b/sysinv-agent
+@@ -17,15 +17,15 @@
+ # Short-Description: Maintenance daemon 
+ ### END INIT INFO
+ 
+-. /etc/init.d/functions
+-. /etc/build.info
++. /usr/local/etc/init.d/functions
++. /usr/local/etc/build.info
+ 
+ 
+-PLATFORM_CONF="/etc/platform/platform.conf"
++PLATFORM_CONF="/usr/local/etc/platform/platform.conf"
+ NODETYPE=""
+ DAEMON_NAME="sysinv-agent"
+ SYSINVAGENT="/usr/bin/${DAEMON_NAME}"
+-SYSINV_CONF_DIR="/etc/sysinv"
++SYSINV_CONF_DIR="/usr/local/etc/sysinv"
+ SYSINV_CONF_FILE="${SYSINV_CONF_DIR}/sysinv.conf"
+ SYSINV_CONF_DEFAULT_FILE="/opt/platform/sysinv/${SW_VERSION}/sysinv.conf.default"
+ SYSINV_READY_FLAG=/var/run/.sysinv_ready
+@@ -79,8 +79,8 @@ function mount_and_copy_config_file()
+ case "$1" in
+     start)
+         # Check for installation failure
+-        if [ -f /etc/platform/installation_failed ] ; then
+-            logger "$0: /etc/platform/installation_failed flag is set. Aborting."
++        if [ -f /usr/local/etc/platform/installation_failed ] ; then
++            logger "$0: /usr/local/etc/platform/installation_failed flag is set. Aborting."
+             exit 1
+         fi
+ 
+diff --git a/sysinv-agent.conf b/sysinv-agent.conf
+index 46afac6..5e753ea 100644
+--- a/sysinv-agent.conf
++++ b/sysinv-agent.conf
+@@ -1,7 +1,7 @@
+ [process]
+ process  = sysinv-agent
+ pidfile  = /var/run/sysinv-agent.pid
+-script   = /etc/init.d/sysinv-agent
++script   = /usr/local/etc/init.d/sysinv-agent
+ style    = lsb            ; ocf or lsb
+ severity = major          ; minor, major, critical
+ restarts = 3              ; restarts before error assertion
+diff --git a/sysinv-agent.service b/sysinv-agent.service
+index cb8663f..ee62c64 100644
+--- a/sysinv-agent.service
++++ b/sysinv-agent.service
+@@ -7,8 +7,8 @@ Before=pmon.service
+ [Service]
+ Type=forking
+ RemainAfterExit=yes
+-ExecStart=/etc/init.d/sysinv-agent start
+-ExecStop=/etc/init.d/sysinv-agent stop
++ExecStart=/usr/localetc/init.d/sysinv-agent start
++ExecStop=/usr/local/etc/init.d/sysinv-agent stop
+ PIDFile=/var/run/sysinv-agent.pid
+ 
+ [Install]
+-- 
+2.23.0
+

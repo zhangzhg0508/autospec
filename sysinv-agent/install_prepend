@@ -1,0 +1,5 @@
+%define local_etc_initd /usr/local/etc/init.d/
+%define local_etc_pmond /usr/local/etc/pmon.d/
+%define _unitdir /usr/lib/systemd/system/
+
+%define debug_package %{nil}

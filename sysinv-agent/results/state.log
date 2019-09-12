@@ -1,0 +1,37 @@
+2019-09-12 15:33:49,967 - Mock Version: 1.2.14
+2019-09-12 15:33:50,217 - Start: dnf update
+2019-09-12 15:34:00,948 - Finish: dnf update
+2019-09-12 15:34:00,953 - Finish: chroot init
+2019-09-12 15:34:00,956 - Start: buildsrpm
+2019-09-12 15:34:00,964 - Start: rpmbuild -bs
+2019-09-12 15:34:01,003 - Finish: rpmbuild -bs
+2019-09-12 15:34:01,004 - Finish: buildsrpm
+2019-09-12 15:34:01,005 - Finish: run
+2019-09-12 15:34:04,134 - Mock Version: 1.2.14
+2019-09-12 15:34:04,396 - Start: dnf update
+2019-09-12 15:34:14,299 - Finish: dnf update
+2019-09-12 15:34:14,304 - Finish: chroot init
+2019-09-12 15:34:14,306 - Start: build phase for sysinv-agent-1.0-1.src.rpm
+2019-09-12 15:34:14,308 - Start: build setup for sysinv-agent-1.0-1.src.rpm
+2019-09-12 15:34:15,409 - Finish: build setup for sysinv-agent-1.0-1.src.rpm
+2019-09-12 15:34:15,409 - Start: rpmbuild sysinv-agent-1.0-1.src.rpm
+2019-09-12 15:34:18,938 - Mock Version: 1.2.14
+2019-09-12 15:34:19,173 - Start: dnf update
+2019-09-12 15:34:29,018 - Finish: dnf update
+2019-09-12 15:34:29,024 - Finish: chroot init
+2019-09-12 15:34:29,026 - Start: buildsrpm
+2019-09-12 15:34:29,032 - Start: rpmbuild -bs
+2019-09-12 15:34:29,071 - Finish: rpmbuild -bs
+2019-09-12 15:34:29,072 - Finish: buildsrpm
+2019-09-12 15:34:29,073 - Finish: run
+2019-09-12 15:34:32,161 - Mock Version: 1.2.14
+2019-09-12 15:34:32,416 - Start: dnf update
+2019-09-12 15:34:43,047 - Finish: dnf update
+2019-09-12 15:34:43,053 - Finish: chroot init
+2019-09-12 15:34:43,054 - Start: build phase for sysinv-agent-1.0-1.src.rpm
+2019-09-12 15:34:43,057 - Start: build setup for sysinv-agent-1.0-1.src.rpm
+2019-09-12 15:34:44,127 - Finish: build setup for sysinv-agent-1.0-1.src.rpm
+2019-09-12 15:34:44,127 - Start: rpmbuild sysinv-agent-1.0-1.src.rpm
+2019-09-12 15:34:44,272 - Finish: rpmbuild sysinv-agent-1.0-1.src.rpm
+2019-09-12 15:34:44,273 - Finish: build phase for sysinv-agent-1.0-1.src.rpm
+2019-09-12 15:34:44,274 - Finish: run
