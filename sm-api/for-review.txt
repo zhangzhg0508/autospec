@@ -1,0 +1,10 @@
+From bcfbdd5a3a1aeb5f8c48d0985850aa5c8c3e175a Mon Sep 17 00:00:00 2001
+From: "yongx.fu" <yongx.fu@intel.com>
+Date: Wed, 21 Aug 2019 17:04:27 +0800
+Subject: [PATCH sm-api] sm-api: Autospec creation for version 1.0
+
+---
+ release     | 2 +-
+ sm-api.spec | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
