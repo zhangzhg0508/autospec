@@ -1,0 +1,39 @@
+From 0f1d28150b3eeebf6acc52ed5a5b73a84776de0a Mon Sep 17 00:00:00 2001
+From: lgdfy <im.fuyong@gmail.com>
+Date: Tue, 10 Sep 2019 17:41:38 +0800
+Subject: [PATCH fm-common] fm-common: Autospec creation for version 1.0
+
+---
+ buildreq_add   | 4 ++++
+ fm-common.spec | 9 ++++++---
+ release        | 2 +-
+ 3 files changed, 11 insertions(+), 4 deletions(-)
+
+diff --git a/buildreq_add b/buildreq_add
+index 8b0ae6c..2ca6109 100644
+--- a/buildreq_add
++++ b/buildreq_add
+@@ -2,3 +2,7 @@
+ # picked up automatically. One name per line, no whitespace.
+ postgresql-dev
+ buildreq-distutils
++util-linux
++python-dev
++setuptools
++pip
+diff --git a/fm-common.spec b/fm-common.spec
+index dc93f99..764dbd5 100644
+--- a/fm-common.spec
++++ b/fm-common.spec
+@@ -15,8 +15,11 @@ Requires: fm-common-lib = %{version}-%{release}
+ Requires: fm-common-python = %{version}-%{release}
+ BuildRequires : buildreq-distutils
+ BuildRequires : buildreq-distutils3
++BuildRequires : pip
+ BuildRequires : postgresql-dev
+ BuildRequires : python-dev
++BuildRequires : setuptools
++BuildRequires : util-linux
+ BuildRequires : util-linux-dev
+ Patch1: 0001-strncpy-specified-bound-equals-destination-size.patch
+ Patch2: 0002-add-python-setup-to-Makefile.patch
