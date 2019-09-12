@@ -1,0 +1,37 @@
+2019-09-12 14:18:24,041 - Mock Version: 1.2.14
+2019-09-12 14:18:24,267 - Start: dnf update
+2019-09-12 14:18:34,551 - Finish: dnf update
+2019-09-12 14:18:34,558 - Finish: chroot init
+2019-09-12 14:18:34,561 - Start: buildsrpm
+2019-09-12 14:18:34,569 - Start: rpmbuild -bs
+2019-09-12 14:18:34,609 - Finish: rpmbuild -bs
+2019-09-12 14:18:34,611 - Finish: buildsrpm
+2019-09-12 14:18:34,611 - Finish: run
+2019-09-12 14:18:37,787 - Mock Version: 1.2.14
+2019-09-12 14:18:38,022 - Start: dnf update
+2019-09-12 14:18:48,183 - Finish: dnf update
+2019-09-12 14:18:48,189 - Finish: chroot init
+2019-09-12 14:18:48,190 - Start: build phase for sudo-config-1.0-2.src.rpm
+2019-09-12 14:18:48,192 - Start: build setup for sudo-config-1.0-2.src.rpm
+2019-09-12 14:18:48,857 - Finish: build setup for sudo-config-1.0-2.src.rpm
+2019-09-12 14:18:48,857 - Start: rpmbuild sudo-config-1.0-2.src.rpm
+2019-09-12 14:18:52,358 - Mock Version: 1.2.14
+2019-09-12 14:18:52,615 - Start: dnf update
+2019-09-12 14:19:03,177 - Finish: dnf update
+2019-09-12 14:19:03,183 - Finish: chroot init
+2019-09-12 14:19:03,186 - Start: buildsrpm
+2019-09-12 14:19:03,195 - Start: rpmbuild -bs
+2019-09-12 14:19:03,236 - Finish: rpmbuild -bs
+2019-09-12 14:19:03,238 - Finish: buildsrpm
+2019-09-12 14:19:03,239 - Finish: run
+2019-09-12 14:19:06,490 - Mock Version: 1.2.14
+2019-09-12 14:19:06,731 - Start: dnf update
+2019-09-12 14:19:16,778 - Finish: dnf update
+2019-09-12 14:19:16,783 - Finish: chroot init
+2019-09-12 14:19:16,784 - Start: build phase for sudo-config-1.0-2.src.rpm
+2019-09-12 14:19:16,787 - Start: build setup for sudo-config-1.0-2.src.rpm
+2019-09-12 14:19:17,512 - Finish: build setup for sudo-config-1.0-2.src.rpm
+2019-09-12 14:19:17,512 - Start: rpmbuild sudo-config-1.0-2.src.rpm
+2019-09-12 14:19:17,613 - Finish: rpmbuild sudo-config-1.0-2.src.rpm
+2019-09-12 14:19:17,614 - Finish: build phase for sudo-config-1.0-2.src.rpm
+2019-09-12 14:19:17,615 - Finish: run

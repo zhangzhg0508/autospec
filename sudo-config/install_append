@@ -1,0 +1,1 @@
+install -m 440 sysadmin.sudo  %{buildroot}/%{_sysconfdir}/sudoers.d/sysadmin

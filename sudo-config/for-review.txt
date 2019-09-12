@@ -1,0 +1,11 @@
+From cf29f23ee46452b244b9fa4a50c21417c6930ba2 Mon Sep 17 00:00:00 2001
+From: fuyong <fuyong@neusoft.com>
+Date: Thu, 12 Sep 2019 14:19:17 +0800
+Subject: [PATCH sudo-config] sudo-config: Autospec creation for version 1.0
+
+---
+ install_append   |  7 -------
+ release          |  2 +-
+ sudo-config.spec | 12 +++---------
+ 3 files changed, 4 insertions(+), 17 deletions(-)
+
