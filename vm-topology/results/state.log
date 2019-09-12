@@ -1,0 +1,37 @@
+2019-09-11 14:18:18,517 - Mock Version: 1.2.14
+2019-09-11 14:18:18,778 - Start: dnf update
+2019-09-11 14:18:29,076 - Finish: dnf update
+2019-09-11 14:18:29,082 - Finish: chroot init
+2019-09-11 14:18:29,085 - Start: buildsrpm
+2019-09-11 14:18:29,093 - Start: rpmbuild -bs
+2019-09-11 14:18:29,134 - Finish: rpmbuild -bs
+2019-09-11 14:18:29,136 - Finish: buildsrpm
+2019-09-11 14:18:29,136 - Finish: run
+2019-09-11 14:18:32,318 - Mock Version: 1.2.14
+2019-09-11 14:18:32,578 - Start: dnf update
+2019-09-11 14:18:42,974 - Finish: dnf update
+2019-09-11 14:18:42,980 - Finish: chroot init
+2019-09-11 14:18:42,981 - Start: build phase for vm-topology-1.0-4.src.rpm
+2019-09-11 14:18:42,984 - Start: build setup for vm-topology-1.0-4.src.rpm
+2019-09-11 14:18:48,645 - Finish: build setup for vm-topology-1.0-4.src.rpm
+2019-09-11 14:18:48,645 - Start: rpmbuild vm-topology-1.0-4.src.rpm
+2019-09-11 14:18:54,345 - Mock Version: 1.2.14
+2019-09-11 14:18:54,600 - Start: dnf update
+2019-09-11 14:19:04,930 - Finish: dnf update
+2019-09-11 14:19:04,936 - Finish: chroot init
+2019-09-11 14:19:04,939 - Start: buildsrpm
+2019-09-11 14:19:04,947 - Start: rpmbuild -bs
+2019-09-11 14:19:04,990 - Finish: rpmbuild -bs
+2019-09-11 14:19:04,991 - Finish: buildsrpm
+2019-09-11 14:19:04,992 - Finish: run
+2019-09-11 14:19:08,162 - Mock Version: 1.2.14
+2019-09-11 14:19:08,421 - Start: dnf update
+2019-09-11 14:19:19,521 - Finish: dnf update
+2019-09-11 14:19:19,528 - Finish: chroot init
+2019-09-11 14:19:19,529 - Start: build phase for vm-topology-1.0-4.src.rpm
+2019-09-11 14:19:19,531 - Start: build setup for vm-topology-1.0-4.src.rpm
+2019-09-11 14:19:25,170 - Finish: build setup for vm-topology-1.0-4.src.rpm
+2019-09-11 14:19:25,170 - Start: rpmbuild vm-topology-1.0-4.src.rpm
+2019-09-11 14:19:25,702 - Finish: rpmbuild vm-topology-1.0-4.src.rpm
+2019-09-11 14:19:25,704 - Finish: build phase for vm-topology-1.0-4.src.rpm
+2019-09-11 14:19:25,704 - Finish: run

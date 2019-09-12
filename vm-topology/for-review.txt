@@ -1,0 +1,24 @@
+From b9fab509d6206c7506cf70e283760e7d56f268d4 Mon Sep 17 00:00:00 2001
+From: lgdfy <im.fuyong@gmail.com>
+Date: Wed, 11 Sep 2019 14:19:27 +0800
+Subject: [PATCH vm-topology] vm-topology: Autospec creation for version 1.0
+
+---
+ buildreq_add     | 2 +-
+ release          | 2 +-
+ vm-topology.spec | 5 ++---
+ 3 files changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/buildreq_add b/buildreq_add
+index f878ef4..29543eb 100644
+--- a/buildreq_add
++++ b/buildreq_add
+@@ -3,7 +3,7 @@
+ python
+ setuptools
+ pip
+-wheel
++#wheel
+ keyring
+ libvirt
+ buildreq-distutils
