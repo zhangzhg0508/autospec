@@ -1,0 +1,87 @@
+From ba7463b366974b3610462743504b752362570fbc Mon Sep 17 00:00:00 2001
+From: "zhiguo.zhang" <zhiguox.zhang@intel.com>
+Date: Thu, 12 Sep 2019 02:26:15 +0000
+Subject: [PATCH initscripts] python2-upgrade-python3
+
+---
+ po/xgettext_sh.py | 37 +++++++++++++--------------
+ 1 file changed, 18 insertions(+), 19 deletions(-)
+
+diff --git a/po/xgettext_sh.py b/po/xgettext_sh.py
+index 167ed5e..c0715a7 100755
+--- a/po/xgettext_sh.py
++++ b/po/xgettext_sh.py
+@@ -24,7 +24,6 @@
+ 
+ 
+ from sys import argv
+-from string import find, split, strip
+ import re
+ 
+ s = {}
+@@ -33,7 +32,7 @@ pattern = re.compile('[ =]\$"')
+ def xgettext(arq):
+ 	line = 0
+ 	f = open(arq, "r")
+-        while 1:
++	while 1:
+ 		l = f.readline()
+ 		if not l: break
+ 		line = line + 1
+@@ -53,36 +52,36 @@ def xgettext(arq):
+                                         p2 = p2 + 1
+                                     else:
+                                         break
+-                                text = l[p1:p2]
++				text = l[p1:p2]
+ 				#text = split(l[pos:], '"')[1]
+-				if s.has_key(text):
++				if text in s:
+ 				    s[text].append((arq, line))
+ 				else:
+ 				    s[text] = [(arq, line)]
+ 	f.close()
+ 
+ def print_header():
+-	print 'msgid ""' 
+-	print 'msgstr ""' 
+-	print '"Project-Id-Version: \\n"'
+-	print '"PO-Revision-Date: YYYY-MM-DD HH:MM TZO DST\\n"'
+-	print '"Last-Translator: \\n"'
+-	print '"Language-Team: <XX@li.org>\\n"'
+-	print '"MIME-Version: 1.0\\n"'
+-	print '"Content-Type: text/plain; charset=ISO-8859-1\\n"'
+-	print '"Content-Transfer-Encoding: 8-bit\\n"\n'
++	print ('msgid ""')
++	print ('msgstr ""') 
++	print ('"Project-Id-Version: \\n"')
++	print ('"PO-Revision-Date: YYYY-MM-DD HH:MM TZO DST\\n"')
++	print ('"Last-Translator: \\n"')
++	print ('"Language-Team: <XX@li.org>\\n"')
++	print ('"MIME-Version: 1.0\\n"')
++	print ('"Content-Type: text/plain; charset=ISO-8859-1\\n"')
++	print ('"Content-Transfer-Encoding: 8-bit\\n"\n')
+ 
+ def print_pot():
+ 	print_header()
+ 
+ 	for text in s.keys():
+-		print '#:',
++		print ('#:'),
+ 		for p in s[text]:
+-			print '%s:%d' % p,
+-		if find(text, '%') != -1:
+-			print '\n#, c-format',
+-		print '\nmsgid "' + text + '"'
+-		print 'msgstr ""\n'
++			print ('%s:%d' % p),
++		if text.find('%') != -1:
++			print ('\n#, c-format'),
++		print ('\nmsgid "' + text + '"')
++		print ('msgstr ""\n')
+ 				
+ def main():
+ 	for a in argv:
+-- 
+2.23.0
+

@@ -1,0 +1,14 @@
+support-interface-scriptlets.patch
+relocate-dhclient-leases-to-var-run.patch
+dhclient-restrict-interfaces-to-those-on-c.patch
+support-interface-promisc.patch
+0001-dhclient-remove-1-arg.patch
+0001-force-delay-check-link-down.patch
+run-ifdown-on-all-interfaces.patch
+sysconfig-affirmative-check-for-link-carrier.patch
+sysconfig-unsafe-usage-of-linkdelay-variable.patch
+ipv6-static-route-support.patch
+ifup-eth-stop-waiting-if-link-is-up.patch
+run-dhclient-as-daemon-for-ipv6.patch
+ifup-alias-scope.patch
+0001-python2-upgrade-python3.patch
