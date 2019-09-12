@@ -1,0 +1,11 @@
+From 0363ee59188d8de5eeacfa644533b1684700f06b Mon Sep 17 00:00:00 2001
+From: "yongx.fu" <yongx.fu@intel.com>
+Date: Wed, 14 Aug 2019 16:39:01 +0800
+Subject: [PATCH fm-mgr] fm-mgr: Autospec creation for version 1.0
+
+---
+ excludes    | 1 -
+ fm-mgr.spec | 6 +++---
+ release     | 2 +-
+ 3 files changed, 4 insertions(+), 5 deletions(-)
+

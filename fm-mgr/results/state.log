@@ -1,0 +1,37 @@
+2019-08-14 16:38:04,846 - Mock Version: 1.2.14
+2019-08-14 16:38:05,106 - Start: dnf update
+2019-08-14 16:38:15,557 - Finish: dnf update
+2019-08-14 16:38:15,562 - Finish: chroot init
+2019-08-14 16:38:15,565 - Start: buildsrpm
+2019-08-14 16:38:15,579 - Start: rpmbuild -bs
+2019-08-14 16:38:15,617 - Finish: rpmbuild -bs
+2019-08-14 16:38:15,619 - Finish: buildsrpm
+2019-08-14 16:38:15,620 - Finish: run
+2019-08-14 16:38:18,655 - Mock Version: 1.2.14
+2019-08-14 16:38:18,916 - Start: dnf update
+2019-08-14 16:38:28,937 - Finish: dnf update
+2019-08-14 16:38:28,942 - Finish: chroot init
+2019-08-14 16:38:28,944 - Start: build phase for fm-mgr-1.0-14.src.rpm
+2019-08-14 16:38:28,946 - Start: build setup for fm-mgr-1.0-14.src.rpm
+2019-08-14 16:38:30,648 - Finish: build setup for fm-mgr-1.0-14.src.rpm
+2019-08-14 16:38:30,648 - Start: rpmbuild fm-mgr-1.0-14.src.rpm
+2019-08-14 16:38:34,463 - Mock Version: 1.2.14
+2019-08-14 16:38:34,708 - Start: dnf update
+2019-08-14 16:38:45,031 - Finish: dnf update
+2019-08-14 16:38:45,036 - Finish: chroot init
+2019-08-14 16:38:45,039 - Start: buildsrpm
+2019-08-14 16:38:45,054 - Start: rpmbuild -bs
+2019-08-14 16:38:45,092 - Finish: rpmbuild -bs
+2019-08-14 16:38:45,094 - Finish: buildsrpm
+2019-08-14 16:38:45,095 - Finish: run
+2019-08-14 16:38:48,288 - Mock Version: 1.2.14
+2019-08-14 16:38:48,574 - Start: dnf update
+2019-08-14 16:38:58,692 - Finish: dnf update
+2019-08-14 16:38:58,697 - Finish: chroot init
+2019-08-14 16:38:58,699 - Start: build phase for fm-mgr-1.0-14.src.rpm
+2019-08-14 16:38:58,701 - Start: build setup for fm-mgr-1.0-14.src.rpm
+2019-08-14 16:39:00,383 - Finish: build setup for fm-mgr-1.0-14.src.rpm
+2019-08-14 16:39:00,384 - Start: rpmbuild fm-mgr-1.0-14.src.rpm
+2019-08-14 16:39:00,680 - Finish: rpmbuild fm-mgr-1.0-14.src.rpm
+2019-08-14 16:39:00,682 - Finish: build phase for fm-mgr-1.0-14.src.rpm
+2019-08-14 16:39:00,682 - Finish: run
