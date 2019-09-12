@@ -1,0 +1,5 @@
+pushd src
+install -m 600 influxdb.conf.pmon %{buildroot}%{_sysconfdir}/influxdb
+popd
+%clean
+rm -rf $RPM_BUILD_ROOT

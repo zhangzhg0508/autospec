@@ -1,0 +1,37 @@
+2019-09-12 08:50:12,847 - Mock Version: 1.2.14
+2019-09-12 08:50:13,111 - Start: dnf update
+2019-09-12 08:50:24,042 - Finish: dnf update
+2019-09-12 08:50:24,047 - Finish: chroot init
+2019-09-12 08:50:24,050 - Start: buildsrpm
+2019-09-12 08:50:24,057 - Start: rpmbuild -bs
+2019-09-12 08:50:24,096 - Finish: rpmbuild -bs
+2019-09-12 08:50:24,098 - Finish: buildsrpm
+2019-09-12 08:50:24,099 - Finish: run
+2019-09-12 08:50:27,212 - Mock Version: 1.2.14
+2019-09-12 08:50:27,473 - Start: dnf update
+2019-09-12 08:50:37,731 - Finish: dnf update
+2019-09-12 08:50:37,737 - Finish: chroot init
+2019-09-12 08:50:37,738 - Start: build phase for influxdb-extensions-1.0-1.src.rpm
+2019-09-12 08:50:37,740 - Start: build setup for influxdb-extensions-1.0-1.src.rpm
+2019-09-12 08:50:38,402 - Finish: build setup for influxdb-extensions-1.0-1.src.rpm
+2019-09-12 08:50:38,402 - Start: rpmbuild influxdb-extensions-1.0-1.src.rpm
+2019-09-12 08:50:41,634 - Mock Version: 1.2.14
+2019-09-12 08:50:41,882 - Start: dnf update
+2019-09-12 08:50:52,357 - Finish: dnf update
+2019-09-12 08:50:52,362 - Finish: chroot init
+2019-09-12 08:50:52,365 - Start: buildsrpm
+2019-09-12 08:50:52,371 - Start: rpmbuild -bs
+2019-09-12 08:50:52,409 - Finish: rpmbuild -bs
+2019-09-12 08:50:52,410 - Finish: buildsrpm
+2019-09-12 08:50:52,411 - Finish: run
+2019-09-12 08:50:55,610 - Mock Version: 1.2.14
+2019-09-12 08:50:55,861 - Start: dnf update
+2019-09-12 08:51:06,147 - Finish: dnf update
+2019-09-12 08:51:06,153 - Finish: chroot init
+2019-09-12 08:51:06,154 - Start: build phase for influxdb-extensions-1.0-1.src.rpm
+2019-09-12 08:51:06,156 - Start: build setup for influxdb-extensions-1.0-1.src.rpm
+2019-09-12 08:51:06,836 - Finish: build setup for influxdb-extensions-1.0-1.src.rpm
+2019-09-12 08:51:06,836 - Start: rpmbuild influxdb-extensions-1.0-1.src.rpm
+2019-09-12 08:51:06,952 - Finish: rpmbuild influxdb-extensions-1.0-1.src.rpm
+2019-09-12 08:51:06,953 - Finish: build phase for influxdb-extensions-1.0-1.src.rpm
+2019-09-12 08:51:06,954 - Finish: run
