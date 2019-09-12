@@ -1,0 +1,37 @@
+2019-09-12 15:09:07,547 - Mock Version: 1.2.14
+2019-09-12 15:09:07,797 - Start: dnf update
+2019-09-12 15:09:18,151 - Finish: dnf update
+2019-09-12 15:09:18,158 - Finish: chroot init
+2019-09-12 15:09:18,161 - Start: buildsrpm
+2019-09-12 15:09:18,166 - Start: rpmbuild -bs
+2019-09-12 15:09:18,206 - Finish: rpmbuild -bs
+2019-09-12 15:09:18,208 - Finish: buildsrpm
+2019-09-12 15:09:18,208 - Finish: run
+2019-09-12 15:09:21,396 - Mock Version: 1.2.14
+2019-09-12 15:09:21,664 - Start: dnf update
+2019-09-12 15:09:31,874 - Finish: dnf update
+2019-09-12 15:09:31,880 - Finish: chroot init
+2019-09-12 15:09:31,881 - Start: build phase for stx-ssl-1.0.0-1.src.rpm
+2019-09-12 15:09:31,884 - Start: build setup for stx-ssl-1.0.0-1.src.rpm
+2019-09-12 15:09:32,557 - Finish: build setup for stx-ssl-1.0.0-1.src.rpm
+2019-09-12 15:09:32,557 - Start: rpmbuild stx-ssl-1.0.0-1.src.rpm
+2019-09-12 15:09:35,989 - Mock Version: 1.2.14
+2019-09-12 15:09:36,257 - Start: dnf update
+2019-09-12 15:09:46,399 - Finish: dnf update
+2019-09-12 15:09:46,405 - Finish: chroot init
+2019-09-12 15:09:46,408 - Start: buildsrpm
+2019-09-12 15:09:46,413 - Start: rpmbuild -bs
+2019-09-12 15:09:46,452 - Finish: rpmbuild -bs
+2019-09-12 15:09:46,453 - Finish: buildsrpm
+2019-09-12 15:09:46,454 - Finish: run
+2019-09-12 15:09:49,555 - Mock Version: 1.2.14
+2019-09-12 15:09:49,825 - Start: dnf update
+2019-09-12 15:09:59,974 - Finish: dnf update
+2019-09-12 15:09:59,980 - Finish: chroot init
+2019-09-12 15:09:59,981 - Start: build phase for stx-ssl-1.0.0-1.src.rpm
+2019-09-12 15:09:59,984 - Start: build setup for stx-ssl-1.0.0-1.src.rpm
+2019-09-12 15:10:00,685 - Finish: build setup for stx-ssl-1.0.0-1.src.rpm
+2019-09-12 15:10:00,685 - Start: rpmbuild stx-ssl-1.0.0-1.src.rpm
+2019-09-12 15:10:00,873 - Finish: rpmbuild stx-ssl-1.0.0-1.src.rpm
+2019-09-12 15:10:00,875 - Finish: build phase for stx-ssl-1.0.0-1.src.rpm
+2019-09-12 15:10:00,876 - Finish: run
