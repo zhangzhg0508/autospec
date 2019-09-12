@@ -1,0 +1,20 @@
+2019-08-21 10:33:58,739 - Mock Version: 1.2.14
+2019-08-21 10:33:59,004 - Start: dnf update
+2019-08-21 10:34:10,327 - Finish: dnf update
+2019-08-21 10:34:10,333 - Finish: chroot init
+2019-08-21 10:34:10,336 - Start: buildsrpm
+2019-08-21 10:34:10,347 - Start: rpmbuild -bs
+2019-08-21 10:34:10,387 - Finish: rpmbuild -bs
+2019-08-21 10:34:10,389 - Finish: buildsrpm
+2019-08-21 10:34:10,389 - Finish: run
+2019-08-21 10:34:13,523 - Mock Version: 1.2.14
+2019-08-21 10:34:13,784 - Start: dnf update
+2019-08-21 10:34:24,276 - Finish: dnf update
+2019-08-21 10:34:24,281 - Finish: chroot init
+2019-08-21 10:34:24,283 - Start: build phase for sm-common-1.0.0-3.src.rpm
+2019-08-21 10:34:24,285 - Start: build setup for sm-common-1.0.0-3.src.rpm
+2019-08-21 10:34:25,183 - Finish: build setup for sm-common-1.0.0-3.src.rpm
+2019-08-21 10:34:25,183 - Start: rpmbuild sm-common-1.0.0-3.src.rpm
+2019-08-21 10:34:28,566 - Finish: rpmbuild sm-common-1.0.0-3.src.rpm
+2019-08-21 10:34:28,567 - Finish: build phase for sm-common-1.0.0-3.src.rpm
+2019-08-21 10:34:28,568 - Finish: run

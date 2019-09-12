@@ -1,0 +1,291 @@
+Mock Version: 1.2.14
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/sm-common.spec'], chrootPath='/var/lib/mock/clear-sm-common/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7fdbbbe4aa90>timeout=0uid=1000gid=1000user='mockbuild'printOutput=True)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/sm-common.spec'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/sm-common-1.0.0-3.src.rpm
+Child return code was: 0
+LEAVE do --> 
+
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/sm-common.spec '], chrootPath='/var/lib/mock/clear-sm-common/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7fdbbbe4aa90>timeout=0uid=1000gid=1000user='mockbuild'private_network=TrueprintOutput=True)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/sm-common.spec '] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.6SIXoN
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
++ rm -rf sm-common-1.0.0
++ /usr/bin/gzip -dc /builddir/build/SOURCES/sm-common-1.0.0.tar.gz
++ /usr/bin/tar -xf -
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd sm-common-1.0.0
++ /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ echo 'Patch #1 (0001-fix-snprintf-compiler-error.patch):'
+Patch #1 (0001-fix-snprintf-compiler-error.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0001-fix-snprintf-compiler-error.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file src/sm_node_utils.c
++ echo 'Patch #2 (0002-change-sysconfig-dir.patch):'
+Patch #2 (0002-change-sysconfig-dir.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0002-change-sysconfig-dir.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file scripts/sm-eru.conf
+patching file scripts/sm-eru.service
+patching file scripts/sm-watchdog.conf
+patching file scripts/sm-watchdog.service
++ exit 0
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.iYlBbM
++ umask 022
++ cd /builddir/build/BUILD
++ cd sm-common-1.0.0
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CFLAGS
++ http_proxy=http://127.0.0.1:9/
++ export http_proxy
++ https_proxy=http://127.0.0.1:9/
++ export https_proxy
++ ftp_proxy=http://127.0.0.1:9/
++ export ftp_proxy
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export no_proxy
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CXXFLAGS
++ FFLAGS='-g -O3 -feliminate-unused-debug-types  -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -m64 -fasynchronous-unwind-tables -Wp,-D_REENTRANT -ftree-loop-distribute-patterns -Wl,-z -Wl,now -Wl,-z -Wl,relro -malign-data=abi -fno-semantic-interposition -ftree-vectorize  -ftree-loop-vectorize -Wl,--enable-new-dtags '
++ export FFLAGS
++ LD_AS_NEEDED=1
++ export LD_AS_NEEDED
++ PKG_CONFIG_LIBDIR=/usr/lib64/pkgconfig
++ export PKG_CONFIG_LIBDIR
++ PATH=/usr/lib64/ccache/bin:/usr/local/bin:/usr/bin
++ export PATH
++ VER=1.0.0
+++ echo 1.0.0
+++ awk -F . '{print $1}'
++ MAJOR=1
+++ echo 1.0.0
+++ awk -F . '{print $2}'
++ MINOR=0
++ export http_proxy=http://127.0.0.1:9/
++ http_proxy=http://127.0.0.1:9/
++ export https_proxy=http://127.0.0.1:9/
++ https_proxy=http://127.0.0.1:9/
++ export no_proxy=localhost,127.0.0.1,0.0.0.0
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export LANG=C.UTF-8
++ LANG=C.UTF-8
++ export SOURCE_DATE_EPOCH=1566292839
++ SOURCE_DATE_EPOCH=1566292839
++ export GCC_IGNORE_WERROR=1
++ GCC_IGNORE_WERROR=1
++ export AR=gcc-ar
++ AR=gcc-ar
++ export RANLIB=gcc-ranlib
++ RANLIB=gcc-ranlib
++ export NM=gcc-nm
++ NM=gcc-nm
++ export 'CFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ export 'FCFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FCFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'FFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'CXXFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ make -j4 VER=1.0.0 VER_MJR=1
+make[1]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[1]: Entering directory '/builddir/build/BUILD/sm-common-1.0.0/src'
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I. -fPIC -g -O2 -Wall -Werror -std=c++11 -D__STDC_FORMAT_MACROS -DSW_VERSION=\"\" -Wformat -Wformat-security -c sm_types.c -o sm_types.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I. -fPIC -g -O2 -Wall -Werror -std=c++11 -D__STDC_FORMAT_MACROS -DSW_VERSION=\"\" -Wformat -Wformat-security -c sm_debug.c -o sm_debug.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I. -fPIC -g -O2 -Wall -Werror -std=c++11 -D__STDC_FORMAT_MACROS -DSW_VERSION=\"\" -Wformat -Wformat-security -c sm_debug_thread.c -o sm_debug_thread.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I. -fPIC -g -O2 -Wall -Werror -std=c++11 -D__STDC_FORMAT_MACROS -DSW_VERSION=\"\" -Wformat -Wformat-security -c sm_trap.c -o sm_trap.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I. -fPIC -g -O2 -Wall -Werror -std=c++11 -D__STDC_FORMAT_MACROS -DSW_VERSION=\"\" -Wformat -Wformat-security -c sm_trap_thread.c -o sm_trap_thread.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I. -fPIC -g -O2 -Wall -Werror -std=c++11 -D__STDC_FORMAT_MACROS -DSW_VERSION=\"\" -Wformat -Wformat-security -c sm_thread_health.c -o sm_thread_health.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I. -fPIC -g -O2 -Wall -Werror -std=c++11 -D__STDC_FORMAT_MACROS -DSW_VERSION=\"\" -Wformat -Wformat-security -c sm_utils.c -o sm_utils.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I. -fPIC -g -O2 -Wall -Werror -std=c++11 -D__STDC_FORMAT_MACROS -DSW_VERSION=\"\" -Wformat -Wformat-security -c sm_node_utils.c -o sm_node_utils.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I. -fPIC -g -O2 -Wall -Werror -std=c++11 -D__STDC_FORMAT_MACROS -DSW_VERSION=\"\" -Wformat -Wformat-security -c sm_node_stats.c -o sm_node_stats.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I. -fPIC -g -O2 -Wall -Werror -std=c++11 -D__STDC_FORMAT_MACROS -DSW_VERSION=\"\" -Wformat -Wformat-security -c sm_selobj.c -o sm_selobj.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I. -fPIC -g -O2 -Wall -Werror -std=c++11 -D__STDC_FORMAT_MACROS -DSW_VERSION=\"\" -Wformat -Wformat-security -c sm_time.c -o sm_time.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I. -fPIC -g -O2 -Wall -Werror -std=c++11 -D__STDC_FORMAT_MACROS -DSW_VERSION=\"\" -Wformat -Wformat-security -c sm_timer.c -o sm_timer.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I. -fPIC -g -O2 -Wall -Werror -std=c++11 -D__STDC_FORMAT_MACROS -DSW_VERSION=\"\" -Wformat -Wformat-security -c sm_netlink.c -o sm_netlink.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I. -fPIC -g -O2 -Wall -Werror -std=c++11 -D__STDC_FORMAT_MACROS -DSW_VERSION=\"\" -Wformat -Wformat-security -c sm_hw.c -o sm_hw.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I. -fPIC -g -O2 -Wall -Werror -std=c++11 -D__STDC_FORMAT_MACROS -DSW_VERSION=\"\" -Wformat -Wformat-security -c sm_uuid.c -o sm_uuid.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I. -fPIC -g -O2 -Wall -Werror -std=c++11 -D__STDC_FORMAT_MACROS -DSW_VERSION=\"\" -Wformat -Wformat-security -c sm_sha512.c -o sm_sha512.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I. -fPIC -g -O2 -Wall -Werror -std=c++11 -D__STDC_FORMAT_MACROS -DSW_VERSION=\"\" -Wformat -Wformat-security -c sm_eru_db.c -o sm_eru_db.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I. -fPIC -g -O2 -Wall -Werror -std=c++11 -D__STDC_FORMAT_MACROS -DSW_VERSION=\"\" -Wformat -Wformat-security -c sm_util_types.c -o sm_util_types.o
+g++ -shared -rdynamic -Wl,--start-group -lsqlite3 -lglib-2.0 -lgmodule-2.0 -luuid -lrt -lpthread -Wl,-soname,libsm_common.so.1 -o libsm_common.so.1.0.0 sm_types.o sm_debug.o sm_debug_thread.o sm_trap.o sm_trap_thread.o sm_thread_health.o sm_utils.o sm_node_utils.o sm_node_stats.o sm_selobj.o sm_time.o sm_timer.o sm_netlink.o sm_hw.o sm_uuid.o sm_sha512.o sm_eru_db.o sm_util_types.o
+ln -sf libsm_common.so.1.0.0 libsm_common.so.1
+ln -sf libsm_common.so.1 libsm_common.so
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I. -fPIC -g -O2 -Wall -Werror -std=c++11 -D__STDC_FORMAT_MACROS -DSW_VERSION=\"\" -Wformat -Wformat-security sm_watchdog_nfs.c -shared -rdynamic -lsqlite3 -lglib-2.0 -lgmodule-2.0 -luuid -lrt -lpthread -L./ -lsm_common -Wl,-soname,libsm_watchdog_nfs.so.1 -o libsm_watchdog_nfs.so.1.0.0
+ln -sf libsm_watchdog_nfs.so.1.0.0 libsm_watchdog_nfs.so.1
+ln -sf libsm_watchdog_nfs.so.1 libsm_watchdog_nfs.so
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I. -fPIC -g -O2 -Wall -Werror -std=c++11 -D__STDC_FORMAT_MACROS -DSW_VERSION=\"\" -Wformat -Wformat-security sm_types.o sm_debug.o sm_debug_thread.o sm_trap.o sm_trap_thread.o sm_thread_health.o sm_utils.o sm_node_utils.o sm_node_stats.o sm_selobj.o sm_time.o sm_timer.o sm_netlink.o sm_hw.o sm_uuid.o sm_sha512.o sm_eru_db.o sm_util_types.o sm_watchdog_module.c sm_watchdog_process.c sm_watchdog_main.c -lsqlite3 -lglib-2.0 -lgmodule-2.0 -luuid -lrt -lpthread -L./ -lsm_common -o sm_watchdog
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I. -fPIC -g -O2 -Wall -Werror -std=c++11 -D__STDC_FORMAT_MACROS -DSW_VERSION=\"\" -Wformat -Wformat-security sm_types.o sm_debug.o sm_debug_thread.o sm_trap.o sm_trap_thread.o sm_thread_health.o sm_utils.o sm_node_utils.o sm_node_stats.o sm_selobj.o sm_time.o sm_timer.o sm_netlink.o sm_hw.o sm_uuid.o sm_sha512.o sm_eru_db.o sm_util_types.o sm_eru_process.c sm_eru_main.c -lsqlite3 -lglib-2.0 -lgmodule-2.0 -luuid -lrt -lpthread -L./ -lsm_common -o sm_eru
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I. -fPIC -g -O2 -Wall -Werror -std=c++11 -D__STDC_FORMAT_MACROS -DSW_VERSION=\"\" -Wformat -Wformat-security sm_types.o sm_debug.o sm_debug_thread.o sm_trap.o sm_trap_thread.o sm_thread_health.o sm_utils.o sm_node_utils.o sm_node_stats.o sm_selobj.o sm_time.o sm_timer.o sm_netlink.o sm_hw.o sm_uuid.o sm_sha512.o sm_eru_db.o sm_util_types.o sm_eru_dump.c -lsqlite3 -lglib-2.0 -lgmodule-2.0 -luuid -lrt -lpthread -L./ -lsm_common -o sm_eru_dump
+make[1]: Leaving directory '/builddir/build/BUILD/sm-common-1.0.0/src'
++ exit 0
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.4Df5CP
++ umask 022
++ cd /builddir/build/BUILD
++ cd sm-common-1.0.0
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ rm -rf /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64
++ mkdir -p /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64
++ export SOURCE_DATE_EPOCH=1566292839
++ SOURCE_DATE_EPOCH=1566292839
++ rm -rf /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64
++ VER=1.0.0
+++ echo 1.0.0
+++ awk -F . '{print $1}'
++ MAJOR=1
+++ echo 1.0.0
+++ awk -F . '{print $2}'
++ MINOR=0
++ make DEST_DIR=/builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64 BIN_DIR=/usr/bin UNIT_DIR=/usr/lib/systemd/system LIB_DIR=/usr/lib64 INC_DIR=/usr/include VER=1.0.0 VER_MJR=1 install
+make[1]: Entering directory '/builddir/build/BUILD/sm-common-1.0.0/src'
+# install of these 3 are in the .spec file so that they can be
+# renamed with '-' like they are in the bitbake file.
+#
+# install -d /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/bin
+# install sm_watchdog sm_eru sm_eru_dump /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/bin
+install -d /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/lib64
+install libsm_common.so.1.0.0 /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/lib64
+cp -P libsm_common.so libsm_common.so.1 /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/lib64
+install -d /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/include
+install -m 644 *.h /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/include
+install -d /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/var/lib/sm/watchdog/modules
+install libsm_watchdog_nfs.so.1.0.0 /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/var/lib/sm/watchdog/modules
+cp -P libsm_watchdog_nfs.so libsm_watchdog_nfs.so.1  /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/var/lib/sm/watchdog/modules
+make[1]: Leaving directory '/builddir/build/BUILD/sm-common-1.0.0/src'
+make[1]: Entering directory '/builddir/build/BUILD/sm-common-1.0.0/scripts'
+install -d /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/lib/systemd/system
+install -m 644 *.service /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/lib/systemd/system 
+install -d /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/etc/init.d
+install sm-watchdog sm-eru /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/etc/init.d
+install -d /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/etc/pmon.d
+install *.conf /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/etc/pmon.d
+make[1]: Leaving directory '/builddir/build/BUILD/sm-common-1.0.0/scripts'
++ install -m 750 -d /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr
++ install -m 750 -d /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/bin
++ install -m 750 -p -D /builddir/build/BUILD/sm-common-1.0.0/src/sm_eru /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/bin/sm-eru
++ install -m 750 -p -D /builddir/build/BUILD/sm-common-1.0.0/src/sm_eru_dump /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/bin/sm-eru-dump
++ install -m 750 -p -D /builddir/build/BUILD/sm-common-1.0.0/src/sm_watchdog /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/bin/sm-watchdog
++ install -m 644 -p -D /builddir/build/BUILD/sm-common-1.0.0/scripts/sm-eru.service /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/lib/systemd/system/sm-eru.service
++ install -m 644 -p -D /builddir/build/BUILD/sm-common-1.0.0/scripts/sm-watchdog.service /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/lib/systemd/system/sm-watchdog.service
++ install -m 750 -d /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/local/etc/pmon.d
++ install -m 640 -p -D /builddir/build/BUILD/sm-common-1.0.0/scripts/sm-eru.conf /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/local/etc/pmon.d/sm-eru.conf
++ install -m 640 -p -D /builddir/build/BUILD/sm-common-1.0.0/scripts/sm-watchdog.conf /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/local/etc/pmon.d/sm-watchdog.conf
++ install -m 750 -p -D /builddir/build/BUILD/sm-common-1.0.0/scripts/sm-eru /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/local/etc/init.d/sm-eru
++ install -m 750 -p -D /builddir/build/BUILD/sm-common-1.0.0/scripts/sm-watchdog /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/local/etc/init.d/sm-watchdog
++ rm -f /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/share/info/dir
+++ find /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64 -path 'etc/*' '!' -type d
++ test -z ''
++ rm -rf /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/etc/init.d /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/etc/pmon.d
++ rm -rf '/builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/share/factory/*'
++ find /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64 -name __pycache__
++ xargs rm -rf --
++ '[' -d /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/share/mime ']'
+++ getconf _NPROCESSORS_ONLN
++ RPM_XARGS_PFLAG=-P4
++ find /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64 -name '*.so.avx512' -print0
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -5
++ find /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/lib64/haswell/avx512_1 -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/lib64/haswell/avx512_1’: No such file or directory
++ find /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64 -name '*.so.avx2' -print0
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -2
++ find /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/lib64/haswell '!' -path '/usr/lib64/haswell/avx512_1/*' -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/lib64/haswell’: No such file or directory
++ find /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/lib64/ -maxdepth 1 -name '*.so*' -type f -print0
++ xargs -0rtn1 -P4 /usr/lib/rpm/clr/brp-create-abi
++ sort -u
+/usr/lib/rpm/clr/brp-create-abi /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/lib64/libsm_common.so.1.0.0 
++ /usr/lib/rpm/find-debuginfo.sh --strict-build-id /builddir/build/BUILD/sm-common-1.0.0
+extracting debug info from /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/var/lib/sm/watchdog/modules/libsm_watchdog_nfs.so.1.0.0
+extracting debug info from /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/lib64/libsm_common.so.1.0.0
+extracting debug info from /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/bin/sm-eru
+extracting debug info from /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/bin/sm-watchdog
+extracting debug info from /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/bin/sm-eru-dump
+symlinked /usr/lib/debug/var/lib/sm/watchdog/modules/libsm_watchdog_nfs.so.1.0.0.debug to /usr/lib/debug/var/lib/sm/watchdog/modules/libsm_watchdog_nfs.so.1.debug
+symlinked /usr/lib/debug/var/lib/sm/watchdog/modules/libsm_watchdog_nfs.so.1.0.0.debug to /usr/lib/debug/var/lib/sm/watchdog/modules/libsm_watchdog_nfs.so.debug
+symlinked /usr/lib/debug/usr/lib64/libsm_common.so.1.0.0.debug to /usr/lib/debug/usr/lib64/libsm_common.so.1.debug
+symlinked /usr/lib/debug/usr/lib64/libsm_common.so.1.0.0.debug to /usr/lib/debug/usr/lib64/libsm_common.so.debug
+cpio: glibc-2.30/csu: Cannot stat: No such file or directory
+cpio: glibc-2.30/csu/elf-init.c: Cannot stat: No such file or directory
+cpio: glibc-2.30/csu/init.c: Cannot stat: No such file or directory
+cpio: glibc-2.30/sysdeps/x86_64/crti.S: Cannot stat: No such file or directory
+cpio: glibc-2.30/sysdeps/x86_64/crtn.S: Cannot stat: No such file or directory
+cpio: glibc-2.30/sysdeps/x86_64/start.S: Cannot stat: No such file or directory
+882 blocks
++ '[' -d /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/lib/debug ']'
++ mkdir -p /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/share
++ '[' -d /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/lib/debug ']'
++ mv /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/lib/debug /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/share
++ '[' -d /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/src/debug ']'
++ mv /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/src/debug /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/share/debug/src
++ '[' -d /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/lib/debug.force ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64/usr/src/debug.force ']'
++ :
++ /usr/lib/rpm/check-buildroot
++ /usr/lib/rpm/clr/brp-strip-static-archive /usr/bin/strip
++ /usr/lib/rpm/clr/brp-strip-comment-note /usr/bin/strip /usr/bin/objdump
++ /usr/lib/rpm/clr/brp-python-bytecompile
++ find /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64 -print0
++ xargs -0 touch -h -d @1566292839
++ /usr/lib/rpm/clr/brp-java-repack-jars
+Processing files: sm-common-1.0.0-3.x86_64
+Provides: libsm_watchdog_nfs.so.1()(64bit) sm-common = 1.0.0-3 sm-common(x86-64) = 1.0.0-3
+Requires(interp): /bin/sh
+Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+Requires(post): /bin/sh
+Requires: /bin/sh libc.so.6()(64bit) libc.so.6(GLIBC_2.2.5)(64bit) libpthread.so.0()(64bit) libpthread.so.0(GLIBC_2.2.5)(64bit) libsm_common.so.1()(64bit)
+Processing files: sm-common-bin-1.0.0-3.x86_64
+Provides: sm-common-bin = 1.0.0-3 sm-common-bin(x86-64) = 1.0.0-3
+Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+Requires: libc.so.6()(64bit) libc.so.6(GLIBC_2.14)(64bit) libc.so.6(GLIBC_2.17)(64bit) libc.so.6(GLIBC_2.2.5)(64bit) libc.so.6(GLIBC_2.3)(64bit) libc.so.6(GLIBC_2.7)(64bit) libc.so.6(GLIBC_2.8)(64bit) libglib-2.0.so.0()(64bit) libgmodule-2.0.so.0()(64bit) libpthread.so.0()(64bit) libpthread.so.0(GLIBC_2.12)(64bit) libpthread.so.0(GLIBC_2.2.5)(64bit) libpthread.so.0(GLIBC_2.3.3)(64bit) libstdc++.so.6()(64bit) libstdc++.so.6(CXXABI_1.3)(64bit) libstdc++.so.6(GLIBCXX_3.4)(64bit) libuuid.so.1()(64bit) libuuid.so.1(UUID_1.0)(64bit)
+Processing files: sm-common-dev-1.0.0-3.x86_64
+Provides: sm-common-dev = 1.0.0-3 sm-common-dev(x86-64) = 1.0.0-3 sm-common-devel = 1.0.0-3
+Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+Processing files: sm-common-extras-1.0.0-3.x86_64
+Provides: sm-common-extras = 1.0.0-3 sm-common-extras(x86-64) = 1.0.0-3
+Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+Requires: /bin/sh libc.so.6()(64bit) libc.so.6(GLIBC_2.14)(64bit) libc.so.6(GLIBC_2.17)(64bit) libc.so.6(GLIBC_2.2.5)(64bit) libc.so.6(GLIBC_2.3)(64bit) libc.so.6(GLIBC_2.7)(64bit) libc.so.6(GLIBC_2.8)(64bit) libpthread.so.0()(64bit) libpthread.so.0(GLIBC_2.12)(64bit) libpthread.so.0(GLIBC_2.2.5)(64bit) libpthread.so.0(GLIBC_2.3.3)(64bit) libstdc++.so.6()(64bit) libstdc++.so.6(CXXABI_1.3)(64bit) libstdc++.so.6(GLIBCXX_3.4)(64bit) libuuid.so.1()(64bit) libuuid.so.1(UUID_1.0)(64bit)
+Processing files: sm-common-lib-1.0.0-3.x86_64
+Provides: libsm_common.so.1()(64bit) sm-common-lib = 1.0.0-3 sm-common-lib(x86-64) = 1.0.0-3
+Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+Requires: libc.so.6()(64bit) libc.so.6(GLIBC_2.14)(64bit) libc.so.6(GLIBC_2.17)(64bit) libc.so.6(GLIBC_2.2.5)(64bit) libc.so.6(GLIBC_2.3)(64bit) libc.so.6(GLIBC_2.7)(64bit) libc.so.6(GLIBC_2.8)(64bit) libpthread.so.0()(64bit) libpthread.so.0(GLIBC_2.12)(64bit) libpthread.so.0(GLIBC_2.2.5)(64bit) libpthread.so.0(GLIBC_2.3.3)(64bit) libstdc++.so.6()(64bit) libstdc++.so.6(CXXABI_1.3)(64bit) libstdc++.so.6(GLIBCXX_3.4)(64bit) libuuid.so.1()(64bit) libuuid.so.1(UUID_1.0)(64bit)
+Processing files: sm-common-services-1.0.0-3.x86_64
+Provides: sm-common-services = 1.0.0-3 sm-common-services(x86-64) = 1.0.0-3
+Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+Processing files: sm-common-debuginfo-1.0.0-3.x86_64
+Processing files: sm-common-abi-1.0.0-3.x86_64
+Checking for unpackaged file(s): /usr/lib/rpm/check-files /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64
+warning: Empty %files file /builddir/build/BUILD/sm-common-1.0.0/abifiles.list
+Wrote: /builddir/build/RPMS/sm-common-1.0.0-3.x86_64.rpm
+Wrote: /builddir/build/RPMS/sm-common-bin-1.0.0-3.x86_64.rpm
+Wrote: /builddir/build/RPMS/sm-common-dev-1.0.0-3.x86_64.rpm
+Wrote: /builddir/build/RPMS/sm-common-extras-1.0.0-3.x86_64.rpm
+Wrote: /builddir/build/RPMS/sm-common-lib-1.0.0-3.x86_64.rpm
+Wrote: /builddir/build/RPMS/sm-common-services-1.0.0-3.x86_64.rpm
+Wrote: /builddir/build/RPMS/sm-common-debuginfo-1.0.0-3.x86_64.rpm
+Wrote: /builddir/build/RPMS/sm-common-abi-1.0.0-3.x86_64.rpm
+Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.6bGMyM
++ umask 022
++ cd /builddir/build/BUILD
++ cd sm-common-1.0.0
++ /usr/bin/rm -rf /builddir/build/BUILDROOT/sm-common-1.0.0-3.x86_64
++ exit 0
+Child return code was: 0
+LEAVE do --> 
+

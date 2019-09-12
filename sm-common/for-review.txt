@@ -1,0 +1,42 @@
+From 91694928a7b1cdba3b83e87b8fb91f761e4fe9ad Mon Sep 17 00:00:00 2001
+From: "yongx.fu" <yongx.fu@intel.com>
+Date: Tue, 20 Aug 2019 17:20:39 +0800
+Subject: [PATCH sm-common] sm-common: Autospec creation for version 1.0.0
+
+---
+ release        |  2 +-
+ series         |  2 ++
+ sm-common.spec | 10 +++++++---
+ 3 files changed, 10 insertions(+), 4 deletions(-)
+ create mode 100644 series
+
+diff --git a/series b/series
+new file mode 100644
+index 0000000..e782402
+--- /dev/null
++++ b/series
+@@ -0,0 +1,2 @@
++0001-fix-snprintf-compiler-error.patch
++0002-change-sysconfig-dir.patch
+diff --git a/sm-common.spec b/sm-common.spec
+index 838c97b..e90b1c8 100644
+--- a/sm-common.spec
++++ b/sm-common.spec
+@@ -25,6 +25,8 @@ BuildRequires : systemd
+ BuildRequires : systemd-dev
+ BuildRequires : util-linux
+ BuildRequires : util-linux-dev
++Patch1: 0001-fix-snprintf-compiler-error.patch
++Patch2: 0002-change-sysconfig-dir.patch
+ 
+ %description
+ No detailed description available
+@@ -76,6 +78,8 @@ services components for the sm-common package.
+ 
+ %prep
+ %setup -q -n sm-common-1.0.0
++%patch1 -p1
++%patch2 -p1
+ 
+ %build
+ ## build_prepend content
