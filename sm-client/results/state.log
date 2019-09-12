@@ -1,0 +1,37 @@
+2019-08-21 16:32:27,368 - Mock Version: 1.2.14
+2019-08-21 16:32:27,618 - Start: dnf update
+2019-08-21 16:32:38,536 - Finish: dnf update
+2019-08-21 16:32:38,542 - Finish: chroot init
+2019-08-21 16:32:38,544 - Start: buildsrpm
+2019-08-21 16:32:38,552 - Start: rpmbuild -bs
+2019-08-21 16:32:38,591 - Finish: rpmbuild -bs
+2019-08-21 16:32:38,592 - Finish: buildsrpm
+2019-08-21 16:32:38,593 - Finish: run
+2019-08-21 16:32:41,685 - Mock Version: 1.2.14
+2019-08-21 16:32:41,943 - Start: dnf update
+2019-08-21 16:32:52,316 - Finish: dnf update
+2019-08-21 16:32:52,322 - Finish: chroot init
+2019-08-21 16:32:52,323 - Start: build phase for sm-client-1.0-2.src.rpm
+2019-08-21 16:32:52,325 - Start: build setup for sm-client-1.0-2.src.rpm
+2019-08-21 16:32:53,668 - Finish: build setup for sm-client-1.0-2.src.rpm
+2019-08-21 16:32:53,668 - Start: rpmbuild sm-client-1.0-2.src.rpm
+2019-08-21 16:32:58,127 - Mock Version: 1.2.14
+2019-08-21 16:32:58,373 - Start: dnf update
+2019-08-21 16:33:09,446 - Finish: dnf update
+2019-08-21 16:33:09,452 - Finish: chroot init
+2019-08-21 16:33:09,455 - Start: buildsrpm
+2019-08-21 16:33:09,464 - Start: rpmbuild -bs
+2019-08-21 16:33:09,507 - Finish: rpmbuild -bs
+2019-08-21 16:33:09,508 - Finish: buildsrpm
+2019-08-21 16:33:09,509 - Finish: run
+2019-08-21 16:33:12,706 - Mock Version: 1.2.14
+2019-08-21 16:33:12,962 - Start: dnf update
+2019-08-21 16:33:23,590 - Finish: dnf update
+2019-08-21 16:33:23,598 - Finish: chroot init
+2019-08-21 16:33:23,599 - Start: build phase for sm-client-1.0-2.src.rpm
+2019-08-21 16:33:23,601 - Start: build setup for sm-client-1.0-2.src.rpm
+2019-08-21 16:33:25,057 - Finish: build setup for sm-client-1.0-2.src.rpm
+2019-08-21 16:33:25,057 - Start: rpmbuild sm-client-1.0-2.src.rpm
+2019-08-21 16:33:26,246 - Finish: rpmbuild sm-client-1.0-2.src.rpm
+2019-08-21 16:33:26,247 - Finish: build phase for sm-client-1.0-2.src.rpm
+2019-08-21 16:33:26,248 - Finish: run
