@@ -1,0 +1,504 @@
+From 721a82caa37c0cdcca8cee17d04f4db103799862 Mon Sep 17 00:00:00 2001
+From: "yongx.fu" <yongx.fu@intel.com>
+Date: Wed, 21 Aug 2019 11:11:24 +0800
+Subject: [PATCH sm] sm: Autospec creation for version 1.0.0
+
+---
+ .gitignore                                    |  14 ++
+ 0001-fix-snprintf-compiler-error.patch        |  50 ++++++
+ 0002-put-lsqlite3-flag-after-lsm_db.patch     |  25 +++
+ 0003-change-sysconfig-dir-to-clear-path.patch | 159 ++++++++++++++++++
+ Makefile                                      |   5 +
+ build_prepend                                 |   2 +
+ buildreq_add                                  |  15 ++
+ buildreq_ban                                  |   2 +
+ excludes                                      |   2 +
+ install_append                                |   3 +
+ install_macro                                 |   1 +
+ install_prepend                               |   4 +
+ options.conf                                  |  58 +++++++
+ pkgconfig_add                                 |   2 +
+ pkgconfig_ban                                 |   2 +
+ release                                       |   1 +
+ requires_add                                  |   7 +
+ requires_ban                                  |   2 +
+ series                                        |   3 +
+ sm.spec                                       | 116 +++++++++++++
+ testresults                                   |   5 +
+ upstream                                      |   1 +
+ used_libs                                     |  10 ++
+ 23 files changed, 489 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 0001-fix-snprintf-compiler-error.patch
+ create mode 100644 0002-put-lsqlite3-flag-after-lsm_db.patch
+ create mode 100644 0003-change-sysconfig-dir-to-clear-path.patch
+ create mode 100644 Makefile
+ create mode 100644 build_prepend
+ create mode 100644 buildreq_add
+ create mode 100644 buildreq_ban
+ create mode 100644 excludes
+ create mode 100644 install_append
+ create mode 100644 install_macro
+ create mode 100644 install_prepend
+ create mode 100644 options.conf
+ create mode 100644 pkgconfig_add
+ create mode 100644 pkgconfig_ban
+ create mode 100644 release
+ create mode 100644 requires_add
+ create mode 100644 requires_ban
+ create mode 100644 series
+ create mode 100644 sm.spec
+ create mode 100644 testresults
+ create mode 100644 upstream
+ create mode 100644 used_libs
+
+diff --git a/0001-fix-snprintf-compiler-error.patch b/0001-fix-snprintf-compiler-error.patch
+new file mode 100644
+index 0000000..5c96a2f
+--- /dev/null
++++ b/0001-fix-snprintf-compiler-error.patch
+@@ -0,0 +1,50 @@
++From 9cebc48765e2062fdc5df693edd098573881fdfe Mon Sep 17 00:00:00 2001
++From: "yongx.fu" <yongx.fu@intel.com>
++Date: Wed, 21 Aug 2019 09:30:13 +0800
++Subject: [PATCH 1/3] fix snprintf compiler error
++
++---
++ src/Makefile | 2 +-
++ src/sm_msg.c | 6 ++++++
++ 2 files changed, 7 insertions(+), 1 deletion(-)
++
++diff --git a/src/Makefile b/src/Makefile
++index 171c292..1306c58 100644
++--- a/src/Makefile
+++++ b/src/Makefile
++@@ -120,7 +120,7 @@ SRCS+=sm_cluster_hbs_info_msg.cpp
++ SRCS+=sm_configure.cpp
++ 
++ OBJS= $(SRCS:.c=.o)
++-CCFLAGS= -g -O2 -Wall -Werror -Wformat  -std=c++11
+++CCFLAGS= -g -O2 -Wall -Wformat  -std=c++11
++ EXTRACCFLAGS= -D__STDC_FORMAT_MACROS -Wformat -Wformat-security
++ LDLIBS= -lsqlite3 -lglib-2.0 -luuid -lpthread -lrt -lsm_common -lsm_db -lfmcommon -ljson-c -lcrypto -lssl
++ LDFLAGS = -rdynamic
++diff --git a/src/sm_msg.c b/src/sm_msg.c
++index e3093a9..a15b52c 100644
++--- a/src/sm_msg.c
+++++ b/src/sm_msg.c
++@@ -2524,6 +2524,9 @@ static SmErrorT sm_msg_open_ipv4_udp_multicast_socket(
++ 
++     // Bind socket to interface.
++     memset(&ifr, 0, sizeof(ifr));
+++    if (sizeof(interface->interface_name) > sizeof(ifr.ifr_name)) {
+++        return( SM_FAILED );
+++    }
++     snprintf( ifr.ifr_name, sizeof(ifr.ifr_name), "%s",
++               interface->interface_name );
++     
++@@ -2705,6 +2708,9 @@ static SmErrorT sm_msg_open_ipv6_udp_multicast_socket(
++ 
++     // Bind socket to interface.
++     memset( &ifr, 0, sizeof(ifr) );
+++    if (sizeof(interface->interface_name) > sizeof(ifr.ifr_name)) {
+++        return( SM_FAILED );
+++    }
++     snprintf( ifr.ifr_name, sizeof(ifr.ifr_name), "%s",
++               interface->interface_name );
++ 
++-- 
++2.23.0
++
+diff --git a/0002-put-lsqlite3-flag-after-lsm_db.patch b/0002-put-lsqlite3-flag-after-lsm_db.patch
+new file mode 100644
+index 0000000..e4e2a73
+--- /dev/null
++++ b/0002-put-lsqlite3-flag-after-lsm_db.patch
+@@ -0,0 +1,25 @@
++From efcddfd81773ef271ecad3511d96aeaa07a1e6c2 Mon Sep 17 00:00:00 2001
++From: "yongx.fu" <yongx.fu@intel.com>
++Date: Wed, 21 Aug 2019 09:33:33 +0800
++Subject: [PATCH 2/3] put lsqlite3 flag after lsm_db
++
++---
++ src/Makefile | 2 +-
++ 1 file changed, 1 insertion(+), 1 deletion(-)
++
++diff --git a/src/Makefile b/src/Makefile
++index 1306c58..063d1d9 100644
++--- a/src/Makefile
+++++ b/src/Makefile
++@@ -122,7 +122,7 @@ SRCS+=sm_configure.cpp
++ OBJS= $(SRCS:.c=.o)
++ CCFLAGS= -g -O2 -Wall -Wformat  -std=c++11
++ EXTRACCFLAGS= -D__STDC_FORMAT_MACROS -Wformat -Wformat-security
++-LDLIBS= -lsqlite3 -lglib-2.0 -luuid -lpthread -lrt -lsm_common -lsm_db -lfmcommon -ljson-c -lcrypto -lssl
+++LDLIBS= -lglib-2.0 -luuid -lpthread -lrt -lsm_common -lsm_db -lfmcommon -lsqlite3 -ljson-c -lcrypto -lssl
++ LDFLAGS = -rdynamic
++ 
++ .c.o:
++-- 
++2.23.0
++
+diff --git a/0003-change-sysconfig-dir-to-clear-path.patch b/0003-change-sysconfig-dir-to-clear-path.patch
+new file mode 100644
+index 0000000..5fd36fd
+--- /dev/null
++++ b/0003-change-sysconfig-dir-to-clear-path.patch
+@@ -0,0 +1,159 @@
++From 621cf6d8579efc0bf3f581fc8f0cb394eea700ee Mon Sep 17 00:00:00 2001
++From: "yongx.fu" <yongx.fu@intel.com>
++Date: Wed, 21 Aug 2019 09:46:20 +0800
++Subject: [PATCH 3/3] change sysconfig dir to clear path
++
++---
++ scripts/Makefile            | 14 +++++++-------
++ scripts/sm                  |  4 ++--
++ scripts/sm-shutdown.service |  2 +-
++ scripts/sm.conf             |  2 +-
++ scripts/sm.notification     |  2 +-
++ scripts/sm.service          |  4 ++--
++ scripts/sm.troubleshoot     | 16 ++++++++--------
++ 7 files changed, 22 insertions(+), 22 deletions(-)
++
++diff --git a/scripts/Makefile b/scripts/Makefile
++index cbaa6b7..195ded9 100644
++--- a/scripts/Makefile
+++++ b/scripts/Makefile
++@@ -1,11 +1,11 @@
++ install:
++-	install -d ${DEST_DIR}/etc/init.d
++-	install sm ${DEST_DIR}/etc/init.d/sm
++-	install sm.shutdown ${DEST_DIR}/etc/init.d/sm-shutdown
++-	install -d ${DEST_DIR}/etc/pmon.d
++-	install -m 644 sm.conf ${DEST_DIR}/etc/pmon.d/sm.conf
++-	install -d ${DEST_DIR}/etc/logrotate.d
++-	install -m 644 sm.logrotate ${DEST_DIR}/etc/logrotate.d/sm.logrotate
+++	install -d ${DEST_DIR}/usr/local/etc/init.d
+++	install sm ${DEST_DIR}/usr/local/etc/init.d/sm
+++	install sm.shutdown ${DEST_DIR}/usr/local/etc/init.d/sm-shutdown
+++	install -d ${DEST_DIR}/usr/local/etc/pmon.d
+++	install -m 644 sm.conf ${DEST_DIR}/usr/local/etc/pmon.d/sm.conf
+++	install -d ${DEST_DIR}/usr/local/etc/logrotate.d
+++	install -m 644 sm.logrotate ${DEST_DIR}/usr/local/etc/logrotate.d/sm.logrotate
++ 	install -d 755 ${DEST_DIR}/usr/local/sbin
++ 	install sm.notify ${DEST_DIR}/usr/local/sbin/sm-notify
++ 	install sm.troubleshoot ${DEST_DIR}/usr/local/sbin/sm-troubleshoot
++diff --git a/scripts/sm b/scripts/sm
++index c2b221c..3290111 100755
++--- a/scripts/sm
+++++ b/scripts/sm
++@@ -20,7 +20,7 @@
++ # Default-Stop: 0 6
++ ### END INIT INFO
++ 
++-. /etc/init.d/functions
+++. /usr/local/etc/init.d/functions
++ 
++ RETVAL=0
++ 
++@@ -35,7 +35,7 @@ then
++ fi
++ 
++ PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/bin
++-WORKER_RESERVED_FILE=/etc/platform/worker_reserved.conf
+++WORKER_RESERVED_FILE=/usr/local/etc/platform/worker_reserved.conf
++ SM_PLATFORM_CORES_FILE=/var/run/sm/.platform_cores
++ 
++ export PATH
++diff --git a/scripts/sm-shutdown.service b/scripts/sm-shutdown.service
++index 5b093df..bad60b6 100644
++--- a/scripts/sm-shutdown.service
+++++ b/scripts/sm-shutdown.service
++@@ -5,7 +5,7 @@ After=sm.service
++ [Service]
++ Type=oneshot
++ User=root
++-ExecStop=/etc/init.d/sm-shutdown stop
+++ExecStop=/usr/local/etc/init.d/sm-shutdown stop
++ RemainAfterExit=yes
++ 
++ [Install]
++diff --git a/scripts/sm.conf b/scripts/sm.conf
++index 97747ec..fef558e 100644
++--- a/scripts/sm.conf
+++++ b/scripts/sm.conf
++@@ -6,7 +6,7 @@
++ [process]
++ process  = sm
++ pidfile  = /var/run/sm.pid
++-script   = /etc/init.d/sm
+++script   = /usr/local/etc/init.d/sm
++ style    = lsb            ; lsb
++ severity = critical       ; minor, major, critical
++ restarts = 3              ; restarts before error assertion
++diff --git a/scripts/sm.notification b/scripts/sm.notification
++index 942d872..9b7419d 100644
++--- a/scripts/sm.notification
+++++ b/scripts/sm.notification
++@@ -77,7 +77,7 @@ def main():
++     # support. Scripts will be run in a separate process so it does not
++     # block sm.
++     if 'worker' in tsconfig.subfunctions:
++-        worker_services_script = "/etc/init.d/worker_services"
+++        worker_services_script = "/usr/local/etc/init.d/worker_services"
++         if sg_name == 'vim-services':
++             if sg_desired_state == "active" and sg_state == "active":
++                 if want_log_file:
++diff --git a/scripts/sm.service b/scripts/sm.service
++index 94513de..f12e6d9 100644
++--- a/scripts/sm.service
+++++ b/scripts/sm.service
++@@ -7,8 +7,8 @@ Before=sm-shutdown.service sm-api.service pmon.service
++ Type=forking
++ RemainAfterExit=yes
++ User=root
++-ExecStart=/etc/init.d/sm start
++-ExecStop=/etc/init.d/sm stop
+++ExecStart=/usr/local/etc/init.d/sm start
+++ExecStop=/usr/local/etc/init.d/sm stop
++ PIDFile=/var/run/sm.pid
++ KillMode=process
++ 
++diff --git a/scripts/sm.troubleshoot b/scripts/sm.troubleshoot
++index 6a2b2f3..d36ed22 100644
++--- a/scripts/sm.troubleshoot
+++++ b/scripts/sm.troubleshoot
++@@ -28,8 +28,8 @@ function delimiter()
++ delimiter "uname -a"
++ timeout --signal KILL 5s uname -a
++ 
++-delimiter "cat /etc/motd"
++-timeout --signal KILL 5s cat /etc/motd
+++delimiter "cat /usr/local/etc/motd"
+++timeout --signal KILL 5s cat /usr/local/etc/motd
++ 
++ delimiter "ntpq -n -p"
++ timeout --signal KILL 5s /usr/sbin/ntpq -n -p
++@@ -49,8 +49,8 @@ timeout --signal KILL 5s /usr/sbin/chkconfig --list
++ delimiter "sm-dump"
++ timeout --signal KILL 5s sm-dump
++ 
++-delimiter "find /etc/init.d/ -type f -exec sha512sum {} \;"
++-timeout --signal KILL 5s find /etc/init.d/ -type f -exec sha512sum {} \;
+++delimiter "find /usr/local/etc/init.d/ -type f -exec sha512sum {} \;"
+++timeout --signal KILL 5s find /usr/local/etc/init.d/ -type f -exec sha512sum {} \;
++ 
++ delimiter "find /usr/lib/ocf/ -type f -exec sha512sum {} \;"
++ timeout --signal KILL 5s find /usr/lib/ocf/ -type f -exec sha512sum {} \;
++@@ -100,11 +100,11 @@ timeout --signal KILL 5s /sbin/tc -s qdisc show
++ delimiter "iptables -nvL"
++ timeout --signal KILL 5s /usr/sbin/iptables -nvL
++ 
++-delimiter "cat /etc/hosts"
++-timeout --signal KILL 5s cat /etc/hosts
+++delimiter "cat /usr/local/etc/hosts"
+++timeout --signal KILL 5s cat /usr/local/etc/hosts
++ 
++-delimiter "cat /etc/services"
++-timeout --signal KILL 5s cat /etc/services
+++delimiter "cat /usr/local/etc/services"
+++timeout --signal KILL 5s cat /usr/local/etc/services
++ 
++ delimiter "netstat -anpo"
++ timeout --signal KILL 5s netstat -anpo
++-- 
++2.23.0
++
+diff --git a/build_prepend b/build_prepend
+new file mode 100644
+index 0000000..0cb269f
+--- /dev/null
++++ b/build_prepend
+@@ -0,0 +1,2 @@
++VER=%{version}
++MAJOR=`echo $VER | awk -F . '{print $1}'`
+diff --git a/buildreq_add b/buildreq_add
+new file mode 100644
+index 0000000..0bec403
+--- /dev/null
++++ b/buildreq_add
+@@ -0,0 +1,15 @@
++fm-common-dev
++sm-db-dev
++sm-common-dev
++mtce-dev
++glib-dev
++glibc
++sqlite-autoconf-dev
++gcc
++json-c
++json-c-dev
++openssl-dev
++systemd
++systemd-devel
+diff --git a/install_append b/install_append
+new file mode 100644
+index 0000000..54574dc
+--- /dev/null
++++ b/install_append
+@@ -0,0 +1,3 @@
++%post
++/usr/bin/systemctl enable sm.service >/dev/null 2>&1
++/usr/bin/systemctl enable sm-shutdown.service >/dev/null 2>&1
+diff --git a/install_macro b/install_macro
+new file mode 100644
+index 0000000..d247b58
+--- /dev/null
++++ b/install_macro
+@@ -0,0 +1 @@
++make DEST_DIR=%{buildroot} UNIT_DIR=%{_unitdir} install
+diff --git a/install_prepend b/install_prepend
+new file mode 100644
+index 0000000..debabae
+--- /dev/null
++++ b/install_prepend
+@@ -0,0 +1,4 @@
++%define _unitdir /usr/lib/systemd/system/
++
++VER=%{version}
++MAJOR=`echo $VER | awk -F . '{print $1}'`
+diff --git a/options.conf b/options.conf
+new file mode 100644
+index 0000000..216342d
+--- /dev/null
++++ b/options.conf
+@@ -0,0 +1,58 @@
++name = sm
++url = file:///home/clr/stx-tar/sm-1.0.0.tar.gz
++use_lto = true
++verify_required = false
+diff --git a/requires_add b/requires_add
+new file mode 100644
+index 0000000..cea3878
+--- /dev/null
++++ b/requires_add
+@@ -0,0 +1,7 @@
++systemd
++chkconfig
++mtce-pmon
++logrotate
++time
+diff --git a/series b/series
+new file mode 100644
+index 0000000..04feb27
+--- /dev/null
++++ b/series
+@@ -0,0 +1,3 @@
++0001-fix-snprintf-compiler-error.patch
++0002-put-lsqlite3-flag-after-lsm_db.patch
++0003-change-sysconfig-dir-to-clear-path.patch
+diff --git a/sm.spec b/sm.spec
+new file mode 100644
+index 0000000..cdf791f
+--- /dev/null
++++ b/sm.spec
+@@ -0,0 +1,116 @@
++#
++# This file is auto-generated. DO NOT EDIT
++# Generated by: autospec.py
++#
++Name     : sm
++License  : Apache-2.0
++Requires: sm-bin = %{version}-%{release}
++Requires: sm-services = %{version}-%{release}
++Requires: chkconfig
++Requires: logrotate
++Requires: mtce-pmon
++Requires: systemd
++Requires: time
++BuildRequires : fm-common-dev
++BuildRequires : gcc
++BuildRequires : glib-dev
++BuildRequires : glibc
++BuildRequires : json-c
++BuildRequires : json-c-dev
++BuildRequires : mtce-dev
++BuildRequires : openssl-dev
++BuildRequires : sm-common-dev
++BuildRequires : sm-db-dev
++BuildRequires : sqlite-autoconf-dev
++BuildRequires : systemd
++BuildRequires : systemd-devel
++Patch1: 0001-fix-snprintf-compiler-error.patch
++Patch2: 0002-put-lsqlite3-flag-after-lsm_db.patch
++Patch3: 0003-change-sysconfig-dir-to-clear-path.patch
++
++%description
++
++%package bin
++Requires: sm-services = %{version}-%{release}
++
++
++
++%package services
++Group: Systemd services
++
++%description services
++services components for the sm package.
++
++
++%prep
++%patch1 -p1
++%patch2 -p1
++%patch3 -p1
++
++%build
++## build_prepend content
++VER=%{version}
++MAJOR=`echo $VER | awk -F . '{print $1}'`
++## build_prepend end
++make  %{?_smp_mflags}
++
++
++%install
++rm -rf %{buildroot}
++## install_prepend content
++%define _unitdir /usr/lib/systemd/system/
++VER=%{version}
++MAJOR=`echo $VER | awk -F . '{print $1}'`
++## install_prepend end
++make DEST_DIR=%{buildroot} UNIT_DIR=%{_unitdir} install
++## install_append content
++%post
++/usr/bin/systemctl enable sm.service >/dev/null 2>&1
++/usr/bin/systemctl enable sm-shutdown.service >/dev/null 2>&1
++## install_append end
++
++%files
++%defattr(-,root,root,-)
++/usr/local/etc/init.d/sm
++/usr/local/etc/init.d/sm-shutdown
++/usr/local/etc/logrotate.d/sm.logrotate
++/usr/local/etc/pmon.d/sm.conf
++/usr/local/sbin/sm-notification
++/usr/local/sbin/sm-notify
++/usr/local/sbin/sm-troubleshoot
++
++%files bin
++%defattr(-,root,root,-)
++/usr/bin/sm
++
++%files services
++%defattr(-,root,root,-)
++/usr/lib/systemd/system/sm-shutdown.service
++/usr/lib/systemd/system/sm.service
+diff --git a/used_libs b/used_libs
+new file mode 100644
+index 0000000..0b6667c
+--- /dev/null
++++ b/used_libs
+@@ -0,0 +1,10 @@
++libc.so.6
++libfmcommon.so.1
++libgcc_s.so.1
++libglib-2.0.so.0
++libjson-c.so.4
++libpthread.so.0
++libsm_common.so.1
++libsm_db.so.1
++libsqlite3.so.0
++libstdc++.so.6
+-- 
+2.23.0
+
+

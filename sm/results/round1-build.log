@@ -1,0 +1,409 @@
+Mock Version: 1.2.14
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/sm.spec'], chrootPath='/var/lib/mock/clear-sm/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f3cadda2a90>timeout=0uid=1000gid=1000user='mockbuild'printOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/sm.spec'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/sm-1.0.0-1.src.rpm
+Child return code was: 0
+LEAVE do --> 
+
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/sm.spec '], chrootPath='/var/lib/mock/clear-sm/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f3cadda2a90>timeout=0uid=1000gid=1000user='mockbuild'private_network=TrueprintOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/sm.spec '] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.x6hBMj
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
++ rm -rf sm-1.0.0
++ /usr/bin/gzip -dc /builddir/build/SOURCES/sm-1.0.0.tar.gz
++ /usr/bin/tar -xf -
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd sm-1.0.0
++ /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ echo 'Patch #1 (0001-fix-snprintf-compiler-error.patch):'
+Patch #1 (0001-fix-snprintf-compiler-error.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0001-fix-snprintf-compiler-error.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file src/Makefile
+patching file src/sm_msg.c
++ echo 'Patch #2 (0002-put-lsqlite3-flag-after-lsm_db.patch):'
+Patch #2 (0002-put-lsqlite3-flag-after-lsm_db.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0002-put-lsqlite3-flag-after-lsm_db.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file src/Makefile
+Patch #3 (0003-change-sysconfig-dir-to-clear-path.patch):
++ echo 'Patch #3 (0003-change-sysconfig-dir-to-clear-path.patch):'
++ /usr/bin/cat /builddir/build/SOURCES/0003-change-sysconfig-dir-to-clear-path.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file scripts/Makefile
+patching file scripts/sm
+patching file scripts/sm-shutdown.service
+patching file scripts/sm.conf
+patching file scripts/sm.notification
+patching file scripts/sm.service
+patching file scripts/sm.troubleshoot
++ exit 0
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.ecNoej
++ umask 022
++ cd /builddir/build/BUILD
++ cd sm-1.0.0
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CFLAGS
++ http_proxy=http://127.0.0.1:9/
++ export http_proxy
++ https_proxy=http://127.0.0.1:9/
++ export https_proxy
++ ftp_proxy=http://127.0.0.1:9/
++ export ftp_proxy
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export no_proxy
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CXXFLAGS
++ FFLAGS='-g -O3 -feliminate-unused-debug-types  -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -m64 -fasynchronous-unwind-tables -Wp,-D_REENTRANT -ftree-loop-distribute-patterns -Wl,-z -Wl,now -Wl,-z -Wl,relro -malign-data=abi -fno-semantic-interposition -ftree-vectorize  -ftree-loop-vectorize -Wl,--enable-new-dtags '
++ export FFLAGS
++ LD_AS_NEEDED=1
++ export LD_AS_NEEDED
++ PKG_CONFIG_LIBDIR=/usr/lib64/pkgconfig
++ export PKG_CONFIG_LIBDIR
++ PATH=/usr/lib64/ccache/bin:/usr/local/bin:/usr/bin
++ export PATH
++ VER=1.0.0
+++ echo 1.0.0
+++ awk -F . '{print $1}'
++ MAJOR=1
++ export http_proxy=http://127.0.0.1:9/
++ http_proxy=http://127.0.0.1:9/
++ export https_proxy=http://127.0.0.1:9/
++ https_proxy=http://127.0.0.1:9/
++ export no_proxy=localhost,127.0.0.1,0.0.0.0
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export LANG=C.UTF-8
++ LANG=C.UTF-8
++ export SOURCE_DATE_EPOCH=1566356995
++ SOURCE_DATE_EPOCH=1566356995
++ export GCC_IGNORE_WERROR=1
++ GCC_IGNORE_WERROR=1
++ export AR=gcc-ar
++ AR=gcc-ar
++ export RANLIB=gcc-ranlib
++ RANLIB=gcc-ranlib
++ export NM=gcc-nm
++ NM=gcc-nm
++ export 'CFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ export 'FCFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FCFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'FFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'CXXFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ make -j4
+make[1]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[1]: Entering directory '/builddir/build/BUILD/sm-1.0.0/src'
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c main.c -o main.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_process.c -o sm_process.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_process_death.c -o sm_process_death.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_heartbeat.c -o sm_heartbeat.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_heartbeat_msg.c -o sm_heartbeat_msg.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_heartbeat_thread.c -o sm_heartbeat_thread.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_log.c -o sm_log.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_log_thread.c -o sm_log_thread.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_alarm.c -o sm_alarm.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_alarm_thread.c -o sm_alarm_thread.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_troubleshoot.c -o sm_troubleshoot.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_api.c -o sm_api.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_notify_api.c -o sm_notify_api.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_msg.c -o sm_msg.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_node_fsm.c -o sm_node_fsm.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_node_unknown_state.c -o sm_node_unknown_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_node_enabled_state.c -o sm_node_enabled_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_node_disabled_state.c -o sm_node_disabled_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_domain_table.c -o sm_service_domain_table.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_domain_member_table.c -o sm_service_domain_member_table.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_domain_interface_table.c -o sm_service_domain_interface_table.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_domain_neighbor_table.c -o sm_service_domain_neighbor_table.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_domain_assignment_table.c -o sm_service_domain_assignment_table.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_domain_api.c -o sm_service_domain_api.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_domain_utils.c -o sm_service_domain_utils.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_domain_fsm.c -o sm_service_domain_fsm.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_domain_initial_state.c -o sm_service_domain_initial_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_domain_waiting_state.c -o sm_service_domain_waiting_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_domain_other_state.c -o sm_service_domain_other_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_domain_backup_state.c -o sm_service_domain_backup_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_domain_leader_state.c -o sm_service_domain_leader_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_domain_interface_api.c -o sm_service_domain_interface_api.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_domain_interface_fsm.c -o sm_service_domain_interface_fsm.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_domain_interface_unknown_state.c -o sm_service_domain_interface_unknown_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_domain_interface_enabled_state.c -o sm_service_domain_interface_enabled_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_domain_interface_disabled_state.c -o sm_service_domain_interface_disabled_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_domain_neighbor_fsm.c -o sm_service_domain_neighbor_fsm.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_domain_neighbor_down_state.c -o sm_service_domain_neighbor_down_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_domain_neighbor_exchange_start_state.c -o sm_service_domain_neighbor_exchange_start_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_domain_neighbor_exchange_state.c -o sm_service_domain_neighbor_exchange_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_domain_neighbor_full_state.c -o sm_service_domain_neighbor_full_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_domain_scheduler.c -o sm_service_domain_scheduler.o
+sm_service_domain_scheduler.c: In function ‘void sm_service_domain_scheduler_assignment_redundancy_alarm(void**, SmServiceDomainMemberT*)’:
+sm_service_domain_scheduler.c:1334:54: warning: ‘; ’ directive output may be truncated writing 2 bytes into a region of size between 1 and 256 [-Wformat-truncation=]
+ 1334 |             snprintf( log_text, sizeof(log_text), "%s; %s", problem_text,
+      |                                                      ^~
+sm_service_domain_scheduler.c:1334:21: note: ‘snprintf’ output between 3 and 513 bytes into a destination of size 256
+ 1334 |             snprintf( log_text, sizeof(log_text), "%s; %s", problem_text,
+      |             ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1335 |                       additional_text );
+      |                       ~~~~~~~~~~~~~~~~~
+sm_service_domain_scheduler.c:1289:58: warning: ‘; ’ directive output may be truncated writing 2 bytes into a region of size between 1 and 256 [-Wformat-truncation=]
+ 1289 |                 snprintf( log_text, sizeof(log_text), "%s; %s", problem_text,
+      |                                                          ^~
+sm_service_domain_scheduler.c:1289:25: note: ‘snprintf’ output between 3 and 513 bytes into a destination of size 256
+ 1289 |                 snprintf( log_text, sizeof(log_text), "%s; %s", problem_text,
+      |                 ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1290 |                           additional_text );
+      |                           ~~~~~~~~~~~~~~~~~
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_domain_filter.c -o sm_service_domain_filter.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_domain_weight.c -o sm_service_domain_weight.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_group_table.c -o sm_service_group_table.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_group_member_table.c -o sm_service_group_member_table.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_group_api.c -o sm_service_group_api.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_group_health.c -o sm_service_group_health.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_group_engine.c -o sm_service_group_engine.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_group_fsm.c -o sm_service_group_fsm.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_group_initial_state.c -o sm_service_group_initial_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_group_active_state.c -o sm_service_group_active_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_group_go_active_state.c -o sm_service_group_go_active_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_group_go_standby_state.c -o sm_service_group_go_standby_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_group_standby_state.c -o sm_service_group_standby_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_group_disabling_state.c -o sm_service_group_disabling_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_group_disabled_state.c -o sm_service_group_disabled_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_group_shutdown_state.c -o sm_service_group_shutdown_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_group_enable.c -o sm_service_group_enable.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_group_go_active.c -o sm_service_group_go_active.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_group_go_standby.c -o sm_service_group_go_standby.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_group_disable.c -o sm_service_group_disable.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_group_audit.c -o sm_service_group_audit.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_group_notification.c -o sm_service_group_notification.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_table.c -o sm_service_table.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_dependency_table.c -o sm_service_dependency_table.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_action_table.c -o sm_service_action_table.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_action_result_table.c -o sm_service_action_result_table.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_api.c -o sm_service_api.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_dependency.c -o sm_service_dependency.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_engine.c -o sm_service_engine.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_fsm.c -o sm_service_fsm.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_initial_state.c -o sm_service_initial_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_unknown_state.c -o sm_service_unknown_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_enabled_active_state.c -o sm_service_enabled_active_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_enabled_go_active_state.c -o sm_service_enabled_go_active_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_enabled_go_standby_state.c -o sm_service_enabled_go_standby_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_enabled_standby_state.c -o sm_service_enabled_standby_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_enabling_state.c -o sm_service_enabling_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_enabling_throttle_state.c -o sm_service_enabling_throttle_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_disabling_state.c -o sm_service_disabling_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_disabled_state.c -o sm_service_disabled_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_shutdown_state.c -o sm_service_shutdown_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_enable.c -o sm_service_enable.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_go_active.c -o sm_service_go_active.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_go_standby.c -o sm_service_go_standby.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_disable.c -o sm_service_disable.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_audit.c -o sm_service_audit.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_action.c -o sm_service_action.o
+sm_service_action.c: In function ‘SmErrorT sm_service_action_result(int, char*, SmServiceActionT, SmServiceActionResultT*, SmServiceStateT*, SmServiceStatusT*, SmServiceConditionT*, char*)’:
+sm_service_action.c:265:30: warning: ‘plugin-timeout’ directive output truncated writing 14 bytes into a region of size 10 [-Wformat-truncation=]
+  265 |                   "plugin-timeout" );
+      |                    ~~~~~~~~~~^~~~
+sm_service_action.c:264:17: note: ‘snprintf’ output 15 bytes into a destination of size 10
+  264 |         snprintf( plugin_exit_code, sizeof(plugin_exit_code),
+      |         ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  265 |                   "plugin-timeout" );
+      |                   ~~~~~~~~~~~~~~~~~~
+sm_service_action.c:261:30: warning: ‘plugin-failure’ directive output truncated writing 14 bytes into a region of size 10 [-Wformat-truncation=]
+  261 |                   "plugin-failure" );
+      |                    ~~~~~~~~~~^~~~
+sm_service_action.c:260:17: note: ‘snprintf’ output 15 bytes into a destination of size 10
+  260 |         snprintf( plugin_exit_code, sizeof(plugin_exit_code),
+      |         ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  261 |                   "plugin-failure" );
+      |                   ~~~~~~~~~~~~~~~~~~
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_heartbeat.c -o sm_service_heartbeat.o
+sm_service_heartbeat.c: In function ‘bool sm_service_heartbeat_timer(SmTimerIdT, int64_t)’:
+sm_service_heartbeat.c:232:66: warning: ‘%s’ directive output may be truncated writing up to 255 bytes into a region of size 108 [-Wformat-truncation=]
+  232 |         snprintf( dst_addr.sun_path, sizeof(dst_addr.sun_path), "%s",
+      |                                                                  ^~
+  233 |                   service_heartbeat.dst_address );
+      |                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                   
+sm_service_heartbeat.c:232:17: note: ‘snprintf’ output between 1 and 256 bytes into a destination of size 108
+  232 |         snprintf( dst_addr.sun_path, sizeof(dst_addr.sun_path), "%s",
+      |         ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  233 |                   service_heartbeat.dst_address );
+      |                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+sm_service_heartbeat.c: In function ‘void sm_service_heartbeat_start_callback(char*)’:
+sm_service_heartbeat.c:42:62: warning: ‘%s’ directive output may be truncated writing up to 255 bytes into a region of size 108 [-Wformat-truncation=]
+   42 |     snprintf( src_addr.sun_path, sizeof(src_addr.sun_path), "%s",
+      |                                                              ^~
+   43 |               service_heartbeat->src_address );
+      |               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                  
+sm_service_heartbeat.c:42:13: note: ‘snprintf’ output between 1 and 256 bytes into a destination of size 108
+   42 |     snprintf( src_addr.sun_path, sizeof(src_addr.sun_path), "%s",
+      |     ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   43 |               service_heartbeat->src_address );
+      |               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_heartbeat_api.c -o sm_service_heartbeat_api.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_heartbeat_thread.c -o sm_service_heartbeat_thread.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_main_event_handler.c -o sm_main_event_handler.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c fm_api_wrapper.c -o fm_api_wrapper.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_failover.c -o sm_failover.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_swact_state.c -o sm_swact_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_task_affining_thread.c -o sm_task_affining_thread.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_failover_ss.c -o sm_failover_ss.o
+sm_failover_ss.c: In member function ‘void SmSystemFailoverStatus::serialize()’:
+sm_failover_ss.c:187:30: warning: ‘%02d’ directive writing between 2 and 11 bytes into a region of size between 8 and 15 [-Wformat-overflow=]
+  187 |     sprintf(timestamp, "%04d-%02d-%02dT%02d:%02d:%02d", local_time->tm_year + 1900,
+      |                              ^~~~
+sm_failover_ss.c:187:24: note: directive argument in the range [-2147483647, 2147483647]
+  187 |     sprintf(timestamp, "%04d-%02d-%02dT%02d:%02d:%02d", local_time->tm_year + 1900,
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+sm_failover_ss.c:187:12: note: ‘sprintf’ output between 20 and 72 bytes into a destination of size 20
+  187 |     sprintf(timestamp, "%04d-%02d-%02dT%02d:%02d:%02d", local_time->tm_year + 1900,
+      |     ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  188 |                 local_time->tm_mon + 1, local_time->tm_mday, local_time->tm_hour, local_time->tm_min, local_time->tm_sec);
+      |                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_service_domain_interface_not_in_use_state.c -o sm_service_domain_interface_not_in_use_state.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_configuration_table.c -o sm_configuration_table.o
+g++ -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security -c sm_failover_utils.c -o sm_failover_utils.o
+g++ -g -O2 -Wall -Wformat  -std=c++11 -D__STDC_FORMAT_MACROS -Wformat -Wformat-security main.o sm_process.o sm_process_death.o sm_heartbeat.o sm_heartbeat_msg.o sm_heartbeat_thread.o sm_log.o sm_log_thread.o sm_alarm.o sm_alarm_thread.o sm_troubleshoot.o sm_api.o sm_notify_api.o sm_msg.o sm_node_api.cpp sm_node_fsm.o sm_node_unknown_state.o sm_node_enabled_state.o sm_node_disabled_state.o sm_service_domain_table.o sm_service_domain_member_table.o sm_service_domain_interface_table.o sm_service_domain_neighbor_table.o sm_service_domain_assignment_table.o sm_service_domain_api.o sm_service_domain_utils.o sm_service_domain_fsm.o sm_service_domain_initial_state.o sm_service_domain_waiting_state.o sm_service_domain_other_state.o sm_service_domain_backup_state.o sm_service_domain_leader_state.o sm_service_domain_interface_api.o sm_service_domain_interface_fsm.o sm_service_domain_interface_unknown_state.o sm_service_domain_interface_enabled_state.o sm_service_domain_interface_disabled_state.o sm_service_domain_neighbor_fsm.o sm_service_domain_neighbor_down_state.o sm_service_domain_neighbor_exchange_start_state.o sm_service_domain_neighbor_exchange_state.o sm_service_domain_neighbor_full_state.o sm_service_domain_scheduler.o sm_service_domain_filter.o sm_service_domain_weight.o sm_service_group_table.o sm_service_group_member_table.o sm_service_group_api.o sm_service_group_health.o sm_service_group_engine.o sm_service_group_fsm.o sm_service_group_initial_state.o sm_service_group_active_state.o sm_service_group_go_active_state.o sm_service_group_go_standby_state.o sm_service_group_standby_state.o sm_service_group_disabling_state.o sm_service_group_disabled_state.o sm_service_group_shutdown_state.o sm_service_group_enable.o sm_service_group_go_active.o sm_service_group_go_standby.o sm_service_group_disable.o sm_service_group_audit.o sm_service_group_notification.o sm_service_table.o sm_service_dependency_table.o sm_service_action_table.o sm_service_action_result_table.o sm_service_api.o sm_service_dependency.o sm_service_engine.o sm_service_fsm.o sm_service_initial_state.o sm_service_unknown_state.o sm_service_enabled_active_state.o sm_service_enabled_go_active_state.o sm_service_enabled_go_standby_state.o sm_service_enabled_standby_state.o sm_service_enabling_state.o sm_service_enabling_throttle_state.o sm_service_disabling_state.o sm_service_disabled_state.o sm_service_shutdown_state.o sm_service_enable.o sm_service_go_active.o sm_service_go_standby.o sm_service_disable.o sm_service_audit.o sm_service_action.o sm_service_heartbeat.o sm_service_heartbeat_api.o sm_service_heartbeat_thread.o sm_main_event_handler.o fm_api_wrapper.o sm_failover.o sm_swact_state.o sm_worker_thread.cpp sm_task_affining_thread.o sm_node_swact_monitor.cpp sm_failover_fsm.cpp sm_failover_initial_state.cpp sm_failover_normal_state.cpp sm_failover_fail_pending_state.cpp sm_failover_failed_state.cpp sm_failover_survived_state.cpp sm_failover_ss.o sm_service_domain_interface_not_in_use_state.o sm_configuration_table.o sm_failover_utils.o sm_cluster_hbs_info_msg.cpp sm_configure.cpp -rdynamic -lglib-2.0 -luuid -lpthread -lrt -lsm_common -lsm_db -lfmcommon -lsqlite3 -ljson-c -lcrypto -lssl -o sm
+make[1]: Leaving directory '/builddir/build/BUILD/sm-1.0.0/src'
++ exit 0
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.ZzaAfk
++ umask 022
++ cd /builddir/build/BUILD
++ cd sm-1.0.0
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ rm -rf /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64
++ mkdir -p /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64
++ export SOURCE_DATE_EPOCH=1566356995
++ SOURCE_DATE_EPOCH=1566356995
++ rm -rf /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64
++ VER=1.0.0
+++ echo 1.0.0
+++ awk -F . '{print $1}'
++ MAJOR=1
++ make DEST_DIR=/builddir/build/BUILDROOT/sm-1.0.0-1.x86_64 UNIT_DIR=/usr/lib/systemd/system/ install
+make[1]: Entering directory '/builddir/build/BUILD/sm-1.0.0/src'
+install -d 755 /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/bin
+install -m 755 sm /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/bin/sm
+make[1]: Leaving directory '/builddir/build/BUILD/sm-1.0.0/src'
+make[1]: Entering directory '/builddir/build/BUILD/sm-1.0.0/scripts'
+install -d /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/local/etc/init.d
+install sm /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/local/etc/init.d/sm
+install sm.shutdown /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/local/etc/init.d/sm-shutdown
+install -d /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/local/etc/pmon.d
+install -m 644 sm.conf /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/local/etc/pmon.d/sm.conf
+install -d /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/local/etc/logrotate.d
+install -m 644 sm.logrotate /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/local/etc/logrotate.d/sm.logrotate
+install -d 755 /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/local/sbin
+install sm.notify /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/local/sbin/sm-notify
+install sm.troubleshoot /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/local/sbin/sm-troubleshoot
+install sm.notification /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/local/sbin/sm-notification
+install -d /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/lib/systemd/system/
+install -m 644 *.service /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/lib/systemd/system/ 
+make[1]: Leaving directory '/builddir/build/BUILD/sm-1.0.0/scripts'
++ rm -f /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/share/info/dir
+++ find /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64 -path 'etc/*' '!' -type d
++ test -z ''
++ rm -rf '/builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/etc/*'
++ rm -rf '/builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/share/factory/*'
++ find /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64 -name __pycache__
++ xargs rm -rf --
++ '[' -d /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/share/mime ']'
+++ getconf _NPROCESSORS_ONLN
++ RPM_XARGS_PFLAG=-P4
++ find /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64 -name '*.so.avx512' -print0
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -5
++ find /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/lib64/haswell/avx512_1 -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/lib64/haswell/avx512_1’: No such file or directory
++ find /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64 -name '*.so.avx2' -print0
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -2
++ find /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/lib64/haswell '!' -path '/usr/lib64/haswell/avx512_1/*' -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/lib64/haswell’: No such file or directory
++ find /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/lib64/ -maxdepth 1 -name '*.so*' -type f -print0
++ xargs -0rtn1 -P4 /usr/lib/rpm/clr/brp-create-abi
++ sort -u
+find: ‘/builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/lib64/’: No such file or directory
++ /usr/lib/rpm/find-debuginfo.sh --strict-build-id /builddir/build/BUILD/sm-1.0.0
+extracting debug info from /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/bin/sm
+cpio: glibc-2.30/csu: Cannot stat: No such file or directory
+cpio: glibc-2.30/csu/elf-init.c: Cannot stat: No such file or directory
+cpio: glibc-2.30/csu/init.c: Cannot stat: No such file or directory
+cpio: glibc-2.30/sysdeps/x86_64/crti.S: Cannot stat: No such file or directory
+cpio: glibc-2.30/sysdeps/x86_64/crtn.S: Cannot stat: No such file or directory
+cpio: glibc-2.30/sysdeps/x86_64/start.S: Cannot stat: No such file or directory
+4119 blocks
++ '[' -d /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/lib/debug ']'
++ mkdir -p /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/share
++ '[' -d /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/lib/debug ']'
++ mv /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/lib/debug /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/share
++ '[' -d /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/src/debug ']'
++ mv /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/src/debug /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/share/debug/src
++ '[' -d /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/lib/debug.force ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64/usr/src/debug.force ']'
++ :
++ /usr/lib/rpm/check-buildroot
++ /usr/lib/rpm/clr/brp-strip-static-archive /usr/bin/strip
++ /usr/lib/rpm/clr/brp-strip-comment-note /usr/bin/strip /usr/bin/objdump
++ /usr/lib/rpm/clr/brp-python-bytecompile
++ find /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64 -print0
++ xargs -0 touch -h -d @1566356995
++ /usr/lib/rpm/clr/brp-java-repack-jars
+Processing files: sm-1.0.0-1.x86_64
+Processing files: sm-debuginfo-1.0.0-1.x86_64
+Processing files: sm-abi-1.0.0-1.x86_64
+Checking for unpackaged file(s): /usr/lib/rpm/check-files /builddir/build/BUILDROOT/sm-1.0.0-1.x86_64
+warning: Empty %files file /builddir/build/BUILD/sm-1.0.0/abifiles.list
+error: Installed (but unpackaged) file(s) found:
+   /usr/bin/sm
+   /usr/lib/systemd/system/sm-shutdown.service
+   /usr/lib/systemd/system/sm.service
+   /usr/local/etc/init.d/sm
+   /usr/local/etc/init.d/sm-shutdown
+   /usr/local/etc/logrotate.d/sm.logrotate
+   /usr/local/etc/pmon.d/sm.conf
+   /usr/local/sbin/sm-notification
+   /usr/local/sbin/sm-notify
+   /usr/local/sbin/sm-troubleshoot
+    Empty %files file /builddir/build/BUILD/sm-1.0.0/abifiles.list
+    Installed (but unpackaged) file(s) found:
+   /usr/bin/sm
+   /usr/lib/systemd/system/sm-shutdown.service
+   /usr/lib/systemd/system/sm.service
+   /usr/local/etc/init.d/sm
+   /usr/local/etc/init.d/sm-shutdown
+   /usr/local/etc/logrotate.d/sm.logrotate
+   /usr/local/etc/pmon.d/sm.conf
+   /usr/local/sbin/sm-notification
+   /usr/local/sbin/sm-notify
+   /usr/local/sbin/sm-troubleshoot
+RPM build errors:
+Child return code was: 1
+EXCEPTION: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/sm.spec 
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/mockbuild/trace_decorator.py", line 84, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python3.7/site-packages/mockbuild/util.py", line 531, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+mockbuild.exception.Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/sm.spec 
+LEAVE do --> EXCEPTION RAISED
+

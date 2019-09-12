@@ -1,0 +1,39 @@
+2019-08-21 11:10:00,521 - Mock Version: 1.2.14
+2019-08-21 11:10:00,588 - Start: dnf install
+2019-08-21 11:10:09,221 - Finish: dnf install
+2019-08-21 11:10:11,122 - Start: creating cache
+2019-08-21 11:10:16,261 - Finish: creating cache
+2019-08-21 11:10:16,262 - Finish: chroot init
+2019-08-21 11:10:16,285 - Start: buildsrpm
+2019-08-21 11:10:16,290 - Start: rpmbuild -bs
+2019-08-21 11:10:16,329 - Finish: rpmbuild -bs
+2019-08-21 11:10:16,331 - Finish: buildsrpm
+2019-08-21 11:10:16,331 - Finish: run
+2019-08-21 11:10:19,276 - Mock Version: 1.2.14
+2019-08-21 11:10:19,647 - Start: dnf update
+2019-08-21 11:10:30,278 - Finish: dnf update
+2019-08-21 11:10:30,284 - Finish: chroot init
+2019-08-21 11:10:30,285 - Start: build phase for sm-1.0.0-1.src.rpm
+2019-08-21 11:10:30,287 - Start: build setup for sm-1.0.0-1.src.rpm
+2019-08-21 11:10:32,121 - Finish: build setup for sm-1.0.0-1.src.rpm
+2019-08-21 11:10:32,121 - Start: rpmbuild sm-1.0.0-1.src.rpm
+2019-08-21 11:10:51,150 - Mock Version: 1.2.14
+2019-08-21 11:10:51,406 - Start: dnf update
+2019-08-21 11:11:03,202 - Finish: dnf update
+2019-08-21 11:11:03,209 - Finish: chroot init
+2019-08-21 11:11:03,212 - Start: buildsrpm
+2019-08-21 11:11:03,218 - Start: rpmbuild -bs
+2019-08-21 11:11:03,262 - Finish: rpmbuild -bs
+2019-08-21 11:11:03,264 - Finish: buildsrpm
+2019-08-21 11:11:03,264 - Finish: run
+2019-08-21 11:11:06,798 - Mock Version: 1.2.14
+2019-08-21 11:11:07,083 - Start: dnf update
+2019-08-21 11:11:18,180 - Finish: dnf update
+2019-08-21 11:11:18,186 - Finish: chroot init
+2019-08-21 11:11:18,187 - Start: build phase for sm-1.0.0-1.src.rpm
+2019-08-21 11:11:18,190 - Start: build setup for sm-1.0.0-1.src.rpm
+2019-08-21 11:11:20,185 - Finish: build setup for sm-1.0.0-1.src.rpm
+2019-08-21 11:11:20,185 - Start: rpmbuild sm-1.0.0-1.src.rpm
+2019-08-21 11:11:23,124 - Finish: rpmbuild sm-1.0.0-1.src.rpm
+2019-08-21 11:11:23,125 - Finish: build phase for sm-1.0.0-1.src.rpm
+2019-08-21 11:11:23,126 - Finish: run
