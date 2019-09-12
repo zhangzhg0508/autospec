@@ -1,0 +1,17 @@
+
+%{__install} -d  644 %{buildroot}%{_sysconfdir}/sysconfig
+%{__install} -d  755 %{buildroot}%{_initddir}
+%{__install} -d  644 %{buildroot}%{_unitdir}
+
+%{__install} -m  644 sysctl.conf              %{buildroot}%{_datadir}/starlingx/stx.sysctl.conf
+%{__install} -m  644 sysconfig-network.conf   %{buildroot}%{_sysconfdir}/sysconfig/network
+%{__install} -m  755 mountnfs.sh              %{buildroot}%{_initddir}/mountnfs
+%{__install} -m  644 mountnfs.service         %{buildroot}%{_unitdir}/mountnfs.service
+
+%post
+if [ $1 -eq 1 ] ; then
+        # Initial installation
+        cp -f %{_datadir}/starlingx/stx.sysctl.conf %{_sysconfdir}/sysctl.conf
+        chmod 644 %{_sysconfdir}/sysctl.conf
+fi
+%{_bindir}/systemctl enable mountnfs.service  > /dev/null 2>&1 || :
