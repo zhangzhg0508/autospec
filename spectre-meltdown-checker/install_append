@@ -1,0 +1,2 @@
+tar -xzvf %{SOURCE0} 
+install -m 744 spectre-meltdown-checker/spectre-meltdown-checker.sh %{buildroot}/usr/sbin/spectre-meltdown-checker.sh

@@ -1,0 +1,37 @@
+2019-09-16 10:49:31,068 - Mock Version: 1.2.14
+2019-09-16 10:49:31,315 - Start: dnf update
+2019-09-16 10:49:41,286 - Finish: dnf update
+2019-09-16 10:49:41,292 - Finish: chroot init
+2019-09-16 10:49:41,295 - Start: buildsrpm
+2019-09-16 10:49:41,300 - Start: rpmbuild -bs
+2019-09-16 10:49:41,339 - Finish: rpmbuild -bs
+2019-09-16 10:49:41,341 - Finish: buildsrpm
+2019-09-16 10:49:41,341 - Finish: run
+2019-09-16 10:49:44,489 - Mock Version: 1.2.14
+2019-09-16 10:49:44,753 - Start: dnf update
+2019-09-16 10:49:54,596 - Finish: dnf update
+2019-09-16 10:49:54,602 - Finish: chroot init
+2019-09-16 10:49:54,603 - Start: build phase for spectre-meltdown-checker-0.37+.5cc77741-1.src.rpm
+2019-09-16 10:49:54,606 - Start: build setup for spectre-meltdown-checker-0.37+.5cc77741-1.src.rpm
+2019-09-16 10:49:55,329 - Finish: build setup for spectre-meltdown-checker-0.37+.5cc77741-1.src.rpm
+2019-09-16 10:49:55,329 - Start: rpmbuild spectre-meltdown-checker-0.37+.5cc77741-1.src.rpm
+2019-09-16 10:49:58,794 - Mock Version: 1.2.14
+2019-09-16 10:49:59,041 - Start: dnf update
+2019-09-16 10:50:08,728 - Finish: dnf update
+2019-09-16 10:50:08,734 - Finish: chroot init
+2019-09-16 10:50:08,737 - Start: buildsrpm
+2019-09-16 10:50:08,742 - Start: rpmbuild -bs
+2019-09-16 10:50:08,782 - Finish: rpmbuild -bs
+2019-09-16 10:50:08,783 - Finish: buildsrpm
+2019-09-16 10:50:08,784 - Finish: run
+2019-09-16 10:50:11,882 - Mock Version: 1.2.14
+2019-09-16 10:50:12,148 - Start: dnf update
+2019-09-16 10:50:21,668 - Finish: dnf update
+2019-09-16 10:50:21,674 - Finish: chroot init
+2019-09-16 10:50:21,675 - Start: build phase for spectre-meltdown-checker-0.37+.5cc77741-1.src.rpm
+2019-09-16 10:50:21,678 - Start: build setup for spectre-meltdown-checker-0.37+.5cc77741-1.src.rpm
+2019-09-16 10:50:22,354 - Finish: build setup for spectre-meltdown-checker-0.37+.5cc77741-1.src.rpm
+2019-09-16 10:50:22,354 - Start: rpmbuild spectre-meltdown-checker-0.37+.5cc77741-1.src.rpm
+2019-09-16 10:50:22,472 - Finish: rpmbuild spectre-meltdown-checker-0.37+.5cc77741-1.src.rpm
+2019-09-16 10:50:22,474 - Finish: build phase for spectre-meltdown-checker-0.37+.5cc77741-1.src.rpm
+2019-09-16 10:50:22,474 - Finish: run
