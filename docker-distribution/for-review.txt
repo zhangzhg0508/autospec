@@ -1,0 +1,46 @@
+From f00e2f0ab495213f8f5a71dc18f59871f78a79c5 Mon Sep 17 00:00:00 2001
+From: "zhiguo.zhang" <zhiguox.zhang@intel.com>
+Date: Mon, 16 Sep 2019 08:19:03 +0000
+Subject: [PATCH docker-distribution] docker-distribution: Autospec creation
+ for version 2.6.2
+
+---
+ docker-distribution.spec | 8 +++++++-
+ install_append           | 9 +++++++++
+ release                  | 2 +-
+ 3 files changed, 17 insertions(+), 2 deletions(-)
+
+diff --git a/docker-distribution.spec b/docker-distribution.spec
+index 1bffdf0..3dcb1c7 100644
+--- a/docker-distribution.spec
++++ b/docker-distribution.spec
+@@ -105,6 +105,12 @@ sort -u -o devel.file-list devel.file-list
+ export GOPATH=%{buildroot}/%{gopath}:$(pwd)/Godeps/_workspace:%{gopath}
+ make test
+ %endif
++%post
++%systemd_post %{name}.service
++%preun
++%systemd_preun %{name}.service
++%postun
++%systemd_postun_with_restart %{name}.service
+ ## install_append end
+ 
+ %files
+diff --git a/install_append b/install_append
+index 4a5cb4d..ce92a72 100644
+--- a/install_append
++++ b/install_append
+@@ -48,3 +48,12 @@ export GOPATH=%{buildroot}/%{gopath}:$(pwd)/Godeps/_workspace:%{gopath}
+ make test
+ %endif
+ 
++%post
++%systemd_post %{name}.service
++
++%preun
++%systemd_preun %{name}.service
++
++%postun
++%systemd_postun_with_restart %{name}.service
++

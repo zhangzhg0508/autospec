@@ -1,0 +1,14 @@
+sed -i 's/elliptic.P224(), //' vendor/golang.org/x/crypto/ocsp/ocsp.go
+%global provider        github
+%global provider_tld    com
+%global project         docker
+%global repo            distribution
+# https://github.com/docker/distribution
+%global provider_prefix %{provider}.%{provider_tld}/%{project}/%{repo}
+%global import_path     %{provider_prefix}
+%define _sysconfdir /usr/local/etc
+%define _unitdir /usr/lib/systemd/system
+mkdir -p src/github.com/%{project}
+ln -s ../../../ src/%{import_path}
+#export GOPATH=$(pwd):$(pwd)/Godeps/_workspace
+#%gobuild -o /bin/register %{import_path}/cmd/registry

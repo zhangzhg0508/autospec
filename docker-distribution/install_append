@@ -1,0 +1,59 @@
+install -d -p %{buildroot}%{_bindir}
+install -p -m 0755 $(pwd)/bin/registry %{buildroot}%{_bindir}/registry
+
+# install systemd/init scripts
+install -d %{buildroot}%{_unitdir}
+install -p -m 644 %{SOURCE1} %{buildroot}%{_unitdir}
+
+# install config file
+install -d -p %{buildroot}%{_sysconfdir}/%{name}/registry
+tar -xvJf %{SOURCE2}
+install -p -m 644 config.yml %{buildroot}%{_sysconfdir}/%{name}/registry
+
+# install root dir
+install -d %{buildroot}%{_sharedstatedir}/registry
+
+# source code for building projects
+%if 0%{?with_devel}
+install -d -p %{buildroot}/%{gopath}/src/%{import_path}/
+echo "%%dir %%{gopath}/src/%%{import_path}/." >> devel.file-list
+# find all *.go but no *_test.go files and generate devel.file-list
+for file in $(find . -iname "*.go" \! -iname "*_test.go") ; do
+    echo "%dir %{gopath}/src/%{import_path}/$(dirname $file)" >> devel.file-list
+    install -d -p %{buildroot}/%{gopath}/src/%{import_path}/$(dirname $file)
+    cp -pav $file %{buildroot}/%{gopath}/src/%{import_path}/$file
+    echo "%{gopath}/src/%{import_path}/$file" >> devel.file-list
+done
+%endif
+
+# testing files for this project
+%if 0%{?with_unit_test} && 0%{?with_devel}
+install -d -p %{buildroot}/%{gopath}/src/%{import_path}/
+# find all *_test.go files and generate unit-test.file-list
+for file in $(find . -iname "*_test.go"); do
+    echo "%dir %{gopath}/src/%{import_path}/$(dirname $file)" >> devel.file-list
+    install -d -p %{buildroot}/%{gopath}/src/%{import_path}/$(dirname $file)
+    cp -pav $file %{buildroot}/%{gopath}/src/%{import_path}/$file
+    echo "%{gopath}/src/%{import_path}/$file" >> unit-test.file-list
+done
+%endif
+
+%if 0%{?with_devel}
+sort -u -o devel.file-list devel.file-list
+%endif
+
+%check
+%if 0%{?with_check} && 0%{?with_unit_test} && 0%{?with_devel}
+export GOPATH=%{buildroot}/%{gopath}:$(pwd)/Godeps/_workspace:%{gopath}
+make test
+%endif
+
+%post
+%systemd_post %{name}.service
+
+%preun
+%systemd_preun %{name}.service
+
+%postun
+%systemd_postun_with_restart %{name}.service
+
