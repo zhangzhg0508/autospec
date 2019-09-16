@@ -1,0 +1,37 @@
+2019-09-16 07:25:45,293 - Mock Version: 1.2.14
+2019-09-16 07:25:45,549 - Start: dnf update
+2019-09-16 07:25:56,126 - Finish: dnf update
+2019-09-16 07:25:56,131 - Finish: chroot init
+2019-09-16 07:25:56,134 - Start: buildsrpm
+2019-09-16 07:25:56,142 - Start: rpmbuild -bs
+2019-09-16 07:25:56,180 - Finish: rpmbuild -bs
+2019-09-16 07:25:56,182 - Finish: buildsrpm
+2019-09-16 07:25:56,182 - Finish: run
+2019-09-16 07:25:59,219 - Mock Version: 1.2.14
+2019-09-16 07:25:59,484 - Start: dnf update
+2019-09-16 07:26:10,016 - Finish: dnf update
+2019-09-16 07:26:10,021 - Finish: chroot init
+2019-09-16 07:26:10,023 - Start: build phase for memcached-custom-1.0-2.src.rpm
+2019-09-16 07:26:10,025 - Start: build setup for memcached-custom-1.0-2.src.rpm
+2019-09-16 07:26:10,690 - Finish: build setup for memcached-custom-1.0-2.src.rpm
+2019-09-16 07:26:10,690 - Start: rpmbuild memcached-custom-1.0-2.src.rpm
+2019-09-16 07:26:13,925 - Mock Version: 1.2.14
+2019-09-16 07:26:14,175 - Start: dnf update
+2019-09-16 07:26:24,862 - Finish: dnf update
+2019-09-16 07:26:24,868 - Finish: chroot init
+2019-09-16 07:26:24,870 - Start: buildsrpm
+2019-09-16 07:26:24,879 - Start: rpmbuild -bs
+2019-09-16 07:26:24,917 - Finish: rpmbuild -bs
+2019-09-16 07:26:24,918 - Finish: buildsrpm
+2019-09-16 07:26:24,919 - Finish: run
+2019-09-16 07:26:27,936 - Mock Version: 1.2.14
+2019-09-16 07:26:28,192 - Start: dnf update
+2019-09-16 07:26:38,727 - Finish: dnf update
+2019-09-16 07:26:38,733 - Finish: chroot init
+2019-09-16 07:26:38,734 - Start: build phase for memcached-custom-1.0-2.src.rpm
+2019-09-16 07:26:38,736 - Start: build setup for memcached-custom-1.0-2.src.rpm
+2019-09-16 07:26:39,397 - Finish: build setup for memcached-custom-1.0-2.src.rpm
+2019-09-16 07:26:39,397 - Start: rpmbuild memcached-custom-1.0-2.src.rpm
+2019-09-16 07:26:39,502 - Finish: rpmbuild memcached-custom-1.0-2.src.rpm
+2019-09-16 07:26:39,504 - Finish: build phase for memcached-custom-1.0-2.src.rpm
+2019-09-16 07:26:39,504 - Finish: run

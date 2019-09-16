@@ -1,0 +1,95 @@
+From 1055c499b32a5e522a07eb043a4677cd788f800c Mon Sep 17 00:00:00 2001
+From: chen-dq <chen.dq@neusoft.com>
+Date: Mon, 16 Sep 2019 07:26:39 +0000
+Subject: [PATCH memcached-custom] memcached-custom: Autospec creation for
+ version 1.0
+
+---
+ build_prepend         |  2 +-
+ install_append        |  1 +
+ install_macro         |  2 +-
+ memcached-custom.spec | 26 +++++++++++++++++++++-----
+ release               |  2 +-
+ 5 files changed, 25 insertions(+), 8 deletions(-)
+ create mode 100644 install_append
+
+diff --git a/build_prepend b/build_prepend
+index ad91707..9a5f003 100644
+--- a/build_prepend
++++ b/build_prepend
+@@ -1 +1 @@
+-%define _sysconfdir /usr/local/etc
++%define _unitdir /usr/lib/systemd/system/
+diff --git a/install_append b/install_append
+new file mode 100644
+index 0000000..1279a96
+--- /dev/null
++++ b/install_append
+@@ -0,0 +1 @@
++%{__install} -m 644 -p memcached.service %{buildroot}%{_unitdir}/memcached.service
+diff --git a/install_macro b/install_macro
+index 4a310d2..6210e87 100644
+--- a/install_macro
++++ b/install_macro
+@@ -1 +1 @@
+-%{__install} -d %{buildroot}%{_sysconfdir}/systemd/system
++%{__install} -d %{buildroot}%{_unitdir}
+diff --git a/memcached-custom.spec b/memcached-custom.spec
+index 12754ec..7dc7b5b 100644
+--- a/memcached-custom.spec
++++ b/memcached-custom.spec
+@@ -4,30 +4,39 @@
+ #
+ Name     : memcached-custom
+ Version  : 1.0
+ URL      : file:///home/clear/tar/memcached-custom-1.0.tar.gz
+ Source0  : file:///home/clear/tar/memcached-custom-1.0.tar.gz
+ Summary  : No detailed summary available
+ Group    : Development/Tools
+ License  : Apache-2.0
++Requires: memcached-custom-services = %{version}-%{release}
+ Patch1: 0001-add_makefile.patch
+ 
+ %description
+ No detailed description available
+ 
++%package services
++Group: Systemd services
++
++%description services
++services components for the memcached-custom package.
++
++
+ %prep
+ %setup -q -n memcached-custom-1.0
+ %patch1 -p1
+ 
+ %build
+ ## build_prepend content
+-%define _sysconfdir /usr/local/etc
++%define _unitdir /usr/lib/systemd/system/
+ ## build_prepend end
+ export http_proxy=http://127.0.0.1:9/
+ export https_proxy=http://127.0.0.1:9/
+ export no_proxy=localhost,127.0.0.1,0.0.0.0
+ export LANG=C.UTF-8
+ export GCC_IGNORE_WERROR=1
+ export AR=gcc-ar
+ export RANLIB=gcc-ranlib
+@@ -40,9 +49,16 @@ make  %{?_smp_mflags}
+ 
+ 
+ %install
+ rm -rf %{buildroot}
+-%{__install} -d %{buildroot}%{_sysconfdir}/systemd/system
++%{__install} -d %{buildroot}%{_unitdir}
++## install_append content
++%{__install} -m 644 -p memcached.service %{buildroot}%{_unitdir}/memcached.service
++## install_append end
+ 
+ %files
+ %defattr(-,root,root,-)
++
++%files services
++%defattr(-,root,root,-)
++/usr/lib/systemd/system/memcached.service

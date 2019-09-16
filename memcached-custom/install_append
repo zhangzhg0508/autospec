@@ -1,0 +1,1 @@
+%{__install} -m 644 -p memcached.service %{buildroot}%{_unitdir}/memcached.service
