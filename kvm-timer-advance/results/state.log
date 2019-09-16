@@ -1,0 +1,37 @@
+2019-09-16 02:04:28,730 - Mock Version: 1.2.14
+2019-09-16 02:04:28,980 - Start: dnf update
+2019-09-16 02:04:39,113 - Finish: dnf update
+2019-09-16 02:04:39,119 - Finish: chroot init
+2019-09-16 02:04:39,121 - Start: buildsrpm
+2019-09-16 02:04:39,128 - Start: rpmbuild -bs
+2019-09-16 02:04:39,166 - Finish: rpmbuild -bs
+2019-09-16 02:04:39,167 - Finish: buildsrpm
+2019-09-16 02:04:39,168 - Finish: run
+2019-09-16 02:04:42,256 - Mock Version: 1.2.14
+2019-09-16 02:04:42,516 - Start: dnf update
+2019-09-16 02:04:52,571 - Finish: dnf update
+2019-09-16 02:04:52,577 - Finish: chroot init
+2019-09-16 02:04:52,578 - Start: build phase for kvm-timer-advance-1.0-1.src.rpm
+2019-09-16 02:04:52,580 - Start: build setup for kvm-timer-advance-1.0-1.src.rpm
+2019-09-16 02:04:53,604 - Finish: build setup for kvm-timer-advance-1.0-1.src.rpm
+2019-09-16 02:04:53,604 - Start: rpmbuild kvm-timer-advance-1.0-1.src.rpm
+2019-09-16 02:04:56,883 - Mock Version: 1.2.14
+2019-09-16 02:04:57,137 - Start: dnf update
+2019-09-16 02:05:07,155 - Finish: dnf update
+2019-09-16 02:05:07,160 - Finish: chroot init
+2019-09-16 02:05:07,163 - Start: buildsrpm
+2019-09-16 02:05:07,169 - Start: rpmbuild -bs
+2019-09-16 02:05:07,207 - Finish: rpmbuild -bs
+2019-09-16 02:05:07,208 - Finish: buildsrpm
+2019-09-16 02:05:07,209 - Finish: run
+2019-09-16 02:05:10,311 - Mock Version: 1.2.14
+2019-09-16 02:05:10,544 - Start: dnf update
+2019-09-16 02:05:20,589 - Finish: dnf update
+2019-09-16 02:05:20,595 - Finish: chroot init
+2019-09-16 02:05:20,596 - Start: build phase for kvm-timer-advance-1.0-1.src.rpm
+2019-09-16 02:05:20,598 - Start: build setup for kvm-timer-advance-1.0-1.src.rpm
+2019-09-16 02:05:21,621 - Finish: build setup for kvm-timer-advance-1.0-1.src.rpm
+2019-09-16 02:05:21,621 - Start: rpmbuild kvm-timer-advance-1.0-1.src.rpm
+2019-09-16 02:05:21,729 - Finish: rpmbuild kvm-timer-advance-1.0-1.src.rpm
+2019-09-16 02:05:21,730 - Finish: build phase for kvm-timer-advance-1.0-1.src.rpm
+2019-09-16 02:05:21,731 - Finish: run

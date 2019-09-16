@@ -1,0 +1,4 @@
+
+install -p -D -m 755 setup_kvm_timer_advance.sh %{buildroot}%{_bindir}/setup_kvm_timer_advance.sh
+install -p -D -m 444 kvm_timer_advance_setup.service %{buildroot}%{_unitdir}/kvm_timer_advance_setup.service
+
