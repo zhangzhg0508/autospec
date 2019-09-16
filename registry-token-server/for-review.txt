@@ -1,0 +1,86 @@
+From d2a525bd4522b166097e2daba155441be3be11c3 Mon Sep 17 00:00:00 2001
+From: fuyong <fuyong@neusoft.com>
+Date: Mon, 16 Sep 2019 16:54:16 +0800
+Subject: [PATCH registry-token-server] registry-token-server: Autospec
+ creation for version 1.0.0
+
+---
+ install_append             |  5 +++--
+ registry-token-server.spec | 19 ++++++++++++++++++-
+ release                    |  2 +-
+ used_libs                  |  2 ++
+ 4 files changed, 24 insertions(+), 4 deletions(-)
+ create mode 100644 used_libs
+
+diff --git a/install_append b/install_append
+index c561f01..9e629fb 100644
+--- a/install_append
++++ b/install_append
+@@ -1,7 +1,8 @@
+ install -d -p %{buildroot}%{_bindir}
+ #pwd
+-#cd _build/
+-#install -p -m 0755 bin/registry-token-server %{buildroot}%{_bindir}
++cd _build/
++install -p -m 0755 bin/registry-token-server %{buildroot}%{_bindir}
++cd ../
+ # install systemd/init scripts
+ install -d %{buildroot}%{_unitdir}
+ tar -zxvf %{SOURCE7}
+diff --git a/registry-token-server.spec b/registry-token-server.spec
+index 063da37..8c403a1 100644
+--- a/registry-token-server.spec
++++ b/registry-token-server.spec
+@@ -17,6 +17,7 @@ Source7  : file:///home/clr/stx-tar/token-server.tar.gz
+ Summary  : No detailed summary available
+ Group    : Development/Tools
+ License  : Apache-2.0
++Requires: registry-token-server-bin = %{version}-%{release}
+ Requires: registry-token-server-services = %{version}-%{release}
+ BuildRequires : buildreq-golang
+ BuildRequires : go >= 1.6
+@@ -25,6 +26,15 @@ BuildRequires : systemd
+ %description
+ No detailed description available
+ 
++%package bin
++Requires: registry-token-server-services = %{version}-%{release}
++
++
++
+ %package services
+ Summary: services components for the registry-token-server package.
+ Group: Systemd services
+@@ -85,6 +95,9 @@ rm -rf %{buildroot}
+ 
+ ## install_append content
+ install -d -p %{buildroot}%{_bindir}
++cd _build/
++install -p -m 0755 bin/registry-token-server %{buildroot}%{_bindir}
++cd ../
+ install -d %{buildroot}%{_unitdir}
+ tar -zxvf %{SOURCE7}
+ install -p -m 644 registry-token-server.service %{buildroot}%{_unitdir}
+@@ -98,6 +111,10 @@ install -p -m 644 token_server.conf %{buildroot}%{_sysconfdir}/%{name}/registry
+ %defattr(-,root,root,-)
+ /usr/local/etc/registry-token-server/registry/token_server.conf
+ 
++%files bin
++%defattr(-,root,root,-)
++/usr/bin/registry-token-server
++
+ %files services
+ %defattr(-,root,root,-)
+ /usr/lib/systemd/system/registry-token-server.service
+diff --git a/used_libs b/used_libs
+new file mode 100644
+index 0000000..3fcd837
+--- /dev/null
++++ b/used_libs
+@@ -0,0 +1,2 @@
++libc.so.6
++libpthread.so.0
+-- 
+2.23.0
+
+

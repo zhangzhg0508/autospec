@@ -1,0 +1,37 @@
+2019-09-16 16:53:08,630 - Mock Version: 1.2.14
+2019-09-16 16:53:08,889 - Start: dnf update
+2019-09-16 16:53:18,579 - Finish: dnf update
+2019-09-16 16:53:18,585 - Finish: chroot init
+2019-09-16 16:53:18,588 - Start: buildsrpm
+2019-09-16 16:53:18,598 - Start: rpmbuild -bs
+2019-09-16 16:53:18,644 - Finish: rpmbuild -bs
+2019-09-16 16:53:18,647 - Finish: buildsrpm
+2019-09-16 16:53:18,647 - Finish: run
+2019-09-16 16:53:21,773 - Mock Version: 1.2.14
+2019-09-16 16:53:22,013 - Start: dnf update
+2019-09-16 16:53:31,710 - Finish: dnf update
+2019-09-16 16:53:31,715 - Finish: chroot init
+2019-09-16 16:53:31,716 - Start: build phase for registry-token-server-1.0.0-3.src.rpm
+2019-09-16 16:53:31,719 - Start: build setup for registry-token-server-1.0.0-3.src.rpm
+2019-09-16 16:53:35,913 - Finish: build setup for registry-token-server-1.0.0-3.src.rpm
+2019-09-16 16:53:35,914 - Start: rpmbuild registry-token-server-1.0.0-3.src.rpm
+2019-09-16 16:53:44,763 - Mock Version: 1.2.14
+2019-09-16 16:53:45,011 - Start: dnf update
+2019-09-16 16:53:54,737 - Finish: dnf update
+2019-09-16 16:53:54,743 - Finish: chroot init
+2019-09-16 16:53:54,746 - Start: buildsrpm
+2019-09-16 16:53:54,758 - Start: rpmbuild -bs
+2019-09-16 16:53:54,805 - Finish: rpmbuild -bs
+2019-09-16 16:53:54,809 - Finish: buildsrpm
+2019-09-16 16:53:54,809 - Finish: run
+2019-09-16 16:53:57,831 - Mock Version: 1.2.14
+2019-09-16 16:53:58,087 - Start: dnf update
+2019-09-16 16:54:07,712 - Finish: dnf update
+2019-09-16 16:54:07,718 - Finish: chroot init
+2019-09-16 16:54:07,719 - Start: build phase for registry-token-server-1.0.0-3.src.rpm
+2019-09-16 16:54:07,722 - Start: build setup for registry-token-server-1.0.0-3.src.rpm
+2019-09-16 16:54:11,924 - Finish: build setup for registry-token-server-1.0.0-3.src.rpm
+2019-09-16 16:54:11,924 - Start: rpmbuild registry-token-server-1.0.0-3.src.rpm
+2019-09-16 16:54:13,861 - Finish: rpmbuild registry-token-server-1.0.0-3.src.rpm
+2019-09-16 16:54:13,862 - Finish: build phase for registry-token-server-1.0.0-3.src.rpm
+2019-09-16 16:54:13,863 - Finish: run

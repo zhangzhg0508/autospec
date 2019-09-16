@@ -1,0 +1,19 @@
+install -d -p %{buildroot}%{_bindir}
+#pwd
+cd _build/
+install -p -m 0755 bin/registry-token-server %{buildroot}%{_bindir}
+cd ../
+# install systemd/init scripts
+install -d %{buildroot}%{_unitdir}
+tar -zxvf %{SOURCE7}
+install -p -m 644 registry-token-server.service %{buildroot}%{_unitdir}
+
+# install directory to install default certificate
+install -d -p %{buildroot}%{_sysconfdir}/ssl/private
+
+# install environment variables file for service file
+install -d -p %{buildroot}%{_sysconfdir}/%{name}/registry
+install -p -m 644 token_server.conf %{buildroot}%{_sysconfdir}/%{name}/registry
+
+#define license tag if not already defined
+%{!?_licensedir:%global license %doc}

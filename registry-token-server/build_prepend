@@ -1,0 +1,20 @@
+tar -zxvf %{SOURCE1}
+tar -zxvf %{SOURCE2}
+tar -zxvf %{SOURCE3}
+tar -zxvf %{SOURCE4}
+tar -zxvf %{SOURCE5}
+tar -zxvf %{SOURCE6}
+
+mkdir -p _build/src/github.com/gorilla/ && mv gorilla-mux _build/src/github.com/gorilla/mux
+mkdir -p _build/src/github.com/docker/ && mv docker-distribution _build/src/github.com/docker/distribution
+mkdir -p _build/src/github.com/docker/ && mv docker-libtrust _build/src/github.com/docker/libtrust
+mkdir -p _build/src/github.com/docker/distribution/ && mv gorilla-context _build/src/github.com/docker/distribution/context
+mkdir -p _build/src/github.com/Sirupsen/ && mv Sirupsen-logrus _build/src/github.com/Sirupsen/logrus
+mkdir -p _build/src/github.com/gophercloud && mv gophercloud-gophercloud _build/src/github.com/gophercloud/gophercloud
+
+mkdir -p ./_build/src/
+ln -s $(pwd) ./_build/src/registry-token-server
+export GOPATH=$(pwd)/_build
+cd ./_build
+#cd ./_build/src/registry-token-server
+#%gobuild -o bin/registry-token-server registry-token-server
