@@ -1,0 +1,37 @@
+2019-09-16 08:55:57,277 - Mock Version: 1.2.14
+2019-09-16 08:55:57,515 - Start: dnf update
+2019-09-16 08:56:08,038 - Finish: dnf update
+2019-09-16 08:56:08,044 - Finish: chroot init
+2019-09-16 08:56:08,046 - Start: buildsrpm
+2019-09-16 08:56:08,057 - Start: rpmbuild -bs
+2019-09-16 08:56:08,109 - Finish: rpmbuild -bs
+2019-09-16 08:56:08,113 - Finish: buildsrpm
+2019-09-16 08:56:08,113 - Finish: run
+2019-09-16 08:56:11,141 - Mock Version: 1.2.14
+2019-09-16 08:56:11,390 - Start: dnf update
+2019-09-16 08:56:21,857 - Finish: dnf update
+2019-09-16 08:56:21,862 - Finish: chroot init
+2019-09-16 08:56:21,864 - Start: build phase for monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.src.rpm
+2019-09-16 08:56:21,866 - Start: build setup for monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.src.rpm
+2019-09-16 08:56:26,454 - Finish: build setup for monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.src.rpm
+2019-09-16 08:56:26,454 - Start: rpmbuild monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.src.rpm
+2019-09-16 08:56:33,502 - Mock Version: 1.2.14
+2019-09-16 08:56:33,762 - Start: dnf update
+2019-09-16 08:56:44,211 - Finish: dnf update
+2019-09-16 08:56:44,217 - Finish: chroot init
+2019-09-16 08:56:44,220 - Start: buildsrpm
+2019-09-16 08:56:44,235 - Start: rpmbuild -bs
+2019-09-16 08:56:44,286 - Finish: rpmbuild -bs
+2019-09-16 08:56:44,290 - Finish: buildsrpm
+2019-09-16 08:56:44,291 - Finish: run
+2019-09-16 08:56:47,382 - Mock Version: 1.2.14
+2019-09-16 08:56:47,640 - Start: dnf update
+2019-09-16 08:56:58,452 - Finish: dnf update
+2019-09-16 08:56:58,458 - Finish: chroot init
+2019-09-16 08:56:58,459 - Start: build phase for monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.src.rpm
+2019-09-16 08:56:58,461 - Start: build setup for monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.src.rpm
+2019-09-16 08:57:02,989 - Finish: build setup for monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.src.rpm
+2019-09-16 08:57:02,989 - Start: rpmbuild monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.src.rpm
+2019-09-16 08:57:03,719 - Finish: rpmbuild monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.src.rpm
+2019-09-16 08:57:03,720 - Finish: build phase for monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.src.rpm
+2019-09-16 08:57:03,721 - Finish: run

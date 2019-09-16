@@ -1,0 +1,292 @@
+Mock Version: 1.2.14
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/monitor-helm.spec'], chrootPath='/var/lib/mock/clear-monitor-helm/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f09bdc35f90>timeout=0uid=1000gid=1000user='mockbuild'printOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/monitor-helm.spec'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.src.rpm
+Child return code was: 0
+LEAVE do --> 
+
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/monitor-helm.spec '], chrootPath='/var/lib/mock/clear-monitor-helm/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f09bdc35f90>timeout=0uid=1000gid=1000user='mockbuild'private_network=TrueprintOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/monitor-helm.spec '] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.U7xlwC
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
++ rm -rf helm-charts
++ /usr/bin/gzip -dc /builddir/build/SOURCES/helm-charts-92b6289ae93816717a8453cfe62bad51cbdb8ad0.tar.gz
++ /usr/bin/tar -xf -
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd helm-charts
++ /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ cd ..
++ cd /builddir/build/BUILD
++ /usr/bin/tar -xf -
++ /usr/bin/gzip -dc /builddir/build/SOURCES/monitor-helm.tar
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd helm-charts
++ /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
+Patch #1 (0001-Add-Makefile-for-helm-charts.patch):
++ echo 'Patch #1 (0001-Add-Makefile-for-helm-charts.patch):'
++ /usr/bin/cat /builddir/build/SOURCES/0001-Add-Makefile-for-helm-charts.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file stable/Makefile
++ echo 'Patch #2 (0002-kibana-workaround-checksum-for-configmap.yaml.patch):'
+Patch #2 (0002-kibana-workaround-checksum-for-configmap.yaml.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0002-kibana-workaround-checksum-for-configmap.yaml.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file stable/kibana/templates/deployment.yaml
++ echo 'Patch #3 (0003-helm-chart-changes-for-stx-monitor.patch):'
+Patch #3 (0003-helm-chart-changes-for-stx-monitor.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0003-helm-chart-changes-for-stx-monitor.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file stable/elasticsearch/values.yaml
+patching file stable/filebeat/templates/configmap.yaml
+patching file stable/filebeat/templates/daemonset.yaml
+patching file stable/filebeat/values.yaml
+patching file stable/kibana/values.yaml
+patching file stable/logstash/templates/ingress.yaml
+patching file stable/logstash/templates/statefulset.yaml
+patching file stable/logstash/values.yaml
+patching file stable/metricbeat/templates/configmap.yaml
+patching file stable/metricbeat/templates/daemonset.yaml
+patching file stable/metricbeat/values.yaml
++ exit 0
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.WevmXF
++ umask 022
++ cd /builddir/build/BUILD
++ cd helm-charts
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CFLAGS
++ http_proxy=http://127.0.0.1:9/
++ export http_proxy
++ https_proxy=http://127.0.0.1:9/
++ export https_proxy
++ ftp_proxy=http://127.0.0.1:9/
++ export ftp_proxy
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export no_proxy
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CXXFLAGS
++ FFLAGS='-g -O3 -feliminate-unused-debug-types  -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -m64 -fasynchronous-unwind-tables -Wp,-D_REENTRANT -ftree-loop-distribute-patterns -Wl,-z -Wl,now -Wl,-z -Wl,relro -malign-data=abi -fno-semantic-interposition -ftree-vectorize  -ftree-loop-vectorize -Wl,--enable-new-dtags '
++ export FFLAGS
++ LD_AS_NEEDED=1
++ export LD_AS_NEEDED
++ PKG_CONFIG_LIBDIR=/usr/lib64/pkgconfig
++ export PKG_CONFIG_LIBDIR
++ PATH=/usr/lib64/ccache/bin:/usr/local/bin:/usr/bin
++ export PATH
++ mkdir /builddir/.helm
++ mkdir /builddir/.helm/repository
++ mkdir /builddir/.helm/repository/cache
++ mkdir /builddir/.helm/repository/local
++ mkdir /builddir/.helm/plugins
++ mkdir /builddir/.helm/starters
++ mkdir /builddir/.helm/cache
++ mkdir /builddir/.helm/cache/archive
++ tar -xzvf /builddir/build/SOURCES/monitor-helm.tar
+index.yaml
+repositories.yaml
++ cp repositories.yaml /builddir/.helm/repository/repositories.yaml
++ cp index.yaml /builddir/.helm/repository/local/index.yaml
++ cd stable
++ make elasticsearch
+===== Processing [elasticsearch] chart =====
+make[1]: Entering directory '/builddir/build/BUILD/helm-charts/stable'
+if [ -f elasticsearch/Makefile ]; then make -C elasticsearch; fi
+if [ -f elasticsearch/requirements.yaml ]; then helm dep up elasticsearch; fi
+if [ -d elasticsearch ]; then helm lint elasticsearch; fi
+==> Linting elasticsearch
+Lint OK
+1 chart(s) linted, no failures
+if [ -d elasticsearch ]; then helm package elasticsearch; fi
+Successfully packaged chart and saved it to: /builddir/build/BUILD/helm-charts/stable/elasticsearch-1.24.0.tgz
+make[1]: Leaving directory '/builddir/build/BUILD/helm-charts/stable'
++ make filebeat
+===== Processing [filebeat] chart =====
+make[1]: Entering directory '/builddir/build/BUILD/helm-charts/stable'
+if [ -f filebeat/Makefile ]; then make -C filebeat; fi
+if [ -f filebeat/requirements.yaml ]; then helm dep up filebeat; fi
+if [ -d filebeat ]; then helm lint filebeat; fi
+==> Linting filebeat
+Lint OK
+1 chart(s) linted, no failures
+if [ -d filebeat ]; then helm package filebeat; fi
+Successfully packaged chart and saved it to: /builddir/build/BUILD/helm-charts/stable/filebeat-1.5.1.tgz
+make[1]: Leaving directory '/builddir/build/BUILD/helm-charts/stable'
++ make metricbeat
+===== Processing [metricbeat] chart =====
+make[1]: Entering directory '/builddir/build/BUILD/helm-charts/stable'
+if [ -f metricbeat/Makefile ]; then make -C metricbeat; fi
+if [ -f metricbeat/requirements.yaml ]; then helm dep up metricbeat; fi
+if [ -d metricbeat ]; then helm lint metricbeat; fi
+==> Linting metricbeat
+Lint OK
+1 chart(s) linted, no failures
+if [ -d metricbeat ]; then helm package metricbeat; fi
+Successfully packaged chart and saved it to: /builddir/build/BUILD/helm-charts/stable/metricbeat-1.6.0.tgz
+make[1]: Leaving directory '/builddir/build/BUILD/helm-charts/stable'
++ make kube-state-metrics
+===== Processing [kube-state-metrics] chart =====
+make[1]: Entering directory '/builddir/build/BUILD/helm-charts/stable'
+if [ -f kube-state-metrics/Makefile ]; then make -C kube-state-metrics; fi
+if [ -f kube-state-metrics/requirements.yaml ]; then helm dep up kube-state-metrics; fi
+if [ -d kube-state-metrics ]; then helm lint kube-state-metrics; fi
+==> Linting kube-state-metrics
+[INFO] Chart.yaml: icon is recommended
+1 chart(s) linted, no failures
+if [ -d kube-state-metrics ]; then helm package kube-state-metrics; fi
+Successfully packaged chart and saved it to: /builddir/build/BUILD/helm-charts/stable/kube-state-metrics-0.16.0.tgz
+make[1]: Leaving directory '/builddir/build/BUILD/helm-charts/stable'
++ make kibana
+===== Processing [kibana] chart =====
+make[1]: Entering directory '/builddir/build/BUILD/helm-charts/stable'
+if [ -f kibana/Makefile ]; then make -C kibana; fi
+if [ -f kibana/requirements.yaml ]; then helm dep up kibana; fi
+if [ -d kibana ]; then helm lint kibana; fi
+==> Linting kibana
+Lint OK
+1 chart(s) linted, no failures
+if [ -d kibana ]; then helm package kibana; fi
+Successfully packaged chart and saved it to: /builddir/build/BUILD/helm-charts/stable/kibana-2.2.0.tgz
+make[1]: Leaving directory '/builddir/build/BUILD/helm-charts/stable'
++ make nginx-ingress
+===== Processing [nginx-ingress] chart =====
+make[1]: Entering directory '/builddir/build/BUILD/helm-charts/stable'
+if [ -f nginx-ingress/Makefile ]; then make -C nginx-ingress; fi
+if [ -f nginx-ingress/requirements.yaml ]; then helm dep up nginx-ingress; fi
+if [ -d nginx-ingress ]; then helm lint nginx-ingress; fi
+==> Linting nginx-ingress
+Lint OK
+1 chart(s) linted, no failures
+if [ -d nginx-ingress ]; then helm package nginx-ingress; fi
+Successfully packaged chart and saved it to: /builddir/build/BUILD/helm-charts/stable/nginx-ingress-1.4.0.tgz
+make[1]: Leaving directory '/builddir/build/BUILD/helm-charts/stable'
++ export http_proxy=http://127.0.0.1:9/
++ http_proxy=http://127.0.0.1:9/
++ export https_proxy=http://127.0.0.1:9/
++ https_proxy=http://127.0.0.1:9/
++ export no_proxy=localhost,127.0.0.1,0.0.0.0
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export LANG=C.UTF-8
++ LANG=C.UTF-8
++ export SOURCE_DATE_EPOCH=1568624188
++ SOURCE_DATE_EPOCH=1568624188
++ export GCC_IGNORE_WERROR=1
++ GCC_IGNORE_WERROR=1
++ export AR=gcc-ar
++ AR=gcc-ar
++ export RANLIB=gcc-ranlib
++ RANLIB=gcc-ranlib
++ export NM=gcc-nm
++ NM=gcc-nm
++ export 'CFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ export 'FCFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FCFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'FFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'CXXFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ make -j4 logstash
+===== Processing [logstash] chart =====
+make[1]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[1]: Entering directory '/builddir/build/BUILD/helm-charts/stable'
+if [ -f logstash/Makefile ]; then make -C logstash; fi
+if [ -f logstash/requirements.yaml ]; then helm dep up logstash; fi
+if [ -d logstash ]; then helm lint logstash; fi
+==> Linting logstash
+Lint OK
+1 chart(s) linted, no failures
+if [ -d logstash ]; then helm package logstash; fi
+Successfully packaged chart and saved it to: /builddir/build/BUILD/helm-charts/stable/logstash-1.7.0.tgz
+make[1]: Leaving directory '/builddir/build/BUILD/helm-charts/stable'
++ exit 0
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.Dzt89F
++ umask 022
++ cd /builddir/build/BUILD
++ cd helm-charts
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ rm -rf /builddir/build/BUILDROOT/monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64
++ mkdir -p /builddir/build/BUILDROOT/monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64
++ export SOURCE_DATE_EPOCH=1568624188
++ SOURCE_DATE_EPOCH=1568624188
++ rm -rf /builddir/build/BUILDROOT/monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64
++ install -d -m 755 /builddir/build/BUILDROOT/monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64/usr/lib/helm
++ install -d -m 755 /builddir/build/BUILDROOT/monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64/usr/lib/helm
++ install -p -D -m 755 stable/elasticsearch-1.24.0.tgz stable/filebeat-1.5.1.tgz stable/kibana-2.2.0.tgz stable/kube-state-metrics-0.16.0.tgz stable/logstash-1.7.0.tgz stable/metricbeat-1.6.0.tgz stable/nginx-ingress-1.4.0.tgz /builddir/build/BUILDROOT/monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64/usr/lib/helm
++ rm -f /builddir/build/BUILDROOT/monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64/usr/share/info/dir
+++ find /builddir/build/BUILDROOT/monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64 -path 'etc/*' '!' -type d
++ test -z ''
++ rm -rf '/builddir/build/BUILDROOT/monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64/etc/*'
++ rm -rf '/builddir/build/BUILDROOT/monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64/usr/share/factory/*'
++ find /builddir/build/BUILDROOT/monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64 -name __pycache__
++ xargs rm -rf --
++ '[' -d /builddir/build/BUILDROOT/monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64/usr/share/mime ']'
+++ getconf _NPROCESSORS_ONLN
++ RPM_XARGS_PFLAG=-P4
++ find /builddir/build/BUILDROOT/monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64 -name '*.so.avx512' -print0
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -5
++ find /builddir/build/BUILDROOT/monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64/usr/lib64/haswell/avx512_1 -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64/usr/lib64/haswell/avx512_1’: No such file or directory
++ find /builddir/build/BUILDROOT/monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64 -name '*.so.avx2' -print0
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -2
++ find /builddir/build/BUILDROOT/monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64/usr/lib64/haswell '!' -path '/usr/lib64/haswell/avx512_1/*' -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64/usr/lib64/haswell’: No such file or directory
++ find /builddir/build/BUILDROOT/monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64/usr/lib64/ -maxdepth 1 -name '*.so*' -type f -print0
++ xargs -0rtn1 -P4 /usr/lib/rpm/clr/brp-create-abi
++ sort -u
+find: ‘/builddir/build/BUILDROOT/monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64/usr/lib64/’: No such file or directory
++ /usr/lib/rpm/find-debuginfo.sh --strict-build-id /builddir/build/BUILD/helm-charts
+find: ‘debug’: No such file or directory
++ '[' -d /builddir/build/BUILDROOT/monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64/usr/lib/debug ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64/usr/lib/debug ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64/usr/src/debug ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64/usr/lib/debug.force ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64/usr/src/debug.force ']'
++ :
++ /usr/lib/rpm/check-buildroot
++ /usr/lib/rpm/clr/brp-strip-static-archive /usr/bin/strip
++ /usr/lib/rpm/clr/brp-strip-comment-note /usr/bin/strip /usr/bin/objdump
++ /usr/lib/rpm/clr/brp-python-bytecompile
++ find /builddir/build/BUILDROOT/monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64 -print0
++ xargs -0 touch -h -d @1568624188
++ /usr/lib/rpm/clr/brp-java-repack-jars
+Processing files: monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64
+Provides: monitor-helm = 92b6289ae93816717a8453cfe62bad51cbdb8ad0-2 monitor-helm(x86-64) = 92b6289ae93816717a8453cfe62bad51cbdb8ad0-2
+Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+Processing files: monitor-helm-debuginfo-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64
+Processing files: monitor-helm-abi-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64
+Checking for unpackaged file(s): /usr/lib/rpm/check-files /builddir/build/BUILDROOT/monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64
+warning: Empty %files file /builddir/build/BUILD/helm-charts/debugfiles.list
+warning: Empty %files file /builddir/build/BUILD/helm-charts/abifiles.list
+Wrote: /builddir/build/RPMS/monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64.rpm
+Wrote: /builddir/build/RPMS/monitor-helm-debuginfo-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64.rpm
+Wrote: /builddir/build/RPMS/monitor-helm-abi-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64.rpm
+Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.Ax5fKC
++ umask 022
++ cd /builddir/build/BUILD
++ cd helm-charts
++ /usr/bin/rm -rf /builddir/build/BUILDROOT/monitor-helm-92b6289ae93816717a8453cfe62bad51cbdb8ad0-2.x86_64
++ exit 0
+Child return code was: 0
+LEAVE do --> 
+

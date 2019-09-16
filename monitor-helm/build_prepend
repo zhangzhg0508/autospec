@@ -1,0 +1,34 @@
+%global helm_folder  /usr/lib/helm
+%define helm_home %{getenv:HOME}/.helm
+mkdir %{helm_home}
+mkdir %{helm_home}/repository
+mkdir %{helm_home}/repository/cache
+mkdir %{helm_home}/repository/local
+mkdir %{helm_home}/plugins
+mkdir %{helm_home}/starters
+mkdir %{helm_home}/cache
+mkdir %{helm_home}/cache/archive
+#pwd
+tar -xzvf %SOURCE1
+cp repositories.yaml %{helm_home}/repository/repositories.yaml
+
+# Stage a local repo index that can be updated by the build
+cp index.yaml %{helm_home}/repository/local/index.yaml
+
+# Host a server for the charts
+#helm serve --repo-path . &
+#helm repo rm local
+#helm repo add local http://localhost:8879/charts
+
+cd stable
+make elasticsearch
+make filebeat
+make metricbeat
+make kube-state-metrics
+make kibana
+make nginx-ingress
+#make logstash
+# terminate helm server (the last backgrounded task)
+#kill %1
+
+

@@ -1,0 +1,3 @@
+0001-Add-Makefile-for-helm-charts.patch
+0002-kibana-workaround-checksum-for-configmap.yaml.patch
+0003-helm-chart-changes-for-stx-monitor.patch
