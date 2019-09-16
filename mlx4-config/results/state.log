@@ -1,0 +1,37 @@
+2019-09-16 08:08:55,714 - Mock Version: 1.2.14
+2019-09-16 08:08:55,962 - Start: dnf update
+2019-09-16 08:09:06,743 - Finish: dnf update
+2019-09-16 08:09:06,748 - Finish: chroot init
+2019-09-16 08:09:06,751 - Start: buildsrpm
+2019-09-16 08:09:06,757 - Start: rpmbuild -bs
+2019-09-16 08:09:06,795 - Finish: rpmbuild -bs
+2019-09-16 08:09:06,797 - Finish: buildsrpm
+2019-09-16 08:09:06,797 - Finish: run
+2019-09-16 08:09:09,906 - Mock Version: 1.2.14
+2019-09-16 08:09:10,160 - Start: dnf update
+2019-09-16 08:09:20,539 - Finish: dnf update
+2019-09-16 08:09:20,545 - Finish: chroot init
+2019-09-16 08:09:20,547 - Start: build phase for mlx4-config-1.0-1.src.rpm
+2019-09-16 08:09:20,549 - Start: build setup for mlx4-config-1.0-1.src.rpm
+2019-09-16 08:09:21,248 - Finish: build setup for mlx4-config-1.0-1.src.rpm
+2019-09-16 08:09:21,249 - Start: rpmbuild mlx4-config-1.0-1.src.rpm
+2019-09-16 08:09:24,571 - Mock Version: 1.2.14
+2019-09-16 08:09:24,801 - Start: dnf update
+2019-09-16 08:09:35,352 - Finish: dnf update
+2019-09-16 08:09:35,358 - Finish: chroot init
+2019-09-16 08:09:35,361 - Start: buildsrpm
+2019-09-16 08:09:35,367 - Start: rpmbuild -bs
+2019-09-16 08:09:35,408 - Finish: rpmbuild -bs
+2019-09-16 08:09:35,409 - Finish: buildsrpm
+2019-09-16 08:09:35,410 - Finish: run
+2019-09-16 08:09:38,525 - Mock Version: 1.2.14
+2019-09-16 08:09:38,777 - Start: dnf update
+2019-09-16 08:09:49,427 - Finish: dnf update
+2019-09-16 08:09:49,433 - Finish: chroot init
+2019-09-16 08:09:49,434 - Start: build phase for mlx4-config-1.0-1.src.rpm
+2019-09-16 08:09:49,436 - Start: build setup for mlx4-config-1.0-1.src.rpm
+2019-09-16 08:09:50,099 - Finish: build setup for mlx4-config-1.0-1.src.rpm
+2019-09-16 08:09:50,099 - Start: rpmbuild mlx4-config-1.0-1.src.rpm
+2019-09-16 08:09:50,240 - Finish: rpmbuild mlx4-config-1.0-1.src.rpm
+2019-09-16 08:09:50,241 - Finish: build phase for mlx4-config-1.0-1.src.rpm
+2019-09-16 08:09:50,242 - Finish: run

@@ -1,0 +1,16 @@
+%{__install} -d %{buildroot}%{_unitdir}
+%{__install} -d %{buildroot}%{_sysconfdir}/goenabled.d
+%{__install} -d %{buildroot}%{_bindir}
+%{__install} -m 755 mlx4-configure.sh %{buildroot}%{_sysconfdir}/init.d/
+%{__install} -m 644 mlx4-config.service %{buildroot}%{_unitdir}/
+%{__install} -m 555 mlx4_core_goenabled.sh %{buildroot}%{_sysconfdir}/goenabled.d/
+%{__install} -m 755 mlx4_core_config.sh %{buildroot}%{_bindir}/
+
+%clean
+%{__rm} -rf %{buildroot}
+
+%post
+/bin/systemctl enable mlx4-config.service >/dev/null 2>&1
+
+%preun
+/bin/systemctl disable mlx4-config.service >/dev/null 2>&1
