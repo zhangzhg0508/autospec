@@ -1,0 +1,37 @@
+2019-09-16 14:08:26,621 - Mock Version: 1.2.14
+2019-09-16 14:08:26,872 - Start: dnf update
+2019-09-16 14:08:36,857 - Finish: dnf update
+2019-09-16 14:08:36,863 - Finish: chroot init
+2019-09-16 14:08:36,865 - Start: buildsrpm
+2019-09-16 14:08:36,870 - Start: rpmbuild -bs
+2019-09-16 14:08:36,909 - Finish: rpmbuild -bs
+2019-09-16 14:08:36,910 - Finish: buildsrpm
+2019-09-16 14:08:36,911 - Finish: run
+2019-09-16 14:08:39,933 - Mock Version: 1.2.14
+2019-09-16 14:08:40,190 - Start: dnf update
+2019-09-16 14:08:49,790 - Finish: dnf update
+2019-09-16 14:08:49,795 - Finish: chroot init
+2019-09-16 14:08:49,797 - Start: build phase for rsync-config-1.0-1.src.rpm
+2019-09-16 14:08:49,799 - Start: build setup for rsync-config-1.0-1.src.rpm
+2019-09-16 14:08:50,468 - Finish: build setup for rsync-config-1.0-1.src.rpm
+2019-09-16 14:08:50,468 - Start: rpmbuild rsync-config-1.0-1.src.rpm
+2019-09-16 14:08:53,747 - Mock Version: 1.2.14
+2019-09-16 14:08:53,994 - Start: dnf update
+2019-09-16 14:09:03,639 - Finish: dnf update
+2019-09-16 14:09:03,644 - Finish: chroot init
+2019-09-16 14:09:03,647 - Start: buildsrpm
+2019-09-16 14:09:03,652 - Start: rpmbuild -bs
+2019-09-16 14:09:03,691 - Finish: rpmbuild -bs
+2019-09-16 14:09:03,693 - Finish: buildsrpm
+2019-09-16 14:09:03,693 - Finish: run
+2019-09-16 14:09:06,717 - Mock Version: 1.2.14
+2019-09-16 14:09:06,964 - Start: dnf update
+2019-09-16 14:09:16,584 - Finish: dnf update
+2019-09-16 14:09:16,589 - Finish: chroot init
+2019-09-16 14:09:16,590 - Start: build phase for rsync-config-1.0-1.src.rpm
+2019-09-16 14:09:16,592 - Start: build setup for rsync-config-1.0-1.src.rpm
+2019-09-16 14:09:17,260 - Finish: build setup for rsync-config-1.0-1.src.rpm
+2019-09-16 14:09:17,260 - Start: rpmbuild rsync-config-1.0-1.src.rpm
+2019-09-16 14:09:17,368 - Finish: rpmbuild rsync-config-1.0-1.src.rpm
+2019-09-16 14:09:17,369 - Finish: build phase for rsync-config-1.0-1.src.rpm
+2019-09-16 14:09:17,370 - Finish: run
