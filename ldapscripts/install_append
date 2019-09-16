@@ -1,0 +1,12 @@
+rm -Rf %{buildroot}/usr/local/man
+rm -f %{buildroot}/usr/local/sbin/*machine*
+rm -f %{buildroot}/usr/local/etc/ldapscripts/ldapaddmachine.template.sample
+install -d %{buildroot}/usr/local/etc/
+tar -xzvf %{SOURCE1}
+install -m 644 ldapscripts.conf.cgcs %{buildroot}/usr/local/etc/ldapscripts/ldapscripts.conf
+install -m 644 ldapadduser.template.cgcs %{buildroot}/usr/local/etc/ldapscripts/ldapadduser.template.cgcs
+install -m 644 ldapaddgroup.template.cgcs %{buildroot}/usr/local/etc/ldapscripts/ldapaddgroup.template.cgcs
+install -m 644 ldapmoduser.template.cgcs %{buildroot}/usr/local/etc/ldapscripts/ldapmoduser.template.cgcs
+install -m 644 ldapaddsudo.template.cgcs %{buildroot}/usr/local/etc/ldapscripts/ldapaddsudo.template.cgcs
+install -m 644 ldapmodsudo.template.cgcs %{buildroot}/usr/local/etc/ldapscripts/ldapmodsudo.template.cgcs
+install -m 600 ldapscripts.passwd %{buildroot}/usr/local/etc/ldapscripts/ldapscripts.passwd

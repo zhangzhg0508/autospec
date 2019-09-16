@@ -1,0 +1,37 @@
+2019-09-16 03:01:44,542 - Mock Version: 1.2.14
+2019-09-16 03:01:44,790 - Start: dnf update
+2019-09-16 03:01:54,844 - Finish: dnf update
+2019-09-16 03:01:54,849 - Finish: chroot init
+2019-09-16 03:01:54,852 - Start: buildsrpm
+2019-09-16 03:01:54,860 - Start: rpmbuild -bs
+2019-09-16 03:01:54,899 - Finish: rpmbuild -bs
+2019-09-16 03:01:54,900 - Finish: buildsrpm
+2019-09-16 03:01:54,901 - Finish: run
+2019-09-16 03:01:57,992 - Mock Version: 1.2.14
+2019-09-16 03:01:58,250 - Start: dnf update
+2019-09-16 03:02:08,486 - Finish: dnf update
+2019-09-16 03:02:08,491 - Finish: chroot init
+2019-09-16 03:02:08,492 - Start: build phase for ldapscripts-2.0.8-2.src.rpm
+2019-09-16 03:02:08,495 - Start: build setup for ldapscripts-2.0.8-2.src.rpm
+2019-09-16 03:02:09,154 - Finish: build setup for ldapscripts-2.0.8-2.src.rpm
+2019-09-16 03:02:09,154 - Start: rpmbuild ldapscripts-2.0.8-2.src.rpm
+2019-09-16 03:02:12,671 - Mock Version: 1.2.14
+2019-09-16 03:02:12,927 - Start: dnf update
+2019-09-16 03:02:23,192 - Finish: dnf update
+2019-09-16 03:02:23,197 - Finish: chroot init
+2019-09-16 03:02:23,200 - Start: buildsrpm
+2019-09-16 03:02:23,208 - Start: rpmbuild -bs
+2019-09-16 03:02:23,246 - Finish: rpmbuild -bs
+2019-09-16 03:02:23,248 - Finish: buildsrpm
+2019-09-16 03:02:23,248 - Finish: run
+2019-09-16 03:02:26,326 - Mock Version: 1.2.14
+2019-09-16 03:02:26,583 - Start: dnf update
+2019-09-16 03:02:36,711 - Finish: dnf update
+2019-09-16 03:02:36,717 - Finish: chroot init
+2019-09-16 03:02:36,718 - Start: build phase for ldapscripts-2.0.8-2.src.rpm
+2019-09-16 03:02:36,720 - Start: build setup for ldapscripts-2.0.8-2.src.rpm
+2019-09-16 03:02:37,372 - Finish: build setup for ldapscripts-2.0.8-2.src.rpm
+2019-09-16 03:02:37,372 - Start: rpmbuild ldapscripts-2.0.8-2.src.rpm
+2019-09-16 03:02:37,850 - Finish: rpmbuild ldapscripts-2.0.8-2.src.rpm
+2019-09-16 03:02:37,851 - Finish: build phase for ldapscripts-2.0.8-2.src.rpm
+2019-09-16 03:02:37,852 - Finish: run
