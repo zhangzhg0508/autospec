@@ -1,0 +1,37 @@
+2019-09-16 06:43:10,518 - Mock Version: 1.2.14
+2019-09-16 06:43:10,760 - Start: dnf update
+2019-09-16 06:43:21,394 - Finish: dnf update
+2019-09-16 06:43:21,400 - Finish: chroot init
+2019-09-16 06:43:21,403 - Start: buildsrpm
+2019-09-16 06:43:21,410 - Start: rpmbuild -bs
+2019-09-16 06:43:21,447 - Finish: rpmbuild -bs
+2019-09-16 06:43:21,449 - Finish: buildsrpm
+2019-09-16 06:43:21,450 - Finish: run
+2019-09-16 06:43:24,482 - Mock Version: 1.2.14
+2019-09-16 06:43:24,752 - Start: dnf update
+2019-09-16 06:43:35,525 - Finish: dnf update
+2019-09-16 06:43:35,530 - Finish: chroot init
+2019-09-16 06:43:35,532 - Start: build phase for logrotate-config-1.0-1.src.rpm
+2019-09-16 06:43:35,534 - Start: build setup for logrotate-config-1.0-1.src.rpm
+2019-09-16 06:43:36,186 - Finish: build setup for logrotate-config-1.0-1.src.rpm
+2019-09-16 06:43:36,186 - Start: rpmbuild logrotate-config-1.0-1.src.rpm
+2019-09-16 06:43:39,429 - Mock Version: 1.2.14
+2019-09-16 06:43:39,684 - Start: dnf update
+2019-09-16 06:43:50,380 - Finish: dnf update
+2019-09-16 06:43:50,386 - Finish: chroot init
+2019-09-16 06:43:50,389 - Start: buildsrpm
+2019-09-16 06:43:50,394 - Start: rpmbuild -bs
+2019-09-16 06:43:50,433 - Finish: rpmbuild -bs
+2019-09-16 06:43:50,434 - Finish: buildsrpm
+2019-09-16 06:43:50,435 - Finish: run
+2019-09-16 06:43:53,495 - Mock Version: 1.2.14
+2019-09-16 06:43:53,747 - Start: dnf update
+2019-09-16 06:44:04,000 - Finish: dnf update
+2019-09-16 06:44:04,005 - Finish: chroot init
+2019-09-16 06:44:04,007 - Start: build phase for logrotate-config-1.0-1.src.rpm
+2019-09-16 06:44:04,009 - Start: build setup for logrotate-config-1.0-1.src.rpm
+2019-09-16 06:44:04,657 - Finish: build setup for logrotate-config-1.0-1.src.rpm
+2019-09-16 06:44:04,657 - Start: rpmbuild logrotate-config-1.0-1.src.rpm
+2019-09-16 06:44:04,763 - Finish: rpmbuild logrotate-config-1.0-1.src.rpm
+2019-09-16 06:44:04,765 - Finish: build phase for logrotate-config-1.0-1.src.rpm
+2019-09-16 06:44:04,765 - Finish: run
