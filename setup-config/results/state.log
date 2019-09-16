@@ -1,0 +1,37 @@
+2019-09-16 13:35:44,408 - Mock Version: 1.2.14
+2019-09-16 13:35:44,653 - Start: dnf update
+2019-09-16 13:35:54,545 - Finish: dnf update
+2019-09-16 13:35:54,551 - Finish: chroot init
+2019-09-16 13:35:54,553 - Start: buildsrpm
+2019-09-16 13:35:54,558 - Start: rpmbuild -bs
+2019-09-16 13:35:54,597 - Finish: rpmbuild -bs
+2019-09-16 13:35:54,598 - Finish: buildsrpm
+2019-09-16 13:35:54,599 - Finish: run
+2019-09-16 13:35:57,591 - Mock Version: 1.2.14
+2019-09-16 13:35:57,853 - Start: dnf update
+2019-09-16 13:36:07,915 - Finish: dnf update
+2019-09-16 13:36:07,920 - Finish: chroot init
+2019-09-16 13:36:07,921 - Start: build phase for setup-config-1.0-1.src.rpm
+2019-09-16 13:36:07,924 - Start: build setup for setup-config-1.0-1.src.rpm
+2019-09-16 13:36:08,594 - Finish: build setup for setup-config-1.0-1.src.rpm
+2019-09-16 13:36:08,594 - Start: rpmbuild setup-config-1.0-1.src.rpm
+2019-09-16 13:36:11,898 - Mock Version: 1.2.14
+2019-09-16 13:36:12,149 - Start: dnf update
+2019-09-16 13:36:21,984 - Finish: dnf update
+2019-09-16 13:36:21,989 - Finish: chroot init
+2019-09-16 13:36:21,992 - Start: buildsrpm
+2019-09-16 13:36:21,998 - Start: rpmbuild -bs
+2019-09-16 13:36:22,037 - Finish: rpmbuild -bs
+2019-09-16 13:36:22,038 - Finish: buildsrpm
+2019-09-16 13:36:22,039 - Finish: run
+2019-09-16 13:36:25,071 - Mock Version: 1.2.14
+2019-09-16 13:36:25,336 - Start: dnf update
+2019-09-16 13:36:35,011 - Finish: dnf update
+2019-09-16 13:36:35,017 - Finish: chroot init
+2019-09-16 13:36:35,018 - Start: build phase for setup-config-1.0-1.src.rpm
+2019-09-16 13:36:35,020 - Start: build setup for setup-config-1.0-1.src.rpm
+2019-09-16 13:36:35,688 - Finish: build setup for setup-config-1.0-1.src.rpm
+2019-09-16 13:36:35,688 - Start: rpmbuild setup-config-1.0-1.src.rpm
+2019-09-16 13:36:35,809 - Finish: rpmbuild setup-config-1.0-1.src.rpm
+2019-09-16 13:36:35,810 - Finish: build phase for setup-config-1.0-1.src.rpm
+2019-09-16 13:36:35,811 - Finish: run

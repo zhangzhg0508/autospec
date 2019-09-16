@@ -1,0 +1,11 @@
+%{__install} -d  %{buildroot}%{_datadir}/starlingx
+%{__install} -m 644 motd          %{buildroot}%{_datadir}/starlingx/stx.motd
+%{__install} -m 644 prompt.sh     %{buildroot}%{_sysconfdir}/profile.d/prompt.sh
+%{__install} -m 644 custom.sh     %{buildroot}%{_sysconfdir}/profile.d/custom.sh
+
+%post
+if [ $1 -eq 1 ] ; then
+        # Initial installation
+        cp -f %{_datadir}/starlingx/stx.motd    %{_sysconfdir}/motd
+        chmod 600   %{_sysconfdir}/{exports,fstab}
+fi
