@@ -1,0 +1,103 @@
+From cfd51571486cec9387f8f33597ca5576fb14a72b Mon Sep 17 00:00:00 2001
+From: chen-dq <chen.dq@neusoft.com>
+Date: Mon, 16 Sep 2019 09:55:03 +0000
+Subject: [PATCH namespace-utils] namespace-utils: Autospec creation for
+ version 1.0
+
+---
+ build_prepend        |  1 +
+ install_append       |  4 ++--
+ namespace-utils.spec | 23 ++++++++++++++++++++---
+ release              |  2 +-
+ 4 files changed, 24 insertions(+), 6 deletions(-)
+
+diff --git a/build_prepend b/build_prepend
+index f4a79d9..8fcb6ca 100644
+--- a/build_prepend
++++ b/build_prepend
+@@ -1 +1,2 @@
++%define license /usr/share/licenses/%{name}
+ cc -o bashns bashns.c
+diff --git a/install_append b/install_append
+index 1c209fe..4f9dcd5 100644
+--- a/install_append
++++ b/install_append
+@@ -1,6 +1,6 @@
+-pwd
+ install -m 500 bashns ${RPM_BUILD_ROOT}%{_sbindir}
+ install -m 500 umount-in-namespace ${RPM_BUILD_ROOT}%{_sbindir}
+-
++install -d -m 755 ${RPM_BUILD_ROOT}%{license}
++install -m 500 LICENSE ${RPM_BUILD_ROOT}%{license}
+ %clean
+ rm -rf ${RPM_BUILD_ROOT}
+diff --git a/namespace-utils.spec b/namespace-utils.spec
+index 661d14a..87a4201 100644
+--- a/namespace-utils.spec
++++ b/namespace-utils.spec
+@@ -4,13 +4,14 @@
+ #
+ Name     : namespace-utils
+ Version  : 1.0
+ URL      : file:///home/clear/tar/namespace-utils-1.0.tar.gz
+ Source0  : file:///home/clear/tar/namespace-utils-1.0.tar.gz
+ Summary  : No detailed summary available
+ Group    : Development/Tools
+ License  : Apache-2.0
+ Requires: namespace-utils-bin = %{version}-%{release}
++Requires: namespace-utils-data = %{version}-%{release}
+ 
+ %description
+ No detailed description available
+@@ -18,23 +19,33 @@ No detailed description available
+ %package bin
+ Summary: bin components for the namespace-utils package.
+ Group: Binaries
++Requires: namespace-utils-data = %{version}-%{release}
+ 
+ %description bin
+ bin components for the namespace-utils package.
+ 
+ 
++%package data
++
++
++
+ %prep
+ %setup -q -n namespace-utils-1.0
+ 
+ %build
+ ## build_prepend content
++%define license /usr/share/licenses/%{name}
+ cc -o bashns bashns.c
+ ## build_prepend end
+ export http_proxy=http://127.0.0.1:9/
+ export https_proxy=http://127.0.0.1:9/
+ export no_proxy=localhost,127.0.0.1,0.0.0.0
+ export LANG=C.UTF-8
+ export GCC_IGNORE_WERROR=1
+ export AR=gcc-ar
+ export RANLIB=gcc-ranlib
+@@ -47,13 +58,15 @@ make  %{?_smp_mflags} -o bashns bashns.c
+ 
+ 
+ %install
+ rm -rf %{buildroot}
+ install -d -m 755 ${RPM_BUILD_ROOT}%{_sbindir}
+ ## install_append content
+ pwd
+ install -m 500 bashns ${RPM_BUILD_ROOT}%{_sbindir}
+ install -m 500 umount-in-namespace ${RPM_BUILD_ROOT}%{_sbindir}
++install -d -m 755 ${RPM_BUILD_ROOT}%{license}
++install -m 500 LICENSE ${RPM_BUILD_ROOT}%{license}
+ %clean
+ rm -rf ${RPM_BUILD_ROOT}
+ ## install_append end
+@@ -65,3 +78,7 @@ rm -rf ${RPM_BUILD_ROOT}
+ %defattr(-,root,root,-)
+ /usr/bin/bashns
+ /usr/bin/umount-in-namespace
++
++%files data
++%defattr(-,root,root,-)
++/usr/share/licenses/namespace-utils/LICENSE

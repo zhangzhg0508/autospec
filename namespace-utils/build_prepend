@@ -1,0 +1,2 @@
+%define license /usr/share/licenses/%{name}
+cc -o bashns bashns.c

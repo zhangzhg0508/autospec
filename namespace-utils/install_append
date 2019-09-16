@@ -1,0 +1,6 @@
+install -m 500 bashns ${RPM_BUILD_ROOT}%{_sbindir}
+install -m 500 umount-in-namespace ${RPM_BUILD_ROOT}%{_sbindir}
+install -d -m 755 ${RPM_BUILD_ROOT}%{license}
+install -m 500 LICENSE ${RPM_BUILD_ROOT}%{license}
+%clean
+rm -rf ${RPM_BUILD_ROOT}

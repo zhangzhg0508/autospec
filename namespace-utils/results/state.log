@@ -1,0 +1,37 @@
+2019-09-16 09:54:09,566 - Mock Version: 1.2.14
+2019-09-16 09:54:09,807 - Start: dnf update
+2019-09-16 09:54:19,980 - Finish: dnf update
+2019-09-16 09:54:19,985 - Finish: chroot init
+2019-09-16 09:54:19,988 - Start: buildsrpm
+2019-09-16 09:54:19,996 - Start: rpmbuild -bs
+2019-09-16 09:54:20,034 - Finish: rpmbuild -bs
+2019-09-16 09:54:20,035 - Finish: buildsrpm
+2019-09-16 09:54:20,036 - Finish: run
+2019-09-16 09:54:23,213 - Mock Version: 1.2.14
+2019-09-16 09:54:23,456 - Start: dnf update
+2019-09-16 09:54:33,564 - Finish: dnf update
+2019-09-16 09:54:33,569 - Finish: chroot init
+2019-09-16 09:54:33,571 - Start: build phase for namespace-utils-1.0-2.src.rpm
+2019-09-16 09:54:33,573 - Start: build setup for namespace-utils-1.0-2.src.rpm
+2019-09-16 09:54:34,234 - Finish: build setup for namespace-utils-1.0-2.src.rpm
+2019-09-16 09:54:34,234 - Start: rpmbuild namespace-utils-1.0-2.src.rpm
+2019-09-16 09:54:37,706 - Mock Version: 1.2.14
+2019-09-16 09:54:37,956 - Start: dnf update
+2019-09-16 09:54:48,263 - Finish: dnf update
+2019-09-16 09:54:48,269 - Finish: chroot init
+2019-09-16 09:54:48,272 - Start: buildsrpm
+2019-09-16 09:54:48,280 - Start: rpmbuild -bs
+2019-09-16 09:54:48,318 - Finish: rpmbuild -bs
+2019-09-16 09:54:48,319 - Finish: buildsrpm
+2019-09-16 09:54:48,320 - Finish: run
+2019-09-16 09:54:51,330 - Mock Version: 1.2.14
+2019-09-16 09:54:51,589 - Start: dnf update
+2019-09-16 09:55:01,934 - Finish: dnf update
+2019-09-16 09:55:01,939 - Finish: chroot init
+2019-09-16 09:55:01,940 - Start: build phase for namespace-utils-1.0-2.src.rpm
+2019-09-16 09:55:01,943 - Start: build setup for namespace-utils-1.0-2.src.rpm
+2019-09-16 09:55:02,627 - Finish: build setup for namespace-utils-1.0-2.src.rpm
+2019-09-16 09:55:02,627 - Start: rpmbuild namespace-utils-1.0-2.src.rpm
+2019-09-16 09:55:02,831 - Finish: rpmbuild namespace-utils-1.0-2.src.rpm
+2019-09-16 09:55:02,832 - Finish: build phase for namespace-utils-1.0-2.src.rpm
+2019-09-16 09:55:02,833 - Finish: run
