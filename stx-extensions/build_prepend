@@ -1,0 +1,7 @@
+%define debug_package %{nil}
+%define _sysconfdir	/usr/local/etc
+%define local_etc_systemd %{_sysconfdir}/systemd/system/
+%define local_etc_coredump %{_sysconfdir}/systemd/coredump.conf.d
+%define local_etc_initd %{_sysconfdir}/init.d
+%define local_etc_sysctl %{_sysconfdir}/sysctl.d
+%define local_etc_modload %{_sysconfdir}/modules-load.d

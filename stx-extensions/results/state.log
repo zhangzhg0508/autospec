@@ -1,0 +1,37 @@
+2019-09-16 09:54:32,997 - Mock Version: 1.2.14
+2019-09-16 09:54:33,260 - Start: dnf update
+2019-09-16 09:54:42,979 - Finish: dnf update
+2019-09-16 09:54:42,985 - Finish: chroot init
+2019-09-16 09:54:42,988 - Start: buildsrpm
+2019-09-16 09:54:42,993 - Start: rpmbuild -bs
+2019-09-16 09:54:43,031 - Finish: rpmbuild -bs
+2019-09-16 09:54:43,032 - Finish: buildsrpm
+2019-09-16 09:54:43,033 - Finish: run
+2019-09-16 09:54:46,034 - Mock Version: 1.2.14
+2019-09-16 09:54:46,293 - Start: dnf update
+2019-09-16 09:54:55,678 - Finish: dnf update
+2019-09-16 09:54:55,683 - Finish: chroot init
+2019-09-16 09:54:55,685 - Start: build phase for stx-extensions-1.0-1.src.rpm
+2019-09-16 09:54:55,687 - Start: build setup for stx-extensions-1.0-1.src.rpm
+2019-09-16 09:54:56,355 - Finish: build setup for stx-extensions-1.0-1.src.rpm
+2019-09-16 09:54:56,355 - Start: rpmbuild stx-extensions-1.0-1.src.rpm
+2019-09-16 09:54:59,516 - Mock Version: 1.2.14
+2019-09-16 09:54:59,754 - Start: dnf update
+2019-09-16 09:55:09,246 - Finish: dnf update
+2019-09-16 09:55:09,251 - Finish: chroot init
+2019-09-16 09:55:09,254 - Start: buildsrpm
+2019-09-16 09:55:09,259 - Start: rpmbuild -bs
+2019-09-16 09:55:09,297 - Finish: rpmbuild -bs
+2019-09-16 09:55:09,298 - Finish: buildsrpm
+2019-09-16 09:55:09,299 - Finish: run
+2019-09-16 09:55:12,338 - Mock Version: 1.2.14
+2019-09-16 09:55:12,604 - Start: dnf update
+2019-09-16 09:55:22,061 - Finish: dnf update
+2019-09-16 09:55:22,067 - Finish: chroot init
+2019-09-16 09:55:22,068 - Start: build phase for stx-extensions-1.0-1.src.rpm
+2019-09-16 09:55:22,070 - Start: build setup for stx-extensions-1.0-1.src.rpm
+2019-09-16 09:55:22,739 - Finish: build setup for stx-extensions-1.0-1.src.rpm
+2019-09-16 09:55:22,739 - Start: rpmbuild stx-extensions-1.0-1.src.rpm
+2019-09-16 09:55:22,857 - Finish: rpmbuild stx-extensions-1.0-1.src.rpm
+2019-09-16 09:55:22,858 - Finish: build phase for stx-extensions-1.0-1.src.rpm
+2019-09-16 09:55:22,859 - Finish: run
