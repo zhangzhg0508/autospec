@@ -1,0 +1,37 @@
+2019-09-16 06:08:35,582 - Mock Version: 1.2.14
+2019-09-16 06:08:35,830 - Start: dnf update
+2019-09-16 06:08:46,561 - Finish: dnf update
+2019-09-16 06:08:46,566 - Finish: chroot init
+2019-09-16 06:08:46,569 - Start: buildsrpm
+2019-09-16 06:08:46,578 - Start: rpmbuild -bs
+2019-09-16 06:08:46,615 - Finish: rpmbuild -bs
+2019-09-16 06:08:46,617 - Finish: buildsrpm
+2019-09-16 06:08:46,617 - Finish: run
+2019-09-16 06:08:49,688 - Mock Version: 1.2.14
+2019-09-16 06:08:49,937 - Start: dnf update
+2019-09-16 06:09:00,474 - Finish: dnf update
+2019-09-16 06:09:00,480 - Finish: chroot init
+2019-09-16 06:09:00,481 - Start: build phase for lighttpd-config-1.0-1.src.rpm
+2019-09-16 06:09:00,483 - Start: build setup for lighttpd-config-1.0-1.src.rpm
+2019-09-16 06:09:01,137 - Finish: build setup for lighttpd-config-1.0-1.src.rpm
+2019-09-16 06:09:01,137 - Start: rpmbuild lighttpd-config-1.0-1.src.rpm
+2019-09-16 06:09:04,380 - Mock Version: 1.2.14
+2019-09-16 06:09:04,623 - Start: dnf update
+2019-09-16 06:09:15,234 - Finish: dnf update
+2019-09-16 06:09:15,239 - Finish: chroot init
+2019-09-16 06:09:15,242 - Start: buildsrpm
+2019-09-16 06:09:15,247 - Start: rpmbuild -bs
+2019-09-16 06:09:15,285 - Finish: rpmbuild -bs
+2019-09-16 06:09:15,286 - Finish: buildsrpm
+2019-09-16 06:09:15,287 - Finish: run
+2019-09-16 06:09:18,346 - Mock Version: 1.2.14
+2019-09-16 06:09:18,615 - Start: dnf update
+2019-09-16 06:09:29,437 - Finish: dnf update
+2019-09-16 06:09:29,443 - Finish: chroot init
+2019-09-16 06:09:29,444 - Start: build phase for lighttpd-config-1.0-1.src.rpm
+2019-09-16 06:09:29,446 - Start: build setup for lighttpd-config-1.0-1.src.rpm
+2019-09-16 06:09:30,104 - Finish: build setup for lighttpd-config-1.0-1.src.rpm
+2019-09-16 06:09:30,104 - Start: rpmbuild lighttpd-config-1.0-1.src.rpm
+2019-09-16 06:09:30,245 - Finish: rpmbuild lighttpd-config-1.0-1.src.rpm
+2019-09-16 06:09:30,246 - Finish: build phase for lighttpd-config-1.0-1.src.rpm
+2019-09-16 06:09:30,247 - Finish: run

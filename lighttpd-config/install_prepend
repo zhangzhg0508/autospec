@@ -1,0 +1,4 @@
+%define debug_package %{nil}
+%define _sysconfdir /usr/local/etc
+CONFDIR=%{buildroot}%{_sysconfdir}/lighttpd
+ROOTDIR=%{buildroot}/www
