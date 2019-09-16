@@ -1,0 +1,14 @@
+install -d %{buildroot}%{_datadir}/starlingx
+install -m 600 iptables.rules %{buildroot}%{_datadir}/starlingx/iptables.rules
+install -m 600 ip6tables.rules %{buildroot}%{_datadir}/starlingx/ip6tables.rules
+
+%post
+if [ $1 -eq 1 ] ; then
+    cp -f %{_datadir}/starlingx/iptables.rules %{_sysconfdir}/sysconfig/iptables
+    chmod 600 %{_sysconfdir}/sysconfig/iptables
+    cp -f %{_datadir}/starlingx/ip6tables.rules %{_sysconfdir}/sysconfig/ip6tables
+    chmod 600 %{_sysconfdir}/sysconfig/ip6tables
+fi
+
+%{_bindir}/systemctl enable iptables.service ip6tables.service >/dev/null 2>&1
+exit 0

@@ -1,0 +1,37 @@
+2019-09-16 01:56:06,136 - Mock Version: 1.2.14
+2019-09-16 01:56:06,376 - Start: dnf update
+2019-09-16 01:56:16,612 - Finish: dnf update
+2019-09-16 01:56:16,617 - Finish: chroot init
+2019-09-16 01:56:16,620 - Start: buildsrpm
+2019-09-16 01:56:16,627 - Start: rpmbuild -bs
+2019-09-16 01:56:16,665 - Finish: rpmbuild -bs
+2019-09-16 01:56:16,666 - Finish: buildsrpm
+2019-09-16 01:56:16,667 - Finish: run
+2019-09-16 01:56:19,720 - Mock Version: 1.2.14
+2019-09-16 01:56:19,979 - Start: dnf update
+2019-09-16 01:56:29,932 - Finish: dnf update
+2019-09-16 01:56:29,937 - Finish: chroot init
+2019-09-16 01:56:29,938 - Start: build phase for iptables-config-1.0-1.src.rpm
+2019-09-16 01:56:29,941 - Start: build setup for iptables-config-1.0-1.src.rpm
+2019-09-16 01:56:30,599 - Finish: build setup for iptables-config-1.0-1.src.rpm
+2019-09-16 01:56:30,599 - Start: rpmbuild iptables-config-1.0-1.src.rpm
+2019-09-16 01:56:33,783 - Mock Version: 1.2.14
+2019-09-16 01:56:34,024 - Start: dnf update
+2019-09-16 01:56:44,187 - Finish: dnf update
+2019-09-16 01:56:44,193 - Finish: chroot init
+2019-09-16 01:56:44,196 - Start: buildsrpm
+2019-09-16 01:56:44,201 - Start: rpmbuild -bs
+2019-09-16 01:56:44,239 - Finish: rpmbuild -bs
+2019-09-16 01:56:44,240 - Finish: buildsrpm
+2019-09-16 01:56:44,241 - Finish: run
+2019-09-16 01:56:47,324 - Mock Version: 1.2.14
+2019-09-16 01:56:47,576 - Start: dnf update
+2019-09-16 01:56:57,514 - Finish: dnf update
+2019-09-16 01:56:57,519 - Finish: chroot init
+2019-09-16 01:56:57,520 - Start: build phase for iptables-config-1.0-1.src.rpm
+2019-09-16 01:56:57,523 - Start: build setup for iptables-config-1.0-1.src.rpm
+2019-09-16 01:56:58,181 - Finish: build setup for iptables-config-1.0-1.src.rpm
+2019-09-16 01:56:58,182 - Start: rpmbuild iptables-config-1.0-1.src.rpm
+2019-09-16 01:56:58,288 - Finish: rpmbuild iptables-config-1.0-1.src.rpm
+2019-09-16 01:56:58,290 - Finish: build phase for iptables-config-1.0-1.src.rpm
+2019-09-16 01:56:58,290 - Finish: run

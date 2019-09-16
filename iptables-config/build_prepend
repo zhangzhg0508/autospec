@@ -1,0 +1,2 @@
+%define debug_package %{nil}
+%define _sysconfdir /usr/local/etc
