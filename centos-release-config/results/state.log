@@ -1,0 +1,37 @@
+2019-09-16 03:17:32,884 - Mock Version: 1.2.14
+2019-09-16 03:17:33,134 - Start: dnf update
+2019-09-16 03:17:43,107 - Finish: dnf update
+2019-09-16 03:17:43,112 - Finish: chroot init
+2019-09-16 03:17:43,115 - Start: buildsrpm
+2019-09-16 03:17:43,123 - Start: rpmbuild -bs
+2019-09-16 03:17:43,159 - Finish: rpmbuild -bs
+2019-09-16 03:17:43,161 - Finish: buildsrpm
+2019-09-16 03:17:43,161 - Finish: run
+2019-09-16 03:17:46,189 - Mock Version: 1.2.14
+2019-09-16 03:17:46,450 - Start: dnf update
+2019-09-16 03:17:56,555 - Finish: dnf update
+2019-09-16 03:17:56,560 - Finish: chroot init
+2019-09-16 03:17:56,562 - Start: build phase for centos-release-config-1.0-1.src.rpm
+2019-09-16 03:17:56,564 - Start: build setup for centos-release-config-1.0-1.src.rpm
+2019-09-16 03:17:57,221 - Finish: build setup for centos-release-config-1.0-1.src.rpm
+2019-09-16 03:17:57,221 - Start: rpmbuild centos-release-config-1.0-1.src.rpm
+2019-09-16 03:18:00,376 - Mock Version: 1.2.14
+2019-09-16 03:18:00,629 - Start: dnf update
+2019-09-16 03:18:10,762 - Finish: dnf update
+2019-09-16 03:18:10,768 - Finish: chroot init
+2019-09-16 03:18:10,771 - Start: buildsrpm
+2019-09-16 03:18:10,776 - Start: rpmbuild -bs
+2019-09-16 03:18:10,815 - Finish: rpmbuild -bs
+2019-09-16 03:18:10,816 - Finish: buildsrpm
+2019-09-16 03:18:10,817 - Finish: run
+2019-09-16 03:18:13,833 - Mock Version: 1.2.14
+2019-09-16 03:18:14,079 - Start: dnf update
+2019-09-16 03:18:24,811 - Finish: dnf update
+2019-09-16 03:18:24,817 - Finish: chroot init
+2019-09-16 03:18:24,818 - Start: build phase for centos-release-config-1.0-1.src.rpm
+2019-09-16 03:18:24,820 - Start: build setup for centos-release-config-1.0-1.src.rpm
+2019-09-16 03:18:25,479 - Finish: build setup for centos-release-config-1.0-1.src.rpm
+2019-09-16 03:18:25,479 - Start: rpmbuild centos-release-config-1.0-1.src.rpm
+2019-09-16 03:18:25,589 - Finish: rpmbuild centos-release-config-1.0-1.src.rpm
+2019-09-16 03:18:25,590 - Finish: build phase for centos-release-config-1.0-1.src.rpm
+2019-09-16 03:18:25,591 - Finish: run
