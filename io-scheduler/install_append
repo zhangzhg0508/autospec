@@ -1,0 +1,6 @@
+
+install -m 644 %{SOURCE0} %{buildroot}%{udev_rules_d}/60-io-scheduler.rules
+
+%post
+/bin/udevadm control --reload-rules
+/bin/udevadm trigger --type=devices --subsystem-match=block

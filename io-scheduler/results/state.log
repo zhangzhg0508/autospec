@@ -1,0 +1,37 @@
+2019-09-16 01:48:30,831 - Mock Version: 1.2.14
+2019-09-16 01:48:31,098 - Start: dnf update
+2019-09-16 01:48:43,169 - Finish: dnf update
+2019-09-16 01:48:43,174 - Finish: chroot init
+2019-09-16 01:48:43,178 - Start: buildsrpm
+2019-09-16 01:48:43,183 - Start: rpmbuild -bs
+2019-09-16 01:48:43,221 - Finish: rpmbuild -bs
+2019-09-16 01:48:43,223 - Finish: buildsrpm
+2019-09-16 01:48:43,224 - Finish: run
+2019-09-16 01:48:46,247 - Mock Version: 1.2.14
+2019-09-16 01:48:46,498 - Start: dnf update
+2019-09-16 01:48:57,180 - Finish: dnf update
+2019-09-16 01:48:57,186 - Finish: chroot init
+2019-09-16 01:48:57,187 - Start: build phase for io-scheduler-1.0-1.src.rpm
+2019-09-16 01:48:57,189 - Start: build setup for io-scheduler-1.0-1.src.rpm
+2019-09-16 01:48:57,849 - Finish: build setup for io-scheduler-1.0-1.src.rpm
+2019-09-16 01:48:57,849 - Start: rpmbuild io-scheduler-1.0-1.src.rpm
+2019-09-16 01:49:01,013 - Mock Version: 1.2.14
+2019-09-16 01:49:01,273 - Start: dnf update
+2019-09-16 01:49:12,496 - Finish: dnf update
+2019-09-16 01:49:12,502 - Finish: chroot init
+2019-09-16 01:49:12,505 - Start: buildsrpm
+2019-09-16 01:49:12,510 - Start: rpmbuild -bs
+2019-09-16 01:49:12,549 - Finish: rpmbuild -bs
+2019-09-16 01:49:12,550 - Finish: buildsrpm
+2019-09-16 01:49:12,551 - Finish: run
+2019-09-16 01:49:15,598 - Mock Version: 1.2.14
+2019-09-16 01:49:15,852 - Start: dnf update
+2019-09-16 01:49:25,977 - Finish: dnf update
+2019-09-16 01:49:25,982 - Finish: chroot init
+2019-09-16 01:49:25,984 - Start: build phase for io-scheduler-1.0-1.src.rpm
+2019-09-16 01:49:25,986 - Start: build setup for io-scheduler-1.0-1.src.rpm
+2019-09-16 01:49:26,644 - Finish: build setup for io-scheduler-1.0-1.src.rpm
+2019-09-16 01:49:26,644 - Start: rpmbuild io-scheduler-1.0-1.src.rpm
+2019-09-16 01:49:26,742 - Finish: rpmbuild io-scheduler-1.0-1.src.rpm
+2019-09-16 01:49:26,743 - Finish: build phase for io-scheduler-1.0-1.src.rpm
+2019-09-16 01:49:26,744 - Finish: run

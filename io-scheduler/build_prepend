@@ -1,0 +1,2 @@
+%define _sysconfdir /usr/local/etc
+%define udev_rules_d %{_sysconfdir}/udev/rules.d

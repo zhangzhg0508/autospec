@@ -1,0 +1,1 @@
+mkdir -p %{buildroot}%{udev_rules_d}
