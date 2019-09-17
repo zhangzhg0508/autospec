@@ -1,0 +1,37 @@
+2019-09-17 16:10:32,760 - Mock Version: 1.2.14
+2019-09-17 16:10:33,004 - Start: dnf update
+2019-09-17 16:10:42,587 - Finish: dnf update
+2019-09-17 16:10:42,593 - Finish: chroot init
+2019-09-17 16:10:42,596 - Start: buildsrpm
+2019-09-17 16:10:42,601 - Start: rpmbuild -bs
+2019-09-17 16:10:42,639 - Finish: rpmbuild -bs
+2019-09-17 16:10:42,640 - Finish: buildsrpm
+2019-09-17 16:10:42,641 - Finish: run
+2019-09-17 16:10:45,664 - Mock Version: 1.2.14
+2019-09-17 16:10:45,932 - Start: dnf update
+2019-09-17 16:10:55,407 - Finish: dnf update
+2019-09-17 16:10:55,412 - Finish: chroot init
+2019-09-17 16:10:55,414 - Start: build phase for puppet-sshd-1.0.0-1.src.rpm
+2019-09-17 16:10:55,416 - Start: build setup for puppet-sshd-1.0.0-1.src.rpm
+2019-09-17 16:10:56,695 - Finish: build setup for puppet-sshd-1.0.0-1.src.rpm
+2019-09-17 16:10:56,695 - Start: rpmbuild puppet-sshd-1.0.0-1.src.rpm
+2019-09-17 16:11:00,140 - Mock Version: 1.2.14
+2019-09-17 16:11:00,397 - Start: dnf update
+2019-09-17 16:11:10,016 - Finish: dnf update
+2019-09-17 16:11:10,021 - Finish: chroot init
+2019-09-17 16:11:10,024 - Start: buildsrpm
+2019-09-17 16:11:10,029 - Start: rpmbuild -bs
+2019-09-17 16:11:10,068 - Finish: rpmbuild -bs
+2019-09-17 16:11:10,070 - Finish: buildsrpm
+2019-09-17 16:11:10,070 - Finish: run
+2019-09-17 16:11:13,163 - Mock Version: 1.2.14
+2019-09-17 16:11:13,428 - Start: dnf update
+2019-09-17 16:11:23,024 - Finish: dnf update
+2019-09-17 16:11:23,029 - Finish: chroot init
+2019-09-17 16:11:23,030 - Start: build phase for puppet-sshd-1.0.0-1.src.rpm
+2019-09-17 16:11:23,033 - Start: build setup for puppet-sshd-1.0.0-1.src.rpm
+2019-09-17 16:11:24,319 - Finish: build setup for puppet-sshd-1.0.0-1.src.rpm
+2019-09-17 16:11:24,319 - Start: rpmbuild puppet-sshd-1.0.0-1.src.rpm
+2019-09-17 16:11:24,462 - Finish: rpmbuild puppet-sshd-1.0.0-1.src.rpm
+2019-09-17 16:11:24,464 - Finish: build phase for puppet-sshd-1.0.0-1.src.rpm
+2019-09-17 16:11:24,464 - Finish: run
