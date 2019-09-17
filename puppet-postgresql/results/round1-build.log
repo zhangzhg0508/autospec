@@ -1,0 +1,423 @@
+Mock Version: 1.2.14
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/puppet-postgresql.spec'], chrootPath='/var/lib/mock/clear-puppet-postgresql/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7ff43fff2a10>timeout=0uid=1000gid=1000user='mockbuild'printOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/puppet-postgresql.spec'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/puppet-postgresql-4.8.0-1.src.rpm
+Child return code was: 0
+LEAVE do --> 
+
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/puppet-postgresql.spec '], chrootPath='/var/lib/mock/clear-puppet-postgresql/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7ff43fff2a10>timeout=0uid=1000gid=1000user='mockbuild'private_network=TrueprintOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/puppet-postgresql.spec '] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.Vi7Ft5
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
++ rm -rf puppetlabs-postgresql
++ /usr/bin/gzip -dc /builddir/build/SOURCES/puppet-postgresql-4.8.0.tar.gz
++ /usr/bin/tar -xf -
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd puppetlabs-postgresql
++ /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ echo 'Patch #1 (0001-add-makefile.patch):'
+Patch #1 (0001-add-makefile.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0001-add-makefile.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file Makefile
++ echo 'Patch #2 (0001-Roll-up-TIS-patches.patch):'
+Patch #2 (0001-Roll-up-TIS-patches.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0001-Roll-up-TIS-patches.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file manifests/params.pp
+patching file manifests/server/config.pp
+patching file manifests/server/initdb.pp
+Patch #3 (0002-remove-puppetlabs-apt-as-a-requirement.patch):
++ echo 'Patch #3 (0002-remove-puppetlabs-apt-as-a-requirement.patch):'
++ /usr/bin/cat /builddir/build/SOURCES/0002-remove-puppetlabs-apt-as-a-requirement.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file metadata.json
++ exit 0
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.B7CpL5
++ umask 022
++ cd /builddir/build/BUILD
++ cd puppetlabs-postgresql
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CFLAGS
++ http_proxy=http://127.0.0.1:9/
++ export http_proxy
++ https_proxy=http://127.0.0.1:9/
++ export https_proxy
++ ftp_proxy=http://127.0.0.1:9/
++ export ftp_proxy
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export no_proxy
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CXXFLAGS
++ FFLAGS='-g -O3 -feliminate-unused-debug-types  -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -m64 -fasynchronous-unwind-tables -Wp,-D_REENTRANT -ftree-loop-distribute-patterns -Wl,-z -Wl,now -Wl,-z -Wl,relro -malign-data=abi -fno-semantic-interposition -ftree-vectorize  -ftree-loop-vectorize -Wl,--enable-new-dtags '
++ export FFLAGS
++ LD_AS_NEEDED=1
++ export LD_AS_NEEDED
++ PKG_CONFIG_LIBDIR=/usr/lib64/pkgconfig
++ export PKG_CONFIG_LIBDIR
++ PATH=/usr/lib64/ccache/bin:/usr/local/bin:/usr/bin
++ export PATH
++ export http_proxy=http://127.0.0.1:9/
++ http_proxy=http://127.0.0.1:9/
++ export https_proxy=http://127.0.0.1:9/
++ https_proxy=http://127.0.0.1:9/
++ export no_proxy=localhost,127.0.0.1,0.0.0.0
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export LANG=C.UTF-8
++ LANG=C.UTF-8
++ export SOURCE_DATE_EPOCH=1568711852
++ SOURCE_DATE_EPOCH=1568711852
++ export GCC_IGNORE_WERROR=1
++ GCC_IGNORE_WERROR=1
++ export AR=gcc-ar
++ AR=gcc-ar
++ export RANLIB=gcc-ranlib
++ RANLIB=gcc-ranlib
++ export NM=gcc-nm
++ NM=gcc-nm
++ export 'CFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ export 'FCFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FCFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'FFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'CXXFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ make -j4
+echo "no build"
+no build
++ exit 0
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.XyzUw5
++ umask 022
++ cd /builddir/build/BUILD
++ cd puppetlabs-postgresql
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ rm -rf /builddir/build/BUILDROOT/puppet-postgresql-4.8.0-1.x86_64
++ mkdir -p /builddir/build/BUILDROOT/puppet-postgresql-4.8.0-1.x86_64
++ export SOURCE_DATE_EPOCH=1568711852
++ SOURCE_DATE_EPOCH=1568711852
++ rm -rf /builddir/build/BUILDROOT/puppet-postgresql-4.8.0-1.x86_64
++ install -d -m 0755 /builddir/build/BUILDROOT/puppet-postgresql-4.8.0-1.x86_64//usr/share/puppet/modules/postgresql
++ cp -rp CHANGELOG.md CONTRIBUTING.md files Gemfile lib LICENSE Makefile manifests metadata.json NOTICE Rakefile README.md spec templates /builddir/build/BUILDROOT/puppet-postgresql-4.8.0-1.x86_64//usr/share/puppet/modules/postgresql/
++ rm -f /builddir/build/BUILDROOT/puppet-postgresql-4.8.0-1.x86_64/usr/share/info/dir
+++ find /builddir/build/BUILDROOT/puppet-postgresql-4.8.0-1.x86_64 -path 'etc/*' '!' -type d
++ test -z ''
++ rm -rf '/builddir/build/BUILDROOT/puppet-postgresql-4.8.0-1.x86_64/etc/*'
++ rm -rf '/builddir/build/BUILDROOT/puppet-postgresql-4.8.0-1.x86_64/usr/share/factory/*'
++ find /builddir/build/BUILDROOT/puppet-postgresql-4.8.0-1.x86_64 -name __pycache__
++ xargs rm -rf --
++ '[' -d /builddir/build/BUILDROOT/puppet-postgresql-4.8.0-1.x86_64/usr/share/mime ']'
+++ getconf _NPROCESSORS_ONLN
++ RPM_XARGS_PFLAG=-P4
++ find /builddir/build/BUILDROOT/puppet-postgresql-4.8.0-1.x86_64 -name '*.so.avx512' -print0
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -5
++ find /builddir/build/BUILDROOT/puppet-postgresql-4.8.0-1.x86_64/usr/lib64/haswell/avx512_1 -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/puppet-postgresql-4.8.0-1.x86_64/usr/lib64/haswell/avx512_1’: No such file or directory
++ find /builddir/build/BUILDROOT/puppet-postgresql-4.8.0-1.x86_64 -name '*.so.avx2' -print0
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -2
++ find /builddir/build/BUILDROOT/puppet-postgresql-4.8.0-1.x86_64/usr/lib64/haswell '!' -path '/usr/lib64/haswell/avx512_1/*' -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/puppet-postgresql-4.8.0-1.x86_64/usr/lib64/haswell’: No such file or directory
++ find /builddir/build/BUILDROOT/puppet-postgresql-4.8.0-1.x86_64/usr/lib64/ -maxdepth 1 -name '*.so*' -type f -print0
++ xargs -0rtn1 -P4 /usr/lib/rpm/clr/brp-create-abi
++ sort -u
+find: ‘/builddir/build/BUILDROOT/puppet-postgresql-4.8.0-1.x86_64/usr/lib64/’: No such file or directory
++ /usr/lib/rpm/find-debuginfo.sh --strict-build-id /builddir/build/BUILD/puppetlabs-postgresql
++ '[' -d /builddir/build/BUILDROOT/puppet-postgresql-4.8.0-1.x86_64/usr/lib/debug ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/puppet-postgresql-4.8.0-1.x86_64/usr/lib/debug ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/puppet-postgresql-4.8.0-1.x86_64/usr/src/debug ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/puppet-postgresql-4.8.0-1.x86_64/usr/lib/debug.force ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/puppet-postgresql-4.8.0-1.x86_64/usr/src/debug.force ']'
++ :
++ /usr/lib/rpm/check-buildroot
++ /usr/lib/rpm/clr/brp-strip-static-archive /usr/bin/strip
++ /usr/lib/rpm/clr/brp-strip-comment-note /usr/bin/strip /usr/bin/objdump
++ /usr/lib/rpm/clr/brp-python-bytecompile
++ find /builddir/build/BUILDROOT/puppet-postgresql-4.8.0-1.x86_64 -print0
++ xargs -0 touch -h -d @1568711852
++ /usr/lib/rpm/clr/brp-java-repack-jars
+Processing files: puppet-postgresql-4.8.0-1.x86_64
+Processing files: puppet-postgresql-debuginfo-4.8.0-1.x86_64
+warning: Empty %files file /builddir/build/BUILD/puppetlabs-postgresql/debugfiles.list
+warning: Empty %files file /builddir/build/BUILD/puppetlabs-postgresql/abifiles.list
+Processing files: puppet-postgresql-abi-4.8.0-1.x86_64
+Checking for unpackaged file(s): /usr/lib/rpm/check-files /builddir/build/BUILDROOT/puppet-postgresql-4.8.0-1.x86_64
+error: Installed (but unpackaged) file(s) found:
+   /usr/share/puppet/modules/postgresql/CHANGELOG.md
+   /usr/share/puppet/modules/postgresql/CONTRIBUTING.md
+   /usr/share/puppet/modules/postgresql/Gemfile
+   /usr/share/puppet/modules/postgresql/LICENSE
+   /usr/share/puppet/modules/postgresql/Makefile
+   /usr/share/puppet/modules/postgresql/NOTICE
+   /usr/share/puppet/modules/postgresql/README.md
+   /usr/share/puppet/modules/postgresql/Rakefile
+   /usr/share/puppet/modules/postgresql/files/RPM-GPG-KEY-PGDG
+   /usr/share/puppet/modules/postgresql/files/validate_postgresql_connection.sh
+   /usr/share/puppet/modules/postgresql/lib/puppet/parser/functions/postgresql_acls_to_resources_hash.rb
+   /usr/share/puppet/modules/postgresql/lib/puppet/parser/functions/postgresql_escape.rb
+   /usr/share/puppet/modules/postgresql/lib/puppet/parser/functions/postgresql_password.rb
+   /usr/share/puppet/modules/postgresql/lib/puppet/provider/postgresql_conf/parsed.rb
+   /usr/share/puppet/modules/postgresql/lib/puppet/provider/postgresql_psql/ruby.rb
+   /usr/share/puppet/modules/postgresql/lib/puppet/provider/postgresql_replication_slot/ruby.rb
+   /usr/share/puppet/modules/postgresql/lib/puppet/type/postgresql_conf.rb
+   /usr/share/puppet/modules/postgresql/lib/puppet/type/postgresql_psql.rb
+   /usr/share/puppet/modules/postgresql/lib/puppet/type/postgresql_replication_slot.rb
+   /usr/share/puppet/modules/postgresql/manifests/client.pp
+   /usr/share/puppet/modules/postgresql/manifests/globals.pp
+   /usr/share/puppet/modules/postgresql/manifests/lib/devel.pp
+   /usr/share/puppet/modules/postgresql/manifests/lib/docs.pp
+   /usr/share/puppet/modules/postgresql/manifests/lib/java.pp
+   /usr/share/puppet/modules/postgresql/manifests/lib/perl.pp
+   /usr/share/puppet/modules/postgresql/manifests/lib/python.pp
+   /usr/share/puppet/modules/postgresql/manifests/params.pp
+   /usr/share/puppet/modules/postgresql/manifests/repo.pp
+   /usr/share/puppet/modules/postgresql/manifests/repo/apt_postgresql_org.pp
+   /usr/share/puppet/modules/postgresql/manifests/repo/yum_postgresql_org.pp
+   /usr/share/puppet/modules/postgresql/manifests/server.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/config.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/config_entry.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/contrib.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/database.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/database_grant.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/db.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/extension.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/grant.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/grant_role.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/initdb.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/install.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/passwd.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/pg_hba_rule.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/pg_ident_rule.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/plperl.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/plpython.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/postgis.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/recovery.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/reload.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/role.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/schema.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/service.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/table_grant.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/tablespace.pp
+   /usr/share/puppet/modules/postgresql/manifests/validate_db_connection.pp
+   /usr/share/puppet/modules/postgresql/metadata.json
+   /usr/share/puppet/modules/postgresql/spec/acceptance/00-utf8_encoding_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/acceptance/alternative_port_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/acceptance/db_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/acceptance/default_parameters_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/acceptance/nodesets/centos-7-x64.yml
+   /usr/share/puppet/modules/postgresql/spec/acceptance/nodesets/debian-8-x64.yml
+   /usr/share/puppet/modules/postgresql/spec/acceptance/nodesets/default.yml
+   /usr/share/puppet/modules/postgresql/spec/acceptance/nodesets/docker/centos-7.yml
+   /usr/share/puppet/modules/postgresql/spec/acceptance/nodesets/docker/debian-8.yml
+   /usr/share/puppet/modules/postgresql/spec/acceptance/nodesets/docker/ubuntu-14.04.yml
+   /usr/share/puppet/modules/postgresql/spec/acceptance/postgresql_psql_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/acceptance/remote_access_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/acceptance/server/grant_role_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/acceptance/server/grant_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/acceptance/server/recovery_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/acceptance/server/schema_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/acceptance/z_alternative_pgdata_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/spec_helper.rb
+   /usr/share/puppet/modules/postgresql/spec/spec_helper_acceptance.rb
+   /usr/share/puppet/modules/postgresql/spec/spec_helper_local.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/client_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/globals_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/lib/devel_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/lib/java_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/lib/perl_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/lib/pgdocs_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/lib/python_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/params_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/repo_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/server/config_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/server/contrib_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/server/initdb_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/server/plperl_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/server/plpython_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/server/postgis_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/server_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/defines/server/config_entry_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/defines/server/database_grant_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/defines/server/database_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/defines/server/db_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/defines/server/extension_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/defines/server/grant_role_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/defines/server/grant_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/defines/server/pg_hba_rule_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/defines/server/pg_ident_rule_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/defines/server/recovery_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/defines/server/role_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/defines/server/schema_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/defines/server/table_grant_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/defines/server/tablespace_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/defines/validate_db_connection_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/functions/postgresql_acls_to_resources_hash_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/functions/postgresql_escape_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/functions/postgresql_password_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/provider/postgresql_conf/parsed_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/puppet/provider/postgresql_psql/ruby_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/puppet/provider/postgresql_replication_slot/ruby_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/puppet/type/postgresql_psql_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/puppet/type/postgresql_replication_slot_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/type/postgresql_conf_spec.rb
+   /usr/share/puppet/modules/postgresql/templates/pg_hba_rule.conf
+   /usr/share/puppet/modules/postgresql/templates/pg_ident_rule.conf
+   /usr/share/puppet/modules/postgresql/templates/recovery.conf.erb
+   /usr/share/puppet/modules/postgresql/templates/systemd-override.erb
+    Empty %files file /builddir/build/BUILD/puppetlabs-postgresql/debugfiles.list
+    Empty %files file /builddir/build/BUILD/puppetlabs-postgresql/abifiles.list
+    Installed (but unpackaged) file(s) found:
+   /usr/share/puppet/modules/postgresql/CHANGELOG.md
+   /usr/share/puppet/modules/postgresql/CONTRIBUTING.md
+   /usr/share/puppet/modules/postgresql/Gemfile
+   /usr/share/puppet/modules/postgresql/LICENSE
+   /usr/share/puppet/modules/postgresql/Makefile
+   /usr/share/puppet/modules/postgresql/NOTICE
+   /usr/share/puppet/modules/postgresql/README.md
+   /usr/share/puppet/modules/postgresql/Rakefile
+   /usr/share/puppet/modules/postgresql/files/RPM-GPG-KEY-PGDG
+   /usr/share/puppet/modules/postgresql/files/validate_postgresql_connection.sh
+   /usr/share/puppet/modules/postgresql/lib/puppet/parser/functions/postgresql_acls_to_resources_hash.rb
+   /usr/share/puppet/modules/postgresql/lib/puppet/parser/functions/postgresql_escape.rb
+   /usr/share/puppet/modules/postgresql/lib/puppet/parser/functions/postgresql_password.rb
+   /usr/share/puppet/modules/postgresql/lib/puppet/provider/postgresql_conf/parsed.rb
+   /usr/share/puppet/modules/postgresql/lib/puppet/provider/postgresql_psql/ruby.rb
+   /usr/share/puppet/modules/postgresql/lib/puppet/provider/postgresql_replication_slot/ruby.rb
+   /usr/share/puppet/modules/postgresql/lib/puppet/type/postgresql_conf.rb
+   /usr/share/puppet/modules/postgresql/lib/puppet/type/postgresql_psql.rb
+   /usr/share/puppet/modules/postgresql/lib/puppet/type/postgresql_replication_slot.rb
+   /usr/share/puppet/modules/postgresql/manifests/client.pp
+   /usr/share/puppet/modules/postgresql/manifests/globals.pp
+   /usr/share/puppet/modules/postgresql/manifests/lib/devel.pp
+   /usr/share/puppet/modules/postgresql/manifests/lib/docs.pp
+   /usr/share/puppet/modules/postgresql/manifests/lib/java.pp
+   /usr/share/puppet/modules/postgresql/manifests/lib/perl.pp
+   /usr/share/puppet/modules/postgresql/manifests/lib/python.pp
+   /usr/share/puppet/modules/postgresql/manifests/params.pp
+   /usr/share/puppet/modules/postgresql/manifests/repo.pp
+   /usr/share/puppet/modules/postgresql/manifests/repo/apt_postgresql_org.pp
+   /usr/share/puppet/modules/postgresql/manifests/repo/yum_postgresql_org.pp
+   /usr/share/puppet/modules/postgresql/manifests/server.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/config.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/config_entry.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/contrib.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/database.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/database_grant.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/db.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/extension.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/grant.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/grant_role.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/initdb.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/install.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/passwd.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/pg_hba_rule.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/pg_ident_rule.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/plperl.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/plpython.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/postgis.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/recovery.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/reload.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/role.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/schema.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/service.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/table_grant.pp
+   /usr/share/puppet/modules/postgresql/manifests/server/tablespace.pp
+   /usr/share/puppet/modules/postgresql/manifests/validate_db_connection.pp
+   /usr/share/puppet/modules/postgresql/metadata.json
+   /usr/share/puppet/modules/postgresql/spec/acceptance/00-utf8_encoding_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/acceptance/alternative_port_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/acceptance/db_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/acceptance/default_parameters_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/acceptance/nodesets/centos-7-x64.yml
+   /usr/share/puppet/modules/postgresql/spec/acceptance/nodesets/debian-8-x64.yml
+   /usr/share/puppet/modules/postgresql/spec/acceptance/nodesets/default.yml
+   /usr/share/puppet/modules/postgresql/spec/acceptance/nodesets/docker/centos-7.yml
+   /usr/share/puppet/modules/postgresql/spec/acceptance/nodesets/docker/debian-8.yml
+   /usr/share/puppet/modules/postgresql/spec/acceptance/nodesets/docker/ubuntu-14.04.yml
+   /usr/share/puppet/modules/postgresql/spec/acceptance/postgresql_psql_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/acceptance/remote_access_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/acceptance/server/grant_role_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/acceptance/server/grant_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/acceptance/server/recovery_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/acceptance/server/schema_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/acceptance/z_alternative_pgdata_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/spec_helper.rb
+   /usr/share/puppet/modules/postgresql/spec/spec_helper_acceptance.rb
+   /usr/share/puppet/modules/postgresql/spec/spec_helper_local.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/client_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/globals_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/lib/devel_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/lib/java_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/lib/perl_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/lib/pgdocs_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/lib/python_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/params_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/repo_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/server/config_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/server/contrib_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/server/initdb_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/server/plperl_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/server/plpython_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/server/postgis_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/classes/server_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/defines/server/config_entry_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/defines/server/database_grant_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/defines/server/database_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/defines/server/db_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/defines/server/extension_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/defines/server/grant_role_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/defines/server/grant_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/defines/server/pg_hba_rule_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/defines/server/pg_ident_rule_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/defines/server/recovery_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/defines/server/role_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/defines/server/schema_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/defines/server/table_grant_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/defines/server/tablespace_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/defines/validate_db_connection_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/functions/postgresql_acls_to_resources_hash_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/functions/postgresql_escape_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/functions/postgresql_password_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/provider/postgresql_conf/parsed_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/puppet/provider/postgresql_psql/ruby_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/puppet/provider/postgresql_replication_slot/ruby_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/puppet/type/postgresql_psql_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/puppet/type/postgresql_replication_slot_spec.rb
+   /usr/share/puppet/modules/postgresql/spec/unit/type/postgresql_conf_spec.rb
+   /usr/share/puppet/modules/postgresql/templates/pg_hba_rule.conf
+   /usr/share/puppet/modules/postgresql/templates/pg_ident_rule.conf
+   /usr/share/puppet/modules/postgresql/templates/recovery.conf.erb
+   /usr/share/puppet/modules/postgresql/templates/systemd-override.erb
+RPM build errors:
+Child return code was: 1
+EXCEPTION: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/puppet-postgresql.spec 
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/mockbuild/trace_decorator.py", line 84, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python3.7/site-packages/mockbuild/util.py", line 531, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+mockbuild.exception.Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/puppet-postgresql.spec 
+LEAVE do --> EXCEPTION RAISED
+

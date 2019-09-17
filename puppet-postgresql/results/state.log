@@ -1,0 +1,37 @@
+2019-09-17 17:17:40,950 - Mock Version: 1.2.14
+2019-09-17 17:17:41,207 - Start: dnf update
+2019-09-17 17:17:51,622 - Finish: dnf update
+2019-09-17 17:17:51,629 - Finish: chroot init
+2019-09-17 17:17:51,632 - Start: buildsrpm
+2019-09-17 17:17:51,637 - Start: rpmbuild -bs
+2019-09-17 17:17:51,679 - Finish: rpmbuild -bs
+2019-09-17 17:17:51,680 - Finish: buildsrpm
+2019-09-17 17:17:51,681 - Finish: run
+2019-09-17 17:17:54,966 - Mock Version: 1.2.14
+2019-09-17 17:17:55,223 - Start: dnf update
+2019-09-17 17:18:05,047 - Finish: dnf update
+2019-09-17 17:18:05,053 - Finish: chroot init
+2019-09-17 17:18:05,054 - Start: build phase for puppet-postgresql-4.8.0-1.src.rpm
+2019-09-17 17:18:05,056 - Start: build setup for puppet-postgresql-4.8.0-1.src.rpm
+2019-09-17 17:18:06,344 - Finish: build setup for puppet-postgresql-4.8.0-1.src.rpm
+2019-09-17 17:18:06,344 - Start: rpmbuild puppet-postgresql-4.8.0-1.src.rpm
+2019-09-17 17:18:10,408 - Mock Version: 1.2.14
+2019-09-17 17:18:10,664 - Start: dnf update
+2019-09-17 17:18:21,038 - Finish: dnf update
+2019-09-17 17:18:21,044 - Finish: chroot init
+2019-09-17 17:18:21,047 - Start: buildsrpm
+2019-09-17 17:18:21,052 - Start: rpmbuild -bs
+2019-09-17 17:18:21,092 - Finish: rpmbuild -bs
+2019-09-17 17:18:21,094 - Finish: buildsrpm
+2019-09-17 17:18:21,094 - Finish: run
+2019-09-17 17:18:24,220 - Mock Version: 1.2.14
+2019-09-17 17:18:24,477 - Start: dnf update
+2019-09-17 17:18:34,257 - Finish: dnf update
+2019-09-17 17:18:34,263 - Finish: chroot init
+2019-09-17 17:18:34,264 - Start: build phase for puppet-postgresql-4.8.0-1.src.rpm
+2019-09-17 17:18:34,266 - Start: build setup for puppet-postgresql-4.8.0-1.src.rpm
+2019-09-17 17:18:35,594 - Finish: build setup for puppet-postgresql-4.8.0-1.src.rpm
+2019-09-17 17:18:35,594 - Start: rpmbuild puppet-postgresql-4.8.0-1.src.rpm
+2019-09-17 17:18:36,269 - Finish: rpmbuild puppet-postgresql-4.8.0-1.src.rpm
+2019-09-17 17:18:36,270 - Finish: build phase for puppet-postgresql-4.8.0-1.src.rpm
+2019-09-17 17:18:36,271 - Finish: run

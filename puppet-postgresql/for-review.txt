@@ -1,0 +1,441 @@
+From e8ec2b9eef02962904c54a1a6b676558e9223788 Mon Sep 17 00:00:00 2001
+From: fuyong <fuyong@neusoft.com>
+Date: Tue, 17 Sep 2019 17:18:36 +0800
+Subject: [PATCH puppet-postgresql] puppet-postgresql: Autospec creation for
+ version 4.8.0
+
+---
+ .gitignore                                    |  14 ++
+ 0001-Roll-up-TIS-patches.patch                |  87 +++++++
+ 0001-add-makefile.patch                       |  21 ++
+ ...move-puppetlabs-apt-as-a-requirement.patch |  24 ++
+ Makefile                                      |   5 +
+ buildreq_add                                  |   3 +
+ buildreq_ban                                  |   2 +
+ excludes                                      |   2 +
+ install_append                                |   1 +
+ install_macro                                 |   1 +
+ options.conf                                  |  58 +++++
+ pkgconfig_add                                 |   2 +
+ pkgconfig_ban                                 |   2 +
+ puppet-postgresql.spec                        | 212 ++++++++++++++++++
+ release                                       |   1 +
+ requires_add                                  |   5 +
+ requires_ban                                  |   2 +
+ series                                        |   3 +
+ testresults                                   |   5 +
+ upstream                                      |   1 +
+ 20 files changed, 451 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 0001-Roll-up-TIS-patches.patch
+ create mode 100644 0001-add-makefile.patch
+ create mode 100644 0002-remove-puppetlabs-apt-as-a-requirement.patch
+ create mode 100644 Makefile
+ create mode 100644 buildreq_add
+ create mode 100644 buildreq_ban
+ create mode 100644 excludes
+ create mode 100644 install_append
+ create mode 100644 install_macro
+ create mode 100644 options.conf
+ create mode 100644 pkgconfig_add
+ create mode 100644 pkgconfig_ban
+ create mode 100644 puppet-postgresql.spec
+ create mode 100644 release
+ create mode 100644 requires_add
+ create mode 100644 requires_ban
+ create mode 100644 series
+ create mode 100644 testresults
+ create mode 100644 upstream
+
+diff --git a/0001-Roll-up-TIS-patches.patch b/0001-Roll-up-TIS-patches.patch
+new file mode 100644
+index 0000000..ed917cd
+--- /dev/null
++++ b/0001-Roll-up-TIS-patches.patch
+@@ -0,0 +1,87 @@
++From 94cc61ad7f76d94791fee4f596d3c8c3124c0526 Mon Sep 17 00:00:00 2001
++From: Don Penney <don.penney@windriver.com>
++Date: Wed, 11 Jan 2017 14:25:20 -0500
++Subject: [PATCH] Roll up TIS patches
++
++---
++ manifests/params.pp        | 2 +-
++ manifests/server/config.pp | 8 ++++++--
++ manifests/server/initdb.pp | 9 +++++++++
++ 3 files changed, 16 insertions(+), 3 deletions(-)
++
++diff --git a/manifests/params.pp b/manifests/params.pp
++index d40a1eb..45be360 100644
++--- a/manifests/params.pp
+++++ b/manifests/params.pp
++@@ -74,7 +74,7 @@ class postgresql::params inherits postgresql::globals {
++       }
++       $psql_path           = pick($psql_path, "${bindir}/psql")
++ 
++-      $service_status      = $service_status
+++      $service_status      = "systemctl is-active postgresql"
++       $service_reload      = "service ${service_name} reload"
++       $perl_package_name   = pick($perl_package_name, 'perl-DBD-Pg')
++       $python_package_name = pick($python_package_name, 'python-psycopg2')
++diff --git a/manifests/server/config.pp b/manifests/server/config.pp
++index 205dd22..2ecad4b 100644
++--- a/manifests/server/config.pp
+++++ b/manifests/server/config.pp
++@@ -111,6 +111,12 @@ class postgresql::server::config {
++   postgresql::server::config_entry { 'data_directory':
++     value => $datadir,
++   }
+++  postgresql::server::config_entry { 'hba_file':
+++    value => $pg_hba_conf_path,
+++  }
+++  postgresql::server::config_entry { 'ident_file':
+++    value => $pg_ident_conf_path,
+++  }
++   if $timezone {
++     postgresql::server::config_entry { 'timezone':
++       value => $timezone,
++@@ -154,7 +160,6 @@ class postgresql::server::config {
++     concat { $pg_ident_conf_path:
++       owner  => $user,
++       group  => $group,
++-      force  => true, # do not crash if there is no pg_ident_rules
++       mode   => '0640',
++       warn   => true,
++       notify => Class['postgresql::server::reload'],
++@@ -165,7 +170,6 @@ class postgresql::server::config {
++     concat { $recovery_conf_path:
++       owner  => $user,
++       group  => $group,
++-      force  => true, # do not crash if there is no recovery conf file
++       mode   => '0640',
++       warn   => true,
++       notify => Class['postgresql::server::reload'],
++diff --git a/manifests/server/initdb.pp b/manifests/server/initdb.pp
++index 2252a19..5e263e3 100644
++--- a/manifests/server/initdb.pp
+++++ b/manifests/server/initdb.pp
++@@ -3,6 +3,7 @@ class postgresql::server::initdb {
++   $needs_initdb   = $postgresql::server::needs_initdb
++   $initdb_path    = $postgresql::server::initdb_path
++   $datadir        = $postgresql::server::datadir
+++  $confdir      = $postgresql::server::confdir
++   $xlogdir        = $postgresql::server::xlogdir
++   $logdir         = $postgresql::server::logdir
++   $encoding       = $postgresql::server::encoding
++@@ -41,6 +42,14 @@ class postgresql::server::initdb {
++     seltype => $seltype,
++   }
++ 
+++  # Make sure the conf directory exists, and has the correct permissions.
+++  file { $confdir:
+++    ensure => directory,
+++    owner  => $user,
+++    group  => $group,
+++    mode   => '0700',
+++  }
+++
++   if($xlogdir) {
++     # Make sure the xlog directory exists, and has the correct permissions.
++     file { $xlogdir:
++-- 
++1.8.3.1
++
+diff --git a/0001-add-makefile.patch b/0001-add-makefile.patch
+new file mode 100644
+index 0000000..c20b09c
+--- /dev/null
++++ b/0001-add-makefile.patch
+@@ -0,0 +1,21 @@
++From 6d2e758f33d450f62bc7566d5018f4f79a342950 Mon Sep 17 00:00:00 2001
++From: lgdfy <im.fuyong@gmail.com>
++Date: Wed, 11 Sep 2019 15:57:00 +0800
++Subject: [PATCH] add makefile
++
++---
++ Makefile | 2 ++
++ 1 file changed, 2 insertions(+)
++ create mode 100644 Makefile
++
++diff --git a/Makefile b/Makefile
++new file mode 100644
++index 0000000..cda58eb
++--- /dev/null
+++++ b/Makefile
++@@ -0,0 +1,2 @@
+++build:
+++	echo "no build"
++-- 
++2.23.0
++
+diff --git a/0002-remove-puppetlabs-apt-as-a-requirement.patch b/0002-remove-puppetlabs-apt-as-a-requirement.patch
+new file mode 100644
+index 0000000..d19b49c
+--- /dev/null
++++ b/0002-remove-puppetlabs-apt-as-a-requirement.patch
+@@ -0,0 +1,24 @@
++From dd019f3e222c799afff53cb00447c130839f7d39 Mon Sep 17 00:00:00 2001
++From: Al Bailey <Al.Bailey@windriver.com>
++Date: Wed, 3 Jan 2018 14:11:08 -0600
++Subject: [PATCH] remove puppetlabs-apt as a requirement
++
++---
++ metadata.json | 1 -
++ 1 file changed, 1 deletion(-)
++
++diff --git a/metadata.json b/metadata.json
++index 2a59dc9..b1de7f0 100644
++--- a/metadata.json
+++++ b/metadata.json
++@@ -9,7 +9,6 @@
++   "issues_url": "https://tickets.puppetlabs.com/browse/MODULES",
++   "dependencies": [
++     {"name":"puppetlabs/stdlib","version_requirement":"4.x"},
++-    {"name":"puppetlabs/apt","version_requirement":">=1.8.0 <3.0.0"},
++     {"name":"puppetlabs/concat","version_requirement":">= 1.1.0 <3.0.0"}
++   ],
++   "data_provider": null,
++-- 
++1.8.3.1
++
+diff --git a/buildreq_add b/buildreq_add
+new file mode 100644
+index 0000000..83c73cd
+--- /dev/null
++++ b/buildreq_add
+@@ -0,0 +1,3 @@
++python-dev
+diff --git a/install_append b/install_append
+new file mode 100644
+index 0000000..ea30623
+--- /dev/null
++++ b/install_append
+@@ -0,0 +1 @@
++cp -rp * %{buildroot}/%{_datadir}/puppet/modules/postgresql/
+diff --git a/install_macro b/install_macro
+new file mode 100644
+index 0000000..4977d11
+--- /dev/null
++++ b/install_macro
+@@ -0,0 +1 @@
++install -d -m 0755 %{buildroot}/%{_datadir}/puppet/modules/postgresql
+diff --git a/options.conf b/options.conf
+new file mode 100644
+index 0000000..8a603f2
+--- /dev/null
++++ b/options.conf
+@@ -0,0 +1,58 @@
++name = puppet-postgresql
++url = file:///home/clr/stx-tar/puppet-postgresql-4.8.0.tar.gz
++use_lto = true
++verify_required = false
+diff --git a/puppet-postgresql.spec b/puppet-postgresql.spec
+new file mode 100644
+index 0000000..f62e3fe
+--- /dev/null
++++ b/puppet-postgresql.spec
+@@ -0,0 +1,212 @@
++#
++# This file is auto-generated. DO NOT EDIT
++# Generated by: autospec.py
++#
++Name     : puppet-postgresql
++License  : Apache-2.0
++Requires: puppet-postgresql-data = %{version}-%{release}
++Requires: puppet-concat
++Requires: puppet-firewall
++Requires: puppet-stdlib
++BuildRequires : python-dev
++Patch1: 0001-add-makefile.patch
++Patch2: 0001-Roll-up-TIS-patches.patch
++Patch3: 0002-remove-puppetlabs-apt-as-a-requirement.patch
++
++%description
++# postgresql
++#### Table of Contents
++1. [Module Description - What does the module do?](#module-description)
++2. [Setup - The basics of getting started with postgresql module](#setup)
++* [What postgresql affects](#what-postgresql-affects)
++* [Getting started with postgresql](#getting-started-with-postgresql)
++3. [Usage - Configuration options and additional functionality](#usage)
++* [Configure a server](#configure-a-server)
++* [Create a database](#create-a-database)
++* [Manage users, roles, and permissions](#manage-users-roles-and-permissions)
++* [Override defaults](#override-defaults)
++* [Create an access rule for pg_hba.conf](#create-an-access-rule-for-pg_hbaconf)
++* [Create user name maps for pg_ident.conf](#create-user-name-maps-for-pg_identconf)
++* [Validate connectivity](#validate-connectivity)
++4. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
++* [Classes](#classes)
++* [Defined Types](#defined-types)
++* [Types](#types)
++* [Functions](#functions)
++5. [Limitations - OS compatibility, etc.](#limitations)
++6. [Development - Guide for contributing to the module](#development)
++* [Contributors - List of module contributors](#contributors)
++7. [Tests](#tests)
++8. [Contributors - List of module contributors](#contributors)
++
++%package data
++
++
++
++%prep
++%patch1 -p1
++%patch2 -p1
++%patch3 -p1
++
++%build
++make  %{?_smp_mflags}
++
++
++%install
++rm -rf %{buildroot}
++install -d -m 0755 %{buildroot}/%{_datadir}/puppet/modules/postgresql
++## install_append content
++cp -rp * %{buildroot}/%{_datadir}/puppet/modules/postgresql/
++## install_append end
++
++%files
++%defattr(-,root,root,-)
++
++%files data
++%defattr(-,root,root,-)
++/usr/share/puppet/modules/postgresql/CHANGELOG.md
++/usr/share/puppet/modules/postgresql/CONTRIBUTING.md
++/usr/share/puppet/modules/postgresql/Gemfile
++/usr/share/puppet/modules/postgresql/LICENSE
++/usr/share/puppet/modules/postgresql/Makefile
++/usr/share/puppet/modules/postgresql/NOTICE
++/usr/share/puppet/modules/postgresql/README.md
++/usr/share/puppet/modules/postgresql/Rakefile
++/usr/share/puppet/modules/postgresql/files/RPM-GPG-KEY-PGDG
++/usr/share/puppet/modules/postgresql/files/validate_postgresql_connection.sh
++/usr/share/puppet/modules/postgresql/lib/puppet/parser/functions/postgresql_acls_to_resources_hash.rb
++/usr/share/puppet/modules/postgresql/lib/puppet/parser/functions/postgresql_escape.rb
++/usr/share/puppet/modules/postgresql/lib/puppet/parser/functions/postgresql_password.rb
++/usr/share/puppet/modules/postgresql/lib/puppet/provider/postgresql_conf/parsed.rb
++/usr/share/puppet/modules/postgresql/lib/puppet/provider/postgresql_psql/ruby.rb
++/usr/share/puppet/modules/postgresql/lib/puppet/provider/postgresql_replication_slot/ruby.rb
++/usr/share/puppet/modules/postgresql/lib/puppet/type/postgresql_conf.rb
++/usr/share/puppet/modules/postgresql/lib/puppet/type/postgresql_psql.rb
++/usr/share/puppet/modules/postgresql/lib/puppet/type/postgresql_replication_slot.rb
++/usr/share/puppet/modules/postgresql/manifests/client.pp
++/usr/share/puppet/modules/postgresql/manifests/globals.pp
++/usr/share/puppet/modules/postgresql/manifests/lib/devel.pp
++/usr/share/puppet/modules/postgresql/manifests/lib/docs.pp
++/usr/share/puppet/modules/postgresql/manifests/lib/java.pp
++/usr/share/puppet/modules/postgresql/manifests/lib/perl.pp
++/usr/share/puppet/modules/postgresql/manifests/lib/python.pp
++/usr/share/puppet/modules/postgresql/manifests/params.pp
++/usr/share/puppet/modules/postgresql/manifests/repo.pp
++/usr/share/puppet/modules/postgresql/manifests/repo/apt_postgresql_org.pp
++/usr/share/puppet/modules/postgresql/manifests/repo/yum_postgresql_org.pp
++/usr/share/puppet/modules/postgresql/manifests/server.pp
++/usr/share/puppet/modules/postgresql/manifests/server/config.pp
++/usr/share/puppet/modules/postgresql/manifests/server/config_entry.pp
++/usr/share/puppet/modules/postgresql/manifests/server/contrib.pp
++/usr/share/puppet/modules/postgresql/manifests/server/database.pp
++/usr/share/puppet/modules/postgresql/manifests/server/database_grant.pp
++/usr/share/puppet/modules/postgresql/manifests/server/db.pp
++/usr/share/puppet/modules/postgresql/manifests/server/extension.pp
++/usr/share/puppet/modules/postgresql/manifests/server/grant.pp
++/usr/share/puppet/modules/postgresql/manifests/server/grant_role.pp
++/usr/share/puppet/modules/postgresql/manifests/server/initdb.pp
++/usr/share/puppet/modules/postgresql/manifests/server/install.pp
++/usr/share/puppet/modules/postgresql/manifests/server/passwd.pp
++/usr/share/puppet/modules/postgresql/manifests/server/pg_hba_rule.pp
++/usr/share/puppet/modules/postgresql/manifests/server/pg_ident_rule.pp
++/usr/share/puppet/modules/postgresql/manifests/server/plperl.pp
++/usr/share/puppet/modules/postgresql/manifests/server/plpython.pp
++/usr/share/puppet/modules/postgresql/manifests/server/postgis.pp
++/usr/share/puppet/modules/postgresql/manifests/server/recovery.pp
++/usr/share/puppet/modules/postgresql/manifests/server/reload.pp
++/usr/share/puppet/modules/postgresql/manifests/server/role.pp
++/usr/share/puppet/modules/postgresql/manifests/server/schema.pp
++/usr/share/puppet/modules/postgresql/manifests/server/service.pp
++/usr/share/puppet/modules/postgresql/manifests/server/table_grant.pp
++/usr/share/puppet/modules/postgresql/manifests/server/tablespace.pp
++/usr/share/puppet/modules/postgresql/manifests/validate_db_connection.pp
++/usr/share/puppet/modules/postgresql/metadata.json
++/usr/share/puppet/modules/postgresql/spec/acceptance/00-utf8_encoding_spec.rb
++/usr/share/puppet/modules/postgresql/spec/acceptance/alternative_port_spec.rb
++/usr/share/puppet/modules/postgresql/spec/acceptance/db_spec.rb
++/usr/share/puppet/modules/postgresql/spec/acceptance/default_parameters_spec.rb
++/usr/share/puppet/modules/postgresql/spec/acceptance/nodesets/centos-7-x64.yml
++/usr/share/puppet/modules/postgresql/spec/acceptance/nodesets/debian-8-x64.yml
++/usr/share/puppet/modules/postgresql/spec/acceptance/nodesets/default.yml
++/usr/share/puppet/modules/postgresql/spec/acceptance/nodesets/docker/centos-7.yml
++/usr/share/puppet/modules/postgresql/spec/acceptance/nodesets/docker/debian-8.yml
++/usr/share/puppet/modules/postgresql/spec/acceptance/nodesets/docker/ubuntu-14.04.yml
++/usr/share/puppet/modules/postgresql/spec/acceptance/postgresql_psql_spec.rb
++/usr/share/puppet/modules/postgresql/spec/acceptance/remote_access_spec.rb
++/usr/share/puppet/modules/postgresql/spec/acceptance/server/grant_role_spec.rb
++/usr/share/puppet/modules/postgresql/spec/acceptance/server/grant_spec.rb
++/usr/share/puppet/modules/postgresql/spec/acceptance/server/recovery_spec.rb
++/usr/share/puppet/modules/postgresql/spec/acceptance/server/schema_spec.rb
++/usr/share/puppet/modules/postgresql/spec/acceptance/z_alternative_pgdata_spec.rb
++/usr/share/puppet/modules/postgresql/spec/spec_helper.rb
++/usr/share/puppet/modules/postgresql/spec/spec_helper_acceptance.rb
++/usr/share/puppet/modules/postgresql/spec/spec_helper_local.rb
++/usr/share/puppet/modules/postgresql/spec/unit/classes/client_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/classes/globals_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/classes/lib/devel_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/classes/lib/java_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/classes/lib/perl_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/classes/lib/pgdocs_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/classes/lib/python_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/classes/params_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/classes/repo_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/classes/server/config_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/classes/server/contrib_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/classes/server/initdb_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/classes/server/plperl_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/classes/server/plpython_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/classes/server/postgis_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/classes/server_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/defines/server/config_entry_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/defines/server/database_grant_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/defines/server/database_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/defines/server/db_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/defines/server/extension_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/defines/server/grant_role_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/defines/server/grant_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/defines/server/pg_hba_rule_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/defines/server/pg_ident_rule_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/defines/server/recovery_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/defines/server/role_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/defines/server/schema_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/defines/server/table_grant_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/defines/server/tablespace_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/defines/validate_db_connection_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/functions/postgresql_acls_to_resources_hash_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/functions/postgresql_escape_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/functions/postgresql_password_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/provider/postgresql_conf/parsed_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/puppet/provider/postgresql_psql/ruby_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/puppet/provider/postgresql_replication_slot/ruby_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/puppet/type/postgresql_psql_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/puppet/type/postgresql_replication_slot_spec.rb
++/usr/share/puppet/modules/postgresql/spec/unit/type/postgresql_conf_spec.rb
++/usr/share/puppet/modules/postgresql/templates/pg_hba_rule.conf
++/usr/share/puppet/modules/postgresql/templates/pg_ident_rule.conf
++/usr/share/puppet/modules/postgresql/templates/recovery.conf.erb
++/usr/share/puppet/modules/postgresql/templates/systemd-override.erb
+diff --git a/requires_add b/requires_add
+new file mode 100644
+index 0000000..3ef3f63
+--- /dev/null
++++ b/requires_add
+@@ -0,0 +1,5 @@
++puppet-stdlib
++puppet-firewall
++puppet-concat
+diff --git a/series b/series
+new file mode 100644
+index 0000000..6a2ff83
+--- /dev/null
++++ b/series
+@@ -0,0 +1,3 @@
++0001-add-makefile.patch
++0001-Roll-up-TIS-patches.patch
++0002-remove-puppetlabs-apt-as-a-requirement.patch
