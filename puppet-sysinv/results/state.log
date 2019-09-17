@@ -1,0 +1,37 @@
+2019-09-17 14:47:59,372 - Mock Version: 1.2.14
+2019-09-17 14:47:59,620 - Start: dnf update
+2019-09-17 14:48:09,238 - Finish: dnf update
+2019-09-17 14:48:09,244 - Finish: chroot init
+2019-09-17 14:48:09,246 - Start: buildsrpm
+2019-09-17 14:48:09,254 - Start: rpmbuild -bs
+2019-09-17 14:48:09,293 - Finish: rpmbuild -bs
+2019-09-17 14:48:09,294 - Finish: buildsrpm
+2019-09-17 14:48:09,295 - Finish: run
+2019-09-17 14:48:12,400 - Mock Version: 1.2.14
+2019-09-17 14:48:12,676 - Start: dnf update
+2019-09-17 14:48:22,183 - Finish: dnf update
+2019-09-17 14:48:22,188 - Finish: chroot init
+2019-09-17 14:48:22,189 - Start: build phase for puppet-sysinv-1.0.0-2.src.rpm
+2019-09-17 14:48:22,192 - Start: build setup for puppet-sysinv-1.0.0-2.src.rpm
+2019-09-17 14:48:23,466 - Finish: build setup for puppet-sysinv-1.0.0-2.src.rpm
+2019-09-17 14:48:23,466 - Start: rpmbuild puppet-sysinv-1.0.0-2.src.rpm
+2019-09-17 14:48:27,062 - Mock Version: 1.2.14
+2019-09-17 14:48:27,318 - Start: dnf update
+2019-09-17 14:48:37,089 - Finish: dnf update
+2019-09-17 14:48:37,094 - Finish: chroot init
+2019-09-17 14:48:37,097 - Start: buildsrpm
+2019-09-17 14:48:37,105 - Start: rpmbuild -bs
+2019-09-17 14:48:37,144 - Finish: rpmbuild -bs
+2019-09-17 14:48:37,146 - Finish: buildsrpm
+2019-09-17 14:48:37,146 - Finish: run
+2019-09-17 14:48:40,584 - Mock Version: 1.2.14
+2019-09-17 14:48:40,848 - Start: dnf update
+2019-09-17 14:48:50,764 - Finish: dnf update
+2019-09-17 14:48:50,769 - Finish: chroot init
+2019-09-17 14:48:50,771 - Start: build phase for puppet-sysinv-1.0.0-2.src.rpm
+2019-09-17 14:48:50,773 - Start: build setup for puppet-sysinv-1.0.0-2.src.rpm
+2019-09-17 14:48:52,040 - Finish: build setup for puppet-sysinv-1.0.0-2.src.rpm
+2019-09-17 14:48:52,040 - Start: rpmbuild puppet-sysinv-1.0.0-2.src.rpm
+2019-09-17 14:48:52,373 - Finish: rpmbuild puppet-sysinv-1.0.0-2.src.rpm
+2019-09-17 14:48:52,374 - Finish: build phase for puppet-sysinv-1.0.0-2.src.rpm
+2019-09-17 14:48:52,375 - Finish: run

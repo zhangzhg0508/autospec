@@ -1,0 +1,43 @@
+From f128d3e9c5e373be0440511fb7fa44c72ab343b5 Mon Sep 17 00:00:00 2001
+From: fuyong <fuyong@neusoft.com>
+Date: Tue, 17 Sep 2019 14:48:52 +0800
+Subject: [PATCH puppet-sysinv] puppet-sysinv: Autospec creation for version
+ 1.0.0
+
+---
+ 0001-fix-Makefile-dir.patch | 8 ++++----
+ puppet-sysinv.spec          | 6 +++---
+ release                     | 2 +-
+ 3 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/0001-fix-Makefile-dir.patch b/0001-fix-Makefile-dir.patch
+index 8af7c80..52da6bf 100644
+--- a/0001-fix-Makefile-dir.patch
++++ b/0001-fix-Makefile-dir.patch
+@@ -1,6 +1,6 @@
+-From fbd76e75df6f8c781bd2b3343ef8f7a890bf9168 Mon Sep 17 00:00:00 2001
++From 7d6c5011d7b973d7437058bca7289986c5cc0681 Mon Sep 17 00:00:00 2001
+ From: fuyong <fuyong@neusoft.com>
+-Date: Tue, 17 Sep 2019 14:41:15 +0800
++Date: Tue, 17 Sep 2019 14:47:31 +0800
+ Subject: [PATCH] fix Makefile dir
+ 
+ ---
+@@ -8,7 +8,7 @@ Subject: [PATCH] fix Makefile dir
+  1 file changed, 1 insertion(+), 1 deletion(-)
+ 
+ diff --git a/Makefile b/Makefile
+-index 5446df8..dcd2e62 100644
++index 5446df8..0ad952e 100644
+ --- a/Makefile
+ +++ b/Makefile
+ @@ -4,7 +4,7 @@
+@@ -16,7 +16,7 @@ index 5446df8..dcd2e62 100644
+  #
+  
+ -MODULEDIR ?= /usr/share/puppet/modules
+-+MODULEDIR ?= %{buildroot}%/usr/share/starlingx/puppet/modules
+++MODULEDIR ?= %{buildroot}%/usr/share/puppet/modules
+  
+  install:
+  	install -d -m 0755 $(MODULEDIR)/sysinv
