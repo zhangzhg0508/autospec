@@ -1,0 +1,37 @@
+2019-09-04 17:15:37,167 - Mock Version: 1.2.14
+2019-09-04 17:15:37,417 - Start: dnf update
+2019-09-04 17:15:47,215 - Finish: dnf update
+2019-09-04 17:15:47,220 - Finish: chroot init
+2019-09-04 17:15:47,223 - Start: buildsrpm
+2019-09-04 17:15:47,231 - Start: rpmbuild -bs
+2019-09-04 17:15:47,270 - Finish: rpmbuild -bs
+2019-09-04 17:15:47,272 - Finish: buildsrpm
+2019-09-04 17:15:47,272 - Finish: run
+2019-09-04 17:15:50,355 - Mock Version: 1.2.14
+2019-09-04 17:15:50,625 - Start: dnf update
+2019-09-04 17:16:00,451 - Finish: dnf update
+2019-09-04 17:16:00,456 - Finish: chroot init
+2019-09-04 17:16:00,458 - Start: build phase for python-cephclient-13.2.2.0-2.src.rpm
+2019-09-04 17:16:00,460 - Start: build setup for python-cephclient-13.2.2.0-2.src.rpm
+2019-09-04 17:16:02,220 - Finish: build setup for python-cephclient-13.2.2.0-2.src.rpm
+2019-09-04 17:16:02,220 - Start: rpmbuild python-cephclient-13.2.2.0-2.src.rpm
+2019-09-04 17:16:06,330 - Mock Version: 1.2.14
+2019-09-04 17:16:06,572 - Start: dnf update
+2019-09-04 17:16:17,953 - Finish: dnf update
+2019-09-04 17:16:17,958 - Finish: chroot init
+2019-09-04 17:16:17,961 - Start: buildsrpm
+2019-09-04 17:16:17,969 - Start: rpmbuild -bs
+2019-09-04 17:16:18,008 - Finish: rpmbuild -bs
+2019-09-04 17:16:18,010 - Finish: buildsrpm
+2019-09-04 17:16:18,010 - Finish: run
+2019-09-04 17:16:21,159 - Mock Version: 1.2.14
+2019-09-04 17:16:21,422 - Start: dnf update
+2019-09-04 17:16:31,771 - Finish: dnf update
+2019-09-04 17:16:31,777 - Finish: chroot init
+2019-09-04 17:16:31,778 - Start: build phase for python-cephclient-13.2.2.0-2.src.rpm
+2019-09-04 17:16:31,780 - Start: build setup for python-cephclient-13.2.2.0-2.src.rpm
+2019-09-04 17:16:33,544 - Finish: build setup for python-cephclient-13.2.2.0-2.src.rpm
+2019-09-04 17:16:33,544 - Start: rpmbuild python-cephclient-13.2.2.0-2.src.rpm
+2019-09-04 17:16:34,133 - Finish: rpmbuild python-cephclient-13.2.2.0-2.src.rpm
+2019-09-04 17:16:34,134 - Finish: build phase for python-cephclient-13.2.2.0-2.src.rpm
+2019-09-04 17:16:34,135 - Finish: run

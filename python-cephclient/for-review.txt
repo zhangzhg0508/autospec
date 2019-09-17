@@ -1,0 +1,33 @@
+From 08ca33b98fa5dde4103cde36b47372476f0eee2e Mon Sep 17 00:00:00 2001
+From: "yongx.fu" <yongx.fu@intel.com>
+Date: Wed, 4 Sep 2019 17:16:34 +0800
+Subject: [PATCH python-cephclient] python-cephclient: Autospec creation for
+ version 13.2.2.0
+
+---
+ buildreq_add           | 1 +
+ python-cephclient.spec | 5 +++--
+ release                | 2 +-
+ 3 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/buildreq_add b/buildreq_add
+index 805acc5..720d8f6 100644
+--- a/buildreq_add
++++ b/buildreq_add
+@@ -2,3 +2,4 @@
+ # picked up automatically. One name per line, no whitespace.
+ python
+ pip
++buildreq-distutils
+diff --git a/python-cephclient.spec b/python-cephclient.spec
+index 2913705..e4aabe8 100644
+--- a/python-cephclient.spec
++++ b/python-cephclient.spec
+@@ -18,6 +18,7 @@ Requires: python-ipaddress
+ Requires: python2-requests
+ Requires: requests
+ Requires: six
++BuildRequires : buildreq-distutils
+ BuildRequires : buildreq-distutils3
+ BuildRequires : ipaddress
+ BuildRequires : pip
