@@ -1,0 +1,21 @@
+From 8dbb7982aeca23442cc9e4ffd375e0f051285977 Mon Sep 17 00:00:00 2001
+From: chen-dq <chen.dq@neusoft.com>
+Date: Tue, 17 Sep 2019 02:44:06 +0000
+Subject: [PATCH] add_makefile
+
+---
+ Makefile | 2 ++
+ 1 file changed, 2 insertions(+)
+ create mode 100644 Makefile
+
+diff --git a/Makefile b/Makefile
+new file mode 100644
+index 0000000..cda58eb
+--- /dev/null
++++ b/Makefile
+@@ -0,0 +1,2 @@
++build:
++	echo "no build"
+-- 
+2.23.0
+

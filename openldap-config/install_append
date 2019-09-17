@@ -1,0 +1,20 @@
+install -m 755 initscript %{buildroot}%{_sysconfdir}/rc.d/init.d/openldap
+install -d -m 740 %{buildroot}%{_sysconfdir}/openldap
+install -m 600 slapd.conf %{buildroot}%{_sysconfdir}/openldap/slapd.conf
+install -m 600 initial_config.ldif %{buildroot}%{_sysconfdir}/openldap/initial_config.ldif
+
+install -d %{buildroot}%{_datadir}/starlingx
+install -m 644 slapd.service %{buildroot}%{_datadir}/starlingx/slapd.service
+
+install -m 644 slapd.sysconfig %{buildroot}%{_datadir}/starlingx/slapd.sysconfig
+install -d -m 755 %{buildroot}%{_unitdir}
+install -m 644 slapd.service %{buildroot}%{_unitdir}slapd.service
+
+
+%post
+if [ $1 -eq 1 ] ; then
+    cp -f %{_datadir}/starlingx/slapd.service %{_unitdir}/slapd.service
+    chmod 644 %{_unitdir}/slapd.service
+    cp -f %{_datadir}/starlingx/slapd.sysconfig %{_sysconfdir}/sysconfig/slapd
+    chmod 644 %{_unitdir}/slapd
+fi

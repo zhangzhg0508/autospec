@@ -1,0 +1,1 @@
+mkdir -p %{buildroot}%{_sysconfdir}/rc.d/init.d

@@ -1,0 +1,37 @@
+2019-09-17 02:57:24,772 - Mock Version: 1.2.14
+2019-09-17 02:57:25,039 - Start: dnf update
+2019-09-17 02:57:36,013 - Finish: dnf update
+2019-09-17 02:57:36,019 - Finish: chroot init
+2019-09-17 02:57:36,022 - Start: buildsrpm
+2019-09-17 02:57:36,027 - Start: rpmbuild -bs
+2019-09-17 02:57:36,065 - Finish: rpmbuild -bs
+2019-09-17 02:57:36,066 - Finish: buildsrpm
+2019-09-17 02:57:36,067 - Finish: run
+2019-09-17 02:57:39,092 - Mock Version: 1.2.14
+2019-09-17 02:57:39,354 - Start: dnf update
+2019-09-17 02:57:50,223 - Finish: dnf update
+2019-09-17 02:57:50,229 - Finish: chroot init
+2019-09-17 02:57:50,230 - Start: build phase for openldap-config-1.0-1.src.rpm
+2019-09-17 02:57:50,232 - Start: build setup for openldap-config-1.0-1.src.rpm
+2019-09-17 02:57:50,898 - Finish: build setup for openldap-config-1.0-1.src.rpm
+2019-09-17 02:57:50,898 - Start: rpmbuild openldap-config-1.0-1.src.rpm
+2019-09-17 02:57:54,171 - Mock Version: 1.2.14
+2019-09-17 02:57:54,437 - Start: dnf update
+2019-09-17 02:58:05,479 - Finish: dnf update
+2019-09-17 02:58:05,485 - Finish: chroot init
+2019-09-17 02:58:05,487 - Start: buildsrpm
+2019-09-17 02:58:05,493 - Start: rpmbuild -bs
+2019-09-17 02:58:05,531 - Finish: rpmbuild -bs
+2019-09-17 02:58:05,533 - Finish: buildsrpm
+2019-09-17 02:58:05,533 - Finish: run
+2019-09-17 02:58:08,695 - Mock Version: 1.2.14
+2019-09-17 02:58:08,971 - Start: dnf update
+2019-09-17 02:58:21,099 - Finish: dnf update
+2019-09-17 02:58:21,105 - Finish: chroot init
+2019-09-17 02:58:21,107 - Start: build phase for openldap-config-1.0-1.src.rpm
+2019-09-17 02:58:21,109 - Start: build setup for openldap-config-1.0-1.src.rpm
+2019-09-17 02:58:21,777 - Finish: build setup for openldap-config-1.0-1.src.rpm
+2019-09-17 02:58:21,777 - Start: rpmbuild openldap-config-1.0-1.src.rpm
+2019-09-17 02:58:21,931 - Finish: rpmbuild openldap-config-1.0-1.src.rpm
+2019-09-17 02:58:21,933 - Finish: build phase for openldap-config-1.0-1.src.rpm
+2019-09-17 02:58:21,933 - Finish: run
