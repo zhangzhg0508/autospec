@@ -1,0 +1,1 @@
+cp -R ../puppi-master/* %{buildroot}/%{_datadir}/puppet/modules/puppi/.

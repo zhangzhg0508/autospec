@@ -1,0 +1,37 @@
+2019-09-17 17:08:07,676 - Mock Version: 1.2.14
+2019-09-17 17:08:07,934 - Start: dnf update
+2019-09-17 17:08:17,716 - Finish: dnf update
+2019-09-17 17:08:17,721 - Finish: chroot init
+2019-09-17 17:08:17,724 - Start: buildsrpm
+2019-09-17 17:08:17,729 - Start: rpmbuild -bs
+2019-09-17 17:08:17,769 - Finish: rpmbuild -bs
+2019-09-17 17:08:17,770 - Finish: buildsrpm
+2019-09-17 17:08:17,771 - Finish: run
+2019-09-17 17:08:20,826 - Mock Version: 1.2.14
+2019-09-17 17:08:21,092 - Start: dnf update
+2019-09-17 17:08:30,552 - Finish: dnf update
+2019-09-17 17:08:30,557 - Finish: chroot init
+2019-09-17 17:08:30,559 - Start: build phase for puppet-puppi-1-1.src.rpm
+2019-09-17 17:08:30,561 - Start: build setup for puppet-puppi-1-1.src.rpm
+2019-09-17 17:08:31,846 - Finish: build setup for puppet-puppi-1-1.src.rpm
+2019-09-17 17:08:31,846 - Start: rpmbuild puppet-puppi-1-1.src.rpm
+2019-09-17 17:08:35,768 - Mock Version: 1.2.14
+2019-09-17 17:08:36,036 - Start: dnf update
+2019-09-17 17:08:45,585 - Finish: dnf update
+2019-09-17 17:08:45,590 - Finish: chroot init
+2019-09-17 17:08:45,593 - Start: buildsrpm
+2019-09-17 17:08:45,599 - Start: rpmbuild -bs
+2019-09-17 17:08:45,638 - Finish: rpmbuild -bs
+2019-09-17 17:08:45,639 - Finish: buildsrpm
+2019-09-17 17:08:45,640 - Finish: run
+2019-09-17 17:08:48,729 - Mock Version: 1.2.14
+2019-09-17 17:08:49,003 - Start: dnf update
+2019-09-17 17:08:58,622 - Finish: dnf update
+2019-09-17 17:08:58,627 - Finish: chroot init
+2019-09-17 17:08:58,629 - Start: build phase for puppet-puppi-1-1.src.rpm
+2019-09-17 17:08:58,631 - Start: build setup for puppet-puppi-1-1.src.rpm
+2019-09-17 17:08:59,928 - Finish: build setup for puppet-puppi-1-1.src.rpm
+2019-09-17 17:08:59,928 - Start: rpmbuild puppet-puppi-1-1.src.rpm
+2019-09-17 17:09:00,605 - Finish: rpmbuild puppet-puppi-1-1.src.rpm
+2019-09-17 17:09:00,606 - Finish: build phase for puppet-puppi-1-1.src.rpm
+2019-09-17 17:09:00,607 - Finish: run
