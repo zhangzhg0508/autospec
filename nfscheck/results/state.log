@@ -1,0 +1,37 @@
+2019-09-17 01:56:01,917 - Mock Version: 1.2.14
+2019-09-17 01:56:02,169 - Start: dnf update
+2019-09-17 01:56:12,894 - Finish: dnf update
+2019-09-17 01:56:12,900 - Finish: chroot init
+2019-09-17 01:56:12,902 - Start: buildsrpm
+2019-09-17 01:56:12,910 - Start: rpmbuild -bs
+2019-09-17 01:56:12,950 - Finish: rpmbuild -bs
+2019-09-17 01:56:12,952 - Finish: buildsrpm
+2019-09-17 01:56:12,952 - Finish: run
+2019-09-17 01:56:16,146 - Mock Version: 1.2.14
+2019-09-17 01:56:16,389 - Start: dnf update
+2019-09-17 01:56:26,903 - Finish: dnf update
+2019-09-17 01:56:26,910 - Finish: chroot init
+2019-09-17 01:56:26,912 - Start: build phase for nfscheck-1.0-2.src.rpm
+2019-09-17 01:56:26,914 - Start: build setup for nfscheck-1.0-2.src.rpm
+2019-09-17 01:56:27,603 - Finish: build setup for nfscheck-1.0-2.src.rpm
+2019-09-17 01:56:27,603 - Start: rpmbuild nfscheck-1.0-2.src.rpm
+2019-09-17 01:56:31,113 - Mock Version: 1.2.14
+2019-09-17 01:56:31,369 - Start: dnf update
+2019-09-17 01:56:41,727 - Finish: dnf update
+2019-09-17 01:56:41,732 - Finish: chroot init
+2019-09-17 01:56:41,735 - Start: buildsrpm
+2019-09-17 01:56:41,744 - Start: rpmbuild -bs
+2019-09-17 01:56:41,782 - Finish: rpmbuild -bs
+2019-09-17 01:56:41,784 - Finish: buildsrpm
+2019-09-17 01:56:41,784 - Finish: run
+2019-09-17 01:56:45,054 - Mock Version: 1.2.14
+2019-09-17 01:56:45,319 - Start: dnf update
+2019-09-17 01:56:55,692 - Finish: dnf update
+2019-09-17 01:56:55,698 - Finish: chroot init
+2019-09-17 01:56:55,699 - Start: build phase for nfscheck-1.0-2.src.rpm
+2019-09-17 01:56:55,703 - Start: build setup for nfscheck-1.0-2.src.rpm
+2019-09-17 01:56:56,479 - Finish: build setup for nfscheck-1.0-2.src.rpm
+2019-09-17 01:56:56,479 - Start: rpmbuild nfscheck-1.0-2.src.rpm
+2019-09-17 01:56:56,632 - Finish: rpmbuild nfscheck-1.0-2.src.rpm
+2019-09-17 01:56:56,633 - Finish: build phase for nfscheck-1.0-2.src.rpm
+2019-09-17 01:56:56,634 - Finish: run

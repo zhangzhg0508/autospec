@@ -1,0 +1,86 @@
+From 4d75d80ad9f37537acca23b0ba844d919fa53680 Mon Sep 17 00:00:00 2001
+From: chen-dq <chen.dq@neusoft.com>
+Date: Tue, 17 Sep 2019 01:56:57 +0000
+Subject: [PATCH nfscheck] nfscheck: Autospec creation for version 1.0
+
+---
+ install_append |  2 ++
+ nfscheck.spec  | 22 +++++++++++++++++++---
+ release        |  2 +-
+ 3 files changed, 22 insertions(+), 4 deletions(-)
+
+diff --git a/install_append b/install_append
+index 7b36cd3..b659c14 100644
+--- a/install_append
++++ b/install_append
+@@ -2,6 +2,8 @@ install -m 755 nfscheck.sh %{buildroot}/usr/bin/nfscheck.sh
+ 
+ install -d -m 755 %{buildroot}/usr/lib/systemd/system/
+ install -m 664 nfscheck.service %{buildroot}/usr/lib/systemd/system/nfscheck.service
++install -d -m 755 ${RPM_BUILD_ROOT}%{license}
++install -m 500 LICENSE ${RPM_BUILD_ROOT}%{license}
+ 
+ %post
+ /usr/bin/systemctl enable nfscheck.service >/dev/null 2>&1
+diff --git a/nfscheck.spec b/nfscheck.spec
+index 6c775fd..e376652 100644
+--- a/nfscheck.spec
++++ b/nfscheck.spec
+@@ -4,13 +4,14 @@
+ #
+ Name     : nfscheck
+ Version  : 1.0
+ URL      : file:///home/clear/tar/nfscheck-1.0.tar.gz
+ Source0  : file:///home/clear/tar/nfscheck-1.0.tar.gz
+ Summary  : No detailed summary available
+ Group    : Development/Tools
+ License  : Apache-2.0
+ Requires: nfscheck-bin = %{version}-%{release}
++Requires: nfscheck-data = %{version}-%{release}
+ Requires: nfscheck-services = %{version}-%{release}
+ Requires: systemd
+ Requires: util-linux
+@@ -21,12 +22,21 @@ No detailed description available
+ %package bin
+ Summary: bin components for the nfscheck package.
+ Group: Binaries
++Requires: nfscheck-data = %{version}-%{release}
+ Requires: nfscheck-services = %{version}-%{release}
+ 
+ %description bin
+ bin components for the nfscheck package.
+ 
+ 
++%package data
++
++
++
+ %package services
+ Summary: services components for the nfscheck package.
+ Group: Systemd services
+@@ -59,13 +69,15 @@ make  %{?_smp_mflags}
+ 
+ 
+ %install
+ rm -rf %{buildroot}
+ install -d -m 755 %{buildroot}/usr/bin/
+ ## install_append content
+ install -m 755 nfscheck.sh %{buildroot}/usr/bin/nfscheck.sh
+ install -d -m 755 %{buildroot}/usr/lib/systemd/system/
+ install -m 664 nfscheck.service %{buildroot}/usr/lib/systemd/system/nfscheck.service
++install -d -m 755 ${RPM_BUILD_ROOT}%{license}
++install -m 500 LICENSE ${RPM_BUILD_ROOT}%{license}
+ %post
+ /usr/bin/systemctl enable nfscheck.service >/dev/null 2>&1
+ ## install_append end
+@@ -77,6 +89,10 @@ install -m 664 nfscheck.service %{buildroot}/usr/lib/systemd/system/nfscheck.ser
+ %defattr(-,root,root,-)
+ /usr/bin/nfscheck.sh
+ 
++%files data
++%defattr(-,root,root,-)
++/usr/share/licenses/nfscheck/LICENSE
++
+ %files services
+ %defattr(-,root,root,-)
+ /usr/lib/systemd/system/nfscheck.service

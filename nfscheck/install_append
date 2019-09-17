@@ -1,0 +1,11 @@
+install -m 755 nfscheck.sh %{buildroot}/usr/bin/nfscheck.sh
+
+install -d -m 755 %{buildroot}/usr/lib/systemd/system/
+install -m 664 nfscheck.service %{buildroot}/usr/lib/systemd/system/nfscheck.service
+install -d -m 755 ${RPM_BUILD_ROOT}%{license}
+install -m 500 LICENSE ${RPM_BUILD_ROOT}%{license}
+
+%post
+/usr/bin/systemctl enable nfscheck.service >/dev/null 2>&1
+
+ 
