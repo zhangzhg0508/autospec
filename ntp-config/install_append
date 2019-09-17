@@ -1,0 +1,13 @@
+install -D -m644 ntpd.sysconfig %{buildroot}%{_datadir}/starlingx/ntpd.sysconfig
+install -D -m644 ntp.conf %{buildroot}%{_datadir}/starlingx/ntp.conf
+install -d -m 755 ${RPM_BUILD_ROOT}%{license}
+install -m 500 LICENSE ${RPM_BUILD_ROOT}%{license}
+
+%post
+if [ $1 -eq 1 ] ; then
+	cp -f %{_datadir}/starlingx/ntpd.sysconfig %{_sysconfdir}/sysconfig/ntpd
+	cp -f %{_datadir}/starlingx/ntp.conf %{_sysconfdir}/ntp.conf
+	chmod 644 %{_sysconfdir}/sysconfig/ntpd
+	chmod 644 %{_sysconfdir}/ntp.conf
+fi
+
