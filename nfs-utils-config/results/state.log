@@ -1,0 +1,37 @@
+2019-09-17 02:14:28,291 - Mock Version: 1.2.14
+2019-09-17 02:14:28,548 - Start: dnf update
+2019-09-17 02:14:38,790 - Finish: dnf update
+2019-09-17 02:14:38,796 - Finish: chroot init
+2019-09-17 02:14:38,799 - Start: buildsrpm
+2019-09-17 02:14:38,804 - Start: rpmbuild -bs
+2019-09-17 02:14:38,841 - Finish: rpmbuild -bs
+2019-09-17 02:14:38,843 - Finish: buildsrpm
+2019-09-17 02:14:38,844 - Finish: run
+2019-09-17 02:14:41,935 - Mock Version: 1.2.14
+2019-09-17 02:14:42,204 - Start: dnf update
+2019-09-17 02:14:52,328 - Finish: dnf update
+2019-09-17 02:14:52,333 - Finish: chroot init
+2019-09-17 02:14:52,335 - Start: build phase for nfs-utils-config-1.0-1.src.rpm
+2019-09-17 02:14:52,337 - Start: build setup for nfs-utils-config-1.0-1.src.rpm
+2019-09-17 02:14:52,989 - Finish: build setup for nfs-utils-config-1.0-1.src.rpm
+2019-09-17 02:14:52,989 - Start: rpmbuild nfs-utils-config-1.0-1.src.rpm
+2019-09-17 02:14:56,230 - Mock Version: 1.2.14
+2019-09-17 02:14:56,484 - Start: dnf update
+2019-09-17 02:15:06,632 - Finish: dnf update
+2019-09-17 02:15:06,637 - Finish: chroot init
+2019-09-17 02:15:06,640 - Start: buildsrpm
+2019-09-17 02:15:06,646 - Start: rpmbuild -bs
+2019-09-17 02:15:06,684 - Finish: rpmbuild -bs
+2019-09-17 02:15:06,686 - Finish: buildsrpm
+2019-09-17 02:15:06,686 - Finish: run
+2019-09-17 02:15:09,742 - Mock Version: 1.2.14
+2019-09-17 02:15:10,000 - Start: dnf update
+2019-09-17 02:15:20,106 - Finish: dnf update
+2019-09-17 02:15:20,112 - Finish: chroot init
+2019-09-17 02:15:20,113 - Start: build phase for nfs-utils-config-1.0-1.src.rpm
+2019-09-17 02:15:20,115 - Start: build setup for nfs-utils-config-1.0-1.src.rpm
+2019-09-17 02:15:20,771 - Finish: build setup for nfs-utils-config-1.0-1.src.rpm
+2019-09-17 02:15:20,771 - Start: rpmbuild nfs-utils-config-1.0-1.src.rpm
+2019-09-17 02:15:20,911 - Finish: rpmbuild nfs-utils-config-1.0-1.src.rpm
+2019-09-17 02:15:20,912 - Finish: build phase for nfs-utils-config-1.0-1.src.rpm
+2019-09-17 02:15:20,913 - Finish: run
