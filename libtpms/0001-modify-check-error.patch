@@ -1,0 +1,35 @@
+From 30f431e8464763f9d027f8edae7e571f8c0b2d5b Mon Sep 17 00:00:00 2001
+From: "zhiguo.zhang" <zhiguox.zhang@intel.com>
+Date: Tue, 17 Sep 2019 07:39:37 +0000
+Subject: [PATCH libtpms] modify-check-error
+
+---
+ configure.ac | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index db77cf9..f9f6130 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -104,14 +104,14 @@ freebl)
+ 			 AC_MSG_ERROR(nss-devel/libnss3-dev is bad))
+ 
+ 	# Check for missing headers
+-	AC_CHECK_HEADERS([blapi.h],[],
++	AC_CHECK_HEADERS([blapit.h],[],
+ 			 AC_MSG_ERROR(nss-softokn-freebl-devel/libnss3-dev is missing blapi.h))
+ 	# Check for missing freebl library or missing library functions
+ 	LIBS_save="$LIBS"
+ 	LIBS="$(nss-config --libs) $(nspr-config --libs)"
+-	AC_SEARCH_LIBS([AES_CreateContext], [freebl],[],
+-             AC_MSG_ERROR("Could not find AES_CreateContext(). Is nss-softokn-freebl-devel/libnss3-dev installed?"),
+-             [])
++	#AC_SEARCH_LIBS([AES_CreateContext], [freebl],[],
++             #AC_MSG_ERROR("Could not find AES_CreateContext(). Is nss-softokn-freebl-devel/libnss3-dev installed?"),
++             #[])
+ 	LIBS="$LIBS_save"
+ 	CFLAGS="$CFLAGS_save $CFLAGS"
+ 	;;
+-- 
+2.23.0
+

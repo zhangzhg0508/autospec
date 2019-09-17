@@ -1,0 +1,10 @@
+%define _with_openssl --with-openssl
+
+./bootstrap.sh
+
+%configure \
+	--with-tpm2 \
+        --disable-static \
+        --prefix=/usr \
+        --libdir=%{_libdir} \
+        %{?_with_openssl}

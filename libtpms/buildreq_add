@@ -1,0 +1,15 @@
+# This file contains additional build requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+openssl-dev
+nss-dev >= 3.12.9-2
+#nss-softokn-freebl-dev >= 3.12.9-2
+#nss-softokn-dev >= 3.12.9-2
+gmp-dev
+pkg-config
+gawk
+sed
+automake
+autoconf
+libtool
+bash
+coreutils

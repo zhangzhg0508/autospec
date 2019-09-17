@@ -1,0 +1,5 @@
+rm -f $RPM_BUILD_ROOT%{_libdir}/libtpms.la
+
+%post -p /sbin/ldconfig
+
+%postun -p /sbin/ldconfig

@@ -1,0 +1,177 @@
+From a4567f0eece37d8f58c6a26806fc2f54c56dbdb8 Mon Sep 17 00:00:00 2001
+From: "zhiguo.zhang" <zhiguox.zhang@intel.com>
+Date: Tue, 17 Sep 2019 08:17:20 +0000
+Subject: [PATCH libtpms] libtpms: Autospec creation for version 0.6.0.4f0d59d
+
+---
+ 0001-modify-check-error.patch                 |   35 +
+ 0002-upgrade-freebl-to-freebl3.patch          |   25 +
+ 0003-modify-blapi.h-to-blapit.h.patch         |   25 +
+ .../libtpms-0.6.0/Makefile.am                 |   42 -
+ .../libtpms-0.6.0/configure.ac                |  209 --
+ .../libtpms-0.6.0/src/Makefile.am             |  598 ----
+ .../src/tpm12/tpm_crypto_freebl.c             | 2652 -----------------
+ libtpms.spec                                  |   17 +-
+ release                                       |    2 +-
+ series                                        |    3 +
+ upstream                                      |    2 +-
+ 11 files changed, 104 insertions(+), 3506 deletions(-)
+ create mode 100644 0001-modify-check-error.patch
+ create mode 100644 0002-upgrade-freebl-to-freebl3.patch
+ create mode 100644 0003-modify-blapi.h-to-blapit.h.patch
+ delete mode 100644 libtpms-0.6.0-4f0d59d/libtpms-0.6.0/Makefile.am
+ delete mode 100644 libtpms-0.6.0-4f0d59d/libtpms-0.6.0/configure.ac
+ delete mode 100644 libtpms-0.6.0-4f0d59d/libtpms-0.6.0/src/Makefile.am
+ delete mode 100644 libtpms-0.6.0-4f0d59d/libtpms-0.6.0/src/tpm12/tpm_crypto_freebl.c
+ create mode 100644 series
+
+diff --git a/0001-modify-check-error.patch b/0001-modify-check-error.patch
+new file mode 100644
+index 0000000..e5096ee
+--- /dev/null
++++ b/0001-modify-check-error.patch
+@@ -0,0 +1,35 @@
++From 30f431e8464763f9d027f8edae7e571f8c0b2d5b Mon Sep 17 00:00:00 2001
++From: "zhiguo.zhang" <zhiguox.zhang@intel.com>
++Date: Tue, 17 Sep 2019 07:39:37 +0000
++Subject: [PATCH libtpms] modify-check-error
++
++---
++ configure.ac | 8 ++++----
++ 1 file changed, 4 insertions(+), 4 deletions(-)
++
++diff --git a/configure.ac b/configure.ac
++index db77cf9..f9f6130 100644
++--- a/configure.ac
+++++ b/configure.ac
++@@ -104,14 +104,14 @@ freebl)
++ 			 AC_MSG_ERROR(nss-devel/libnss3-dev is bad))
++ 
++ 	# Check for missing headers
++-	AC_CHECK_HEADERS([blapi.h],[],
+++	AC_CHECK_HEADERS([blapit.h],[],
++ 			 AC_MSG_ERROR(nss-softokn-freebl-devel/libnss3-dev is missing blapi.h))
++ 	# Check for missing freebl library or missing library functions
++ 	LIBS_save="$LIBS"
++ 	LIBS="$(nss-config --libs) $(nspr-config --libs)"
++-	AC_SEARCH_LIBS([AES_CreateContext], [freebl],[],
++-             AC_MSG_ERROR("Could not find AES_CreateContext(). Is nss-softokn-freebl-devel/libnss3-dev installed?"),
++-             [])
+++	#AC_SEARCH_LIBS([AES_CreateContext], [freebl],[],
+++             #AC_MSG_ERROR("Could not find AES_CreateContext(). Is nss-softokn-freebl-devel/libnss3-dev installed?"),
+++             #[])
++ 	LIBS="$LIBS_save"
++ 	CFLAGS="$CFLAGS_save $CFLAGS"
++ 	;;
++-- 
++2.23.0
++
+diff --git a/0002-upgrade-freebl-to-freebl3.patch b/0002-upgrade-freebl-to-freebl3.patch
+new file mode 100644
+index 0000000..3adf6dd
+--- /dev/null
++++ b/0002-upgrade-freebl-to-freebl3.patch
+@@ -0,0 +1,25 @@
++From 4e43655122f17efd23406edcadb17388947885dd Mon Sep 17 00:00:00 2001
++From: "zhiguo.zhang" <zhiguox.zhang@intel.com>
++Date: Tue, 17 Sep 2019 07:46:59 +0000
++Subject: [PATCH libtpms] upgrade-freebl-to-freebl3
++
++---
++ src/Makefile.am | 2 +-
++ 1 file changed, 1 insertion(+), 1 deletion(-)
++
++diff --git a/src/Makefile.am b/src/Makefile.am
++index a125c13..1bf111c 100644
++--- a/src/Makefile.am
+++++ b/src/Makefile.am
++@@ -134,7 +134,7 @@ noinst_HEADERS = \
++ if LIBTPMS_USE_FREEBL
++ 
++ libtpms_tpm12_la_SOURCES += tpm12/tpm_crypto_freebl.c
++-libtpms_tpm12_la_LIBADD += -lfreebl -lgmp -lnspr4 -lnssutil3 -lnss3
+++libtpms_tpm12_la_LIBADD += -lfreebl3 -lgmp -lnspr4 -lnssutil3 -lnss3
++ 
++ #work-around broken freebl includes
++ libtpms_tpm12_la_CFLAGS += $(shell [ ! -r /usr/include/nss3/alghmac.h ] && \
++-- 
++2.23.0
++
+diff --git a/0003-modify-blapi.h-to-blapit.h.patch b/0003-modify-blapi.h-to-blapit.h.patch
+new file mode 100644
+index 0000000..25b9bd6
+--- /dev/null
++++ b/0003-modify-blapi.h-to-blapit.h.patch
+@@ -0,0 +1,25 @@
++From 0b4f4f54b409d390c672cea2fe4a9aa1ebe2a060 Mon Sep 17 00:00:00 2001
++From: "zhiguo.zhang" <zhiguox.zhang@intel.com>
++Date: Tue, 17 Sep 2019 07:51:47 +0000
++Subject: [PATCH libtpms] modify-blapi.h-to-blapit.h
++
++---
++ libtpms-0.6.0/src/tpm12/tpm_crypto_freebl.c                 | 2 +-
++ 1 file changed, 1 insertion(+), 1 deletion(-)
++
++diff --git a/src/tpm12/tpm_crypto_freebl.c b/src/tpm12/tpm_crypto_freebl.c
++index 6fbd895..8f750c5 100644
++--- a/src/tpm12/tpm_crypto_freebl.c
+++++ b/src/tpm12/tpm_crypto_freebl.c
++@@ -49,7 +49,7 @@
++ #include <stdlib.h>
++ #include <string.h>
++ 
++-#include "blapi.h"
+++#include "blapit.h"
++ #include <gmp.h>
++ 
++ #include "tpm_cryptoh.h"
++-- 
++2.23.0
++
+diff --git a/libtpms.spec b/libtpms.spec
+index c44f409..d91f556 100644
+--- a/libtpms.spec
++++ b/libtpms.spec
+@@ -13,15 +13,23 @@ License  : Apache-2.0
+ Requires: libtpms-lib = %{version}-%{release}
+ BuildRequires : autoconf
+ BuildRequires : automake
++BuildRequires : automake-dev
+ BuildRequires : bash
+ BuildRequires : coreutils
+ BuildRequires : gawk
++BuildRequires : gettext-bin
+ BuildRequires : gmp-dev
+ BuildRequires : libtool
++BuildRequires : libtool-dev
++BuildRequires : m4
+ BuildRequires : nss-dev >= 3.12.9-2
+ BuildRequires : openssl-dev
+ BuildRequires : pkg-config
++BuildRequires : pkg-config-dev
+ BuildRequires : sed
++Patch1: 0001-modify-check-error.patch
++Patch2: 0002-upgrade-freebl-to-freebl3.patch
++Patch3: 0003-modify-blapi.h-to-blapit.h.patch
+ 
+ %description
+ A library providing TPM functionality for VMs. Targeted for integration
+@@ -48,6 +56,9 @@ lib components for the libtpms package.
+ 
+ %prep
+ %setup -q -n libtpms-0.6.0
++%patch1 -p1
++%patch2 -p1
++%patch3 -p1
+ 
+ %build
+ ## build_prepend content
+diff --git a/series b/series
+new file mode 100644
+index 0000000..f2ab5cc
+--- /dev/null
++++ b/series
+@@ -0,0 +1,3 @@
++0001-modify-check-error.patch
++0002-upgrade-freebl-to-freebl3.patch
++0003-modify-blapi.h-to-blapit.h.patch

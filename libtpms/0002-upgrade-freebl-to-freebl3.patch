@@ -1,0 +1,25 @@
+From 4e43655122f17efd23406edcadb17388947885dd Mon Sep 17 00:00:00 2001
+From: "zhiguo.zhang" <zhiguox.zhang@intel.com>
+Date: Tue, 17 Sep 2019 07:46:59 +0000
+Subject: [PATCH libtpms] upgrade-freebl-to-freebl3
+
+---
+ src/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index a125c13..1bf111c 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -134,7 +134,7 @@ noinst_HEADERS = \
+ if LIBTPMS_USE_FREEBL
+ 
+ libtpms_tpm12_la_SOURCES += tpm12/tpm_crypto_freebl.c
+-libtpms_tpm12_la_LIBADD += -lfreebl -lgmp -lnspr4 -lnssutil3 -lnss3
++libtpms_tpm12_la_LIBADD += -lfreebl3 -lgmp -lnspr4 -lnssutil3 -lnss3
+ 
+ #work-around broken freebl includes
+ libtpms_tpm12_la_CFLAGS += $(shell [ ! -r /usr/include/nss3/alghmac.h ] && \
+-- 
+2.23.0
+
