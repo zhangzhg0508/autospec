@@ -1,0 +1,8 @@
+install -m640 syslog.conf %{buildroot}%{_datadir}/starlingx/syslog.conf
+install -d -m 755 %{buildroot}%{license}
+install -m 500 LICENSE %{buildroot}%{license}
+%post
+if [ $1 -eq 1 ] ; then
+    cp -f %{_datadir}/starlingx/syslog.conf %{_sysconfdir}/audisp/plugins.d/syslog.conf
+    chmod 640 %{_sysconfdir}/audisp/plugins.d/syslog.conf
+fi

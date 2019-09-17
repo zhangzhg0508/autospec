@@ -1,0 +1,37 @@
+2019-09-17 08:28:42,497 - Mock Version: 1.2.14
+2019-09-17 08:28:42,743 - Start: dnf update
+2019-09-17 08:28:53,067 - Finish: dnf update
+2019-09-17 08:28:53,072 - Finish: chroot init
+2019-09-17 08:28:53,075 - Start: buildsrpm
+2019-09-17 08:28:53,080 - Start: rpmbuild -bs
+2019-09-17 08:28:53,118 - Finish: rpmbuild -bs
+2019-09-17 08:28:53,119 - Finish: buildsrpm
+2019-09-17 08:28:53,120 - Finish: run
+2019-09-17 08:28:56,148 - Mock Version: 1.2.14
+2019-09-17 08:28:56,392 - Start: dnf update
+2019-09-17 08:29:06,453 - Finish: dnf update
+2019-09-17 08:29:06,458 - Finish: chroot init
+2019-09-17 08:29:06,460 - Start: build phase for audit-config-1.0-1.src.rpm
+2019-09-17 08:29:06,462 - Start: build setup for audit-config-1.0-1.src.rpm
+2019-09-17 08:29:07,129 - Finish: build setup for audit-config-1.0-1.src.rpm
+2019-09-17 08:29:07,129 - Start: rpmbuild audit-config-1.0-1.src.rpm
+2019-09-17 08:29:10,328 - Mock Version: 1.2.14
+2019-09-17 08:29:10,581 - Start: dnf update
+2019-09-17 08:29:20,788 - Finish: dnf update
+2019-09-17 08:29:20,793 - Finish: chroot init
+2019-09-17 08:29:20,796 - Start: buildsrpm
+2019-09-17 08:29:20,801 - Start: rpmbuild -bs
+2019-09-17 08:29:20,840 - Finish: rpmbuild -bs
+2019-09-17 08:29:20,841 - Finish: buildsrpm
+2019-09-17 08:29:20,842 - Finish: run
+2019-09-17 08:29:23,948 - Mock Version: 1.2.14
+2019-09-17 08:29:24,209 - Start: dnf update
+2019-09-17 08:29:34,512 - Finish: dnf update
+2019-09-17 08:29:34,517 - Finish: chroot init
+2019-09-17 08:29:34,519 - Start: build phase for audit-config-1.0-1.src.rpm
+2019-09-17 08:29:34,521 - Start: build setup for audit-config-1.0-1.src.rpm
+2019-09-17 08:29:35,186 - Finish: build setup for audit-config-1.0-1.src.rpm
+2019-09-17 08:29:35,186 - Start: rpmbuild audit-config-1.0-1.src.rpm
+2019-09-17 08:29:35,316 - Finish: rpmbuild audit-config-1.0-1.src.rpm
+2019-09-17 08:29:35,317 - Finish: build phase for audit-config-1.0-1.src.rpm
+2019-09-17 08:29:35,318 - Finish: run
