@@ -1,0 +1,716 @@
+From cd8274758c76276381882678672e0316dfd24681 Mon Sep 17 00:00:00 2001
+From: fuyong <fuyong@neusoft.com>
+Date: Tue, 17 Sep 2019 15:28:07 +0800
+Subject: [PATCH puppet-stdlib] puppet-stdlib: Autospec creation for version 1
+
+---
+ .gitignore                         |  14 +
+ 0001-Filter-password-in-logs.patch |  36 ++
+ 0001-add-makefile.patch            |  21 ++
+ Makefile                           |   5 +
+ buildreq_add                       |   2 +
+ buildreq_ban                       |   2 +
+ excludes                           |   2 +
+ install_append                     |   1 +
+ install_macro                      |   1 +
+ options.conf                       |  58 +++
+ pkgconfig_add                      |   2 +
+ pkgconfig_ban                      |   2 +
+ puppet-stdlib.spec                 | 581 +++++++++++++++++++++++++++++
+ release                            |   1 +
+ requires_add                       |   3 +
+ requires_ban                       |   2 +
+ series                             |   2 +
+ testresults                        |   5 +
+ upstream                           |   1 +
+ 19 files changed, 741 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 0001-Filter-password-in-logs.patch
+ create mode 100644 0001-add-makefile.patch
+ create mode 100644 Makefile
+ create mode 100644 buildreq_add
+ create mode 100644 buildreq_ban
+ create mode 100644 excludes
+ create mode 100644 install_append
+ create mode 100644 install_macro
+ create mode 100644 options.conf
+ create mode 100644 pkgconfig_add
+ create mode 100644 pkgconfig_ban
+ create mode 100644 puppet-stdlib.spec
+ create mode 100644 release
+ create mode 100644 requires_add
+ create mode 100644 requires_ban
+ create mode 100644 series
+ create mode 100644 testresults
+ create mode 100644 upstream
+
+diff --git a/0001-Filter-password-in-logs.patch b/0001-Filter-password-in-logs.patch
+new file mode 100644
+index 0000000..73f7267
+--- /dev/null
++++ b/0001-Filter-password-in-logs.patch
+@@ -0,0 +1,36 @@
++From d95ec2abaa68a1da308c3c8b01c700fcc544a788 Mon Sep 17 00:00:00 2001
++From: Don Penney <don.penney@windriver.com>
++Date: Mon, 1 May 2017 14:37:22 -0400
++Subject: [PATCH] Filter password in logs
++
++---
++ lib/puppet/parser/functions/ensure_resource.rb | 6 ++++--
++ 1 file changed, 4 insertions(+), 2 deletions(-)
++
++diff --git a/lib/puppet/parser/functions/ensure_resource.rb b/lib/puppet/parser/functions/ensure_resource.rb
++index 1ba6a44..b9c3242 100644
++--- a/lib/puppet/parser/functions/ensure_resource.rb
+++++ b/lib/puppet/parser/functions/ensure_resource.rb
++@@ -30,15 +30,17 @@ ENDOFDOC
++   raise(ArgumentError, 'Must specify a type') unless type
++   raise(ArgumentError, 'Must specify a title') unless title
++   params ||= {}
+++  filtered_params = Marshal.load(Marshal.dump(params)) # deep copy
+++  filtered_params.delete("password")
++ 
++   items = [title].flatten
++ 
++   items.each do |item|
++     Puppet::Parser::Functions.function(:defined_with_params)
++     if function_defined_with_params(["#{type}[#{item}]", params])
++-      Puppet.debug("Resource #{type}[#{item}] with params #{params} not created because it already exists")
+++      Puppet.debug("Resource #{type}[#{item}] with params #{filtered_params} not created because it already exists")
++     else
++-      Puppet.debug("Create new resource #{type}[#{item}] with params #{params}")
+++      Puppet.debug("Create new resource #{type}[#{item}] with params #{filtered_params}")
++       Puppet::Parser::Functions.function(:create_resources)
++       function_create_resources([type.capitalize, { item => params }])
++     end
++-- 
++1.8.3.1
++
+diff --git a/0001-add-makefile.patch b/0001-add-makefile.patch
+new file mode 100644
+index 0000000..c20b09c
+--- /dev/null
++++ b/0001-add-makefile.patch
+@@ -0,0 +1,21 @@
++From 6d2e758f33d450f62bc7566d5018f4f79a342950 Mon Sep 17 00:00:00 2001
++From: lgdfy <im.fuyong@gmail.com>
++Date: Wed, 11 Sep 2019 15:57:00 +0800
++Subject: [PATCH] add makefile
++
++---
++ Makefile | 2 ++
++ 1 file changed, 2 insertions(+)
++ create mode 100644 Makefile
++
++diff --git a/Makefile b/Makefile
++new file mode 100644
++index 0000000..cda58eb
++--- /dev/null
+++++ b/Makefile
++@@ -0,0 +1,2 @@
+++build:
+++	echo "no build"
++-- 
++2.23.0
++
+diff --git a/install_append b/install_append
+new file mode 100644
+index 0000000..c06def0
+--- /dev/null
++++ b/install_append
+@@ -0,0 +1 @@
++cp -rp * %{buildroot}/%{_datadir}/openstack-puppet/modules/stdlib/
+diff --git a/install_macro b/install_macro
+new file mode 100644
+index 0000000..b4ec3c5
+--- /dev/null
++++ b/install_macro
+@@ -0,0 +1 @@
++install -d -m 0755 %{buildroot}/%{_datadir}/openstack-puppet/modules/stdlib/
+diff --git a/options.conf b/options.conf
+new file mode 100644
+index 0000000..017ca00
+--- /dev/null
++++ b/options.conf
+@@ -0,0 +1,58 @@
++name = puppet-stdlib
++url = file:///home/clr/stx-tar/4.18.0.tar.gz
++use_lto = true
++verify_required = false
+diff --git a/puppet-stdlib.spec b/puppet-stdlib.spec
+new file mode 100644
+index 0000000..ee52753
+--- /dev/null
++++ b/puppet-stdlib.spec
+@@ -0,0 +1,581 @@
++#
++# This file is auto-generated. DO NOT EDIT
++# Generated by: autospec.py
++#
++Name     : puppet-stdlib
++License  : Apache-2.0
++Requires: puppet-stdlib-data = %{version}-%{release}
++Requires: puppet >= 2.7.0
++Patch1: 0001-Filter-password-in-logs.patch
++Patch2: 0001-add-makefile.patch
++
++%description
++NOTE
++====
++This project's specs depend on puppet core, and thus they require the
++in that project, which can be found here: [puppetlabs spec
++helper](https://github.com/puppetlabs/puppetlabs_spec_helper)
++
++%package data
++
++
++
++%prep
++%patch1 -p1
++%patch2 -p1
++
++%build
++make  %{?_smp_mflags}
++
++
++%install
++rm -rf %{buildroot}
++install -d -m 0755 %{buildroot}/%{_datadir}/openstack-puppet/modules/stdlib/
++## install_append content
++cp -rp * %{buildroot}/%{_datadir}/openstack-puppet/modules/stdlib/
++## install_append end
++
++%files
++%defattr(-,root,root,-)
++
++%files data
++%defattr(-,root,root,-)
++/usr/share/openstack-puppet/modules/stdlib/CHANGELOG.md
++/usr/share/openstack-puppet/modules/stdlib/CONTRIBUTING.md
++/usr/share/openstack-puppet/modules/stdlib/Gemfile
++/usr/share/openstack-puppet/modules/stdlib/LICENSE
++/usr/share/openstack-puppet/modules/stdlib/MAINTAINERS.md
++/usr/share/openstack-puppet/modules/stdlib/Makefile
++/usr/share/openstack-puppet/modules/stdlib/NOTICE
++/usr/share/openstack-puppet/modules/stdlib/README.md
++/usr/share/openstack-puppet/modules/stdlib/README_DEVELOPER.markdown
++/usr/share/openstack-puppet/modules/stdlib/README_SPECS.markdown
++/usr/share/openstack-puppet/modules/stdlib/RELEASE_PROCESS.markdown
++/usr/share/openstack-puppet/modules/stdlib/Rakefile
++/usr/share/openstack-puppet/modules/stdlib/appveyor.yml
++/usr/share/openstack-puppet/modules/stdlib/examples/file_line.pp
++/usr/share/openstack-puppet/modules/stdlib/examples/has_interface_with.pp
++/usr/share/openstack-puppet/modules/stdlib/examples/has_ip_address.pp
++/usr/share/openstack-puppet/modules/stdlib/examples/has_ip_network.pp
++/usr/share/openstack-puppet/modules/stdlib/examples/init.pp
++/usr/share/openstack-puppet/modules/stdlib/lib/facter/facter_dot_d.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/facter/package_provider.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/facter/pe_version.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/facter/puppet_settings.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/facter/root_home.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/facter/service_provider.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/facter/util/puppet_settings.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/functions/deprecation.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/functions/is_a.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/functions/is_absolute_path.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/functions/is_array.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/functions/is_bool.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/functions/is_float.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/functions/is_ip_address.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/functions/is_ipv4_address.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/functions/is_ipv6_address.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/functions/is_numeric.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/functions/is_string.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/functions/length.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/functions/type_of.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/functions/validate_absolute_path.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/functions/validate_array.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/functions/validate_bool.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/functions/validate_hash.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/functions/validate_integer.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/functions/validate_ip_address.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/functions/validate_ipv4_address.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/functions/validate_ipv6_address.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/functions/validate_legacy.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/functions/validate_numeric.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/functions/validate_re.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/functions/validate_slength.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/functions/validate_string.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/abs.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/any2array.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/any2bool.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/assert_private.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/base64.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/basename.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/bool2num.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/bool2str.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/camelcase.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/capitalize.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/ceiling.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/chomp.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/chop.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/clamp.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/concat.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/convert_base.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/count.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/deep_merge.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/defined_with_params.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/delete.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/delete_at.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/delete_regex.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/delete_undef_values.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/delete_values.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/deprecation.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/difference.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/dig.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/dig44.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/dirname.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/dos2unix.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/downcase.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/empty.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/enclose_ipv6.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/ensure_packages.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/ensure_resource.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/ensure_resources.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/flatten.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/floor.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/fqdn_rand_string.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/fqdn_rotate.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/fqdn_uuid.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/get_module_path.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/getparam.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/getvar.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/glob.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/grep.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/has_interface_with.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/has_ip_address.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/has_ip_network.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/has_key.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/hash.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/intersection.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/is_absolute_path.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/is_array.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/is_bool.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/is_domain_name.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/is_email_address.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/is_float.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/is_function_available.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/is_hash.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/is_integer.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/is_ip_address.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/is_ipv4_address.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/is_ipv6_address.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/is_mac_address.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/is_numeric.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/is_string.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/join.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/join_keys_to_values.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/keys.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/load_module_metadata.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/loadjson.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/loadyaml.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/lstrip.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/max.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/member.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/merge.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/min.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/num2bool.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/parsejson.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/parseyaml.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/pick.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/pick_default.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/prefix.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/private.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/pry.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/pw_hash.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/range.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/regexpescape.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/reject.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/reverse.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/rstrip.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/seeded_rand.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/shell_escape.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/shell_join.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/shell_split.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/shuffle.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/size.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/sort.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/squeeze.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/str2bool.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/str2saltedsha512.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/strftime.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/strip.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/suffix.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/swapcase.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/time.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/to_bytes.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/try_get_value.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/type.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/type3x.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/union.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/unique.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/unix2dos.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/upcase.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/uriescape.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/validate_absolute_path.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/validate_array.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/validate_augeas.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/validate_bool.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/validate_cmd.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/validate_email_address.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/validate_hash.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/validate_integer.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/validate_ip_address.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/validate_ipv4_address.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/validate_ipv6_address.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/validate_numeric.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/validate_re.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/validate_slength.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/validate_string.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/validate_x509_rsa_key_pair.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/values.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/values_at.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/parser/functions/zip.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/provider/file_line/ruby.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/type/anchor.rb
++/usr/share/openstack-puppet/modules/stdlib/lib/puppet/type/file_line.rb
++/usr/share/openstack-puppet/modules/stdlib/locales/config.yaml
++/usr/share/openstack-puppet/modules/stdlib/locales/ja/puppetlabs-stdlib.po
++/usr/share/openstack-puppet/modules/stdlib/locales/puppetlabs-stdlib.pot
++/usr/share/openstack-puppet/modules/stdlib/manifests/init.pp
++/usr/share/openstack-puppet/modules/stdlib/manifests/stages.pp
++/usr/share/openstack-puppet/modules/stdlib/metadata.json
++/usr/share/openstack-puppet/modules/stdlib/readmes/README_ja_JP.md
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/abs_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/anchor_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/any2array_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/base64_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/bool2num_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/build_csv.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/capitalize_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/ceiling_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/chomp_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/chop_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/clamp_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/concat_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/count_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/deep_merge_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/defined_with_params_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/delete_at_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/delete_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/delete_undef_values_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/delete_values_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/deprecation_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/difference_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/dirname_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/downcase_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/empty_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/ensure_resource_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/flatten_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/floor_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/fqdn_rand_string_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/fqdn_rotate_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/get_module_path_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/getparam_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/getvar_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/grep_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/has_interface_with_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/has_ip_address_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/has_ip_network_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/has_key_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/hash_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/intersection_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/is_a_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/is_array_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/is_bool_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/is_domain_name_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/is_float_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/is_function_available_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/is_hash_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/is_integer_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/is_ip_address_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/is_ipv4_address_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/is_ipv6_address_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/is_mac_address_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/is_numeric_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/is_string_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/join_keys_to_values_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/join_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/keys_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/loadjson_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/loadyaml_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/lstrip_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/max_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/member_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/merge_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/min_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/nodesets/centos-7-x64.yml
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/nodesets/debian-8-x64.yml
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/nodesets/default.yml
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/nodesets/docker/centos-7.yml
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/nodesets/docker/debian-8.yml
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/nodesets/docker/ubuntu-14.04.yml
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/num2bool_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/parsejson_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/parseyaml_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/pick_default_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/pick_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/prefix_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/pw_hash_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/range_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/reject_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/reverse_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/rstrip_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/shuffle_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/size_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/sort_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/squeeze_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/str2bool_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/str2saltedsha512_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/strftime_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/strip_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/suffix_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/swapcase_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/time_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/to_bytes_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/try_get_value_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/type_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/union_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/unique_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/upcase_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/uriescape_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/validate_absolute_path_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/validate_array_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/validate_augeas_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/validate_bool_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/validate_cmd_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/validate_hash_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/validate_ipv4_address_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/validate_ipv6_address_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/validate_re_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/validate_slength_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/validate_string_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/values_at_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/values_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/acceptance/zip_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/aliases/absolute_path_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/aliases/absolutepath_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/aliases/array_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/aliases/bool_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/aliases/float_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/aliases/hash_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/aliases/httpsurl_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/aliases/httpurl_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/aliases/integer_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/aliases/ip_address.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/aliases/ipv4_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/aliases/ipv6_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/aliases/numeric_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/aliases/string_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/aliases/unixpath_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/aliases/windowspath_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/fixtures/dscacheutil/root
++/usr/share/openstack-puppet/modules/stdlib/spec/fixtures/lsuser/root
++/usr/share/openstack-puppet/modules/stdlib/spec/fixtures/test/manifests/absolute_path.pp
++/usr/share/openstack-puppet/modules/stdlib/spec/fixtures/test/manifests/absolutepath.pp
++/usr/share/openstack-puppet/modules/stdlib/spec/fixtures/test/manifests/array.pp
++/usr/share/openstack-puppet/modules/stdlib/spec/fixtures/test/manifests/bool.pp
++/usr/share/openstack-puppet/modules/stdlib/spec/fixtures/test/manifests/deftype.pp
++/usr/share/openstack-puppet/modules/stdlib/spec/fixtures/test/manifests/ensure_resources.pp
++/usr/share/openstack-puppet/modules/stdlib/spec/fixtures/test/manifests/float.pp
++/usr/share/openstack-puppet/modules/stdlib/spec/fixtures/test/manifests/hash.pp
++/usr/share/openstack-puppet/modules/stdlib/spec/fixtures/test/manifests/httpsurl.pp
++/usr/share/openstack-puppet/modules/stdlib/spec/fixtures/test/manifests/httpurl.pp
++/usr/share/openstack-puppet/modules/stdlib/spec/fixtures/test/manifests/integer.pp
++/usr/share/openstack-puppet/modules/stdlib/spec/fixtures/test/manifests/ip_address.pp
++/usr/share/openstack-puppet/modules/stdlib/spec/fixtures/test/manifests/ipv4.pp
++/usr/share/openstack-puppet/modules/stdlib/spec/fixtures/test/manifests/ipv6.pp
++/usr/share/openstack-puppet/modules/stdlib/spec/fixtures/test/manifests/numeric.pp
++/usr/share/openstack-puppet/modules/stdlib/spec/fixtures/test/manifests/string.pp
++/usr/share/openstack-puppet/modules/stdlib/spec/fixtures/test/manifests/unixpath.pp
++/usr/share/openstack-puppet/modules/stdlib/spec/fixtures/test/manifests/windowspath.pp
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/abs_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/any2array_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/any2bool_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/assert_private_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/base64_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/basename_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/bool2num_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/bool2str_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/camelcase_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/capitalize_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/ceiling_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/chomp_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/chop_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/clamp_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/concat_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/convert_base_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/count_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/deep_merge_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/defined_with_params_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/delete_at_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/delete_regex_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/delete_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/delete_undef_values_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/delete_values_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/deprecation_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/difference_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/dig44_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/dig_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/dirname_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/dos2unix_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/downcase_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/empty_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/ensure_packages_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/ensure_resource_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/flatten_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/floor_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/fqdn_rand_string_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/fqdn_rotate_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/fqdn_uuid_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/get_module_path_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/getparam_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/getvar_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/glob_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/grep_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/has_interface_with_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/has_ip_address_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/has_ip_network_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/has_key_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/hash_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/intersection_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/is_a_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/is_array_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/is_bool_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/is_domain_name_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/is_email_address_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/is_float_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/is_function_available.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/is_hash_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/is_integer_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/is_ip_address_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/is_ipv4_address_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/is_ipv6_address_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/is_mac_address_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/is_numeric_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/is_string_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/join_keys_to_values_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/join_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/keys_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/length.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/load_module_metadata_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/loadjson_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/loadyaml_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/lstrip_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/max_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/member_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/merge_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/min_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/num2bool_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/parsejson_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/parseyaml_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/pick_default_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/pick_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/prefix_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/private_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/pw_hash_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/range_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/regexpescape_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/reject_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/reverse_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/rstrip_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/seeded_rand_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/shell_escape_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/shell_join_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/shell_split_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/shuffle_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/size_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/sort_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/squeeze_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/str2bool_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/str2saltedsha512_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/strftime_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/strip_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/suffix_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/swapcase_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/time_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/to_bytes_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/try_get_value_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/type3x_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/type_of_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/type_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/union_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/unique_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/unix2dos_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/upcase_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/uriescape_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/validate_absolute_path_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/validate_array_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/validate_augeas_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/validate_bool_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/validate_cmd_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/validate_email_address_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/validate_hash_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/validate_integer_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/validate_ip_address_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/validate_ipv4_address_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/validate_ipv6_address_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/validate_legacy_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/validate_numeric_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/validate_re_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/validate_slength_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/validate_string_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/validate_x509_rsa_key_pair_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/values_at_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/values_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/functions/zip_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/monkey_patches/alias_should_to_must.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/monkey_patches/publicize_methods.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/spec_helper.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/spec_helper_acceptance.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/spec_helper_local.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/support/shared_data.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/unit/ensure_resources_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/unit/facter/facter_dot_d_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/unit/facter/package_provider_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/unit/facter/pe_version_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/unit/facter/root_home_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/unit/facter/service_provider_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/unit/facter/util/puppet_settings_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/unit/puppet/parser/functions/enclose_ipv6_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/unit/puppet/parser/functions/is_absolute_path_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/unit/puppet/provider/file_line/ruby_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/unit/puppet/type/anchor_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/spec/unit/puppet/type/file_line_spec.rb
++/usr/share/openstack-puppet/modules/stdlib/types/absolutepath.pp
++/usr/share/openstack-puppet/modules/stdlib/types/compat/absolute_path.pp
++/usr/share/openstack-puppet/modules/stdlib/types/compat/array.pp
++/usr/share/openstack-puppet/modules/stdlib/types/compat/bool.pp
++/usr/share/openstack-puppet/modules/stdlib/types/compat/float.pp
++/usr/share/openstack-puppet/modules/stdlib/types/compat/hash.pp
++/usr/share/openstack-puppet/modules/stdlib/types/compat/integer.pp
++/usr/share/openstack-puppet/modules/stdlib/types/compat/ip_address.pp
++/usr/share/openstack-puppet/modules/stdlib/types/compat/ipv4.pp
++/usr/share/openstack-puppet/modules/stdlib/types/compat/ipv6.pp
++/usr/share/openstack-puppet/modules/stdlib/types/compat/numeric.pp
++/usr/share/openstack-puppet/modules/stdlib/types/compat/re.pp
++/usr/share/openstack-puppet/modules/stdlib/types/compat/string.pp
++/usr/share/openstack-puppet/modules/stdlib/types/httpsurl.pp
++/usr/share/openstack-puppet/modules/stdlib/types/httpurl.pp
++/usr/share/openstack-puppet/modules/stdlib/types/unixpath.pp
++/usr/share/openstack-puppet/modules/stdlib/types/windowspath.pp
+diff --git a/requires_add b/requires_add
+new file mode 100644
+index 0000000..e19f1a8
+--- /dev/null
++++ b/requires_add
+@@ -0,0 +1,3 @@
++puppet >= 2.7.0
+diff --git a/series b/series
+new file mode 100644
+index 0000000..4eedca7
+--- /dev/null
++++ b/series
+@@ -0,0 +1,2 @@
++0001-Filter-password-in-logs.patch
++0001-add-makefile.patch

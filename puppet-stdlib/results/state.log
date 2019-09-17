@@ -1,0 +1,37 @@
+2019-09-17 15:27:12,643 - Mock Version: 1.2.14
+2019-09-17 15:27:12,880 - Start: dnf update
+2019-09-17 15:27:22,565 - Finish: dnf update
+2019-09-17 15:27:22,570 - Finish: chroot init
+2019-09-17 15:27:22,573 - Start: buildsrpm
+2019-09-17 15:27:22,578 - Start: rpmbuild -bs
+2019-09-17 15:27:22,617 - Finish: rpmbuild -bs
+2019-09-17 15:27:22,619 - Finish: buildsrpm
+2019-09-17 15:27:22,619 - Finish: run
+2019-09-17 15:27:25,637 - Mock Version: 1.2.14
+2019-09-17 15:27:25,891 - Start: dnf update
+2019-09-17 15:27:35,415 - Finish: dnf update
+2019-09-17 15:27:35,421 - Finish: chroot init
+2019-09-17 15:27:35,422 - Start: build phase for puppet-stdlib-1-1.src.rpm
+2019-09-17 15:27:35,424 - Start: build setup for puppet-stdlib-1-1.src.rpm
+2019-09-17 15:27:36,086 - Finish: build setup for puppet-stdlib-1-1.src.rpm
+2019-09-17 15:27:36,086 - Start: rpmbuild puppet-stdlib-1-1.src.rpm
+2019-09-17 15:27:41,180 - Mock Version: 1.2.14
+2019-09-17 15:27:41,424 - Start: dnf update
+2019-09-17 15:27:50,990 - Finish: dnf update
+2019-09-17 15:27:50,996 - Finish: chroot init
+2019-09-17 15:27:50,999 - Start: buildsrpm
+2019-09-17 15:27:51,004 - Start: rpmbuild -bs
+2019-09-17 15:27:51,045 - Finish: rpmbuild -bs
+2019-09-17 15:27:51,046 - Finish: buildsrpm
+2019-09-17 15:27:51,047 - Finish: run
+2019-09-17 15:27:54,097 - Mock Version: 1.2.14
+2019-09-17 15:27:54,357 - Start: dnf update
+2019-09-17 15:28:03,812 - Finish: dnf update
+2019-09-17 15:28:03,817 - Finish: chroot init
+2019-09-17 15:28:03,818 - Start: build phase for puppet-stdlib-1-1.src.rpm
+2019-09-17 15:28:03,821 - Start: build setup for puppet-stdlib-1-1.src.rpm
+2019-09-17 15:28:04,482 - Finish: build setup for puppet-stdlib-1-1.src.rpm
+2019-09-17 15:28:04,482 - Start: rpmbuild puppet-stdlib-1-1.src.rpm
+2019-09-17 15:28:07,003 - Finish: rpmbuild puppet-stdlib-1-1.src.rpm
+2019-09-17 15:28:07,005 - Finish: build phase for puppet-stdlib-1-1.src.rpm
+2019-09-17 15:28:07,005 - Finish: run
