@@ -1,0 +1,237 @@
+From 4fa25af3358f0cf36e2ca043472431a8d6e044c0 Mon Sep 17 00:00:00 2001
+From: fuyong <fuyong@neusoft.com>
+Date: Tue, 17 Sep 2019 15:45:33 +0800
+Subject: [PATCH puppet-staging] puppet-staging: Autospec creation for version
+ 1
+
+---
+ .gitignore                                    |  14 +++
+ ...ame-nanliu-staging-to-puppet-staging.patch |  28 +++++
+ 0001-add-makefile.patch                       |  21 ++++
+ Makefile                                      |   5 +
+ buildreq_add                                  |   2 +
+ buildreq_ban                                  |   2 +
+ excludes                                      |   2 +
+ install_append                                |   1 +
+ install_macro                                 |   1 +
+ options.conf                                  |  58 ++++++++++
+ pkgconfig_add                                 |   2 +
+ pkgconfig_ban                                 |   2 +
+ puppet-staging.license                        |   1 +
+ puppet-staging.spec                           | 100 ++++++++++++++++++
+ release                                       |   1 +
+ requires_add                                  |   3 +
+ requires_ban                                  |   2 +
+ series                                        |   2 +
+ testresults                                   |   5 +
+ upstream                                      |   1 +
+ 20 files changed, 253 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 0001-Rename-nanliu-staging-to-puppet-staging.patch
+ create mode 100644 0001-add-makefile.patch
+ create mode 100644 Makefile
+ create mode 100644 buildreq_add
+ create mode 100644 buildreq_ban
+ create mode 100644 excludes
+ create mode 100644 install_append
+ create mode 100644 install_macro
+ create mode 100644 options.conf
+ create mode 100644 pkgconfig_add
+ create mode 100644 pkgconfig_ban
+ create mode 100644 puppet-staging.license
+ create mode 100644 puppet-staging.spec
+ create mode 100644 release
+ create mode 100644 requires_add
+ create mode 100644 requires_ban
+ create mode 100644 series
+ create mode 100644 testresults
+ create mode 100644 upstream
+
+diff --git a/0001-Rename-nanliu-staging-to-puppet-staging.patch b/0001-Rename-nanliu-staging-to-puppet-staging.patch
+new file mode 100644
+index 0000000..76f3231
+--- /dev/null
++++ b/0001-Rename-nanliu-staging-to-puppet-staging.patch
+@@ -0,0 +1,28 @@
++From dca28ab0ee1e31d8850ead8f055a53a7ae629cfa Mon Sep 17 00:00:00 2001
++From: Al Bailey <Al.Bailey@windriver.com>
++Date: Thu, 4 Jan 2018 12:47:59 -0600
++Subject: [PATCH] Rename nanliu-staging to puppet-staging
++
++This is the version of puppet-staging shipped with Centos and renaming
++this will fix the ModuleLoader warnings in the puppet logs
++for puppet-mysql and puppet-postgresql
++---
++ metadata.json | 2 +-
++ 1 file changed, 1 insertion(+), 1 deletion(-)
++
++diff --git a/metadata.json b/metadata.json
++index a889487..d7b4a81 100644
++--- a/metadata.json
+++++ b/metadata.json
++@@ -95,7 +95,7 @@
++       "version_requirement": ">=2.7.0"
++     }
++   ],
++-  "name": "nanliu-staging",
+++  "name": "puppet-staging",
++   "version": "1.0.4",
++   "source": "git://github.com/nanliu/puppet-staging",
++   "author": "Nan Liu",
++-- 
++1.8.3.1
++
+diff --git a/0001-add-makefile.patch b/0001-add-makefile.patch
+new file mode 100644
+index 0000000..c20b09c
+--- /dev/null
++++ b/0001-add-makefile.patch
+@@ -0,0 +1,21 @@
++From 6d2e758f33d450f62bc7566d5018f4f79a342950 Mon Sep 17 00:00:00 2001
++From: lgdfy <im.fuyong@gmail.com>
++Date: Wed, 11 Sep 2019 15:57:00 +0800
++Subject: [PATCH] add makefile
++
++---
++ Makefile | 2 ++
++ 1 file changed, 2 insertions(+)
++ create mode 100644 Makefile
++
++diff --git a/Makefile b/Makefile
++new file mode 100644
++index 0000000..cda58eb
++--- /dev/null
+++++ b/Makefile
++@@ -0,0 +1,2 @@
+++build:
+++	echo "no build"
++-- 
++2.23.0
++
+diff --git a/install_append b/install_append
+new file mode 100644
+index 0000000..985645b
+--- /dev/null
++++ b/install_append
+@@ -0,0 +1 @@
++cp -rp * %{buildroot}/%{_datadir}/openstack-puppet/modules/staging/
+diff --git a/install_macro b/install_macro
+new file mode 100644
+index 0000000..5460b02
+--- /dev/null
++++ b/install_macro
+@@ -0,0 +1 @@
++install -d -m 0755 %{buildroot}/%{_datadir}/openstack-puppet/modules/staging/
+diff --git a/options.conf b/options.conf
+new file mode 100644
+index 0000000..609b046
+--- /dev/null
++++ b/options.conf
+@@ -0,0 +1,58 @@
++name = puppet-staging
++url = file:///home/clr/stx-tar/puppet-staging-b466d93.tar.gz
++use_lto = true
++verify_required = false
+diff --git a/puppet-staging.license b/puppet-staging.license
+new file mode 100644
+index 0000000..6ed4bca
+--- /dev/null
++++ b/puppet-staging.license
+@@ -0,0 +1 @@
++ Apache-2.0
+diff --git a/puppet-staging.spec b/puppet-staging.spec
+new file mode 100644
+index 0000000..dafac95
+--- /dev/null
++++ b/puppet-staging.spec
+@@ -0,0 +1,100 @@
++#
++# This file is auto-generated. DO NOT EDIT
++# Generated by: autospec.py
++#
++Name     : puppet-staging
++License  : Apache-2.0
++Requires: puppet-staging-data = %{version}-%{release}
++Requires: puppet >= 2.7.0
++Patch1: 0001-add-makefile.patch
++Patch2: 0001-Rename-nanliu-staging-to-puppet-staging.patch
++
++%description
++# Staging module for Puppet
++Manages staging directory, along with download/extraction of compressed files.
++
++%package data
++
++
++
++%prep
++%patch1 -p1
++%patch2 -p1
++
++%build
++make  %{?_smp_mflags}
++
++
++%install
++rm -rf %{buildroot}
++install -d -m 0755 %{buildroot}/%{_datadir}/openstack-puppet/modules/staging/
++## install_append content
++cp -rp * %{buildroot}/%{_datadir}/openstack-puppet/modules/staging/
++## install_append end
++
++%files
++%defattr(-,root,root,-)
++
++%files data
++%defattr(-,root,root,-)
++/usr/share/openstack-puppet/modules/staging/Gemfile
++/usr/share/openstack-puppet/modules/staging/LICENSE
++/usr/share/openstack-puppet/modules/staging/Makefile
++/usr/share/openstack-puppet/modules/staging/README.md
++/usr/share/openstack-puppet/modules/staging/Rakefile
++/usr/share/openstack-puppet/modules/staging/Vagrantfile
++/usr/share/openstack-puppet/modules/staging/docs/deploy.html
++/usr/share/openstack-puppet/modules/staging/docs/extract.html
++/usr/share/openstack-puppet/modules/staging/docs/file.html
++/usr/share/openstack-puppet/modules/staging/docs/init.html
++/usr/share/openstack-puppet/modules/staging/files/sample
++/usr/share/openstack-puppet/modules/staging/files/sample.tar.bz2
++/usr/share/openstack-puppet/modules/staging/files/sample.tar.gz
++/usr/share/openstack-puppet/modules/staging/lib/facter/staging_http_get.rb
++/usr/share/openstack-puppet/modules/staging/lib/facter/staging_windir.rb
++/usr/share/openstack-puppet/modules/staging/lib/puppet/parser/functions/scope_defaults.rb
++/usr/share/openstack-puppet/modules/staging/lib/puppet/parser/functions/staging_parse.rb
++/usr/share/openstack-puppet/modules/staging/manifests/deploy.pp
++/usr/share/openstack-puppet/modules/staging/manifests/extract.pp
++/usr/share/openstack-puppet/modules/staging/manifests/file.pp
++/usr/share/openstack-puppet/modules/staging/manifests/init.pp
++/usr/share/openstack-puppet/modules/staging/manifests/params.pp
++/usr/share/openstack-puppet/modules/staging/metadata.json
++/usr/share/openstack-puppet/modules/staging/spec/defines/staging_deploy_spec.rb
++/usr/share/openstack-puppet/modules/staging/spec/defines/staging_extract_spec.rb
++/usr/share/openstack-puppet/modules/staging/spec/defines/staging_file_spec.rb
++/usr/share/openstack-puppet/modules/staging/spec/fixtures/hiera.yaml
++/usr/share/openstack-puppet/modules/staging/spec/spec_helper.rb
++/usr/share/openstack-puppet/modules/staging/spec/unit/puppet/parser/functions/scope_defaults_spec.rb
++/usr/share/openstack-puppet/modules/staging/spec/unit/puppet/parser/functions/staging_parse_spec.rb
++/usr/share/openstack-puppet/modules/staging/tests/deploy.pp
++/usr/share/openstack-puppet/modules/staging/tests/extract.pp
++/usr/share/openstack-puppet/modules/staging/tests/file.pp
++/usr/share/openstack-puppet/modules/staging/tests/init.pp
++/usr/share/openstack-puppet/modules/staging/tests/scope_defaults.pp
++/usr/share/openstack-puppet/modules/staging/tests/staging_parse.pp
+diff --git a/requires_add b/requires_add
+new file mode 100644
+index 0000000..e19f1a8
+--- /dev/null
++++ b/requires_add
+@@ -0,0 +1,3 @@
++puppet >= 2.7.0
+diff --git a/series b/series
+new file mode 100644
+index 0000000..b56a3a2
+--- /dev/null
++++ b/series
+@@ -0,0 +1,2 @@
++0001-add-makefile.patch
++0001-Rename-nanliu-staging-to-puppet-staging.patch

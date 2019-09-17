@@ -1,0 +1,37 @@
+2019-09-17 15:44:40,217 - Mock Version: 1.2.14
+2019-09-17 15:44:40,487 - Start: dnf update
+2019-09-17 15:44:50,644 - Finish: dnf update
+2019-09-17 15:44:50,649 - Finish: chroot init
+2019-09-17 15:44:50,652 - Start: buildsrpm
+2019-09-17 15:44:50,660 - Start: rpmbuild -bs
+2019-09-17 15:44:50,700 - Finish: rpmbuild -bs
+2019-09-17 15:44:50,701 - Finish: buildsrpm
+2019-09-17 15:44:50,702 - Finish: run
+2019-09-17 15:44:53,825 - Mock Version: 1.2.14
+2019-09-17 15:44:54,086 - Start: dnf update
+2019-09-17 15:45:04,050 - Finish: dnf update
+2019-09-17 15:45:04,056 - Finish: chroot init
+2019-09-17 15:45:04,058 - Start: build phase for puppet-staging-1-1.src.rpm
+2019-09-17 15:45:04,060 - Start: build setup for puppet-staging-1-1.src.rpm
+2019-09-17 15:45:04,757 - Finish: build setup for puppet-staging-1-1.src.rpm
+2019-09-17 15:45:04,757 - Start: rpmbuild puppet-staging-1-1.src.rpm
+2019-09-17 15:45:08,363 - Mock Version: 1.2.14
+2019-09-17 15:45:08,623 - Start: dnf update
+2019-09-17 15:45:18,623 - Finish: dnf update
+2019-09-17 15:45:18,628 - Finish: chroot init
+2019-09-17 15:45:18,631 - Start: buildsrpm
+2019-09-17 15:45:18,637 - Start: rpmbuild -bs
+2019-09-17 15:45:18,676 - Finish: rpmbuild -bs
+2019-09-17 15:45:18,678 - Finish: buildsrpm
+2019-09-17 15:45:18,678 - Finish: run
+2019-09-17 15:45:21,859 - Mock Version: 1.2.14
+2019-09-17 15:45:22,118 - Start: dnf update
+2019-09-17 15:45:32,200 - Finish: dnf update
+2019-09-17 15:45:32,206 - Finish: chroot init
+2019-09-17 15:45:32,207 - Start: build phase for puppet-staging-1-1.src.rpm
+2019-09-17 15:45:32,210 - Start: build setup for puppet-staging-1-1.src.rpm
+2019-09-17 15:45:32,880 - Finish: build setup for puppet-staging-1-1.src.rpm
+2019-09-17 15:45:32,880 - Start: rpmbuild puppet-staging-1-1.src.rpm
+2019-09-17 15:45:33,157 - Finish: rpmbuild puppet-staging-1-1.src.rpm
+2019-09-17 15:45:33,158 - Finish: build phase for puppet-staging-1-1.src.rpm
+2019-09-17 15:45:33,159 - Finish: run
