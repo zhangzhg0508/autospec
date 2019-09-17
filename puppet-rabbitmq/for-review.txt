@@ -1,0 +1,807 @@
+From be493ab3d4a1d2cef7b1c0f463e56cf031ee0752 Mon Sep 17 00:00:00 2001
+From: fuyong <fuyong@neusoft.com>
+Date: Tue, 17 Sep 2019 16:39:07 +0800
+Subject: [PATCH puppet-rabbitmq] puppet-rabbitmq: Autospec creation for
+ version 5ac45de
+
+---
+ .gitignore                                    |  14 ++
+ 0001-Roll-up-TIS-patches.patch                | 143 +++++++++++++
+ 0001-add-makefile.patch                       |  21 ++
+ ...pher-specification-to-openssl-format.patch |  35 ++++
+ ...minate-Puppet-4-deprecation-warnings.patch | 182 +++++++++++++++++
+ ...-upstream-commit-f7c3a4a637d59f3065d.patch |  32 +++
+ 0005-Remove-the-rabbitmq_nodename-fact.patch  |  87 ++++++++
+ Makefile                                      |   5 +
+ buildreq_add                                  |   2 +
+ buildreq_ban                                  |   2 +
+ excludes                                      |   2 +
+ install_append                                |   1 +
+ install_macro                                 |   1 +
+ options.conf                                  |  58 ++++++
+ pkgconfig_add                                 |   2 +
+ pkgconfig_ban                                 |   2 +
+ puppet-rabbitmq.spec                          | 190 ++++++++++++++++++
+ release                                       |   1 +
+ requires_add                                  |   5 +
+ requires_ban                                  |   2 +
+ series                                        |   6 +
+ testresults                                   |   5 +
+ upstream                                      |   1 +
+ 23 files changed, 799 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 0001-Roll-up-TIS-patches.patch
+ create mode 100644 0001-add-makefile.patch
+ create mode 100644 0002-Changed-cipher-specification-to-openssl-format.patch
+ create mode 100644 0003-Eliminate-Puppet-4-deprecation-warnings.patch
+ create mode 100644 0004-Partially-revert-upstream-commit-f7c3a4a637d59f3065d.patch
+ create mode 100644 0005-Remove-the-rabbitmq_nodename-fact.patch
+ create mode 100644 Makefile
+ create mode 100644 buildreq_add
+ create mode 100644 buildreq_ban
+ create mode 100644 excludes
+ create mode 100644 install_append
+ create mode 100644 install_macro
+ create mode 100644 options.conf
+ create mode 100644 pkgconfig_add
+ create mode 100644 pkgconfig_ban
+ create mode 100644 puppet-rabbitmq.spec
+ create mode 100644 release
+ create mode 100644 requires_add
+ create mode 100644 requires_ban
+ create mode 100644 series
+ create mode 100644 testresults
+ create mode 100644 upstream
+
+diff --git a/0001-Roll-up-TIS-patches.patch b/0001-Roll-up-TIS-patches.patch
+new file mode 100644
+index 0000000..a8fda48
+--- /dev/null
++++ b/0001-Roll-up-TIS-patches.patch
+@@ -0,0 +1,143 @@
++From 6170b01db0dea2b58fc0f150704205f7aac82ab4 Mon Sep 17 00:00:00 2001
++From: Al Bailey <Al.Bailey@windriver.com>
++Date: Thu, 2 Nov 2017 09:22:58 -0500
++Subject: [PATCH 1/2] WRS: Patch1: 0001-Roll-up-TIS-patches.patch
++
++---
++ lib/puppet/provider/rabbitmq_policy/rabbitmqctl.rb | 6 ++++++
++ manifests/config.pp                                | 6 +++---
++ manifests/init.pp                                  | 5 +++--
++ manifests/install.pp                               | 4 +++-
++ manifests/install/rabbitmqadmin.pp                 | 3 ++-
++ manifests/params.pp                                | 1 +
++ 6 files changed, 18 insertions(+), 7 deletions(-)
++
++diff --git a/lib/puppet/provider/rabbitmq_policy/rabbitmqctl.rb b/lib/puppet/provider/rabbitmq_policy/rabbitmqctl.rb
++index 7e73295..438d9cc 100644
++--- a/lib/puppet/provider/rabbitmq_policy/rabbitmqctl.rb
+++++ b/lib/puppet/provider/rabbitmq_policy/rabbitmqctl.rb
++@@ -95,6 +95,12 @@ Puppet::Type.type(:rabbitmq_policy).provide(:rabbitmqctl, :parent => Puppet::Pro
++       resource[:definition] ||= definition
++       resource[:pattern]    ||= pattern
++       resource[:priority]   ||= priority
+++      # WRS. Values passed in from packstack are in string format. These need
+++      # to be converted back to integer for certain parameters (e.g. max-length,
+++      # expires)
+++      if (resource[:definition].keys & ["max-length", "expires"]).any?
+++       resource[:definition].each {|k,v| resource[:definition][k] = v.to_i}
+++      end
++       # rabbitmq>=3.2.0
++       if Puppet::Util::Package.versioncmp(self.class.rabbitmq_version, '3.2.0') >= 0
++         rabbitmqctl('set_policy',
++diff --git a/manifests/config.pp b/manifests/config.pp
++index 6e1f7f5..66a8b08 100644
++--- a/manifests/config.pp
+++++ b/manifests/config.pp
++@@ -116,7 +116,7 @@ class rabbitmq::config {
++     ensure => directory,
++     owner  => '0',
++     group  => '0',
++-    mode   => '0644',
+++    mode   => '0640',
++   }
++ 
++   file { '/etc/rabbitmq/ssl':
++@@ -132,7 +132,7 @@ class rabbitmq::config {
++     content => template($config),
++     owner   => '0',
++     group   => '0',
++-    mode    => '0644',
+++    mode    => '0640',
++     notify  => Class['rabbitmq::service'],
++   }
++ 
++@@ -142,7 +142,7 @@ class rabbitmq::config {
++     content => template($env_config),
++     owner   => '0',
++     group   => '0',
++-    mode    => '0644',
+++    mode    => '0640',
++     notify  => Class['rabbitmq::service'],
++   }
++ 
++diff --git a/manifests/init.pp b/manifests/init.pp
++index 363c70d..3451599 100644
++--- a/manifests/init.pp
+++++ b/manifests/init.pp
++@@ -11,6 +11,7 @@ class rabbitmq(
++   Hash $config_shovel_statics                    = $rabbitmq::params::config_shovel_statics,
++   String $default_user                           = $rabbitmq::params::default_user,
++   String $default_pass                           = $rabbitmq::params::default_pass,
+++  String $default_host                           = $rabbitmq::params::default_host,
++   Boolean $delete_guest_user                     = $rabbitmq::params::delete_guest_user,
++   String $env_config                             = $rabbitmq::params::env_config,
++   Stdlib::Absolutepath $env_config_path          = $rabbitmq::params::env_config_path,
++@@ -186,7 +187,7 @@ class rabbitmq(
++ 
++     rabbitmq_plugin { 'rabbitmq_management':
++       ensure   => present,
++-      require  => Class['rabbitmq::install'],
+++      require => [ File['/etc/rabbitmq'], Class['rabbitmq::install'] ],
++       notify   => Class['rabbitmq::service'],
++       provider => 'rabbitmqplugins',
++     }
++@@ -206,7 +207,7 @@ class rabbitmq(
++   if ($ldap_auth) {
++     rabbitmq_plugin { 'rabbitmq_auth_backend_ldap':
++       ensure  => present,
++-      require => Class['rabbitmq::install'],
+++      require => [ File['/etc/rabbitmq'], Class['rabbitmq::install'] ],
++       notify  => Class['rabbitmq::service'],
++     }
++   }
++diff --git a/manifests/install.pp b/manifests/install.pp
++index 20ca090..45072c4 100644
++--- a/manifests/install.pp
+++++ b/manifests/install.pp
++@@ -11,7 +11,9 @@ class rabbitmq::install {
++   package { 'rabbitmq-server':
++     ensure   => $package_ensure,
++     name     => $package_name,
++-    provider => $package_provider,
+++    # DPENNEY: For some reason, package_provider is coming out as yum.
+++    # Hardcode as rpm for now.
+++    provider => 'rpm',
++     notify   => Class['rabbitmq::service'],
++     require  => $package_require,
++   }
++diff --git a/manifests/install/rabbitmqadmin.pp b/manifests/install/rabbitmqadmin.pp
++index e0ab7c7..9a3a8dd 100644
++--- a/manifests/install/rabbitmqadmin.pp
+++++ b/manifests/install/rabbitmqadmin.pp
++@@ -11,6 +11,7 @@ class rabbitmq::install::rabbitmqadmin {
++ 
++   $default_user = $rabbitmq::default_user
++   $default_pass = $rabbitmq::default_pass
+++  $default_host = $rabbitmq::default_host
++   $node_ip_address = $rabbitmq::node_ip_address
++ 
++   if $rabbitmq::node_ip_address == 'UNSET' {
++@@ -27,7 +28,7 @@ class rabbitmq::install::rabbitmqadmin {
++ 
++   staging::file { 'rabbitmqadmin':
++     target      => "${rabbitmq::rabbitmq_home}/rabbitmqadmin",
++-    source      => "${protocol}://${default_user}:${default_pass}@${sanitized_ip}:${management_port}/cli/rabbitmqadmin",
+++    source      => "${protocol}://${default_user}:${default_pass}@${default_host}:${management_port}/cli/rabbitmqadmin",
++     curl_option => "-k ${curl_prefix} --retry 30 --retry-delay 6",
++     timeout     => '180',
++     wget_option => '--no-proxy',
++diff --git a/manifests/params.pp b/manifests/params.pp
++index ffface9..da0d2b4 100644
++--- a/manifests/params.pp
+++++ b/manifests/params.pp
++@@ -87,6 +87,7 @@ class rabbitmq::params {
++   $config_shovel_statics       = {}
++   $default_user                = 'guest'
++   $default_pass                = 'guest'
+++  $default_host               = 'localhost'
++   $delete_guest_user           = false
++   $env_config                  = 'rabbitmq/rabbitmq-env.conf.erb'
++   $env_config_path             = '/etc/rabbitmq/rabbitmq-env.conf'
++-- 
++1.8.3.1
++
+diff --git a/0001-add-makefile.patch b/0001-add-makefile.patch
+new file mode 100644
+index 0000000..c20b09c
+--- /dev/null
++++ b/0001-add-makefile.patch
+@@ -0,0 +1,21 @@
++From 6d2e758f33d450f62bc7566d5018f4f79a342950 Mon Sep 17 00:00:00 2001
++From: lgdfy <im.fuyong@gmail.com>
++Date: Wed, 11 Sep 2019 15:57:00 +0800
++Subject: [PATCH] add makefile
++
++---
++ Makefile | 2 ++
++ 1 file changed, 2 insertions(+)
++ create mode 100644 Makefile
++
++diff --git a/Makefile b/Makefile
++new file mode 100644
++index 0000000..cda58eb
++--- /dev/null
+++++ b/Makefile
++@@ -0,0 +1,2 @@
+++build:
+++	echo "no build"
++-- 
++2.23.0
++
+diff --git a/0002-Changed-cipher-specification-to-openssl-format.patch b/0002-Changed-cipher-specification-to-openssl-format.patch
+new file mode 100644
+index 0000000..a58966d
+--- /dev/null
++++ b/0002-Changed-cipher-specification-to-openssl-format.patch
+@@ -0,0 +1,35 @@
++From c6a94f3bbc69d82c74cc597b6b7b1fe5813b0537 Mon Sep 17 00:00:00 2001
++From: Al Bailey <Al.Bailey@windriver.com>
++Date: Thu, 2 Nov 2017 09:22:58 -0500
++Subject: [PATCH 2/2] WRS: Patch2:
++ 0002-Changed-cipher-specification-to-openssl-format.patch
++
++---
++ templates/rabbitmq.config.erb | 4 ++--
++ 1 file changed, 2 insertions(+), 2 deletions(-)
++
++diff --git a/templates/rabbitmq.config.erb b/templates/rabbitmq.config.erb
++index cf2a388..b9612f3 100644
++--- a/templates/rabbitmq.config.erb
+++++ b/templates/rabbitmq.config.erb
++@@ -72,7 +72,7 @@
++                    <%- end -%>
++                    <%- if @ssl_ciphers and @ssl_ciphers.size > 0 -%>
++                    ,{ciphers,[
++-                     <%= @ssl_ciphers.sort.map{|k| "{#{k}}"}.join(",\n                     ") %>
+++                     <%= @ssl_ciphers.sort.map{|k| "\"#{k}\""}.join(",\n                     ") %>
++                    ]}
++                    <%- end -%>
++                   ]},
++@@ -111,7 +111,7 @@
++                    <%- end -%>
++                   <%- if @ssl_ciphers and @ssl_ciphers.size > 0 -%>
++                   ,{ciphers,[
++-                      <%= @ssl_ciphers.sort.map{|k| "{#{k}}"}.join(",\n                      ") %>
+++                      <%= @ssl_ciphers.sort.map{|k| "\"#{k}\""}.join(",\n                      ") %>
++                   ]}
++                   <%- end -%>
++                  ]}
++-- 
++1.8.3.1
++
+diff --git a/0003-Eliminate-Puppet-4-deprecation-warnings.patch b/0003-Eliminate-Puppet-4-deprecation-warnings.patch
+new file mode 100644
+index 0000000..cea267f
+--- /dev/null
++++ b/0003-Eliminate-Puppet-4-deprecation-warnings.patch
+@@ -0,0 +1,182 @@
++From 1d09cd4cc048a8a1958f3bf7bc5ee8a9e4617455 Mon Sep 17 00:00:00 2001
++From: Al Bailey <Al.Bailey@windriver.com>
++Date: Tue, 19 Dec 2017 10:26:17 -0600
++Subject: [PATCH] WRS: Patch3:
++ 0003-Eliminate-Puppet-4-deprecation-warnings.patch
++
++---
++ manifests/init.pp   | 49 ++++++++++---------------------------------------
++ manifests/params.pp | 16 ++++++++--------
++ metadata.json       |  1 -
++ 3 files changed, 18 insertions(+), 48 deletions(-)
++
++diff --git a/manifests/init.pp b/manifests/init.pp
++index 3451599..7808464 100644
++--- a/manifests/init.pp
+++++ b/manifests/init.pp
++@@ -17,11 +17,11 @@ class rabbitmq(
++   Stdlib::Absolutepath $env_config_path          = $rabbitmq::params::env_config_path,
++   Optional[String] $erlang_cookie                = $rabbitmq::params::erlang_cookie,
++   $interface                                     = $rabbitmq::params::interface,
++-  $management_port                               = $rabbitmq::params::management_port,
+++  Integer[1, 65535] $management_port             = $rabbitmq::params::management_port,
++   $management_ssl                                = $rabbitmq::params::management_ssl,
++   Optional[String] $management_hostname          = $rabbitmq::params::management_hostname,
++   String $node_ip_address                        = $rabbitmq::params::node_ip_address,
++-  $package_apt_pin                               = $rabbitmq::params::package_apt_pin,
+++  Optional[Variant[Numeric, String]] $package_apt_pin = $rabbitmq::params::package_apt_pin,
++   String $package_ensure                         = $rabbitmq::params::package_ensure,
++   String $package_gpg_key                        = $rabbitmq::params::package_gpg_key,
++   String $package_name                           = $rabbitmq::params::package_name,
++@@ -33,7 +33,7 @@ class rabbitmq(
++   $rabbitmq_user                                 = $rabbitmq::params::rabbitmq_user,
++   $rabbitmq_group                                = $rabbitmq::params::rabbitmq_group,
++   $rabbitmq_home                                 = $rabbitmq::params::rabbitmq_home,
++-  $port                                          = $rabbitmq::params::port,
+++  Integer $port                                  = $rabbitmq::params::port,
++   Boolean $tcp_keepalive                         = $rabbitmq::params::tcp_keepalive,
++   Integer $tcp_backlog                           = $rabbitmq::params::tcp_backlog,
++   Optional[Integer] $tcp_sndbuf                  = $rabbitmq::params::tcp_sndbuf,
++@@ -49,10 +49,10 @@ class rabbitmq(
++   String $ssl_key                                = $rabbitmq::params::ssl_key,
++   Optional[Integer] $ssl_depth                   = $rabbitmq::params::ssl_depth,
++   Optional[String] $ssl_cert_password            = $rabbitmq::params::ssl_cert_password,
++-  $ssl_port                                      = $rabbitmq::params::ssl_port,
+++  Integer[1, 65535] $ssl_port                    = $rabbitmq::params::ssl_port,
++   $ssl_interface                                 = $rabbitmq::params::ssl_interface,
++-  $ssl_management_port                           = $rabbitmq::params::ssl_management_port,
++-  $ssl_stomp_port                                = $rabbitmq::params::ssl_stomp_port,
+++  Integer[1, 65535] $ssl_management_port         = $rabbitmq::params::ssl_management_port,
+++  Integer[1, 65535] $ssl_stomp_port              = $rabbitmq::params::ssl_stomp_port,
++   $ssl_verify                                    = $rabbitmq::params::ssl_verify,
++   $ssl_fail_if_no_peer_cert                      = $rabbitmq::params::ssl_fail_if_no_peer_cert,
++   Optional[Array] $ssl_versions                  = $rabbitmq::params::ssl_versions,
++@@ -63,15 +63,15 @@ class rabbitmq(
++   String $ldap_user_dn_pattern                   = $rabbitmq::params::ldap_user_dn_pattern,
++   String $ldap_other_bind                        = $rabbitmq::params::ldap_other_bind,
++   Boolean $ldap_use_ssl                          = $rabbitmq::params::ldap_use_ssl,
++-  $ldap_port                                     = $rabbitmq::params::ldap_port,
+++  Integer[1, 65535] $ldap_port                   = $rabbitmq::params::ldap_port,
++   Boolean $ldap_log                              = $rabbitmq::params::ldap_log,
++   Hash $ldap_config_variables                    = $rabbitmq::params::ldap_config_variables,
++-  $stomp_port                                    = $rabbitmq::params::stomp_port,
+++  Integer[1, 65535] $stomp_port                  = $rabbitmq::params::stomp_port,
++   Boolean $stomp_ssl_only                        = $rabbitmq::params::stomp_ssl_only,
++-  $version                                       = $rabbitmq::params::version,
+++  Optional[String] $version                      = $rabbitmq::params::version,
++   Boolean $wipe_db_on_cookie_change              = $rabbitmq::params::wipe_db_on_cookie_change,
++   $cluster_partition_handling                    = $rabbitmq::params::cluster_partition_handling,
++-  $file_limit                                    = $rabbitmq::params::file_limit,
+++  Variant[Integer[-1,], Enum['unlimited', 'infinity']] $file_limit = $rabbitmq::params::file_limit,
++   Hash $environment_variables                    = $rabbitmq::params::environment_variables,
++   Hash $config_variables                         = $rabbitmq::params::config_variables,
++   Hash $config_kernel_variables                  = $rabbitmq::params::config_kernel_variables,
++@@ -85,35 +85,6 @@ class rabbitmq(
++   Stdlib::Absolutepath $inetrc_config_path       = $rabbitmq::params::inetrc_config_path,
++ ) inherits rabbitmq::params {
++ 
++-  # Validate install parameters.
++-  validate_re($package_apt_pin, '^(|\d+)$')
++-  validate_re($version, '^\d+\.\d+\.\d+(-\d+)*$') # Allow 3 digits and optional -n postfix.
++-  # Validate config parameters.
++-  if ! is_integer($management_port) {
++-    validate_re($management_port, '\d+')
++-  }
++-  if ! is_integer($port) {
++-    validate_re($port, ['\d+','UNSET'])
++-  }
++-  if ! is_integer($stomp_port) {
++-    validate_re($stomp_port, '\d+')
++-  }
++-
++-  # using sprintf for conversion to string, because "${file_limit}" doesn't
++-  # pass lint, despite being nicer
++-  validate_re(sprintf('%s', $file_limit),
++-              '^(\d+|-1|unlimited|infinity)$', '$file_limit must be a positive integer, \'-1\', \'unlimited\', or \'infinity\'.')
++-  if ! is_integer($ssl_port) {
++-    validate_re($ssl_port, '\d+')
++-  }
++-  if ! is_integer($ssl_management_port) {
++-    validate_re($ssl_management_port, '\d+')
++-  }
++-  if ! is_integer($ssl_stomp_port) {
++-    validate_re($ssl_stomp_port, '\d+')
++-  }
++-  validate_re($ldap_port, '\d+')
++-
++   if $ssl_only and ! $ssl {
++     fail('$ssl_only => true requires that $ssl => true')
++   }
++diff --git a/manifests/params.pp b/manifests/params.pp
++index da0d2b4..d5ef906 100644
++--- a/manifests/params.pp
+++++ b/manifests/params.pp
++@@ -68,7 +68,7 @@ class rabbitmq::params {
++   #install
++   $admin_enable                = true
++   $management_hostname         = undef
++-  $management_port             = '15672'
+++  $management_port             = 15672
++   $management_ssl              = true
++   $package_apt_pin             = ''
++   $package_gpg_key             = 'https://www.rabbitmq.com/rabbitmq-release-signing-key.asc'
++@@ -94,7 +94,7 @@ class rabbitmq::params {
++   $erlang_cookie               = undef
++   $interface                   = 'UNSET'
++   $node_ip_address             = 'UNSET'
++-  $port                        = '5672'
+++  $port                        = 5672
++   $tcp_keepalive               = false
++   $tcp_backlog                 = 128
++   $tcp_sndbuf                  = undef
++@@ -107,10 +107,10 @@ class rabbitmq::params {
++   $ssl_key                     = 'UNSET'
++   $ssl_depth                   = undef
++   $ssl_cert_password           = undef
++-  $ssl_port                    = '5671'
+++  $ssl_port                    = 5671
++   $ssl_interface               = 'UNSET'
++-  $ssl_management_port         = '15671'
++-  $ssl_stomp_port              = '6164'
+++  $ssl_management_port         = 15671
+++  $ssl_stomp_port              = 6164
++   $ssl_verify                  = 'verify_none'
++   $ssl_fail_if_no_peer_cert    = false
++   $ssl_versions                = undef
++@@ -121,10 +121,10 @@ class rabbitmq::params {
++   $ldap_user_dn_pattern        = 'cn=username,ou=People,dc=example,dc=com'
++   $ldap_other_bind             = 'anon'
++   $ldap_use_ssl                = false
++-  $ldap_port                   = '389'
+++  $ldap_port                   = 389
++   $ldap_log                    = false
++   $ldap_config_variables       = {}
++-  $stomp_port                  = '6163'
+++  $stomp_port                  = 6163
++   $stomp_ssl_only              = false
++   $wipe_db_on_cookie_change    = false
++   $cluster_partition_handling  = 'ignore'
++@@ -134,7 +134,7 @@ class rabbitmq::params {
++   $config_management_variables = {}
++   $config_additional_variables = {}
++   $auth_backends               = undef
++-  $file_limit                  = '16384'
+++  $file_limit                  = 16384
++   $collect_statistics_interval = undef
++   $ipv6                        = false
++   $inetrc_config               = 'rabbitmq/inetrc.erb'
++diff --git a/metadata.json b/metadata.json
++index 5803cf5..b3426f6 100644
++--- a/metadata.json
+++++ b/metadata.json
++@@ -48,7 +48,6 @@
++   ],
++   "dependencies": [
++     {"name":"puppetlabs/stdlib","version_requirement":">= 3.13.1 < 5.0.0"},
++-    {"name":"puppetlabs/apt","version_requirement":">= 1.8.0 < 5.0.0"},
++     {"name":"puppet/staging","version_requirement":">= 0.3.1 < 2.0.0"}
++   ]
++ }
++-- 
++1.8.3.1
++
+diff --git a/0004-Partially-revert-upstream-commit-f7c3a4a637d59f3065d.patch b/0004-Partially-revert-upstream-commit-f7c3a4a637d59f3065d.patch
+new file mode 100644
+index 0000000..4575722
+--- /dev/null
++++ b/0004-Partially-revert-upstream-commit-f7c3a4a637d59f3065d.patch
+@@ -0,0 +1,32 @@
++From 5c8fa2301ee9fa92267ff351e3fa3e59f2b2df79 Mon Sep 17 00:00:00 2001
++From: Al Bailey <Al.Bailey@windriver.com>
++Date: Wed, 24 Jan 2018 16:01:48 -0600
++Subject: [PATCH] Partially revert upstream commit
++ f7c3a4a637d59f3065d8129e9ebacba992dfc469
++
++Upstream converted the code based on rabbitmqctl 3.6.10 changes
++We are using 3.6.5  but hopefully this expression will match both
++
++Status of node rabbit@localhost ...
++or
++Status of node rabbit@localhost
++---
++ lib/facter/rabbitmq_nodename.rb | 2 +-
++ 1 file changed, 1 insertion(+), 1 deletion(-)
++
++diff --git a/lib/facter/rabbitmq_nodename.rb b/lib/facter/rabbitmq_nodename.rb
++index 301e3c1..d5c6352 100644
++--- a/lib/facter/rabbitmq_nodename.rb
+++++ b/lib/facter/rabbitmq_nodename.rb
++@@ -2,7 +2,7 @@ Facter.add(:rabbitmq_nodename) do
++   setcode do
++     if Facter::Core::Execution.which('rabbitmqctl')
++       rabbitmq_nodename = Facter::Core::Execution.execute('rabbitmqctl status 2>&1')
++-      %r{^Status of node '?([\w\.]+@[\w\.\-]+)'?}.match(rabbitmq_nodename)[1]
+++      %r{^Status of node '?([\w\.]+@[\w\.\-]+)'?( \.+)?$}.match(rabbitmq_nodename)[1]
++     end
++   end
++ end
++-- 
++1.8.3.1
++
+diff --git a/0005-Remove-the-rabbitmq_nodename-fact.patch b/0005-Remove-the-rabbitmq_nodename-fact.patch
+new file mode 100644
+index 0000000..dbe7ce4
+--- /dev/null
++++ b/0005-Remove-the-rabbitmq_nodename-fact.patch
+@@ -0,0 +1,87 @@
++From 02c56be5340b079797fdb9944e1e048f1c3a18b7 Mon Sep 17 00:00:00 2001
++From: Al Bailey <Al.Bailey@windriver.com>
++Date: Fri, 2 Feb 2018 12:30:22 -0600
++Subject: [PATCH] Remove the rabbitmq_nodename fact
++
++This fact will not work on a standby node.  it requires a drbd folder in order
++for rabbitmqctl status to work.
++---
++ lib/facter/rabbitmq_nodename.rb     |  8 ------
++ spec/unit/rabbitmq_nodename_spec.rb | 50 -------------------------------------
++ 2 files changed, 58 deletions(-)
++ delete mode 100644 lib/facter/rabbitmq_nodename.rb
++ delete mode 100644 spec/unit/rabbitmq_nodename_spec.rb
++
++diff --git a/lib/facter/rabbitmq_nodename.rb b/lib/facter/rabbitmq_nodename.rb
++deleted file mode 100644
++index 2ee7926..0000000
++--- a/lib/facter/rabbitmq_nodename.rb
+++++ /dev/null
++@@ -1,8 +0,0 @@
++-Facter.add(:rabbitmq_nodename) do
++-  setcode do
++-    if Facter::Core::Execution.which('rabbitmqctl')
++-      rabbitmq_nodename = Facter::Core::Execution.execute('rabbitmqctl status 2>&1')
++-      %r{^Status of node '?([\w\.]+@[\w\.\-]+)'?( \.+)?$}.match(rabbitmq_nodename)[1]
++-    end
++-  end
++-end
++diff --git a/spec/unit/rabbitmq_nodename_spec.rb b/spec/unit/rabbitmq_nodename_spec.rb
++deleted file mode 100644
++index 621d7eb..0000000
++--- a/spec/unit/rabbitmq_nodename_spec.rb
+++++ /dev/null
++@@ -1,50 +0,0 @@
++-require "spec_helper"
++-
++-describe Facter::Util::Fact do
++-  before {
++-    Facter.clear
++-  }
++-
++-  describe "rabbitmq_nodename" do
++-    context 'with value' do
++-      before :each do
++-        Facter::Core::Execution.stubs(:which).with('rabbitmqctl').returns(true)
++-        Facter::Core::Execution.stubs(:execute).with('rabbitmqctl status 2>&1').returns('Status of node monty@rabbit1 ...')
++-      end
++-      it {
++-        expect(Facter.fact(:rabbitmq_nodename).value).to eq('monty@rabbit1')
++-      }
++-    end
++-
++-    context 'with dashes in hostname' do
++-      before :each do
++-        Facter::Core::Execution.stubs(:which).with('rabbitmqctl').returns(true)
++-        Facter::Core::Execution.stubs(:execute).with('rabbitmqctl status 2>&1').returns('Status of node monty@rabbit-1 ...')
++-      end
++-      it {
++-        expect(Facter.fact(:rabbitmq_nodename).value).to eq('monty@rabbit-1')
++-      }
++-    end
++-
++-    context 'with quotes around node name' do
++-      before :each do
++-        Facter::Core::Execution.stubs(:which).with('rabbitmqctl').returns(true)
++-        Facter::Core::Execution.stubs(:execute).with('rabbitmqctl status 2>&1').returns('Status of node \'monty@rabbit-1\' ...')
++-      end
++-      it {
++-        expect(Facter.fact(:rabbitmq_nodename).value).to eq('monty@rabbit-1')
++-      }
++-    end
++-
++-    context 'without trailing points' do
++-      before :each do
++-        Facter::Core::Execution.stubs(:which).with('rabbitmqctl').returns(true)
++-        Facter::Core::Execution.stubs(:execute).with('rabbitmqctl status 2>&1').returns('Status of node monty@rabbit-1')
++-      end
++-      it {
++-        expect(Facter.fact(:rabbitmq_nodename).value).to eq('monty@rabbit-1')
++-      }
++-    end
++-
++-  end
++-end
++-- 
++1.8.3.1
++
+diff --git a/install_append b/install_append
+new file mode 100644
+index 0000000..9a0481f
+--- /dev/null
++++ b/install_append
+@@ -0,0 +1 @@
++cp -rp * %{buildroot}/%{_datadir}/openstack-puppet/modules/rabbitmq/
+diff --git a/install_macro b/install_macro
+new file mode 100644
+index 0000000..3cc5b29
+--- /dev/null
++++ b/install_macro
+@@ -0,0 +1 @@
++install -d -m 0755 %{buildroot}/%{_datadir}/openstack-puppet/modules/rabbitmq/
+diff --git a/options.conf b/options.conf
+new file mode 100644
+index 0000000..0879910
+--- /dev/null
++++ b/options.conf
+@@ -0,0 +1,58 @@
++name = puppet-rabbitmq
++url = file:///home/clr/stx-tar/puppetlabs-rabbitmq-5ac45de.tar.gz
++use_lto = true
++verify_required = false
+diff --git a/puppet-rabbitmq.spec b/puppet-rabbitmq.spec
+new file mode 100644
+index 0000000..caa4b4e
+--- /dev/null
++++ b/puppet-rabbitmq.spec
+@@ -0,0 +1,190 @@
++#
++# This file is auto-generated. DO NOT EDIT
++# Generated by: autospec.py
++#
++Name     : puppet-rabbitmq
++License  : Apache-2.0
++Requires: puppet-rabbitmq-data = %{version}-%{release}
++Requires: puppet >= 2.7.0
++Requires: puppet-staging
++Requires: puppet-stdlib
++Patch1: 0001-add-makefile.patch
++Patch2: 0001-Roll-up-TIS-patches.patch
++Patch3: 0002-Changed-cipher-specification-to-openssl-format.patch
++Patch4: 0003-Eliminate-Puppet-4-deprecation-warnings.patch
++Patch5: 0004-Partially-revert-upstream-commit-f7c3a4a637d59f3065d.patch
++Patch6: 0005-Remove-the-rabbitmq_nodename-fact.patch
++
++%description
++# rabbitmq
++#### Table of Contents
++1. [Overview](#overview)
++2. [Module Description - What the module does and why it is useful](#module-description)
++3. [Setup - The basics of getting started with rabbitmq](#setup)
++* [What rabbitmq affects](#what-rabbitmq-affects)
++* [Setup requirements](#setup-requirements)
++* [Beginning with rabbitmq](#beginning-with-rabbitmq)
++4. [Usage - Configuration options and additional functionality](#usage)
++5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
++5. [Limitations - OS compatibility, etc.](#limitations)
++* [RedHat module dependencies](#redhat-module-dependecies)
++6. [Development - Guide for contributing to the module](#development)
++
++%package data
++
++
++
++%prep
++%patch1 -p1
++%patch2 -p1
++%patch3 -p1
++%patch4 -p1
++%patch5 -p1
++%patch6 -p1
++
++%build
++make  %{?_smp_mflags}
++
++
++%install
++rm -rf %{buildroot}
++install -d -m 0755 %{buildroot}/%{_datadir}/openstack-puppet/modules/rabbitmq/
++## install_append content
++cp -rp * %{buildroot}/%{_datadir}/openstack-puppet/modules/rabbitmq/
++## install_append end
++
++%files
++%defattr(-,root,root,-)
++
++%files data
++%defattr(-,root,root,-)
++/usr/share/openstack-puppet/modules/rabbitmq/CHANGELOG.md
++/usr/share/openstack-puppet/modules/rabbitmq/CONTRIBUTING.md
++/usr/share/openstack-puppet/modules/rabbitmq/Gemfile
++/usr/share/openstack-puppet/modules/rabbitmq/LICENSE
++/usr/share/openstack-puppet/modules/rabbitmq/MAINTAINERS.md
++/usr/share/openstack-puppet/modules/rabbitmq/Makefile
++/usr/share/openstack-puppet/modules/rabbitmq/NOTICE
++/usr/share/openstack-puppet/modules/rabbitmq/README.md
++/usr/share/openstack-puppet/modules/rabbitmq/Rakefile
++/usr/share/openstack-puppet/modules/rabbitmq/examples/erlang_deps.pp
++/usr/share/openstack-puppet/modules/rabbitmq/examples/full.pp
++/usr/share/openstack-puppet/modules/rabbitmq/examples/permissions/add.pp
++/usr/share/openstack-puppet/modules/rabbitmq/examples/plugin.pp
++/usr/share/openstack-puppet/modules/rabbitmq/examples/repo/apt.pp
++/usr/share/openstack-puppet/modules/rabbitmq/examples/server.pp
++/usr/share/openstack-puppet/modules/rabbitmq/examples/service.pp
++/usr/share/openstack-puppet/modules/rabbitmq/examples/site.pp
++/usr/share/openstack-puppet/modules/rabbitmq/examples/user/add.pp
++/usr/share/openstack-puppet/modules/rabbitmq/examples/vhosts/add.pp
++/usr/share/openstack-puppet/modules/rabbitmq/files/README.markdown
++/usr/share/openstack-puppet/modules/rabbitmq/files/plugins/amqp_client-2.3.1.ez
++/usr/share/openstack-puppet/modules/rabbitmq/files/plugins/rabbit_stomp-2.3.1.ez
++/usr/share/openstack-puppet/modules/rabbitmq/lib/facter/rabbitmq_version.rb
++/usr/share/openstack-puppet/modules/rabbitmq/lib/puppet/provider/rabbitmq_binding/rabbitmqadmin.rb
++/usr/share/openstack-puppet/modules/rabbitmq/lib/puppet/provider/rabbitmq_erlang_cookie/ruby.rb
++/usr/share/openstack-puppet/modules/rabbitmq/lib/puppet/provider/rabbitmq_exchange/rabbitmqadmin.rb
++/usr/share/openstack-puppet/modules/rabbitmq/lib/puppet/provider/rabbitmq_parameter/rabbitmqctl.rb
++/usr/share/openstack-puppet/modules/rabbitmq/lib/puppet/provider/rabbitmq_plugin/rabbitmqplugins.rb
++/usr/share/openstack-puppet/modules/rabbitmq/lib/puppet/provider/rabbitmq_policy/rabbitmqctl.rb
++/usr/share/openstack-puppet/modules/rabbitmq/lib/puppet/provider/rabbitmq_queue/rabbitmqadmin.rb
++/usr/share/openstack-puppet/modules/rabbitmq/lib/puppet/provider/rabbitmq_user/rabbitmqctl.rb
++/usr/share/openstack-puppet/modules/rabbitmq/lib/puppet/provider/rabbitmq_user_permissions/rabbitmqctl.rb
++/usr/share/openstack-puppet/modules/rabbitmq/lib/puppet/provider/rabbitmq_vhost/rabbitmqctl.rb
++/usr/share/openstack-puppet/modules/rabbitmq/lib/puppet/provider/rabbitmqctl.rb
++/usr/share/openstack-puppet/modules/rabbitmq/lib/puppet/type/rabbitmq_binding.rb
++/usr/share/openstack-puppet/modules/rabbitmq/lib/puppet/type/rabbitmq_erlang_cookie.rb
++/usr/share/openstack-puppet/modules/rabbitmq/lib/puppet/type/rabbitmq_exchange.rb
++/usr/share/openstack-puppet/modules/rabbitmq/lib/puppet/type/rabbitmq_parameter.rb
++/usr/share/openstack-puppet/modules/rabbitmq/lib/puppet/type/rabbitmq_plugin.rb
++/usr/share/openstack-puppet/modules/rabbitmq/lib/puppet/type/rabbitmq_policy.rb
++/usr/share/openstack-puppet/modules/rabbitmq/lib/puppet/type/rabbitmq_queue.rb
++/usr/share/openstack-puppet/modules/rabbitmq/lib/puppet/type/rabbitmq_user.rb
++/usr/share/openstack-puppet/modules/rabbitmq/lib/puppet/type/rabbitmq_user_permissions.rb
++/usr/share/openstack-puppet/modules/rabbitmq/lib/puppet/type/rabbitmq_vhost.rb
++/usr/share/openstack-puppet/modules/rabbitmq/locales/config.yaml
++/usr/share/openstack-puppet/modules/rabbitmq/manifests/config.pp
++/usr/share/openstack-puppet/modules/rabbitmq/manifests/init.pp
++/usr/share/openstack-puppet/modules/rabbitmq/manifests/install.pp
++/usr/share/openstack-puppet/modules/rabbitmq/manifests/install/rabbitmqadmin.pp
++/usr/share/openstack-puppet/modules/rabbitmq/manifests/management.pp
++/usr/share/openstack-puppet/modules/rabbitmq/manifests/params.pp
++/usr/share/openstack-puppet/modules/rabbitmq/manifests/repo/apt.pp
++/usr/share/openstack-puppet/modules/rabbitmq/manifests/repo/rhel.pp
++/usr/share/openstack-puppet/modules/rabbitmq/manifests/server.pp
++/usr/share/openstack-puppet/modules/rabbitmq/manifests/service.pp
++/usr/share/openstack-puppet/modules/rabbitmq/metadata.json
++/usr/share/openstack-puppet/modules/rabbitmq/spec/README.markdown
++/usr/share/openstack-puppet/modules/rabbitmq/spec/acceptance/class_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/acceptance/clustering_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/acceptance/delete_guest_user_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/acceptance/nodesets/centos-7-x64.yml
++/usr/share/openstack-puppet/modules/rabbitmq/spec/acceptance/nodesets/debian-8-x64.yml
++/usr/share/openstack-puppet/modules/rabbitmq/spec/acceptance/nodesets/default.yml
++/usr/share/openstack-puppet/modules/rabbitmq/spec/acceptance/nodesets/docker/centos-7.yml
++/usr/share/openstack-puppet/modules/rabbitmq/spec/acceptance/nodesets/docker/debian-8.yml
++/usr/share/openstack-puppet/modules/rabbitmq/spec/acceptance/nodesets/docker/ubuntu-14.04.yml
++/usr/share/openstack-puppet/modules/rabbitmq/spec/acceptance/parameter_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/acceptance/policy_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/acceptance/queue_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/acceptance/rabbitmqadmin_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/acceptance/server_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/acceptance/user_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/acceptance/vhost_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/acceptance/zz281_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/classes/rabbitmq_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/spec_helper.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/spec_helper_acceptance.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/spec_helper_local.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/unit/puppet/provider/rabbitmq_binding/rabbitmqadmin_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/unit/puppet/provider/rabbitmq_exchange/rabbitmqadmin_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/unit/puppet/provider/rabbitmq_parameter/rabbitmqctl_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/unit/puppet/provider/rabbitmq_plugin/rabbitmqctl_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/unit/puppet/provider/rabbitmq_policy/rabbitmqctl_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/unit/puppet/provider/rabbitmq_queue/rabbitmqadmin_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/unit/puppet/provider/rabbitmq_user/rabbitmqctl_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/unit/puppet/provider/rabbitmq_user_permissions/rabbitmqctl_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/unit/puppet/provider/rabbitmq_vhost/rabbitmqctl_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/unit/puppet/type/rabbitmq_binding_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/unit/puppet/type/rabbitmq_exchange_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/unit/puppet/type/rabbitmq_parameter_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/unit/puppet/type/rabbitmq_plugin_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/unit/puppet/type/rabbitmq_policy_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/unit/puppet/type/rabbitmq_queue_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/unit/puppet/type/rabbitmq_user_permissions_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/unit/puppet/type/rabbitmq_user_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/unit/puppet/type/rabbitmq_vhost_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/spec/unit/rabbitmq_version_spec.rb
++/usr/share/openstack-puppet/modules/rabbitmq/templates/README.markdown
++/usr/share/openstack-puppet/modules/rabbitmq/templates/default.erb
++/usr/share/openstack-puppet/modules/rabbitmq/templates/inetrc.erb
++/usr/share/openstack-puppet/modules/rabbitmq/templates/limits.conf
++/usr/share/openstack-puppet/modules/rabbitmq/templates/rabbitmq-env.conf.erb
++/usr/share/openstack-puppet/modules/rabbitmq/templates/rabbitmq-server.service.d/limits.conf
++/usr/share/openstack-puppet/modules/rabbitmq/templates/rabbitmq.config.erb
++/usr/share/openstack-puppet/modules/rabbitmq/templates/rabbitmqadmin.conf.erb
+diff --git a/requires_add b/requires_add
+new file mode 100644
+index 0000000..b7cdb16
+--- /dev/null
++++ b/requires_add
+@@ -0,0 +1,5 @@
++puppet-staging
++puppet-stdlib
++puppet >= 2.7.0
+diff --git a/series b/series
+new file mode 100644
+index 0000000..8eff443
+--- /dev/null
++++ b/series
+@@ -0,0 +1,6 @@
++0001-add-makefile.patch
++0001-Roll-up-TIS-patches.patch
++0002-Changed-cipher-specification-to-openssl-format.patch
++0003-Eliminate-Puppet-4-deprecation-warnings.patch
++0004-Partially-revert-upstream-commit-f7c3a4a637d59f3065d.patch
++0005-Remove-the-rabbitmq_nodename-fact.patch

@@ -1,0 +1,6 @@
+0001-add-makefile.patch
+0001-Roll-up-TIS-patches.patch
+0002-Changed-cipher-specification-to-openssl-format.patch
+0003-Eliminate-Puppet-4-deprecation-warnings.patch
+0004-Partially-revert-upstream-commit-f7c3a4a637d59f3065d.patch
+0005-Remove-the-rabbitmq_nodename-fact.patch

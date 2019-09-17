@@ -1,0 +1,37 @@
+2019-09-17 16:38:15,489 - Mock Version: 1.2.14
+2019-09-17 16:38:15,747 - Start: dnf update
+2019-09-17 16:38:25,673 - Finish: dnf update
+2019-09-17 16:38:25,678 - Finish: chroot init
+2019-09-17 16:38:25,681 - Start: buildsrpm
+2019-09-17 16:38:25,689 - Start: rpmbuild -bs
+2019-09-17 16:38:25,729 - Finish: rpmbuild -bs
+2019-09-17 16:38:25,731 - Finish: buildsrpm
+2019-09-17 16:38:25,732 - Finish: run
+2019-09-17 16:38:28,762 - Mock Version: 1.2.14
+2019-09-17 16:38:29,003 - Start: dnf update
+2019-09-17 16:38:38,823 - Finish: dnf update
+2019-09-17 16:38:38,829 - Finish: chroot init
+2019-09-17 16:38:38,830 - Start: build phase for puppet-rabbitmq-5ac45de-1.src.rpm
+2019-09-17 16:38:38,832 - Start: build setup for puppet-rabbitmq-5ac45de-1.src.rpm
+2019-09-17 16:38:39,507 - Finish: build setup for puppet-rabbitmq-5ac45de-1.src.rpm
+2019-09-17 16:38:39,507 - Start: rpmbuild puppet-rabbitmq-5ac45de-1.src.rpm
+2019-09-17 16:38:43,158 - Mock Version: 1.2.14
+2019-09-17 16:38:43,419 - Start: dnf update
+2019-09-17 16:38:53,244 - Finish: dnf update
+2019-09-17 16:38:53,249 - Finish: chroot init
+2019-09-17 16:38:53,252 - Start: buildsrpm
+2019-09-17 16:38:53,258 - Start: rpmbuild -bs
+2019-09-17 16:38:53,298 - Finish: rpmbuild -bs
+2019-09-17 16:38:53,300 - Finish: buildsrpm
+2019-09-17 16:38:53,301 - Finish: run
+2019-09-17 16:38:56,308 - Mock Version: 1.2.14
+2019-09-17 16:38:56,573 - Start: dnf update
+2019-09-17 16:39:06,316 - Finish: dnf update
+2019-09-17 16:39:06,322 - Finish: chroot init
+2019-09-17 16:39:06,323 - Start: build phase for puppet-rabbitmq-5ac45de-1.src.rpm
+2019-09-17 16:39:06,325 - Start: build setup for puppet-rabbitmq-5ac45de-1.src.rpm
+2019-09-17 16:39:06,999 - Finish: build setup for puppet-rabbitmq-5ac45de-1.src.rpm
+2019-09-17 16:39:06,999 - Start: rpmbuild puppet-rabbitmq-5ac45de-1.src.rpm
+2019-09-17 16:39:07,564 - Finish: rpmbuild puppet-rabbitmq-5ac45de-1.src.rpm
+2019-09-17 16:39:07,565 - Finish: build phase for puppet-rabbitmq-5ac45de-1.src.rpm
+2019-09-17 16:39:07,565 - Finish: run
