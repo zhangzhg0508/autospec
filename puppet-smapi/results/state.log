@@ -1,0 +1,37 @@
+2019-09-17 16:29:32,421 - Mock Version: 1.2.14
+2019-09-17 16:29:32,675 - Start: dnf update
+2019-09-17 16:29:42,119 - Finish: dnf update
+2019-09-17 16:29:42,124 - Finish: chroot init
+2019-09-17 16:29:42,127 - Start: buildsrpm
+2019-09-17 16:29:42,135 - Start: rpmbuild -bs
+2019-09-17 16:29:42,173 - Finish: rpmbuild -bs
+2019-09-17 16:29:42,175 - Finish: buildsrpm
+2019-09-17 16:29:42,175 - Finish: run
+2019-09-17 16:29:45,205 - Mock Version: 1.2.14
+2019-09-17 16:29:45,458 - Start: dnf update
+2019-09-17 16:29:55,062 - Finish: dnf update
+2019-09-17 16:29:55,067 - Finish: chroot init
+2019-09-17 16:29:55,069 - Start: build phase for puppet-smapi-1.0.0-1.src.rpm
+2019-09-17 16:29:55,071 - Start: build setup for puppet-smapi-1.0.0-1.src.rpm
+2019-09-17 16:29:56,358 - Finish: build setup for puppet-smapi-1.0.0-1.src.rpm
+2019-09-17 16:29:56,358 - Start: rpmbuild puppet-smapi-1.0.0-1.src.rpm
+2019-09-17 16:29:59,817 - Mock Version: 1.2.14
+2019-09-17 16:30:00,078 - Start: dnf update
+2019-09-17 16:30:09,507 - Finish: dnf update
+2019-09-17 16:30:09,513 - Finish: chroot init
+2019-09-17 16:30:09,516 - Start: buildsrpm
+2019-09-17 16:30:09,521 - Start: rpmbuild -bs
+2019-09-17 16:30:09,559 - Finish: rpmbuild -bs
+2019-09-17 16:30:09,561 - Finish: buildsrpm
+2019-09-17 16:30:09,561 - Finish: run
+2019-09-17 16:30:12,630 - Mock Version: 1.2.14
+2019-09-17 16:30:12,877 - Start: dnf update
+2019-09-17 16:30:22,546 - Finish: dnf update
+2019-09-17 16:30:22,551 - Finish: chroot init
+2019-09-17 16:30:22,553 - Start: build phase for puppet-smapi-1.0.0-1.src.rpm
+2019-09-17 16:30:22,555 - Start: build setup for puppet-smapi-1.0.0-1.src.rpm
+2019-09-17 16:30:23,838 - Finish: build setup for puppet-smapi-1.0.0-1.src.rpm
+2019-09-17 16:30:23,838 - Start: rpmbuild puppet-smapi-1.0.0-1.src.rpm
+2019-09-17 16:30:23,974 - Finish: rpmbuild puppet-smapi-1.0.0-1.src.rpm
+2019-09-17 16:30:23,976 - Finish: build phase for puppet-smapi-1.0.0-1.src.rpm
+2019-09-17 16:30:23,976 - Finish: run
