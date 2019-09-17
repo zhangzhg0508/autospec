@@ -1,0 +1,37 @@
+2019-09-05 10:06:44,354 - Mock Version: 1.2.14
+2019-09-05 10:06:44,608 - Start: dnf update
+2019-09-05 10:06:54,595 - Finish: dnf update
+2019-09-05 10:06:54,601 - Finish: chroot init
+2019-09-05 10:06:54,604 - Start: buildsrpm
+2019-09-05 10:06:54,608 - Start: rpmbuild -bs
+2019-09-05 10:06:54,649 - Finish: rpmbuild -bs
+2019-09-05 10:06:54,650 - Finish: buildsrpm
+2019-09-05 10:06:54,651 - Finish: run
+2019-09-05 10:06:57,745 - Mock Version: 1.2.14
+2019-09-05 10:06:58,002 - Start: dnf update
+2019-09-05 10:07:07,767 - Finish: dnf update
+2019-09-05 10:07:07,772 - Finish: chroot init
+2019-09-05 10:07:07,774 - Start: build phase for python-3parclient-3parclient.4.2.3-1.src.rpm
+2019-09-05 10:07:07,776 - Start: build setup for python-3parclient-3parclient.4.2.3-1.src.rpm
+2019-09-05 10:07:09,063 - Finish: build setup for python-3parclient-3parclient.4.2.3-1.src.rpm
+2019-09-05 10:07:09,063 - Start: rpmbuild python-3parclient-3parclient.4.2.3-1.src.rpm
+2019-09-05 10:07:13,149 - Mock Version: 1.2.14
+2019-09-05 10:07:13,393 - Start: dnf update
+2019-09-05 10:07:23,246 - Finish: dnf update
+2019-09-05 10:07:23,252 - Finish: chroot init
+2019-09-05 10:07:23,254 - Start: buildsrpm
+2019-09-05 10:07:23,260 - Start: rpmbuild -bs
+2019-09-05 10:07:23,301 - Finish: rpmbuild -bs
+2019-09-05 10:07:23,302 - Finish: buildsrpm
+2019-09-05 10:07:23,303 - Finish: run
+2019-09-05 10:07:26,358 - Mock Version: 1.2.14
+2019-09-05 10:07:26,612 - Start: dnf update
+2019-09-05 10:07:36,582 - Finish: dnf update
+2019-09-05 10:07:36,587 - Finish: chroot init
+2019-09-05 10:07:36,589 - Start: build phase for python-3parclient-3parclient.4.2.3-1.src.rpm
+2019-09-05 10:07:36,591 - Start: build setup for python-3parclient-3parclient.4.2.3-1.src.rpm
+2019-09-05 10:07:38,007 - Finish: build setup for python-3parclient-3parclient.4.2.3-1.src.rpm
+2019-09-05 10:07:38,007 - Start: rpmbuild python-3parclient-3parclient.4.2.3-1.src.rpm
+2019-09-05 10:07:38,982 - Finish: rpmbuild python-3parclient-3parclient.4.2.3-1.src.rpm
+2019-09-05 10:07:38,984 - Finish: build phase for python-3parclient-3parclient.4.2.3-1.src.rpm
+2019-09-05 10:07:38,985 - Finish: run
