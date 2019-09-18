@@ -1,0 +1,37 @@
+2019-09-18 11:30:51,549 - Mock Version: 1.2.14
+2019-09-18 11:30:51,812 - Start: dnf update
+2019-09-18 11:31:01,838 - Finish: dnf update
+2019-09-18 11:31:01,843 - Finish: chroot init
+2019-09-18 11:31:01,846 - Start: buildsrpm
+2019-09-18 11:31:01,853 - Start: rpmbuild -bs
+2019-09-18 11:31:01,893 - Finish: rpmbuild -bs
+2019-09-18 11:31:01,894 - Finish: buildsrpm
+2019-09-18 11:31:01,895 - Finish: run
+2019-09-18 11:31:05,007 - Mock Version: 1.2.14
+2019-09-18 11:31:05,266 - Start: dnf update
+2019-09-18 11:31:15,184 - Finish: dnf update
+2019-09-18 11:31:15,190 - Finish: chroot init
+2019-09-18 11:31:15,191 - Start: build phase for puppet-mtce-1.0.0-1.src.rpm
+2019-09-18 11:31:15,193 - Start: build setup for puppet-mtce-1.0.0-1.src.rpm
+2019-09-18 11:31:16,476 - Finish: build setup for puppet-mtce-1.0.0-1.src.rpm
+2019-09-18 11:31:16,476 - Start: rpmbuild puppet-mtce-1.0.0-1.src.rpm
+2019-09-18 11:31:19,927 - Mock Version: 1.2.14
+2019-09-18 11:31:20,188 - Start: dnf update
+2019-09-18 11:31:30,144 - Finish: dnf update
+2019-09-18 11:31:30,150 - Finish: chroot init
+2019-09-18 11:31:30,153 - Start: buildsrpm
+2019-09-18 11:31:30,158 - Start: rpmbuild -bs
+2019-09-18 11:31:30,197 - Finish: rpmbuild -bs
+2019-09-18 11:31:30,199 - Finish: buildsrpm
+2019-09-18 11:31:30,199 - Finish: run
+2019-09-18 11:31:33,298 - Mock Version: 1.2.14
+2019-09-18 11:31:33,572 - Start: dnf update
+2019-09-18 11:31:43,681 - Finish: dnf update
+2019-09-18 11:31:43,686 - Finish: chroot init
+2019-09-18 11:31:43,688 - Start: build phase for puppet-mtce-1.0.0-1.src.rpm
+2019-09-18 11:31:43,690 - Start: build setup for puppet-mtce-1.0.0-1.src.rpm
+2019-09-18 11:31:44,977 - Finish: build setup for puppet-mtce-1.0.0-1.src.rpm
+2019-09-18 11:31:44,977 - Start: rpmbuild puppet-mtce-1.0.0-1.src.rpm
+2019-09-18 11:31:45,126 - Finish: rpmbuild puppet-mtce-1.0.0-1.src.rpm
+2019-09-18 11:31:45,127 - Finish: build phase for puppet-mtce-1.0.0-1.src.rpm
+2019-09-18 11:31:45,128 - Finish: run
