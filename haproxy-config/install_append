@@ -1,0 +1,18 @@
+
+
+%{__install} -m 755 503.http %{buildroot}%{_sysconfdir}/haproxy/errors/503.http
+
+%{__install} -d  %{buildroot}%{_sysconfdir}/systemd/system
+%{__install} -m 644 haproxy.service %{buildroot}%{_sysconfdir}/systemd/system
+
+%{__install} -d -m 755 %{buildroot}%{_unitdir}
+%{__install} -m 644 haproxy.service %{buildroot}%{_unitdir}/haproxy.service
+
+mkdir -p %{buildroot}%{_sysconfdir}/init.d
+%{__install} -p -D -m 0755 haproxy.sh %{buildroot}%{_sysconfdir}/init.d/haproxy
+
+%post
+/bin/systemctl disable haproxy.service
+if test -s %{_sysconfdir}/logrotate.d/haproxy ; then
+    echo '#See /etc/logrotate.d/syslog for haproxy rules' > %{_sysconfdir}/logrotate.d/haproxy
+fi

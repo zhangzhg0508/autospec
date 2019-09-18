@@ -1,0 +1,37 @@
+2019-09-18 07:55:09,269 - Mock Version: 1.2.14
+2019-09-18 07:55:09,504 - Start: dnf update
+2019-09-18 07:55:20,088 - Finish: dnf update
+2019-09-18 07:55:20,094 - Finish: chroot init
+2019-09-18 07:55:20,097 - Start: buildsrpm
+2019-09-18 07:55:20,102 - Start: rpmbuild -bs
+2019-09-18 07:55:20,140 - Finish: rpmbuild -bs
+2019-09-18 07:55:20,141 - Finish: buildsrpm
+2019-09-18 07:55:20,142 - Finish: run
+2019-09-18 07:55:23,181 - Mock Version: 1.2.14
+2019-09-18 07:55:23,442 - Start: dnf update
+2019-09-18 07:55:33,438 - Finish: dnf update
+2019-09-18 07:55:33,444 - Finish: chroot init
+2019-09-18 07:55:33,445 - Start: build phase for haproxy-config-1.0-1.src.rpm
+2019-09-18 07:55:33,447 - Start: build setup for haproxy-config-1.0-1.src.rpm
+2019-09-18 07:55:34,100 - Finish: build setup for haproxy-config-1.0-1.src.rpm
+2019-09-18 07:55:34,100 - Start: rpmbuild haproxy-config-1.0-1.src.rpm
+2019-09-18 07:55:37,318 - Mock Version: 1.2.14
+2019-09-18 07:55:37,583 - Start: dnf update
+2019-09-18 07:55:48,106 - Finish: dnf update
+2019-09-18 07:55:48,112 - Finish: chroot init
+2019-09-18 07:55:48,115 - Start: buildsrpm
+2019-09-18 07:55:48,120 - Start: rpmbuild -bs
+2019-09-18 07:55:48,158 - Finish: rpmbuild -bs
+2019-09-18 07:55:48,159 - Finish: buildsrpm
+2019-09-18 07:55:48,160 - Finish: run
+2019-09-18 07:55:51,229 - Mock Version: 1.2.14
+2019-09-18 07:55:51,489 - Start: dnf update
+2019-09-18 07:56:01,596 - Finish: dnf update
+2019-09-18 07:56:01,602 - Finish: chroot init
+2019-09-18 07:56:01,603 - Start: build phase for haproxy-config-1.0-1.src.rpm
+2019-09-18 07:56:01,606 - Start: build setup for haproxy-config-1.0-1.src.rpm
+2019-09-18 07:56:02,259 - Finish: build setup for haproxy-config-1.0-1.src.rpm
+2019-09-18 07:56:02,259 - Start: rpmbuild haproxy-config-1.0-1.src.rpm
+2019-09-18 07:56:02,394 - Finish: rpmbuild haproxy-config-1.0-1.src.rpm
+2019-09-18 07:56:02,395 - Finish: build phase for haproxy-config-1.0-1.src.rpm
+2019-09-18 07:56:02,396 - Finish: run
