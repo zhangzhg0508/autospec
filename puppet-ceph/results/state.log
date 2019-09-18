@@ -1,0 +1,37 @@
+2019-09-18 17:52:47,708 - Mock Version: 1.2.14
+2019-09-18 17:52:47,967 - Start: dnf update
+2019-09-18 17:52:58,205 - Finish: dnf update
+2019-09-18 17:52:58,211 - Finish: chroot init
+2019-09-18 17:52:58,213 - Start: buildsrpm
+2019-09-18 17:52:58,219 - Start: rpmbuild -bs
+2019-09-18 17:52:58,260 - Finish: rpmbuild -bs
+2019-09-18 17:52:58,262 - Finish: buildsrpm
+2019-09-18 17:52:58,262 - Finish: run
+2019-09-18 17:53:01,392 - Mock Version: 1.2.14
+2019-09-18 17:53:01,660 - Start: dnf update
+2019-09-18 17:53:11,850 - Finish: dnf update
+2019-09-18 17:53:11,855 - Finish: chroot init
+2019-09-18 17:53:11,857 - Start: build phase for puppet-ceph-2.4.1-1.src.rpm
+2019-09-18 17:53:11,859 - Start: build setup for puppet-ceph-2.4.1-1.src.rpm
+2019-09-18 17:53:12,809 - Finish: build setup for puppet-ceph-2.4.1-1.src.rpm
+2019-09-18 17:53:12,809 - Start: rpmbuild puppet-ceph-2.4.1-1.src.rpm
+2019-09-18 17:53:17,176 - Mock Version: 1.2.14
+2019-09-18 17:53:17,434 - Start: dnf update
+2019-09-18 17:53:28,115 - Finish: dnf update
+2019-09-18 17:53:28,121 - Finish: chroot init
+2019-09-18 17:53:28,124 - Start: buildsrpm
+2019-09-18 17:53:28,132 - Start: rpmbuild -bs
+2019-09-18 17:53:28,177 - Finish: rpmbuild -bs
+2019-09-18 17:53:28,178 - Finish: buildsrpm
+2019-09-18 17:53:28,179 - Finish: run
+2019-09-18 17:53:31,485 - Mock Version: 1.2.14
+2019-09-18 17:53:31,872 - Start: dnf update
+2019-09-18 17:53:42,108 - Finish: dnf update
+2019-09-18 17:53:42,114 - Finish: chroot init
+2019-09-18 17:53:42,116 - Start: build phase for puppet-ceph-2.4.1-1.src.rpm
+2019-09-18 17:53:42,119 - Start: build setup for puppet-ceph-2.4.1-1.src.rpm
+2019-09-18 17:53:43,087 - Finish: build setup for puppet-ceph-2.4.1-1.src.rpm
+2019-09-18 17:53:43,087 - Start: rpmbuild puppet-ceph-2.4.1-1.src.rpm
+2019-09-18 17:53:44,125 - Finish: rpmbuild puppet-ceph-2.4.1-1.src.rpm
+2019-09-18 17:53:44,126 - Finish: build phase for puppet-ceph-2.4.1-1.src.rpm
+2019-09-18 17:53:44,127 - Finish: run

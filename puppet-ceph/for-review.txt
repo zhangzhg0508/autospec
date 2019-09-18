@@ -1,0 +1,1100 @@
+From 93cabacab87d421e695dc8232e896772443f395c Mon Sep 17 00:00:00 2001
+From: fuyong <fuyong@neusoft.com>
+Date: Wed, 18 Sep 2019 17:53:44 +0800
+Subject: [PATCH puppet-ceph] puppet-ceph: Autospec creation for version 2.4.1
+
+---
+ .gitignore                                    |  14 +
+ 0001-Roll-up-TIS-patches.patch                | 148 ++++++++++
+ 0001-add-makefile.patch                       |  21 ++
+ 0002-Newton-rebase-fixes.patch                |  47 ++++
+ 0003-Ceph-Jewel-rebase.patch                  | 110 ++++++++
+ ...dd-OSD-support-for-persistent-naming.patch |  29 ++
+ ...e-puppetlabs-apt-as-ceph-requirement.patch |  25 ++
+ ...disk-prepare-invalid-data-disk-value.patch |  68 +++++
+ ...ecific-restart-command-for-Ceph-moni.patch |  35 +++
+ 0008-ceph-mimic-prepare-activate-osd.patch    |  64 +++++
+ ...ph-osd-disk-partition-for-nvme-disks.patch |  89 +++++++
+ 0010-wipe-unprepared-disks.patch              |  25 ++
+ Makefile                                      |   5 +
+ build_prepend                                 |   1 +
+ buildreq_add                                  |   2 +
+ buildreq_ban                                  |   2 +
+ excludes                                      |   2 +
+ install_append                                |   1 +
+ install_prepend                               |   2 +
+ make_check_command                            |   3 +
+ options.conf                                  |  58 ++++
+ pkgconfig_add                                 |   2 +
+ pkgconfig_ban                                 |   2 +
+ puppet-ceph.license                           |   1 +
+ puppet-ceph.spec                              | 252 ++++++++++++++++++
+ release                                       |   1 +
+ requires_add                                  |   7 +
+ requires_ban                                  |   2 +
+ series                                        |  11 +
+ testresults                                   |   5 +
+ upstream                                      |   1 +
+ 31 files changed, 1035 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 0001-Roll-up-TIS-patches.patch
+ create mode 100644 0001-add-makefile.patch
+ create mode 100644 0002-Newton-rebase-fixes.patch
+ create mode 100644 0003-Ceph-Jewel-rebase.patch
+ create mode 100644 0004-US92424-Add-OSD-support-for-persistent-naming.patch
+ create mode 100644 0005-Remove-puppetlabs-apt-as-ceph-requirement.patch
+ create mode 100644 0006-ceph-disk-prepare-invalid-data-disk-value.patch
+ create mode 100644 0007-Add-StarlingX-specific-restart-command-for-Ceph-moni.patch
+ create mode 100644 0008-ceph-mimic-prepare-activate-osd.patch
+ create mode 100644 0009-fix-ceph-osd-disk-partition-for-nvme-disks.patch
+ create mode 100644 0010-wipe-unprepared-disks.patch
+ create mode 100644 Makefile
+ create mode 100644 build_prepend
+ create mode 100644 buildreq_add
+ create mode 100644 buildreq_ban
+ create mode 100644 excludes
+ create mode 100644 install_append
+ create mode 100644 install_prepend
+ create mode 100644 make_check_command
+ create mode 100644 options.conf
+ create mode 100644 pkgconfig_add
+ create mode 100644 pkgconfig_ban
+ create mode 100644 puppet-ceph.license
+ create mode 100644 puppet-ceph.spec
+ create mode 100644 release
+ create mode 100644 requires_add
+ create mode 100644 requires_ban
+ create mode 100644 series
+ create mode 100644 testresults
+ create mode 100644 upstream
+
+diff --git a/0001-Roll-up-TIS-patches.patch b/0001-Roll-up-TIS-patches.patch
+new file mode 100644
+index 0000000..263cc3c
+--- /dev/null
++++ b/0001-Roll-up-TIS-patches.patch
+@@ -0,0 +1,148 @@
++From ff98c42f0e6ce22969e986933d0a60d73a281a1d Mon Sep 17 00:00:00 2001
++From: Don Penney <don.penney@windriver.com>
++Date: Tue, 10 Jan 2017 13:31:17 -0500
++Subject: [PATCH 1/5] Roll up TIS patches
++
++---
++ manifests/mon.pp | 14 +++++++++++---
++ manifests/osd.pp | 38 +++++++++++++++++++-------------------
++ manifests/rgw.pp |  7 +++++++
++ 3 files changed, 37 insertions(+), 22 deletions(-)
++
++diff --git a/manifests/mon.pp b/manifests/mon.pp
++index bc0298c..fa99df5 100644
++--- a/manifests/mon.pp
+++++ b/manifests/mon.pp
++@@ -65,6 +65,8 @@ define ceph::mon (
++   $authentication_type = 'cephx',
++   $key = undef,
++   $keyring  = undef,
+++  $fsid = undef,
+++  $service_ensure = 'running',
++   $exec_timeout = $::ceph::params::exec_timeout,
++   ) {
++ 
++@@ -154,6 +156,10 @@ test -e \$mon_data/done
++         }
++       }
++ 
+++      if $fsid {
+++        $fsid_option = "--fsid ${fsid}"
+++      }
+++
++       Ceph_config<||>
++       # prevent automatic creation of the client.admin key by ceph-create-keys
++       -> exec { "ceph-mon-${cluster_name}.client.admin.keyring-${id}":
++@@ -176,7 +182,8 @@ if [ ! -d \$mon_data ] ; then
++               --setuser ceph --setgroup ceph \
++               --mkfs \
++               --id ${id} \
++-              --keyring ${keyring_path} ; then
+++              --keyring ${keyring_path} \
+++              ${fsid_option} ; then
++             touch \$mon_data/done \$mon_data/${init} \$mon_data/keyring
++             chown -h ceph:ceph \$mon_data/done \$mon_data/${init} \$mon_data/keyring
++         else
++@@ -186,7 +193,8 @@ if [ ! -d \$mon_data ] ; then
++         if ceph-mon ${cluster_option} \
++               --mkfs \
++               --id ${id} \
++-              --keyring ${keyring_path} ; then
+++              --keyring ${keyring_path} \
+++              ${fsid_option} ; then
++             touch \$mon_data/done \$mon_data/${init} \$mon_data/keyring
++         else
++             rm -fr \$mon_data
++@@ -203,7 +211,7 @@ test -d  \$mon_data
++         timeout   => $exec_timeout,
++       }
++       -> service { $mon_service:
++-        ensure => running,
+++        ensure => $service_ensure,
++       }
++ 
++       # if the service is running before we setup the configs, notify service
++diff --git a/manifests/osd.pp b/manifests/osd.pp
++index d24b95e..9b8cd99 100644
++--- a/manifests/osd.pp
+++++ b/manifests/osd.pp
++@@ -52,6 +52,8 @@ define ceph::osd (
++   $ensure = present,
++   $journal = "''",
++   $cluster = undef,
+++  $cluster_uuid = undef,
+++  $uuid = undef,
++   $exec_timeout = $::ceph::params::exec_timeout,
++   $selinux_file_context = 'ceph_var_lib_t',
++   $fsid = $::ceph::profile::params::fsid,
++@@ -68,6 +70,14 @@ define ceph::osd (
++     }
++     $cluster_option = "--cluster ${cluster_name}"
++ 
+++    if $cluster_uuid {
+++      $cluster_uuid_option = "--cluster-uuid ${cluster_uuid}"
+++    }
+++
+++    if $uuid {
+++      $uuid_option = "--osd-uuid ${uuid}"
+++    }
+++
++     if $ensure == present {
++ 
++       $ceph_check_udev = "ceph-osd-check-udev-${name}"
++@@ -120,25 +130,15 @@ test -z $(ceph-disk list $(readlink -f ${data}) | egrep -o '[0-9a-f]{8}-([0-9a-f
++       Exec[$ceph_check_udev] -> Exec[$ceph_prepare]
++       # ceph-disk: prepare should be idempotent http://tracker.ceph.com/issues/7475
++       exec { $ceph_prepare:
++-        command   => "/bin/true # comment to satisfy puppet syntax requirements
++-set -ex
++-disk=$(readlink -f ${data})
++-if ! test -b \$disk ; then
++-    echo \$disk | egrep -e '^/dev' -q -v
++-    mkdir -p \$disk
++-    if getent passwd ceph >/dev/null 2>&1; then
++-        chown -h ceph:ceph \$disk
++-    fi
++-fi
++-ceph-disk prepare ${cluster_option} ${fsid_option} $(readlink -f ${data}) $(readlink -f ${journal})
++-udevadm settle
++-",
++-        unless    => "/bin/true # comment to satisfy puppet syntax requirements
++-set -ex
++-disk=$(readlink -f ${data})
++-ceph-disk list | egrep \" *(\${disk}1?|\${disk}p1?) .*ceph data, (prepared|active)\" ||
++-{ test -f \$disk/fsid && test -f \$disk/ceph_fsid && test -f \$disk/magic ;}
++-",
+++
+++        command   => "/usr/sbin/ceph-disk prepare ${cluster_option} ${cluster_uuid_option} ${uuid_option} --fs-type xfs --zap-disk ${data} ${journal}",
+++        # We don't want to erase the disk if:
+++        # 1. There is already ceph data on the disk for our cluster AND
+++        # 2. The uuid for the OSD we are configuring matches the uuid for the
+++        #    OSD on the disk. We don't want to attempt to re-use an OSD that
+++        #    had previously been deleted.
+++        unless    => "/usr/sbin/ceph-disk list | grep -v 'unknown cluster' | grep ' *${data}.*ceph data' | grep 'osd uuid ${uuid}'",
+++
++         logoutput => true,
++         timeout   => $exec_timeout,
++         tag       => 'prepare',
++diff --git a/manifests/rgw.pp b/manifests/rgw.pp
++index 2612785..ebc83ce 100644
++--- a/manifests/rgw.pp
+++++ b/manifests/rgw.pp
++@@ -185,6 +185,13 @@ define ceph::rgw (
++       provider => $::ceph::params::service_provider,
++     }
++   # Everything else that is supported by puppet-ceph should run systemd.
+++  } elsif $::service_provider == 'systemd' {
+++    Service {
+++      name     => "radosgw-${name}",
+++      start    => "systemctl start ceph-radosgw",
+++      stop     => "systemctl stop ceph-radosgw",
+++      status   => "systemctl status ceph-radosgw",
+++    }
++   } else {
++     Service {
++       name   => "ceph-radosgw@${name}",
++-- 
++2.7.4
++
+diff --git a/0001-add-makefile.patch b/0001-add-makefile.patch
+new file mode 100644
+index 0000000..c20b09c
+--- /dev/null
++++ b/0001-add-makefile.patch
+@@ -0,0 +1,21 @@
++From 6d2e758f33d450f62bc7566d5018f4f79a342950 Mon Sep 17 00:00:00 2001
++From: lgdfy <im.fuyong@gmail.com>
++Date: Wed, 11 Sep 2019 15:57:00 +0800
++Subject: [PATCH] add makefile
++
++---
++ Makefile | 2 ++
++ 1 file changed, 2 insertions(+)
++ create mode 100644 Makefile
++
++diff --git a/Makefile b/Makefile
++new file mode 100644
++index 0000000..cda58eb
++--- /dev/null
+++++ b/Makefile
++@@ -0,0 +1,2 @@
+++build:
+++	echo "no build"
++-- 
++2.23.0
++
+diff --git a/0002-Newton-rebase-fixes.patch b/0002-Newton-rebase-fixes.patch
+new file mode 100644
+index 0000000..bf626ea
+--- /dev/null
++++ b/0002-Newton-rebase-fixes.patch
+@@ -0,0 +1,47 @@
++From 570520c5197dd36c3e4a7956d5916426fb75856a Mon Sep 17 00:00:00 2001
++From: Don Penney <don.penney@windriver.com>
++Date: Tue, 7 Feb 2017 15:49:02 -0500
++Subject: [PATCH] Newton rebase fixes
++
++---
++ manifests/mon.pp | 9 ++++++---
++ manifests/osd.pp | 2 +-
++ 2 files changed, 7 insertions(+), 4 deletions(-)
++
++diff --git a/manifests/mon.pp b/manifests/mon.pp
++index fa99df5..b3458d6 100644
++--- a/manifests/mon.pp
+++++ b/manifests/mon.pp
++@@ -99,10 +99,13 @@ define ceph::mon (
++       }
++     # Everything else that is supported by puppet-ceph should run systemd.
++     } else {
++-      $init = 'systemd'
+++      $init = 'sysvinit'
++       Service {
++-        name   => "ceph-mon@${id}",
++-        enable => $mon_enable,
+++        name     => "ceph-mon-${id}",
+++        provider => $::ceph::params::service_provider,
+++        start    => "service ceph start mon.${id}",
+++        stop     => "service ceph stop mon.${id}",
+++        status   => "service ceph status mon.${id}",
++       }
++     }
++ 
++diff --git a/manifests/osd.pp b/manifests/osd.pp
++index 9b8cd99..2187361 100644
++--- a/manifests/osd.pp
+++++ b/manifests/osd.pp
++@@ -56,7 +56,7 @@ define ceph::osd (
++   $uuid = undef,
++   $exec_timeout = $::ceph::params::exec_timeout,
++   $selinux_file_context = 'ceph_var_lib_t',
++-  $fsid = $::ceph::profile::params::fsid,
+++  $fsid = undef,
++   ) {
++ 
++     include ::ceph::params
++-- 
++2.7.4
++
+diff --git a/0003-Ceph-Jewel-rebase.patch b/0003-Ceph-Jewel-rebase.patch
+new file mode 100644
+index 0000000..d1385ae
+--- /dev/null
++++ b/0003-Ceph-Jewel-rebase.patch
+@@ -0,0 +1,110 @@
++From c9a5520620d313c08e7f751f3469ec5f4c220486 Mon Sep 17 00:00:00 2001
++From: Daniel Badea <daniel.badea@windriver.com>
++Date: Thu, 23 Mar 2017 08:04:31 +0000
++Subject: [PATCH] ceph jewel rebase
++
++---
++ manifests/mon.pp          |  1 +
++ manifests/rgw.pp          | 33 +++++++++++++++++++++++++--------
++ manifests/rgw/keystone.pp |  6 +++---
++ 3 files changed, 29 insertions(+), 11 deletions(-)
++
++diff --git a/manifests/mon.pp b/manifests/mon.pp
++index b3458d6..17cb925 100644
++--- a/manifests/mon.pp
+++++ b/manifests/mon.pp
++@@ -106,6 +106,7 @@ define ceph::mon (
++         start    => "service ceph start mon.${id}",
++         stop     => "service ceph stop mon.${id}",
++         status   => "service ceph status mon.${id}",
+++        enable   => $mon_enable,
++       }
++     }
++ 
++diff --git a/manifests/rgw.pp b/manifests/rgw.pp
++index ebc83ce..56fb4a8 100644
++--- a/manifests/rgw.pp
+++++ b/manifests/rgw.pp
++@@ -193,23 +193,40 @@ define ceph::rgw (
++       status   => "systemctl status ceph-radosgw",
++     }
++   } else {
+++    if $rgw_enable {
+++      file { "${rgw_data}/sysvinit":
+++        ensure => present,
+++        before => Service["radosgw-${name}"],
+++      }
+++    }
+++
++     Service {
++-      name   => "ceph-radosgw@${name}",
++-      enable => $rgw_enable,
+++      name     => "radosgw-${name}",
+++      start    => 'service radosgw start',
+++      stop     => 'service radosgw stop',
+++      status   => 'service radosgw status',
+++      provider => $::ceph::params::service_provider,
++     }
++   }
++ 
++-  service { $rgw_service:
+++  #for RHEL/CentOS7, systemctl needs to reload to pickup the ceph-radosgw init file
+++  if (($::operatingsystem == 'RedHat' or $::operatingsystem == 'CentOS') and (versioncmp($::operatingsystemmajrelease, '7') >= 0))
+++  {
+++    exec { 'systemctl-reload-from-rgw': #needed for the new init file
+++      command => '/usr/bin/systemctl daemon-reload',
+++    }
+++  }
+++  service { "radosgw-${name}":
++     ensure => $rgw_ensure,
++-    tag    => ['ceph-radosgw']
+++    tag    => ['radosgw']
++   }
++ 
++-  Ceph_config<||> ~> Service<| tag == 'ceph-radosgw' |>
+++  Ceph_config<||> -> Service["radosgw-${name}"]
++   Package<| tag == 'ceph' |> -> File['/var/lib/ceph/radosgw']
++   Package<| tag == 'ceph' |> -> File[$log_file]
++   File['/var/lib/ceph/radosgw']
++   -> File[$rgw_data]
++-  -> Service<| tag == 'ceph-radosgw' |>
++-  File[$log_file] -> Service<| tag == 'ceph-radosgw' |>
++-  Ceph::Pool<||> -> Service<| tag == 'ceph-radosgw' |>
+++  -> Service["radosgw-${name}"]
+++  File[$log_file] -> Service["radosgw-${name}"]
+++  Ceph::Pool<||> -> Service["radosgw-${name}"]
++ }
++diff --git a/manifests/rgw/keystone.pp b/manifests/rgw/keystone.pp
++index 8351177..c371fd0 100644
++--- a/manifests/rgw/keystone.pp
+++++ b/manifests/rgw/keystone.pp
++@@ -148,7 +148,7 @@ define ceph::rgw::keystone (
++     exec { "${name}-nssdb-ca":
++       command => "/bin/true  # comment to satisfy puppet syntax requirements
++ set -ex
++-wget --no-check-certificate ${rgw_keystone_url}/v2.0/certificates/ca -O - |
+++wget --no-check-certificate ${rgw_keystone_url}/${rgw_keystone_version}/certificates/ca -O - |
++   openssl x509 -pubkey | certutil -A -d ${nss_db_path} -n ca -t \"TCu,Cu,Tuw\"
++ ",
++       unless  => "/bin/true  # comment to satisfy puppet syntax requirements
++@@ -161,7 +161,7 @@ certutil -d ${nss_db_path} -L | grep ^ca
++     exec { "${name}-nssdb-signing":
++       command => "/bin/true  # comment to satisfy puppet syntax requirements
++ set -ex
++-wget --no-check-certificate ${rgw_keystone_url}/v2.0/certificates/signing -O - |
+++wget --no-check-certificate ${rgw_keystone_url}/${rgw_keystone_version}/certificates/signing -O - |
++   openssl x509 -pubkey | certutil -A -d ${nss_db_path} -n signing_cert -t \"P,P,P\"
++ ",
++       unless  => "/bin/true  # comment to satisfy puppet syntax requirements
++@@ -176,7 +176,7 @@ certutil -d ${nss_db_path} -L | grep ^signing_cert
++     -> File[$nss_db_path]
++     -> Exec["${name}-nssdb-ca"]
++     -> Exec["${name}-nssdb-signing"]
++-    ~> Service<| tag == 'ceph-radosgw' |>
+++    ~> Service<| tag == 'radosgw' |>
++   } else {
++     ceph_config {
++       "client.${name}/nss_db_path":                      ensure => absent;
++-- 
++2.7.4
++
+diff --git a/0004-US92424-Add-OSD-support-for-persistent-naming.patch b/0004-US92424-Add-OSD-support-for-persistent-naming.patch
+new file mode 100644
+index 0000000..1947922
+--- /dev/null
++++ b/0004-US92424-Add-OSD-support-for-persistent-naming.patch
+@@ -0,0 +1,29 @@
++From 7a4c325194885dc43fc87f7094873e0067801652 Mon Sep 17 00:00:00 2001
++From: Robert Church <robert.church@windriver.com>
++Date: Thu, 13 Apr 2017 20:31:21 -0500
++Subject: [PATCH] US92424: Add OSD support for persistent naming
++
++This allows the manifest to provide udev generated /dev/disk/by-* links
++to configure the OSDs without requiring any additional changes. The
++'readlink -f' will produce the currently enumerated device node
++associated with udev link.
++---
++ manifests/osd.pp | 2 +-
++ 1 file changed, 1 insertion(+), 1 deletion(-)
++
++diff --git a/manifests/osd.pp b/manifests/osd.pp
++index 2187361..d9cf5b1 100644
++--- a/manifests/osd.pp
+++++ b/manifests/osd.pp
++@@ -61,7 +61,7 @@ define ceph::osd (
++ 
++     include ::ceph::params
++ 
++-    $data = $name
+++    $data = generate('/bin/bash','-c',"/bin/readlink -f ${name}")
++ 
++     if $cluster {
++       $cluster_name = $cluster
++-- 
++2.7.4
++
+diff --git a/0005-Remove-puppetlabs-apt-as-ceph-requirement.patch b/0005-Remove-puppetlabs-apt-as-ceph-requirement.patch
+new file mode 100644
+index 0000000..2d202ee
+--- /dev/null
++++ b/0005-Remove-puppetlabs-apt-as-ceph-requirement.patch
+@@ -0,0 +1,25 @@
++From 8ab55c717d5088d8c75b465f5b9196036e0968ce Mon Sep 17 00:00:00 2001
++From: Al Bailey <Al.Bailey@windriver.com>
++Date: Wed, 3 Jan 2018 10:39:37 -0600
++Subject: [PATCH] Remove puppetlabs-apt as ceph requirement
++
++We will never install apt or puppet-apt, so this requirement cannot be fulfilled
++---
++ metadata.json | 1 -
++ 1 file changed, 1 deletion(-)
++
++diff --git a/metadata.json b/metadata.json
++index 14d2f37..27b78e3 100644
++--- a/metadata.json
+++++ b/metadata.json
++@@ -8,7 +8,6 @@
++   "project_page": "https://launchpad.net/puppet-ceph",
++   "issues_url": "https://bugs.launchpad.net/puppet-ceph",
++   "dependencies": [
++-    {"name":"puppetlabs/apt","version_requirement":">=2.0.0 <3.0.0"},
++     {"name":"puppetlabs/apache","version_requirement":">=1.4.1 <2.0.0"},
++     {"name":"puppetlabs/concat","version_requirement":">=1.2.1 <3.0.0"},
++     {"name":"puppetlabs/inifile","version_requirement":">=1.0.0 <2.0.0"},
++-- 
++2.7.4
++
+diff --git a/0006-ceph-disk-prepare-invalid-data-disk-value.patch b/0006-ceph-disk-prepare-invalid-data-disk-value.patch
+new file mode 100644
+index 0000000..401172e
+--- /dev/null
++++ b/0006-ceph-disk-prepare-invalid-data-disk-value.patch
+@@ -0,0 +1,68 @@
++From 5d8f3dd5d18d611151b4658c5c876e8a3ad8fe51 Mon Sep 17 00:00:00 2001
++From: Daniel Badea <daniel.badea@windriver.com>
++Date: Wed, 31 Oct 2018 16:28:45 +0000
++Subject: [PATCH] ceph-disk prepare invalid data disk value
++
++ceph-disk prepare data OSD parameter contains a new line causing
++puppet manifest to fail:
++
++1. $data = generate('/bin/bash','-c',"/bin/readlink -f ${name}")
++
++   is expanded together with a new line in:
++
++   exec { $ceph_prepare:
++     command   => "/usr/sbin/ceph-disk prepare ${cluster_option}
++                    ${cluster_uuid_option} ${uuid_option}
++                    --fs-type xfs --zap-disk ${data} ${journal}"
++
++   just before ${journal} is expanded. Puppet reports:
++
++     sh: line 1: : command not found
++
++   when trying to run '' (default journal value).
++
++2. 'readlink' should be called when running ceph-disk prepare
++   command, not when the puppet resource is defined. Let
++   exec's shell call readlink instead of using puppet's
++   generate() . See also:
++
++     https://github.com/openstack/puppet-ceph/commit/ff2b2e689846dd3d980c7c706c591e8cfb8f33a9
++
++Added --verbose and --log-stdout options to log commands executed
++by 'ceph-disk prepare' and identify where it fails.
++---
++ manifests/osd.pp | 6 +++---
++ 1 file changed, 3 insertions(+), 3 deletions(-)
++
++diff --git a/manifests/osd.pp b/manifests/osd.pp
++index d9cf5b1..889d28a 100644
++--- a/manifests/osd.pp
+++++ b/manifests/osd.pp
++@@ -61,7 +61,7 @@ define ceph::osd (
++ 
++     include ::ceph::params
++ 
++-    $data = generate('/bin/bash','-c',"/bin/readlink -f ${name}")
+++    $data = $name
++ 
++     if $cluster {
++       $cluster_name = $cluster
++@@ -131,13 +131,13 @@ test -z $(ceph-disk list $(readlink -f ${data}) | egrep -o '[0-9a-f]{8}-([0-9a-f
++       # ceph-disk: prepare should be idempotent http://tracker.ceph.com/issues/7475
++       exec { $ceph_prepare:
++ 
++-        command   => "/usr/sbin/ceph-disk prepare ${cluster_option} ${cluster_uuid_option} ${uuid_option} --fs-type xfs --zap-disk ${data} ${journal}",
+++        command   => "/usr/sbin/ceph-disk --verbose --log-stdout prepare ${cluster_option} ${cluster_uuid_option} ${uuid_option} --fs-type xfs --zap-disk $(readlink -f ${data}) $(readlink -f ${journal})",
++         # We don't want to erase the disk if:
++         # 1. There is already ceph data on the disk for our cluster AND
++         # 2. The uuid for the OSD we are configuring matches the uuid for the
++         #    OSD on the disk. We don't want to attempt to re-use an OSD that
++         #    had previously been deleted.
++-        unless    => "/usr/sbin/ceph-disk list | grep -v 'unknown cluster' | grep ' *${data}.*ceph data' | grep 'osd uuid ${uuid}'",
+++        unless    => "/usr/sbin/ceph-disk list | grep -v 'unknown cluster' | grep \" *$(readlink -f ${data}).*ceph data\" | grep 'osd uuid ${uuid}'",
++ 
++         logoutput => true,
++         timeout   => $exec_timeout,
++-- 
++2.16.5
++
+diff --git a/0007-Add-StarlingX-specific-restart-command-for-Ceph-moni.patch b/0007-Add-StarlingX-specific-restart-command-for-Ceph-moni.patch
+new file mode 100644
+index 0000000..1c3926f
+--- /dev/null
++++ b/0007-Add-StarlingX-specific-restart-command-for-Ceph-moni.patch
+@@ -0,0 +1,35 @@
++From a364f37cacab78cdaad5ebd23ab24cf400a3fa40 Mon Sep 17 00:00:00 2001
++From: Ovidiu Poncea <ovidiu.poncea@windriver.com>
++Date: Thu, 20 Dec 2018 07:18:55 -0500
++Subject: [PATCH] Add StarlingX specific restart command for Ceph monitors
++
++Since we don't use systemd to manage Ceph and we have pmon monitoring we
++have to make sure that:
++1. Restarting is properly handled as "systemctl restart" will return error
++   and manifest will fail;
++2. Pmon does not check ceph-mon status during restart. Otherwise we risk
++   getting into a race condition between the puppet restart and pmon
++   detecting that ceph is down and trying a restart.
++
++Both are resolved when using /etc/init.d/ceph-init-wrapper restart
++
++Signed-off-by: Ovidiu Poncea <Ovidiu.Poncea@windriver.com>
++---
++ manifests/mon.pp | 1 +
++ 1 file changed, 1 insertion(+)
++
++diff --git a/manifests/mon.pp b/manifests/mon.pp
++index 17cb925..62d5059 100644
++--- a/manifests/mon.pp
+++++ b/manifests/mon.pp
++@@ -106,6 +106,7 @@ define ceph::mon (
++         start    => "service ceph start mon.${id}",
++         stop     => "service ceph stop mon.${id}",
++         status   => "service ceph status mon.${id}",
+++        restart  => "/etc/init.d/ceph-init-wrapper restart mon.${id}",
++         enable   => $mon_enable,
++       }
++     }
++-- 
++1.8.3.1
++
+diff --git a/0008-ceph-mimic-prepare-activate-osd.patch b/0008-ceph-mimic-prepare-activate-osd.patch
+new file mode 100644
+index 0000000..6ca302f
+--- /dev/null
++++ b/0008-ceph-mimic-prepare-activate-osd.patch
+@@ -0,0 +1,64 @@
++From 4c2e2a196cb5a6890e35098c8499688fc1c26f5c Mon Sep 17 00:00:00 2001
++From: Daniel Badea <daniel.badea@windriver.com>
++Date: Thu, 4 Apr 2019 16:52:12 +0000
++Subject: [PATCH] ceph-mimic-prepare-activate-osd
++
++Prepare and activate disk using filestore
++and given OSD id.
++---
++ manifests/osd.pp | 18 ++++++++++++++++--
++ 1 file changed, 16 insertions(+), 2 deletions(-)
++
++diff --git a/manifests/osd.pp b/manifests/osd.pp
++index 889d28a..c51a445 100644
++--- a/manifests/osd.pp
+++++ b/manifests/osd.pp
++@@ -54,6 +54,7 @@ define ceph::osd (
++   $cluster = undef,
++   $cluster_uuid = undef,
++   $uuid = undef,
+++  $osdid = undef,
++   $exec_timeout = $::ceph::params::exec_timeout,
++   $selinux_file_context = 'ceph_var_lib_t',
++   $fsid = undef,
++@@ -78,6 +79,10 @@ define ceph::osd (
++       $uuid_option = "--osd-uuid ${uuid}"
++     }
++ 
+++    if $osdid {
+++      $osdid_option = "--osd-id ${osdid}"
+++    }
+++
++     if $ensure == present {
++ 
++       $ceph_check_udev = "ceph-osd-check-udev-${name}"
++@@ -131,7 +136,16 @@ test -z $(ceph-disk list $(readlink -f ${data}) | egrep -o '[0-9a-f]{8}-([0-9a-f
++       # ceph-disk: prepare should be idempotent http://tracker.ceph.com/issues/7475
++       exec { $ceph_prepare:
++ 
++-        command   => "/usr/sbin/ceph-disk --verbose --log-stdout prepare ${cluster_option} ${cluster_uuid_option} ${uuid_option} --fs-type xfs --zap-disk $(readlink -f ${data}) $(readlink -f ${journal})",
+++        command   => "/bin/true # comment to satisfy puppet syntax requirements
+++set -ex
+++ceph-disk --verbose --log-stdout prepare --filestore  ${cluster_uuid_option} ${uuid_option} ${osdid_option} --fs-type xfs --zap-disk $(readlink -f ${data}) $(readlink -f ${journal})
+++mkdir -p /var/lib/ceph/osd/ceph-${osdid}
+++ceph auth del osd.${osdid} || true
+++mount $(readlink -f ${data})1 /var/lib/ceph/osd/ceph-${osdid}
+++ceph-osd --id ${osdid} --mkfs --mkkey --mkjournal
+++ceph auth add osd.${osdid} osd 'allow *' mon 'allow rwx' -i /var/lib/ceph/osd/ceph-${osdid}/keyring
+++umount /var/lib/ceph/osd/ceph-${osdid}
+++",
++         # We don't want to erase the disk if:
++         # 1. There is already ceph data on the disk for our cluster AND
++         # 2. The uuid for the OSD we are configuring matches the uuid for the
++@@ -171,7 +185,7 @@ if ! test -b \$disk ; then
++ fi
++ # activate happens via udev when using the entire device
++ if ! test -b \$disk || ! test -b \${disk}1 || ! test -b \${disk}p1 ; then
++-  ceph-disk activate \$disk || true
+++  ceph-disk activate \${disk}1 || true
++ fi
++ if test -f ${udev_rules_file}.disabled && ( test -b \${disk}1 || test -b \${disk}p1 ); then
++   ceph-disk activate \${disk}1 || true
++-- 
++1.8.3.1
++
+diff --git a/0009-fix-ceph-osd-disk-partition-for-nvme-disks.patch b/0009-fix-ceph-osd-disk-partition-for-nvme-disks.patch
+new file mode 100644
+index 0000000..6dfed20
+--- /dev/null
++++ b/0009-fix-ceph-osd-disk-partition-for-nvme-disks.patch
+@@ -0,0 +1,89 @@
++From b0dd34d2d580c817f9ef6eb62927ba63bebe73c3 Mon Sep 17 00:00:00 2001
++From: Daniel Badea <daniel.badea@windriver.com>
++Date: Thu, 25 Apr 2019 15:37:53 +0000
++Subject: [PATCH] fix ceph osd disk partition for nvme disks
++
++---
++ manifests/osd.pp | 38 +++++++++++++++++++++++++++++++-------
++ 1 file changed, 31 insertions(+), 7 deletions(-)
++
++diff --git a/manifests/osd.pp b/manifests/osd.pp
++index c51a445..5bd30c5 100644
++--- a/manifests/osd.pp
+++++ b/manifests/osd.pp
++@@ -138,10 +138,17 @@ test -z $(ceph-disk list $(readlink -f ${data}) | egrep -o '[0-9a-f]{8}-([0-9a-f
++ 
++         command   => "/bin/true # comment to satisfy puppet syntax requirements
++ set -ex
++-ceph-disk --verbose --log-stdout prepare --filestore  ${cluster_uuid_option} ${uuid_option} ${osdid_option} --fs-type xfs --zap-disk $(readlink -f ${data}) $(readlink -f ${journal})
+++disk=$(readlink -f ${data})
+++ceph-disk --verbose --log-stdout prepare --filestore  ${cluster_uuid_option} ${uuid_option} ${osdid_option} --fs-type xfs --zap-disk \${disk} $(readlink -f ${journal})
++ mkdir -p /var/lib/ceph/osd/ceph-${osdid}
++ ceph auth del osd.${osdid} || true
++-mount $(readlink -f ${data})1 /var/lib/ceph/osd/ceph-${osdid}
+++part=\${disk}
+++if [[ \$part == *nvme* ]]; then
+++   part=\${part}p1
+++else 
+++   part=\${part}1
+++fi
+++mount $(readlink -f \${part}) /var/lib/ceph/osd/ceph-${osdid}
++ ceph-osd --id ${osdid} --mkfs --mkkey --mkjournal
++ ceph auth add osd.${osdid} osd 'allow *' mon 'allow rwx' -i /var/lib/ceph/osd/ceph-${osdid}/keyring
++ umount /var/lib/ceph/osd/ceph-${osdid}
++@@ -183,12 +190,17 @@ if ! test -b \$disk ; then
++         chown -h ceph:ceph \$disk
++     fi
++ fi
++-# activate happens via udev when using the entire device
+++part=\${disk}
+++if [[ \${part} == *nvme* ]]; then
+++   part=\${part}p1
+++else 
+++   part=\${part}1
+++fi
++ if ! test -b \$disk || ! test -b \${disk}1 || ! test -b \${disk}p1 ; then
++-  ceph-disk activate \${disk}1 || true
+++  ceph-disk activate \${part} || true
++ fi
++ if test -f ${udev_rules_file}.disabled && ( test -b \${disk}1 || test -b \${disk}p1 ); then
++-  ceph-disk activate \${disk}1 || true
+++  ceph-disk activate \${part} || true
++ fi
++ ",
++         unless    => "/bin/true # comment to satisfy puppet syntax requirements
++@@ -206,8 +218,14 @@ ls -ld /var/lib/ceph/osd/${cluster_name}-* | grep \" $(readlink -f ${data})\$\"
++         command   => "/bin/true # comment to satisfy puppet syntax requirements
++ set -ex
++ disk=$(readlink -f ${data})
+++part=\${disk}
+++if [[ \${part} == *nvme* ]]; then
+++   part=\${part}p1
+++else 
+++   part=\${part}1
+++fi
++ if [ -z \"\$id\" ] ; then
++-  id=$(ceph-disk list | sed -nEe \"s:^ *\${disk}1? .*(ceph data|mounted on).*osd\\.([0-9]+).*:\\2:p\")
+++  id=$(ceph-disk list | sed -nEe \"s:^ *\${part}? .*(ceph data|mounted on).*osd\\.([0-9]+).*:\\2:p\")
++ fi
++ if [ -z \"\$id\" ] ; then
++   id=$(ls -ld /var/lib/ceph/osd/${cluster_name}-* | sed -nEe \"s:.*/${cluster_name}-([0-9]+) *-> *\${disk}\$:\\1:p\" || true)
++@@ -227,8 +245,14 @@ fi
++         unless    => "/bin/true # comment to satisfy puppet syntax requirements
++ set -ex
++ disk=$(readlink -f ${data})
+++part=${disk}
+++if [[ \$part == *nvme* ]]; then
+++   part=\${part}p1
+++else 
+++   part=\${part}1
+++fi
++ if [ -z \"\$id\" ] ; then
++-  id=$(ceph-disk list | sed -nEe \"s:^ *\${disk}1? .*(ceph data|mounted on).*osd\\.([0-9]+).*:\\2:p\")
+++  id=$(ceph-disk list | sed -nEe \"s:^ *\${part}? .*(ceph data|mounted on).*osd\\.([0-9]+).*:\\2:p\")
++ fi
++ if [ -z \"\$id\" ] ; then
++   id=$(ls -ld /var/lib/ceph/osd/${cluster_name}-* | sed -nEe \"s:.*/${cluster_name}-([0-9]+) *-> *\${disk}\$:\\1:p\" || true)
++-- 
++1.8.3.1
++
+diff --git a/0010-wipe-unprepared-disks.patch b/0010-wipe-unprepared-disks.patch
+new file mode 100644
+index 0000000..fcebed8
+--- /dev/null
++++ b/0010-wipe-unprepared-disks.patch
+@@ -0,0 +1,25 @@
++From 828af5dec53192207637d15397887e058d6ea0fb Mon Sep 17 00:00:00 2001
++From: Daniel Badea <daniel.badea@windriver.com>
++Date: Fri, 26 Apr 2019 00:22:12 +0000
++Subject: [PATCH] wipe unprepared disks
++
++---
++ manifests/osd.pp | 2 +-
++ 1 file changed, 1 insertion(+), 1 deletion(-)
++
++diff --git a/manifests/osd.pp b/manifests/osd.pp
++index 5bd30c5..ab65924 100644
++--- a/manifests/osd.pp
+++++ b/manifests/osd.pp
++@@ -158,7 +158,7 @@ umount /var/lib/ceph/osd/ceph-${osdid}
++         # 2. The uuid for the OSD we are configuring matches the uuid for the
++         #    OSD on the disk. We don't want to attempt to re-use an OSD that
++         #    had previously been deleted.
++-        unless    => "/usr/sbin/ceph-disk list | grep -v 'unknown cluster' | grep \" *$(readlink -f ${data}).*ceph data\" | grep 'osd uuid ${uuid}'",
+++        unless    => "/usr/sbin/ceph-disk list | grep -v 'unknown cluster' | grep \" *$(readlink -f ${data}).*ceph data\" | grep -v unprepared | grep 'osd uuid ${uuid}'",
++ 
++         logoutput => true,
++         timeout   => $exec_timeout,
++-- 
++1.8.3.1
++
+diff --git a/build_prepend b/build_prepend
+new file mode 100644
+index 0000000..bb87927
+--- /dev/null
++++ b/build_prepend
+@@ -0,0 +1 @@
++export PBR_VERSION=%{version}
+diff --git a/install_append b/install_append
+new file mode 100644
+index 0000000..e6bd7c0
+--- /dev/null
++++ b/install_append
+@@ -0,0 +1 @@
++cp -rp * %{buildroot}%{_datadir}/openstack-puppet/modules/ceph/
+diff --git a/install_prepend b/install_prepend
+new file mode 100644
+index 0000000..4db7428
+--- /dev/null
++++ b/install_prepend
+@@ -0,0 +1,2 @@
++export PBR_VERSION=%{version}
++install -d -m 0755 %{buildroot}%{_datadir}/openstack-puppet/modules/ceph
+diff --git a/make_check_command b/make_check_command
+new file mode 100644
+index 0000000..f4da339
+--- /dev/null
++++ b/make_check_command
+@@ -0,0 +1,3 @@
++# This file contains the output files that need %exclude. Full path
++# names, one per line.
++echo "dont need check"
+diff --git a/options.conf b/options.conf
+new file mode 100644
+index 0000000..c3e68a0
+--- /dev/null
++++ b/options.conf
+@@ -0,0 +1,58 @@
++name = puppet-ceph
++url = file:///home/clr/stx-tar/puppet-ceph-2.4.1.tar.gz
++use_lto = true
++verify_required = false
+diff --git a/puppet-ceph.license b/puppet-ceph.license
+new file mode 100644
+index 0000000..4d44686
+--- /dev/null
++++ b/puppet-ceph.license
+@@ -0,0 +1 @@
++ASL-2.0
+diff --git a/puppet-ceph.spec b/puppet-ceph.spec
+new file mode 100644
+index 0000000..77fb6a7
+--- /dev/null
++++ b/puppet-ceph.spec
+@@ -0,0 +1,252 @@
++#
++# This file is auto-generated. DO NOT EDIT
++# Generated by: autospec.py
++#
++Name     : puppet-ceph
++License  : Apache-2.0
++Requires: puppet-ceph-data = %{version}-%{release}
++Requires: puppet-ceph-python = %{version}-%{release}
++Requires: puppet-ceph-python3 = %{version}-%{release}
++Requires: puppet >= 2.7.0
++Requires: puppet-apache
++Requires: puppet-concat
++Requires: puppet-inifile
++Requires: puppet-stdlib
++BuildRequires : buildreq-distutils3
++BuildRequires : pbr
++Patch1: 0001-add-makefile.patch
++Patch2: 0001-Roll-up-TIS-patches.patch
++Patch3: 0002-Newton-rebase-fixes.patch
++Patch4: 0003-Ceph-Jewel-rebase.patch
++Patch5: 0004-US92424-Add-OSD-support-for-persistent-naming.patch
++Patch6: 0005-Remove-puppetlabs-apt-as-ceph-requirement.patch
++Patch7: 0006-ceph-disk-prepare-invalid-data-disk-value.patch
++Patch8: 0007-Add-StarlingX-specific-restart-command-for-Ceph-moni.patch
++Patch9: 0008-ceph-mimic-prepare-activate-osd.patch
++Patch10: 0009-fix-ceph-osd-disk-partition-for-nvme-disks.patch
++Patch11: 0010-wipe-unprepared-disks.patch
++
++%description
++Team and repository tags
++========================
++[![Team and repository tags](http://governance.openstack.org/badges/puppet-ceph.svg)](http://governance.openstack.org/reference/tags/index.html)
++
++%package data
++
++
++
++%package python
++Requires: puppet-ceph-python3 = %{version}-%{release}
++
++%description python
++python components for the puppet-ceph package.
++
++
++%package python3
++Requires: python3-core
++
++%description python3
++python3 components for the puppet-ceph package.
++
++
++%prep
++%patch1 -p1
++%patch2 -p1
++%patch3 -p1
++%patch4 -p1
++%patch5 -p1
++%patch6 -p1
++%patch7 -p1
++%patch8 -p1
++%patch9 -p1
++%patch10 -p1
++%patch11 -p1
++
++%build
++## build_prepend content
++export PBR_VERSION=%{version}
++## build_prepend end
++export MAKEFLAGS=%{?_smp_mflags}
++python3 setup.py build
++
++%check
++echo "dont need check"
++%install
++export MAKEFLAGS=%{?_smp_mflags}
++rm -rf %{buildroot}
++## install_prepend content
++export PBR_VERSION=%{version}
++install -d -m 0755 %{buildroot}%{_datadir}/openstack-puppet/modules/ceph
++## install_prepend end
++python3 -tt setup.py build  install --root=%{buildroot}
++echo ----[ mark ]----
++cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
++echo ----[ mark ]----
++## install_append content
++cp -rp * %{buildroot}%{_datadir}/openstack-puppet/modules/ceph/
++## install_append end
++
++%files
++%defattr(-,root,root,-)
++
++%files data
++%defattr(-,root,root,-)
++/usr/share/openstack-puppet/modules/ceph/Gemfile
++/usr/share/openstack-puppet/modules/ceph/LICENSE
++/usr/share/openstack-puppet/modules/ceph/Makefile
++/usr/share/openstack-puppet/modules/ceph/README.md
++/usr/share/openstack-puppet/modules/ceph/Rakefile
++/usr/share/openstack-puppet/modules/ceph/USECASES.md
++/usr/share/openstack-puppet/modules/ceph/bindep.txt
++/usr/share/openstack-puppet/modules/ceph/checksums.json
++/usr/share/openstack-puppet/modules/ceph/examples/common.yaml
++/usr/share/openstack-puppet/modules/ceph/examples/hiera.yaml
++/usr/share/openstack-puppet/modules/ceph/examples/nodes/client.yaml
++/usr/share/openstack-puppet/modules/ceph/examples/nodes/first.yaml
++/usr/share/openstack-puppet/modules/ceph/examples/nodes/second.yaml
++/usr/share/openstack-puppet/modules/ceph/lib/puppet/provider/ceph_config/ini_setting.rb
++/usr/share/openstack-puppet/modules/ceph/lib/puppet/type/ceph_config.rb
++/usr/share/openstack-puppet/modules/ceph/manifests/conf.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/fs.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/init.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/key.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/keys.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/mds.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/mgr.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/mirror.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/mon.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/mons.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/osd.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/osds.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/params.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/pool.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/profile/base.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/profile/client.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/profile/fs.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/profile/mds.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/profile/mgr.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/profile/mirror.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/profile/mon.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/profile/osd.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/profile/params.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/profile/rgw.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/repo.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/rgw.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/rgw/apache.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/rgw/apache_fastcgi.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/rgw/apache_proxy_fcgi.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/rgw/civetweb.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/rgw/keystone.pp
++/usr/share/openstack-puppet/modules/ceph/manifests/rgw/keystone/auth.pp
++/usr/share/openstack-puppet/modules/ceph/metadata.json
++/usr/share/openstack-puppet/modules/ceph/puppet_ceph.egg-info/PKG-INFO
++/usr/share/openstack-puppet/modules/ceph/puppet_ceph.egg-info/SOURCES.txt
++/usr/share/openstack-puppet/modules/ceph/puppet_ceph.egg-info/dependency_links.txt
++/usr/share/openstack-puppet/modules/ceph/puppet_ceph.egg-info/not-zip-safe
++/usr/share/openstack-puppet/modules/ceph/puppet_ceph.egg-info/top_level.txt
++/usr/share/openstack-puppet/modules/ceph/releasenotes/notes/add-ceph-mgr-support-d2a5e9104021f81a.yaml
++/usr/share/openstack-puppet/modules/ceph/releasenotes/notes/allow_changing_pidmax_on_osd_nodes-d1a98328f666a895.yaml
++/usr/share/openstack-puppet/modules/ceph/releasenotes/notes/centos-mirror-71fd6fb3f5916d5d.yaml
++/usr/share/openstack-puppet/modules/ceph/releasenotes/notes/first_release-a7268e1c8959eca3.yaml
++/usr/share/openstack-puppet/modules/ceph/releasenotes/notes/jewel-218ac52343f4e165.yaml
++/usr/share/openstack-puppet/modules/ceph/releasenotes/notes/jewel-a3169eb769be4e48.yaml
++/usr/share/openstack-puppet/modules/ceph/releasenotes/notes/mds-support-improvements-e30c7c4fdb838439.yaml
++/usr/share/openstack-puppet/modules/ceph/releasenotes/notes/osd-check-fsid-mismatch-a5cb615be1b4e40f.yaml
++/usr/share/openstack-puppet/modules/ceph/releasenotes/notes/osd-check-non-existent-block-device-6f827dba142a3aa5.yaml
++/usr/share/openstack-puppet/modules/ceph/releasenotes/notes/osd-level-5ebc22c7377e0300.yaml
++/usr/share/openstack-puppet/modules/ceph/releasenotes/notes/osd_define_explicit_conditional-ceaadb2e4ea34595.yaml
++/usr/share/openstack-puppet/modules/ceph/releasenotes/notes/radosgw-keystone-v3-93b3895e24b5f913.yaml
++/usr/share/openstack-puppet/modules/ceph/releasenotes/notes/rbd-mirror-e8c13699bb0e71d8.yaml
++/usr/share/openstack-puppet/modules/ceph/releasenotes/notes/remove-rgw-syslog-2a6909362b702b15.yaml
++/usr/share/openstack-puppet/modules/ceph/releasenotes/notes/service-management-9483b9cfc067c736.yaml
++/usr/share/openstack-puppet/modules/ceph/releasenotes/notes/stdlib-min-requirements-9ca51e3ad52aa3f8.yaml
++/usr/share/openstack-puppet/modules/ceph/releasenotes/notes/support-nvme0n1-as-osd-46e4a00ec699f718.yaml
++/usr/share/openstack-puppet/modules/ceph/releasenotes/notes/systemd-8b86dee2f9df5a14.yaml
++/usr/share/openstack-puppet/modules/ceph/releasenotes/source/_static/.placeholder
++/usr/share/openstack-puppet/modules/ceph/releasenotes/source/conf.py
++/usr/share/openstack-puppet/modules/ceph/releasenotes/source/index.rst
++/usr/share/openstack-puppet/modules/ceph/releasenotes/source/unreleased.rst
++/usr/share/openstack-puppet/modules/ceph/setup.cfg
++/usr/share/openstack-puppet/modules/ceph/setup.py
++/usr/share/openstack-puppet/modules/ceph/spec/acceptance/ceph_mon_osd_spec.rb
++/usr/share/openstack-puppet/modules/ceph/spec/acceptance/nodesets/centos-70-x64.yml
++/usr/share/openstack-puppet/modules/ceph/spec/acceptance/nodesets/default.yml
++/usr/share/openstack-puppet/modules/ceph/spec/acceptance/nodesets/nodepool-centos7.yml
++/usr/share/openstack-puppet/modules/ceph/spec/acceptance/nodesets/nodepool-trusty.yml
++/usr/share/openstack-puppet/modules/ceph/spec/acceptance/nodesets/nodepool-xenial.yml
++/usr/share/openstack-puppet/modules/ceph/spec/acceptance/nodesets/two-centos-70-x64.yml
++/usr/share/openstack-puppet/modules/ceph/spec/acceptance/nodesets/two-ubuntu-server-1404-x64.yml
++/usr/share/openstack-puppet/modules/ceph/spec/acceptance/nodesets/ubuntu-server-1404-x64.yml
++/usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_conf_spec.rb
++/usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_init_spec.rb
++/usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_mds_spec.rb
++/usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_mons_spec.rb
++/usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_osds_spec.rb
++/usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_profile_base_spec.rb
++/usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_profile_client_spec.rb
++/usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_profile_fs_spec.rb
++/usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_profile_mds_spec.rb
++/usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_profile_mgr_spec.rb
++/usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_profile_mon_spec.rb
++/usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_profile_osd_spec.rb
++/usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_profile_params_spec.rb
++/usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_repo_spec.rb
++/usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_spec.rb
++/usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_fs_spec.rb
++/usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_key_spec.rb
++/usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_mgr_spec.rb
++/usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_mon_spec.rb
++/usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_osd_spec.rb
++/usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_pool_spec.rb
++/usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_rbd_mirror_spec.rb
++/usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_rgw_apache_fastcgi_spec.rb
++/usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_rgw_apache_proxy_fcgi_spec.rb
++/usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_rgw_apache_spec.rb
++/usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_rgw_civetweb_spec.rb
++/usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_rgw_keystone_spec.rb
++/usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_rgw_spec.rb
++/usr/share/openstack-puppet/modules/ceph/spec/shared_examples.rb
++/usr/share/openstack-puppet/modules/ceph/spec/spec_helper.rb
++/usr/share/openstack-puppet/modules/ceph/spec/spec_helper_acceptance.rb
++/usr/share/openstack-puppet/modules/ceph/spec/unit/provider/ceph_config/ini_setting_spec.rb
++/usr/share/openstack-puppet/modules/ceph/spec/unit/type/ceph_config_spec.rb
++/usr/share/openstack-puppet/modules/ceph/test-requirements.txt
++/usr/share/openstack-puppet/modules/ceph/tox.ini
++
++%files python
++%defattr(-,root,root,-)
++
++%files python3
++%defattr(-,root,root,-)
++/usr/lib/python3*/*
+diff --git a/requires_add b/requires_add
+new file mode 100644
+index 0000000..d64cd31
+--- /dev/null
++++ b/requires_add
+@@ -0,0 +1,7 @@
++puppet-apache
++puppet-concat
++puppet-inifile
++puppet-stdlib
++puppet >= 2.7.0
+diff --git a/series b/series
+new file mode 100644
+index 0000000..e8b6437
+--- /dev/null
++++ b/series
+@@ -0,0 +1,11 @@
++0001-add-makefile.patch
++0001-Roll-up-TIS-patches.patch
++0002-Newton-rebase-fixes.patch
++0003-Ceph-Jewel-rebase.patch
++0004-US92424-Add-OSD-support-for-persistent-naming.patch
++0005-Remove-puppetlabs-apt-as-ceph-requirement.patch
++0006-ceph-disk-prepare-invalid-data-disk-value.patch
++0007-Add-StarlingX-specific-restart-command-for-Ceph-moni.patch
++0008-ceph-mimic-prepare-activate-osd.patch
++0009-fix-ceph-osd-disk-partition-for-nvme-disks.patch
++0010-wipe-unprepared-disks.patch

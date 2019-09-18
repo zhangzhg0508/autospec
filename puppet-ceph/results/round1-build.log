@@ -1,0 +1,530 @@
+Mock Version: 1.2.14
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/puppet-ceph.spec'], chrootPath='/var/lib/mock/clear-puppet-ceph/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f56125fadd0>timeout=0uid=1000gid=1000user='mockbuild'printOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/puppet-ceph.spec'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/puppet-ceph-2.4.1-1.src.rpm
+Child return code was: 0
+LEAVE do --> 
+
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/puppet-ceph.spec '], chrootPath='/var/lib/mock/clear-puppet-ceph/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f56125fadd0>timeout=0uid=1000gid=1000user='mockbuild'private_network=TrueprintOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/puppet-ceph.spec '] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.NdEMaM
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
++ rm -rf openstack-ceph-2.4.1
++ /usr/bin/gzip -dc /builddir/build/SOURCES/puppet-ceph-2.4.1.tar.gz
++ /usr/bin/tar -xf -
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd openstack-ceph-2.4.1
++ /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
+Patch #1 (0001-add-makefile.patch):
++ echo 'Patch #1 (0001-add-makefile.patch):'
++ /usr/bin/cat /builddir/build/SOURCES/0001-add-makefile.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file Makefile
++ echo 'Patch #2 (0001-Roll-up-TIS-patches.patch):'
+Patch #2 (0001-Roll-up-TIS-patches.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0001-Roll-up-TIS-patches.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file manifests/mon.pp
+patching file manifests/osd.pp
+patching file manifests/rgw.pp
+Patch #3 (0002-Newton-rebase-fixes.patch):
++ echo 'Patch #3 (0002-Newton-rebase-fixes.patch):'
++ /usr/bin/cat /builddir/build/SOURCES/0002-Newton-rebase-fixes.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file manifests/mon.pp
+patching file manifests/osd.pp
++ echo 'Patch #4 (0003-Ceph-Jewel-rebase.patch):'
+Patch #4 (0003-Ceph-Jewel-rebase.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0003-Ceph-Jewel-rebase.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file manifests/mon.pp
+patching file manifests/rgw.pp
+patching file manifests/rgw/keystone.pp
++ echo 'Patch #5 (0004-US92424-Add-OSD-support-for-persistent-naming.patch):'
+Patch #5 (0004-US92424-Add-OSD-support-for-persistent-naming.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0004-US92424-Add-OSD-support-for-persistent-naming.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file manifests/osd.pp
+Patch #6 (0005-Remove-puppetlabs-apt-as-ceph-requirement.patch):
++ echo 'Patch #6 (0005-Remove-puppetlabs-apt-as-ceph-requirement.patch):'
++ /usr/bin/cat /builddir/build/SOURCES/0005-Remove-puppetlabs-apt-as-ceph-requirement.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file metadata.json
++ echo 'Patch #7 (0006-ceph-disk-prepare-invalid-data-disk-value.patch):'
+Patch #7 (0006-ceph-disk-prepare-invalid-data-disk-value.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0006-ceph-disk-prepare-invalid-data-disk-value.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file manifests/osd.pp
++ echo 'Patch #8 (0007-Add-StarlingX-specific-restart-command-for-Ceph-moni.patch):'
+Patch #8 (0007-Add-StarlingX-specific-restart-command-for-Ceph-moni.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0007-Add-StarlingX-specific-restart-command-for-Ceph-moni.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file manifests/mon.pp
++ echo 'Patch #9 (0008-ceph-mimic-prepare-activate-osd.patch):'
+Patch #9 (0008-ceph-mimic-prepare-activate-osd.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0008-ceph-mimic-prepare-activate-osd.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file manifests/osd.pp
++ echo 'Patch #10 (0009-fix-ceph-osd-disk-partition-for-nvme-disks.patch):'
+Patch #10 (0009-fix-ceph-osd-disk-partition-for-nvme-disks.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0009-fix-ceph-osd-disk-partition-for-nvme-disks.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file manifests/osd.pp
++ echo 'Patch #11 (0010-wipe-unprepared-disks.patch):'
+Patch #11 (0010-wipe-unprepared-disks.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0010-wipe-unprepared-disks.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file manifests/osd.pp
++ exit 0
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.D1MLQM
++ umask 022
++ cd /builddir/build/BUILD
++ cd openstack-ceph-2.4.1
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CFLAGS
++ http_proxy=http://127.0.0.1:9/
++ export http_proxy
++ https_proxy=http://127.0.0.1:9/
++ export https_proxy
++ ftp_proxy=http://127.0.0.1:9/
++ export ftp_proxy
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export no_proxy
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CXXFLAGS
++ FFLAGS='-g -O3 -feliminate-unused-debug-types  -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -m64 -fasynchronous-unwind-tables -Wp,-D_REENTRANT -ftree-loop-distribute-patterns -Wl,-z -Wl,now -Wl,-z -Wl,relro -malign-data=abi -fno-semantic-interposition -ftree-vectorize  -ftree-loop-vectorize -Wl,--enable-new-dtags '
++ export FFLAGS
++ LD_AS_NEEDED=1
++ export LD_AS_NEEDED
++ PKG_CONFIG_LIBDIR=/usr/lib64/pkgconfig
++ export PKG_CONFIG_LIBDIR
++ PATH=/usr/lib64/ccache/bin:/usr/local/bin:/usr/bin
++ export PATH
++ export PBR_VERSION=2.4.1
++ PBR_VERSION=2.4.1
++ export http_proxy=http://127.0.0.1:9/
++ http_proxy=http://127.0.0.1:9/
++ export https_proxy=http://127.0.0.1:9/
++ https_proxy=http://127.0.0.1:9/
++ export no_proxy=localhost,127.0.0.1,0.0.0.0
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export LANG=C.UTF-8
++ LANG=C.UTF-8
++ export SOURCE_DATE_EPOCH=1568800333
++ SOURCE_DATE_EPOCH=1568800333
++ export GCC_IGNORE_WERROR=1
++ GCC_IGNORE_WERROR=1
++ export AR=gcc-ar
++ AR=gcc-ar
++ export RANLIB=gcc-ranlib
++ RANLIB=gcc-ranlib
++ export NM=gcc-nm
++ NM=gcc-nm
++ export 'CFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ export 'FCFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FCFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'FFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'CXXFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ export MAKEFLAGS=-j4
++ MAKEFLAGS=-j4
++ python3 setup.py build
+running build
++ exit 0
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.oH4R6L
++ umask 022
++ cd /builddir/build/BUILD
++ cd openstack-ceph-2.4.1
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ rm -rf /builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64
++ mkdir -p /builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64
++ export MAKEFLAGS=-j4
++ MAKEFLAGS=-j4
++ rm -rf /builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64
++ export PBR_VERSION=2.4.1
++ PBR_VERSION=2.4.1
++ install -d -m 0755 /builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64/usr/share/openstack-puppet/modules/ceph
++ python3 -tt setup.py build install --root=/builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64
+running build
+running install
+[pbr] Generating AUTHORS
+[pbr] AUTHORS complete (0.0s)
+running install_egg_info
+running egg_info
+creating puppet_ceph.egg-info
+writing puppet_ceph.egg-info/PKG-INFO
+writing dependency_links to puppet_ceph.egg-info/dependency_links.txt
+writing top-level names to puppet_ceph.egg-info/top_level.txt
+[pbr] Processing SOURCES.txt
+writing manifest file 'puppet_ceph.egg-info/SOURCES.txt'
+warning: no files found matching 'AUTHORS'
+warning: no files found matching 'ChangeLog'
+warning: no previously-included files found matching '.gitignore'
+warning: no previously-included files found matching '.gitreview'
+warning: no previously-included files matching '*.pyc' found anywhere in distribution
+writing manifest file 'puppet_ceph.egg-info/SOURCES.txt'
+Copying puppet_ceph.egg-info to /builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64/usr/lib/python3.7/site-packages/puppet_ceph-2.4.1-py3.7.egg-info
+running install_scripts
+/usr/lib/python3.7/site-packages/pbr/packaging.py:435: EasyInstallDeprecationWarning: Use get_header
+  header = easy_install.get_script_header("", executable, is_wininst)
++ echo '----[' mark ']----'
+----[ mark ]----
++ cat '/builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64/usr/lib/python3*/site-packages/*/requires.txt'
+cat: '/builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64/usr/lib/python3*/site-packages/*/requires.txt': No such file or directory
++ :
+----[ mark ]----
++ echo '----[' mark ']----'
++ cp -rp bindep.txt checksums.json examples Gemfile lib LICENSE Makefile manifests metadata.json puppet_ceph.egg-info Rakefile README.md releasenotes setup.cfg setup.py spec test-requirements.txt tox.ini USECASES.md /builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64/usr/share/openstack-puppet/modules/ceph/
++ rm -f /builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64/usr/share/info/dir
+++ find /builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64 -path 'etc/*' '!' -type d
++ test -z ''
++ rm -rf '/builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64/etc/*'
++ rm -rf '/builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64/usr/share/factory/*'
++ find /builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64 -name __pycache__
++ xargs rm -rf --
++ '[' -d /builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64/usr/share/mime ']'
+++ getconf _NPROCESSORS_ONLN
++ RPM_XARGS_PFLAG=-P4
++ find /builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64 -name '*.so.avx512' -print0
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -5
++ find /builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64/usr/lib64/haswell/avx512_1 -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64/usr/lib64/haswell/avx512_1’: No such file or directory
++ find /builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64 -name '*.so.avx2' -print0
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -2
++ find /builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64/usr/lib64/haswell '!' -path '/usr/lib64/haswell/avx512_1/*' -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64/usr/lib64/haswell’: No such file or directory
++ xargs -0rtn1 -P4 /usr/lib/rpm/clr/brp-create-abi
++ sort -u
++ find /builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64/usr/lib64/ -maxdepth 1 -name '*.so*' -type f -print0
+find: ‘/builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64/usr/lib64/’: No such file or directory
++ /usr/lib/rpm/find-debuginfo.sh --strict-build-id /builddir/build/BUILD/openstack-ceph-2.4.1
+find: ‘debug’: No such file or directory
++ '[' -d /builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64/usr/lib/debug ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64/usr/lib/debug ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64/usr/src/debug ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64/usr/lib/debug.force ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64/usr/src/debug.force ']'
++ :
++ /usr/lib/rpm/check-buildroot
++ /usr/lib/rpm/clr/brp-strip-static-archive /usr/bin/strip
++ /usr/lib/rpm/clr/brp-strip-comment-note /usr/bin/strip /usr/bin/objdump
++ /usr/lib/rpm/clr/brp-python-bytecompile
+[BYTECOMPILE] Building for /builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64/usr/lib/python3.7 using /usr/bin/python3.7
++ find /builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64 -print0
++ xargs -0 touch -h -d '@1549052798 '
++ /usr/lib/rpm/clr/brp-java-repack-jars
+Executing(%check): /bin/sh -e /var/tmp/rpm-tmp.bcCgWJ
++ umask 022
++ cd /builddir/build/BUILD
++ cd openstack-ceph-2.4.1
++ LANG=en_US.UTF-8
+dont need check
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ export http_proxy=http://127.0.0.1:9/
++ http_proxy=http://127.0.0.1:9/
++ export https_proxy=http://127.0.0.1:9/
++ https_proxy=http://127.0.0.1:9/
++ export no_proxy=localhost,127.0.0.1,0.0.0.0
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ echo 'dont need check'
++ exit 0
+Processing files: puppet-ceph-2.4.1-1.x86_64
+Processing files: puppet-ceph-debuginfo-2.4.1-1.x86_64
+Processing files: puppet-ceph-abi-2.4.1-1.x86_64
+Checking for unpackaged file(s): /usr/lib/rpm/check-files /builddir/build/BUILDROOT/puppet-ceph-2.4.1-1.x86_64
+warning: Empty %files file /builddir/build/BUILD/openstack-ceph-2.4.1/debugfiles.list
+warning: Empty %files file /builddir/build/BUILD/openstack-ceph-2.4.1/abifiles.list
+RPM build errors:
+error: Installed (but unpackaged) file(s) found:
+   /usr/lib/python3.7/site-packages/puppet_ceph-2.4.1-py3.7.egg-info/PKG-INFO
+   /usr/lib/python3.7/site-packages/puppet_ceph-2.4.1-py3.7.egg-info/SOURCES.txt
+   /usr/lib/python3.7/site-packages/puppet_ceph-2.4.1-py3.7.egg-info/dependency_links.txt
+   /usr/lib/python3.7/site-packages/puppet_ceph-2.4.1-py3.7.egg-info/not-zip-safe
+   /usr/lib/python3.7/site-packages/puppet_ceph-2.4.1-py3.7.egg-info/top_level.txt
+   /usr/share/openstack-puppet/modules/ceph/Gemfile
+   /usr/share/openstack-puppet/modules/ceph/LICENSE
+   /usr/share/openstack-puppet/modules/ceph/Makefile
+   /usr/share/openstack-puppet/modules/ceph/README.md
+   /usr/share/openstack-puppet/modules/ceph/Rakefile
+   /usr/share/openstack-puppet/modules/ceph/USECASES.md
+   /usr/share/openstack-puppet/modules/ceph/bindep.txt
+   /usr/share/openstack-puppet/modules/ceph/checksums.json
+   /usr/share/openstack-puppet/modules/ceph/examples/common.yaml
+   /usr/share/openstack-puppet/modules/ceph/examples/hiera.yaml
+   /usr/share/openstack-puppet/modules/ceph/examples/nodes/client.yaml
+   /usr/share/openstack-puppet/modules/ceph/examples/nodes/first.yaml
+   /usr/share/openstack-puppet/modules/ceph/examples/nodes/second.yaml
+   /usr/share/openstack-puppet/modules/ceph/lib/puppet/provider/ceph_config/ini_setting.rb
+   /usr/share/openstack-puppet/modules/ceph/lib/puppet/type/ceph_config.rb
+   /usr/share/openstack-puppet/modules/ceph/manifests/conf.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/fs.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/init.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/key.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/keys.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/mds.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/mgr.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/mirror.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/mon.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/mons.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/osd.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/osds.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/params.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/pool.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/profile/base.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/profile/client.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/profile/fs.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/profile/mds.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/profile/mgr.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/profile/mirror.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/profile/mon.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/profile/osd.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/profile/params.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/profile/rgw.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/repo.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/rgw.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/rgw/apache.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/rgw/apache_fastcgi.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/rgw/apache_proxy_fcgi.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/rgw/civetweb.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/rgw/keystone.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/rgw/keystone/auth.pp
+   /usr/share/openstack-puppet/modules/ceph/metadata.json
+   /usr/share/openstack-puppet/modules/ceph/puppet_ceph.egg-info/PKG-INFO
+   /usr/share/openstack-puppet/modules/ceph/puppet_ceph.egg-info/SOURCES.txt
+   /usr/share/openstack-puppet/modules/ceph/puppet_ceph.egg-info/dependency_links.txt
+   /usr/share/openstack-puppet/modules/ceph/puppet_ceph.egg-info/not-zip-safe
+   /usr/share/openstack-puppet/modules/ceph/puppet_ceph.egg-info/top_level.txt
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/add-ceph-mgr-support-d2a5e9104021f81a.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/allow_changing_pidmax_on_osd_nodes-d1a98328f666a895.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/centos-mirror-71fd6fb3f5916d5d.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/first_release-a7268e1c8959eca3.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/jewel-218ac52343f4e165.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/jewel-a3169eb769be4e48.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/mds-support-improvements-e30c7c4fdb838439.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/osd-check-fsid-mismatch-a5cb615be1b4e40f.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/osd-check-non-existent-block-device-6f827dba142a3aa5.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/osd-level-5ebc22c7377e0300.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/osd_define_explicit_conditional-ceaadb2e4ea34595.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/radosgw-keystone-v3-93b3895e24b5f913.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/rbd-mirror-e8c13699bb0e71d8.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/remove-rgw-syslog-2a6909362b702b15.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/service-management-9483b9cfc067c736.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/stdlib-min-requirements-9ca51e3ad52aa3f8.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/support-nvme0n1-as-osd-46e4a00ec699f718.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/systemd-8b86dee2f9df5a14.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/source/_static/.placeholder
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/source/conf.py
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/source/index.rst
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/source/unreleased.rst
+   /usr/share/openstack-puppet/modules/ceph/setup.cfg
+   /usr/share/openstack-puppet/modules/ceph/setup.py
+   /usr/share/openstack-puppet/modules/ceph/spec/acceptance/ceph_mon_osd_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/acceptance/nodesets/centos-70-x64.yml
+   /usr/share/openstack-puppet/modules/ceph/spec/acceptance/nodesets/default.yml
+   /usr/share/openstack-puppet/modules/ceph/spec/acceptance/nodesets/nodepool-centos7.yml
+   /usr/share/openstack-puppet/modules/ceph/spec/acceptance/nodesets/nodepool-trusty.yml
+   /usr/share/openstack-puppet/modules/ceph/spec/acceptance/nodesets/nodepool-xenial.yml
+   /usr/share/openstack-puppet/modules/ceph/spec/acceptance/nodesets/two-centos-70-x64.yml
+   /usr/share/openstack-puppet/modules/ceph/spec/acceptance/nodesets/two-ubuntu-server-1404-x64.yml
+   /usr/share/openstack-puppet/modules/ceph/spec/acceptance/nodesets/ubuntu-server-1404-x64.yml
+   /usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_conf_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_init_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_mds_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_mons_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_osds_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_profile_base_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_profile_client_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_profile_fs_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_profile_mds_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_profile_mgr_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_profile_mon_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_profile_osd_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_profile_params_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_repo_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_fs_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_key_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_mgr_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_mon_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_osd_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_pool_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_rbd_mirror_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_rgw_apache_fastcgi_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_rgw_apache_proxy_fcgi_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_rgw_apache_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_rgw_civetweb_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_rgw_keystone_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_rgw_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/shared_examples.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/spec_helper.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/spec_helper_acceptance.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/unit/provider/ceph_config/ini_setting_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/unit/type/ceph_config_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/test-requirements.txt
+   /usr/share/openstack-puppet/modules/ceph/tox.ini
+    Empty %files file /builddir/build/BUILD/openstack-ceph-2.4.1/debugfiles.list
+    Empty %files file /builddir/build/BUILD/openstack-ceph-2.4.1/abifiles.list
+    Installed (but unpackaged) file(s) found:
+   /usr/lib/python3.7/site-packages/puppet_ceph-2.4.1-py3.7.egg-info/PKG-INFO
+   /usr/lib/python3.7/site-packages/puppet_ceph-2.4.1-py3.7.egg-info/SOURCES.txt
+   /usr/lib/python3.7/site-packages/puppet_ceph-2.4.1-py3.7.egg-info/dependency_links.txt
+   /usr/lib/python3.7/site-packages/puppet_ceph-2.4.1-py3.7.egg-info/not-zip-safe
+   /usr/lib/python3.7/site-packages/puppet_ceph-2.4.1-py3.7.egg-info/top_level.txt
+   /usr/share/openstack-puppet/modules/ceph/Gemfile
+   /usr/share/openstack-puppet/modules/ceph/LICENSE
+   /usr/share/openstack-puppet/modules/ceph/Makefile
+   /usr/share/openstack-puppet/modules/ceph/README.md
+   /usr/share/openstack-puppet/modules/ceph/Rakefile
+   /usr/share/openstack-puppet/modules/ceph/USECASES.md
+   /usr/share/openstack-puppet/modules/ceph/bindep.txt
+   /usr/share/openstack-puppet/modules/ceph/checksums.json
+   /usr/share/openstack-puppet/modules/ceph/examples/common.yaml
+   /usr/share/openstack-puppet/modules/ceph/examples/hiera.yaml
+   /usr/share/openstack-puppet/modules/ceph/examples/nodes/client.yaml
+   /usr/share/openstack-puppet/modules/ceph/examples/nodes/first.yaml
+   /usr/share/openstack-puppet/modules/ceph/examples/nodes/second.yaml
+   /usr/share/openstack-puppet/modules/ceph/lib/puppet/provider/ceph_config/ini_setting.rb
+   /usr/share/openstack-puppet/modules/ceph/lib/puppet/type/ceph_config.rb
+   /usr/share/openstack-puppet/modules/ceph/manifests/conf.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/fs.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/init.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/key.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/keys.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/mds.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/mgr.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/mirror.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/mon.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/mons.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/osd.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/osds.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/params.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/pool.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/profile/base.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/profile/client.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/profile/fs.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/profile/mds.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/profile/mgr.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/profile/mirror.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/profile/mon.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/profile/osd.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/profile/params.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/profile/rgw.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/repo.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/rgw.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/rgw/apache.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/rgw/apache_fastcgi.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/rgw/apache_proxy_fcgi.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/rgw/civetweb.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/rgw/keystone.pp
+   /usr/share/openstack-puppet/modules/ceph/manifests/rgw/keystone/auth.pp
+   /usr/share/openstack-puppet/modules/ceph/metadata.json
+   /usr/share/openstack-puppet/modules/ceph/puppet_ceph.egg-info/PKG-INFO
+   /usr/share/openstack-puppet/modules/ceph/puppet_ceph.egg-info/SOURCES.txt
+   /usr/share/openstack-puppet/modules/ceph/puppet_ceph.egg-info/dependency_links.txt
+   /usr/share/openstack-puppet/modules/ceph/puppet_ceph.egg-info/not-zip-safe
+   /usr/share/openstack-puppet/modules/ceph/puppet_ceph.egg-info/top_level.txt
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/add-ceph-mgr-support-d2a5e9104021f81a.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/allow_changing_pidmax_on_osd_nodes-d1a98328f666a895.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/centos-mirror-71fd6fb3f5916d5d.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/first_release-a7268e1c8959eca3.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/jewel-218ac52343f4e165.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/jewel-a3169eb769be4e48.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/mds-support-improvements-e30c7c4fdb838439.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/osd-check-fsid-mismatch-a5cb615be1b4e40f.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/osd-check-non-existent-block-device-6f827dba142a3aa5.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/osd-level-5ebc22c7377e0300.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/osd_define_explicit_conditional-ceaadb2e4ea34595.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/radosgw-keystone-v3-93b3895e24b5f913.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/rbd-mirror-e8c13699bb0e71d8.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/remove-rgw-syslog-2a6909362b702b15.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/service-management-9483b9cfc067c736.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/stdlib-min-requirements-9ca51e3ad52aa3f8.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/support-nvme0n1-as-osd-46e4a00ec699f718.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/notes/systemd-8b86dee2f9df5a14.yaml
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/source/_static/.placeholder
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/source/conf.py
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/source/index.rst
+   /usr/share/openstack-puppet/modules/ceph/releasenotes/source/unreleased.rst
+   /usr/share/openstack-puppet/modules/ceph/setup.cfg
+   /usr/share/openstack-puppet/modules/ceph/setup.py
+   /usr/share/openstack-puppet/modules/ceph/spec/acceptance/ceph_mon_osd_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/acceptance/nodesets/centos-70-x64.yml
+   /usr/share/openstack-puppet/modules/ceph/spec/acceptance/nodesets/default.yml
+   /usr/share/openstack-puppet/modules/ceph/spec/acceptance/nodesets/nodepool-centos7.yml
+   /usr/share/openstack-puppet/modules/ceph/spec/acceptance/nodesets/nodepool-trusty.yml
+   /usr/share/openstack-puppet/modules/ceph/spec/acceptance/nodesets/nodepool-xenial.yml
+   /usr/share/openstack-puppet/modules/ceph/spec/acceptance/nodesets/two-centos-70-x64.yml
+   /usr/share/openstack-puppet/modules/ceph/spec/acceptance/nodesets/two-ubuntu-server-1404-x64.yml
+   /usr/share/openstack-puppet/modules/ceph/spec/acceptance/nodesets/ubuntu-server-1404-x64.yml
+   /usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_conf_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_init_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_mds_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_mons_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_osds_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_profile_base_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_profile_client_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_profile_fs_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_profile_mds_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_profile_mgr_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_profile_mon_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_profile_osd_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_profile_params_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_repo_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/classes/ceph_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_fs_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_key_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_mgr_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_mon_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_osd_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_pool_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_rbd_mirror_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_rgw_apache_fastcgi_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_rgw_apache_proxy_fcgi_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_rgw_apache_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_rgw_civetweb_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_rgw_keystone_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/defines/ceph_rgw_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/shared_examples.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/spec_helper.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/spec_helper_acceptance.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/unit/provider/ceph_config/ini_setting_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/spec/unit/type/ceph_config_spec.rb
+   /usr/share/openstack-puppet/modules/ceph/test-requirements.txt
+   /usr/share/openstack-puppet/modules/ceph/tox.ini
+Child return code was: 1
+EXCEPTION: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/puppet-ceph.spec 
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/mockbuild/trace_decorator.py", line 84, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python3.7/site-packages/mockbuild/util.py", line 531, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+mockbuild.exception.Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/puppet-ceph.spec 
+LEAVE do --> EXCEPTION RAISED
+
