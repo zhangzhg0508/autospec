@@ -1,0 +1,37 @@
+2019-09-18 16:39:13,992 - Mock Version: 1.2.14
+2019-09-18 16:39:14,265 - Start: dnf update
+2019-09-18 16:39:24,484 - Finish: dnf update
+2019-09-18 16:39:24,489 - Finish: chroot init
+2019-09-18 16:39:24,492 - Start: buildsrpm
+2019-09-18 16:39:24,499 - Start: rpmbuild -bs
+2019-09-18 16:39:24,538 - Finish: rpmbuild -bs
+2019-09-18 16:39:24,540 - Finish: buildsrpm
+2019-09-18 16:39:24,540 - Finish: run
+2019-09-18 16:39:27,665 - Mock Version: 1.2.14
+2019-09-18 16:39:27,930 - Start: dnf update
+2019-09-18 16:39:37,532 - Finish: dnf update
+2019-09-18 16:39:37,537 - Finish: chroot init
+2019-09-18 16:39:37,539 - Start: build phase for puppet-dcorch-1.0.0-1.src.rpm
+2019-09-18 16:39:37,541 - Start: build setup for puppet-dcorch-1.0.0-1.src.rpm
+2019-09-18 16:39:38,829 - Finish: build setup for puppet-dcorch-1.0.0-1.src.rpm
+2019-09-18 16:39:38,829 - Start: rpmbuild puppet-dcorch-1.0.0-1.src.rpm
+2019-09-18 16:39:42,463 - Mock Version: 1.2.14
+2019-09-18 16:39:42,716 - Start: dnf update
+2019-09-18 16:39:52,665 - Finish: dnf update
+2019-09-18 16:39:52,671 - Finish: chroot init
+2019-09-18 16:39:52,673 - Start: buildsrpm
+2019-09-18 16:39:52,679 - Start: rpmbuild -bs
+2019-09-18 16:39:52,718 - Finish: rpmbuild -bs
+2019-09-18 16:39:52,720 - Finish: buildsrpm
+2019-09-18 16:39:52,720 - Finish: run
+2019-09-18 16:39:55,840 - Mock Version: 1.2.14
+2019-09-18 16:39:56,095 - Start: dnf update
+2019-09-18 16:40:06,159 - Finish: dnf update
+2019-09-18 16:40:06,164 - Finish: chroot init
+2019-09-18 16:40:06,166 - Start: build phase for puppet-dcorch-1.0.0-1.src.rpm
+2019-09-18 16:40:06,168 - Start: build setup for puppet-dcorch-1.0.0-1.src.rpm
+2019-09-18 16:40:07,448 - Finish: build setup for puppet-dcorch-1.0.0-1.src.rpm
+2019-09-18 16:40:07,448 - Start: rpmbuild puppet-dcorch-1.0.0-1.src.rpm
+2019-09-18 16:40:07,697 - Finish: rpmbuild puppet-dcorch-1.0.0-1.src.rpm
+2019-09-18 16:40:07,699 - Finish: build phase for puppet-dcorch-1.0.0-1.src.rpm
+2019-09-18 16:40:07,699 - Finish: run
