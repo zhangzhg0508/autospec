@@ -1,0 +1,37 @@
+2019-09-18 17:10:52,057 - Mock Version: 1.2.14
+2019-09-18 17:10:52,328 - Start: dnf update
+2019-09-18 17:11:02,902 - Finish: dnf update
+2019-09-18 17:11:02,908 - Finish: chroot init
+2019-09-18 17:11:02,911 - Start: buildsrpm
+2019-09-18 17:11:02,916 - Start: rpmbuild -bs
+2019-09-18 17:11:02,955 - Finish: rpmbuild -bs
+2019-09-18 17:11:02,956 - Finish: buildsrpm
+2019-09-18 17:11:02,957 - Finish: run
+2019-09-18 17:11:06,333 - Mock Version: 1.2.14
+2019-09-18 17:11:06,595 - Start: dnf update
+2019-09-18 17:11:16,790 - Finish: dnf update
+2019-09-18 17:11:16,795 - Finish: chroot init
+2019-09-18 17:11:16,797 - Start: build phase for puppet-dcdbsync-1.0.0-1.src.rpm
+2019-09-18 17:11:16,799 - Start: build setup for puppet-dcdbsync-1.0.0-1.src.rpm
+2019-09-18 17:11:18,204 - Finish: build setup for puppet-dcdbsync-1.0.0-1.src.rpm
+2019-09-18 17:11:18,204 - Start: rpmbuild puppet-dcdbsync-1.0.0-1.src.rpm
+2019-09-18 17:11:21,851 - Mock Version: 1.2.14
+2019-09-18 17:11:22,109 - Start: dnf update
+2019-09-18 17:11:32,342 - Finish: dnf update
+2019-09-18 17:11:32,347 - Finish: chroot init
+2019-09-18 17:11:32,350 - Start: buildsrpm
+2019-09-18 17:11:32,356 - Start: rpmbuild -bs
+2019-09-18 17:11:32,395 - Finish: rpmbuild -bs
+2019-09-18 17:11:32,397 - Finish: buildsrpm
+2019-09-18 17:11:32,397 - Finish: run
+2019-09-18 17:11:35,805 - Mock Version: 1.2.14
+2019-09-18 17:11:36,071 - Start: dnf update
+2019-09-18 17:11:46,444 - Finish: dnf update
+2019-09-18 17:11:46,450 - Finish: chroot init
+2019-09-18 17:11:46,452 - Start: build phase for puppet-dcdbsync-1.0.0-1.src.rpm
+2019-09-18 17:11:46,454 - Start: build setup for puppet-dcdbsync-1.0.0-1.src.rpm
+2019-09-18 17:11:47,923 - Finish: build setup for puppet-dcdbsync-1.0.0-1.src.rpm
+2019-09-18 17:11:47,923 - Start: rpmbuild puppet-dcdbsync-1.0.0-1.src.rpm
+2019-09-18 17:11:48,112 - Finish: rpmbuild puppet-dcdbsync-1.0.0-1.src.rpm
+2019-09-18 17:11:48,113 - Finish: build phase for puppet-dcdbsync-1.0.0-1.src.rpm
+2019-09-18 17:11:48,114 - Finish: run
