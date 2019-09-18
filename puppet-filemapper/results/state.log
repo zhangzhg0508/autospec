@@ -1,0 +1,37 @@
+2019-09-18 16:00:56,848 - Mock Version: 1.2.14
+2019-09-18 16:00:57,105 - Start: dnf update
+2019-09-18 16:01:07,261 - Finish: dnf update
+2019-09-18 16:01:07,266 - Finish: chroot init
+2019-09-18 16:01:07,269 - Start: buildsrpm
+2019-09-18 16:01:07,275 - Start: rpmbuild -bs
+2019-09-18 16:01:07,315 - Finish: rpmbuild -bs
+2019-09-18 16:01:07,316 - Finish: buildsrpm
+2019-09-18 16:01:07,317 - Finish: run
+2019-09-18 16:01:10,356 - Mock Version: 1.2.14
+2019-09-18 16:01:10,628 - Start: dnf update
+2019-09-18 16:01:20,367 - Finish: dnf update
+2019-09-18 16:01:20,372 - Finish: chroot init
+2019-09-18 16:01:20,373 - Start: build phase for puppet-filemapper-1.1.3-1.src.rpm
+2019-09-18 16:01:20,376 - Start: build setup for puppet-filemapper-1.1.3-1.src.rpm
+2019-09-18 16:01:21,661 - Finish: build setup for puppet-filemapper-1.1.3-1.src.rpm
+2019-09-18 16:01:21,661 - Start: rpmbuild puppet-filemapper-1.1.3-1.src.rpm
+2019-09-18 16:01:25,125 - Mock Version: 1.2.14
+2019-09-18 16:01:25,371 - Start: dnf update
+2019-09-18 16:01:35,462 - Finish: dnf update
+2019-09-18 16:01:35,467 - Finish: chroot init
+2019-09-18 16:01:35,470 - Start: buildsrpm
+2019-09-18 16:01:35,475 - Start: rpmbuild -bs
+2019-09-18 16:01:35,514 - Finish: rpmbuild -bs
+2019-09-18 16:01:35,516 - Finish: buildsrpm
+2019-09-18 16:01:35,516 - Finish: run
+2019-09-18 16:01:38,674 - Mock Version: 1.2.14
+2019-09-18 16:01:38,939 - Start: dnf update
+2019-09-18 16:01:48,761 - Finish: dnf update
+2019-09-18 16:01:48,766 - Finish: chroot init
+2019-09-18 16:01:48,767 - Start: build phase for puppet-filemapper-1.1.3-1.src.rpm
+2019-09-18 16:01:48,770 - Start: build setup for puppet-filemapper-1.1.3-1.src.rpm
+2019-09-18 16:01:50,124 - Finish: build setup for puppet-filemapper-1.1.3-1.src.rpm
+2019-09-18 16:01:50,124 - Start: rpmbuild puppet-filemapper-1.1.3-1.src.rpm
+2019-09-18 16:01:50,301 - Finish: rpmbuild puppet-filemapper-1.1.3-1.src.rpm
+2019-09-18 16:01:50,302 - Finish: build phase for puppet-filemapper-1.1.3-1.src.rpm
+2019-09-18 16:01:50,303 - Finish: run
