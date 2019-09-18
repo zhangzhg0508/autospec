@@ -1,0 +1,6 @@
+0001-add-makefile.patch
+0001-pike-rebase-squash-titanium-patches.patch
+0002-remove-the-Keystone-admin-app.patch
+0003-remove-eventlet_bindhost-from-Keystoneconf.patch
+0004-escape-special-characters-in-bootstrap.patch
+0005-Add-support-for-fernet-receipts.patch

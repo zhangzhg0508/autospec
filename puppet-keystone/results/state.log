@@ -1,0 +1,37 @@
+2019-09-18 14:48:16,805 - Mock Version: 1.2.14
+2019-09-18 14:48:17,071 - Start: dnf update
+2019-09-18 14:48:27,371 - Finish: dnf update
+2019-09-18 14:48:27,377 - Finish: chroot init
+2019-09-18 14:48:27,380 - Start: buildsrpm
+2019-09-18 14:48:27,385 - Start: rpmbuild -bs
+2019-09-18 14:48:27,426 - Finish: rpmbuild -bs
+2019-09-18 14:48:27,428 - Finish: buildsrpm
+2019-09-18 14:48:27,429 - Finish: run
+2019-09-18 14:48:30,438 - Mock Version: 1.2.14
+2019-09-18 14:48:30,694 - Start: dnf update
+2019-09-18 14:48:40,694 - Finish: dnf update
+2019-09-18 14:48:40,699 - Finish: chroot init
+2019-09-18 14:48:40,700 - Start: build phase for puppet-keystone-11.3.0-1.src.rpm
+2019-09-18 14:48:40,703 - Start: build setup for puppet-keystone-11.3.0-1.src.rpm
+2019-09-18 14:48:41,619 - Finish: build setup for puppet-keystone-11.3.0-1.src.rpm
+2019-09-18 14:48:41,619 - Start: rpmbuild puppet-keystone-11.3.0-1.src.rpm
+2019-09-18 14:48:46,320 - Mock Version: 1.2.14
+2019-09-18 14:48:46,587 - Start: dnf update
+2019-09-18 14:48:56,707 - Finish: dnf update
+2019-09-18 14:48:56,712 - Finish: chroot init
+2019-09-18 14:48:56,715 - Start: buildsrpm
+2019-09-18 14:48:56,721 - Start: rpmbuild -bs
+2019-09-18 14:48:56,763 - Finish: rpmbuild -bs
+2019-09-18 14:48:56,765 - Finish: buildsrpm
+2019-09-18 14:48:56,765 - Finish: run
+2019-09-18 14:48:59,885 - Mock Version: 1.2.14
+2019-09-18 14:49:00,144 - Start: dnf update
+2019-09-18 14:49:10,088 - Finish: dnf update
+2019-09-18 14:49:10,094 - Finish: chroot init
+2019-09-18 14:49:10,095 - Start: build phase for puppet-keystone-11.3.0-1.src.rpm
+2019-09-18 14:49:10,097 - Start: build setup for puppet-keystone-11.3.0-1.src.rpm
+2019-09-18 14:49:11,014 - Finish: build setup for puppet-keystone-11.3.0-1.src.rpm
+2019-09-18 14:49:11,014 - Start: rpmbuild puppet-keystone-11.3.0-1.src.rpm
+2019-09-18 14:49:12,608 - Finish: rpmbuild puppet-keystone-11.3.0-1.src.rpm
+2019-09-18 14:49:12,610 - Finish: build phase for puppet-keystone-11.3.0-1.src.rpm
+2019-09-18 14:49:12,610 - Finish: run

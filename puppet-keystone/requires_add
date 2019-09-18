@@ -1,0 +1,8 @@
+# This file contains additional runtime requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+puppet-apache
+puppet-inifile
+puppet-openstacklib
+puppet-oslo
+puppet-stdlib
+puppet >= 2.7.0
