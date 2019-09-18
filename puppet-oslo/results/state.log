@@ -1,0 +1,37 @@
+2019-09-18 09:12:23,812 - Mock Version: 1.2.14
+2019-09-18 09:12:24,061 - Start: dnf update
+2019-09-18 09:14:31,639 - Finish: dnf update
+2019-09-18 09:14:31,649 - Finish: chroot init
+2019-09-18 09:14:31,652 - Start: buildsrpm
+2019-09-18 09:14:31,657 - Start: rpmbuild -bs
+2019-09-18 09:14:31,697 - Finish: rpmbuild -bs
+2019-09-18 09:14:31,699 - Finish: buildsrpm
+2019-09-18 09:14:31,699 - Finish: run
+2019-09-18 09:14:34,789 - Mock Version: 1.2.14
+2019-09-18 09:14:35,049 - Start: dnf update
+2019-09-18 09:14:57,988 - Finish: dnf update
+2019-09-18 09:14:57,993 - Finish: chroot init
+2019-09-18 09:14:57,995 - Start: build phase for puppet-oslo-11.3.0-1.src.rpm
+2019-09-18 09:14:57,997 - Start: build setup for puppet-oslo-11.3.0-1.src.rpm
+2019-09-18 09:15:02,285 - Finish: build setup for puppet-oslo-11.3.0-1.src.rpm
+2019-09-18 09:15:02,285 - Start: rpmbuild puppet-oslo-11.3.0-1.src.rpm
+2019-09-18 09:15:06,255 - Mock Version: 1.2.14
+2019-09-18 09:15:06,513 - Start: dnf update
+2019-09-18 09:15:16,412 - Finish: dnf update
+2019-09-18 09:15:16,417 - Finish: chroot init
+2019-09-18 09:15:16,420 - Start: buildsrpm
+2019-09-18 09:15:16,426 - Start: rpmbuild -bs
+2019-09-18 09:15:16,466 - Finish: rpmbuild -bs
+2019-09-18 09:15:16,468 - Finish: buildsrpm
+2019-09-18 09:15:16,468 - Finish: run
+2019-09-18 09:15:19,529 - Mock Version: 1.2.14
+2019-09-18 09:15:19,781 - Start: dnf update
+2019-09-18 09:15:29,681 - Finish: dnf update
+2019-09-18 09:15:29,687 - Finish: chroot init
+2019-09-18 09:15:29,688 - Start: build phase for puppet-oslo-11.3.0-1.src.rpm
+2019-09-18 09:15:29,690 - Start: build setup for puppet-oslo-11.3.0-1.src.rpm
+2019-09-18 09:15:30,600 - Finish: build setup for puppet-oslo-11.3.0-1.src.rpm
+2019-09-18 09:15:30,600 - Start: rpmbuild puppet-oslo-11.3.0-1.src.rpm
+2019-09-18 09:15:31,447 - Finish: rpmbuild puppet-oslo-11.3.0-1.src.rpm
+2019-09-18 09:15:31,449 - Finish: build phase for puppet-oslo-11.3.0-1.src.rpm
+2019-09-18 09:15:31,449 - Finish: run

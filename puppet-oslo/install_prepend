@@ -1,0 +1,2 @@
+export PBR_VERSION=%{version}
+install -d -m 0755 %{buildroot}%{_datadir}/openstack-puppet/modules/oslo/
