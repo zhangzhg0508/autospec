@@ -1,0 +1,1 @@
+cp -R puppet/modules/lvm %{buildroot}%{_datadir}/puppet/modules

@@ -1,0 +1,37 @@
+2019-09-18 14:25:03,714 - Mock Version: 1.2.14
+2019-09-18 14:25:03,972 - Start: dnf update
+2019-09-18 14:25:14,405 - Finish: dnf update
+2019-09-18 14:25:14,411 - Finish: chroot init
+2019-09-18 14:25:14,413 - Start: buildsrpm
+2019-09-18 14:25:14,419 - Start: rpmbuild -bs
+2019-09-18 14:25:14,458 - Finish: rpmbuild -bs
+2019-09-18 14:25:14,459 - Finish: buildsrpm
+2019-09-18 14:25:14,460 - Finish: run
+2019-09-18 14:25:17,521 - Mock Version: 1.2.14
+2019-09-18 14:25:17,764 - Start: dnf update
+2019-09-18 14:25:27,721 - Finish: dnf update
+2019-09-18 14:25:27,727 - Finish: chroot init
+2019-09-18 14:25:27,728 - Start: build phase for puppet-lvm-0.5.0-1.src.rpm
+2019-09-18 14:25:27,730 - Start: build setup for puppet-lvm-0.5.0-1.src.rpm
+2019-09-18 14:25:29,099 - Finish: build setup for puppet-lvm-0.5.0-1.src.rpm
+2019-09-18 14:25:29,099 - Start: rpmbuild puppet-lvm-0.5.0-1.src.rpm
+2019-09-18 14:25:32,813 - Mock Version: 1.2.14
+2019-09-18 14:25:33,057 - Start: dnf update
+2019-09-18 14:25:42,808 - Finish: dnf update
+2019-09-18 14:25:42,814 - Finish: chroot init
+2019-09-18 14:25:42,816 - Start: buildsrpm
+2019-09-18 14:25:42,822 - Start: rpmbuild -bs
+2019-09-18 14:25:42,862 - Finish: rpmbuild -bs
+2019-09-18 14:25:42,863 - Finish: buildsrpm
+2019-09-18 14:25:42,864 - Finish: run
+2019-09-18 14:25:46,010 - Mock Version: 1.2.14
+2019-09-18 14:25:46,273 - Start: dnf update
+2019-09-18 14:25:56,282 - Finish: dnf update
+2019-09-18 14:25:56,288 - Finish: chroot init
+2019-09-18 14:25:56,289 - Start: build phase for puppet-lvm-0.5.0-1.src.rpm
+2019-09-18 14:25:56,291 - Start: build setup for puppet-lvm-0.5.0-1.src.rpm
+2019-09-18 14:25:57,580 - Finish: build setup for puppet-lvm-0.5.0-1.src.rpm
+2019-09-18 14:25:57,581 - Start: rpmbuild puppet-lvm-0.5.0-1.src.rpm
+2019-09-18 14:25:57,889 - Finish: rpmbuild puppet-lvm-0.5.0-1.src.rpm
+2019-09-18 14:25:57,890 - Finish: build phase for puppet-lvm-0.5.0-1.src.rpm
+2019-09-18 14:25:57,891 - Finish: run

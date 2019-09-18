@@ -1,0 +1,6 @@
+0001-add-makefile.patch
+0001-puppet-lvm-kilo-quilt-changes.patch -p2
+0002-UEFI-pvcreate-fix.patch -p2
+0003-US94222-Persistent-Dev-Naming.patch -p2
+0004-extendind-nuke_fs_on_resize_failure-functionality.patch -p2
+Fix-the-logical-statement-for-nuke_fs_on_resize.patch -p2
