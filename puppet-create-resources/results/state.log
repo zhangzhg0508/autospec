@@ -1,0 +1,37 @@
+2019-09-18 17:19:07,261 - Mock Version: 1.2.14
+2019-09-18 17:19:07,509 - Start: dnf update
+2019-09-18 17:19:18,212 - Finish: dnf update
+2019-09-18 17:19:18,218 - Finish: chroot init
+2019-09-18 17:19:18,221 - Start: buildsrpm
+2019-09-18 17:19:18,228 - Start: rpmbuild -bs
+2019-09-18 17:19:18,267 - Finish: rpmbuild -bs
+2019-09-18 17:19:18,269 - Finish: buildsrpm
+2019-09-18 17:19:18,269 - Finish: run
+2019-09-18 17:19:21,308 - Mock Version: 1.2.14
+2019-09-18 17:19:21,600 - Start: dnf update
+2019-09-18 17:19:31,615 - Finish: dnf update
+2019-09-18 17:19:31,621 - Finish: chroot init
+2019-09-18 17:19:31,622 - Start: build phase for puppet-create-resources-0.0.1-1.src.rpm
+2019-09-18 17:19:31,625 - Start: build setup for puppet-create-resources-0.0.1-1.src.rpm
+2019-09-18 17:19:32,972 - Finish: build setup for puppet-create-resources-0.0.1-1.src.rpm
+2019-09-18 17:19:32,972 - Start: rpmbuild puppet-create-resources-0.0.1-1.src.rpm
+2019-09-18 17:19:36,987 - Mock Version: 1.2.14
+2019-09-18 17:19:37,228 - Start: dnf update
+2019-09-18 17:19:47,594 - Finish: dnf update
+2019-09-18 17:19:47,599 - Finish: chroot init
+2019-09-18 17:19:47,602 - Start: buildsrpm
+2019-09-18 17:19:47,607 - Start: rpmbuild -bs
+2019-09-18 17:19:47,646 - Finish: rpmbuild -bs
+2019-09-18 17:19:47,648 - Finish: buildsrpm
+2019-09-18 17:19:47,648 - Finish: run
+2019-09-18 17:19:50,703 - Mock Version: 1.2.14
+2019-09-18 17:19:50,971 - Start: dnf update
+2019-09-18 17:20:01,090 - Finish: dnf update
+2019-09-18 17:20:01,096 - Finish: chroot init
+2019-09-18 17:20:01,097 - Start: build phase for puppet-create-resources-0.0.1-1.src.rpm
+2019-09-18 17:20:01,100 - Start: build setup for puppet-create-resources-0.0.1-1.src.rpm
+2019-09-18 17:20:02,383 - Finish: build setup for puppet-create-resources-0.0.1-1.src.rpm
+2019-09-18 17:20:02,383 - Start: rpmbuild puppet-create-resources-0.0.1-1.src.rpm
+2019-09-18 17:20:02,573 - Finish: rpmbuild puppet-create-resources-0.0.1-1.src.rpm
+2019-09-18 17:20:02,574 - Finish: build phase for puppet-create-resources-0.0.1-1.src.rpm
+2019-09-18 17:20:02,575 - Finish: run
