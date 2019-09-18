@@ -1,0 +1,37 @@
+2019-09-18 08:53:44,096 - Mock Version: 1.2.14
+2019-09-18 08:53:44,339 - Start: dnf update
+2019-09-18 08:53:54,872 - Finish: dnf update
+2019-09-18 08:53:54,878 - Finish: chroot init
+2019-09-18 08:53:54,881 - Start: buildsrpm
+2019-09-18 08:53:54,886 - Start: rpmbuild -bs
+2019-09-18 08:53:54,924 - Finish: rpmbuild -bs
+2019-09-18 08:53:54,925 - Finish: buildsrpm
+2019-09-18 08:53:54,926 - Finish: run
+2019-09-18 08:53:58,020 - Mock Version: 1.2.14
+2019-09-18 08:53:58,281 - Start: dnf update
+2019-09-18 08:54:08,623 - Finish: dnf update
+2019-09-18 08:54:08,629 - Finish: chroot init
+2019-09-18 08:54:08,630 - Start: build phase for iscsi-initiator-utils-config-1.0-1.src.rpm
+2019-09-18 08:54:08,633 - Start: build setup for iscsi-initiator-utils-config-1.0-1.src.rpm
+2019-09-18 08:54:09,284 - Finish: build setup for iscsi-initiator-utils-config-1.0-1.src.rpm
+2019-09-18 08:54:09,284 - Start: rpmbuild iscsi-initiator-utils-config-1.0-1.src.rpm
+2019-09-18 08:54:12,519 - Mock Version: 1.2.14
+2019-09-18 08:54:12,772 - Start: dnf update
+2019-09-18 08:54:23,282 - Finish: dnf update
+2019-09-18 08:54:23,287 - Finish: chroot init
+2019-09-18 08:54:23,290 - Start: buildsrpm
+2019-09-18 08:54:23,296 - Start: rpmbuild -bs
+2019-09-18 08:54:23,334 - Finish: rpmbuild -bs
+2019-09-18 08:54:23,335 - Finish: buildsrpm
+2019-09-18 08:54:23,336 - Finish: run
+2019-09-18 08:54:26,424 - Mock Version: 1.2.14
+2019-09-18 08:54:26,687 - Start: dnf update
+2019-09-18 08:54:36,794 - Finish: dnf update
+2019-09-18 08:54:36,800 - Finish: chroot init
+2019-09-18 08:54:36,801 - Start: build phase for iscsi-initiator-utils-config-1.0-1.src.rpm
+2019-09-18 08:54:36,803 - Start: build setup for iscsi-initiator-utils-config-1.0-1.src.rpm
+2019-09-18 08:54:37,453 - Finish: build setup for iscsi-initiator-utils-config-1.0-1.src.rpm
+2019-09-18 08:54:37,453 - Start: rpmbuild iscsi-initiator-utils-config-1.0-1.src.rpm
+2019-09-18 08:54:37,578 - Finish: rpmbuild iscsi-initiator-utils-config-1.0-1.src.rpm
+2019-09-18 08:54:37,579 - Finish: build phase for iscsi-initiator-utils-config-1.0-1.src.rpm
+2019-09-18 08:54:37,580 - Finish: run
