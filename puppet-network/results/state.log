@@ -1,0 +1,37 @@
+2019-09-18 11:19:26,022 - Mock Version: 1.2.14
+2019-09-18 11:19:26,256 - Start: dnf update
+2019-09-18 11:19:36,591 - Finish: dnf update
+2019-09-18 11:19:36,596 - Finish: chroot init
+2019-09-18 11:19:36,599 - Start: buildsrpm
+2019-09-18 11:19:36,604 - Start: rpmbuild -bs
+2019-09-18 11:19:36,644 - Finish: rpmbuild -bs
+2019-09-18 11:19:36,645 - Finish: buildsrpm
+2019-09-18 11:19:36,646 - Finish: run
+2019-09-18 11:19:39,780 - Mock Version: 1.2.14
+2019-09-18 11:19:40,022 - Start: dnf update
+2019-09-18 11:19:50,040 - Finish: dnf update
+2019-09-18 11:19:50,045 - Finish: chroot init
+2019-09-18 11:19:50,047 - Start: build phase for puppet-network-1.0.2-1.src.rpm
+2019-09-18 11:19:50,049 - Start: build setup for puppet-network-1.0.2-1.src.rpm
+2019-09-18 11:19:51,334 - Finish: build setup for puppet-network-1.0.2-1.src.rpm
+2019-09-18 11:19:51,334 - Start: rpmbuild puppet-network-1.0.2-1.src.rpm
+2019-09-18 11:19:55,274 - Mock Version: 1.2.14
+2019-09-18 11:19:55,531 - Start: dnf update
+2019-09-18 11:20:05,782 - Finish: dnf update
+2019-09-18 11:20:05,788 - Finish: chroot init
+2019-09-18 11:20:05,790 - Start: buildsrpm
+2019-09-18 11:20:05,796 - Start: rpmbuild -bs
+2019-09-18 11:20:05,836 - Finish: rpmbuild -bs
+2019-09-18 11:20:05,837 - Finish: buildsrpm
+2019-09-18 11:20:05,838 - Finish: run
+2019-09-18 11:20:08,922 - Mock Version: 1.2.14
+2019-09-18 11:20:09,183 - Start: dnf update
+2019-09-18 11:20:19,646 - Finish: dnf update
+2019-09-18 11:20:19,652 - Finish: chroot init
+2019-09-18 11:20:19,654 - Start: build phase for puppet-network-1.0.2-1.src.rpm
+2019-09-18 11:20:19,656 - Start: build setup for puppet-network-1.0.2-1.src.rpm
+2019-09-18 11:20:21,003 - Finish: build setup for puppet-network-1.0.2-1.src.rpm
+2019-09-18 11:20:21,003 - Start: rpmbuild puppet-network-1.0.2-1.src.rpm
+2019-09-18 11:20:21,586 - Finish: rpmbuild puppet-network-1.0.2-1.src.rpm
+2019-09-18 11:20:21,587 - Finish: build phase for puppet-network-1.0.2-1.src.rpm
+2019-09-18 11:20:21,588 - Finish: run

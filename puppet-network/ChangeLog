@@ -1,0 +1,129 @@
+CHANGELOG
+=========
+
+0.5.0
+-----
+
+2013-05-21
+
+This is a backwards compatible feature and bugfix release
+
+  * New defined type: network::bond, with Debian and Redhat backends
+  * New facts for current network configuration:
+    * network_public_ip
+    * network_nexthop_ip
+    * network_primary_interface
+    * network_primary_ip
+  * (network-#36) More strict selection of redhat network interface scripts
+
+Thanks to Eric Sakowski, Wolf Noble, Vlastimil Holer, and Dan Fruehauf for
+their contributions to this release.
+
+0.4.1
+-----
+
+2013-08-17
+
+This is a backwards compatible bugfix release
+
+  * Update Modulefile dependency for adrien/boolean to >= 1.0.0
+
+0.4.0
+-----
+
+2013-03-22
+
+This is a backwards compatible feature release
+
+  * New provider for network_route: redhat
+  * Module built with sane umask (0022); permissions should just work
+
+Thanks to Eric Sakowski for implementing the redhat network_route provider
+
+0.3.0
+-----
+
+2013-01-23
+
+This is a backwards compatible bugfix and maintenance release.
+
+  * New type: network_route
+  * Debian provider for network_route
+  * Better behavior of boolean properties in network_config
+  * (network-#18) Support multiple options for debian network_config
+
+Build status is now available at https://travis-ci.org/adrienthebo/puppet-network
+
+Thanks:
+
+  * Patrick Otto for the network_route type and Debian provider
+  * Robert Starmer for testing, debugging, and documentation
+  * Wolf Noble for insight and encouragement all along the way
+
+0.2.0
+-----
+
+2012-12-30
+
+This is a backwards compatible bugfix and maintenance release.
+
+  * (network-#15) Add hotpluggable feature for redhat
+  * (network-#13) normalize boolean values
+  * (network-#13) patch inet flapping behavior in redhat
+  * (network-#1) Add :reconfigurable parameter
+  * (network-#2) Add :provider_options feature
+
+0.1.1
+-----
+
+2012-12-06
+
+This is a backwards compatible metadata fix and maintenance update.
+
+  * (network-#14) Fix specs for Ruby 1.9.3
+  * Add Gemfile
+  * (maint) DRY up specs
+  * Restrict filemapper dependency to 1.0.x. 1.1.x will go into RC shortly
+  and the puppet module tool will install prereleases so for the sake of
+  safety I'm restricting the dependency here.
+
+0.1.0
+-----
+
+2012-12-04
+
+This is a backwards incompatible bugfix and feature release. It might work
+work with un-updated code but no guarantees are made.
+
+  * Added a `hotplug` feature to the network_config type
+  * Implemented the `hotplug` feature for osfamily => Debian
+  * Added an alias from none to static for redhat users
+
+0.0.4
+-----
+
+This is a backwards compatible maintenance release.
+
+  * Munge onboot and method parameters for redhat provider.
+  * Automatically quote and unquote redhat values as needed
+
+0.0.3
+-----
+
+This is a backwards compatible maintenance release.
+
+  * Use non-greedy regex when matching redhat keys
+  * Update redhat provider to respect current API implementation of filemapper
+  * Add test coverage to redhat provider
+
+0.0.2
+-----
+
+This is a backwards compatible maintenance release.
+
+  * Remove bugs from interfaces provider stemming from old isomorphism behavior.
+
+0.0.1
+-----
+
+Initial release.
