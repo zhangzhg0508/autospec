@@ -1,0 +1,37 @@
+2019-09-18 15:17:34,382 - Mock Version: 1.2.14
+2019-09-18 15:17:34,632 - Start: dnf update
+2019-09-18 15:17:44,898 - Finish: dnf update
+2019-09-18 15:17:44,904 - Finish: chroot init
+2019-09-18 15:17:44,906 - Start: buildsrpm
+2019-09-18 15:17:44,912 - Start: rpmbuild -bs
+2019-09-18 15:17:44,951 - Finish: rpmbuild -bs
+2019-09-18 15:17:44,953 - Finish: buildsrpm
+2019-09-18 15:17:44,954 - Finish: run
+2019-09-18 15:17:48,078 - Mock Version: 1.2.14
+2019-09-18 15:17:48,332 - Start: dnf update
+2019-09-18 15:17:58,273 - Finish: dnf update
+2019-09-18 15:17:58,278 - Finish: chroot init
+2019-09-18 15:17:58,280 - Start: build phase for puppet-horizon-11.5.0-1.src.rpm
+2019-09-18 15:17:58,282 - Start: build setup for puppet-horizon-11.5.0-1.src.rpm
+2019-09-18 15:17:59,190 - Finish: build setup for puppet-horizon-11.5.0-1.src.rpm
+2019-09-18 15:17:59,191 - Start: rpmbuild puppet-horizon-11.5.0-1.src.rpm
+2019-09-18 15:18:03,186 - Mock Version: 1.2.14
+2019-09-18 15:18:03,431 - Start: dnf update
+2019-09-18 15:18:13,539 - Finish: dnf update
+2019-09-18 15:18:13,545 - Finish: chroot init
+2019-09-18 15:18:13,548 - Start: buildsrpm
+2019-09-18 15:18:13,553 - Start: rpmbuild -bs
+2019-09-18 15:18:13,594 - Finish: rpmbuild -bs
+2019-09-18 15:18:13,595 - Finish: buildsrpm
+2019-09-18 15:18:13,596 - Finish: run
+2019-09-18 15:18:16,702 - Mock Version: 1.2.14
+2019-09-18 15:18:16,958 - Start: dnf update
+2019-09-18 15:18:27,167 - Finish: dnf update
+2019-09-18 15:18:27,173 - Finish: chroot init
+2019-09-18 15:18:27,174 - Start: build phase for puppet-horizon-11.5.0-1.src.rpm
+2019-09-18 15:18:27,176 - Start: build setup for puppet-horizon-11.5.0-1.src.rpm
+2019-09-18 15:18:28,092 - Finish: build setup for puppet-horizon-11.5.0-1.src.rpm
+2019-09-18 15:18:28,092 - Start: rpmbuild puppet-horizon-11.5.0-1.src.rpm
+2019-09-18 15:18:28,912 - Finish: rpmbuild puppet-horizon-11.5.0-1.src.rpm
+2019-09-18 15:18:28,913 - Finish: build phase for puppet-horizon-11.5.0-1.src.rpm
+2019-09-18 15:18:28,914 - Finish: run
