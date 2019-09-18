@@ -1,0 +1,426 @@
+From 177c7e790a232267398275035ec13f9de3f78278 Mon Sep 17 00:00:00 2001
+From: fuyong <fuyong@neusoft.com>
+Date: Wed, 18 Sep 2019 09:15:31 +0800
+Subject: [PATCH puppet-oslo] puppet-oslo: Autospec creation for version 11.3.0
+
+---
+ .gitignore                                    |  14 ++
+ 0001-Remove-log_dir-from-conf-files.patch     |  36 ++++
+ 0001-add-makefile.patch                       |  21 ++
+ ...g2-drivername-to-postgresql-settings.patch |  51 +++++
+ Makefile                                      |   5 +
+ build_prepend                                 |   1 +
+ buildreq_add                                  |   2 +
+ buildreq_ban                                  |   2 +
+ excludes                                      |   2 +
+ install_append                                |   1 +
+ install_macro                                 |   1 +
+ install_prepend                               |   2 +
+ make_check_command                            |   3 +
+ options.conf                                  |  58 ++++++
+ pkgconfig_add                                 |   2 +
+ pkgconfig_ban                                 |   2 +
+ puppet-oslo.license                           |   1 +
+ puppet-oslo.spec                              | 195 ++++++++++++++++++
+ release                                       |   1 +
+ requires_add                                  |   6 +
+ requires_ban                                  |   2 +
+ series                                        |   3 +
+ testresults                                   |   5 +
+ upstream                                      |   1 +
+ 24 files changed, 417 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 0001-Remove-log_dir-from-conf-files.patch
+ create mode 100644 0001-add-makefile.patch
+ create mode 100644 0002-add-psycopg2-drivername-to-postgresql-settings.patch
+ create mode 100644 Makefile
+ create mode 100644 build_prepend
+ create mode 100644 buildreq_add
+ create mode 100644 buildreq_ban
+ create mode 100644 excludes
+ create mode 100644 install_append
+ create mode 100644 install_macro
+ create mode 100644 install_prepend
+ create mode 100644 make_check_command
+ create mode 100644 options.conf
+ create mode 100644 pkgconfig_add
+ create mode 100644 pkgconfig_ban
+ create mode 100644 puppet-oslo.license
+ create mode 100644 puppet-oslo.spec
+ create mode 100644 release
+ create mode 100644 requires_add
+ create mode 100644 requires_ban
+ create mode 100644 series
+ create mode 100644 testresults
+ create mode 100644 upstream
+
+diff --git a/0001-Remove-log_dir-from-conf-files.patch b/0001-Remove-log_dir-from-conf-files.patch
+new file mode 100644
+index 0000000..3443b2e
+--- /dev/null
++++ b/0001-Remove-log_dir-from-conf-files.patch
+@@ -0,0 +1,36 @@
++From b8dee2da527c3d3010e2b5b4e49f87f430afa826 Mon Sep 17 00:00:00 2001
++From: Al Bailey <Al.Bailey@windriver.com>
++Date: Fri, 3 Nov 2017 17:48:38 -0500
++Subject: [PATCH] Remove log_dir from conf files
++
++---
++ manifests/log.pp | 6 ++----
++ 1 file changed, 2 insertions(+), 4 deletions(-)
++
++diff --git a/manifests/log.pp b/manifests/log.pp
++index 8778d46..771a674 100644
++--- a/manifests/log.pp
+++++ b/manifests/log.pp
++@@ -27,9 +27,7 @@
++ #   Defaults to $::os_service_default
++ #
++ # [*log_dir*]
++-#   (Optional) Directory where logs should be stored.
++-#   If set to $::os_service_default, it will not log to any directory.
++-#   Defaults to $::os_service_default
+++#   WRS: Remove log_dir to ensure services log via syslog
++ #
++ # [*watch_log_file*]
++ #   (Optional) Uses logging handler designed to watch file system (boolean value).
++@@ -136,7 +134,7 @@ define oslo::log(
++     'DEFAULT/log_config_append'             => { value => $log_config_append },
++     'DEFAULT/log_date_format'               => { value => $log_date_format },
++     'DEFAULT/log_file'                      => { value => $log_file },
++-    'DEFAULT/log_dir'                       => { value => $log_dir },
+++    'DEFAULT/log_dir'                       => { ensure => absent },
++     'DEFAULT/watch_log_file'                => { value => $watch_log_file },
++     'DEFAULT/use_syslog'                    => { value => $use_syslog },
++     'DEFAULT/syslog_log_facility'           => { value => $syslog_log_facility },
++-- 
++1.8.3.1
++
+diff --git a/0001-add-makefile.patch b/0001-add-makefile.patch
+new file mode 100644
+index 0000000..c20b09c
+--- /dev/null
++++ b/0001-add-makefile.patch
+@@ -0,0 +1,21 @@
++From 6d2e758f33d450f62bc7566d5018f4f79a342950 Mon Sep 17 00:00:00 2001
++From: lgdfy <im.fuyong@gmail.com>
++Date: Wed, 11 Sep 2019 15:57:00 +0800
++Subject: [PATCH] add makefile
++
++---
++ Makefile | 2 ++
++ 1 file changed, 2 insertions(+)
++ create mode 100644 Makefile
++
++diff --git a/Makefile b/Makefile
++new file mode 100644
++index 0000000..cda58eb
++--- /dev/null
+++++ b/Makefile
++@@ -0,0 +1,2 @@
+++build:
+++	echo "no build"
++-- 
++2.23.0
++
+diff --git a/0002-add-psycopg2-drivername-to-postgresql-settings.patch b/0002-add-psycopg2-drivername-to-postgresql-settings.patch
+new file mode 100644
+index 0000000..7340a06
+--- /dev/null
++++ b/0002-add-psycopg2-drivername-to-postgresql-settings.patch
+@@ -0,0 +1,51 @@
++From 1823423c329675a72ea5b3497c31f8c407dcdf27 Mon Sep 17 00:00:00 2001
++From: Al Bailey <Al.Bailey@windriver.com>
++Date: Thu, 14 Dec 2017 11:08:30 -0600
++Subject: [PATCH] add psycopg2 drivername to postgresql settings
++
++---
++ manifests/db.pp | 13 ++++++++-----
++ 1 file changed, 8 insertions(+), 5 deletions(-)
++
++diff --git a/manifests/db.pp b/manifests/db.pp
++index 172c8ae..4b918bc 100644
++--- a/manifests/db.pp
+++++ b/manifests/db.pp
++@@ -132,10 +132,13 @@ define oslo::db(
++ 
++   if !is_service_default($connection) {
++ 
++-    validate_re($connection,
++-      '^(sqlite|mysql(\+pymysql)?|postgresql|mongodb):\/\/(\S+:\S+@\S+\/\S+)?')
+++    if $connection !~ '^(sqlite|mysql(\+pymysql)?|postgresql(\+psycopg2)?|mongodb):\/\/(\S+:\S+@\S+\/\S+)?' {
+++      err{'invalid database connection parameter: $connection':}
+++    }
+++    # add psycopg2 drivername to postgresql if using driverless postgres setting
+++    $real_connection = regsubst($connection,'^postgresql:','postgresql+psycopg2:')
++ 
++-    case $connection {
+++    case $real_connection {
++       /^mysql(\+pymysql)?:\/\//: {
++         require '::mysql::bindings'
++         require '::mysql::bindings::python'
++@@ -145,7 +148,7 @@ define oslo::db(
++           $backend_package = false
++         }
++       }
++-      /^postgresql:\/\//: {
+++      /^postgresql(\+psycopg2)?:\/\//: {
++         $backend_package = false
++         require '::postgresql::lib::python'
++       }
++@@ -178,7 +181,7 @@ to connect to the database.")
++   $database_options = {
++     'database/sqlite_synchronous'    => { value => $sqlite_synchronous },
++     'database/backend'               => { value => $backend },
++-    'database/connection'            => { value => $connection, secret => true },
+++    'database/connection'            => { value => $real_connection, secret => true },
++     'database/slave_connection'      => { value => $slave_connection, secret => true },
++     'database/mysql_sql_mode'        => { value => $mysql_sql_mode },
++     'database/idle_timeout'          => { value => $idle_timeout },
++-- 
++1.8.3.1
++
+diff --git a/build_prepend b/build_prepend
+new file mode 100644
+index 0000000..bb87927
+--- /dev/null
++++ b/build_prepend
+@@ -0,0 +1 @@
++export PBR_VERSION=%{version}
+diff --git a/install_append b/install_append
+new file mode 100644
+index 0000000..d2e27e2
+--- /dev/null
++++ b/install_append
+@@ -0,0 +1 @@
++cp -rp * %{buildroot}%{_datadir}/openstack-puppet/modules/oslo/
+diff --git a/install_macro b/install_macro
+new file mode 100644
+index 0000000..ccf5fc3
+--- /dev/null
++++ b/install_macro
+@@ -0,0 +1 @@
++install -d -m 0755 %{buildroot}%{_datadir}/openstack-puppet/modules/oslo/
+diff --git a/install_prepend b/install_prepend
+new file mode 100644
+index 0000000..18eccb9
+--- /dev/null
++++ b/install_prepend
+@@ -0,0 +1,2 @@
++export PBR_VERSION=%{version}
++install -d -m 0755 %{buildroot}%{_datadir}/openstack-puppet/modules/oslo/
+diff --git a/make_check_command b/make_check_command
+new file mode 100644
+index 0000000..f4da339
+--- /dev/null
++++ b/make_check_command
+@@ -0,0 +1,3 @@
++# This file contains the output files that need %exclude. Full path
++# names, one per line.
++echo "dont need check"
+diff --git a/options.conf b/options.conf
+new file mode 100644
+index 0000000..d141a0e
+--- /dev/null
++++ b/options.conf
+@@ -0,0 +1,58 @@
++name = puppet-oslo
++url = file:///home/clr/stx-tar/puppet-oslo-11.3.0.tar.gz
++use_lto = true
++verify_required = false
+diff --git a/puppet-oslo.license b/puppet-oslo.license
+new file mode 100644
+index 0000000..4d44686
+--- /dev/null
++++ b/puppet-oslo.license
+@@ -0,0 +1 @@
++ASL-2.0
+diff --git a/puppet-oslo.spec b/puppet-oslo.spec
+new file mode 100644
+index 0000000..20910ac
+--- /dev/null
++++ b/puppet-oslo.spec
+@@ -0,0 +1,195 @@
++#
++# This file is auto-generated. DO NOT EDIT
++# Generated by: autospec.py
++#
++Name     : puppet-oslo
++License  : Apache-2.0
++Requires: puppet-oslo-data = %{version}-%{release}
++Requires: puppet-oslo-python = %{version}-%{release}
++Requires: puppet-oslo-python3 = %{version}-%{release}
++Requires: puppet >= 2.7.0
++Requires: puppet-inifile
++Requires: puppet-openstacklib
++Requires: puppet-stdlib
++BuildRequires : buildreq-distutils3
++BuildRequires : pbr
++Patch1: 0001-add-makefile.patch
++Patch2: 0001-Remove-log_dir-from-conf-files.patch
++Patch3: 0002-add-psycopg2-drivername-to-postgresql-settings.patch
++
++%description
++Team and repository tags
++========================
++[![Team and repository tags](http://governance.openstack.org/badges/puppet-oslo.svg)](http://governance.openstack.org/reference/tags/index.html)
++
++%package data
++
++
++
++%package python
++Requires: puppet-oslo-python3 = %{version}-%{release}
++
++%description python
++python components for the puppet-oslo package.
++
++
++%package python3
++Requires: python3-core
++
++%description python3
++python3 components for the puppet-oslo package.
++
++
++%prep
++%patch1 -p1
++%patch2 -p1
++%patch3 -p1
++
++%build
++## build_prepend content
++export PBR_VERSION=%{version}
++## build_prepend end
++export MAKEFLAGS=%{?_smp_mflags}
++python3 setup.py build
++
++%check
++echo "dont need check"
++%install
++export MAKEFLAGS=%{?_smp_mflags}
++rm -rf %{buildroot}
++## install_prepend content
++export PBR_VERSION=%{version}
++install -d -m 0755 %{buildroot}%{_datadir}/openstack-puppet/modules/oslo/
++## install_prepend end
++python3 -tt setup.py build  install --root=%{buildroot}
++echo ----[ mark ]----
++cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
++echo ----[ mark ]----
++## install_append content
++cp -rp * %{buildroot}%{_datadir}/openstack-puppet/modules/oslo/
++## install_append end
++
++%files
++%defattr(-,root,root,-)
++
++%files data
++%defattr(-,root,root,-)
++/usr/share/openstack-puppet/modules/oslo/Gemfile
++/usr/share/openstack-puppet/modules/oslo/LICENSE
++/usr/share/openstack-puppet/modules/oslo/Makefile
++/usr/share/openstack-puppet/modules/oslo/README.md
++/usr/share/openstack-puppet/modules/oslo/Rakefile
++/usr/share/openstack-puppet/modules/oslo/bindep.txt
++/usr/share/openstack-puppet/modules/oslo/checksums.json
++/usr/share/openstack-puppet/modules/oslo/lib/puppet/provider/oslo_config/ini_setting.rb
++/usr/share/openstack-puppet/modules/oslo/lib/puppet/type/oslo_config.rb
++/usr/share/openstack-puppet/modules/oslo/manifests/cache.pp
++/usr/share/openstack-puppet/modules/oslo/manifests/concurrency.pp
++/usr/share/openstack-puppet/modules/oslo/manifests/cors.pp
++/usr/share/openstack-puppet/modules/oslo/manifests/db.pp
++/usr/share/openstack-puppet/modules/oslo/manifests/init.pp
++/usr/share/openstack-puppet/modules/oslo/manifests/log.pp
++/usr/share/openstack-puppet/modules/oslo/manifests/messaging/amqp.pp
++/usr/share/openstack-puppet/modules/oslo/manifests/messaging/default.pp
++/usr/share/openstack-puppet/modules/oslo/manifests/messaging/notifications.pp
++/usr/share/openstack-puppet/modules/oslo/manifests/messaging/rabbit.pp
++/usr/share/openstack-puppet/modules/oslo/manifests/messaging/zmq.pp
++/usr/share/openstack-puppet/modules/oslo/manifests/middleware.pp
++/usr/share/openstack-puppet/modules/oslo/manifests/params.pp
++/usr/share/openstack-puppet/modules/oslo/manifests/policy.pp
++/usr/share/openstack-puppet/modules/oslo/manifests/privsep.pp
++/usr/share/openstack-puppet/modules/oslo/manifests/releasenotes/notes/rabbitmq-connection-params-1a8ace0c23e7249e.yaml
++/usr/share/openstack-puppet/modules/oslo/manifests/service.pp
++/usr/share/openstack-puppet/modules/oslo/manifests/versionedobjects.pp
++/usr/share/openstack-puppet/modules/oslo/metadata.json
++/usr/share/openstack-puppet/modules/oslo/puppet_oslo.egg-info/PKG-INFO
++/usr/share/openstack-puppet/modules/oslo/puppet_oslo.egg-info/SOURCES.txt
++/usr/share/openstack-puppet/modules/oslo/puppet_oslo.egg-info/dependency_links.txt
++/usr/share/openstack-puppet/modules/oslo/puppet_oslo.egg-info/not-zip-safe
++/usr/share/openstack-puppet/modules/oslo/puppet_oslo.egg-info/top_level.txt
++/usr/share/openstack-puppet/modules/oslo/releasenotes/notes/add_oslo_privsep-3f125445bce8b431.yaml
++/usr/share/openstack-puppet/modules/oslo/releasenotes/notes/add_zmq_messaging-7ea20df747c78035.yaml
++/usr/share/openstack-puppet/modules/oslo/releasenotes/notes/backend_package_ensure-54b4525895ce9acd.yaml
++/usr/share/openstack-puppet/modules/oslo/releasenotes/notes/deprecate_config_sqlite_db-1a239175d42378e3.yaml
++/usr/share/openstack-puppet/modules/oslo/releasenotes/notes/deprecate_rabbit_max_retries-813a568923f2335d.yaml
++/usr/share/openstack-puppet/modules/oslo/releasenotes/notes/first_release-a7268e1c8959eca3.yaml
++/usr/share/openstack-puppet/modules/oslo/releasenotes/notes/fix_log_dir_documentation-050052366584e83e.yaml
++/usr/share/openstack-puppet/modules/oslo/releasenotes/notes/remove_verbose-0b599cd4810a8c51.yaml
++/usr/share/openstack-puppet/modules/oslo/releasenotes/notes/secure-transport-url-d67d307cf85a16b1.yaml
++/usr/share/openstack-puppet/modules/oslo/releasenotes/notes/update-amqp-opts-1f14b8d3648b2b30.yaml
++/usr/share/openstack-puppet/modules/oslo/releasenotes/source/_static/.placeholder
++/usr/share/openstack-puppet/modules/oslo/releasenotes/source/conf.py
++/usr/share/openstack-puppet/modules/oslo/releasenotes/source/index.rst
++/usr/share/openstack-puppet/modules/oslo/releasenotes/source/newton.rst
++/usr/share/openstack-puppet/modules/oslo/releasenotes/source/ocata.rst
++/usr/share/openstack-puppet/modules/oslo/releasenotes/source/unreleased.rst
++/usr/share/openstack-puppet/modules/oslo/setup.cfg
++/usr/share/openstack-puppet/modules/oslo/setup.py
++/usr/share/openstack-puppet/modules/oslo/spec/acceptance/nodesets/centos-70-x64.yml
++/usr/share/openstack-puppet/modules/oslo/spec/acceptance/nodesets/default.yml
++/usr/share/openstack-puppet/modules/oslo/spec/acceptance/nodesets/nodepool-centos7.yml
++/usr/share/openstack-puppet/modules/oslo/spec/acceptance/nodesets/nodepool-trusty.yml
++/usr/share/openstack-puppet/modules/oslo/spec/acceptance/nodesets/nodepool-xenial.yml
++/usr/share/openstack-puppet/modules/oslo/spec/acceptance/nodesets/ubuntu-server-1404-x64.yml
++/usr/share/openstack-puppet/modules/oslo/spec/classes/oslo_init_spec.rb
++/usr/share/openstack-puppet/modules/oslo/spec/defines/oslo_cache_spec.rb
++/usr/share/openstack-puppet/modules/oslo/spec/defines/oslo_concurrency_spec.rb
++/usr/share/openstack-puppet/modules/oslo/spec/defines/oslo_cors_spec.rb
++/usr/share/openstack-puppet/modules/oslo/spec/defines/oslo_db_spec.rb
++/usr/share/openstack-puppet/modules/oslo/spec/defines/oslo_log_spec.rb
++/usr/share/openstack-puppet/modules/oslo/spec/defines/oslo_messaging_amqp_spec.rb
++/usr/share/openstack-puppet/modules/oslo/spec/defines/oslo_messaging_default_spec.rb
++/usr/share/openstack-puppet/modules/oslo/spec/defines/oslo_messaging_notifications_spec.rb
++/usr/share/openstack-puppet/modules/oslo/spec/defines/oslo_messaging_rabbit_spec.rb
++/usr/share/openstack-puppet/modules/oslo/spec/defines/oslo_messaging_zmq_spec.rb
++/usr/share/openstack-puppet/modules/oslo/spec/defines/oslo_middleware_spec.rb
++/usr/share/openstack-puppet/modules/oslo/spec/defines/oslo_policy_spec.rb
++/usr/share/openstack-puppet/modules/oslo/spec/defines/oslo_privsep_spec.rb
++/usr/share/openstack-puppet/modules/oslo/spec/defines/oslo_service_spec.rb
++/usr/share/openstack-puppet/modules/oslo/spec/defines/oslo_versionedobjects_spec.rb
++/usr/share/openstack-puppet/modules/oslo/spec/shared_examples.rb
++/usr/share/openstack-puppet/modules/oslo/spec/spec_helper.rb
++/usr/share/openstack-puppet/modules/oslo/spec/spec_helper_acceptance.rb
++/usr/share/openstack-puppet/modules/oslo/spec/unit/provider/oslo_config/ini_setting_spec.rb
++/usr/share/openstack-puppet/modules/oslo/spec/unit/type/oslo_config_spec.rb
++/usr/share/openstack-puppet/modules/oslo/test-requirements.txt
++/usr/share/openstack-puppet/modules/oslo/tests/init.pp
++/usr/share/openstack-puppet/modules/oslo/tox.ini
++
++%files python
++%defattr(-,root,root,-)
++
++%files python3
++%defattr(-,root,root,-)
++/usr/lib/python3*/*
+diff --git a/requires_add b/requires_add
+new file mode 100644
+index 0000000..1d36cdb
+--- /dev/null
++++ b/requires_add
+@@ -0,0 +1,6 @@
++puppet-inifile
++puppet-stdlib
++puppet-openstacklib
++puppet >= 2.7.0
+diff --git a/series b/series
+new file mode 100644
+index 0000000..16b6efe
+--- /dev/null
++++ b/series
+@@ -0,0 +1,3 @@
++0001-add-makefile.patch
++0001-Remove-log_dir-from-conf-files.patch
++0002-add-psycopg2-drivername-to-postgresql-settings.patch

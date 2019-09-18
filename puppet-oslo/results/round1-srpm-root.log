@@ -1,0 +1,100 @@
+INFO buildroot.py:307:  Mock Version: 1.2.14
+DEBUG util.py:96:  ensuring that dir exists: /var/lib/mock/clear-puppet-oslo/root/dev/pts
+DEBUG util.py:99:  creating dir: /var/lib/mock/clear-puppet-oslo/root/dev/pts
+DEBUG util.py:96:  ensuring that dir exists: /var/lib/mock/clear-puppet-oslo/root/dev/shm
+DEBUG util.py:99:  creating dir: /var/lib/mock/clear-puppet-oslo/root/dev/shm
+DEBUG buildroot.py:445:  kernel version == 5.2.10-828.native
+DEBUG util.py:108:  touching file: /var/lib/mock/clear-puppet-oslo/root/etc/fstab
+DEBUG util.py:108:  touching file: /var/lib/mock/clear-puppet-oslo/root/etc/yum.conf
+DEBUG util.py:108:  touching file: /var/lib/mock/clear-puppet-oslo/root/etc/dnf.conf
+DEBUG util.py:108:  touching file: /var/lib/mock/clear-puppet-oslo/root/var/log/yum.log
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: ['/bin/mount', '-n', '-t', 'proc', 'proc', '/var/lib/mock/clear-puppet-oslo/root/proc'] with env {'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
+DEBUG util.py:526:  Child return code was: 0
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: ['/bin/mount', '-n', '-t', 'sysfs', 'sysfs', '/var/lib/mock/clear-puppet-oslo/root/sys'] with env {'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
+DEBUG util.py:526:  Child return code was: 0
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: ['/bin/mount', '-n', '-t', 'tmpfs', 'tmpfs', '/var/lib/mock/clear-puppet-oslo/root/dev/shm'] with env {'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
+DEBUG util.py:526:  Child return code was: 0
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: ['/bin/mount', '-n', '-t', 'devpts', '-o', 'gid=5,mode=0620,ptmxmode=0666,newinstance', 'devpts', '/var/lib/mock/clear-puppet-oslo/root/dev/pts'] with env {'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
+DEBUG util.py:526:  Child return code was: 0
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: ['/bin/mount', '-n', '--bind', '/var/cache/mock/clear/dnf_cache/', '/var/lib/mock/clear-puppet-oslo/root/var/cache/dnf/'] with env {'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
+DEBUG util.py:526:  Child return code was: 0
+DEBUG buildroot.py:133:  rootdir = /var/lib/mock/clear-puppet-oslo/root
+DEBUG buildroot.py:134:  resultdir = results/
+DEBUG util.py:96:  ensuring that dir exists: /var/lib/mock/clear-puppet-oslo/root/etc/pki/mock
+DEBUG util.py:96:  ensuring that dir exists: /var/lib/mock/clear-puppet-oslo/root/etc/dnf
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: ['/usr/sbin/userdel', '-r', '-f', 'mockbuild'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
+DEBUG util.py:273:  Unsharing. Flags: 134217728
+DEBUG util.py:526:  Child return code was: 0
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: ['/usr/sbin/userdel', '-r', '-f', 'mockbuild'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
+DEBUG util.py:273:  Unsharing. Flags: 134217728
+DEBUG util.py:399:  userdel: user 'mockbuild' does not exist
+DEBUG util.py:526:  Child return code was: 6
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: ['/usr/sbin/groupdel', 'mockbuild'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
+DEBUG util.py:273:  Unsharing. Flags: 134217728
+DEBUG util.py:399:  groupdel: group 'mockbuild' does not exist
+DEBUG util.py:526:  Child return code was: 6
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: ['/usr/sbin/groupadd', '-g', '1000', 'mockbuild'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
+DEBUG util.py:273:  Unsharing. Flags: 134217728
+DEBUG util.py:526:  Child return code was: 0
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: /usr/sbin/useradd -m -u 1000 -g 1000 -d /builddir  mockbuild with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell True
+DEBUG util.py:273:  Unsharing. Flags: 134217728
+DEBUG util.py:526:  Child return code was: 0
+DEBUG util.py:96:  ensuring that dir exists: /var/lib/mock/clear-puppet-oslo/root/builddir/build/RPMS
+DEBUG util.py:99:  creating dir: /var/lib/mock/clear-puppet-oslo/root/builddir/build/RPMS
+DEBUG util.py:96:  ensuring that dir exists: /var/lib/mock/clear-puppet-oslo/root/builddir/build/SPECS
+DEBUG util.py:99:  creating dir: /var/lib/mock/clear-puppet-oslo/root/builddir/build/SPECS
+DEBUG util.py:96:  ensuring that dir exists: /var/lib/mock/clear-puppet-oslo/root/builddir/build/SRPMS
+DEBUG util.py:99:  creating dir: /var/lib/mock/clear-puppet-oslo/root/builddir/build/SRPMS
+DEBUG util.py:96:  ensuring that dir exists: /var/lib/mock/clear-puppet-oslo/root/builddir/build/SOURCES
+DEBUG util.py:99:  creating dir: /var/lib/mock/clear-puppet-oslo/root/builddir/build/SOURCES
+DEBUG util.py:96:  ensuring that dir exists: /var/lib/mock/clear-puppet-oslo/root/builddir/build/BUILD
+DEBUG util.py:99:  creating dir: /var/lib/mock/clear-puppet-oslo/root/builddir/build/BUILD
+DEBUG util.py:96:  ensuring that dir exists: /var/lib/mock/clear-puppet-oslo/root/builddir/build/BUILDROOT
+DEBUG util.py:99:  creating dir: /var/lib/mock/clear-puppet-oslo/root/builddir/build/BUILDROOT
+DEBUG util.py:96:  ensuring that dir exists: /var/lib/mock/clear-puppet-oslo/root/builddir/build/originals
+DEBUG util.py:99:  creating dir: /var/lib/mock/clear-puppet-oslo/root/builddir/build/originals
+DEBUG package_manager.py:92:  ['/usr/bin/dnf', '--installroot', '/var/lib/mock/clear-puppet-oslo/root/', '-y', '--releasever', 'clear', '--setopt=deltarpm=false', 'update']
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: ['/usr/bin/dnf', '--installroot', '/var/lib/mock/clear-puppet-oslo/root/', '-y', '--releasever', 'clear', '--setopt=deltarpm=false', 'update'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'LC_MESSAGES': 'C'} and shell False
+DEBUG util.py:399:  Failed to synchronize cache for repo 'local'
+DEBUG util.py:399:  Ignoring repositories: local
+DEBUG util.py:399:  Dependencies resolved.
+DEBUG util.py:399:  Nothing to do.
+DEBUG util.py:399:  Complete!
+DEBUG util.py:526:  Child return code was: 0
+DEBUG util.py:108:  touching file: /var/lib/mock/clear-puppet-oslo/root/.initialized
+DEBUG buildroot.py:328:  removing 3 rpm db files
+DEBUG buildroot.py:333:  _nuke_rpm_db: removing /var/lib/mock/clear-puppet-oslo/root/var/lib/rpm/__db.001
+DEBUG buildroot.py:333:  _nuke_rpm_db: removing /var/lib/mock/clear-puppet-oslo/root/var/lib/rpm/__db.002
+DEBUG buildroot.py:333:  _nuke_rpm_db: removing /var/lib/mock/clear-puppet-oslo/root/var/lib/rpm/__db.003
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:273:  Unsharing. Flags: 134217728
+DEBUG backend.py:341:  Copying package to result dir
+DEBUG util.py:172:  kill orphans
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: ['/bin/umount', '-n', '/var/lib/mock/clear-puppet-oslo/root/var/cache/dnf/'] with env {'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
+DEBUG util.py:526:  Child return code was: 0
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/clear-puppet-oslo/root/dev/pts'] with env {'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
+DEBUG util.py:526:  Child return code was: 0
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/clear-puppet-oslo/root/dev/shm'] with env {'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
+DEBUG util.py:526:  Child return code was: 0
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/clear-puppet-oslo/root/sys'] with env {'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
+DEBUG util.py:526:  Child return code was: 0
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/clear-puppet-oslo/root/proc'] with env {'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
+DEBUG util.py:526:  Child return code was: 0
+DEBUG util.py:96:  ensuring that dir exists: /var/lib/mock/clear-puppet-oslo
+DEBUG util.py:172:  kill orphans
