@@ -733,7 +733,7 @@ DEBUG util.py:273:  Unsharing. Flags: 134217728
 DEBUG package_manager.py:92:  ['/usr/bin/dnf', '--installroot', '/var/lib/mock/clear-cgcs-users/root/', '--releasever', 'clear', '--setopt=deltarpm=false', 'install', 'ccache']
 DEBUG util.py:546:  child environment: None
 DEBUG util.py:479:  Executing command: ['/usr/bin/dnf', '--installroot', '/var/lib/mock/clear-cgcs-users/root/', '--releasever', 'clear', '--setopt=deltarpm=false', 'install', 'ccache'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002', 'LC_MESSAGES': 'C'} and shell False
-DEBUG util.py:399:  Last metadata expiration check: 0:00:08 ago on Wed 18 Sep 2019 01:22:12 AM UTC.
+DEBUG util.py:399:  Last metadata expiration check: 0:00:09 ago on Wed 18 Sep 2019 01:21:42 AM UTC.
 DEBUG util.py:399:  Dependencies resolved.
 DEBUG util.py:399:  ================================================================================
 DEBUG util.py:399:   Package                 Architecture    Version           Repository      Size
@@ -767,7 +767,7 @@ DEBUG util.py:526:  Child return code was: 0
 DEBUG package_manager.py:92:  ['/usr/bin/dnf', 'builddep', '--installroot', '/var/lib/mock/clear-cgcs-users/root/', '--releasever', 'clear', '/var/lib/mock/clear-cgcs-users/root//builddir/build/SRPMS/cgcs-users-0.3e-1.src.rpm']
 DEBUG util.py:546:  child environment: None
 DEBUG util.py:479:  Executing command: ['/usr/bin/dnf', 'builddep', '--installroot', '/var/lib/mock/clear-cgcs-users/root/', '--releasever', 'clear', '/var/lib/mock/clear-cgcs-users/root//builddir/build/SRPMS/cgcs-users-0.3e-1.src.rpm'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002', 'LC_MESSAGES': 'C'} and shell False
-DEBUG util.py:399:  Last metadata expiration check: 0:00:09 ago on Wed 18 Sep 2019 01:22:12 AM UTC.
+DEBUG util.py:399:  Last metadata expiration check: 0:00:09 ago on Wed 18 Sep 2019 01:21:42 AM UTC.
 DEBUG util.py:399:  Dependencies resolved.
 DEBUG util.py:399:  Nothing to do.
 DEBUG util.py:399:  Complete!
@@ -783,7 +783,6 @@ DEBUG util.py:399:  Set cache size limit to 4.0 GB
 DEBUG util.py:526:  Child return code was: 0
 DEBUG util.py:546:  child environment: None
 DEBUG util.py:273:  Unsharing. Flags: 134217728
-DEBUG backend.py:450:  Copying packages to result dir
 DEBUG util.py:172:  kill orphans
 DEBUG util.py:546:  child environment: None
 DEBUG util.py:479:  Executing command: ['/bin/umount', '-n', '/var/lib/mock/clear-cgcs-users/root/var/tmp/ccache'] with env {'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
@@ -803,5 +802,3 @@ DEBUG util.py:526:  Child return code was: 0
 DEBUG util.py:546:  child environment: None
 DEBUG util.py:479:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/clear-cgcs-users/root/proc'] with env {'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
 DEBUG util.py:526:  Child return code was: 0
-DEBUG util.py:96:  ensuring that dir exists: /var/lib/mock/clear-cgcs-users
-DEBUG util.py:172:  kill orphans

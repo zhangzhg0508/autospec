@@ -1,20 +1,37 @@
-2019-08-21 09:25:31,711 - Mock Version: 1.2.14
-2019-08-21 09:25:31,979 - Start: dnf update
-2019-08-21 09:25:45,082 - Finish: dnf update
-2019-08-21 09:25:45,088 - Finish: chroot init
-2019-08-21 09:25:45,091 - Start: buildsrpm
-2019-08-21 09:25:45,100 - Start: rpmbuild -bs
-2019-08-21 09:25:45,138 - Finish: rpmbuild -bs
-2019-08-21 09:25:45,141 - Finish: buildsrpm
-2019-08-21 09:25:45,142 - Finish: run
-2019-08-21 09:25:48,881 - Mock Version: 1.2.14
-2019-08-21 09:25:49,143 - Start: dnf update
-2019-08-21 09:26:01,630 - Finish: dnf update
-2019-08-21 09:26:01,636 - Finish: chroot init
-2019-08-21 09:26:01,638 - Start: build phase for cgcs-users-1.0-0.2.src.rpm
-2019-08-21 09:26:01,640 - Start: build setup for cgcs-users-1.0-0.2.src.rpm
-2019-08-21 09:26:02,069 - Finish: build setup for cgcs-users-1.0-0.2.src.rpm
-2019-08-21 09:26:02,069 - Start: rpmbuild cgcs-users-1.0-0.2.src.rpm
-2019-08-21 09:26:02,498 - Finish: rpmbuild cgcs-users-1.0-0.2.src.rpm
-2019-08-21 09:26:02,499 - Finish: build phase for cgcs-users-1.0-0.2.src.rpm
-2019-08-21 09:26:02,500 - Finish: run
+2019-09-18 01:21:25,361 - Mock Version: 1.2.14
+2019-09-18 01:21:25,619 - Start: dnf update
+2019-09-18 01:21:36,629 - Finish: dnf update
+2019-09-18 01:21:36,635 - Finish: chroot init
+2019-09-18 01:21:36,638 - Start: buildsrpm
+2019-09-18 01:21:36,643 - Start: rpmbuild -bs
+2019-09-18 01:21:36,681 - Finish: rpmbuild -bs
+2019-09-18 01:21:36,683 - Finish: buildsrpm
+2019-09-18 01:21:36,683 - Finish: run
+2019-09-18 01:21:39,688 - Mock Version: 1.2.14
+2019-09-18 01:21:39,936 - Start: dnf update
+2019-09-18 01:21:50,792 - Finish: dnf update
+2019-09-18 01:21:50,797 - Finish: chroot init
+2019-09-18 01:21:50,799 - Start: build phase for cgcs-users-0.3e-1.src.rpm
+2019-09-18 01:21:50,801 - Start: build setup for cgcs-users-0.3e-1.src.rpm
+2019-09-18 01:21:51,457 - Finish: build setup for cgcs-users-0.3e-1.src.rpm
+2019-09-18 01:21:51,458 - Start: rpmbuild cgcs-users-0.3e-1.src.rpm
+2019-09-18 01:21:54,861 - Mock Version: 1.2.14
+2019-09-18 01:21:55,111 - Start: dnf update
+2019-09-18 01:22:06,123 - Finish: dnf update
+2019-09-18 01:22:06,129 - Finish: chroot init
+2019-09-18 01:22:06,132 - Start: buildsrpm
+2019-09-18 01:22:06,138 - Start: rpmbuild -bs
+2019-09-18 01:22:06,176 - Finish: rpmbuild -bs
+2019-09-18 01:22:06,178 - Finish: buildsrpm
+2019-09-18 01:22:06,179 - Finish: run
+2019-09-18 01:22:09,305 - Mock Version: 1.2.14
+2019-09-18 01:22:09,561 - Start: dnf update
+2019-09-18 01:22:20,388 - Finish: dnf update
+2019-09-18 01:22:20,394 - Finish: chroot init
+2019-09-18 01:22:20,395 - Start: build phase for cgcs-users-0.3e-1.src.rpm
+2019-09-18 01:22:20,397 - Start: build setup for cgcs-users-0.3e-1.src.rpm
+2019-09-18 01:22:21,054 - Finish: build setup for cgcs-users-0.3e-1.src.rpm
+2019-09-18 01:22:21,054 - Start: rpmbuild cgcs-users-0.3e-1.src.rpm
+2019-09-18 01:22:21,304 - Finish: rpmbuild cgcs-users-0.3e-1.src.rpm
+2019-09-18 01:22:21,306 - Finish: build phase for cgcs-users-0.3e-1.src.rpm
+2019-09-18 01:22:21,306 - Finish: run

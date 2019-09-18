@@ -1,5 +1,5 @@
 Mock Version: 1.2.14
-ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/cgcs-users.spec'], chrootPath='/var/lib/mock/clear-cgcs-users/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f4e0b0b5fd0>timeout=0uid=1000gid=1000user='mockbuild'printOutput=False)
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/cgcs-users.spec'], chrootPath='/var/lib/mock/clear-cgcs-users/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f0e4dfecf90>timeout=0uid=1000gid=1000user='mockbuild'printOutput=False)
 Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/cgcs-users.spec'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
 Building target platforms: x86_64
 Building for target x86_64
@@ -7,11 +7,11 @@ Wrote: /builddir/build/SRPMS/cgcs-users-0.3e-1.src.rpm
 Child return code was: 0
 LEAVE do --> 
 
-ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/cgcs-users.spec '], chrootPath='/var/lib/mock/clear-cgcs-users/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f4e0b0b5fd0>timeout=0uid=1000gid=1000user='mockbuild'private_network=TrueprintOutput=False)
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/cgcs-users.spec '], chrootPath='/var/lib/mock/clear-cgcs-users/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f0e4dfecf90>timeout=0uid=1000gid=1000user='mockbuild'private_network=TrueprintOutput=False)
 Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/cgcs-users.spec '] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
 Building target platforms: x86_64
 Building for target x86_64
-Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.DU0dHp
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.ZIiVLc
 + umask 022
 + cd /builddir/build/BUILD
 + LANG=en_US.UTF-8
@@ -49,8 +49,8 @@ patching file Makefile.orig
 patching file README.orig
 patching file Release.orig
 patching file TODO.orig
-Patch #2 (ibsh-0.3e-cgcs.patch):
 + echo 'Patch #2 (ibsh-0.3e-cgcs.patch):'
+Patch #2 (ibsh-0.3e-cgcs.patch):
 + /usr/bin/cat /builddir/build/SOURCES/ibsh-0.3e-cgcs.patch
 + /usr/bin/patch -p1 --fuzz=2
 patching file main.c
@@ -62,7 +62,7 @@ Patch #3 (ibsh-0.3e-cgcs-copyright.patch):
 patching file config.c
 patching file main.c
 + exit 0
-Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.VQyzIl
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.zYVXoc
 + umask 022
 + cd /builddir/build/BUILD
 + cd cgcs-users-1.0
@@ -98,8 +98,8 @@ Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.VQyzIl
 + no_proxy=localhost,127.0.0.1,0.0.0.0
 + export LANG=C.UTF-8
 + LANG=C.UTF-8
-+ export SOURCE_DATE_EPOCH=1568769711
-+ SOURCE_DATE_EPOCH=1568769711
++ export SOURCE_DATE_EPOCH=1568769682
++ SOURCE_DATE_EPOCH=1568769682
 + export GCC_IGNORE_WERROR=1
 + GCC_IGNORE_WERROR=1
 + export AR=gcc-ar
@@ -127,7 +127,7 @@ gcc -c antixploit.c
 gcc -c delbadfiles.c
 gcc -o ibsh main.o command.o jail.o execute.o config.o misc.o antixploit.o delbadfiles.o
 + exit 0
-Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.MMtGMo
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.Ol2uBa
 + umask 022
 + cd /builddir/build/BUILD
 + cd cgcs-users-1.0
@@ -137,8 +137,8 @@ Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.MMtGMo
 + unset PYTHONOPTIMIZE
 + rm -rf /builddir/build/BUILDROOT/cgcs-users-0.3e-1.x86_64
 + mkdir -p /builddir/build/BUILDROOT/cgcs-users-0.3e-1.x86_64
-+ export SOURCE_DATE_EPOCH=1568769711
-+ SOURCE_DATE_EPOCH=1568769711
++ export SOURCE_DATE_EPOCH=1568769682
++ SOURCE_DATE_EPOCH=1568769682
 + rm -rf /builddir/build/BUILDROOT/cgcs-users-0.3e-1.x86_64
 + mkdir -p /builddir/build/BUILDROOT/cgcs-users-0.3e-1.x86_64//usr/local/etc/ibsh/cmds
 + mkdir -p /builddir/build/BUILDROOT/cgcs-users-0.3e-1.x86_64//usr/local/etc/ibsh/xtns
@@ -208,31 +208,44 @@ cpio: glibc-2.30/sysdeps/x86_64/start.S: Cannot stat: No such file or directory
 + /usr/lib/rpm/clr/brp-strip-comment-note /usr/bin/strip /usr/bin/objdump
 + /usr/lib/rpm/clr/brp-python-bytecompile
 + find /builddir/build/BUILDROOT/cgcs-users-0.3e-1.x86_64 -print0
-+ xargs -0 touch -h -d @1568769711
++ xargs -0 touch -h -d @1568769682
 + /usr/lib/rpm/clr/brp-java-repack-jars
 Processing files: cgcs-users-0.3e-1.x86_64
-Provides: cgcs-users = 0.3e-1 cgcs-users(x86-64) = 0.3e-1
-Requires(interp): /bin/sh
-Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
-Requires(post): /bin/sh
-Processing files: cgcs-users-bin-0.3e-1.x86_64
-Provides: cgcs-users-bin = 0.3e-1 cgcs-users-bin(x86-64) = 0.3e-1
-Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
-Requires: libc.so.6()(64bit) libc.so.6(GLIBC_2.2.5)(64bit) libc.so.6(GLIBC_2.3)(64bit)
 Processing files: cgcs-users-debuginfo-0.3e-1.x86_64
 Processing files: cgcs-users-abi-0.3e-1.x86_64
 warning: Empty %files file /builddir/build/BUILD/cgcs-users-1.0/abifiles.list
 Checking for unpackaged file(s): /usr/lib/rpm/check-files /builddir/build/BUILDROOT/cgcs-users-0.3e-1.x86_64
-Wrote: /builddir/build/RPMS/cgcs-users-0.3e-1.x86_64.rpm
-Wrote: /builddir/build/RPMS/cgcs-users-bin-0.3e-1.x86_64.rpm
-Wrote: /builddir/build/RPMS/cgcs-users-debuginfo-0.3e-1.x86_64.rpm
-Wrote: /builddir/build/RPMS/cgcs-users-abi-0.3e-1.x86_64.rpm
-Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.xVwsmn
-+ umask 022
-+ cd /builddir/build/BUILD
-+ cd cgcs-users-1.0
-+ /usr/bin/rm -rf /builddir/build/BUILDROOT/cgcs-users-0.3e-1.x86_64
-+ exit 0
-Child return code was: 0
-LEAVE do --> 
+error: Installed (but unpackaged) file(s) found:
+   /usr/bin/ibsh
+   /usr/local/etc/ibsh/cmds/admin.cmds
+   /usr/local/etc/ibsh/cmds/operator.cmds
+   /usr/local/etc/ibsh/cmds/secadmin.cmds
+   /usr/local/etc/ibsh/globals.cmds
+   /usr/local/etc/ibsh/globals.xtns
+   /usr/local/etc/ibsh/xtns/admin.xtns
+   /usr/local/etc/ibsh/xtns/operator.xtns
+   /usr/local/etc/ibsh/xtns/secadmin.xtns
+    Empty %files file /builddir/build/BUILD/cgcs-users-1.0/abifiles.list
+    Installed (but unpackaged) file(s) found:
+   /usr/bin/ibsh
+   /usr/local/etc/ibsh/cmds/admin.cmds
+   /usr/local/etc/ibsh/cmds/operator.cmds
+   /usr/local/etc/ibsh/cmds/secadmin.cmds
+   /usr/local/etc/ibsh/globals.cmds
+   /usr/local/etc/ibsh/globals.xtns
+   /usr/local/etc/ibsh/xtns/admin.xtns
+   /usr/local/etc/ibsh/xtns/operator.xtns
+   /usr/local/etc/ibsh/xtns/secadmin.xtns
+RPM build errors:
+Child return code was: 1
+EXCEPTION: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/cgcs-users.spec 
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/mockbuild/trace_decorator.py", line 84, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python3.7/site-packages/mockbuild/util.py", line 531, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+mockbuild.exception.Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/cgcs-users.spec 
+LEAVE do --> EXCEPTION RAISED
 

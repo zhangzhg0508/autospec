@@ -1,14 +1,15 @@
-mkdir -p ${RPM_BUILD_ROOT}/%{_sysconfdir}/ibsh/cmds
+
 mkdir -p ${RPM_BUILD_ROOT}/%{_sysconfdir}/ibsh/xtns
 cp globals.cmds ${RPM_BUILD_ROOT}/%{_sysconfdir}/ibsh/
 cp globals.xtns ${RPM_BUILD_ROOT}/%{_sysconfdir}/ibsh/
-cp file:///home/clear/clearlinux/packages/cgcs-users/admin.cmds ${RPM_SOURCE_DIR}/
-cp ${RPM_SOURCE_DIR}/admin.cmds ${RPM_BUILD_ROOT}/%{_sysconfdir}/ibsh/cmds/
-cp ${RPM_SOURCE_DIR}/admin.xtns ${RPM_BUILD_ROOT}/%{_sysconfdir}/ibsh/xtns/
-cp ${RPM_SOURCE_DIR}/operator.cmds ${RPM_BUILD_ROOT}/%{_sysconfdir}/ibsh/cmds/
-cp ${RPM_SOURCE_DIR}/operator.xtns ${RPM_BUILD_ROOT}/%{_sysconfdir}/ibsh/xtns/
-cp ${RPM_SOURCE_DIR}/secadmin.cmds ${RPM_BUILD_ROOT}/%{_sysconfdir}/ibsh/cmds/
-cp ${RPM_SOURCE_DIR}/secadmin.xtns ${RPM_BUILD_ROOT}/%{_sysconfdir}/ibsh/xtns/
+pwd
+tar -xzvf %{SOURCE1}
+cp admin.cmds ${RPM_BUILD_ROOT}/%{_sysconfdir}/ibsh/cmds/
+cp admin.xtns ${RPM_BUILD_ROOT}/%{_sysconfdir}/ibsh/xtns/
+cp operator.cmds ${RPM_BUILD_ROOT}/%{_sysconfdir}/ibsh/cmds/
+cp operator.xtns ${RPM_BUILD_ROOT}/%{_sysconfdir}/ibsh/xtns/
+cp secadmin.cmds ${RPM_BUILD_ROOT}/%{_sysconfdir}/ibsh/cmds/
+cp secadmin.xtns ${RPM_BUILD_ROOT}/%{_sysconfdir}/ibsh/xtns/
 install -d 755 ${RPM_BUILD_ROOT}%{_bindir}
 install -m 755 ibsh ${RPM_BUILD_ROOT}%{_bindir}/ibsh
 
