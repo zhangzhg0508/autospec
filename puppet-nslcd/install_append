@@ -1,0 +1,1 @@
+cp -R puppet/modules/nslcd %{buildroot}%{_datadir}/puppet/modules

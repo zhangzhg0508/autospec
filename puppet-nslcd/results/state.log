@@ -1,0 +1,37 @@
+2019-09-18 10:23:52,344 - Mock Version: 1.2.14
+2019-09-18 10:23:52,605 - Start: dnf update
+2019-09-18 10:24:01,879 - Finish: dnf update
+2019-09-18 10:24:01,884 - Finish: chroot init
+2019-09-18 10:24:01,887 - Start: buildsrpm
+2019-09-18 10:24:01,892 - Start: rpmbuild -bs
+2019-09-18 10:24:01,931 - Finish: rpmbuild -bs
+2019-09-18 10:24:01,933 - Finish: buildsrpm
+2019-09-18 10:24:01,933 - Finish: run
+2019-09-18 10:24:05,012 - Mock Version: 1.2.14
+2019-09-18 10:24:05,265 - Start: dnf update
+2019-09-18 10:24:15,716 - Finish: dnf update
+2019-09-18 10:24:15,722 - Finish: chroot init
+2019-09-18 10:24:15,723 - Start: build phase for puppet-nslcd-0.0.1-1.src.rpm
+2019-09-18 10:24:15,725 - Start: build setup for puppet-nslcd-0.0.1-1.src.rpm
+2019-09-18 10:24:16,379 - Finish: build setup for puppet-nslcd-0.0.1-1.src.rpm
+2019-09-18 10:24:16,379 - Start: rpmbuild puppet-nslcd-0.0.1-1.src.rpm
+2019-09-18 10:24:19,662 - Mock Version: 1.2.14
+2019-09-18 10:24:19,897 - Start: dnf update
+2019-09-18 10:24:29,733 - Finish: dnf update
+2019-09-18 10:24:29,739 - Finish: chroot init
+2019-09-18 10:24:29,742 - Start: buildsrpm
+2019-09-18 10:24:29,747 - Start: rpmbuild -bs
+2019-09-18 10:24:29,786 - Finish: rpmbuild -bs
+2019-09-18 10:24:29,788 - Finish: buildsrpm
+2019-09-18 10:24:29,788 - Finish: run
+2019-09-18 10:24:32,882 - Mock Version: 1.2.14
+2019-09-18 10:24:33,182 - Start: dnf update
+2019-09-18 10:24:43,622 - Finish: dnf update
+2019-09-18 10:24:43,627 - Finish: chroot init
+2019-09-18 10:24:43,629 - Start: build phase for puppet-nslcd-0.0.1-1.src.rpm
+2019-09-18 10:24:43,631 - Start: build setup for puppet-nslcd-0.0.1-1.src.rpm
+2019-09-18 10:24:44,357 - Finish: build setup for puppet-nslcd-0.0.1-1.src.rpm
+2019-09-18 10:24:44,358 - Start: rpmbuild puppet-nslcd-0.0.1-1.src.rpm
+2019-09-18 10:24:44,524 - Finish: rpmbuild puppet-nslcd-0.0.1-1.src.rpm
+2019-09-18 10:24:44,526 - Finish: build phase for puppet-nslcd-0.0.1-1.src.rpm
+2019-09-18 10:24:44,526 - Finish: run
