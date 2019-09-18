@@ -1,0 +1,25 @@
+From c5bd4ef4e82e9db91c377b0a0d66c4dabf3cd824 Mon Sep 17 00:00:00 2001
+From: fuyong <fuyong@neusoft.com>
+Date: Wed, 18 Sep 2019 10:36:27 +0800
+Subject: [PATCH] fix Makefile dir
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 907c393..0047c86 100644
+--- a/Makefile
++++ b/Makefile
+@@ -4,7 +4,7 @@
+ # Copyright (C) 2019 Intel Corporation
+ #
+ 
+-MODULEDIR ?= /usr/share/puppet/modules
++MODULEDIR ?= %{buildroot}/usr/share/puppet/modules
+ 
+ install:
+ 	install -d -m 0755 $(MODULEDIR)/nfv
+-- 
+2.23.0
+
