@@ -1,0 +1,37 @@
+2019-09-18 16:19:59,450 - Mock Version: 1.2.14
+2019-09-18 16:19:59,727 - Start: dnf update
+2019-09-18 16:20:09,449 - Finish: dnf update
+2019-09-18 16:20:09,455 - Finish: chroot init
+2019-09-18 16:20:09,458 - Start: buildsrpm
+2019-09-18 16:20:09,467 - Start: rpmbuild -bs
+2019-09-18 16:20:09,506 - Finish: rpmbuild -bs
+2019-09-18 16:20:09,507 - Finish: buildsrpm
+2019-09-18 16:20:09,508 - Finish: run
+2019-09-18 16:20:12,796 - Mock Version: 1.2.14
+2019-09-18 16:20:13,179 - Start: dnf update
+2019-09-18 16:20:23,405 - Finish: dnf update
+2019-09-18 16:20:23,411 - Finish: chroot init
+2019-09-18 16:20:23,413 - Start: build phase for puppet-drbd-0.3.1-1.src.rpm
+2019-09-18 16:20:23,415 - Start: build setup for puppet-drbd-0.3.1-1.src.rpm
+2019-09-18 16:20:24,708 - Finish: build setup for puppet-drbd-0.3.1-1.src.rpm
+2019-09-18 16:20:24,708 - Start: rpmbuild puppet-drbd-0.3.1-1.src.rpm
+2019-09-18 16:20:28,392 - Mock Version: 1.2.14
+2019-09-18 16:20:28,643 - Start: dnf update
+2019-09-18 16:20:38,985 - Finish: dnf update
+2019-09-18 16:20:38,991 - Finish: chroot init
+2019-09-18 16:20:38,994 - Start: buildsrpm
+2019-09-18 16:20:39,000 - Start: rpmbuild -bs
+2019-09-18 16:20:39,040 - Finish: rpmbuild -bs
+2019-09-18 16:20:39,042 - Finish: buildsrpm
+2019-09-18 16:20:39,042 - Finish: run
+2019-09-18 16:20:42,175 - Mock Version: 1.2.14
+2019-09-18 16:20:42,443 - Start: dnf update
+2019-09-18 16:20:52,444 - Finish: dnf update
+2019-09-18 16:20:52,450 - Finish: chroot init
+2019-09-18 16:20:52,451 - Start: build phase for puppet-drbd-0.3.1-1.src.rpm
+2019-09-18 16:20:52,454 - Start: build setup for puppet-drbd-0.3.1-1.src.rpm
+2019-09-18 16:20:53,770 - Finish: build setup for puppet-drbd-0.3.1-1.src.rpm
+2019-09-18 16:20:53,770 - Start: rpmbuild puppet-drbd-0.3.1-1.src.rpm
+2019-09-18 16:20:54,144 - Finish: rpmbuild puppet-drbd-0.3.1-1.src.rpm
+2019-09-18 16:20:54,145 - Finish: build phase for puppet-drbd-0.3.1-1.src.rpm
+2019-09-18 16:20:54,146 - Finish: run

@@ -1,0 +1,1025 @@
+From 033557c42fc7812befa8fac590a2aee47387b18d Mon Sep 17 00:00:00 2001
+From: fuyong <fuyong@neusoft.com>
+Date: Wed, 18 Sep 2019 16:20:54 +0800
+Subject: [PATCH puppet-drbd] puppet-drbd: Autospec creation for version 0.3.1
+
+---
+ .gitignore                                    |  14 +
+ 0001-TIS-Patches.patch                        | 377 ++++++++++++++++++
+ 0001-add-makefile.patch                       |  21 +
+ 0002-Disable-timeout-for-mkfs-command.patch   |  24 ++
+ ...d-parallel-to-serial-synchronization.patch |  39 ++
+ ...-reuse-existing-drbd-cinder-resource.patch |  53 +++
+ ...usedSync-states-to-acceptable-cstate.patch |  26 ++
+ ...u-mask-to-affine-drbd-kernel-threads.patch |  68 ++++
+ 0007-Add-disk-by-path-test.patch              |  51 +++
+ ...-7953-support-for-new-drbd-resources.patch |  40 ++
+ 0009-drbd-slow-before-swact.patch             |  25 ++
+ Makefile                                      |   5 +
+ buildreq_add                                  |   1 +
+ buildreq_ban                                  |   2 +
+ excludes                                      |   2 +
+ install_append                                |   1 +
+ install_macro                                 |   1 +
+ options.conf                                  |  58 +++
+ pkgconfig_add                                 |   2 +
+ pkgconfig_ban                                 |   2 +
+ puppet-drbd.license                           |   3 +
+ puppet-drbd.spec                              | 132 ++++++
+ release                                       |   1 +
+ requires_add                                  |   4 +
+ requires_ban                                  |   2 +
+ series                                        |  10 +
+ testresults                                   |   5 +
+ upstream                                      |   1 +
+ 28 files changed, 970 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 0001-TIS-Patches.patch
+ create mode 100644 0001-add-makefile.patch
+ create mode 100644 0002-Disable-timeout-for-mkfs-command.patch
+ create mode 100644 0003-drbd-parallel-to-serial-synchronization.patch
+ create mode 100644 0004-US-96914-reuse-existing-drbd-cinder-resource.patch
+ create mode 100644 0005-Add-PausedSync-states-to-acceptable-cstate.patch
+ create mode 100644 0006-CGTS-7164-Add-resource-options-cpu-mask-to-affine-drbd-kernel-threads.patch
+ create mode 100644 0007-Add-disk-by-path-test.patch
+ create mode 100644 0008-CGTS-7953-support-for-new-drbd-resources.patch
+ create mode 100644 0009-drbd-slow-before-swact.patch
+ create mode 100644 Makefile
+ create mode 100644 buildreq_add
+ create mode 100644 buildreq_ban
+ create mode 100644 excludes
+ create mode 100644 install_append
+ create mode 100644 install_macro
+ create mode 100644 options.conf
+ create mode 100644 pkgconfig_add
+ create mode 100644 pkgconfig_ban
+ create mode 100644 puppet-drbd.license
+ create mode 100644 puppet-drbd.spec
+ create mode 100644 release
+ create mode 100644 requires_add
+ create mode 100644 requires_ban
+ create mode 100644 series
+ create mode 100644 testresults
+ create mode 100644 upstream
+
+diff --git a/0001-TIS-Patches.patch b/0001-TIS-Patches.patch
+new file mode 100644
+index 0000000..a27d0f3
+--- /dev/null
++++ b/0001-TIS-Patches.patch
+@@ -0,0 +1,377 @@
++From 95c0ec5cb26efbe2c5dbf45df21518d8d1776be0 Mon Sep 17 00:00:00 2001
++From: Don Penney <don.penney@windriver.com>
++Date: Wed, 4 Jan 2017 12:15:53 -0500
++Subject: [PATCH] TIS Patches
++
++This patch rolls up the previous TIS patches, which includes:
++1. CGTS-4787 Set DRBD service ensure parameter
++
++2. Updates to fix DRBD resync-rate and engineered parameters:
++
++There are several DRBD performance related parameters that must be set to
++get reasonable resync performance, otherwise default resync throughput
++is limited to 40MB/s.  Note that user community has noted this limit
++when they use default settings, or up-rev DRBD from 8.3, etc.  Eg. they
++realize they hit this limit despite having 10G link or better and faster
++disks.
++
++The following parameters were added to puppet-drbd module for resource
++file generation, in addition to: c-plan-ahead, c-fill-target, c-min-rate,
++c-max-rate, currently engineered for dynamic resync-rates.
++
++disk section:
++- 'resync-rate' (aka 'rate') was missed in the CentOS port from Kilo
++- 'al-extents' set to 3389, set to a prime number. Increasing this improves
++  random write throughput. Could set a bit higher, but would need a study.
++
++net section:
++- 'max-buffers' engineered to scale with supported MBps, setting too low
++  (eg., default setting) is a bottleneck on 10G link.  Set this to
++  maximum settable value of 20000.  Note this parm may be settable to
++  larger values in more current DRBD rev. If we need to support faster
++  disks, likely need to increase this proportionately.
++- 'max-epoch-size' also set to 20000. DRBD tuning recommendation page
++  sets this the same as max-buffers.
++- 'unplug-watermark' set to 16 based on DRBD tuning recommendations page
++- 'sndbuf-size' set to 0 to auto-tune; historically default was too small
++- 'rcvbuf-size' set to 0 to auto-tune
++---
++ manifests/init.pp                            | 11 ++--
++ manifests/resource.pp                        | 93 +++++++++++++++++++++++++---
++ manifests/resource/up.pp                     |  2 +-
++ manifests/service.pp                         |  2 +-
++ templates/header.res.erb                     | 53 ++++++++++++++--
++ templates/primary-resource.res.erb           |  2 +-
++ templates/primary-stacked-resource.res.erb   |  2 +-
++ templates/resource.res.erb                   |  2 +-
++ templates/secondary-resource.res.erb         |  2 +-
++ templates/secondary-stacked-resource.res.erb |  2 +-
++ 10 files changed, 148 insertions(+), 23 deletions(-)
++
++diff --git a/manifests/init.pp b/manifests/init.pp
++index 09f7d48..76ce9c9 100644
++--- a/manifests/init.pp
+++++ b/manifests/init.pp
++@@ -6,7 +6,8 @@
++ #
++ class drbd(
++   $service_enable = true,
++-  $package_name = 'drbd8-utils',
+++  $service_ensure = 'running',
+++  $package_name = 'drbd-utils',
++ ) {
++   include ::drbd::service
++ 
++@@ -22,7 +23,7 @@ class drbd(
++   }
++ 
++   File {
++-    mode    => '0644',
+++    mode    => '0640',
++     owner   => 'root',
++     group   => 'root',
++     require => Package['drbd'],
++@@ -45,8 +46,10 @@ class drbd(
++   # only allow files managed by puppet in this directory.
++   file { '/etc/drbd.d':
++     ensure  => directory,
++-    mode    => '0644',
++-    purge   => true,
+++    mode    => '0640',
+++    # Set purge to false so that it does not clear the dir
+++    # when the 2nd drbd resource is added.
+++    purge   => false,
++     recurse => true,
++     force   => true,
++     require => Package['drbd'],
++diff --git a/manifests/resource.pp b/manifests/resource.pp
++index af2ff77..10edc1a 100644
++--- a/manifests/resource.pp
+++++ b/manifests/resource.pp
++@@ -22,6 +22,10 @@
++ #  [ha_primary] If the resource is being applied on the primary host.
++ #  [initial_setup] If this run is associated with the initial setup. Allows a user
++ #    to only perform dangerous setup on the initial run.
+++#  [link_util] replication link network utilization percent
+++#  [link_speed] replication link network speed mbps
+++#  [num_parallel] number of parallel drbd filesystems to sync
+++#  [rtt_ms] round-trip-time milliseconds (i.e., ping between replication nodes)
++ define drbd::resource (
++   $host1          = undef,
++   $host2          = undef,
++@@ -39,7 +43,10 @@ define drbd::resource (
++   $group          = 'root',
++   $protocol       = 'C',
++   $verify_alg     = 'crc32c',
++-  $rate           = false,
+++  $link_util      = false,
+++  $link_speed     = false,
+++  $num_parallel   = false,
+++  $rtt_ms         = false,
++   $net_parameters = false,
++   $manage         = true,
++   $ha_primary     = false,
++@@ -47,6 +54,7 @@ define drbd::resource (
++   $fs_type        = 'ext4',
++   $mkfs_opts      = '',
++   $disk           = undef,
+++  $handlers       = false,
++ ) {
++   include ::drbd
++ 
++@@ -67,6 +75,75 @@ define drbd::resource (
++     group  => $group,
++   }
++ 
+++  if $link_util and $link_speed and $num_parallel and $rtt_ms {
+++    # Engineer drbd variable sync rate parameters based on the following:
+++    #  https://blogs.linbit.com/p/128/drbd-sync-rate-controller/
+++    #  https://blogs.linbit.com/p/443/drbd-sync-rate-controller-2/
+++    # Methodology adapted to account for replication link speed and parallelism.
+++
+++    # Since there is no aggregate bandwidth control, prorate the drbd
+++    # replication bandwidth based on parallelism.
+++    # Based on experimentation, it seems generally better to set num_parallel
+++    # to 1 and let DRBD auto-regulate its throughput.  The end result is that
+++    # multiple competing filesystems (i.e., on same disk device) already have
+++    # their sync throughput reduced.
+++    $mbps = $link_speed / $num_parallel
+++
+++    # bandwidth delay product
+++    $bdp_k = $mbps * $rtt_ms
+++
+++    # engineer initial sync rate as percent of link bandwidth
+++    $rate_M = floor($link_util * $mbps / 8 / 100)
+++    $rate = "${rate_M}M"
+++
+++    # engineer c_plan_ahead to default value (tenths)
+++    # Documentation indicates this value OK even for 200 ms RTT.
+++    $c_plan_ahead = 20
+++
+++    # engineer c_fill_target as 1*BDP (tune within 1x to 3x BDP;
+++    # choose minimum value that saturates bandwidth)
+++    $fill_target_k = floor(1 * $bdp_k)
+++    $c_fill_target = "${fill_target_k}k"
+++
+++    # engineer c_min_rate -- experimentally determined so DRBD is not
+++    # throttled to a crawl even when there is minimal application IO.
+++    # DRBD default is way too small.
+++    $min_rate_M = 15 + floor($link_util * $mbps / 8 / 100 / 25)
+++    $c_min_rate = "${min_rate_M}M"
+++
+++    # engineer c_max_rate as percent of link bandwidth
+++    $max_rate_M = floor($link_util * $mbps / 8 / 100)
+++    $c_max_rate = "${max_rate_M}M"
+++
+++    # various tuning settings to enable larger link bandwidth (eg, 10G)
+++    # max_buffers should scale with MBps; set to maximum settable
+++    $max_buffers = 20000
+++    $max_epoch_size = 20000
+++    $unplug_watermark = 16
+++    # sndbuf_size and rcvbuf_size should scale with mbps; set 0 to auto-tune
+++    $sndbuf_size = 0
+++    $rcvbuf_size = 0
+++    # increase al_extents to improve random write throughput; set to prime number
+++    $al_extents = 3389
+++  } else {
+++    # disable variable sync rate
+++    $c_plan_ahead  = 0
+++    $c_fill_target = false
+++    $c_min_rate    = false
+++    $c_max_rate    = false
+++
+++    # engineer fixed sync rate at 40 percent of 1G
+++    $rate_M = floor(40 * 1000 / 8 / 100)
+++    $rate = "${rate_M}M"
+++
+++    $max_buffers = false
+++    $max_epoch_size = false
+++    $unplug_watermark = false
+++    $sndbuf_size = false
+++    $rcvbuf_size = false
+++    $al_extents = false
+++  }
+++
++   concat { "/etc/drbd.d/${name}.res":
++     mode    => '0600',
++     require => [
++@@ -94,13 +171,13 @@ define drbd::resource (
++   }
++   # Export our fragment for the clustered node
++   if $ha_primary and $cluster {
++-    @@concat::fragment { "${name} ${cluster} primary resource":
+++    concat::fragment { "${name} ${cluster} primary resource":
++       target  => "/etc/drbd.d/${name}.res",
++       content => template('drbd/resource.res.erb'),
++       order   => '10',
++     }
++   } elsif $cluster {
++-    @@concat::fragment { "${name} ${cluster} secondary resource":
+++    concat::fragment { "${name} ${cluster} secondary resource":
++       target  => "/etc/drbd.d/${name}.res",
++       content => template('drbd/resource.res.erb'),
++       order   => '20',
++@@ -137,11 +214,11 @@ define drbd::resource (
++     order   => '99',
++   }
++ 
++-  if $cluster {
++-    # Import cluster nodes
++-    Concat::Fragment <<| title == "${name} ${cluster} primary resource" |>>
++-    Concat::Fragment <<| title == "${name} ${cluster} secondary resource" |>>
++-  }
+++#  if $cluster {
+++#    # Import cluster nodes
+++#    Concat::Fragment <<| title == "${name} ${cluster} primary resource" |>>
+++#    Concat::Fragment <<| title == "${name} ${cluster} secondary resource" |>>
+++#  }
++ 
++   # Due to a bug in puppet, defined() conditionals must be in a defined
++   # resource to be evaluated *after* the collector instead of before.
++diff --git a/manifests/resource/up.pp b/manifests/resource/up.pp
++index 7668792..b626f55 100644
++--- a/manifests/resource/up.pp
+++++ b/manifests/resource/up.pp
++@@ -70,7 +70,7 @@ define drbd::resource::up (
++       # ensure that the device is mounted
++       mount { $mountpoint:
++         ensure  => mounted,
++-        atboot  => false,
+++        atboot  => yes,
++         device  => $device,
++         fstype  => 'auto',
++         options => 'defaults,noauto',
++diff --git a/manifests/service.pp b/manifests/service.pp
++index de56b34..f9b217a 100644
++--- a/manifests/service.pp
+++++ b/manifests/service.pp
++@@ -1,6 +1,6 @@
++ class drbd::service {
++   @service { 'drbd':
++-    ensure  => running,
+++    ensure  => $drbd::service_ensure,
++     enable  => $drbd::service_enable,
++     require => Package['drbd'],
++     restart => 'service drbd reload',
++diff --git a/templates/header.res.erb b/templates/header.res.erb
++index 2d785c4..a3256a3 100644
++--- a/templates/header.res.erb
+++++ b/templates/header.res.erb
++@@ -5,7 +5,32 @@ resource <%= @name %> {
++   disk      <%= @disk %>;
++   meta-disk internal;
++ 
+++  disk {
+++<% if @rate -%>
+++    resync-rate <%= @rate %>;
+++<% end -%>
+++<% if @c_plan_ahead -%>
+++    c-plan-ahead <%= @c_plan_ahead %>;
+++<% end -%>
+++<% if @c_fill_target -%>
+++    c-fill-target <%= @c_fill_target %>;
+++<% end -%>
+++<% if @c_min_rate -%>
+++    c-min-rate <%= @c_min_rate %>;
+++<% end -%>
+++<% if @c_max_rate -%>
+++    c-max-rate <%= @c_max_rate %>;
+++<% end -%>
+++<% if @al_extents -%>
+++    al-extents <%= @al_extents %>;
+++<% end -%>
+++  }
+++
++   net {
+++    after-sb-0pri discard-zero-changes;
+++    after-sb-1pri discard-secondary;
+++    after-sb-2pri disconnect;
+++
++     cram-hmac-alg sha1;
++ <% if @secret -%>
++     shared-secret "<%= @secret %>";
++@@ -16,12 +41,32 @@ resource <%= @name %> {
++     <%= k %> <%= v %>;
++ <% end -%>
++ <% end -%>
++-  }
++ 
++-  syncer {
+++<% if @max_buffers -%>
+++    max-buffers <%= @max_buffers %>;
+++<% end -%>
+++<% if @max_epoch_size -%>
+++    max-epoch-size <%= @max_epoch_size %>;
+++<% end -%>
+++<% if @unplug_watermark -%>
+++    unplug-watermark <%= @unplug_watermark %>;
+++<% end -%>
+++<% if @sndbuf_size -%>
+++    sndbuf-size <%= @sndbuf_size %>;
+++<% end -%>
+++<% if @rcvbuf_size -%>
+++    rcvbuf-size <%= @rcvbuf_size %>;
+++<% end -%>
+++<% if @verify_alg -%>
++     verify-alg <%= @verify_alg %>;
++-<% if @rate -%>
++-    rate <%= @rate %>;
++ <% end -%>
++   }
++ 
+++<% if @handlers -%>
+++  handlers {
+++<% @handlers.sort_by {|k, v| k}.each do |k, v| -%>
+++    <%= k %> "<%= v %>";
+++<% end -%>
+++  }
+++<% end -%>
+++
++diff --git a/templates/primary-resource.res.erb b/templates/primary-resource.res.erb
++index f8af77e..6032fd2 100644
++--- a/templates/primary-resource.res.erb
+++++ b/templates/primary-resource.res.erb
++@@ -1,3 +1,3 @@
++   on <%= @host1 %> {
++-    address <%= @ip1 %>:<%= @port %>;
+++    address <%= IPAddr.new(@ip1).ipv6?() ? "ipv6 ["+@ip1+"]:"+@port : "ipv4 "+@ip1+":"+@port %>;
++   }
++diff --git a/templates/primary-stacked-resource.res.erb b/templates/primary-stacked-resource.res.erb
++index 7eb4dad..a22d8b3 100644
++--- a/templates/primary-stacked-resource.res.erb
+++++ b/templates/primary-stacked-resource.res.erb
++@@ -1,3 +1,3 @@
++   stacked-on-top-of <%= @res1 %> {
++-    address <%= @ip1 %>:<%= @port %>;
+++    address <%= IPAddr.new(ip1).ipv6?() ? "ipv6 ["+ip1+"]:"+port : "ipv4 "+ip1+":"+port %>;
++   }
++diff --git a/templates/resource.res.erb b/templates/resource.res.erb
++index 047877e..9dd4c4d 100644
++--- a/templates/resource.res.erb
+++++ b/templates/resource.res.erb
++@@ -1,3 +1,3 @@
++   on <%= @hostname %> {
++-    address <%= @ipaddress %>:<%= @port %>;
+++    address <%= IPAddr.new(ipaddress).ipv6?() ? "ipv6 ["+ipaddress+"]:"+@port : "ipv4 "+ipaddress+":"+port %>;
++   }
++diff --git a/templates/secondary-resource.res.erb b/templates/secondary-resource.res.erb
++index 678640a..cf2fd96 100644
++--- a/templates/secondary-resource.res.erb
+++++ b/templates/secondary-resource.res.erb
++@@ -1,3 +1,3 @@
++   on <%= @host2 %> {
++-    address <%= @ip2 %>:<%= @port %>;
+++    address <%= IPAddr.new(@ip2).ipv6?() ? "ipv6 ["+@ip2+"]:"+@port : "ipv4 "+@ip2+":"+@port %>;
++   }
++diff --git a/templates/secondary-stacked-resource.res.erb b/templates/secondary-stacked-resource.res.erb
++index 409a705..87d28f5 100644
++--- a/templates/secondary-stacked-resource.res.erb
+++++ b/templates/secondary-stacked-resource.res.erb
++@@ -1,3 +1,3 @@
++   stacked-on-top-of <%= @res2 %> {
++-    address <%= @ip2 %>:<%= @port %>;
+++    address <%= IPAddr.new(ip2).ipv6?() ? "ipv6 ["+ip2+"]:"+port : "ipv4 "+ip2+":"+port %>;
++   }
++-- 
++1.8.3.1
++
+diff --git a/0001-add-makefile.patch b/0001-add-makefile.patch
+new file mode 100644
+index 0000000..c20b09c
+--- /dev/null
++++ b/0001-add-makefile.patch
+@@ -0,0 +1,21 @@
++From 6d2e758f33d450f62bc7566d5018f4f79a342950 Mon Sep 17 00:00:00 2001
++From: lgdfy <im.fuyong@gmail.com>
++Date: Wed, 11 Sep 2019 15:57:00 +0800
++Subject: [PATCH] add makefile
++
++---
++ Makefile | 2 ++
++ 1 file changed, 2 insertions(+)
++ create mode 100644 Makefile
++
++diff --git a/Makefile b/Makefile
++new file mode 100644
++index 0000000..cda58eb
++--- /dev/null
+++++ b/Makefile
++@@ -0,0 +1,2 @@
+++build:
+++	echo "no build"
++-- 
++2.23.0
++
+diff --git a/0002-Disable-timeout-for-mkfs-command.patch b/0002-Disable-timeout-for-mkfs-command.patch
+new file mode 100644
+index 0000000..e578dbe
+--- /dev/null
++++ b/0002-Disable-timeout-for-mkfs-command.patch
+@@ -0,0 +1,24 @@
++From 0c36ecaef39328e85f41ebe8164dc7da5949542a Mon Sep 17 00:00:00 2001
++From: Don Penney <don.penney@windriver.com>
++Date: Tue, 11 Apr 2017 11:14:25 -0400
++Subject: [PATCH] Disable timeout for mkfs command
++
++---
++ manifests/resource/up.pp | 1 +
++ 1 file changed, 1 insertion(+)
++
++diff --git a/manifests/resource/up.pp b/manifests/resource/up.pp
++index b626f55..f9de8ab 100644
++--- a/manifests/resource/up.pp
+++++ b/manifests/resource/up.pp
++@@ -54,6 +54,7 @@ define drbd::resource::up (
++       }
++       exec { "drbd_format_volume_${name}":
++         command     => "mkfs.${fs_type} ${mkfs_opts} ${device}",
+++        timeout     => 0,
++         refreshonly => true,
++         require     => Exec["drbd_make_primary_${name}"],
++         before      => $before,
++-- 
++1.8.3.1
++
+diff --git a/0003-drbd-parallel-to-serial-synchronization.patch b/0003-drbd-parallel-to-serial-synchronization.patch
+new file mode 100644
+index 0000000..49ad45a
+--- /dev/null
++++ b/0003-drbd-parallel-to-serial-synchronization.patch
+@@ -0,0 +1,39 @@
++From a1186e3f68a338c575acdcf5cf41728a1b9ba2c1 Mon Sep 17 00:00:00 2001
++From: Angie Wang <angie.Wang@windriver.com>
++Date: Mon, 29 May 2017 10:20:13 -0400
++Subject: [PATCH 1/1] drbd-parallel-to-serial-synchronization
++
++---
++ manifests/resource.pp    | 1 +
++ templates/header.res.erb | 3 +++
++ 2 files changed, 4 insertions(+)
++
++diff --git a/manifests/resource.pp b/manifests/resource.pp
++index 10edc1a..d19ad8b 100644
++--- a/manifests/resource.pp
+++++ b/manifests/resource.pp
++@@ -47,6 +47,7 @@ define drbd::resource (
++   $link_speed     = false,
++   $num_parallel   = false,
++   $rtt_ms         = false,
+++  $resync_after   = undef,
++   $net_parameters = false,
++   $manage         = true,
++   $ha_primary     = false,
++diff --git a/templates/header.res.erb b/templates/header.res.erb
++index a3256a3..be53761 100644
++--- a/templates/header.res.erb
+++++ b/templates/header.res.erb
++@@ -9,6 +9,9 @@ resource <%= @name %> {
++ <% if @rate -%>
++     resync-rate <%= @rate %>;
++ <% end -%>
+++<% if @resync_after -%>
+++    resync-after <%= @resync_after %>;
+++<% end -%>
++ <% if @c_plan_ahead -%>
++     c-plan-ahead <%= @c_plan_ahead %>;
++ <% end -%>
++-- 
++1.8.3.1
++
+diff --git a/0004-US-96914-reuse-existing-drbd-cinder-resource.patch b/0004-US-96914-reuse-existing-drbd-cinder-resource.patch
+new file mode 100644
+index 0000000..017387d
+--- /dev/null
++++ b/0004-US-96914-reuse-existing-drbd-cinder-resource.patch
+@@ -0,0 +1,53 @@
++From 132fc324c633ee95ca9ac8d00fb27fe5c4df6a3a Mon Sep 17 00:00:00 2001
++From: Daniel Badea <daniel.badea@windriver.com>
++Date: Tue, 30 May 2017 21:52:52 +0000
++Subject: [PATCH] US-96914 reuse existing drbd-cinder resource
++
++Trying to initialize and enable DRBD resource fails in "drbdadm
++create-md" when the disk already contains meta data. In this case
++"drbdadm adjust" should be called.
++---
++ manifests/resource/up.pp | 13 ++++++++++++-
++ 1 file changed, 12 insertions(+), 1 deletion(-)
++
++diff --git a/manifests/resource/up.pp b/manifests/resource/up.pp
++index f9de8ab..160c8c2 100644
++--- a/manifests/resource/up.pp
+++++ b/manifests/resource/up.pp
++@@ -14,7 +14,7 @@ define drbd::resource::up (
++   exec { "initialize DRBD metadata for ${name}":
++     command => "yes yes | drbdadm create-md ${name}",
++     onlyif  => "test -e ${disk}",
++-    unless  => "drbdadm dump-md ${name} || (drbdadm cstate ${name} | egrep -q '^(Sync|Connected|WFConnection|StandAlone|Verify)')",
+++    unless  => "drbdadm dump-md ${name} || (drbdadm cstate ${name} | egrep -q '^(Sync|Connected|WFConnection|StandAlone|Verify)') || (drbdadm show-gi ${name} | grep 'meta-data: need apply-al')",
++     before  => Service['drbd'],
++     require => [
++       Exec['modprobe drbd'],
++@@ -26,6 +26,7 @@ define drbd::resource::up (
++   exec { "enable DRBD resource ${name}":
++     command => "drbdadm up ${name}",
++     onlyif  => "drbdadm dstate ${name} | egrep -q '^(Diskless/|Unconfigured|Consistent)'",
+++    unless  => "drbdadm show-gi ${name} | grep 'meta-data: need apply-al'",
++     before  => Service['drbd'],
++     require => [
++       Exec["initialize DRBD metadata for ${name}"],
++@@ -34,6 +35,16 @@ define drbd::resource::up (
++     notify  => Service['drbd'],
++   }
++ 
+++  exec { "reuse existing DRBD resoure ${name}":
+++    command => "drbdadm adjust ${name}",
+++    onlyif  => "test -e ${disk} && (drbdadm show-gi ${name} | grep 'meta-data: need apply-al')",
+++    before  => Service['drbd'],
+++    require => [
+++      Exec['modprobe drbd'],
+++      Concat["/etc/drbd.d/${name}.res"],
+++    ],
+++    notify  => Service['drbd'],
+++  }
++ 
++   # these resources should only be applied if we are configuring the
++   # primary node in our HA setup
++-- 
++1.8.3.1
++
+diff --git a/0005-Add-PausedSync-states-to-acceptable-cstate.patch b/0005-Add-PausedSync-states-to-acceptable-cstate.patch
+new file mode 100644
+index 0000000..453d46a
+--- /dev/null
++++ b/0005-Add-PausedSync-states-to-acceptable-cstate.patch
+@@ -0,0 +1,26 @@
++From b575f4c50e8726c5f9b3227b37a4517c0bbde85c Mon Sep 17 00:00:00 2001
++From: Robert Church <robert.church@windriver.com>
++Date: Fri, 2 Jun 2017 02:15:19 +0000
++Subject: [PATCH] Add PausedSync states to acceptable cstate to avoid metdata
++ creation
++
++---
++ manifests/resource/up.pp | 2 +-
++ 1 file changed, 1 insertion(+), 1 deletion(-)
++
++diff --git a/manifests/resource/up.pp b/manifests/resource/up.pp
++index 160c8c2..3e2fdac 100644
++--- a/manifests/resource/up.pp
+++++ b/manifests/resource/up.pp
++@@ -14,7 +14,7 @@ define drbd::resource::up (
++   exec { "initialize DRBD metadata for ${name}":
++     command => "yes yes | drbdadm create-md ${name}",
++     onlyif  => "test -e ${disk}",
++-    unless  => "drbdadm dump-md ${name} || (drbdadm cstate ${name} | egrep -q '^(Sync|Connected|WFConnection|StandAlone|Verify)') || (drbdadm show-gi ${name} | grep 'meta-data: need apply-al')",
+++    unless  => "drbdadm dump-md ${name} || (drbdadm cstate ${name} | egrep -q '^(PausedSync|Sync|Connected|WFConnection|StandAlone|Verify)') || (drbdadm show-gi ${name} | grep 'meta-data: need apply-al')",
++     before  => Service['drbd'],
++     require => [
++       Exec['modprobe drbd'],
++-- 
++1.8.3.1
++
+diff --git a/0006-CGTS-7164-Add-resource-options-cpu-mask-to-affine-drbd-kernel-threads.patch b/0006-CGTS-7164-Add-resource-options-cpu-mask-to-affine-drbd-kernel-threads.patch
+new file mode 100644
+index 0000000..5c6aec1
+--- /dev/null
++++ b/0006-CGTS-7164-Add-resource-options-cpu-mask-to-affine-drbd-kernel-threads.patch
+@@ -0,0 +1,68 @@
++From 0e264e7ac2b311aa9b42b183660a07b7e4e36b11 Mon Sep 17 00:00:00 2001
++From: Jim Gauld <james.gauld@windriver.com>
++Date: Fri, 9 Jun 2017 14:58:23 -0400
++Subject: [PATCH 1/1] CGTS-7164: Add resource options cpu-mask to affine drbd
++ kernel threads
++
++This adds "options { cpu-mask <cpumask>; }" section to DRBD resource
++configuration if 'cpumask' hexstring is defined. This governs kernel
++threads: drbd_w_<x>, drbd_r_<x>, drbd_a_<x>.
++
++Related notes:
++- if cpumask is not specified, the kernel threads drbd_w_<x>, drbd_r_<x>,
++  drbd_a_<x>, and drbd_as_<x> are affined to individual cores, each <x>
++  on a different core.
++
++- the remainder of the kernel threads are governed by kernel boot
++  argument kthread_cpus=<cpulist>.  i.e., drbd-reissue, drbd<x>_submit,
++  jbd2/drbd<x>-8, drbd_as_<x>.
++
++- the drbd_a_<x> and drbd_as_<x> show up when DRBD is duplex.
++
++- the drbd_a_<x> threads have SCHED_RR scheduling policy.
++---
++ manifests/resource.pp    | 3 +++
++ templates/header.res.erb | 6 ++++++
++ 2 files changed, 9 insertions(+)
++
++diff --git a/manifests/resource.pp b/manifests/resource.pp
++index d19ad8b..17e6142 100644
++--- a/manifests/resource.pp
+++++ b/manifests/resource.pp
++@@ -26,6 +26,8 @@
++ #  [link_speed] replication link network speed mbps
++ #  [num_parallel] number of parallel drbd filesystems to sync
++ #  [rtt_ms] round-trip-time milliseconds (i.e., ping between replication nodes)
+++#  [cpumask] cpu-affinity-mask for DRBD kernel threads (hexidecimal notation).
+++#    0 means spread over all CPUs of the machine.
++ define drbd::resource (
++   $host1          = undef,
++   $host2          = undef,
++@@ -48,6 +50,7 @@ define drbd::resource (
++   $num_parallel   = false,
++   $rtt_ms         = false,
++   $resync_after   = undef,
+++  $cpumask        = false,
++   $net_parameters = false,
++   $manage         = true,
++   $ha_primary     = false,
++diff --git a/templates/header.res.erb b/templates/header.res.erb
++index be53761..df52544 100644
++--- a/templates/header.res.erb
+++++ b/templates/header.res.erb
++@@ -29,6 +29,12 @@ resource <%= @name %> {
++ <% end -%>
++   }
++ 
+++<% if @cpumask -%>
+++  options {
+++    cpu-mask <%= @cpumask %>;
+++  }
+++<% end -%>
+++
++   net {
++     after-sb-0pri discard-zero-changes;
++     after-sb-1pri discard-secondary;
++-- 
++1.8.3.1
++
+diff --git a/0007-Add-disk-by-path-test.patch b/0007-Add-disk-by-path-test.patch
+new file mode 100644
+index 0000000..1eb12f5
+--- /dev/null
++++ b/0007-Add-disk-by-path-test.patch
+@@ -0,0 +1,51 @@
++From 30ae8c86d9471980a0058823d6593e7548e19506 Mon Sep 17 00:00:00 2001
++From: Don Penney <don.penney@windriver.com>
++Date: Thu, 15 Jun 2017 17:34:30 -0400
++Subject: [PATCH] Add disk by-path test
++
++---
++ manifests/resource/up.pp | 14 +++++++++++++-
++ 1 file changed, 13 insertions(+), 1 deletion(-)
++
++diff --git a/manifests/resource/up.pp b/manifests/resource/up.pp
++index 3e2fdac..ea379a8 100644
++--- a/manifests/resource/up.pp
+++++ b/manifests/resource/up.pp
++@@ -8,6 +8,17 @@ define drbd::resource::up (
++   $mountpoint,
++   $automount,
++ ) {
+++
+++  # Ensure disk by-path link exists
+++  exec { "test disk by-path for ${name}":
+++    command => "udevadm settle",
+++    unless => "test -e ${disk}",
+++    before => Service['drbd'],
+++    require => [
+++        Exec['modprobe drbd']
+++      ],
+++  }
+++
++   # create metadata on device, except if resource seems already initalized.
++   # drbd is very tenacious about asking for aproval if there is data on the
++   # volume already.
++@@ -18,6 +29,7 @@ define drbd::resource::up (
++     before  => Service['drbd'],
++     require => [
++       Exec['modprobe drbd'],
+++      Exec["test disk by-path for ${name}"],
++       Concat["/etc/drbd.d/${name}.res"],
++       ],
++     notify  => Service['drbd'],
++@@ -35,7 +47,7 @@ define drbd::resource::up (
++     notify  => Service['drbd'],
++   }
++ 
++-  exec { "reuse existing DRBD resoure ${name}":
+++  exec { "reuse existing DRBD resource ${name}":
++     command => "drbdadm adjust ${name}",
++     onlyif  => "test -e ${disk} && (drbdadm show-gi ${name} | grep 'meta-data: need apply-al')",
++     before  => Service['drbd'],
++-- 
++1.8.3.1
++
+diff --git a/0008-CGTS-7953-support-for-new-drbd-resources.patch b/0008-CGTS-7953-support-for-new-drbd-resources.patch
+new file mode 100644
+index 0000000..8306729
+--- /dev/null
++++ b/0008-CGTS-7953-support-for-new-drbd-resources.patch
+@@ -0,0 +1,40 @@
++From a29598365183c10e4650088675a6e3181b340187 Mon Sep 17 00:00:00 2001
++From: Kristine Bujold <kristine.bujold@windriver.com>
++Date: Wed, 17 Jan 2018 18:18:15 -0500
++Subject: [PATCH 1/1] foo bar
++
++---
++ manifests/init.pp                | 2 ++
++ templates/global_common.conf.erb | 5 +++++
++ 2 files changed, 7 insertions(+)
++
++diff --git a/manifests/init.pp b/manifests/init.pp
++index 76ce9c9..5e6bdc0 100644
++--- a/manifests/init.pp
+++++ b/manifests/init.pp
++@@ -8,6 +8,8 @@ class drbd(
++   $service_enable = true,
++   $service_ensure = 'running',
++   $package_name = 'drbd-utils',
+++  $wfc_timeout = 0,
+++  $degr_wfc_timeout = 0,
++ ) {
++   include ::drbd::service
++ 
++diff --git a/templates/global_common.conf.erb b/templates/global_common.conf.erb
++index 921a637..0253ef3 100644
++--- a/templates/global_common.conf.erb
+++++ b/templates/global_common.conf.erb
++@@ -3,4 +3,9 @@ global {
++ }
++ common {
++   protocol C;
+++
+++  startup {
+++    wfc-timeout <%= @wfc_timeout %>;
+++    degr-wfc-timeout <%= @degr_wfc_timeout %>;
+++  }
++ }
++-- 
++1.8.3.1
++
+diff --git a/0009-drbd-slow-before-swact.patch b/0009-drbd-slow-before-swact.patch
+new file mode 100644
+index 0000000..f037d29
+--- /dev/null
++++ b/0009-drbd-slow-before-swact.patch
+@@ -0,0 +1,25 @@
++From 2628193e8aef471caab27ada848fa8d7de6d93ec Mon Sep 17 00:00:00 2001
++From: Daniel Badea <daniel.badea@windriver.com>
++Date: Wed, 13 Jun 2018 14:16:53 +0000
++Subject: [PATCH] drbd slow before swact
++
++---
++ manifests/resource/up.pp | 2 +-
++ 1 file changed, 1 insertion(+), 1 deletion(-)
++
++diff --git a/manifests/resource/up.pp b/manifests/resource/up.pp
++index c3557e1..11cf7ee 100644
++--- a/manifests/resource/up.pp
+++++ b/manifests/resource/up.pp
++@@ -23,7 +23,7 @@ define drbd::resource::up (
++   # drbd is very tenacious about asking for aproval if there is data on the
++   # volume already.
++   exec { "initialize DRBD metadata for ${name}":
++-    command => "yes yes | drbdadm create-md ${name}",
+++    command => "yes yes | drbdadm create-md ${name} -W--peer-max-bio-size=128k",
++     onlyif  => "test -e ${disk}",
++     unless  => "drbdadm dump-md ${name} || (drbdadm cstate ${name} | egrep -q '^(PausedSync|Sync|Connected|WFConnection|StandAlone|Verify)') || (drbdadm show-gi ${name} | grep 'meta-data: need apply-al')",
++     before  => Service['drbd'],
++-- 
++1.8.3.1
++
+diff --git a/buildreq_add b/buildreq_add
+new file mode 100644
+index 0000000..0d46221
+--- /dev/null
++++ b/buildreq_add
+@@ -0,0 +1 @@
++python-dev
+diff --git a/install_append b/install_append
+new file mode 100644
+index 0000000..a3ddae8
+--- /dev/null
++++ b/install_append
+@@ -0,0 +1 @@
++cp -rp * %{buildroot}%{_datadir}/puppet/modules/drbd/
+diff --git a/install_macro b/install_macro
+new file mode 100644
+index 0000000..fe5b337
+--- /dev/null
++++ b/install_macro
+@@ -0,0 +1 @@
++install -d -m 0755 %{buildroot}%{_datadir}/puppet/modules/drbd
+diff --git a/options.conf b/options.conf
+new file mode 100644
+index 0000000..d9b4892
+--- /dev/null
++++ b/options.conf
+@@ -0,0 +1,58 @@
++name = puppet-drbd
++url = file:///home/clr/stx-tar/puppet-drbd-0.3.1.tar.gz
++use_lto = true
++verify_required = false
+diff --git a/puppet-drbd.license b/puppet-drbd.license
+new file mode 100644
+index 0000000..c30c257
+--- /dev/null
++++ b/puppet-drbd.license
+@@ -0,0 +1,3 @@
++# This file contains the output files that need %exclude. Full path
++# names, one per line.
++Apache-2.0
+diff --git a/puppet-drbd.spec b/puppet-drbd.spec
+new file mode 100644
+index 0000000..797583b
+--- /dev/null
++++ b/puppet-drbd.spec
+@@ -0,0 +1,132 @@
++#
++# This file is auto-generated. DO NOT EDIT
++# Generated by: autospec.py
++#
++Name     : puppet-drbd
++License  : Apache-2.0
++Requires: puppet-drbd-data = %{version}-%{release}
++Requires: puppet-concat
++Requires: puppet-stdlib
++BuildRequires : python-dev
++Patch1: 0001-add-makefile.patch
++Patch2: 0001-TIS-Patches.patch
++Patch3: 0002-Disable-timeout-for-mkfs-command.patch
++Patch4: 0003-drbd-parallel-to-serial-synchronization.patch
++Patch5: 0004-US-96914-reuse-existing-drbd-cinder-resource.patch
++Patch6: 0005-Add-PausedSync-states-to-acceptable-cstate.patch
++Patch7: 0006-CGTS-7164-Add-resource-options-cpu-mask-to-affine-drbd-kernel-threads.patch
++Patch8: 0007-Add-disk-by-path-test.patch
++Patch9: 0008-CGTS-7953-support-for-new-drbd-resources.patch
++Patch10: 0009-drbd-slow-before-swact.patch
++
++%description
++# DRBD module for Puppet
++[![Build Status](https://travis-ci.org/voxpupuli/puppet-drbd.png?branch=master)](https://travis-ci.org/voxpupuli/puppet-drbd)
++[![Code Coverage](https://coveralls.io/repos/github/voxpupuli/puppet-drbd/badge.svg?branch=master)](https://coveralls.io/github/voxpupuli/puppet-drbd)
++[![Puppet Forge](https://img.shields.io/puppetforge/v/puppet/drbd.svg)](https://forge.puppetlabs.com/puppet/drbd)
++[![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/puppet/drbd.svg)](https://forge.puppetlabs.com/puppet/drbd)
++[![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/puppet/drbd.svg)](https://forge.puppetlabs.com/puppet/drbd)
++[![Puppet Forge - scores](https://img.shields.io/puppetforge/f/puppet/drbd.svg)](https://forge.puppetlabs.com/puppet/drbd)
++
++%package data
++
++
++
++%prep
++%patch1 -p1
++%patch2 -p1
++%patch3 -p1
++%patch4 -p1
++%patch5 -p1
++%patch6 -p1
++%patch7 -p1
++%patch8 -p1
++%patch9 -p1
++%patch10 -p1
++
++%build
++make  %{?_smp_mflags}
++
++
++%install
++rm -rf %{buildroot}
++install -d -m 0755 %{buildroot}%{_datadir}/puppet/modules/drbd
++## install_append content
++cp -rp * %{buildroot}%{_datadir}/puppet/modules/drbd/
++## install_append end
++
++%files
++%defattr(-,root,root,-)
++
++%files data
++%defattr(-,root,root,-)
++/usr/share/puppet/modules/drbd/CHANGELOG.md
++/usr/share/puppet/modules/drbd/CONTRIBUTING.md
++/usr/share/puppet/modules/drbd/Gemfile
++/usr/share/puppet/modules/drbd/LICENSE
++/usr/share/puppet/modules/drbd/Makefile
++/usr/share/puppet/modules/drbd/README.md
++/usr/share/puppet/modules/drbd/Rakefile
++/usr/share/puppet/modules/drbd/examples/site.pp
++/usr/share/puppet/modules/drbd/files/drbd.conf
++/usr/share/puppet/modules/drbd/manifests/init.pp
++/usr/share/puppet/modules/drbd/manifests/migration.pp
++/usr/share/puppet/modules/drbd/manifests/resource.pp
++/usr/share/puppet/modules/drbd/manifests/resource/enable.pp
++/usr/share/puppet/modules/drbd/manifests/resource/up.pp
++/usr/share/puppet/modules/drbd/manifests/service.pp
++/usr/share/puppet/modules/drbd/metadata.json
++/usr/share/puppet/modules/drbd/spec/acceptance/nodesets/centos-511-x64.yml
++/usr/share/puppet/modules/drbd/spec/acceptance/nodesets/centos-66-x64-pe.yml
++/usr/share/puppet/modules/drbd/spec/acceptance/nodesets/centos-66-x64.yml
++/usr/share/puppet/modules/drbd/spec/acceptance/nodesets/centos-72-x64.yml
++/usr/share/puppet/modules/drbd/spec/acceptance/nodesets/debian-78-x64.yml
++/usr/share/puppet/modules/drbd/spec/acceptance/nodesets/debian-82-x64.yml
++/usr/share/puppet/modules/drbd/spec/acceptance/nodesets/docker/centos-5.yml
++/usr/share/puppet/modules/drbd/spec/acceptance/nodesets/docker/centos-6.yml
++/usr/share/puppet/modules/drbd/spec/acceptance/nodesets/docker/centos-7.yml
++/usr/share/puppet/modules/drbd/spec/acceptance/nodesets/docker/debian-7.yml
++/usr/share/puppet/modules/drbd/spec/acceptance/nodesets/docker/debian-8.yml
++/usr/share/puppet/modules/drbd/spec/acceptance/nodesets/docker/ubuntu-12.04.yml
++/usr/share/puppet/modules/drbd/spec/acceptance/nodesets/docker/ubuntu-14.04.yml
++/usr/share/puppet/modules/drbd/spec/acceptance/nodesets/docker/ubuntu-16.04.yml
++/usr/share/puppet/modules/drbd/spec/acceptance/nodesets/ubuntu-server-1204-x64.yml
++/usr/share/puppet/modules/drbd/spec/acceptance/nodesets/ubuntu-server-1404-x64.yml
++/usr/share/puppet/modules/drbd/spec/acceptance/nodesets/ubuntu-server-1604-x64.yml
++/usr/share/puppet/modules/drbd/spec/classes/coverage_spec.rb
++/usr/share/puppet/modules/drbd/spec/classes/drbd_spec.rb
++/usr/share/puppet/modules/drbd/spec/default_facts.yml
++/usr/share/puppet/modules/drbd/spec/defines/resource_spec.rb.backup
++/usr/share/puppet/modules/drbd/spec/spec_helper.rb
++/usr/share/puppet/modules/drbd/templates/global_common.conf.erb
++/usr/share/puppet/modules/drbd/templates/header.res.erb
++/usr/share/puppet/modules/drbd/templates/primary-resource.res.erb
++/usr/share/puppet/modules/drbd/templates/primary-stacked-resource.res.erb
++/usr/share/puppet/modules/drbd/templates/resource.res.erb
++/usr/share/puppet/modules/drbd/templates/secondary-resource.res.erb
++/usr/share/puppet/modules/drbd/templates/secondary-stacked-resource.res.erb
+diff --git a/requires_add b/requires_add
+new file mode 100644
+index 0000000..73b9dd3
+--- /dev/null
++++ b/requires_add
+@@ -0,0 +1,4 @@
++puppet-concat
++puppet-stdlib
+diff --git a/series b/series
+new file mode 100644
+index 0000000..e198765
+--- /dev/null
++++ b/series
+@@ -0,0 +1,10 @@
++0001-add-makefile.patch
++0001-TIS-Patches.patch
++0002-Disable-timeout-for-mkfs-command.patch
++0003-drbd-parallel-to-serial-synchronization.patch
++0004-US-96914-reuse-existing-drbd-cinder-resource.patch
++0005-Add-PausedSync-states-to-acceptable-cstate.patch
++0006-CGTS-7164-Add-resource-options-cpu-mask-to-affine-drbd-kernel-threads.patch
++0007-Add-disk-by-path-test.patch
++0008-CGTS-7953-support-for-new-drbd-resources.patch
++0009-drbd-slow-before-swact.patch
