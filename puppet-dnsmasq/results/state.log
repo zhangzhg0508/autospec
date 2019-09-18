@@ -1,0 +1,37 @@
+2019-09-18 16:32:11,801 - Mock Version: 1.2.14
+2019-09-18 16:32:12,050 - Start: dnf update
+2019-09-18 16:32:21,649 - Finish: dnf update
+2019-09-18 16:32:21,655 - Finish: chroot init
+2019-09-18 16:32:21,657 - Start: buildsrpm
+2019-09-18 16:32:21,663 - Start: rpmbuild -bs
+2019-09-18 16:32:21,701 - Finish: rpmbuild -bs
+2019-09-18 16:32:21,703 - Finish: buildsrpm
+2019-09-18 16:32:21,703 - Finish: run
+2019-09-18 16:32:24,765 - Mock Version: 1.2.14
+2019-09-18 16:32:25,028 - Start: dnf update
+2019-09-18 16:32:34,772 - Finish: dnf update
+2019-09-18 16:32:34,778 - Finish: chroot init
+2019-09-18 16:32:34,779 - Start: build phase for puppet-dnsmasq-1.1.0-1.src.rpm
+2019-09-18 16:32:34,782 - Start: build setup for puppet-dnsmasq-1.1.0-1.src.rpm
+2019-09-18 16:32:36,075 - Finish: build setup for puppet-dnsmasq-1.1.0-1.src.rpm
+2019-09-18 16:32:36,075 - Start: rpmbuild puppet-dnsmasq-1.1.0-1.src.rpm
+2019-09-18 16:32:39,624 - Mock Version: 1.2.14
+2019-09-18 16:32:39,881 - Start: dnf update
+2019-09-18 16:32:49,435 - Finish: dnf update
+2019-09-18 16:32:49,441 - Finish: chroot init
+2019-09-18 16:32:49,444 - Start: buildsrpm
+2019-09-18 16:32:49,452 - Start: rpmbuild -bs
+2019-09-18 16:32:49,495 - Finish: rpmbuild -bs
+2019-09-18 16:32:49,496 - Finish: buildsrpm
+2019-09-18 16:32:49,497 - Finish: run
+2019-09-18 16:32:52,611 - Mock Version: 1.2.14
+2019-09-18 16:32:52,873 - Start: dnf update
+2019-09-18 16:33:02,751 - Finish: dnf update
+2019-09-18 16:33:02,758 - Finish: chroot init
+2019-09-18 16:33:02,759 - Start: build phase for puppet-dnsmasq-1.1.0-1.src.rpm
+2019-09-18 16:33:02,761 - Start: build setup for puppet-dnsmasq-1.1.0-1.src.rpm
+2019-09-18 16:33:04,043 - Finish: build setup for puppet-dnsmasq-1.1.0-1.src.rpm
+2019-09-18 16:33:04,043 - Start: rpmbuild puppet-dnsmasq-1.1.0-1.src.rpm
+2019-09-18 16:33:04,285 - Finish: rpmbuild puppet-dnsmasq-1.1.0-1.src.rpm
+2019-09-18 16:33:04,286 - Finish: build phase for puppet-dnsmasq-1.1.0-1.src.rpm
+2019-09-18 16:33:04,287 - Finish: run

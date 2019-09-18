@@ -1,0 +1,517 @@
+From a8d6334191578751397d0e3b97f4c69fd2cb69fb Mon Sep 17 00:00:00 2001
+From: fuyong <fuyong@neusoft.com>
+Date: Wed, 18 Sep 2019 16:33:04 +0800
+Subject: [PATCH puppet-dnsmasq] puppet-dnsmasq: Autospec creation for version
+ 1.1.0
+
+---
+ .gitignore                                    |  14 +++
+ 0001-add-makefile.patch                       |  21 ++++
+ 0001-puppet-dnsmasq-Kilo-quilt-patches.patch  | 116 ++++++++++++++++++
+ ...ismatched-permission-on-dnsmasq-conf.patch |  27 ++++
+ ...upport-management-of-tftp_max-option.patch |  62 ++++++++++
+ 0004-Enable-clear-DNS-cache-on-reload.patch   |  72 +++++++++++
+ Makefile                                      |   5 +
+ buildreq_add                                  |   3 +
+ buildreq_ban                                  |   2 +
+ excludes                                      |   2 +
+ install_append                                |   1 +
+ install_macro                                 |   1 +
+ options.conf                                  |  58 +++++++++
+ pkgconfig_add                                 |   2 +
+ pkgconfig_ban                                 |   2 +
+ puppet-dnsmasq.license                        |   1 +
+ puppet-dnsmasq.spec                           |  96 +++++++++++++++
+ release                                       |   1 +
+ requires_add                                  |   4 +
+ requires_ban                                  |   2 +
+ series                                        |   5 +
+ testresults                                   |   5 +
+ upstream                                      |   1 +
+ 23 files changed, 503 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 0001-add-makefile.patch
+ create mode 100644 0001-puppet-dnsmasq-Kilo-quilt-patches.patch
+ create mode 100644 0002-Fixing-mismatched-permission-on-dnsmasq-conf.patch
+ create mode 100644 0003-Support-management-of-tftp_max-option.patch
+ create mode 100644 0004-Enable-clear-DNS-cache-on-reload.patch
+ create mode 100644 Makefile
+ create mode 100644 buildreq_add
+ create mode 100644 buildreq_ban
+ create mode 100644 excludes
+ create mode 100644 install_append
+ create mode 100644 install_macro
+ create mode 100644 options.conf
+ create mode 100644 pkgconfig_add
+ create mode 100644 pkgconfig_ban
+ create mode 100644 puppet-dnsmasq.license
+ create mode 100644 puppet-dnsmasq.spec
+ create mode 100644 release
+ create mode 100644 requires_add
+ create mode 100644 requires_ban
+ create mode 100644 series
+ create mode 100644 testresults
+ create mode 100644 upstream
+
+diff --git a/0001-add-makefile.patch b/0001-add-makefile.patch
+new file mode 100644
+index 0000000..c20b09c
+--- /dev/null
++++ b/0001-add-makefile.patch
+@@ -0,0 +1,21 @@
++From 6d2e758f33d450f62bc7566d5018f4f79a342950 Mon Sep 17 00:00:00 2001
++From: lgdfy <im.fuyong@gmail.com>
++Date: Wed, 11 Sep 2019 15:57:00 +0800
++Subject: [PATCH] add makefile
++
++---
++ Makefile | 2 ++
++ 1 file changed, 2 insertions(+)
++ create mode 100644 Makefile
++
++diff --git a/Makefile b/Makefile
++new file mode 100644
++index 0000000..cda58eb
++--- /dev/null
+++++ b/Makefile
++@@ -0,0 +1,2 @@
+++build:
+++	echo "no build"
++-- 
++2.23.0
++
+diff --git a/0001-puppet-dnsmasq-Kilo-quilt-patches.patch b/0001-puppet-dnsmasq-Kilo-quilt-patches.patch
+new file mode 100644
+index 0000000..ff631ec
+--- /dev/null
++++ b/0001-puppet-dnsmasq-Kilo-quilt-patches.patch
+@@ -0,0 +1,116 @@
++From 7430149d3a7f1ab9f93ec863e55cdf6d96cd4f06 Mon Sep 17 00:00:00 2001
++From: Al Bailey <al.bailey@windriver.com>
++Date: Tue, 7 Jun 2016 10:22:23 -0400
++Subject: [PATCH] puppet-dnsmasq Kilo quilt patches
++
++---
++ packstack/puppet/modules/dnsmasq/manifests/init.pp          | 8 ++++++++
++ packstack/puppet/modules/dnsmasq/manifests/params.pp        | 7 +++++--
++ packstack/puppet/modules/dnsmasq/templates/dnsmasq.conf.erb | 9 ++++++---
++ 3 files changed, 19 insertions(+), 5 deletions(-)
++
++diff --git a/packstack/puppet/modules/dnsmasq/manifests/init.pp b/packstack/puppet/modules/dnsmasq/manifests/init.pp
++index 176bec7..c61fd94 100644
++--- a/packstack/puppet/modules/dnsmasq/manifests/init.pp
+++++ b/packstack/puppet/modules/dnsmasq/manifests/init.pp
++@@ -258,6 +258,13 @@
++ #   If you don't want dnsmasq to read /etc/hosts, set this to true.
++ #   Default: false
++ #
+++# [*dhcp_hostsfile*]
+++#   Read DHCP host information from the specified file. The file contains
+++#   information about one host per line. The format of a line is the same
+++#   as text to the right of '=' in --dhcp-host. The advantage of storing
+++#   DHCP host information in this file is that it can be changed without
+++#   re-starting dnsmasq: the file will be re-read when dnsmasq receives SIGHUP.
+++#
++ # [*addn_hosts*]
++ #   If you want dnsmasq to read another file/s, as well as /etc/hosts, use this.
++ #   It can be an array of files to read. See next option to manage these files with
++@@ -457,6 +464,7 @@ class dnsmasq (
++   $no_poll             = params_lookup( 'no_poll' ),
++   $bind_interfaces     = params_lookup( 'bind_interfaces' ),
++   $no_hosts            = params_lookup( 'no_hosts' ),
+++  $dhcp_hostsfile      = params_lookup( 'dhcp_hostsfile' ),
++   $addn_hosts          = params_lookup( 'addn_hosts' ),
++   $addn_hosts_dir      = params_lookup( 'addn_hosts_dir' ),
++   $expand_hosts        = params_lookup( 'expand_hosts' ),
++diff --git a/packstack/puppet/modules/dnsmasq/manifests/params.pp b/packstack/puppet/modules/dnsmasq/manifests/params.pp
++index 5b8f02d..6dd5b96 100644
++--- a/packstack/puppet/modules/dnsmasq/manifests/params.pp
+++++ b/packstack/puppet/modules/dnsmasq/manifests/params.pp
++@@ -38,6 +38,7 @@ class dnsmasq::params {
++ 
++   $process_user = $::operatingsystem ? {
++     /(?i:Debian|Ubuntu|Mint)/ => 'dnsmasq',
+++    /(?i:wrlinux)/            => 'root',
++     default                   => 'nobody',
++   }
++ 
++@@ -62,7 +63,7 @@ class dnsmasq::params {
++   }
++ 
++   $config_file_init = $::operatingsystem ? {
++-    /(?i:Debian|Ubuntu|Mint)/ => '/etc/default/dnsmasq',
+++    /(?i:Debian|Ubuntu|Mint|wrlinux)/ => '/etc/default/dnsmasq',
++     default                   => '/etc/sysconfig/dnsmasq',
++   }
++ 
++@@ -90,6 +91,7 @@ class dnsmasq::params {
++   $no_poll = false
++   $bind_interfaces = false
++   $no_hosts = false
+++  $dhcp_hostsfile = ''
++   $addn_hosts = ''
++   $addn_hosts_dir = ''
++   $expand_hosts = false
++@@ -115,6 +117,7 @@ class dnsmasq::params {
++   }
++   $mx_target = ''
++   $localmx = false
+++  $selfmx = false
++   $server = ''
++   $local = ''
++   $address = ''
++@@ -151,7 +154,7 @@ class dnsmasq::params {
++   $version = 'present'
++   $absent = false
++   $disable = false
++-  $disableboot = false
+++  $disableboot = true
++ 
++   ### General module variables that can have a site or per module default
++   $monitor = false
++diff --git a/packstack/puppet/modules/dnsmasq/templates/dnsmasq.conf.erb b/packstack/puppet/modules/dnsmasq/templates/dnsmasq.conf.erb
++index 7bc4a03..ea5aa01 100644
++--- a/packstack/puppet/modules/dnsmasq/templates/dnsmasq.conf.erb
+++++ b/packstack/puppet/modules/dnsmasq/templates/dnsmasq.conf.erb
++@@ -3,12 +3,12 @@
++ <% if scope.lookupvar('dnsmasq::port') != '' -%>
++ port=<%= scope.lookupvar('dnsmasq::port') %>
++ <% end -%>
++-<% if scope.lookupvar('dnsmasq::bool_domain_need') -%> 
++-domain-needed
++-<% end -%>
++ <% if scope.lookupvar('dnsmasq::bool_bogus_priv') -%>
++ bogus-priv
++ <% end -%>
+++<% if scope.lookupvar('dnsmasq::bool_domain_needed') -%>
+++domain-needed
+++<% end -%>
++ <% if scope.lookupvar('dnsmasq::bool_filterwin2k') -%>
++ filterwin2k
++ <% end -%>
++@@ -33,6 +33,9 @@ bind-interfaces
++ <% if scope.lookupvar('dnsmasq::bool_no_hosts') -%>
++ no-hosts
++ <% end -%>
+++<% if scope.lookupvar('dnsmasq::dhcp_hostsfile') != '' -%>
+++dhcp-hostsfile=<%= scope.lookupvar('dnsmasq::dhcp_hostsfile') %>
+++<% end -%>
++ <% if scope.lookupvar('dnsmasq::bool_expand_hosts') -%>
++ expand-hosts
++ <% end -%>
++-- 
++1.8.3.1
++
+diff --git a/0002-Fixing-mismatched-permission-on-dnsmasq-conf.patch b/0002-Fixing-mismatched-permission-on-dnsmasq-conf.patch
+new file mode 100644
+index 0000000..40d422e
+--- /dev/null
++++ b/0002-Fixing-mismatched-permission-on-dnsmasq-conf.patch
+@@ -0,0 +1,27 @@
++From b8308a495f853d066c5c0e5d2257a070b033f626 Mon Sep 17 00:00:00 2001
++From: Kam Nasim <kam.nasim@windriver.com>
++Date: Tue, 5 Jul 2016 16:46:28 -0400
++Subject: [PATCH] CGTS-4280: Fixing mismatched permission on dnsmasq.conf which
++ was set to 0640 when created from config_controller (controller-0) but was at
++ 0644 on controller-1 through application of this manifest.
++
++---
++ packstack/puppet/modules/dnsmasq/manifests/params.pp | 2 +-
++ 1 file changed, 1 insertion(+), 1 deletion(-)
++
++diff --git a/packstack/puppet/modules/dnsmasq/manifests/params.pp b/packstack/puppet/modules/dnsmasq/manifests/params.pp
++index 6dd5b96..6129b57 100644
++--- a/packstack/puppet/modules/dnsmasq/manifests/params.pp
+++++ b/packstack/puppet/modules/dnsmasq/manifests/params.pp
++@@ -51,7 +51,7 @@ class dnsmasq::params {
++   }
++ 
++   $config_file_mode = $::operatingsystem ? {
++-    default => '0644',
+++    default => '0640',
++   }
++ 
++   $config_file_owner = $::operatingsystem ? {
++-- 
++1.8.3.1
++
+diff --git a/0003-Support-management-of-tftp_max-option.patch b/0003-Support-management-of-tftp_max-option.patch
+new file mode 100644
+index 0000000..08341e8
+--- /dev/null
++++ b/0003-Support-management-of-tftp_max-option.patch
+@@ -0,0 +1,62 @@
++From 017e2ed0c664fb8689f6a9c4352db740c2c39725 Mon Sep 17 00:00:00 2001
++From: Don Penney <don.penney@windriver.com>
++Date: Thu, 15 Sep 2016 16:49:48 -0400
++Subject: [PATCH] Support management of tftp_max option
++
++---
++ packstack/puppet/modules/dnsmasq/manifests/init.pp          | 4 ++++
++ packstack/puppet/modules/dnsmasq/manifests/params.pp        | 1 +
++ packstack/puppet/modules/dnsmasq/templates/dnsmasq.conf.erb | 3 +++
++ 3 files changed, 8 insertions(+)
++
++diff --git a/packstack/puppet/modules/dnsmasq/manifests/init.pp b/packstack/puppet/modules/dnsmasq/manifests/init.pp
++index c61fd94..b66ac17 100644
++--- a/packstack/puppet/modules/dnsmasq/manifests/init.pp
+++++ b/packstack/puppet/modules/dnsmasq/manifests/init.pp
++@@ -328,6 +328,9 @@
++ #   Enable dnsmasq's built-in TFTP server
++ #   Default: false
++ #
+++# [*tftp_max*]
+++#   Max tftp connections
+++#
++ # [*tftp_secure*]
++ #   Make the TFTP server more secure: with this set, only files owned by
++ #   the user dnsmasq is running as will be send over the net.
++@@ -476,6 +479,7 @@ class dnsmasq (
++   $pxe_prompt_timeout  = params_lookup( 'pxe_prompt_timeout' ),
++   $pxe_service         = params_lookup( 'pxe_service' ),
++   $enable_tftp         = params_lookup( 'enable_tftp' ),
+++  $tftp_max            = params_lookup( 'tftp_max' ),
++   $tftp_secure         = params_lookup( 'tftp_secure' ),
++   $tftp_root           = params_lookup( 'tftp_root' ),
++   $dhcp_lease_max      = params_lookup( 'dhcp_lease_max' ),
++diff --git a/packstack/puppet/modules/dnsmasq/manifests/params.pp b/packstack/puppet/modules/dnsmasq/manifests/params.pp
++index 6129b57..845e91e 100644
++--- a/packstack/puppet/modules/dnsmasq/manifests/params.pp
+++++ b/packstack/puppet/modules/dnsmasq/manifests/params.pp
++@@ -103,6 +103,7 @@ class dnsmasq::params {
++   $pxe_prompt_timeout = '60'
++   $pxe_service = ''
++   $enable_tftp = false
+++  $tftp_max = ''
++   $tftp_secure = false
++   $tftp_root = ''
++   $dhcp_lease_max = ''
++diff --git a/packstack/puppet/modules/dnsmasq/templates/dnsmasq.conf.erb b/packstack/puppet/modules/dnsmasq/templates/dnsmasq.conf.erb
++index ea5aa01..6a6cbdf 100644
++--- a/packstack/puppet/modules/dnsmasq/templates/dnsmasq.conf.erb
+++++ b/packstack/puppet/modules/dnsmasq/templates/dnsmasq.conf.erb
++@@ -60,6 +60,9 @@ pxe-service=<%= scope.lookupvar('dnsmasq::pxe_service') %>
++ <% if scope.lookupvar('dnsmasq::bool_enable_tftp') -%>
++ enable-tftp
++ <% end -%>
+++<% if scope.lookupvar('dnsmasq::tftp_max') != '' -%>
+++tftp-max=<%= scope.lookupvar('dnsmasq::tftp_max') %>
+++<% end -%>
++ <% if scope.lookupvar('dnsmasq::bool_tftp_secure') -%>
++ tftp-secure
++ <% end -%>
++-- 
++1.8.3.1
++
+diff --git a/0004-Enable-clear-DNS-cache-on-reload.patch b/0004-Enable-clear-DNS-cache-on-reload.patch
+new file mode 100644
+index 0000000..65b6771
+--- /dev/null
++++ b/0004-Enable-clear-DNS-cache-on-reload.patch
+@@ -0,0 +1,72 @@
++From 35fa3c673307db2ebed20c952817608fadd26fa6 Mon Sep 17 00:00:00 2001
++From: Tao Liu <tao.liu@windriver.com>
++Date: Thu, 22 Jun 2017 16:33:29 -0400
++Subject: [PATCH 1/1] Enable clear the DNS cache on reload
++
++---
++ packstack/puppet/modules/dnsmasq/manifests/init.pp          | 7 +++++++
++ packstack/puppet/modules/dnsmasq/manifests/params.pp        | 1 +
++ packstack/puppet/modules/dnsmasq/templates/dnsmasq.conf.erb | 3 +++
++ 3 files changed, 11 insertions(+)
++
++diff --git a/packstack/puppet/modules/dnsmasq/manifests/init.pp b/packstack/puppet/modules/dnsmasq/manifests/init.pp
++index b66ac17..93276bb 100644
++--- a/packstack/puppet/modules/dnsmasq/manifests/init.pp
+++++ b/packstack/puppet/modules/dnsmasq/manifests/init.pp
++@@ -211,6 +211,11 @@
++ #   bringing up the link unnecessarily.
++ #   Default: true
++ #
+++# [*clear_on_reload*]
+++#   Whenever /etc/resolv.conf is re-read or the upstream servers are set via
+++#   DBus, clear the DNS cache.
+++#   Default: true
+++#
++ # [*filterwin2k*]
++ #   Uncomment this to filter useless windows-originated DNS requests
++ #   which can trigger dial-on-demand links needlessly.
++@@ -460,6 +465,7 @@ class dnsmasq (
++   $protocol            = params_lookup( 'protocol' ),
++   $domain_needed       = params_lookup( 'domain_needed' ),
++   $bogus_priv          = params_lookup( 'bogus_priv' ),
+++  $clear_on_reload     = params_lookup( 'clear_on_reload' ),
++   $filterwin2k         = params_lookup( 'filterwin2k' ),
++   $resolv_file         = params_lookup( 'resolv_file' ),
++   $strict_order        = params_lookup( 'strict_order' ),
++@@ -531,6 +537,7 @@ class dnsmasq (
++ 
++   $bool_domain_needed=any2bool($domain_needed)
++   $bool_bogus_priv=any2bool($bogus_priv)
+++  $bool_clear_on_reload=any2bool($clear_on_reload)
++   $bool_filterwin2k=any2bool($filterwin2k)
++   $bool_strict_order=any2bool($strict_order)
++   $bool_no_resolv=any2bool($no_resolv)
++diff --git a/packstack/puppet/modules/dnsmasq/manifests/params.pp b/packstack/puppet/modules/dnsmasq/manifests/params.pp
++index 845e91e..4d8e70a 100644
++--- a/packstack/puppet/modules/dnsmasq/manifests/params.pp
+++++ b/packstack/puppet/modules/dnsmasq/manifests/params.pp
++@@ -84,6 +84,7 @@ class dnsmasq::params {
++ 
++   $domain_needed = true
++   $bogus_priv = true
+++  $clear_on_reload = true
++   $filterwin2k = false
++   $resolv_file = ''
++   $strict_order = false
++diff --git a/packstack/puppet/modules/dnsmasq/templates/dnsmasq.conf.erb b/packstack/puppet/modules/dnsmasq/templates/dnsmasq.conf.erb
++index bb8d941..109b768 100644
++--- a/packstack/puppet/modules/dnsmasq/templates/dnsmasq.conf.erb
+++++ b/packstack/puppet/modules/dnsmasq/templates/dnsmasq.conf.erb
++@@ -9,6 +9,9 @@ bogus-priv
++ <% if scope.lookupvar('dnsmasq::bool_domain_needed') -%>
++ domain-needed
++ <% end -%>
+++<% if scope.lookupvar('dnsmasq::bool_clear_on_reload') -%>
+++clear-on-reload
+++<% end -%>
++ <% if scope.lookupvar('dnsmasq::bool_filterwin2k') -%>
++ filterwin2k
++ <% end -%>
++-- 
++1.8.3.1
++
+diff --git a/buildreq_add b/buildreq_add
+new file mode 100644
+index 0000000..83c73cd
+--- /dev/null
++++ b/buildreq_add
+@@ -0,0 +1,3 @@
++python-dev
+diff --git a/install_append b/install_append
+new file mode 100644
+index 0000000..78913da
+--- /dev/null
++++ b/install_append
+@@ -0,0 +1 @@
++cp -R puppet/modules/dnsmasq %{buildroot}%{_datadir}/puppet/modules
+diff --git a/install_macro b/install_macro
+new file mode 100644
+index 0000000..902f781
+--- /dev/null
++++ b/install_macro
+@@ -0,0 +1 @@
++install -d -m 0755 %{buildroot}%{_datadir}/puppet/modules/dnsmasq
+diff --git a/options.conf b/options.conf
+new file mode 100644
+index 0000000..ba6c521
+--- /dev/null
++++ b/options.conf
+@@ -0,0 +1,58 @@
++name = puppet-dnsmasq
++url = file:///home/clr/stx-tar/puppet-dnsmasq-1.1.0.tar.gz
++use_lto = true
++verify_required = false
+diff --git a/puppet-dnsmasq.license b/puppet-dnsmasq.license
+new file mode 100644
+index 0000000..622901a
+--- /dev/null
++++ b/puppet-dnsmasq.license
+@@ -0,0 +1 @@
++Apache-2.0
+diff --git a/puppet-dnsmasq.spec b/puppet-dnsmasq.spec
+new file mode 100644
+index 0000000..8449e05
+--- /dev/null
++++ b/puppet-dnsmasq.spec
+@@ -0,0 +1,96 @@
++#
++# This file is auto-generated. DO NOT EDIT
++# Generated by: autospec.py
++#
++Name     : puppet-dnsmasq
++License  : Apache-2.0
++Requires: puppet-dnsmasq-data = %{version}-%{release}
++Requires: puppet-concat
++Requires: puppet-puppi
++BuildRequires : python-dev
++Patch1: 0001-add-makefile.patch
++Patch2: 0001-puppet-dnsmasq-Kilo-quilt-patches.patch
++Patch3: 0002-Fixing-mismatched-permission-on-dnsmasq-conf.patch
++Patch4: 0003-Support-management-of-tftp_max-option.patch
++Patch5: 0004-Enable-clear-DNS-cache-on-reload.patch
++
++%description
++# Puppet module: dnsmasq
++This is a Puppet module for dnsmasq based on the second generation layout ("NextGen") of Example42 Puppet Modules.
++
++%package data
++
++
++
++%prep
++%patch1 -p1
++%patch2 -p2
++%patch3 -p2
++%patch4 -p2
++%patch5 -p2
++
++%build
++make  %{?_smp_mflags}
++
++
++%install
++rm -rf %{buildroot}
++install -d -m 0755 %{buildroot}%{_datadir}/puppet/modules/dnsmasq
++## install_append content
++cp -R puppet/modules/dnsmasq %{buildroot}%{_datadir}/puppet/modules
++## install_append end
++
++%files
++%defattr(-,root,root,-)
++
++%files data
++%defattr(-,root,root,-)
++/usr/share/puppet/modules/dnsmasq/.fixtures.yml
++/usr/share/puppet/modules/dnsmasq/.gitignore
++/usr/share/puppet/modules/dnsmasq/.project
++/usr/share/puppet/modules/dnsmasq/.rspec
++/usr/share/puppet/modules/dnsmasq/.travis.yml
++/usr/share/puppet/modules/dnsmasq/Gemfile
++/usr/share/puppet/modules/dnsmasq/Modulefile
++/usr/share/puppet/modules/dnsmasq/README.md
++/usr/share/puppet/modules/dnsmasq/Rakefile
++/usr/share/puppet/modules/dnsmasq/TODO
++/usr/share/puppet/modules/dnsmasq/manifests/addhost.pp
++/usr/share/puppet/modules/dnsmasq/manifests/hostconcat.pp
++/usr/share/puppet/modules/dnsmasq/manifests/init.pp
++/usr/share/puppet/modules/dnsmasq/manifests/params.pp
++/usr/share/puppet/modules/dnsmasq/manifests/spec.pp
++/usr/share/puppet/modules/dnsmasq/spec/classes/dnsmasq_spec.rb
++/usr/share/puppet/modules/dnsmasq/spec/defines/dnsmasq_addhost_spec.rb
++/usr/share/puppet/modules/dnsmasq/spec/defines/dnsmasq_hostconcat_spec.rb
++/usr/share/puppet/modules/dnsmasq/spec/spec_helper.rb
++/usr/share/puppet/modules/dnsmasq/templates/dnsmasq.conf.erb
++/usr/share/puppet/modules/dnsmasq/templates/spec.erb
++/usr/share/puppet/modules/dnsmasq/tests/absent.pp
++/usr/share/puppet/modules/dnsmasq/tests/disable.pp
++/usr/share/puppet/modules/dnsmasq/tests/init.pp
+diff --git a/requires_add b/requires_add
+new file mode 100644
+index 0000000..d806357
+--- /dev/null
++++ b/requires_add
+@@ -0,0 +1,4 @@
++puppet-concat
++puppet-puppi
+diff --git a/series b/series
+new file mode 100644
+index 0000000..90650d0
+--- /dev/null
++++ b/series
+@@ -0,0 +1,5 @@
++0001-add-makefile.patch
++0001-puppet-dnsmasq-Kilo-quilt-patches.patch -p2
++0002-Fixing-mismatched-permission-on-dnsmasq-conf.patch -p2
++0003-Support-management-of-tftp_max-option.patch -p2
++0004-Enable-clear-DNS-cache-on-reload.patch -p2

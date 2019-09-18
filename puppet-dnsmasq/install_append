@@ -1,0 +1,1 @@
+cp -R puppet/modules/dnsmasq %{buildroot}%{_datadir}/puppet/modules
