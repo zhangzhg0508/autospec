@@ -1,0 +1,37 @@
+2019-08-30 01:51:03,827 - Mock Version: 1.2.14
+2019-08-30 01:51:04,100 - Start: dnf update
+2019-08-30 01:51:19,474 - Finish: dnf update
+2019-08-30 01:51:19,481 - Finish: chroot init
+2019-08-30 01:51:19,486 - Start: buildsrpm
+2019-08-30 01:51:19,497 - Start: rpmbuild -bs
+2019-08-30 01:51:19,541 - Finish: rpmbuild -bs
+2019-08-30 01:51:19,544 - Finish: buildsrpm
+2019-08-30 01:51:19,545 - Finish: run
+2019-08-30 01:51:23,506 - Mock Version: 1.2.14
+2019-08-30 01:51:23,744 - Start: dnf update
+2019-08-30 01:51:38,848 - Finish: dnf update
+2019-08-30 01:51:38,854 - Finish: chroot init
+2019-08-30 01:51:38,855 - Start: build phase for controllerconfig-1.0-3.src.rpm
+2019-08-30 01:51:38,858 - Start: build setup for controllerconfig-1.0-3.src.rpm
+2019-08-30 01:51:40,109 - Finish: build setup for controllerconfig-1.0-3.src.rpm
+2019-08-30 01:51:40,109 - Start: rpmbuild controllerconfig-1.0-3.src.rpm
+2019-08-30 01:51:46,576 - Mock Version: 1.2.14
+2019-08-30 01:51:46,883 - Start: dnf update
+2019-08-30 01:52:00,219 - Finish: dnf update
+2019-08-30 01:52:00,230 - Finish: chroot init
+2019-08-30 01:52:00,234 - Start: buildsrpm
+2019-08-30 01:52:00,243 - Start: rpmbuild -bs
+2019-08-30 01:52:00,283 - Finish: rpmbuild -bs
+2019-08-30 01:52:00,285 - Finish: buildsrpm
+2019-08-30 01:52:00,286 - Finish: run
+2019-08-30 01:52:10,762 - Mock Version: 1.2.14
+2019-08-30 01:52:11,118 - Start: dnf update
+2019-08-30 01:52:35,333 - Finish: dnf update
+2019-08-30 01:52:35,339 - Finish: chroot init
+2019-08-30 01:52:35,340 - Start: build phase for controllerconfig-1.0-3.src.rpm
+2019-08-30 01:52:35,343 - Start: build setup for controllerconfig-1.0-3.src.rpm
+2019-08-30 01:52:37,113 - Finish: build setup for controllerconfig-1.0-3.src.rpm
+2019-08-30 01:52:37,113 - Start: rpmbuild controllerconfig-1.0-3.src.rpm
+2019-08-30 01:52:39,940 - Finish: rpmbuild controllerconfig-1.0-3.src.rpm
+2019-08-30 01:52:39,943 - Finish: build phase for controllerconfig-1.0-3.src.rpm
+2019-08-30 01:52:39,944 - Finish: run

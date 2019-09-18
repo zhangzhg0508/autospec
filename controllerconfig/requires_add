@@ -1,0 +1,17 @@
+# This file contains additional runtime requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+fm-api
+psmisc
+sysinv
+systemd
+#tsconfig
+iso8601
+keyring
+netaddr
+netifaces
+pyudev
+six
+pycrypto
+oslo.utils
+pysnmp
+ruamel.yaml

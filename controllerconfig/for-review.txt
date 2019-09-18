@@ -1,0 +1,106 @@
+From 1ddb51bcc1179501c8cf324ad8f7bd27d6a5598c Mon Sep 17 00:00:00 2001
+From: "chen.dq" <chen.dq@neusoft.com>
+Date: Fri, 30 Aug 2019 01:52:41 +0000
+Subject: [PATCH controllerconfig] controllerconfig: Autospec creation for
+ version 1.0
+
+---
+ controllerconfig.spec | 36 ++++++++++++++++++++++++++++++++++--
+ install_append        | 28 ++++++++++++++++++++++++++++
+ release               |  2 +-
+ 3 files changed, 63 insertions(+), 3 deletions(-)
+ create mode 100644 install_append
+
+diff --git a/controllerconfig.spec b/controllerconfig.spec
+index c1dbaf3..9b1295d 100644
+--- a/controllerconfig.spec
++++ b/controllerconfig.spec
+@@ -102,9 +102,36 @@ python3 -tt setup.py build  install --root=%{buildroot}
+ echo ----[ mark ]----
+ cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
+ echo ----[ mark ]----
++## install_append content
++%{__python} setup.py install --root=$RPM_BUILD_ROOT \
++--install-lib=%{pythonroot} \
++--prefix=/usr \
++--install-data=/usr/share \
++--single-version-externally-managed
++install -d -m 755 %{buildroot}%{local_bindir}
++install -p -D -m 700 scripts/keyringstaging %{buildroot}%{local_bindir}/keyringstaging
++install -p -D -m 700 scripts/openstack_update_admin_password %{buildroot}%{local_bindir}/openstack_update_admin_password
++install -p -D -m 700 scripts/install_clone.py %{buildroot}%{local_bindir}/install_clone
++install -p -D -m 700 scripts/finish_install_clone.sh %{buildroot}%{local_bindir}/finish_install_clone.sh
++install -d -m 755 %{buildroot}%{local_goenabledd}
++install -p -D -m 700 scripts/config_goenabled_check.sh %{buildroot}%{local_goenabledd}/config_goenabled_check.sh
++install -d -m 755 %{buildroot}%{local_etc_initd}
++install -p -D -m 755 scripts/controller_config %{buildroot}%{local_etc_initd}/controller_config
++install -d -m 755 %{buildroot}%{local_etc_upgraded}
++install -p -D -m 755 upgrade-scripts/* %{buildroot}%{local_etc_upgraded}/
++install -d -m 755 %{buildroot}%{local_etc_systemd}
++install -p -D -m 664 scripts/controllerconfig.service %{buildroot}%{local_etc_systemd}/controllerconfig.service
++%post
++systemctl enable controllerconfig.service
++## install_append end
+ 
+ %files
+ %defattr(-,root,root,-)
++/usr/local/etc/goenabled.d/config_goenabled_check.sh
++/usr/local/etc/init.d/controller_config
++/usr/local/etc/systemd/system/controllerconfig.service
++/usr/local/etc/upgrade.d/16-neutron-move-bindings-off-controller-1.py
++/usr/local/etc/upgrade.d/20-sysinv-retire-ceph-cache-tier-sp.py
+ 
+ %files bin
+ %defattr(-,root,root,-)
+@@ -112,12 +139,17 @@ echo ----[ mark ]----
+ /usr/bin/config_management
+ /usr/bin/config_region
+ /usr/bin/config_subcloud
++/usr/bin/finish_install_clone.sh
++/usr/bin/install_clone
++/usr/bin/keyringstaging
++/usr/bin/openstack_update_admin_password
+ /usr/bin/tidy_storage_post_restore
+ /usr/bin/upgrade_controller
+ /usr/bin/upgrade_controller_simplex
+ 
+ %files python
+ %defattr(-,root,root,-)
++/usr/lib64/python*/*
+ 
+ %files python3
+ %defattr(-,root,root,-)
+diff --git a/install_append b/install_append
+new file mode 100644
+index 0000000..36b1fcd
+--- /dev/null
++++ b/install_append
+@@ -0,0 +1,28 @@
++%{__python} setup.py install --root=$RPM_BUILD_ROOT \
++                             --install-lib=%{pythonroot} \
++                             --prefix=/usr \
++                             --install-data=/usr/share \
++                             --single-version-externally-managed
++
++install -d -m 755 %{buildroot}%{local_bindir}
++install -p -D -m 700 scripts/keyringstaging %{buildroot}%{local_bindir}/keyringstaging
++install -p -D -m 700 scripts/openstack_update_admin_password %{buildroot}%{local_bindir}/openstack_update_admin_password
++install -p -D -m 700 scripts/install_clone.py %{buildroot}%{local_bindir}/install_clone
++install -p -D -m 700 scripts/finish_install_clone.sh %{buildroot}%{local_bindir}/finish_install_clone.sh
++
++install -d -m 755 %{buildroot}%{local_goenabledd}
++install -p -D -m 700 scripts/config_goenabled_check.sh %{buildroot}%{local_goenabledd}/config_goenabled_check.sh
++
++install -d -m 755 %{buildroot}%{local_etc_initd}
++install -p -D -m 755 scripts/controller_config %{buildroot}%{local_etc_initd}/controller_config
++
++# Install Upgrade scripts
++install -d -m 755 %{buildroot}%{local_etc_upgraded}
++install -p -D -m 755 upgrade-scripts/* %{buildroot}%{local_etc_upgraded}/
++
++install -d -m 755 %{buildroot}%{local_etc_systemd}
++install -p -D -m 664 scripts/controllerconfig.service %{buildroot}%{local_etc_systemd}/controllerconfig.service
++#install -p -D -m 664 scripts/config.service %{buildroot}%{local_etc_systemd}/config.service
++
++%post
++systemctl enable controllerconfig.service
