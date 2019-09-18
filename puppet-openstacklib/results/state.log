@@ -1,0 +1,37 @@
+2019-09-18 09:51:49,641 - Mock Version: 1.2.14
+2019-09-18 09:51:49,907 - Start: dnf update
+2019-09-18 09:51:59,524 - Finish: dnf update
+2019-09-18 09:51:59,530 - Finish: chroot init
+2019-09-18 09:51:59,533 - Start: buildsrpm
+2019-09-18 09:51:59,538 - Start: rpmbuild -bs
+2019-09-18 09:51:59,578 - Finish: rpmbuild -bs
+2019-09-18 09:51:59,579 - Finish: buildsrpm
+2019-09-18 09:51:59,580 - Finish: run
+2019-09-18 09:52:02,606 - Mock Version: 1.2.14
+2019-09-18 09:52:02,921 - Start: dnf update
+2019-09-18 09:52:12,478 - Finish: dnf update
+2019-09-18 09:52:12,483 - Finish: chroot init
+2019-09-18 09:52:12,484 - Start: build phase for puppet-openstacklib-11.5.0-1.src.rpm
+2019-09-18 09:52:12,487 - Start: build setup for puppet-openstacklib-11.5.0-1.src.rpm
+2019-09-18 09:52:13,385 - Finish: build setup for puppet-openstacklib-11.5.0-1.src.rpm
+2019-09-18 09:52:13,386 - Start: rpmbuild puppet-openstacklib-11.5.0-1.src.rpm
+2019-09-18 09:52:17,450 - Mock Version: 1.2.14
+2019-09-18 09:52:17,707 - Start: dnf update
+2019-09-18 09:52:27,197 - Finish: dnf update
+2019-09-18 09:52:27,203 - Finish: chroot init
+2019-09-18 09:52:27,206 - Start: buildsrpm
+2019-09-18 09:52:27,211 - Start: rpmbuild -bs
+2019-09-18 09:52:27,252 - Finish: rpmbuild -bs
+2019-09-18 09:52:27,254 - Finish: buildsrpm
+2019-09-18 09:52:27,254 - Finish: run
+2019-09-18 09:52:30,267 - Mock Version: 1.2.14
+2019-09-18 09:52:30,529 - Start: dnf update
+2019-09-18 09:52:40,032 - Finish: dnf update
+2019-09-18 09:52:40,037 - Finish: chroot init
+2019-09-18 09:52:40,039 - Start: build phase for puppet-openstacklib-11.5.0-1.src.rpm
+2019-09-18 09:52:40,041 - Start: build setup for puppet-openstacklib-11.5.0-1.src.rpm
+2019-09-18 09:52:40,937 - Finish: build setup for puppet-openstacklib-11.5.0-1.src.rpm
+2019-09-18 09:52:40,937 - Start: rpmbuild puppet-openstacklib-11.5.0-1.src.rpm
+2019-09-18 09:52:41,916 - Finish: rpmbuild puppet-openstacklib-11.5.0-1.src.rpm
+2019-09-18 09:52:41,918 - Finish: build phase for puppet-openstacklib-11.5.0-1.src.rpm
+2019-09-18 09:52:41,918 - Finish: run

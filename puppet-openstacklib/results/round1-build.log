@@ -1,0 +1,472 @@
+Mock Version: 1.2.14
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/puppet-openstacklib.spec'], chrootPath='/var/lib/mock/clear-puppet-openstacklib/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f47cf4b7d50>timeout=0uid=1000gid=1000user='mockbuild'printOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/puppet-openstacklib.spec'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/puppet-openstacklib-11.5.0-1.src.rpm
+Child return code was: 0
+LEAVE do --> 
+
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/puppet-openstacklib.spec '], chrootPath='/var/lib/mock/clear-puppet-openstacklib/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f47cf4b7d50>timeout=0uid=1000gid=1000user='mockbuild'private_network=TrueprintOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/puppet-openstacklib.spec '] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.GmRMYU
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
++ rm -rf openstack-openstacklib-11.5.0
++ /usr/bin/gzip -dc /builddir/build/SOURCES/puppet-openstacklib-11.5.0.tar.gz
++ /usr/bin/tar -xf -
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd openstack-openstacklib-11.5.0
++ /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ echo 'Patch #1 (0001-add-makefile.patch):'
+Patch #1 (0001-add-makefile.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0001-add-makefile.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file Makefile
++ echo 'Patch #2 (0001-Roll-up-TIS-patches.patch):'
+Patch #2 (0001-Roll-up-TIS-patches.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0001-Roll-up-TIS-patches.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file lib/puppet/provider/openstack.rb
+patching file lib/puppet/provider/openstack/auth.rb
+patching file lib/puppet/provider/openstack/credentials.rb
++ exit 0
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.u6Z7PU
++ umask 022
++ cd /builddir/build/BUILD
++ cd openstack-openstacklib-11.5.0
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CFLAGS
++ http_proxy=http://127.0.0.1:9/
++ export http_proxy
++ https_proxy=http://127.0.0.1:9/
++ export https_proxy
++ ftp_proxy=http://127.0.0.1:9/
++ export ftp_proxy
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export no_proxy
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CXXFLAGS
++ FFLAGS='-g -O3 -feliminate-unused-debug-types  -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -m64 -fasynchronous-unwind-tables -Wp,-D_REENTRANT -ftree-loop-distribute-patterns -Wl,-z -Wl,now -Wl,-z -Wl,relro -malign-data=abi -fno-semantic-interposition -ftree-vectorize  -ftree-loop-vectorize -Wl,--enable-new-dtags '
++ export FFLAGS
++ LD_AS_NEEDED=1
++ export LD_AS_NEEDED
++ PKG_CONFIG_LIBDIR=/usr/lib64/pkgconfig
++ export PKG_CONFIG_LIBDIR
++ PATH=/usr/lib64/ccache/bin:/usr/local/bin:/usr/bin
++ export PATH
++ export PBR_VERSION=11.5.0
++ PBR_VERSION=11.5.0
++ export http_proxy=http://127.0.0.1:9/
++ http_proxy=http://127.0.0.1:9/
++ export https_proxy=http://127.0.0.1:9/
++ https_proxy=http://127.0.0.1:9/
++ export no_proxy=localhost,127.0.0.1,0.0.0.0
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export LANG=C.UTF-8
++ LANG=C.UTF-8
++ export SOURCE_DATE_EPOCH=1568771506
++ SOURCE_DATE_EPOCH=1568771506
++ export GCC_IGNORE_WERROR=1
++ GCC_IGNORE_WERROR=1
++ export AR=gcc-ar
++ AR=gcc-ar
++ export RANLIB=gcc-ranlib
++ RANLIB=gcc-ranlib
++ export NM=gcc-nm
++ NM=gcc-nm
++ export 'CFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ export 'FCFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FCFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'FFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'CXXFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ export MAKEFLAGS=-j4
++ MAKEFLAGS=-j4
++ python3 setup.py build
+running build
++ exit 0
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.c1eOmY
++ umask 022
++ cd /builddir/build/BUILD
++ cd openstack-openstacklib-11.5.0
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ rm -rf /builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64
++ mkdir -p /builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64
++ export MAKEFLAGS=-j4
++ MAKEFLAGS=-j4
++ rm -rf /builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64
++ export PBR_VERSION=11.5.0
++ PBR_VERSION=11.5.0
++ install -d -m 0755 /builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64//usr/share/openstack-puppet/modules/openstacklib/
++ python3 -tt setup.py build install --root=/builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64
+running build
+running install
+[pbr] Generating AUTHORS
+[pbr] AUTHORS complete (0.0s)
+running install_egg_info
+running egg_info
+creating puppet_openstacklib.egg-info
+writing puppet_openstacklib.egg-info/PKG-INFO
+writing dependency_links to puppet_openstacklib.egg-info/dependency_links.txt
+writing top-level names to puppet_openstacklib.egg-info/top_level.txt
+[pbr] Processing SOURCES.txt
+writing manifest file 'puppet_openstacklib.egg-info/SOURCES.txt'
+warning: no files found matching 'AUTHORS'
+warning: no files found matching 'ChangeLog'
+warning: no previously-included files found matching '.gitignore'
+warning: no previously-included files found matching '.gitreview'
+warning: no previously-included files matching '*.pyc' found anywhere in distribution
+writing manifest file 'puppet_openstacklib.egg-info/SOURCES.txt'
+Copying puppet_openstacklib.egg-info to /builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64/usr/lib/python3.7/site-packages/puppet_openstacklib-11.5.0-py3.7.egg-info
+running install_scripts
+/usr/lib/python3.7/site-packages/pbr/packaging.py:435: EasyInstallDeprecationWarning: Use get_header
+  header = easy_install.get_script_header("", executable, is_wininst)
++ echo '----[' mark ']----'
+----[ mark ]----
++ cat '/builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64/usr/lib/python3*/site-packages/*/requires.txt'
+cat: '/builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64/usr/lib/python3*/site-packages/*/requires.txt': No such file or directory
++ :
+----[ mark ]----
++ echo '----[' mark ']----'
++ cp -rp bindep.txt CHANGELOG.md checksums.json examples facts.d Gemfile lib LICENSE Makefile manifests metadata.json puppet_openstacklib.egg-info Rakefile README.md releasenotes setup.cfg setup.py spec templates test-requirements.txt tox.ini /builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64//usr/share/openstack-puppet/modules/openstacklib/
++ rm -f /builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64/usr/share/info/dir
+++ find /builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64 -path 'etc/*' '!' -type d
++ test -z ''
++ rm -rf '/builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64/etc/*'
++ rm -rf '/builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64/usr/share/factory/*'
++ find /builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64 -name __pycache__
++ xargs rm -rf --
++ '[' -d /builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64/usr/share/mime ']'
+++ getconf _NPROCESSORS_ONLN
++ RPM_XARGS_PFLAG=-P4
++ find /builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64 -name '*.so.avx512' -print0
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -5
++ find /builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64/usr/lib64/haswell/avx512_1 -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64/usr/lib64/haswell/avx512_1’: No such file or directory
++ find /builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64 -name '*.so.avx2' -print0
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -2
++ find /builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64/usr/lib64/haswell '!' -path '/usr/lib64/haswell/avx512_1/*' -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64/usr/lib64/haswell’: No such file or directory
++ xargs -0rtn1 -P4 /usr/lib/rpm/clr/brp-create-abi
++ sort -u
++ find /builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64/usr/lib64/ -maxdepth 1 -name '*.so*' -type f -print0
+find: ‘/builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64/usr/lib64/’: No such file or directory
++ /usr/lib/rpm/find-debuginfo.sh --strict-build-id /builddir/build/BUILD/openstack-openstacklib-11.5.0
+find: ‘debug’: No such file or directory
++ '[' -d /builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64/usr/lib/debug ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64/usr/lib/debug ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64/usr/src/debug ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64/usr/lib/debug.force ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64/usr/src/debug.force ']'
++ :
++ /usr/lib/rpm/check-buildroot
++ /usr/lib/rpm/clr/brp-strip-static-archive /usr/bin/strip
++ /usr/lib/rpm/clr/brp-strip-comment-note /usr/bin/strip /usr/bin/objdump
++ /usr/lib/rpm/clr/brp-python-bytecompile
+[BYTECOMPILE] Building for /builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64/usr/lib/python3.7 using /usr/bin/python3.7
++ find /builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64 -print0
++ xargs -0 touch -h -d '@1549052798 '
++ /usr/lib/rpm/clr/brp-java-repack-jars
+Executing(%check): /bin/sh -e /var/tmp/rpm-tmp.oemiwW
++ umask 022
++ cd /builddir/build/BUILD
++ cd openstack-openstacklib-11.5.0
+dont need check
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ export http_proxy=http://127.0.0.1:9/
++ http_proxy=http://127.0.0.1:9/
++ export https_proxy=http://127.0.0.1:9/
++ https_proxy=http://127.0.0.1:9/
++ export no_proxy=localhost,127.0.0.1,0.0.0.0
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ echo 'dont need check'
++ exit 0
+Processing files: puppet-openstacklib-11.5.0-1.x86_64
+Processing files: puppet-openstacklib-debuginfo-11.5.0-1.x86_64
+Processing files: puppet-openstacklib-abi-11.5.0-1.x86_64
+Checking for unpackaged file(s): /usr/lib/rpm/check-files /builddir/build/BUILDROOT/puppet-openstacklib-11.5.0-1.x86_64
+warning: Empty %files file /builddir/build/BUILD/openstack-openstacklib-11.5.0/debugfiles.list
+warning: Empty %files file /builddir/build/BUILD/openstack-openstacklib-11.5.0/abifiles.list
+error: Installed (but unpackaged) file(s) found:
+   /usr/lib/python3.7/site-packages/puppet_openstacklib-11.5.0-py3.7.egg-info/PKG-INFO
+   /usr/lib/python3.7/site-packages/puppet_openstacklib-11.5.0-py3.7.egg-info/SOURCES.txt
+   /usr/lib/python3.7/site-packages/puppet_openstacklib-11.5.0-py3.7.egg-info/dependency_links.txt
+   /usr/lib/python3.7/site-packages/puppet_openstacklib-11.5.0-py3.7.egg-info/not-zip-safe
+   /usr/lib/python3.7/site-packages/puppet_openstacklib-11.5.0-py3.7.egg-info/top_level.txt
+   /usr/share/openstack-puppet/modules/openstacklib/CHANGELOG.md
+   /usr/share/openstack-puppet/modules/openstacklib/Gemfile
+   /usr/share/openstack-puppet/modules/openstacklib/LICENSE
+   /usr/share/openstack-puppet/modules/openstacklib/Makefile
+   /usr/share/openstack-puppet/modules/openstacklib/README.md
+   /usr/share/openstack-puppet/modules/openstacklib/Rakefile
+   /usr/share/openstack-puppet/modules/openstacklib/bindep.txt
+   /usr/share/openstack-puppet/modules/openstacklib/checksums.json
+   /usr/share/openstack-puppet/modules/openstacklib/examples/virtual_packages.pp
+   /usr/share/openstack-puppet/modules/openstacklib/facts.d/os_service_default.txt
+   /usr/share/openstack-puppet/modules/openstacklib/lib/facter/os_package_type.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/facter/os_service_default.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/facter/os_workers.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/puppet/parser/functions/is_service_default.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/puppet/parser/functions/normalize_ip_for_uri.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/puppet/parser/functions/os_database_connection.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/puppet/parser/functions/os_transport_url.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/puppet/provider/openstack.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/puppet/provider/openstack/auth.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/puppet/provider/openstack/credentials.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/puppet/provider/openstack_config/ini_setting.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/puppet/provider/openstack_config/ruby.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/puppet/provider/policy_rcd/policy_rcd.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/puppet/type/openstack_config.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/puppet/type/policy_rcd.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/puppet/util/openstackconfig.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/puppet/util/openstackconfig/section.rb
+   /usr/share/openstack-puppet/modules/openstacklib/manifests/db/mysql.pp
+   /usr/share/openstack-puppet/modules/openstacklib/manifests/db/mysql/host_access.pp
+   /usr/share/openstack-puppet/modules/openstacklib/manifests/db/postgresql.pp
+   /usr/share/openstack-puppet/modules/openstacklib/manifests/defaults.pp
+   /usr/share/openstack-puppet/modules/openstacklib/manifests/messaging/rabbitmq.pp
+   /usr/share/openstack-puppet/modules/openstacklib/manifests/openstackclient.pp
+   /usr/share/openstack-puppet/modules/openstacklib/manifests/policy.pp
+   /usr/share/openstack-puppet/modules/openstacklib/manifests/policy/base.pp
+   /usr/share/openstack-puppet/modules/openstacklib/manifests/policyrcd.pp
+   /usr/share/openstack-puppet/modules/openstacklib/manifests/service_validation.pp
+   /usr/share/openstack-puppet/modules/openstacklib/manifests/wsgi/apache.pp
+   /usr/share/openstack-puppet/modules/openstacklib/metadata.json
+   /usr/share/openstack-puppet/modules/openstacklib/puppet_openstacklib.egg-info/PKG-INFO
+   /usr/share/openstack-puppet/modules/openstacklib/puppet_openstacklib.egg-info/SOURCES.txt
+   /usr/share/openstack-puppet/modules/openstacklib/puppet_openstacklib.egg-info/dependency_links.txt
+   /usr/share/openstack-puppet/modules/openstacklib/puppet_openstacklib.egg-info/not-zip-safe
+   /usr/share/openstack-puppet/modules/openstacklib/puppet_openstacklib.egg-info/top_level.txt
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/Add-TLS-options-for-mysql-user-creation-172536d7f3963ce2.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/bugfix-1664561-f5964a3777b9ed93.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/catch_403-237b79f33ab3364f.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/feature_add_default_config_placeholder-280f69c0edbf76c6.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/feature_add_exclusion_to_retry_mechanism-2acb52fa25bd315c.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/feature_add_transform_for_config.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/fix-openrc-parsing-2cc3a95b3bf2b259.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/ipv6_array_support-ea28cf0939e820f6.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/ipv6_brackets-7a453aea5e091855.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/manage_policy_rc_d_file-747510db06792d52.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/more_db_options-d96316ae4eb5a78c.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/mysql-user-and-grants-optional-fd34f4686d44aec3.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/os_transport-alt-transport-7cd300380ece2fc9.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/os_transport_url-b6fe15a8f21d387b.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/os_workers-fact-0ce731f0536c2792.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/os_workers-fact-420e6ad783cba982.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/os_workers_for_worker_count-34eb55ddf55f4a11.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/os_workers_large-fact-71afa253044ce56e.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/policy_rcd_provider-1ef3d203b9af1110.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/retry_client-b8a0e1f9ff679281.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/support_region_name_in_providers-cde6d75f0ddbec28.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/use-reno-1caaec4ba5aa4285.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/wsgi_process_options-5ff706a7beb9b893.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/source/_static/.placeholder
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/source/conf.py
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/source/index.rst
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/source/mitaka.rst
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/source/newton.rst
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/source/ocata.rst
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/source/unreleased.rst
+   /usr/share/openstack-puppet/modules/openstacklib/setup.cfg
+   /usr/share/openstack-puppet/modules/openstacklib/setup.py
+   /usr/share/openstack-puppet/modules/openstacklib/spec/acceptance/defaults_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/acceptance/mysql_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/acceptance/nodesets/centos-70-x64.yml
+   /usr/share/openstack-puppet/modules/openstacklib/spec/acceptance/nodesets/default.yml
+   /usr/share/openstack-puppet/modules/openstacklib/spec/acceptance/nodesets/nodepool-centos7.yml
+   /usr/share/openstack-puppet/modules/openstacklib/spec/acceptance/nodesets/nodepool-trusty.yml
+   /usr/share/openstack-puppet/modules/openstacklib/spec/acceptance/nodesets/nodepool-xenial.yml
+   /usr/share/openstack-puppet/modules/openstacklib/spec/acceptance/nodesets/ubuntu-server-1404-x64.yml
+   /usr/share/openstack-puppet/modules/openstacklib/spec/acceptance/openstacklib_config_provider_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/acceptance/rabbitmq_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/classes/openstacklib_defaults_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/classes/openstacklib_policy_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/classes/openstacklib_policyrcd_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/defines/openstacklib_db_mysql_host_access_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/defines/openstacklib_db_mysql_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/defines/openstacklib_db_postgresql_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/defines/openstacklib_messaging_rabbitmq_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/defines/openstacklib_policy_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/defines/openstacklib_service_validation_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/defines/openstacklib_wsgi_apache_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/functions/is_service_default_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/functions/normalize_ip_for_uri_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/functions/os_database_connection_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/functions/os_transport_url_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/shared_examples.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/spec_helper.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/spec_helper_acceptance.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/unit/facter/os_workers_large_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/unit/facter/os_workers_small_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/unit/facter/os_workers_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/unit/provider/openstack/auth_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/unit/provider/openstack/credentials_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/unit/provider/openstack_config/ini_setting_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/unit/provider/openstack_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/unit/provider/policy_rcd/policy_rcd_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/unit/puppet/util/openstackconfig_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/unit/type/policy_rcd_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/templates/policy-rc.d.erb
+   /usr/share/openstack-puppet/modules/openstacklib/test-requirements.txt
+   /usr/share/openstack-puppet/modules/openstacklib/tox.ini
+    Empty %files file /builddir/build/BUILD/openstack-openstacklib-11.5.0/debugfiles.list
+    Empty %files file /builddir/build/BUILD/openstack-openstacklib-11.5.0/abifiles.list
+    Installed (but unpackaged) file(s) found:
+   /usr/lib/python3.7/site-packages/puppet_openstacklib-11.5.0-py3.7.egg-info/PKG-INFO
+   /usr/lib/python3.7/site-packages/puppet_openstacklib-11.5.0-py3.7.egg-info/SOURCES.txt
+   /usr/lib/python3.7/site-packages/puppet_openstacklib-11.5.0-py3.7.egg-info/dependency_links.txt
+   /usr/lib/python3.7/site-packages/puppet_openstacklib-11.5.0-py3.7.egg-info/not-zip-safe
+   /usr/lib/python3.7/site-packages/puppet_openstacklib-11.5.0-py3.7.egg-info/top_level.txt
+   /usr/share/openstack-puppet/modules/openstacklib/CHANGELOG.md
+   /usr/share/openstack-puppet/modules/openstacklib/Gemfile
+   /usr/share/openstack-puppet/modules/openstacklib/LICENSE
+   /usr/share/openstack-puppet/modules/openstacklib/Makefile
+   /usr/share/openstack-puppet/modules/openstacklib/README.md
+   /usr/share/openstack-puppet/modules/openstacklib/Rakefile
+   /usr/share/openstack-puppet/modules/openstacklib/bindep.txt
+   /usr/share/openstack-puppet/modules/openstacklib/checksums.json
+   /usr/share/openstack-puppet/modules/openstacklib/examples/virtual_packages.pp
+   /usr/share/openstack-puppet/modules/openstacklib/facts.d/os_service_default.txt
+   /usr/share/openstack-puppet/modules/openstacklib/lib/facter/os_package_type.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/facter/os_service_default.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/facter/os_workers.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/puppet/parser/functions/is_service_default.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/puppet/parser/functions/normalize_ip_for_uri.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/puppet/parser/functions/os_database_connection.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/puppet/parser/functions/os_transport_url.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/puppet/provider/openstack.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/puppet/provider/openstack/auth.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/puppet/provider/openstack/credentials.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/puppet/provider/openstack_config/ini_setting.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/puppet/provider/openstack_config/ruby.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/puppet/provider/policy_rcd/policy_rcd.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/puppet/type/openstack_config.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/puppet/type/policy_rcd.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/puppet/util/openstackconfig.rb
+   /usr/share/openstack-puppet/modules/openstacklib/lib/puppet/util/openstackconfig/section.rb
+   /usr/share/openstack-puppet/modules/openstacklib/manifests/db/mysql.pp
+   /usr/share/openstack-puppet/modules/openstacklib/manifests/db/mysql/host_access.pp
+   /usr/share/openstack-puppet/modules/openstacklib/manifests/db/postgresql.pp
+   /usr/share/openstack-puppet/modules/openstacklib/manifests/defaults.pp
+   /usr/share/openstack-puppet/modules/openstacklib/manifests/messaging/rabbitmq.pp
+   /usr/share/openstack-puppet/modules/openstacklib/manifests/openstackclient.pp
+   /usr/share/openstack-puppet/modules/openstacklib/manifests/policy.pp
+   /usr/share/openstack-puppet/modules/openstacklib/manifests/policy/base.pp
+   /usr/share/openstack-puppet/modules/openstacklib/manifests/policyrcd.pp
+   /usr/share/openstack-puppet/modules/openstacklib/manifests/service_validation.pp
+   /usr/share/openstack-puppet/modules/openstacklib/manifests/wsgi/apache.pp
+   /usr/share/openstack-puppet/modules/openstacklib/metadata.json
+   /usr/share/openstack-puppet/modules/openstacklib/puppet_openstacklib.egg-info/PKG-INFO
+   /usr/share/openstack-puppet/modules/openstacklib/puppet_openstacklib.egg-info/SOURCES.txt
+   /usr/share/openstack-puppet/modules/openstacklib/puppet_openstacklib.egg-info/dependency_links.txt
+   /usr/share/openstack-puppet/modules/openstacklib/puppet_openstacklib.egg-info/not-zip-safe
+   /usr/share/openstack-puppet/modules/openstacklib/puppet_openstacklib.egg-info/top_level.txt
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/Add-TLS-options-for-mysql-user-creation-172536d7f3963ce2.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/bugfix-1664561-f5964a3777b9ed93.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/catch_403-237b79f33ab3364f.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/feature_add_default_config_placeholder-280f69c0edbf76c6.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/feature_add_exclusion_to_retry_mechanism-2acb52fa25bd315c.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/feature_add_transform_for_config.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/fix-openrc-parsing-2cc3a95b3bf2b259.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/ipv6_array_support-ea28cf0939e820f6.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/ipv6_brackets-7a453aea5e091855.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/manage_policy_rc_d_file-747510db06792d52.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/more_db_options-d96316ae4eb5a78c.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/mysql-user-and-grants-optional-fd34f4686d44aec3.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/os_transport-alt-transport-7cd300380ece2fc9.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/os_transport_url-b6fe15a8f21d387b.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/os_workers-fact-0ce731f0536c2792.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/os_workers-fact-420e6ad783cba982.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/os_workers_for_worker_count-34eb55ddf55f4a11.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/os_workers_large-fact-71afa253044ce56e.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/policy_rcd_provider-1ef3d203b9af1110.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/retry_client-b8a0e1f9ff679281.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/support_region_name_in_providers-cde6d75f0ddbec28.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/use-reno-1caaec4ba5aa4285.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/notes/wsgi_process_options-5ff706a7beb9b893.yaml
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/source/_static/.placeholder
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/source/conf.py
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/source/index.rst
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/source/mitaka.rst
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/source/newton.rst
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/source/ocata.rst
+   /usr/share/openstack-puppet/modules/openstacklib/releasenotes/source/unreleased.rst
+   /usr/share/openstack-puppet/modules/openstacklib/setup.cfg
+   /usr/share/openstack-puppet/modules/openstacklib/setup.py
+   /usr/share/openstack-puppet/modules/openstacklib/spec/acceptance/defaults_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/acceptance/mysql_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/acceptance/nodesets/centos-70-x64.yml
+   /usr/share/openstack-puppet/modules/openstacklib/spec/acceptance/nodesets/default.yml
+   /usr/share/openstack-puppet/modules/openstacklib/spec/acceptance/nodesets/nodepool-centos7.yml
+   /usr/share/openstack-puppet/modules/openstacklib/spec/acceptance/nodesets/nodepool-trusty.yml
+   /usr/share/openstack-puppet/modules/openstacklib/spec/acceptance/nodesets/nodepool-xenial.yml
+   /usr/share/openstack-puppet/modules/openstacklib/spec/acceptance/nodesets/ubuntu-server-1404-x64.yml
+   /usr/share/openstack-puppet/modules/openstacklib/spec/acceptance/openstacklib_config_provider_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/acceptance/rabbitmq_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/classes/openstacklib_defaults_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/classes/openstacklib_policy_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/classes/openstacklib_policyrcd_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/defines/openstacklib_db_mysql_host_access_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/defines/openstacklib_db_mysql_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/defines/openstacklib_db_postgresql_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/defines/openstacklib_messaging_rabbitmq_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/defines/openstacklib_policy_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/defines/openstacklib_service_validation_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/defines/openstacklib_wsgi_apache_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/functions/is_service_default_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/functions/normalize_ip_for_uri_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/functions/os_database_connection_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/functions/os_transport_url_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/shared_examples.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/spec_helper.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/spec_helper_acceptance.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/unit/facter/os_workers_large_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/unit/facter/os_workers_small_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/unit/facter/os_workers_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/unit/provider/openstack/auth_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/unit/provider/openstack/credentials_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/unit/provider/openstack_config/ini_setting_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/unit/provider/openstack_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/unit/provider/policy_rcd/policy_rcd_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/unit/puppet/util/openstackconfig_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/spec/unit/type/policy_rcd_spec.rb
+   /usr/share/openstack-puppet/modules/openstacklib/templates/policy-rc.d.erb
+   /usr/share/openstack-puppet/modules/openstacklib/test-requirements.txt
+   /usr/share/openstack-puppet/modules/openstacklib/tox.ini
+RPM build errors:
+Child return code was: 1
+EXCEPTION: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/puppet-openstacklib.spec 
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/mockbuild/trace_decorator.py", line 84, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python3.7/site-packages/mockbuild/util.py", line 531, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+mockbuild.exception.Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/puppet-openstacklib.spec 
+LEAVE do --> EXCEPTION RAISED
+
