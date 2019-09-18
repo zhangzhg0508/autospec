@@ -1,0 +1,37 @@
+2019-09-18 14:33:30,743 - Mock Version: 1.2.14
+2019-09-18 14:33:31,004 - Start: dnf update
+2019-09-18 14:33:41,125 - Finish: dnf update
+2019-09-18 14:33:41,130 - Finish: chroot init
+2019-09-18 14:33:41,133 - Start: buildsrpm
+2019-09-18 14:33:41,143 - Start: rpmbuild -bs
+2019-09-18 14:33:41,181 - Finish: rpmbuild -bs
+2019-09-18 14:33:41,182 - Finish: buildsrpm
+2019-09-18 14:33:41,183 - Finish: run
+2019-09-18 14:33:44,262 - Mock Version: 1.2.14
+2019-09-18 14:33:44,518 - Start: dnf update
+2019-09-18 14:33:54,366 - Finish: dnf update
+2019-09-18 14:33:54,371 - Finish: chroot init
+2019-09-18 14:33:54,373 - Start: build phase for puppet-ldap-0.2.4-1.src.rpm
+2019-09-18 14:33:54,375 - Start: build setup for puppet-ldap-0.2.4-1.src.rpm
+2019-09-18 14:33:55,656 - Finish: build setup for puppet-ldap-0.2.4-1.src.rpm
+2019-09-18 14:33:55,656 - Start: rpmbuild puppet-ldap-0.2.4-1.src.rpm
+2019-09-18 14:33:59,310 - Mock Version: 1.2.14
+2019-09-18 14:33:59,566 - Start: dnf update
+2019-09-18 14:34:09,640 - Finish: dnf update
+2019-09-18 14:34:09,645 - Finish: chroot init
+2019-09-18 14:34:09,648 - Start: buildsrpm
+2019-09-18 14:34:09,653 - Start: rpmbuild -bs
+2019-09-18 14:34:09,692 - Finish: rpmbuild -bs
+2019-09-18 14:34:09,694 - Finish: buildsrpm
+2019-09-18 14:34:09,694 - Finish: run
+2019-09-18 14:34:12,803 - Mock Version: 1.2.14
+2019-09-18 14:34:13,069 - Start: dnf update
+2019-09-18 14:34:22,939 - Finish: dnf update
+2019-09-18 14:34:22,944 - Finish: chroot init
+2019-09-18 14:34:22,946 - Start: build phase for puppet-ldap-0.2.4-1.src.rpm
+2019-09-18 14:34:22,948 - Start: build setup for puppet-ldap-0.2.4-1.src.rpm
+2019-09-18 14:34:24,229 - Finish: build setup for puppet-ldap-0.2.4-1.src.rpm
+2019-09-18 14:34:24,229 - Start: rpmbuild puppet-ldap-0.2.4-1.src.rpm
+2019-09-18 14:34:24,535 - Finish: rpmbuild puppet-ldap-0.2.4-1.src.rpm
+2019-09-18 14:34:24,536 - Finish: build phase for puppet-ldap-0.2.4-1.src.rpm
+2019-09-18 14:34:24,536 - Finish: run

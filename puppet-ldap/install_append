@@ -1,0 +1,1 @@
+cp -R ../puppet-ldap-master/* %{buildroot}%{_datadir}/puppet/modules/ldap/.
