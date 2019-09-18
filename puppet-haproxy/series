@@ -1,0 +1,5 @@
+0001-add-makefile.patch
+0001-Roll-up-TIS-patches.patch
+0002-disable-config-validation-prechecks.patch
+0003-Fix-global_options-log-default-value.patch
+0004-Stop-invalid-warning-message

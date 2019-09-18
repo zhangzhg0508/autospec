@@ -1,0 +1,482 @@
+From 6a22e603b4a90e1bd9deb57e55cfd067f78e73c1 Mon Sep 17 00:00:00 2001
+From: fuyong <fuyong@neusoft.com>
+Date: Wed, 18 Sep 2019 15:30:29 +0800
+Subject: [PATCH puppet-haproxy] puppet-haproxy: Autospec creation for version
+ 1.5.0
+
+---
+ .gitignore                                    |  14 ++
+ 0001-Roll-up-TIS-patches.patch                |  43 +++++
+ 0001-add-makefile.patch                       |  21 +++
+ ...-disable-config-validation-prechecks.patch | 123 +++++++++++++
+ ...Fix-global_options-log-default-value.patch |  26 +++
+ Makefile                                      |   5 +
+ buildreq_add                                  |   2 +
+ buildreq_ban                                  |   2 +
+ excludes                                      |   2 +
+ install_append                                |   1 +
+ install_macro                                 |   1 +
+ options.conf                                  |  58 ++++++
+ pkgconfig_add                                 |   2 +
+ pkgconfig_ban                                 |   2 +
+ puppet-haproxy.spec                           | 169 ++++++++++++++++++
+ release                                       |   1 +
+ requires_add                                  |   5 +
+ requires_ban                                  |   2 +
+ series                                        |   5 +
+ testresults                                   |   5 +
+ upstream                                      |   1 +
+ 21 files changed, 490 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 0001-Roll-up-TIS-patches.patch
+ create mode 100644 0001-add-makefile.patch
+ create mode 100644 0002-disable-config-validation-prechecks.patch
+ create mode 100644 0003-Fix-global_options-log-default-value.patch
+ create mode 100644 Makefile
+ create mode 100644 buildreq_add
+ create mode 100644 buildreq_ban
+ create mode 100644 excludes
+ create mode 100644 install_append
+ create mode 100644 install_macro
+ create mode 100644 options.conf
+ create mode 100644 pkgconfig_add
+ create mode 100644 pkgconfig_ban
+ create mode 100644 puppet-haproxy.spec
+ create mode 100644 release
+ create mode 100644 requires_add
+ create mode 100644 requires_ban
+ create mode 100644 series
+ create mode 100644 testresults
+ create mode 100644 upstream
+
+diff --git a/0001-Roll-up-TIS-patches.patch b/0001-Roll-up-TIS-patches.patch
+new file mode 100644
+index 0000000..15b3575
+--- /dev/null
++++ b/0001-Roll-up-TIS-patches.patch
+@@ -0,0 +1,43 @@
++From 4485b6cbf5a8bf1d3830b0406685aba3ece4e413 Mon Sep 17 00:00:00 2001
++From: Don Penney <don.penney@windriver.com>
++Date: Wed, 11 Jan 2017 13:05:12 -0500
++Subject: [PATCH] Roll up TIS patches
++
++---
++ manifests/config.pp | 4 ++--
++ manifests/init.pp   | 4 ++--
++ 2 files changed, 4 insertions(+), 4 deletions(-)
++
++diff --git a/manifests/config.pp b/manifests/config.pp
++index 51c2741..4007bb8 100644
++--- a/manifests/config.pp
+++++ b/manifests/config.pp
++@@ -75,8 +75,8 @@ define haproxy::config (
++   if $_global_options['chroot'] {
++     file { $_global_options['chroot']:
++       ensure => directory,
++-      owner  => $_global_options['user'],
++-      group  => $_global_options['group'],
+++      owner  => 'root',
+++      group  => 'root',
++     }
++   }
++ }
++diff --git a/manifests/init.pp b/manifests/init.pp
++index f1109d0..54a1640 100644
++--- a/manifests/init.pp
+++++ b/manifests/init.pp
++@@ -110,8 +110,8 @@
++ class haproxy (
++   $package_ensure      = 'present',
++   $package_name        = $haproxy::params::package_name,
++-  $service_ensure      = 'running',
++-  $service_manage      = true,
+++  $service_ensure    = false,
+++  $service_manage    = false,
++   $service_options     = $haproxy::params::service_options,
++   $sysconfig_options   = $haproxy::params::sysconfig_options,
++   $global_options      = $haproxy::params::global_options,
++-- 
++2.7.4
++
+diff --git a/0001-add-makefile.patch b/0001-add-makefile.patch
+new file mode 100644
+index 0000000..c20b09c
+--- /dev/null
++++ b/0001-add-makefile.patch
+@@ -0,0 +1,21 @@
++From 6d2e758f33d450f62bc7566d5018f4f79a342950 Mon Sep 17 00:00:00 2001
++From: lgdfy <im.fuyong@gmail.com>
++Date: Wed, 11 Sep 2019 15:57:00 +0800
++Subject: [PATCH] add makefile
++
++---
++ Makefile | 2 ++
++ 1 file changed, 2 insertions(+)
++ create mode 100644 Makefile
++
++diff --git a/Makefile b/Makefile
++new file mode 100644
++index 0000000..cda58eb
++--- /dev/null
+++++ b/Makefile
++@@ -0,0 +1,2 @@
+++build:
+++	echo "no build"
++-- 
++2.23.0
++
+diff --git a/0002-disable-config-validation-prechecks.patch b/0002-disable-config-validation-prechecks.patch
+new file mode 100644
+index 0000000..43c3067
+--- /dev/null
++++ b/0002-disable-config-validation-prechecks.patch
+@@ -0,0 +1,123 @@
++From 50ef964cc4f918982d2889610c5f6e7506741518 Mon Sep 17 00:00:00 2001
++From: Kam Nasim <kam.nasim@windriver.com>
++Date: Fri, 26 May 2017 17:04:32 -0400
++Subject: [PATCH] disable configuration validation during haproxy manifest
++ apply since some files/options referenced in the configuration (such as for
++ TPM) may still be in flight while the haproxy manifest applies. This
++ validation option is a bit of an overkill anyways since it doesn't cause
++ Packstack to fail the manifest application, and is a soft error log but with
++ the added disadvantage of not applying any haproxy configuration (even the
++ sane bits) on a validation failure
++
++---
++ manifests/config.pp   | 8 --------
++ manifests/init.pp     | 7 -------
++ manifests/instance.pp | 7 -------
++ manifests/params.pp   | 1 -
++ 4 files changed, 23 deletions(-)
++
++diff --git a/manifests/config.pp b/manifests/config.pp
++index 4007bb8..b8d4ef4 100644
++--- a/manifests/config.pp
+++++ b/manifests/config.pp
++@@ -8,7 +8,6 @@ define haproxy::config (
++   $config_dir = undef,  # A default is required for Puppet 2.7 compatibility. When 2.7 is no longer supported, this parameter default should be removed.
++   $custom_fragment = undef,  # A default is required for Puppet 2.7 compatibility. When 2.7 is no longer supported, this parameter default should be removed.
++   $merge_options = $haproxy::merge_options,
++-  $config_validate_cmd = $haproxy::config_validate_cmd
++ ) {
++ 
++   if $caller_module_name != $module_name {
++@@ -50,13 +49,6 @@ define haproxy::config (
++       mode  => '0640',
++     }
++ 
++-    # validate_cmd introduced in Puppet 3.5
++-    if ((!defined('$::puppetversion') or (versioncmp($::puppetversion, '3.5') >= 0)) and (!defined('$::serverversion') or versioncmp($::serverversion, '3.5') >= 0)) {
++-      Concat[$_config_file] {
++-        validate_cmd => $config_validate_cmd,
++-      }
++-    }
++-
++     # Simple Header
++     concat::fragment { "${instance_name}-00-header":
++       target  => $_config_file,
++diff --git a/manifests/init.pp b/manifests/init.pp
++index 54a1640..d84755e 100644
++--- a/manifests/init.pp
+++++ b/manifests/init.pp
++@@ -72,11 +72,6 @@
++ #   Optional. Path to the haproxy config file.
++ #   Default depends on platform.
++ #
++-# [*config_validate_cmd*]
++-#   Optional. Command used by concat validate_cmd to validate new
++-#   config file concat is a valid haproxy config.
++-#   Default /usr/sbin/haproxy -f % -c
++-#
++ # === Examples
++ #
++ #  class { 'haproxy':
++@@ -122,7 +117,6 @@ class haproxy (
++   $config_dir          = $haproxy::params::config_dir,
++   $config_file         = $haproxy::params::config_file,
++   $manage_config_dir   = $haproxy::params::manage_config_dir,
++-  $config_validate_cmd = $haproxy::params::config_validate_cmd,
++ 
++   # Deprecated
++   $manage_service   = undef,
++@@ -183,7 +177,6 @@ class haproxy (
++     merge_options       => $merge_options,
++     service_options     => $service_options,
++     sysconfig_options   => $sysconfig_options,
++-    config_validate_cmd => $config_validate_cmd,
++   }
++ 
++ }
++diff --git a/manifests/instance.pp b/manifests/instance.pp
++index 3dffdae..7f37751 100644
++--- a/manifests/instance.pp
+++++ b/manifests/instance.pp
++@@ -63,11 +63,6 @@
++ #    The parent directory will be created automatically.
++ #  Defaults to undef.
++ #
++-# [*config_validate_cmd*]
++-#   Command used by concat validate_cmd to validate new
++-#   config file concat is a valid haproxy config.
++-#   Default /usr/sbin/haproxy -f % -c
++-#
++ # === Examples
++ #
++ # A single instance of haproxy with all defaults
++@@ -153,7 +148,6 @@ define haproxy::instance (
++   $merge_options     = $haproxy::params::merge_options,
++   $service_options   = $haproxy::params::service_options,
++   $sysconfig_options = $haproxy::params::sysconfig_options,
++-  $config_validate_cmd = $haproxy::params::config_validate_cmd,
++ ) {
++ 
++   if $service_ensure != true and $service_ensure != false {
++@@ -208,7 +202,6 @@ define haproxy::instance (
++     custom_fragment     => $custom_fragment,
++     merge_options       => $merge_options,
++     package_ensure      => $package_ensure,
++-    config_validate_cmd => $config_validate_cmd,
++   }
++   haproxy::install { $title:
++     package_name   => $package_name,
++diff --git a/manifests/params.pp b/manifests/params.pp
++index d7b9fa9..21e6bb0 100644
++--- a/manifests/params.pp
+++++ b/manifests/params.pp
++@@ -10,7 +10,6 @@ class haproxy::params {
++ 
++   $service_options  = "ENABLED=1\n"  # Only used by Debian.
++   $sysconfig_options = 'OPTIONS=""' #Only used by Redhat/CentOS etc
++-  $config_validate_cmd = '/usr/sbin/haproxy -f % -c'
++ 
++   case $::osfamily {
++     'Archlinux', 'Debian', 'Redhat', 'Gentoo', 'Suse' : {
++-- 
++2.7.4
++
+diff --git a/0003-Fix-global_options-log-default-value.patch b/0003-Fix-global_options-log-default-value.patch
+new file mode 100644
+index 0000000..79d1e82
+--- /dev/null
++++ b/0003-Fix-global_options-log-default-value.patch
+@@ -0,0 +1,26 @@
++From 16163f14c8f9b1b81b6e394c31c72030938435c7 Mon Sep 17 00:00:00 2001
++From: Don Penney <don.penney@windriver.com>
++Date: Tue, 4 Sep 2018 20:01:53 +0800
++Subject: [PATCH] Fix global_options log default value
++
++Signed-off-by: zhipengl <zhipengs.liu@intel.com>
++---
++ manifests/params.pp | 2 +-
++ 1 file changed, 1 insertion(+), 1 deletion(-)
++
++diff --git a/manifests/params.pp b/manifests/params.pp
++index 21e6bb0..b29e427 100644
++--- a/manifests/params.pp
+++++ b/manifests/params.pp
++@@ -15,7 +15,7 @@ class haproxy::params {
++     'Archlinux', 'Debian', 'Redhat', 'Gentoo', 'Suse' : {
++       $package_name      = 'haproxy'
++       $global_options    = {
++-        'log'     => "${::ipaddress} local0",
+++        'log'     => 'global',
++         'chroot'  => '/var/lib/haproxy',
++         'pidfile' => '/var/run/haproxy.pid',
++         'maxconn' => '4000',
++-- 
++2.7.4
++
+diff --git a/install_append b/install_append
+new file mode 100644
+index 0000000..a8900e6
+--- /dev/null
++++ b/install_append
+@@ -0,0 +1 @@
++cp -rp * %{buildroot}%{_datadir}/openstack-puppet/modules/haproxy/
+diff --git a/install_macro b/install_macro
+new file mode 100644
+index 0000000..b20fb86
+--- /dev/null
++++ b/install_macro
+@@ -0,0 +1 @@
++install -d -m 0755 %{buildroot}%{_datadir}/openstack-puppet/modules/haproxy/
+diff --git a/options.conf b/options.conf
+new file mode 100644
+index 0000000..569b70a
+--- /dev/null
++++ b/options.conf
+@@ -0,0 +1,58 @@
++name = puppet-haproxy
++url = file:///home/clr/stx-tar/puppet-haproxy-1.5.0.tar.gz
++use_lto = true
++verify_required = false
+diff --git a/puppet-haproxy.spec b/puppet-haproxy.spec
+new file mode 100644
+index 0000000..c84b59f
+--- /dev/null
++++ b/puppet-haproxy.spec
+@@ -0,0 +1,169 @@
++#
++# This file is auto-generated. DO NOT EDIT
++# Generated by: autospec.py
++#
++Name     : puppet-haproxy
++License  : Apache-2.0
++Requires: puppet-haproxy-data = %{version}-%{release}
++Requires: puppet >= 2.7.0
++Requires: puppet-concat
++Requires: puppet-stdlib
++Patch1: 0001-add-makefile.patch
++Patch2: 0001-Roll-up-TIS-patches.patch
++Patch3: 0002-disable-config-validation-prechecks.patch
++Patch4: 0003-Fix-global_options-log-default-value.patch
++Patch5: 0004-Stop-invalid-warning-message
++
++%description
++#haproxy
++####Table of Contents
++1. [Overview](#overview)
++2. [Module Description - What the module does and why it is useful](#module-description)
++3. [Setup - The basics of getting started with haproxy](#setup)
++* [Beginning with haproxy](#beginning-with-haproxy)
++4. [Usage - Configuration options and additional functionality](#usage)
++* [Configure HAProxy options](#configure-haproxy-options)
++* [Configure HAProxy daemon listener](#configure-haproxy-daemon-listener)
++* [Configure multi-network daemon listener](#configure-multi-network-daemon-listener)
++* [Configure HAProxy load-balanced member nodes](#configure-haproxy-load-balanced-member-nodes)
++* [Configure a load balancer with exported resources](#configure-a-load-balancer-with-exported-resources)
++* [Set up a frontend service](#set-up-a-frontend-service)
++* [Set up a backend service](#set-up-a-backend-service)
++* [Configure multiple haproxy instances on one machine](#configure-multiple-haproxy-instances-on-one-machine)
++* [Manage a map file](#manage-a-map-file)
++5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
++6. [Limitations - OS compatibility, etc.](#limitations)
++7. [Development - Guide for contributing to the module](#development)
++
++%package data
++
++
++
++%prep
++%patch1 -p1
++%patch2 -p1
++%patch3 -p1
++%patch4 -p1
++%patch5 -p1
++
++%build
++make  %{?_smp_mflags}
++
++
++%install
++rm -rf %{buildroot}
++install -d -m 0755 %{buildroot}%{_datadir}/openstack-puppet/modules/haproxy/
++## install_append content
++cp -rp * %{buildroot}%{_datadir}/openstack-puppet/modules/haproxy/
++## install_append end
++
++%files
++%defattr(-,root,root,-)
++
++%files data
++%defattr(-,root,root,-)
++/usr/share/openstack-puppet/modules/haproxy/CHANGELOG.md
++/usr/share/openstack-puppet/modules/haproxy/CONTRIBUTING.md
++/usr/share/openstack-puppet/modules/haproxy/Gemfile
++/usr/share/openstack-puppet/modules/haproxy/LICENSE
++/usr/share/openstack-puppet/modules/haproxy/MAINTAINERS.md
++/usr/share/openstack-puppet/modules/haproxy/Makefile
++/usr/share/openstack-puppet/modules/haproxy/NOTICE
++/usr/share/openstack-puppet/modules/haproxy/README.md
++/usr/share/openstack-puppet/modules/haproxy/Rakefile
++/usr/share/openstack-puppet/modules/haproxy/examples/init.pp
++/usr/share/openstack-puppet/modules/haproxy/lib/facter/haproxy_version.rb
++/usr/share/openstack-puppet/modules/haproxy/locales/config.yaml
++/usr/share/openstack-puppet/modules/haproxy/manifests/backend.pp
++/usr/share/openstack-puppet/modules/haproxy/manifests/balancermember.pp
++/usr/share/openstack-puppet/modules/haproxy/manifests/balancermember/collect_exported.pp
++/usr/share/openstack-puppet/modules/haproxy/manifests/config.pp
++/usr/share/openstack-puppet/modules/haproxy/manifests/defaults.pp
++/usr/share/openstack-puppet/modules/haproxy/manifests/frontend.pp
++/usr/share/openstack-puppet/modules/haproxy/manifests/globals.pp
++/usr/share/openstack-puppet/modules/haproxy/manifests/init.pp
++/usr/share/openstack-puppet/modules/haproxy/manifests/install.pp
++/usr/share/openstack-puppet/modules/haproxy/manifests/instance.pp
++/usr/share/openstack-puppet/modules/haproxy/manifests/instance_service.pp
++/usr/share/openstack-puppet/modules/haproxy/manifests/listen.pp
++/usr/share/openstack-puppet/modules/haproxy/manifests/mailer.pp
++/usr/share/openstack-puppet/modules/haproxy/manifests/mailer/collect_exported.pp
++/usr/share/openstack-puppet/modules/haproxy/manifests/mailers.pp
++/usr/share/openstack-puppet/modules/haproxy/manifests/mapfile.pp
++/usr/share/openstack-puppet/modules/haproxy/manifests/params.pp
++/usr/share/openstack-puppet/modules/haproxy/manifests/peer.pp
++/usr/share/openstack-puppet/modules/haproxy/manifests/peer/collect_exported.pp
++/usr/share/openstack-puppet/modules/haproxy/manifests/peers.pp
++/usr/share/openstack-puppet/modules/haproxy/manifests/service.pp
++/usr/share/openstack-puppet/modules/haproxy/manifests/userlist.pp
++/usr/share/openstack-puppet/modules/haproxy/metadata.json
++/usr/share/openstack-puppet/modules/haproxy/spec/acceptance/basic_spec.rb
++/usr/share/openstack-puppet/modules/haproxy/spec/acceptance/defaults_spec.rb
++/usr/share/openstack-puppet/modules/haproxy/spec/acceptance/frontbackend_spec.rb
++/usr/share/openstack-puppet/modules/haproxy/spec/acceptance/listen_spec.rb
++/usr/share/openstack-puppet/modules/haproxy/spec/acceptance/nodesets/centos-7-x64.yml
++/usr/share/openstack-puppet/modules/haproxy/spec/acceptance/nodesets/debian-8-x64.yml
++/usr/share/openstack-puppet/modules/haproxy/spec/acceptance/nodesets/default.yml
++/usr/share/openstack-puppet/modules/haproxy/spec/acceptance/nodesets/docker/centos-7.yml
++/usr/share/openstack-puppet/modules/haproxy/spec/acceptance/nodesets/docker/debian-8.yml
++/usr/share/openstack-puppet/modules/haproxy/spec/acceptance/nodesets/docker/ubuntu-14.04.yml
++/usr/share/openstack-puppet/modules/haproxy/spec/acceptance/userlist_spec.rb
++/usr/share/openstack-puppet/modules/haproxy/spec/classes/haproxy_spec.rb
++/usr/share/openstack-puppet/modules/haproxy/spec/defines/backend_spec.rb
++/usr/share/openstack-puppet/modules/haproxy/spec/defines/balancermember_spec.rb
++/usr/share/openstack-puppet/modules/haproxy/spec/defines/defaults_spec.rb
++/usr/share/openstack-puppet/modules/haproxy/spec/defines/frontend_spec.rb
++/usr/share/openstack-puppet/modules/haproxy/spec/defines/instance_service_spec.rb
++/usr/share/openstack-puppet/modules/haproxy/spec/defines/instance_spec.rb
++/usr/share/openstack-puppet/modules/haproxy/spec/defines/listen_spec.rb
++/usr/share/openstack-puppet/modules/haproxy/spec/defines/mailer_spec.rb
++/usr/share/openstack-puppet/modules/haproxy/spec/defines/mailers_spec.rb
++/usr/share/openstack-puppet/modules/haproxy/spec/defines/mapfile_spec.rb
++/usr/share/openstack-puppet/modules/haproxy/spec/defines/peer_spec.rb
++/usr/share/openstack-puppet/modules/haproxy/spec/defines/peers_spec.rb
++/usr/share/openstack-puppet/modules/haproxy/spec/defines/userlist_spec.rb
++/usr/share/openstack-puppet/modules/haproxy/spec/spec_helper.rb
++/usr/share/openstack-puppet/modules/haproxy/spec/spec_helper_acceptance.rb
++/usr/share/openstack-puppet/modules/haproxy/spec/unit/facter/haproxy_version_spec.rb
++/usr/share/openstack-puppet/modules/haproxy/templates/empty.erb
++/usr/share/openstack-puppet/modules/haproxy/templates/fragments/_bind.erb
++/usr/share/openstack-puppet/modules/haproxy/templates/fragments/_mode.erb
++/usr/share/openstack-puppet/modules/haproxy/templates/fragments/_options.erb
++/usr/share/openstack-puppet/modules/haproxy/templates/haproxy-base.cfg.erb
++/usr/share/openstack-puppet/modules/haproxy/templates/haproxy_backend_block.erb
++/usr/share/openstack-puppet/modules/haproxy/templates/haproxy_balancermember.erb
++/usr/share/openstack-puppet/modules/haproxy/templates/haproxy_defaults_block.erb
++/usr/share/openstack-puppet/modules/haproxy/templates/haproxy_frontend_block.erb
++/usr/share/openstack-puppet/modules/haproxy/templates/haproxy_listen_block.erb
++/usr/share/openstack-puppet/modules/haproxy/templates/haproxy_mailer.erb
++/usr/share/openstack-puppet/modules/haproxy/templates/haproxy_mailers_block.erb
++/usr/share/openstack-puppet/modules/haproxy/templates/haproxy_mapfile.erb
++/usr/share/openstack-puppet/modules/haproxy/templates/haproxy_peer.erb
++/usr/share/openstack-puppet/modules/haproxy/templates/haproxy_peers_block.erb
++/usr/share/openstack-puppet/modules/haproxy/templates/haproxy_userlist_block.erb
++/usr/share/openstack-puppet/modules/haproxy/templates/instance_service_unit_example.erb
+diff --git a/requires_add b/requires_add
+new file mode 100644
+index 0000000..f183a50
+--- /dev/null
++++ b/requires_add
+@@ -0,0 +1,5 @@
++puppet-stdlib
++puppet-concat
++puppet >= 2.7.0
+diff --git a/series b/series
+new file mode 100644
+index 0000000..891daf5
+--- /dev/null
++++ b/series
+@@ -0,0 +1,5 @@
++0001-add-makefile.patch
++0001-Roll-up-TIS-patches.patch
++0002-disable-config-validation-prechecks.patch
++0003-Fix-global_options-log-default-value.patch
++0004-Stop-invalid-warning-message

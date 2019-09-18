@@ -1,0 +1,37 @@
+2019-09-18 15:29:35,966 - Mock Version: 1.2.14
+2019-09-18 15:29:36,222 - Start: dnf update
+2019-09-18 15:29:46,342 - Finish: dnf update
+2019-09-18 15:29:46,347 - Finish: chroot init
+2019-09-18 15:29:46,350 - Start: buildsrpm
+2019-09-18 15:29:46,355 - Start: rpmbuild -bs
+2019-09-18 15:29:46,394 - Finish: rpmbuild -bs
+2019-09-18 15:29:46,396 - Finish: buildsrpm
+2019-09-18 15:29:46,396 - Finish: run
+2019-09-18 15:29:49,403 - Mock Version: 1.2.14
+2019-09-18 15:29:49,671 - Start: dnf update
+2019-09-18 15:29:59,524 - Finish: dnf update
+2019-09-18 15:29:59,530 - Finish: chroot init
+2019-09-18 15:29:59,531 - Start: build phase for puppet-haproxy-1.5.0-1.src.rpm
+2019-09-18 15:29:59,534 - Start: build setup for puppet-haproxy-1.5.0-1.src.rpm
+2019-09-18 15:30:00,208 - Finish: build setup for puppet-haproxy-1.5.0-1.src.rpm
+2019-09-18 15:30:00,209 - Start: rpmbuild puppet-haproxy-1.5.0-1.src.rpm
+2019-09-18 15:30:03,775 - Mock Version: 1.2.14
+2019-09-18 15:30:04,021 - Start: dnf update
+2019-09-18 15:30:14,154 - Finish: dnf update
+2019-09-18 15:30:14,159 - Finish: chroot init
+2019-09-18 15:30:14,162 - Start: buildsrpm
+2019-09-18 15:30:14,168 - Start: rpmbuild -bs
+2019-09-18 15:30:14,207 - Finish: rpmbuild -bs
+2019-09-18 15:30:14,209 - Finish: buildsrpm
+2019-09-18 15:30:14,210 - Finish: run
+2019-09-18 15:30:17,222 - Mock Version: 1.2.14
+2019-09-18 15:30:17,481 - Start: dnf update
+2019-09-18 15:30:27,499 - Finish: dnf update
+2019-09-18 15:30:27,504 - Finish: chroot init
+2019-09-18 15:30:27,505 - Start: build phase for puppet-haproxy-1.5.0-1.src.rpm
+2019-09-18 15:30:27,508 - Start: build setup for puppet-haproxy-1.5.0-1.src.rpm
+2019-09-18 15:30:28,182 - Finish: build setup for puppet-haproxy-1.5.0-1.src.rpm
+2019-09-18 15:30:28,182 - Start: rpmbuild puppet-haproxy-1.5.0-1.src.rpm
+2019-09-18 15:30:28,712 - Finish: rpmbuild puppet-haproxy-1.5.0-1.src.rpm
+2019-09-18 15:30:28,714 - Finish: build phase for puppet-haproxy-1.5.0-1.src.rpm
+2019-09-18 15:30:28,714 - Finish: run
