@@ -1,0 +1,45 @@
+From 86962387d3001b86985b908cbedad5e6e37e5e04 Mon Sep 17 00:00:00 2001
+From: "zhiguo.zhang" <zhiguox.zhang@intel.com>
+Date: Fri, 6 Sep 2019 05:31:40 +0000
+Subject: [PATCH tpm2-openssl-engine] tpm2-openssl-engine: Autospec creation
+ for version 1.0
+
+---
+ install_macro            |  2 +-
+ release                  |  2 +-
+ tpm2-openssl-engine.spec | 10 +++++-----
+ 3 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/install_macro b/install_macro
+index 78da003..14b2594 100644
+--- a/install_macro
++++ b/install_macro
+@@ -1 +1 @@
+-make install ENGINEDIR=%{buildroot}/%{_libdir}/openssl/engines UTILDIR=%{buildroot}/usr/sbin
++make install ENGINEDIR=%{buildroot}/%{_libdir}/openssl/engines UTILDIR=%{buildroot}/usr/bin
+diff --git a/tpm2-openssl-engine.spec b/tpm2-openssl-engine.spec
+index 5b15e48..05cc4a6 100644
+--- a/tpm2-openssl-engine.spec
++++ b/tpm2-openssl-engine.spec
+@@ -57,16 +57,16 @@ make  %{?_smp_mflags}
+ 
+ 
+ %install
+ rm -rf %{buildroot}
+-make install ENGINEDIR=%{buildroot}/%{_libdir}/openssl/engines UTILDIR=%{buildroot}/usr/sbin
++make install ENGINEDIR=%{buildroot}/%{_libdir}/openssl/engines UTILDIR=%{buildroot}/usr/bin
+ 
+ %files
+ %defattr(-,root,root,-)
+ 
+ %files bin
+ %defattr(-,root,root,-)
+-/usr/sbin/create_tpm2_key
++/usr/bin/create_tpm2_key
+ 
+ %files lib
+ %defattr(-,root,root,-)
+-- 
+2.23.0
+
+

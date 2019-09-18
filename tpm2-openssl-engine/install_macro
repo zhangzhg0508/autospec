@@ -1,0 +1,1 @@
+make install ENGINEDIR=%{buildroot}/%{_libdir}/openssl/engines UTILDIR=%{buildroot}/usr/bin
