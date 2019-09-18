@@ -1,0 +1,12 @@
+From 143cceb3220eb4ea763c7db84d81af9c81b2c23a Mon Sep 17 00:00:00 2001
+From: "zhiguo.zhang" <zhiguox.zhang@intel.com>
+Date: Tue, 17 Sep 2019 11:20:16 +0000
+Subject: [PATCH libibverbs] libibverbs: Autospec creation for version 41mlnx1
+
+---
+ build_prepend   | 3 ---
+ libibverbs.spec | 6 +++---
+ release         | 2 +-
+ 3 files changed, 4 insertions(+), 7 deletions(-)
+ delete mode 100644 build_prepend
+

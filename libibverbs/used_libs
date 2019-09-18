@@ -1,0 +1,5 @@
+libc.so.6
+libdl.so.2
+libnl-3.so.200
+libnl-route-3.so.200
+libpthread.so.0
