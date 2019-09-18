@@ -1,0 +1,4 @@
+%define _sysconfdir	/usr/local/etc
+%define config_dir %{_sysconfdir}/puppet
+%define module_dir %{_datadir}/puppet/modules
+%define local_bindir /usr/local/bin

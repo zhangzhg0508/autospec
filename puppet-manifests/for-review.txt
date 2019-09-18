@@ -1,0 +1,11 @@
+From f80c4b9205ac5b8d6f81a0bd4c45e5706828c5b0 Mon Sep 17 00:00:00 2001
+From: fuyong <fuyong@neusoft.com>
+Date: Wed, 18 Sep 2019 13:49:25 +0800
+Subject: [PATCH puppet-manifests] puppet-manifests: Autospec creation for
+ version 1.0.0
+
+---
+ puppet-manifests.spec | 6 +++---
+ release               | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+

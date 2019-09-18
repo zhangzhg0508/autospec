@@ -1,0 +1,1 @@
+make install BINDIR=%{buildroot}%{local_bindir} CONFIGDIR=%{buildroot}%{config_dir} MODULEDIR=%{buildroot}%{module_dir}

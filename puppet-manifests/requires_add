@@ -1,0 +1,50 @@
+# This file contains additional runtime requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+# WRS puppet modules
+puppet-dcorch
+puppet-dcmanager
+puppet-mtce
+puppet-nfv
+puppet-patching
+puppet-sysinv
+puppet-sshd
+puppet-smapi
+puppet-fm
+puppet-dcdbsync
+
+# Openstack puppet modules
+puppet-barbican
+puppet-ceph
+puppet-horizon
+puppet-keystone
+puppet-openstacklib
+puppet-vswitch
+puppet-memcached
+
+# Puppetlabs puppet modules
+puppet-concat
+puppet-create_resources
+puppet-drbd
+puppet-firewall
+puppet-haproxy
+puppet-inifile
+puppet-lvm
+puppet-postgresql
+puppet-rabbitmq
+puppet-stdlib
+puppet-sysctl
+puppet-etcd
+
+# 3rdparty puppet modules
+puppet-boolean
+puppet-certmonger
+puppet-dnsmasq
+puppet-filemapper
+puppet-kmod
+puppet-ldap
+puppet-network
+puppet-nslcd
+puppet-nssdb
+puppet-puppi
+puppet-vlan
+puppet-collectd
