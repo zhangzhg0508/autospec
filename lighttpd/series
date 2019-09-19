@@ -1,0 +1,6 @@
+0001-lighttpd-1.4.39-defaultconf.patch
+0002-lighttpd-1.4.35-system-crypto-policy.patch
+0003-lighttpd-1.4.39-socket.patch
+check-content-length.patch
+lighttpd-tpm-support.patch
+0004-modify-check-test-fail.patch

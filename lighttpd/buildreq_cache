@@ -1,0 +1,7 @@
+1.4.52
+bzip2-dev
+openssl-dev
+pcre-dev
+pkgconfig(zlib)
+util-linux-dev
+valgrind

@@ -1,0 +1,4 @@
+# This file contains build requirements that get picked up but are
+# undesirable. One entry per line, no whitespace.
+pkgconfig(gamin)
+pkgconfig(libev)

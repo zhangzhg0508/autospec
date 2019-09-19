@@ -1,0 +1,25 @@
+From dcbe8473bb781ac6d01f6364465249a30dea43e5 Mon Sep 17 00:00:00 2001
+From: chen-dq <chen.dq@neusoft.com>
+Date: Wed, 18 Sep 2019 01:45:36 +0000
+Subject: [PATCH 3/3] lighttpd-1.4.39-socket
+
+---
+ doc/config/lighttpd.conf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/doc/config/lighttpd.conf b/doc/config/lighttpd.conf
+index e0850b2..2467def 100644
+--- a/doc/config/lighttpd.conf
++++ b/doc/config/lighttpd.conf
+@@ -67,7 +67,7 @@ var.cache_dir   = "/var/cache/lighttpd"
+ ## conf.d/fastcgi.conf
+ ## conf.d/scgi.conf
+ ##
+-var.socket_dir  = home_dir + "/sockets"
++var.socket_dir  = state_dir + "/sockets"
+ 
+ ##
+ #######################################################################
+-- 
+2.23.0
+

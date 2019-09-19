@@ -1,0 +1,114 @@
+#!/bin/sh
+#
+# lighttpd     Lightning fast webserver with light system requirements
+#
+# chkconfig:   - 85 15
+# description: Secure, fast, compliant and very flexible web-server which has \
+#              been optimized for high-performance environments. It has a \
+#              very low memory footprint compared to other web servers and \
+#              takes care of cpu-load.
+
+### BEGIN INIT INFO
+# Provides: httpd
+# Required-Start: $local_fs $network
+# Required-Stop: $local_fs $network
+# Should-Start: $named
+# Should-Stop: $named
+# Default-Start: 
+# Default-Stop: 0 1 2 3 4 5 6
+# Short-Description: Lightning fast webserver with light system requirements
+# Description:       Secure, fast, compliant and very flexible web-server which
+#                    has been optimized for high-performance environments. It
+#                    has a very low memory footprint compared to other web
+#                    servers and takes care of cpu-load.
+### END INIT INFO
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+exec="/usr/sbin/lighttpd"
+prog="lighttpd"
+config="/etc/lighttpd/lighttpd.conf"
+
+[ -e /etc/sysconfig/$prog ] && . /etc/sysconfig/$prog
+
+lockfile=/var/lock/subsys/$prog
+
+start() {
+    [ -x $exec ] || exit 5
+    [ -f $config ] || exit 6
+    echo -n $"Starting $prog: "
+    daemon $exec -f $config
+    retval=$?
+    echo
+    [ $retval -eq 0 ] && touch $lockfile
+    return $retval
+}
+
+stop() {
+    echo -n $"Stopping $prog: "
+    killproc $prog
+    retval=$?
+    echo
+    [ $retval -eq 0 ] && rm -f $lockfile
+    return $retval
+}
+
+restart() {
+    stop
+    start
+}
+
+reload() {
+    echo -n $"Reloading $prog: "
+    killproc $prog -HUP
+    retval=$?
+    echo
+    return $retval
+}
+
+force_reload() {
+    restart
+}
+
+rh_status() {
+    status $prog
+}
+
+rh_status_q() {
+    rh_status &>/dev/null
+}
+
+
+case "$1" in
+    start)
+        rh_status_q && exit 0
+        $1
+        ;;
+    stop)
+        rh_status_q || exit 0
+        $1
+        ;;
+    restart)
+        $1
+        ;;
+    reload)
+        rh_status_q || exit 7
+        $1
+        ;;
+    force-reload)
+        force_reload
+        ;;
+    status)
+        rh_status
+        ;;
+    condrestart|try-restart)
+        rh_status_q || exit 0
+        restart
+        ;;
+    *)
+        echo $"Usage: $0 {start|stop|status|restart|condrestart|try-restart|reload|force-reload}"
+        exit 2
+esac
+exit $?
+

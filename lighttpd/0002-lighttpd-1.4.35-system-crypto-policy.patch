@@ -1,0 +1,25 @@
+From 0ca2cc96bfeaa548c343e42d89f492018ac41d8b Mon Sep 17 00:00:00 2001
+From: chen-dq <chen.dq@neusoft.com>
+Date: Wed, 18 Sep 2019 01:43:53 +0000
+Subject: [PATCH 2/3] lighttpd-1.4.35-system-crypto-policy
+
+---
+ doc/config/lighttpd.conf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/doc/config/lighttpd.conf b/doc/config/lighttpd.conf
+index fc1896a..e0850b2 100644
+--- a/doc/config/lighttpd.conf
++++ b/doc/config/lighttpd.conf
+@@ -450,7 +450,7 @@ server.upload-dirs = ( "/var/tmp" )
+ ##     # Check your cipher list with: openssl ciphers -v '...' (use single quotes as your shell won't like ! in double quotes)
+ ##     #
+ ##     # If you know you have RSA keys (standard), you can use:
+-##     ssl.cipher-list             = "aRSA+HIGH !3DES +kEDH +kRSA !kSRP !kPSK"
++##     ssl.cipher-list             = "PROFILE=SYSTEM"
+ ##     # The more generic version (without the restriction to RSA keys) is
+ ##     # ssl.cipher-list           = "HIGH !aNULL !3DES +kEDH +kRSA !kSRP !kPSK"
+ ##     #
+-- 
+2.23.0
+

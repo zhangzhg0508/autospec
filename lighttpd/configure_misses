@@ -1,0 +1,38 @@
+Configure miss: port.h usability
+Configure miss: port.h presence
+Configure miss: port.h
+Configure miss: sys/devpoll.h usability
+Configure miss: sys/devpoll.h presence
+Configure miss: sys/devpoll.h
+Configure miss: sys/event.h usability
+Configure miss: sys/event.h presence
+Configure miss: sys/event.h
+Configure miss: libev support
+Configure miss: MySQL support
+Configure miss: PgSQL support
+Configure miss: LibDBI support
+Configure miss: LibSASL support
+Configure miss: LDAP support
+Configure miss: extended attributes support
+Configure miss: valgrind
+Configure miss: libunwind
+Configure miss: kerberos5
+Configure miss: custom include directory for kerberos5
+Configure miss: custom lib directory for kerberos5
+Configure miss: OpenSSL
+Configure miss: custom include directory for openssl
+Configure miss: custom lib directory for openssl
+Configure miss: wolfSSL
+Configure miss: FAM
+Configure miss: properties in mod_webdav
+Configure miss: locks in mod_webdav
+Configure miss: gdbm
+Configure miss: GeoIP
+Configure miss: memcached
+Configure miss: if lua-support is requested
+Configure miss: library containing sendfilev
+Configure miss: solaris sendfilev present
+Configure miss: memset_s
+Configure miss: port_create
+Configure miss: send_file
+Configure miss: FCGI_Accept in -lfcgi
