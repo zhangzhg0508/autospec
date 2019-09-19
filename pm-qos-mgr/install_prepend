@@ -1,0 +1,3 @@
+%define pythonroot %{_libdir}/python2.7/site-packages
+%define _unitdir /usr/lib/systemd/system/
+export PBR_VERSION=%{version}

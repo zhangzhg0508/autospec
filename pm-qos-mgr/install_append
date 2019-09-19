@@ -1,0 +1,11 @@
+%{__python} setup.py install --root=%{buildroot} \
+                             --install-lib=%{pythonroot} \
+                             --prefix=%{_prefix} \
+                             --install-data=%{_datadir} \
+                             --single-version-externally-managed
+
+install -p -D -m 664 pm-qos-mgr.service %{buildroot}%{_unitdir}/pm-qos-mgr.service
+mkdir -p %{buildroot}%{_defaultdocdir}/%{name}-%{version}
+install -m 644 LICENSE %{buildroot}%{_defaultdocdir}/%{name}-%{version}
+%post
+systemctl enable pm-qos-mgr.service
