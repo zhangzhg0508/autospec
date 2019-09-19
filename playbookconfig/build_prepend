@@ -1,0 +1,3 @@
+%define local_stx_ansible_dir %{_datadir}/ansible/stx-ansible
+%define local_etc_ansible /usr/local/etc/ansible
+%define debug_package %{nil}

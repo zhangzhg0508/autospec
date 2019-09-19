@@ -1,0 +1,7 @@
+make install DESTDIR=%{buildroot}%{_datadir}/ansible/stx-ansible
+
+%post
+cp %{local_stx_ansible_dir}/playbooks/ansible.cfg %{local_etc_ansible}
+cp %{local_stx_ansible_dir}/playbooks/hosts %{local_etc_ansible}
+chmod 644 %{local_etc_ansible}/ansible.cfg
+chmod 644 %{local_etc_ansible}/hosts

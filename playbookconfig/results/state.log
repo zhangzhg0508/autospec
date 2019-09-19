@@ -1,0 +1,37 @@
+2019-09-19 14:44:27,960 - Mock Version: 1.2.14
+2019-09-19 14:44:28,370 - Start: dnf update
+2019-09-19 14:44:38,012 - Finish: dnf update
+2019-09-19 14:44:38,018 - Finish: chroot init
+2019-09-19 14:44:38,020 - Start: buildsrpm
+2019-09-19 14:44:38,028 - Start: rpmbuild -bs
+2019-09-19 14:44:38,066 - Finish: rpmbuild -bs
+2019-09-19 14:44:38,068 - Finish: buildsrpm
+2019-09-19 14:44:38,068 - Finish: run
+2019-09-19 14:44:41,128 - Mock Version: 1.2.14
+2019-09-19 14:44:41,383 - Start: dnf update
+2019-09-19 14:44:51,028 - Finish: dnf update
+2019-09-19 14:44:51,034 - Finish: chroot init
+2019-09-19 14:44:51,036 - Start: build phase for playbookconfig-1.0-2.src.rpm
+2019-09-19 14:44:51,038 - Start: build setup for playbookconfig-1.0-2.src.rpm
+2019-09-19 14:44:51,703 - Finish: build setup for playbookconfig-1.0-2.src.rpm
+2019-09-19 14:44:51,703 - Start: rpmbuild playbookconfig-1.0-2.src.rpm
+2019-09-19 14:44:55,683 - Mock Version: 1.2.14
+2019-09-19 14:44:55,917 - Start: dnf update
+2019-09-19 14:45:05,470 - Finish: dnf update
+2019-09-19 14:45:05,475 - Finish: chroot init
+2019-09-19 14:45:05,478 - Start: buildsrpm
+2019-09-19 14:45:05,487 - Start: rpmbuild -bs
+2019-09-19 14:45:05,526 - Finish: rpmbuild -bs
+2019-09-19 14:45:05,527 - Finish: buildsrpm
+2019-09-19 14:45:05,528 - Finish: run
+2019-09-19 14:45:08,620 - Mock Version: 1.2.14
+2019-09-19 14:45:08,892 - Start: dnf update
+2019-09-19 14:45:18,630 - Finish: dnf update
+2019-09-19 14:45:18,635 - Finish: chroot init
+2019-09-19 14:45:18,637 - Start: build phase for playbookconfig-1.0-2.src.rpm
+2019-09-19 14:45:18,639 - Start: build setup for playbookconfig-1.0-2.src.rpm
+2019-09-19 14:45:19,303 - Finish: build setup for playbookconfig-1.0-2.src.rpm
+2019-09-19 14:45:19,303 - Start: rpmbuild playbookconfig-1.0-2.src.rpm
+2019-09-19 14:45:20,211 - Finish: rpmbuild playbookconfig-1.0-2.src.rpm
+2019-09-19 14:45:20,213 - Finish: build phase for playbookconfig-1.0-2.src.rpm
+2019-09-19 14:45:20,213 - Finish: run
