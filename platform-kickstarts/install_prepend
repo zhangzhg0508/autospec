@@ -1,0 +1,1 @@
+%define feed_dir /www/pages/feed/rel-%{name}-%{version}

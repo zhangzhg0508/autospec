@@ -1,0 +1,37 @@
+2019-09-19 17:36:55,243 - Mock Version: 1.2.14
+2019-09-19 17:36:55,494 - Start: dnf update
+2019-09-19 17:37:05,373 - Finish: dnf update
+2019-09-19 17:37:05,379 - Finish: chroot init
+2019-09-19 17:37:05,381 - Start: buildsrpm
+2019-09-19 17:37:05,393 - Start: rpmbuild -bs
+2019-09-19 17:37:05,431 - Finish: rpmbuild -bs
+2019-09-19 17:37:05,433 - Finish: buildsrpm
+2019-09-19 17:37:05,433 - Finish: run
+2019-09-19 17:37:08,600 - Mock Version: 1.2.14
+2019-09-19 17:37:08,869 - Start: dnf update
+2019-09-19 17:37:18,492 - Finish: dnf update
+2019-09-19 17:37:18,498 - Finish: chroot init
+2019-09-19 17:37:18,499 - Start: build phase for platform-kickstarts-1.0.0-8.src.rpm
+2019-09-19 17:37:18,502 - Start: build setup for platform-kickstarts-1.0.0-8.src.rpm
+2019-09-19 17:37:19,182 - Finish: build setup for platform-kickstarts-1.0.0-8.src.rpm
+2019-09-19 17:37:19,182 - Start: rpmbuild platform-kickstarts-1.0.0-8.src.rpm
+2019-09-19 17:37:22,639 - Mock Version: 1.2.14
+2019-09-19 17:37:22,895 - Start: dnf update
+2019-09-19 17:37:32,727 - Finish: dnf update
+2019-09-19 17:37:32,733 - Finish: chroot init
+2019-09-19 17:37:32,736 - Start: buildsrpm
+2019-09-19 17:37:32,748 - Start: rpmbuild -bs
+2019-09-19 17:37:32,787 - Finish: rpmbuild -bs
+2019-09-19 17:37:32,788 - Finish: buildsrpm
+2019-09-19 17:37:32,789 - Finish: run
+2019-09-19 17:37:35,934 - Mock Version: 1.2.14
+2019-09-19 17:37:36,208 - Start: dnf update
+2019-09-19 17:37:46,267 - Finish: dnf update
+2019-09-19 17:37:46,273 - Finish: chroot init
+2019-09-19 17:37:46,274 - Start: build phase for platform-kickstarts-1.0.0-8.src.rpm
+2019-09-19 17:37:46,276 - Start: build setup for platform-kickstarts-1.0.0-8.src.rpm
+2019-09-19 17:37:46,957 - Finish: build setup for platform-kickstarts-1.0.0-8.src.rpm
+2019-09-19 17:37:46,957 - Start: rpmbuild platform-kickstarts-1.0.0-8.src.rpm
+2019-09-19 17:37:47,316 - Finish: rpmbuild platform-kickstarts-1.0.0-8.src.rpm
+2019-09-19 17:37:47,317 - Finish: build phase for platform-kickstarts-1.0.0-8.src.rpm
+2019-09-19 17:37:47,318 - Finish: run

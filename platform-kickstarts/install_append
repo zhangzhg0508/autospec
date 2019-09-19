@@ -1,0 +1,7 @@
+install -m 0444 generated/* %{buildroot}%{feed_dir}/
+
+install -d -m 0755 %{buildroot}/pxeboot
+install -D -m 0444 pxeboot/* %{buildroot}/pxeboot
+
+install -d -m 0755 %{buildroot}/extra_cfgs
+install -D -m 0444 extra_cfgs/* %{buildroot}/extra_cfgs

@@ -1,0 +1,13 @@
+From 12e4d2158e60b05743bcf42c05ee09efef8cd8f3 Mon Sep 17 00:00:00 2001
+From: fuyong <fuyong@neusoft.com>
+Date: Thu, 19 Sep 2019 17:37:47 +0800
+Subject: [PATCH platform-kickstarts] platform-kickstarts: Autospec creation
+ for version 1.0.0
+
+---
+ platform-kickstarts.spec | 6 +++---
+ pxeboot_extras           | 3 ---
+ release                  | 2 +-
+ 3 files changed, 4 insertions(+), 7 deletions(-)
+ delete mode 100644 pxeboot_extras
+

@@ -1,0 +1,1 @@
+./centos-ks-gen.pl --release %{name}-%{version}
