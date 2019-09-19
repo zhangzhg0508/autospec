@@ -1,0 +1,29 @@
+Configure miss: CFLAGS for gcc -Wunknown-warning-option
+Configure miss: CFLAGS for gcc -Wheader-guard
+Configure miss: CFLAGS for gcc -Wdocumentation
+Configure miss: libbsd
+Configure miss: setproctitle_init
+Configure miss: LIBEVENT
+Configure miss: WIN32
+Configure miss: CYGWIN
+Configure miss: sys/event.h usability
+Configure miss: sys/event.h presence
+Configure miss: sys/event.h
+Configure miss: sys/devpoll.h usability
+Configure miss: sys/devpoll.h presence
+Configure miss: sys/devpoll.h
+Configure miss: port.h usability
+Configure miss: port.h presence
+Configure miss: port.h
+Configure miss: netinet/in6.h usability
+Configure miss: netinet/in6.h presence
+Configure miss: netinet/in6.h
+Configure miss: whether KERN_ARND is declared
+Configure miss: arc4random
+Configure miss: port_create
+Configure miss: struct sockaddr_in6.sin6_len
+Configure miss: struct sockaddr_storage.__ss_family
+Configure miss: a readline compatible library
+Configure miss: JANSSON
+Configure miss: whether to enable systemtap/DTrace trace support
+Configure miss: whether to enable compatibility with Linux kernel older than 2.6.39

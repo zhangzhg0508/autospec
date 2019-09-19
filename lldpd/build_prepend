@@ -1,0 +1,3 @@
+%define lldpd_ctl_socket /var/run/lldpd/lldpd.socket
+%define lldpd_pid_file /var/run/lldpd/lldpd.pid
+%define _sysconfdir /usr/local/etc

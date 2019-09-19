@@ -1,0 +1,104 @@
+From 08a8716e306071aad1af73ce4038b4908681d747 Mon Sep 17 00:00:00 2001
+From: chen-dq <chen.dq@neusoft.com>
+Date: Thu, 19 Sep 2019 03:08:51 +0000
+Subject: [PATCH lldpd] lldpd: Autospec creation for version 0.9.0
+
+---
+ build_prepend  |  3 ---
+ install_append |  7 +++++++
+ install_macro  |  1 +
+ lldpd.spec     | 26 +++++++++++++++++++-------
+ options.conf   |  2 +-
+ release        |  2 +-
+ upstream       |  1 +
+ 7 files changed, 30 insertions(+), 12 deletions(-)
+ create mode 100644 install_append
+ create mode 100644 install_macro
+
+diff --git a/install_append b/install_append
+new file mode 100644
+index 0000000..698b9bb
+--- /dev/null
++++ b/install_append
+@@ -0,0 +1,7 @@
++tar -xzvf %{SOURCE1}
++install -Dm 0644 lldpd.default %{buildroot}%{_sysconfdir}/default/lldpd
++install -d %{buildroot}%{_initrddir}
++install -Dm 0755 i40e-lldp-configure.sh %{buildroot}%{_initrddir}/
++
++# Make an empty configuration file
++touch %{buildroot}%{_sysconfdir}/lldpd.conf
+diff --git a/install_macro b/install_macro
+new file mode 100644
+index 0000000..b19a32f
+--- /dev/null
++++ b/install_macro
+@@ -0,0 +1 @@
++make install DESTDIR=$RPM_BUILD_ROOT
+diff --git a/lldpd.spec b/lldpd.spec
+index 525807b..f59e5ae 100644
+--- a/lldpd.spec
++++ b/lldpd.spec
+@@ -4,9 +4,10 @@
+ #
+ Name     : lldpd
+ Version  : 0.9.0
+ URL      : file:///home/clear/tar/lldpd-0.9.0.tar.gz
+ Source0  : file:///home/clear/tar/lldpd-0.9.0.tar.gz
++Source1  : file:///home/clear/tar/lldpd_file.tar.gz
+ Summary  : Library to interface with lldpd, a 802.1AB daemon
+ Group    : Development/Tools
+ License  : Apache-2.0
+@@ -108,6 +109,8 @@ services components for the lldpd package.
+ 
+ %prep
+ %setup -q -n lldpd-0.9.0
++cd ..
++%setup -q -T -D -n lldpd-0.9.0 -b 1
+ %patch1 -p1
+ %patch2 -p1
+ %patch3 -p1
+@@ -154,12 +154,23 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
+ make VERBOSE=1 V=1 %{?_smp_mflags} check
+ 
+ %install
+ rm -rf %{buildroot}
+-%make_install
++make install DESTDIR=$RPM_BUILD_ROOT
++## install_append content
++tar -xzvf %{SOURCE1}
++install -Dm 0644 lldpd.default %{buildroot}%{_sysconfdir}/default/lldpd
++install -d %{buildroot}%{_initrddir}
++install -Dm 0755 i40e-lldp-configure.sh %{buildroot}%{_initrddir}/
++touch %{buildroot}%{_sysconfdir}/lldpd.conf
++## install_append end
+ 
+ %files
+ %defattr(-,root,root,-)
++/usr/local/etc/default/lldpd
++/usr/local/etc/lldpd.conf
++/usr/local/etc/lldpd.d/README.conf
++/usr/local/etc/rc.d/init.d/i40e-lldp-configure.sh
+ 
+ %files bin
+ %defattr(-,root,root,-)
+@@ -175,6 +186,7 @@ rm -rf %{buildroot}
+ %files dev
+ %defattr(-,root,root,-)
+ /usr/include/*.h
++/usr/lib64/liblldpctl.la
+ /usr/lib64/liblldpctl.so
+ /usr/lib64/pkgconfig/lldpctl.pc
+ 
+diff --git a/options.conf b/options.conf
+index 57501e7..40d27bc 100644
+--- a/options.conf
++++ b/options.conf
+@@ -1,7 +1,7 @@
+ [package]
+ name = lldpd
+ url = file:///home/clear/tar/lldpd-0.9.0.tar.gz
++archives = file:///home/clear/tar/lldpd_file.tar.gz :
+ giturl = 
+ 
+ [autospec]

@@ -1,0 +1,37 @@
+2019-09-19 03:07:05,520 - Mock Version: 1.2.14
+2019-09-19 03:07:05,829 - Start: dnf update
+2019-09-19 03:07:15,553 - Finish: dnf update
+2019-09-19 03:07:15,559 - Finish: chroot init
+2019-09-19 03:07:15,562 - Start: buildsrpm
+2019-09-19 03:07:15,573 - Start: rpmbuild -bs
+2019-09-19 03:07:15,618 - Finish: rpmbuild -bs
+2019-09-19 03:07:15,621 - Finish: buildsrpm
+2019-09-19 03:07:15,621 - Finish: run
+2019-09-19 03:07:18,671 - Mock Version: 1.2.14
+2019-09-19 03:07:18,935 - Start: dnf update
+2019-09-19 03:07:28,327 - Finish: dnf update
+2019-09-19 03:07:28,333 - Finish: chroot init
+2019-09-19 03:07:28,334 - Start: build phase for lldpd-0.9.0-3.src.rpm
+2019-09-19 03:07:28,336 - Start: build setup for lldpd-0.9.0-3.src.rpm
+2019-09-19 03:07:30,239 - Finish: build setup for lldpd-0.9.0-3.src.rpm
+2019-09-19 03:07:30,239 - Start: rpmbuild lldpd-0.9.0-3.src.rpm
+2019-09-19 03:07:57,475 - Mock Version: 1.2.14
+2019-09-19 03:07:57,731 - Start: dnf update
+2019-09-19 03:08:09,376 - Finish: dnf update
+2019-09-19 03:08:09,381 - Finish: chroot init
+2019-09-19 03:08:09,384 - Start: buildsrpm
+2019-09-19 03:08:09,398 - Start: rpmbuild -bs
+2019-09-19 03:08:09,444 - Finish: rpmbuild -bs
+2019-09-19 03:08:09,446 - Finish: buildsrpm
+2019-09-19 03:08:09,447 - Finish: run
+2019-09-19 03:08:12,714 - Mock Version: 1.2.14
+2019-09-19 03:08:12,962 - Start: dnf update
+2019-09-19 03:08:24,587 - Finish: dnf update
+2019-09-19 03:08:24,592 - Finish: chroot init
+2019-09-19 03:08:24,593 - Start: build phase for lldpd-0.9.0-3.src.rpm
+2019-09-19 03:08:24,595 - Start: build setup for lldpd-0.9.0-3.src.rpm
+2019-09-19 03:08:26,492 - Finish: build setup for lldpd-0.9.0-3.src.rpm
+2019-09-19 03:08:26,492 - Start: rpmbuild lldpd-0.9.0-3.src.rpm
+2019-09-19 03:08:50,574 - Finish: rpmbuild lldpd-0.9.0-3.src.rpm
+2019-09-19 03:08:50,575 - Finish: build phase for lldpd-0.9.0-3.src.rpm
+2019-09-19 03:08:50,576 - Finish: run

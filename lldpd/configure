@@ -1,0 +1,9 @@
+   --with-sysusersdir=no 
+   --prefix=%{_usr} 
+   --localstatedir=%{_localstatedir} 
+   --sysconfdir=%{_sysconfdir} 
+   --libdir=%{_libdir} 
+   --docdir=%{_docdir}/lldpd 
+   --enable-pie 
+   --with-lldpd-ctl-socket=%lldpd_ctl_socket 
+   --with-lldpd-pid-file=%lldpd_pid_file

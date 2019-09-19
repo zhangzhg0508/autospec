@@ -1,0 +1,7 @@
+tar -xzvf %{SOURCE1}
+install -Dm 0644 lldpd.default %{buildroot}%{_sysconfdir}/default/lldpd
+install -d %{buildroot}%{_initrddir}
+install -Dm 0755 i40e-lldp-configure.sh %{buildroot}%{_initrddir}/
+
+# Make an empty configuration file
+touch %{buildroot}%{_sysconfdir}/lldpd.conf

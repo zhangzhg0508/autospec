@@ -1,0 +1,10 @@
+# This file contains additional build requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+pkg-config
+readline-devel
+net-snmp-devel
+openssl-dev
+json-c-devel
+pciutils-devel
+systemd
+systemd-devel
