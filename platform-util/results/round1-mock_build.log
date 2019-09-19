@@ -1,0 +1,30 @@
+INFO: mock.py version 1.2.14 starting (python version = 3.7.4)...
+Start: init plugins
+INFO: selinux disabled
+Finish: init plugins
+Start: run
+INFO: Start(results/platform-util-1.0-2.src.rpm)  Config(clear)
+Start: clean chroot
+Finish: clean chroot
+Start: chroot init
+INFO: calling preinit hooks
+INFO: enabled root cache
+Start: unpacking root cache
+Finish: unpacking root cache
+INFO: enabled dnf cache
+Start: cleaning dnf metadata
+Finish: cleaning dnf metadata
+INFO: enabled ccache
+Mock Version: 1.2.14
+INFO: Mock Version: 1.2.14
+Start: dnf update
+Finish: dnf update
+Finish: chroot init
+Start: build phase for platform-util-1.0-2.src.rpm
+Start: build setup for platform-util-1.0-2.src.rpm
+Finish: build setup for platform-util-1.0-2.src.rpm
+Start: rpmbuild platform-util-1.0-2.src.rpm
+ERROR: Exception(results/platform-util-1.0-2.src.rpm) Config(clear) 0 minutes 15 seconds
+INFO: Results and/or logs in: results/
+ERROR: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/platform-util.spec 

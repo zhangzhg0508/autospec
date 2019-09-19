@@ -1,0 +1,35 @@
+%{__python} setup.py install --root=$RPM_BUILD_ROOT \
+                             --install-lib=%{pythonroot} \
+                             --prefix=/usr \
+                             --install-data=/usr/share \
+                             --single-version-externally-managed
+
+#mkdir -p $RPM_BUILD_ROOT/wheels
+#install -m 644 dist/*.whl $RPM_BUILD_ROOT/wheels/
+
+install -d %{buildroot}%{local_bindir}
+install %{_buildsubdir}/scripts/cgcs_tc_setup.sh %{buildroot}%{local_bindir}
+install %{_buildsubdir}/scripts/remotelogging_tc_setup.sh %{buildroot}%{local_bindir}
+install %{_buildsubdir}/scripts/connectivity_test %{buildroot}%{local_bindir}
+
+install -d %{buildroot}%{local_etc_initd}
+install %{_buildsubdir}/scripts/log_functions.sh %{buildroot}%{local_etc_initd}
+
+install -d %{buildroot}%{local_sbindir}
+install -m 700 -p -D %{_buildsubdir}/scripts/patch-restart-mtce %{buildroot}%{local_sbindir}
+install -m 700 -p -D %{_buildsubdir}/scripts/patch-restart-processes %{buildroot}%{local_sbindir}
+install -m 700 -p -D %{_buildsubdir}/scripts/patch-restart-haproxy %{buildroot}%{local_sbindir}
+
+install -d %{buildroot}/usr/local/etc/systemd/system
+install -m 644 -p -D %{_buildsubdir}/scripts/opt-platform.mount %{buildroot}/usr/local/etc/systemd/system
+install -m 644 -p -D %{_buildsubdir}/scripts/opt-platform.service %{buildroot}/usr/local/etc/systemd/system
+
+# Mask the systemd ctrl-alt-delete.target, to disable reboot on ctrl-alt-del
+ln -sf /dev/null %{buildroot}/usr/local/etc/systemd/system/ctrl-alt-del.target
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+# %post -n platform-util-noncontroller
+#mkdir -p /opt/platform
+#systemctl enable opt-platform.service

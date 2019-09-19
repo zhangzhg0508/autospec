@@ -1,0 +1,37 @@
+2019-09-19 15:50:54,896 - Mock Version: 1.2.14
+2019-09-19 15:50:55,158 - Start: dnf update
+2019-09-19 15:51:05,284 - Finish: dnf update
+2019-09-19 15:51:05,290 - Finish: chroot init
+2019-09-19 15:51:05,293 - Start: buildsrpm
+2019-09-19 15:51:05,300 - Start: rpmbuild -bs
+2019-09-19 15:51:05,339 - Finish: rpmbuild -bs
+2019-09-19 15:51:05,341 - Finish: buildsrpm
+2019-09-19 15:51:05,341 - Finish: run
+2019-09-19 15:51:08,463 - Mock Version: 1.2.14
+2019-09-19 15:51:08,725 - Start: dnf update
+2019-09-19 15:51:18,788 - Finish: dnf update
+2019-09-19 15:51:18,794 - Finish: chroot init
+2019-09-19 15:51:18,795 - Start: build phase for platform-util-1.0-2.src.rpm
+2019-09-19 15:51:18,797 - Start: build setup for platform-util-1.0-2.src.rpm
+2019-09-19 15:51:20,425 - Finish: build setup for platform-util-1.0-2.src.rpm
+2019-09-19 15:51:20,425 - Start: rpmbuild platform-util-1.0-2.src.rpm
+2019-09-19 15:51:24,726 - Mock Version: 1.2.14
+2019-09-19 15:51:24,972 - Start: dnf update
+2019-09-19 15:51:34,788 - Finish: dnf update
+2019-09-19 15:51:34,793 - Finish: chroot init
+2019-09-19 15:51:34,796 - Start: buildsrpm
+2019-09-19 15:51:34,804 - Start: rpmbuild -bs
+2019-09-19 15:51:34,845 - Finish: rpmbuild -bs
+2019-09-19 15:51:34,846 - Finish: buildsrpm
+2019-09-19 15:51:34,847 - Finish: run
+2019-09-19 15:51:38,051 - Mock Version: 1.2.14
+2019-09-19 15:51:38,299 - Start: dnf update
+2019-09-19 15:51:48,279 - Finish: dnf update
+2019-09-19 15:51:48,285 - Finish: chroot init
+2019-09-19 15:51:48,286 - Start: build phase for platform-util-1.0-2.src.rpm
+2019-09-19 15:51:48,288 - Start: build setup for platform-util-1.0-2.src.rpm
+2019-09-19 15:51:49,922 - Finish: build setup for platform-util-1.0-2.src.rpm
+2019-09-19 15:51:49,922 - Start: rpmbuild platform-util-1.0-2.src.rpm
+2019-09-19 15:51:50,757 - Finish: rpmbuild platform-util-1.0-2.src.rpm
+2019-09-19 15:51:50,758 - Finish: build phase for platform-util-1.0-2.src.rpm
+2019-09-19 15:51:50,759 - Finish: run

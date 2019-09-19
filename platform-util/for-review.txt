@@ -1,0 +1,162 @@
+From 712e0873ef049613c88943b0647fdd80ebe36159 Mon Sep 17 00:00:00 2001
+From: fuyong <fuyong@neusoft.com>
+Date: Thu, 19 Sep 2019 15:51:51 +0800
+Subject: [PATCH platform-util] platform-util: Autospec creation for version
+ 1.0
+
+---
+ buildreq_add       |  3 +++
+ buildreq_cache     |  2 ++
+ install_append     | 35 +++++++++++++++++++++++++++++++
+ install_prepend    |  7 +++++++
+ platform-util.spec | 51 ++++++++++++++++++++++++++++++++++++++++++++--
+ release            |  2 +-
+ 6 files changed, 97 insertions(+), 3 deletions(-)
+ create mode 100644 buildreq_cache
+ create mode 100644 install_append
+ create mode 100644 install_prepend
+
+diff --git a/buildreq_add b/buildreq_add
+index 1797536..509b1ef 100644
+--- a/buildreq_add
++++ b/buildreq_add
+@@ -1,2 +1,5 @@
+ # This file contains additional build requirements that did not get
+ # picked up automatically. One name per line, no whitespace.
++buildreq-distutils
++pip
++setuptools
+diff --git a/install_append b/install_append
+new file mode 100644
+index 0000000..f18ecf9
+--- /dev/null
++++ b/install_append
+@@ -0,0 +1,35 @@
++%{__python} setup.py install --root=$RPM_BUILD_ROOT \
++                             --install-lib=%{pythonroot} \
++                             --prefix=/usr \
++                             --install-data=/usr/share \
++                             --single-version-externally-managed
++
++#mkdir -p $RPM_BUILD_ROOT/wheels
++#install -m 644 dist/*.whl $RPM_BUILD_ROOT/wheels/
++
++install -d %{buildroot}%{local_bindir}
++install %{_buildsubdir}/scripts/cgcs_tc_setup.sh %{buildroot}%{local_bindir}
++install %{_buildsubdir}/scripts/remotelogging_tc_setup.sh %{buildroot}%{local_bindir}
++install %{_buildsubdir}/scripts/connectivity_test %{buildroot}%{local_bindir}
++
++install -d %{buildroot}%{local_etc_initd}
++install %{_buildsubdir}/scripts/log_functions.sh %{buildroot}%{local_etc_initd}
++
++install -d %{buildroot}%{local_sbindir}
++install -m 700 -p -D %{_buildsubdir}/scripts/patch-restart-mtce %{buildroot}%{local_sbindir}
++install -m 700 -p -D %{_buildsubdir}/scripts/patch-restart-processes %{buildroot}%{local_sbindir}
++install -m 700 -p -D %{_buildsubdir}/scripts/patch-restart-haproxy %{buildroot}%{local_sbindir}
++
++install -d %{buildroot}/usr/local/etc/systemd/system
++install -m 644 -p -D %{_buildsubdir}/scripts/opt-platform.mount %{buildroot}/usr/local/etc/systemd/system
++install -m 644 -p -D %{_buildsubdir}/scripts/opt-platform.service %{buildroot}/usr/local/etc/systemd/system
++
++# Mask the systemd ctrl-alt-delete.target, to disable reboot on ctrl-alt-del
++ln -sf /dev/null %{buildroot}/usr/local/etc/systemd/system/ctrl-alt-del.target
++
++%clean
++rm -rf $RPM_BUILD_ROOT
++
++# %post -n platform-util-noncontroller
++#mkdir -p /opt/platform
++#systemctl enable opt-platform.service
+diff --git a/install_prepend b/install_prepend
+new file mode 100644
+index 0000000..a6f5a0d
+--- /dev/null
++++ b/install_prepend
+@@ -0,0 +1,7 @@
++%define _sysconfdir	/usr/local/etc
++%define local_dir /usr/local
++%define local_bindir %{local_dir}/bin
++%define local_sbindir %{local_dir}/sbin
++%define pythonroot /usr/lib64/python2.7/site-packages
++%define local_etc_initd %{_sysconfdir}/init.d
++%global _buildsubdir %{_builddir}/%{name}-%{version}
+diff --git a/platform-util.spec b/platform-util.spec
+index 33c0404..1f01e94 100644
+--- a/platform-util.spec
++++ b/platform-util.spec
+@@ -13,7 +13,11 @@ License  : Apache-2.0
+ Requires: platform-util-bin = %{version}-%{release}
+ Requires: platform-util-python = %{version}-%{release}
+ Requires: platform-util-python3 = %{version}-%{release}
++BuildRequires : buildreq-distutils
+ BuildRequires : buildreq-distutils3
++BuildRequires : pip
++BuildRequires : setuptools
++BuildRequires : systemd
+ 
+ %description
+ No detailed description available
+@@ -67,13 +71,55 @@ python3 setup.py build
+ %install
+ export MAKEFLAGS=%{?_smp_mflags}
+ rm -rf %{buildroot}
++## install_prepend content
++%define _sysconfdir	/usr/local/etc
++%define local_dir /usr/local
++%define local_bindir %{local_dir}/bin
++%define local_sbindir %{local_dir}/sbin
++%define pythonroot /usr/lib64/python2.7/site-packages
++%define local_etc_initd %{_sysconfdir}/init.d
++%global _buildsubdir %{_builddir}/%{name}-%{version}
++## install_prepend end
+ python3 -tt setup.py build  install --root=%{buildroot}
+ echo ----[ mark ]----
+ cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
+ echo ----[ mark ]----
++## install_append content
++%{__python} setup.py install --root=$RPM_BUILD_ROOT \
++--install-lib=%{pythonroot} \
++--prefix=/usr \
++--install-data=/usr/share \
++--single-version-externally-managed
++install -d %{buildroot}%{local_bindir}
++install %{_buildsubdir}/scripts/cgcs_tc_setup.sh %{buildroot}%{local_bindir}
++install %{_buildsubdir}/scripts/remotelogging_tc_setup.sh %{buildroot}%{local_bindir}
++install %{_buildsubdir}/scripts/connectivity_test %{buildroot}%{local_bindir}
++install -d %{buildroot}%{local_etc_initd}
++install %{_buildsubdir}/scripts/log_functions.sh %{buildroot}%{local_etc_initd}
++install -d %{buildroot}%{local_sbindir}
++install -m 700 -p -D %{_buildsubdir}/scripts/patch-restart-mtce %{buildroot}%{local_sbindir}
++install -m 700 -p -D %{_buildsubdir}/scripts/patch-restart-processes %{buildroot}%{local_sbindir}
++install -m 700 -p -D %{_buildsubdir}/scripts/patch-restart-haproxy %{buildroot}%{local_sbindir}
++install -d %{buildroot}/usr/local/etc/systemd/system
++install -m 644 -p -D %{_buildsubdir}/scripts/opt-platform.mount %{buildroot}/usr/local/etc/systemd/system
++install -m 644 -p -D %{_buildsubdir}/scripts/opt-platform.service %{buildroot}/usr/local/etc/systemd/system
++ln -sf /dev/null %{buildroot}/usr/local/etc/systemd/system/ctrl-alt-del.target
++%clean
++rm -rf $RPM_BUILD_ROOT
++## install_append end
+ 
+ %files
+ %defattr(-,root,root,-)
++/usr/local/bin/cgcs_tc_setup.sh
++/usr/local/bin/connectivity_test
++/usr/local/bin/remotelogging_tc_setup.sh
++/usr/local/etc/init.d/log_functions.sh
++/usr/local/etc/systemd/system/ctrl-alt-del.target
++/usr/local/etc/systemd/system/opt-platform.mount
++/usr/local/etc/systemd/system/opt-platform.service
++/usr/local/sbin/patch-restart-haproxy
++/usr/local/sbin/patch-restart-mtce
++/usr/local/sbin/patch-restart-processes
+ 
+ %files bin
+ %defattr(-,root,root,-)
+@@ -81,6 +127,7 @@ echo ----[ mark ]----
+ 
+ %files python
+ %defattr(-,root,root,-)
++/usr/lib64/python*/*
+ 
+ %files python3
+ %defattr(-,root,root,-)
