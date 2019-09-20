@@ -1,0 +1,16 @@
+python3 setup.py install --root=$RPM_BUILD_ROOT \
+                             --install-lib=%{pythonroot} \
+                             --prefix=/usr \
+                             --install-data=/usr/share \
+                             --single-version-externally-managed
+#mkdir -p $RPM_BUILD_ROOT/wheels
+#install -m 644 dist/*.whl $RPM_BUILD_ROOT/wheels/
+
+    install -m 755 -d %{buildroot}%{_bindir}
+    install -m 755 -d %{buildroot}%{_sysconfdir}/init.d
+
+    install -m 700 ${RPM_BUILD_DIR}/scripts/bin/patch-alarm-manager \
+        %{buildroot}%{_bindir}/patch-alarm-manager
+
+    install -m 700 ${RPM_BUILD_DIR}/scripts/init.d/patch-alarm-manager \
+        %{buildroot}%{_sysconfdir}/init.d/patch-alarm-manager

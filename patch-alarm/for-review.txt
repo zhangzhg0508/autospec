@@ -1,0 +1,152 @@
+From bc7266ec9aa65f145b18282467d80f4313700c98 Mon Sep 17 00:00:00 2001
+From: fuyong <fuyong@neusoft.com>
+Date: Fri, 20 Sep 2019 10:07:54 +0800
+Subject: [PATCH patch-alarm] patch-alarm: Autospec creation for version 1.0
+
+---
+ build_prepend    |  2 ++
+ buildreq_add     |  2 ++
+ install_append   | 16 ++++++++++++++++
+ patch-alarm.spec | 40 ++++++++++++++++++++++++++++++++++++++--
+ release          |  2 +-
+ requires_add     |  2 ++
+ 6 files changed, 61 insertions(+), 3 deletions(-)
+ create mode 100644 build_prepend
+ create mode 100644 install_append
+
+diff --git a/build_prepend b/build_prepend
+new file mode 100644
+index 0000000..22f2015
+--- /dev/null
++++ b/build_prepend
+@@ -0,0 +1,2 @@
++%define pythonroot           /usr/lib64/python2.7/site-packages
++%define _sysconfdir	/usr/local/etc
+diff --git a/buildreq_add b/buildreq_add
+index 1797536..09bf3c3 100644
+--- a/buildreq_add
++++ b/buildreq_add
+@@ -1,2 +1,4 @@
+ # This file contains additional build requirements that did not get
+ # picked up automatically. One name per line, no whitespace.
++setuptools
++pip
+diff --git a/install_append b/install_append
+new file mode 100644
+index 0000000..b957340
+--- /dev/null
++++ b/install_append
+@@ -0,0 +1,16 @@
++python3 setup.py install --root=$RPM_BUILD_ROOT \
++                             --install-lib=%{pythonroot} \
++                             --prefix=/usr \
++                             --install-data=/usr/share \
++                             --single-version-externally-managed
++#mkdir -p $RPM_BUILD_ROOT/wheels
++#install -m 644 dist/*.whl $RPM_BUILD_ROOT/wheels/
++
++    install -m 755 -d %{buildroot}%{_bindir}
++    install -m 755 -d %{buildroot}%{_sysconfdir}/init.d
++
++    install -m 700 ${RPM_BUILD_DIR}/scripts/bin/patch-alarm-manager \
++        %{buildroot}%{_bindir}/patch-alarm-manager
++
++    install -m 700 ${RPM_BUILD_DIR}/scripts/init.d/patch-alarm-manager \
++        %{buildroot}%{_sysconfdir}/init.d/patch-alarm-manager
+diff --git a/patch-alarm.spec b/patch-alarm.spec
+index cfbde64..ba9f46b 100644
+--- a/patch-alarm.spec
++++ b/patch-alarm.spec
+@@ -4,24 +4,37 @@
+ #
+ Name     : patch-alarm
+ Version  : 1.0
+ URL      : file:///home/clr/stx-tar/patch-alarm-1.0.tar.gz
+ Source0  : file:///home/clr/stx-tar/patch-alarm-1.0.tar.gz
+ Summary  : No detailed summary available
+ Group    : Development/Tools
+ License  : Apache-2.0
++Requires: patch-alarm-bin = %{version}-%{release}
+ Requires: patch-alarm-python = %{version}-%{release}
+ Requires: patch-alarm-python3 = %{version}-%{release}
++Requires: /bin/bash
++Requires: python-dev
+ BuildRequires : buildreq-distutils3
++BuildRequires : pip
+ BuildRequires : pluggy
+ BuildRequires : py-python
+ BuildRequires : pytest
++BuildRequires : setuptools
+ BuildRequires : tox
+ BuildRequires : virtualenv
+ 
+ %description
+ No detailed description available
+ 
++%package bin
++
++
++
+ %package python
+ Summary: python components for the patch-alarm package.
+ Group: Default
+@@ -44,11 +57,15 @@ python3 components for the patch-alarm package.
+ %setup -q -n patch-alarm-1.0
+ 
+ %build
++## build_prepend content
++%define pythonroot           /usr/lib64/python2.7/site-packages
++%define _sysconfdir	/usr/local/etc
++## build_prepend end
+ export http_proxy=http://127.0.0.1:9/
+ export https_proxy=http://127.0.0.1:9/
+ export no_proxy=localhost,127.0.0.1,0.0.0.0
+ export LANG=C.UTF-8
+ export GCC_IGNORE_WERROR=1
+ export AR=gcc-ar
+ export RANLIB=gcc-ranlib
+@@ -67,12 +84,31 @@ python3 -tt setup.py build  install --root=%{buildroot}
+ echo ----[ mark ]----
+ cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
+ echo ----[ mark ]----
++## install_append content
++python3 setup.py install --root=$RPM_BUILD_ROOT \
++--install-lib=%{pythonroot} \
++--prefix=/usr \
++--install-data=/usr/share \
++--single-version-externally-managed
++install -m 755 -d %{buildroot}%{_bindir}
++install -m 755 -d %{buildroot}%{_sysconfdir}/init.d
++install -m 700 ${RPM_BUILD_DIR}/scripts/bin/patch-alarm-manager \
++%{buildroot}%{_bindir}/patch-alarm-manager
++install -m 700 ${RPM_BUILD_DIR}/scripts/init.d/patch-alarm-manager \
++%{buildroot}%{_sysconfdir}/init.d/patch-alarm-manager
++## install_append end
+ 
+ %files
+ %defattr(-,root,root,-)
++/usr/local/etc/init.d/patch-alarm-manager
++
++%files bin
++%defattr(-,root,root,-)
++/usr/bin/patch-alarm-manager
+ 
+ %files python
+ %defattr(-,root,root,-)
++/usr/lib64/python*/*
+ 
+ %files python3
+ %defattr(-,root,root,-)
+diff --git a/requires_add b/requires_add
+index ecd3915..b1bcfcf 100644
+--- a/requires_add
++++ b/requires_add
+@@ -1,2 +1,4 @@
+ # This file contains additional runtime requirements that did not get
+ # picked up automatically. One name per line, no whitespace.
++python-dev
++/bin/bash
+-- 
+2.23.0
+
+

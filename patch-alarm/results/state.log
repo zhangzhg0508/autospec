@@ -1,0 +1,37 @@
+2019-09-20 10:06:53,000 - Mock Version: 1.2.14
+2019-09-20 10:06:53,263 - Start: dnf update
+2019-09-20 10:07:08,265 - Finish: dnf update
+2019-09-20 10:07:08,271 - Finish: chroot init
+2019-09-20 10:07:08,274 - Start: buildsrpm
+2019-09-20 10:07:08,287 - Start: rpmbuild -bs
+2019-09-20 10:07:08,328 - Finish: rpmbuild -bs
+2019-09-20 10:07:08,329 - Finish: buildsrpm
+2019-09-20 10:07:08,330 - Finish: run
+2019-09-20 10:07:11,436 - Mock Version: 1.2.14
+2019-09-20 10:07:11,700 - Start: dnf update
+2019-09-20 10:07:21,128 - Finish: dnf update
+2019-09-20 10:07:21,134 - Finish: chroot init
+2019-09-20 10:07:21,135 - Start: build phase for patch-alarm-1.0-2.src.rpm
+2019-09-20 10:07:21,137 - Start: build setup for patch-alarm-1.0-2.src.rpm
+2019-09-20 10:07:24,932 - Finish: build setup for patch-alarm-1.0-2.src.rpm
+2019-09-20 10:07:24,932 - Start: rpmbuild patch-alarm-1.0-2.src.rpm
+2019-09-20 10:07:28,956 - Mock Version: 1.2.14
+2019-09-20 10:07:29,205 - Start: dnf update
+2019-09-20 10:07:39,259 - Finish: dnf update
+2019-09-20 10:07:39,264 - Finish: chroot init
+2019-09-20 10:07:39,267 - Start: buildsrpm
+2019-09-20 10:07:39,275 - Start: rpmbuild -bs
+2019-09-20 10:07:39,315 - Finish: rpmbuild -bs
+2019-09-20 10:07:39,316 - Finish: buildsrpm
+2019-09-20 10:07:39,317 - Finish: run
+2019-09-20 10:07:42,533 - Mock Version: 1.2.14
+2019-09-20 10:07:42,791 - Start: dnf update
+2019-09-20 10:07:52,245 - Finish: dnf update
+2019-09-20 10:07:52,250 - Finish: chroot init
+2019-09-20 10:07:52,252 - Start: build phase for patch-alarm-1.0-2.src.rpm
+2019-09-20 10:07:52,254 - Start: build setup for patch-alarm-1.0-2.src.rpm
+2019-09-20 10:07:53,403 - Finish: build setup for patch-alarm-1.0-2.src.rpm
+2019-09-20 10:07:53,403 - Start: rpmbuild patch-alarm-1.0-2.src.rpm
+2019-09-20 10:07:54,071 - Finish: rpmbuild patch-alarm-1.0-2.src.rpm
+2019-09-20 10:07:54,072 - Finish: build phase for patch-alarm-1.0-2.src.rpm
+2019-09-20 10:07:54,073 - Finish: run
