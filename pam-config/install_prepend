@@ -1,0 +1,2 @@
+%define _sysconfdir	/usr/local/etc
+%define _pamconfdir %{_sysconfdir}/pam.d
