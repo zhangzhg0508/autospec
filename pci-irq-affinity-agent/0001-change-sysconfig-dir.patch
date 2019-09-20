@@ -1,0 +1,66 @@
+From a91058e121f12872dd6d0888bc93341d3a2a0747 Mon Sep 17 00:00:00 2001
+From: fuyong <fuyong@neusoft.com>
+Date: Fri, 20 Sep 2019 09:49:49 +0800
+Subject: [PATCH] change-sysconfig-dir
+
+---
+ pci-irq-affinity-agent         | 6 +++---
+ pci-irq-affinity-agent.conf    | 2 +-
+ pci-irq-affinity-agent.service | 4 ++--
+ 3 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/pci-irq-affinity-agent b/pci-irq-affinity-agent
+index 71c2db2..849c14b 100755
+--- a/pci-irq-affinity-agent
++++ b/pci-irq-affinity-agent
+@@ -12,7 +12,7 @@
+ # Provides:          pci-irq-affinity-agent
+ ### END INIT INFO
+ 
+-source /etc/init.d/functions
++source /usr/local/etc/init.d/functions
+ 
+ DAEMON_NAME="pci-irq-affinity-agent"
+ AFFINITYAGENT="/usr/bin/${DAEMON_NAME}"
+@@ -31,8 +31,8 @@ export PATH
+ case "$1" in
+     start)
+         # Check for installation failure
+-        if [ -f /etc/platform/installation_failed ] ; then
+-            logger "$0: /etc/platform/installation_failed flag is set. Aborting."
++        if [ -f /usr/local/etc/platform/installation_failed ] ; then
++            logger "$0: /usr/local/etc/platform/installation_failed flag is set. Aborting."
+             exit 1
+         fi
+ 
+diff --git a/pci-irq-affinity-agent.conf b/pci-irq-affinity-agent.conf
+index ea13f86..1e2617a 100644
+--- a/pci-irq-affinity-agent.conf
++++ b/pci-irq-affinity-agent.conf
+@@ -1,7 +1,7 @@
+ [process]
+ process  = pci-irq-affinity-agent
+ pidfile  = /var/run/pci-irq-affinity-agent.pid
+-script   = /etc/init.d/pci-irq-affinity-agent
++script   = /usr/local/etc/init.d/pci-irq-affinity-agent
+ style    = lsb            ; ocf or lsb
+ severity = major          ; minor, major, critical
+ restarts = 3              ; restarts before error assertion
+diff --git a/pci-irq-affinity-agent.service b/pci-irq-affinity-agent.service
+index 737d75a..74691b1 100644
+--- a/pci-irq-affinity-agent.service
++++ b/pci-irq-affinity-agent.service
+@@ -6,8 +6,8 @@ Before=pmon.service
+ [Service]
+ Type=forking
+ RemainAfterExit=yes
+-ExecStart=/etc/init.d/pci-irq-affinity-agent start
+-ExecStop=/etc/init.d/pci-irq-affinity-agent stop
++ExecStart=/usr/local/etc/init.d/pci-irq-affinity-agent start
++ExecStop=/usr/local/etc/init.d/pci-irq-affinity-agent stop
+ PIDFile=/var/run/pci-irq-affinity-agent.pid
+ 
+ [Install]
+-- 
+2.23.0
+

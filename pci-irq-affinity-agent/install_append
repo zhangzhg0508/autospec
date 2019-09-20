@@ -1,0 +1,21 @@
+python3 setup.py install --root=%{buildroot} \
+                             --install-lib=%{pythonroot} \
+                             --prefix=/usr \
+                             --install-data=/usr/share \
+                             --single-version-externally-managed
+
+%{__install}  -d -m 755 %{buildroot}%{local_etc_initd}
+%{__install}  -p -D -m 755 pci-irq-affinity-agent %{buildroot}%{local_etc_initd}/pci-irq-affinity-agent
+
+%{__install}  -d -m 755 %{buildroot}%{local_etc_pmond}
+%{__install}  -p -D -m 644 pci-irq-affinity-agent.conf %{buildroot}%{local_etc_pmond}/pci-irq-affinity-agent.conf
+%{__install}  -p -D -m 644 pci-irq-affinity-agent.service %{buildroot}%{_unitdir}/pci-irq-affinity-agent.service
+
+%{__install}  -d  %{buildroot}%{_bindir}
+%{__install}  -p -D -m 755 nova-sriov %{buildroot}%{_bindir}/nova-sriov
+
+%{__install}  -d  %{buildroot}%{_sysconfdir}/pci_irq_affinity
+%{__install}  -p -D -m 600 config.ini %{buildroot}%{_sysconfdir}/pci_irq_affinity/config.ini
+
+%post
+/usr/bin/systemctl enable pci-irq-affinity-agent.service >/dev/null 2>&1
