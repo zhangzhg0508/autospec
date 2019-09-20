@@ -1,0 +1,11 @@
+install -m 0644 ovsdb-server.pmon.conf %{buildroot}%{_sysconfdir}/openvswitch/ovsdb-server.pmon.conf
+install -m 0644 ovs-vswitchd.pmon.conf %{buildroot}%{_sysconfdir}/openvswitch/ovs-vswitchd.pmon.conf
+install -d %{buildroot}%{_datadir}/starlingx
+install -m 0640 etc_logrotate.d_openvswitch %{buildroot}%{_datadir}/starlingx/etc_logrotate.d_openvswitch
+
+%post
+if [ $1 -eq 1 ] ; then
+    cp -f %{_datadir}/starlingx/etc_logrotate.d_openvswitch %{_sysconfdir}/logrotate.d/openvswitch
+    chmod 644 %{_sysconfdir}/logrotate.d/openvswitch
+fi
+

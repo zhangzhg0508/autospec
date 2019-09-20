@@ -1,0 +1,37 @@
+2019-09-20 11:16:37,687 - Mock Version: 1.2.14
+2019-09-20 11:16:37,963 - Start: dnf update
+2019-09-20 11:16:48,225 - Finish: dnf update
+2019-09-20 11:16:48,231 - Finish: chroot init
+2019-09-20 11:16:48,234 - Start: buildsrpm
+2019-09-20 11:16:48,239 - Start: rpmbuild -bs
+2019-09-20 11:16:48,279 - Finish: rpmbuild -bs
+2019-09-20 11:16:48,280 - Finish: buildsrpm
+2019-09-20 11:16:48,281 - Finish: run
+2019-09-20 11:16:51,441 - Mock Version: 1.2.14
+2019-09-20 11:16:51,703 - Start: dnf update
+2019-09-20 11:17:01,450 - Finish: dnf update
+2019-09-20 11:17:01,456 - Finish: chroot init
+2019-09-20 11:17:01,457 - Start: build phase for openvswitch-config-1.0-1.src.rpm
+2019-09-20 11:17:01,459 - Start: build setup for openvswitch-config-1.0-1.src.rpm
+2019-09-20 11:17:02,145 - Finish: build setup for openvswitch-config-1.0-1.src.rpm
+2019-09-20 11:17:02,145 - Start: rpmbuild openvswitch-config-1.0-1.src.rpm
+2019-09-20 11:17:05,506 - Mock Version: 1.2.14
+2019-09-20 11:17:05,757 - Start: dnf update
+2019-09-20 11:17:16,007 - Finish: dnf update
+2019-09-20 11:17:16,013 - Finish: chroot init
+2019-09-20 11:17:16,015 - Start: buildsrpm
+2019-09-20 11:17:16,021 - Start: rpmbuild -bs
+2019-09-20 11:17:16,060 - Finish: rpmbuild -bs
+2019-09-20 11:17:16,062 - Finish: buildsrpm
+2019-09-20 11:17:16,063 - Finish: run
+2019-09-20 11:17:19,237 - Mock Version: 1.2.14
+2019-09-20 11:17:19,487 - Start: dnf update
+2019-09-20 11:17:29,021 - Finish: dnf update
+2019-09-20 11:17:29,027 - Finish: chroot init
+2019-09-20 11:17:29,028 - Start: build phase for openvswitch-config-1.0-1.src.rpm
+2019-09-20 11:17:29,030 - Start: build setup for openvswitch-config-1.0-1.src.rpm
+2019-09-20 11:17:29,692 - Finish: build setup for openvswitch-config-1.0-1.src.rpm
+2019-09-20 11:17:29,692 - Start: rpmbuild openvswitch-config-1.0-1.src.rpm
+2019-09-20 11:17:29,816 - Finish: rpmbuild openvswitch-config-1.0-1.src.rpm
+2019-09-20 11:17:29,817 - Finish: build phase for openvswitch-config-1.0-1.src.rpm
+2019-09-20 11:17:29,818 - Finish: run
