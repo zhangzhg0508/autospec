@@ -1,0 +1,13 @@
+install -d $CGCS_DOC_DEPLOY
+mkdir -p $RPM_BUILD_ROOT/%{_sysconfdir}/fm/
+install -m 744 events.yaml $RPM_BUILD_ROOT/%{_sysconfdir}/fm/
+install -m 644 events.yaml $CGCS_DOC_DEPLOY
+install -m 755 checkEventYaml $CGCS_DOC_DEPLOY
+install -m 644 parseEventYaml.py $CGCS_DOC_DEPLOY
+install -m 644 check_missing_alarms.py $CGCS_DOC_DEPLOY
+pushd $CGCS_DOC_DEPLOY
+cp %{cgcs_doc_deploy_dir}/constants.py %{cgcs_doc_deploy_dir}/fmAlarm.h .
+./checkEventYaml
+rm constants.py* fmAlarm.h*
+popd
+

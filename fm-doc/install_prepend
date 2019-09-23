@@ -1,0 +1,3 @@
+%define _sysconfdir	/usr/local/etc
+%define  cgcs_doc_deploy_dir /usr/share/doc/cgcs_doc
+%define debug_package %{nil}

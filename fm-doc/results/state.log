@@ -1,0 +1,37 @@
+2019-09-23 10:48:03,476 - Mock Version: 1.2.14
+2019-09-23 10:48:03,726 - Start: dnf update
+2019-09-23 10:48:13,923 - Finish: dnf update
+2019-09-23 10:48:13,928 - Finish: chroot init
+2019-09-23 10:48:13,931 - Start: buildsrpm
+2019-09-23 10:48:13,939 - Start: rpmbuild -bs
+2019-09-23 10:48:13,978 - Finish: rpmbuild -bs
+2019-09-23 10:48:13,979 - Finish: buildsrpm
+2019-09-23 10:48:13,980 - Finish: run
+2019-09-23 10:48:17,099 - Mock Version: 1.2.14
+2019-09-23 10:48:17,360 - Start: dnf update
+2019-09-23 10:48:27,069 - Finish: dnf update
+2019-09-23 10:48:27,075 - Finish: chroot init
+2019-09-23 10:48:27,076 - Start: build phase for fm-doc-1.0-1.src.rpm
+2019-09-23 10:48:27,079 - Start: build setup for fm-doc-1.0-1.src.rpm
+2019-09-23 10:48:27,923 - Finish: build setup for fm-doc-1.0-1.src.rpm
+2019-09-23 10:48:27,923 - Start: rpmbuild fm-doc-1.0-1.src.rpm
+2019-09-23 10:48:31,916 - Mock Version: 1.2.14
+2019-09-23 10:48:32,170 - Start: dnf update
+2019-09-23 10:48:42,250 - Finish: dnf update
+2019-09-23 10:48:42,256 - Finish: chroot init
+2019-09-23 10:48:42,258 - Start: buildsrpm
+2019-09-23 10:48:42,264 - Start: rpmbuild -bs
+2019-09-23 10:48:42,303 - Finish: rpmbuild -bs
+2019-09-23 10:48:42,304 - Finish: buildsrpm
+2019-09-23 10:48:42,305 - Finish: run
+2019-09-23 10:48:45,318 - Mock Version: 1.2.14
+2019-09-23 10:48:45,579 - Start: dnf update
+2019-09-23 10:48:55,257 - Finish: dnf update
+2019-09-23 10:48:55,262 - Finish: chroot init
+2019-09-23 10:48:55,264 - Start: build phase for fm-doc-1.0-1.src.rpm
+2019-09-23 10:48:55,266 - Start: build setup for fm-doc-1.0-1.src.rpm
+2019-09-23 10:48:56,111 - Finish: build setup for fm-doc-1.0-1.src.rpm
+2019-09-23 10:48:56,111 - Start: rpmbuild fm-doc-1.0-1.src.rpm
+2019-09-23 10:48:56,818 - Finish: rpmbuild fm-doc-1.0-1.src.rpm
+2019-09-23 10:48:56,819 - Finish: build phase for fm-doc-1.0-1.src.rpm
+2019-09-23 10:48:56,820 - Finish: run
