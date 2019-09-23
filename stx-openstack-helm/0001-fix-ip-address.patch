@@ -1,0 +1,59 @@
+From da4ae9884093ccf5fab2d41233c0c740061bff1f Mon Sep 17 00:00:00 2001
+From: fuyong <fuyong@neusoft.com>
+Date: Mon, 23 Sep 2019 11:18:04 +0800
+Subject: [PATCH] fix ip address
+
+---
+ helm-charts/fm-rest-api/requirements.yaml        | 2 +-
+ helm-charts/garbd/requirements.yaml              | 2 +-
+ helm-charts/keystone-api-proxy/requirements.yaml | 2 +-
+ helm-charts/nova-api-proxy/requirements.yaml     | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/helm-charts/fm-rest-api/requirements.yaml b/helm-charts/fm-rest-api/requirements.yaml
+index 4148fb8..6ac9d07 100644
+--- a/helm-charts/fm-rest-api/requirements.yaml
++++ b/helm-charts/fm-rest-api/requirements.yaml
+@@ -4,5 +4,5 @@
+ 
+ dependencies:
+   - name: helm-toolkit
+-    repository: http://localhost:8879/charts
++    repository: http://127.0.0.1:8879/charts
+     version: 0.1.0
+diff --git a/helm-charts/garbd/requirements.yaml b/helm-charts/garbd/requirements.yaml
+index 53782e6..6df71ab 100644
+--- a/helm-charts/garbd/requirements.yaml
++++ b/helm-charts/garbd/requirements.yaml
+@@ -14,5 +14,5 @@
+ 
+ dependencies:
+   - name: helm-toolkit
+-    repository: http://localhost:8879/charts
++    repository: http://127.0.0.1:8879/charts
+     version: 0.1.0
+diff --git a/helm-charts/keystone-api-proxy/requirements.yaml b/helm-charts/keystone-api-proxy/requirements.yaml
+index bab4972..ebd528e 100644
+--- a/helm-charts/keystone-api-proxy/requirements.yaml
++++ b/helm-charts/keystone-api-proxy/requirements.yaml
+@@ -6,5 +6,5 @@
+ 
+ dependencies:
+   - name: helm-toolkit
+-    repository: http://localhost:8879/charts
++    repository: http://127.0.0.1:8879/charts
+     version: 0.1.0
+diff --git a/helm-charts/nova-api-proxy/requirements.yaml b/helm-charts/nova-api-proxy/requirements.yaml
+index cb3c044..7183978 100644
+--- a/helm-charts/nova-api-proxy/requirements.yaml
++++ b/helm-charts/nova-api-proxy/requirements.yaml
+@@ -6,5 +6,5 @@
+ 
+ dependencies:
+   - name: helm-toolkit
+-    repository: http://localhost:8879/charts
++    repository: http://127.0.0.1:8879/charts
+     version: 0.1.0
+-- 
+2.23.0
+

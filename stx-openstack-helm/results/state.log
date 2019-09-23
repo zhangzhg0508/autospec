@@ -1,0 +1,37 @@
+2019-09-23 11:36:32,333 - Mock Version: 1.2.14
+2019-09-23 11:36:32,581 - Start: dnf update
+2019-09-23 11:36:42,672 - Finish: dnf update
+2019-09-23 11:36:42,678 - Finish: chroot init
+2019-09-23 11:36:42,680 - Start: buildsrpm
+2019-09-23 11:36:42,686 - Start: rpmbuild -bs
+2019-09-23 11:36:42,725 - Finish: rpmbuild -bs
+2019-09-23 11:36:42,727 - Finish: buildsrpm
+2019-09-23 11:36:42,727 - Finish: run
+2019-09-23 11:36:45,797 - Mock Version: 1.2.14
+2019-09-23 11:36:46,069 - Start: dnf update
+2019-09-23 11:36:55,982 - Finish: dnf update
+2019-09-23 11:36:55,987 - Finish: chroot init
+2019-09-23 11:36:55,989 - Start: build phase for stx-openstack-helm-1.0-1.src.rpm
+2019-09-23 11:36:55,991 - Start: build setup for stx-openstack-helm-1.0-1.src.rpm
+2019-09-23 11:36:57,350 - Finish: build setup for stx-openstack-helm-1.0-1.src.rpm
+2019-09-23 11:36:57,350 - Start: rpmbuild stx-openstack-helm-1.0-1.src.rpm
+2019-09-23 11:37:01,519 - Mock Version: 1.2.14
+2019-09-23 11:37:01,745 - Start: dnf update
+2019-09-23 11:37:12,066 - Finish: dnf update
+2019-09-23 11:37:12,072 - Finish: chroot init
+2019-09-23 11:37:12,075 - Start: buildsrpm
+2019-09-23 11:37:12,080 - Start: rpmbuild -bs
+2019-09-23 11:37:12,119 - Finish: rpmbuild -bs
+2019-09-23 11:37:12,121 - Finish: buildsrpm
+2019-09-23 11:37:12,122 - Finish: run
+2019-09-23 11:37:15,274 - Mock Version: 1.2.14
+2019-09-23 11:37:15,666 - Start: dnf update
+2019-09-23 11:37:25,362 - Finish: dnf update
+2019-09-23 11:37:25,368 - Finish: chroot init
+2019-09-23 11:37:25,369 - Start: build phase for stx-openstack-helm-1.0-1.src.rpm
+2019-09-23 11:37:25,371 - Start: build setup for stx-openstack-helm-1.0-1.src.rpm
+2019-09-23 11:37:26,697 - Finish: build setup for stx-openstack-helm-1.0-1.src.rpm
+2019-09-23 11:37:26,697 - Start: rpmbuild stx-openstack-helm-1.0-1.src.rpm
+2019-09-23 11:37:27,476 - Finish: rpmbuild stx-openstack-helm-1.0-1.src.rpm
+2019-09-23 11:37:27,477 - Finish: build phase for stx-openstack-helm-1.0-1.src.rpm
+2019-09-23 11:37:27,478 - Finish: run

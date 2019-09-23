@@ -1,0 +1,5 @@
+install -p -D -m 755 files/metadata.yaml ${RPM_BUILD_ROOT}%{app_folder}
+install -d -m 755 ${RPM_BUILD_ROOT}%{helm_folder}
+install -p -D -m 755 helm-charts/*.tgz ${RPM_BUILD_ROOT}%{helm_folder}
+install -d -m 755 ${RPM_BUILD_ROOT}%{armada_folder}
+install -p -D -m 755 manifests/*.yaml ${RPM_BUILD_ROOT}%{armada_folder}
