@@ -1,0 +1,25 @@
+From 096d41651f2cdd1455ae188d98082ec1758d2627 Mon Sep 17 00:00:00 2001
+From: fuyong <fuyong@neusoft.com>
+Date: Fri, 20 Sep 2019 15:06:56 +0800
+Subject: [PATCH openstack-helm-infra] openstack-helm-infra: Autospec creation
+ for update from version 1 to version 1.0
+
+---
+ Makefile                  | 2 +-
+ openstack-helm-infra.spec | 8 ++++----
+ options.conf              | 2 +-
+ upstream                  | 2 +-
+ 4 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/options.conf b/options.conf
+index 82fcf47..0f707b7 100644
+--- a/options.conf
++++ b/options.conf
+@@ -1,6 +1,6 @@
+ [package]
+ name = openstack-helm-infra
+-url = file:///home/clr/stx-tar/openstack-helm-infra-aae64213c95fbcea7a0a7671dcb9d8a366f16fa5.tar.gz
++url = file:///home/clr/stx-tar/openstack-helm-infra-1.0.tar.gz
+ archives = file:///home/clr/stx-tar/repositories.tar.gz :
+ giturl = 
+ 

@@ -1,0 +1,109 @@
+From 70172f755d5b5dc15553b81d8b7e9251c6a9efdf Mon Sep 17 00:00:00 2001
+From: fuyong <fuyong@neusoft.com>
+Date: Fri, 20 Sep 2019 14:24:42 +0800
+Subject: [PATCH] fix ip address
+
+---
+ openstack-helm-infra/ceph-rgw/requirements.yaml    | 2 +-
+ openstack-helm-infra/gnocchi/requirements.yaml     | 4 ++--
+ openstack-helm-infra/ingress/requirements.yaml     | 2 +-
+ openstack-helm-infra/libvirt/requirements.yaml     | 2 +-
+ openstack-helm-infra/mariadb/requirements.yaml     | 2 +-
+ openstack-helm-infra/memcached/requirements.yaml   | 2 +-
+ openstack-helm-infra/openvswitch/requirements.yaml | 2 +-
+ openstack-helm-infra/rabbitmq/requirements.yaml    | 2 +-
+ 8 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/openstack-helm-infra/ceph-rgw/requirements.yaml b/openstack-helm-infra/ceph-rgw/requirements.yaml
+index 53782e6..6df71ab 100644
+--- a/openstack-helm-infra/ceph-rgw/requirements.yaml
++++ b/openstack-helm-infra/ceph-rgw/requirements.yaml
+@@ -14,5 +14,5 @@
+ 
+ dependencies:
+   - name: helm-toolkit
+-    repository: http://localhost:8879/charts
++    repository: http://127.0.0.1:8879/charts
+     version: 0.1.0
+diff --git a/openstack-helm-infra/gnocchi/requirements.yaml b/openstack-helm-infra/gnocchi/requirements.yaml
+index 4a8b1c6..6df71ab 100644
+--- a/openstack-helm-infra/gnocchi/requirements.yaml
++++ b/openstack-helm-infra/gnocchi/requirements.yaml
+@@ -14,5 +14,5 @@
+ 
+ dependencies:
+   - name: helm-toolkit
+-    repository: http://localhost:8879/charts
+-    version: 0.1.0
+\ No newline at end of file
++    repository: http://127.0.0.1:8879/charts
++    version: 0.1.0
+diff --git a/openstack-helm-infra/ingress/requirements.yaml b/openstack-helm-infra/ingress/requirements.yaml
+index 53782e6..6df71ab 100644
+--- a/openstack-helm-infra/ingress/requirements.yaml
++++ b/openstack-helm-infra/ingress/requirements.yaml
+@@ -14,5 +14,5 @@
+ 
+ dependencies:
+   - name: helm-toolkit
+-    repository: http://localhost:8879/charts
++    repository: http://127.0.0.1:8879/charts
+     version: 0.1.0
+diff --git a/openstack-helm-infra/libvirt/requirements.yaml b/openstack-helm-infra/libvirt/requirements.yaml
+index 53782e6..6df71ab 100644
+--- a/openstack-helm-infra/libvirt/requirements.yaml
++++ b/openstack-helm-infra/libvirt/requirements.yaml
+@@ -14,5 +14,5 @@
+ 
+ dependencies:
+   - name: helm-toolkit
+-    repository: http://localhost:8879/charts
++    repository: http://127.0.0.1:8879/charts
+     version: 0.1.0
+diff --git a/openstack-helm-infra/mariadb/requirements.yaml b/openstack-helm-infra/mariadb/requirements.yaml
+index 53782e6..6df71ab 100644
+--- a/openstack-helm-infra/mariadb/requirements.yaml
++++ b/openstack-helm-infra/mariadb/requirements.yaml
+@@ -14,5 +14,5 @@
+ 
+ dependencies:
+   - name: helm-toolkit
+-    repository: http://localhost:8879/charts
++    repository: http://127.0.0.1:8879/charts
+     version: 0.1.0
+diff --git a/openstack-helm-infra/memcached/requirements.yaml b/openstack-helm-infra/memcached/requirements.yaml
+index 53782e6..6df71ab 100644
+--- a/openstack-helm-infra/memcached/requirements.yaml
++++ b/openstack-helm-infra/memcached/requirements.yaml
+@@ -14,5 +14,5 @@
+ 
+ dependencies:
+   - name: helm-toolkit
+-    repository: http://localhost:8879/charts
++    repository: http://127.0.0.1:8879/charts
+     version: 0.1.0
+diff --git a/openstack-helm-infra/openvswitch/requirements.yaml b/openstack-helm-infra/openvswitch/requirements.yaml
+index 53782e6..6df71ab 100644
+--- a/openstack-helm-infra/openvswitch/requirements.yaml
++++ b/openstack-helm-infra/openvswitch/requirements.yaml
+@@ -14,5 +14,5 @@
+ 
+ dependencies:
+   - name: helm-toolkit
+-    repository: http://localhost:8879/charts
++    repository: http://127.0.0.1:8879/charts
+     version: 0.1.0
+diff --git a/openstack-helm-infra/rabbitmq/requirements.yaml b/openstack-helm-infra/rabbitmq/requirements.yaml
+index 53782e6..6df71ab 100644
+--- a/openstack-helm-infra/rabbitmq/requirements.yaml
++++ b/openstack-helm-infra/rabbitmq/requirements.yaml
+@@ -14,5 +14,5 @@
+ 
+ dependencies:
+   - name: helm-toolkit
+-    repository: http://localhost:8879/charts
++    repository: http://127.0.0.1:8879/charts
+     version: 0.1.0
+-- 
+2.23.0
+

@@ -1,0 +1,33 @@
+%define helm_home %{getenv:HOME}/.helm
+export PBR_VERSION=%{version}
+mkdir %{helm_home}
+mkdir %{helm_home}/repository
+mkdir %{helm_home}/repository/cache
+mkdir %{helm_home}/repository/local
+mkdir %{helm_home}/plugins
+mkdir %{helm_home}/starters
+mkdir %{helm_home}/cache
+mkdir %{helm_home}/cache/archive
+
+# Stage a repository file that only has a local repo
+tar -zxvf %{SOURCE1}
+cp repositories.yaml %{helm_home}/repository/repositories.yaml
+
+# Host a server for the charts
+helm serve /tmp/charts --address 127.0.0.1:8879 --url http://127.0.0.1:8879/charts &
+helm repo rm local
+helm repo add local http://127.0.0.1:8879/charts
+
+# Make the charts. These produce tgz files
+make helm-toolkit
+make gnocchi
+make ingress
+make libvirt
+make mariadb
+make memcached
+make openvswitch
+make rabbitmq
+make ceph-rgw
+
+# terminate helm server (the last backgrounded task)
+kill %1

@@ -1,0 +1,37 @@
+2019-09-20 15:05:37,064 - Mock Version: 1.2.14
+2019-09-20 15:05:37,310 - Start: dnf update
+2019-09-20 15:05:51,434 - Finish: dnf update
+2019-09-20 15:05:51,440 - Finish: chroot init
+2019-09-20 15:05:51,443 - Start: buildsrpm
+2019-09-20 15:05:51,453 - Start: rpmbuild -bs
+2019-09-20 15:05:51,494 - Finish: rpmbuild -bs
+2019-09-20 15:05:51,496 - Finish: buildsrpm
+2019-09-20 15:05:51,496 - Finish: run
+2019-09-20 15:05:54,717 - Mock Version: 1.2.14
+2019-09-20 15:05:54,964 - Start: dnf update
+2019-09-20 15:06:11,548 - Finish: dnf update
+2019-09-20 15:06:11,554 - Finish: chroot init
+2019-09-20 15:06:11,555 - Start: build phase for openstack-helm-infra-1.0-1.src.rpm
+2019-09-20 15:06:11,557 - Start: build setup for openstack-helm-infra-1.0-1.src.rpm
+2019-09-20 15:06:12,956 - Finish: build setup for openstack-helm-infra-1.0-1.src.rpm
+2019-09-20 15:06:12,957 - Start: rpmbuild openstack-helm-infra-1.0-1.src.rpm
+2019-09-20 15:06:18,418 - Mock Version: 1.2.14
+2019-09-20 15:06:18,667 - Start: dnf update
+2019-09-20 15:06:30,909 - Finish: dnf update
+2019-09-20 15:06:30,914 - Finish: chroot init
+2019-09-20 15:06:30,917 - Start: buildsrpm
+2019-09-20 15:06:30,928 - Start: rpmbuild -bs
+2019-09-20 15:06:30,971 - Finish: rpmbuild -bs
+2019-09-20 15:06:30,973 - Finish: buildsrpm
+2019-09-20 15:06:30,973 - Finish: run
+2019-09-20 15:06:34,054 - Mock Version: 1.2.14
+2019-09-20 15:06:34,326 - Start: dnf update
+2019-09-20 15:06:52,257 - Finish: dnf update
+2019-09-20 15:06:52,262 - Finish: chroot init
+2019-09-20 15:06:52,263 - Start: build phase for openstack-helm-infra-1.0-1.src.rpm
+2019-09-20 15:06:52,266 - Start: build setup for openstack-helm-infra-1.0-1.src.rpm
+2019-09-20 15:06:53,670 - Finish: build setup for openstack-helm-infra-1.0-1.src.rpm
+2019-09-20 15:06:53,670 - Start: rpmbuild openstack-helm-infra-1.0-1.src.rpm
+2019-09-20 15:06:55,500 - Finish: rpmbuild openstack-helm-infra-1.0-1.src.rpm
+2019-09-20 15:06:55,501 - Finish: build phase for openstack-helm-infra-1.0-1.src.rpm
+2019-09-20 15:06:55,501 - Finish: run
