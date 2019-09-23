@@ -1,37 +1,37 @@
-2019-09-11 08:19:03,513 - Mock Version: 1.2.14
-2019-09-11 08:19:03,760 - Start: dnf update
-2019-09-11 08:19:14,863 - Finish: dnf update
-2019-09-11 08:19:14,868 - Finish: chroot init
-2019-09-11 08:19:14,871 - Start: buildsrpm
-2019-09-11 08:19:14,881 - Start: rpmbuild -bs
-2019-09-11 08:19:14,919 - Finish: rpmbuild -bs
-2019-09-11 08:19:14,920 - Finish: buildsrpm
-2019-09-11 08:19:14,921 - Finish: run
-2019-09-11 08:19:17,983 - Mock Version: 1.2.14
-2019-09-11 08:19:18,246 - Start: dnf update
-2019-09-11 08:19:29,855 - Finish: dnf update
-2019-09-11 08:19:29,861 - Finish: chroot init
-2019-09-11 08:19:29,862 - Start: build phase for dhcp-config-1.0-1.src.rpm
-2019-09-11 08:19:29,864 - Start: build setup for dhcp-config-1.0-1.src.rpm
-2019-09-11 08:19:30,522 - Finish: build setup for dhcp-config-1.0-1.src.rpm
-2019-09-11 08:19:30,522 - Start: rpmbuild dhcp-config-1.0-1.src.rpm
-2019-09-11 08:19:33,732 - Mock Version: 1.2.14
-2019-09-11 08:19:33,976 - Start: dnf update
-2019-09-11 08:19:45,934 - Finish: dnf update
-2019-09-11 08:19:45,939 - Finish: chroot init
-2019-09-11 08:19:45,942 - Start: buildsrpm
-2019-09-11 08:19:45,948 - Start: rpmbuild -bs
-2019-09-11 08:19:45,986 - Finish: rpmbuild -bs
-2019-09-11 08:19:45,987 - Finish: buildsrpm
-2019-09-11 08:19:45,988 - Finish: run
-2019-09-11 08:19:49,034 - Mock Version: 1.2.14
-2019-09-11 08:19:49,288 - Start: dnf update
-2019-09-11 08:19:59,795 - Finish: dnf update
-2019-09-11 08:19:59,800 - Finish: chroot init
-2019-09-11 08:19:59,802 - Start: build phase for dhcp-config-1.0-1.src.rpm
-2019-09-11 08:19:59,804 - Start: build setup for dhcp-config-1.0-1.src.rpm
-2019-09-11 08:20:00,468 - Finish: build setup for dhcp-config-1.0-1.src.rpm
-2019-09-11 08:20:00,469 - Start: rpmbuild dhcp-config-1.0-1.src.rpm
-2019-09-11 08:20:00,581 - Finish: rpmbuild dhcp-config-1.0-1.src.rpm
-2019-09-11 08:20:00,583 - Finish: build phase for dhcp-config-1.0-1.src.rpm
-2019-09-11 08:20:00,583 - Finish: run
+2019-09-23 03:06:55,247 - Mock Version: 1.2.14
+2019-09-23 03:06:55,506 - Start: dnf update
+2019-09-23 03:07:06,068 - Finish: dnf update
+2019-09-23 03:07:06,073 - Finish: chroot init
+2019-09-23 03:07:06,076 - Start: buildsrpm
+2019-09-23 03:07:06,102 - Start: rpmbuild -bs
+2019-09-23 03:07:06,140 - Finish: rpmbuild -bs
+2019-09-23 03:07:06,142 - Finish: buildsrpm
+2019-09-23 03:07:06,142 - Finish: run
+2019-09-23 03:07:09,182 - Mock Version: 1.2.14
+2019-09-23 03:07:09,434 - Start: dnf update
+2019-09-23 03:07:18,979 - Finish: dnf update
+2019-09-23 03:07:18,985 - Finish: chroot init
+2019-09-23 03:07:18,986 - Start: build phase for dhcp-config-1.0-2.src.rpm
+2019-09-23 03:07:18,989 - Start: build setup for dhcp-config-1.0-2.src.rpm
+2019-09-23 03:07:19,638 - Finish: build setup for dhcp-config-1.0-2.src.rpm
+2019-09-23 03:07:19,638 - Start: rpmbuild dhcp-config-1.0-2.src.rpm
+2019-09-23 03:07:22,802 - Mock Version: 1.2.14
+2019-09-23 03:07:23,047 - Start: dnf update
+2019-09-23 03:07:33,033 - Finish: dnf update
+2019-09-23 03:07:33,039 - Finish: chroot init
+2019-09-23 03:07:33,042 - Start: buildsrpm
+2019-09-23 03:07:33,050 - Start: rpmbuild -bs
+2019-09-23 03:07:33,088 - Finish: rpmbuild -bs
+2019-09-23 03:07:33,090 - Finish: buildsrpm
+2019-09-23 03:07:33,091 - Finish: run
+2019-09-23 03:07:36,145 - Mock Version: 1.2.14
+2019-09-23 03:07:36,406 - Start: dnf update
+2019-09-23 03:07:46,303 - Finish: dnf update
+2019-09-23 03:07:46,309 - Finish: chroot init
+2019-09-23 03:07:46,310 - Start: build phase for dhcp-config-1.0-2.src.rpm
+2019-09-23 03:07:46,313 - Start: build setup for dhcp-config-1.0-2.src.rpm
+2019-09-23 03:07:46,980 - Finish: build setup for dhcp-config-1.0-2.src.rpm
+2019-09-23 03:07:46,980 - Start: rpmbuild dhcp-config-1.0-2.src.rpm
+2019-09-23 03:07:47,095 - Finish: rpmbuild dhcp-config-1.0-2.src.rpm
+2019-09-23 03:07:47,096 - Finish: build phase for dhcp-config-1.0-2.src.rpm
+2019-09-23 03:07:47,097 - Finish: run

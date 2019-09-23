@@ -23,6 +23,6 @@ Start: buildsrpm
 Start: rpmbuild -bs
 Finish: rpmbuild -bs
 Finish: buildsrpm
-INFO: Done(dhcp-config.spec) Config(clear) 0 minutes 12 seconds
+INFO: Done(dhcp-config.spec) Config(clear) 0 minutes 13 seconds
 INFO: Results and/or logs in: results/
 Finish: run
