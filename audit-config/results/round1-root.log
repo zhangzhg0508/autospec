@@ -3,7 +3,7 @@ DEBUG util.py:96:  ensuring that dir exists: /var/lib/mock/clear-audit-config/ro
 DEBUG util.py:99:  creating dir: /var/lib/mock/clear-audit-config/root/dev/pts
 DEBUG util.py:96:  ensuring that dir exists: /var/lib/mock/clear-audit-config/root/dev/shm
 DEBUG util.py:99:  creating dir: /var/lib/mock/clear-audit-config/root/dev/shm
-DEBUG buildroot.py:445:  kernel version == 5.2.8-818.native
+DEBUG buildroot.py:445:  kernel version == 5.2.15-834.native
 DEBUG util.py:108:  touching file: /var/lib/mock/clear-audit-config/root/etc/fstab
 DEBUG util.py:108:  touching file: /var/lib/mock/clear-audit-config/root/etc/yum.conf
 DEBUG util.py:108:  touching file: /var/lib/mock/clear-audit-config/root/etc/dnf.conf
@@ -78,6 +78,9 @@ DEBUG util.py:399:   bzip2                             x86_64   1.0.8-53        
 DEBUG util.py:399:   bzip2-lib                         x86_64   1.0.8-53              local   119 k
 DEBUG util.py:399:   compat-readline-soname7-lib       x86_64   7.0-5                 local   529 k
 DEBUG util.py:399:   compat-readline-soname7-license   x86_64   7.0-5                 local    18 k
+DEBUG util.py:399:   curl-bin                          x86_64   7.66.0-98             local   124 k
+DEBUG util.py:399:   curl-lib                          x86_64   7.66.0-98             local   195 k
+DEBUG util.py:399:   curl-license                      x86_64   7.66.0-98             local   6.9 k
 DEBUG util.py:399:   expat-lib                         x86_64   2.2.8-40              local   145 k
 DEBUG util.py:399:   expat-license                     x86_64   2.2.8-40              local   7.0 k
 DEBUG util.py:399:   gcc                               x86_64   9.2.1-645             local    82 M
@@ -90,9 +93,12 @@ DEBUG util.py:399:   glibc-locale                      x86_64   2.30-287        
 DEBUG util.py:399:   glibc-utils                       x86_64   2.30-287              local   200 k
 DEBUG util.py:399:   libc6                             x86_64   2.30-287              local   6.2 M
 DEBUG util.py:399:   libc6-dev                         x86_64   2.30-287              local   5.7 k
-DEBUG util.py:399:   libcap                            x86_64   2.27-34               local   5.9 k
+DEBUG util.py:399:   libcap                            x86_64   2.27-36               local   5.9 k
 DEBUG util.py:399:   libgcc1                           x86_64   9.2.1-645             local    54 k
 DEBUG util.py:399:   libstdc++                         x86_64   9.2.1-645             local   672 k
+DEBUG util.py:399:   openssl                           x86_64   1.1.1d-89             local   287 k
+DEBUG util.py:399:   openssl-lib                       x86_64   1.1.1d-89             local   1.4 M
+DEBUG util.py:399:   python3-core                      x86_64   3.7.4-185             local    13 M
 DEBUG util.py:399:   sqlite-autoconf-lib               x86_64   3290000-72            local   803 k
 DEBUG util.py:399:   zip                               x86_64   3.0-24                local   5.9 k
 DEBUG util.py:399:   zip-bin                           x86_64   3.0-24                local   252 k
@@ -154,9 +160,6 @@ DEBUG util.py:399:   cracklib-lib                      x86_64   2.9.7-42        
 DEBUG util.py:399:   cracklib-license                  x86_64   2.9.7-42              local    19 k
 DEBUG util.py:399:   cryptsetup-lib                    x86_64   2.0.6-55              local   361 k
 DEBUG util.py:399:   cryptsetup-license                x86_64   2.0.6-55              local    21 k
-DEBUG util.py:399:   curl-bin                          x86_64   7.65.3-97             local   122 k
-DEBUG util.py:399:   curl-lib                          x86_64   7.65.3-97             local   195 k
-DEBUG util.py:399:   curl-license                      x86_64   7.65.3-97             local   6.9 k
 DEBUG util.py:399:   db                                x86_64   5.3.28-17             local   567 k
 DEBUG util.py:399:   dbus-config                       x86_64   1.12.16-71            local   6.5 k
 DEBUG util.py:399:   dbus-data                         x86_64   1.12.16-71            local    10 k
@@ -290,8 +293,6 @@ DEBUG util.py:399:   nspr                              x86_64   4.22-24         
 DEBUG util.py:399:   nss-altfiles                      x86_64   2.19.4-21             local   5.9 k
 DEBUG util.py:399:   nss-altfiles-lib                  x86_64   2.19.4-21             local    23 k
 DEBUG util.py:399:   nss-lib                           x86_64   3.46-30               local   1.1 M
-DEBUG util.py:399:   openssl                           x86_64   1.1.1c-88             local   286 k
-DEBUG util.py:399:   openssl-lib                       x86_64   1.1.1c-88             local   1.4 M
 DEBUG util.py:399:   p11-kit                           x86_64   0.23.15-54            local   6.3 k
 DEBUG util.py:399:   p11-kit-bin                       x86_64   0.23.15-54            local    85 k
 DEBUG util.py:399:   p11-kit-data                      x86_64   0.23.15-54            local   6.8 k
@@ -324,7 +325,6 @@ DEBUG util.py:399:   plzip                             x86_64   1.8-2           
 DEBUG util.py:399:   plzip-license                     x86_64   1.8-2                 local    13 k
 DEBUG util.py:399:   plzip-man                         x86_64   1.8-2                 local   8.3 k
 DEBUG util.py:399:   popt-lib                          x86_64   1.16-19               local    27 k
-DEBUG util.py:399:   python3-core                      x86_64   3.7.4-182             local    13 M
 DEBUG util.py:399:   rpm                               x86_64   4.12.0.2-92           local   158 k
 DEBUG util.py:399:   rpm-build                         x86_64   4.12.0.2-92           local   165 k
 DEBUG util.py:399:   rpm-libs                          x86_64   4.12.0.2-92           local   1.4 M
@@ -383,14 +383,14 @@ DEBUG util.py:399:  Installing dependencies:
 DEBUG util.py:399:   bzip2-bin                         x86_64   1.0.8-53              local    31 k
 DEBUG util.py:399:   bzip2-license                     x86_64   1.0.8-53              local   7.2 k
 DEBUG util.py:399:   bzip2-man                         x86_64   1.0.8-53              local    16 k
-DEBUG util.py:399:   libcap-bin                        x86_64   2.27-34               local    22 k
-DEBUG util.py:399:   libcap-lib                        x86_64   2.27-34               local    18 k
-DEBUG util.py:399:   libcap-license                    x86_64   2.27-34               local    14 k
-DEBUG util.py:399:   libcap-man                        x86_64   2.27-34               local   9.4 k
+DEBUG util.py:399:   libcap-bin                        x86_64   2.27-36               local    22 k
+DEBUG util.py:399:   libcap-lib                        x86_64   2.27-36               local    18 k
+DEBUG util.py:399:   libcap-license                    x86_64   2.27-36               local    14 k
+DEBUG util.py:399:   libcap-man                        x86_64   2.27-36               local   9.4 k
 DEBUG util.py:399:  Transaction Summary
 DEBUG util.py:399:  ================================================================================
 DEBUG util.py:399:  Install   7 Packages
-DEBUG util.py:399:  Upgrade  24 Packages
+DEBUG util.py:399:  Upgrade  30 Packages
 DEBUG util.py:399:  Total size: 254 M
 DEBUG util.py:399:  Downloading Packages:
 DEBUG util.py:399:  Running transaction check
@@ -403,6 +403,9 @@ DEBUG util.py:399:    bzip2-1.0.8-53.x86_64
 DEBUG util.py:399:    bzip2-lib-1.0.8-53.x86_64                                                     
 DEBUG util.py:399:    compat-readline-soname7-lib-7.0-5.x86_64                                      
 DEBUG util.py:399:    compat-readline-soname7-license-7.0-5.x86_64                                  
+DEBUG util.py:399:    curl-bin-7.66.0-98.x86_64                                                     
+DEBUG util.py:399:    curl-lib-7.66.0-98.x86_64                                                     
+DEBUG util.py:399:    curl-license-7.66.0-98.x86_64                                                 
 DEBUG util.py:399:    expat-lib-2.2.8-40.x86_64                                                     
 DEBUG util.py:399:    expat-license-2.2.8-40.x86_64                                                 
 DEBUG util.py:399:    gcc-9.2.1-645.x86_64                                                          
@@ -415,9 +418,12 @@ DEBUG util.py:399:    glibc-locale-2.30-287.x86_64
 DEBUG util.py:399:    glibc-utils-2.30-287.x86_64                                                   
 DEBUG util.py:399:    libc6-2.30-287.x86_64                                                         
 DEBUG util.py:399:    libc6-dev-2.30-287.x86_64                                                     
-DEBUG util.py:399:    libcap-2.27-34.x86_64                                                         
+DEBUG util.py:399:    libcap-2.27-36.x86_64                                                         
 DEBUG util.py:399:    libgcc1-9.2.1-645.x86_64                                                      
 DEBUG util.py:399:    libstdc++-9.2.1-645.x86_64                                                    
+DEBUG util.py:399:    openssl-1.1.1d-89.x86_64                                                      
+DEBUG util.py:399:    openssl-lib-1.1.1d-89.x86_64                                                  
+DEBUG util.py:399:    python3-core-3.7.4-185.x86_64                                                 
 DEBUG util.py:399:    sqlite-autoconf-lib-3290000-72.x86_64                                         
 DEBUG util.py:399:    zip-3.0-24.x86_64                                                             
 DEBUG util.py:399:    zip-bin-3.0-24.x86_64                                                         
@@ -425,9 +431,9 @@ DEBUG util.py:399:    zip-license-3.0-24.x86_64
 DEBUG util.py:399:    zip-man-3.0-24.x86_64                                                         
 DEBUG util.py:399:  Installed:
 DEBUG util.py:399:    bzip2-bin-1.0.8-53.x86_64            bzip2-license-1.0.8-53.x86_64           
-DEBUG util.py:399:    bzip2-man-1.0.8-53.x86_64            libcap-bin-2.27-34.x86_64               
-DEBUG util.py:399:    libcap-lib-2.27-34.x86_64            libcap-license-2.27-34.x86_64           
-DEBUG util.py:399:    libcap-man-2.27-34.x86_64           
+DEBUG util.py:399:    bzip2-man-1.0.8-53.x86_64            libcap-bin-2.27-36.x86_64               
+DEBUG util.py:399:    libcap-lib-2.27-36.x86_64            libcap-license-2.27-36.x86_64           
+DEBUG util.py:399:    libcap-man-2.27-36.x86_64           
 DEBUG util.py:399:  Reinstalled:
 DEBUG util.py:399:    Linux-PAM-data-1.3.1-46.x86_64                                                
 DEBUG util.py:399:    Linux-PAM-lib-1.3.1-46.x86_64                                                 
@@ -484,9 +490,6 @@ DEBUG util.py:399:    cracklib-lib-2.9.7-42.x86_64
 DEBUG util.py:399:    cracklib-license-2.9.7-42.x86_64                                              
 DEBUG util.py:399:    cryptsetup-lib-2.0.6-55.x86_64                                                
 DEBUG util.py:399:    cryptsetup-license-2.0.6-55.x86_64                                            
-DEBUG util.py:399:    curl-bin-7.65.3-97.x86_64                                                     
-DEBUG util.py:399:    curl-lib-7.65.3-97.x86_64                                                     
-DEBUG util.py:399:    curl-license-7.65.3-97.x86_64                                                 
 DEBUG util.py:399:    db-5.3.28-17.x86_64                                                           
 DEBUG util.py:399:    dbus-config-1.12.16-71.x86_64                                                 
 DEBUG util.py:399:    dbus-data-1.12.16-71.x86_64                                                   
@@ -620,8 +623,6 @@ DEBUG util.py:399:    nspr-4.22-24.x86_64
 DEBUG util.py:399:    nss-altfiles-2.19.4-21.x86_64                                                 
 DEBUG util.py:399:    nss-altfiles-lib-2.19.4-21.x86_64                                             
 DEBUG util.py:399:    nss-lib-3.46-30.x86_64                                                        
-DEBUG util.py:399:    openssl-1.1.1c-88.x86_64                                                      
-DEBUG util.py:399:    openssl-lib-1.1.1c-88.x86_64                                                  
 DEBUG util.py:399:    p11-kit-0.23.15-54.x86_64                                                     
 DEBUG util.py:399:    p11-kit-bin-0.23.15-54.x86_64                                                 
 DEBUG util.py:399:    p11-kit-data-0.23.15-54.x86_64                                                
@@ -654,7 +655,6 @@ DEBUG util.py:399:    plzip-1.8-2.x86_64
 DEBUG util.py:399:    plzip-license-1.8-2.x86_64                                                    
 DEBUG util.py:399:    plzip-man-1.8-2.x86_64                                                        
 DEBUG util.py:399:    popt-lib-1.16-19.x86_64                                                       
-DEBUG util.py:399:    python3-core-3.7.4-182.x86_64                                                 
 DEBUG util.py:399:    rpm-4.12.0.2-92.x86_64                                                        
 DEBUG util.py:399:    rpm-build-4.12.0.2-92.x86_64                                                  
 DEBUG util.py:399:    rpm-libs-4.12.0.2-92.x86_64                                                   
@@ -713,13 +713,13 @@ DEBUG util.py:399:  Complete!
 DEBUG util.py:526:  Child return code was: 0
 DEBUG util.py:108:  touching file: /var/lib/mock/clear-audit-config/root/.initialized
 DEBUG util.py:546:  child environment: None
-DEBUG util.py:479:  Executing command: ['/bin/rpm', '-Uvh', '--nodeps', '/builddir/build/originals/audit-config-1.0-1.src.rpm'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+DEBUG util.py:479:  Executing command: ['/bin/rpm', '-Uvh', '--nodeps', '/builddir/build/originals/audit-config-1.0-2.src.rpm'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
 DEBUG util.py:273:  Unsharing. Flags: 134217728
 DEBUG util.py:399:  Updating / installing...
-DEBUG util.py:399:  audit-config-1.0-1                    ########################################
+DEBUG util.py:399:  audit-config-1.0-2                    ########################################
 DEBUG util.py:526:  Child return code was: 0
 DEBUG util.py:546:  child environment: None
-DEBUG util.py:479:  Executing command: ['/bin/rpm', '-qpl', '/builddir/build/originals/audit-config-1.0-1.src.rpm'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+DEBUG util.py:479:  Executing command: ['/bin/rpm', '-qpl', '/builddir/build/originals/audit-config-1.0-2.src.rpm'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
 DEBUG util.py:273:  Unsharing. Flags: 134217728
 DEBUG util.py:399:  0001-add_makefile.patch
 DEBUG util.py:399:  audit-config-1.0.tar.gz
@@ -730,7 +730,7 @@ DEBUG util.py:273:  Unsharing. Flags: 134217728
 DEBUG package_manager.py:92:  ['/usr/bin/dnf', '--installroot', '/var/lib/mock/clear-audit-config/root/', '--releasever', 'clear', '--setopt=deltarpm=false', 'install', 'ccache']
 DEBUG util.py:546:  child environment: None
 DEBUG util.py:479:  Executing command: ['/usr/bin/dnf', '--installroot', '/var/lib/mock/clear-audit-config/root/', '--releasever', 'clear', '--setopt=deltarpm=false', 'install', 'ccache'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002', 'LC_MESSAGES': 'C'} and shell False
-DEBUG util.py:399:  Last metadata expiration check: 0:00:08 ago on Tue 17 Sep 2019 08:28:58 AM UTC.
+DEBUG util.py:399:  Last metadata expiration check: 0:00:08 ago on Thu 19 Sep 2019 09:53:06 AM UTC.
 DEBUG util.py:399:  Dependencies resolved.
 DEBUG util.py:399:  ================================================================================
 DEBUG util.py:399:   Package                 Architecture    Version           Repository      Size
@@ -761,10 +761,10 @@ DEBUG util.py:399:    ccache-data-3.6-38.x86_64             ccache-license-3.6-3
 DEBUG util.py:399:    ccache-man-3.6-38.x86_64             
 DEBUG util.py:399:  Complete!
 DEBUG util.py:526:  Child return code was: 0
-DEBUG package_manager.py:92:  ['/usr/bin/dnf', 'builddep', '--installroot', '/var/lib/mock/clear-audit-config/root/', '--releasever', 'clear', '/var/lib/mock/clear-audit-config/root//builddir/build/SRPMS/audit-config-1.0-1.src.rpm']
+DEBUG package_manager.py:92:  ['/usr/bin/dnf', 'builddep', '--installroot', '/var/lib/mock/clear-audit-config/root/', '--releasever', 'clear', '/var/lib/mock/clear-audit-config/root//builddir/build/SRPMS/audit-config-1.0-2.src.rpm']
 DEBUG util.py:546:  child environment: None
-DEBUG util.py:479:  Executing command: ['/usr/bin/dnf', 'builddep', '--installroot', '/var/lib/mock/clear-audit-config/root/', '--releasever', 'clear', '/var/lib/mock/clear-audit-config/root//builddir/build/SRPMS/audit-config-1.0-1.src.rpm'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002', 'LC_MESSAGES': 'C'} and shell False
-DEBUG util.py:399:  Last metadata expiration check: 0:00:09 ago on Tue 17 Sep 2019 08:28:58 AM UTC.
+DEBUG util.py:479:  Executing command: ['/usr/bin/dnf', 'builddep', '--installroot', '/var/lib/mock/clear-audit-config/root/', '--releasever', 'clear', '/var/lib/mock/clear-audit-config/root//builddir/build/SRPMS/audit-config-1.0-2.src.rpm'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002', 'LC_MESSAGES': 'C'} and shell False
+DEBUG util.py:399:  Last metadata expiration check: 0:00:08 ago on Thu 19 Sep 2019 09:53:06 AM UTC.
 DEBUG util.py:399:  Dependencies resolved.
 DEBUG util.py:399:  Nothing to do.
 DEBUG util.py:399:  Complete!
