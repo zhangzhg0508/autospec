@@ -1,37 +1,37 @@
-2019-09-04 02:01:13,864 - Mock Version: 1.2.14
-2019-09-04 02:01:14,252 - Start: dnf update
-2019-09-04 02:01:28,435 - Finish: dnf update
-2019-09-04 02:01:28,442 - Finish: chroot init
-2019-09-04 02:01:28,445 - Start: buildsrpm
-2019-09-04 02:01:28,466 - Start: rpmbuild -bs
-2019-09-04 02:01:28,531 - Finish: rpmbuild -bs
-2019-09-04 02:01:28,533 - Finish: buildsrpm
-2019-09-04 02:01:28,534 - Finish: run
-2019-09-04 02:01:32,851 - Mock Version: 1.2.14
-2019-09-04 02:01:33,126 - Start: dnf update
-2019-09-04 02:01:47,119 - Finish: dnf update
-2019-09-04 02:01:47,126 - Finish: chroot init
-2019-09-04 02:01:47,128 - Start: build phase for cloud-init-0.7.9-5.src.rpm
-2019-09-04 02:01:47,130 - Start: build setup for cloud-init-0.7.9-5.src.rpm
-2019-09-04 02:01:49,186 - Finish: build setup for cloud-init-0.7.9-5.src.rpm
-2019-09-04 02:01:49,186 - Start: rpmbuild cloud-init-0.7.9-5.src.rpm
-2019-09-04 02:01:58,512 - Mock Version: 1.2.14
-2019-09-04 02:01:58,903 - Start: dnf update
-2019-09-04 02:02:12,836 - Finish: dnf update
-2019-09-04 02:02:12,842 - Finish: chroot init
-2019-09-04 02:02:12,845 - Start: buildsrpm
-2019-09-04 02:02:12,973 - Start: rpmbuild -bs
-2019-09-04 02:02:13,039 - Finish: rpmbuild -bs
-2019-09-04 02:02:13,042 - Finish: buildsrpm
-2019-09-04 02:02:13,043 - Finish: run
-2019-09-04 02:02:17,281 - Mock Version: 1.2.14
-2019-09-04 02:02:17,574 - Start: dnf update
-2019-09-04 02:02:30,429 - Finish: dnf update
-2019-09-04 02:02:30,436 - Finish: chroot init
-2019-09-04 02:02:30,437 - Start: build phase for cloud-init-0.7.9-5.src.rpm
-2019-09-04 02:02:30,440 - Start: build setup for cloud-init-0.7.9-5.src.rpm
-2019-09-04 02:02:32,495 - Finish: build setup for cloud-init-0.7.9-5.src.rpm
-2019-09-04 02:02:32,496 - Start: rpmbuild cloud-init-0.7.9-5.src.rpm
-2019-09-04 02:02:38,908 - Finish: rpmbuild cloud-init-0.7.9-5.src.rpm
-2019-09-04 02:02:38,910 - Finish: build phase for cloud-init-0.7.9-5.src.rpm
-2019-09-04 02:02:38,911 - Finish: run
+2019-09-23 03:10:40,494 - Mock Version: 1.2.14
+2019-09-23 03:10:40,746 - Start: dnf update
+2019-09-23 03:10:50,917 - Finish: dnf update
+2019-09-23 03:10:50,922 - Finish: chroot init
+2019-09-23 03:10:50,925 - Start: buildsrpm
+2019-09-23 03:10:50,974 - Start: rpmbuild -bs
+2019-09-23 03:10:51,035 - Finish: rpmbuild -bs
+2019-09-23 03:10:51,037 - Finish: buildsrpm
+2019-09-23 03:10:51,038 - Finish: run
+2019-09-23 03:10:54,288 - Mock Version: 1.2.14
+2019-09-23 03:10:54,539 - Start: dnf update
+2019-09-23 03:11:04,086 - Finish: dnf update
+2019-09-23 03:11:04,092 - Finish: chroot init
+2019-09-23 03:11:04,093 - Start: build phase for cloud-init-0.7.9-6.src.rpm
+2019-09-23 03:11:04,095 - Start: build setup for cloud-init-0.7.9-6.src.rpm
+2019-09-23 03:11:16,865 - Finish: build setup for cloud-init-0.7.9-6.src.rpm
+2019-09-23 03:11:16,865 - Start: rpmbuild cloud-init-0.7.9-6.src.rpm
+2019-09-23 03:11:23,809 - Mock Version: 1.2.14
+2019-09-23 03:11:24,132 - Start: dnf update
+2019-09-23 03:11:34,532 - Finish: dnf update
+2019-09-23 03:11:34,537 - Finish: chroot init
+2019-09-23 03:11:34,540 - Start: buildsrpm
+2019-09-23 03:11:34,559 - Start: rpmbuild -bs
+2019-09-23 03:11:34,620 - Finish: rpmbuild -bs
+2019-09-23 03:11:34,622 - Finish: buildsrpm
+2019-09-23 03:11:34,622 - Finish: run
+2019-09-23 03:11:37,789 - Mock Version: 1.2.14
+2019-09-23 03:11:38,050 - Start: dnf update
+2019-09-23 03:11:47,567 - Finish: dnf update
+2019-09-23 03:11:47,572 - Finish: chroot init
+2019-09-23 03:11:47,574 - Start: build phase for cloud-init-0.7.9-6.src.rpm
+2019-09-23 03:11:47,576 - Start: build setup for cloud-init-0.7.9-6.src.rpm
+2019-09-23 03:11:49,271 - Finish: build setup for cloud-init-0.7.9-6.src.rpm
+2019-09-23 03:11:49,271 - Start: rpmbuild cloud-init-0.7.9-6.src.rpm
+2019-09-23 03:11:53,696 - Finish: rpmbuild cloud-init-0.7.9-6.src.rpm
+2019-09-23 03:11:53,697 - Finish: build phase for cloud-init-0.7.9-6.src.rpm
+2019-09-23 03:11:53,697 - Finish: run

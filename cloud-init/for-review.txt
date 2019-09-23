@@ -1,71 +1,58 @@
-From aa3d42e07e0f7ad0894ab121257bb1711e7ad5ca Mon Sep 17 00:00:00 2001
-From: "chen.dq" <chen.dq@neusoft.com>
-Date: Wed, 4 Sep 2019 02:02:41 +0000
+From 961e2402031299c0838d64286beb85db7043a14b Mon Sep 17 00:00:00 2001
+From: chen-dq <chen.dq@neusoft.com>
+Date: Mon, 23 Sep 2019 03:11:55 +0000
 Subject: [PATCH cloud-init] cloud-init: Autospec creation for version 0.7.9
 
 ---
- cloud-init.spec | 18 +++++++++---------
- release         |  2 +-
- requires_add    | 15 ++++++++-------
- 3 files changed, 18 insertions(+), 17 deletions(-)
+ cloud-init.spec | 8 ++++----
+ release         | 2 +-
+ requires_add    | 5 +++--
+ 3 files changed, 8 insertions(+), 7 deletions(-)
 
 diff --git a/cloud-init.spec b/cloud-init.spec
-index 216e1d1..3ae0ec8 100644
+index 3ae0ec8..a149500 100644
 --- a/cloud-init.spec
 +++ b/cloud-init.spec
-@@ -16,19 +16,19 @@ Requires: cloud-init-python = %{version}-%{release}
+@@ -15,16 +15,16 @@ Requires: cloud-init-config = %{version}-%{release}
+ Requires: cloud-init-python = %{version}-%{release}
  Requires: cloud-init-python3 = %{version}-%{release}
  Requires: cloud-init-services = %{version}-%{release}
++Requires: Jinja2
  Requires: PyYAML
-+Requires: configobj
+ Requires: configobj
  Requires: dmidecode
  Requires: e2fsprogs
  Requires: iproute2
-+Requires: jinja2
-+Requires: jsonpatch
+-Requires: jinja2
+ Requires: jsonpatch
  Requires: net-tools
-+Requires: prettytable
- Requires: procps
+ Requires: prettytable
+-Requires: procps
++Requires: procps-ng
  Requires: pyserial
--Requires: python-configobj
--Requires: python-jinja2
--Requires: python-jsonpatch
--Requires: python-prettytable
--Requires: python-requests
--Requires: python-setuptools
--Requires: shadow-utils
-+Requires: requests
-+Requires: setuptools
-+Requires: shadow
- Requires: systemd
- BuildRequires : buildreq-distutils3
- BuildRequires : git
+ Requires: requests
+ Requires: setuptools
 diff --git a/requires_add b/requires_add
-index 81dbc91..7b2edff 100644
+index 7b2edff..27cf635 100644
 --- a/requires_add
 +++ b/requires_add
-@@ -7,13 +7,14 @@ iproute2
+@@ -6,9 +6,9 @@ iproute2
+ #libselinux-python
  net-tools
  #policycoreutils-python
- procps
--python-configobj
--python-jinja2
--python-jsonpatch
--python-prettytable
--python-requests
--python-setuptools
-+configobj
-+jinja2
-+jsonpatch
-+prettytable
-+requests
-+setuptools
- PyYAML
- pyserial
--shadow-utils
-+#shadow-utils
-+shadow
+-procps
++procps-ng
+ configobj
+-jinja2
++Jinja2
+ jsonpatch
+ prettytable
+ requests
+@@ -18,3 +18,4 @@ pyserial
+ #shadow-utils
+ shadow
  systemd
++
 -- 
 2.23.0
 

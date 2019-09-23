@@ -6,9 +6,9 @@ iproute2
 #libselinux-python
 net-tools
 #policycoreutils-python
-procps
+procps-ng
 configobj
-jinja2
+Jinja2
 jsonpatch
 prettytable
 requests
@@ -18,3 +18,4 @@ pyserial
 #shadow-utils
 shadow
 systemd
+

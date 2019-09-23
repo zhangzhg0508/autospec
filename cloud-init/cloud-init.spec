@@ -4,7 +4,7 @@
 #
 Name     : cloud-init
 Version  : 0.7.9
-Release  : 5
+Release  : 6
 URL      : file:///home/clear/tar/cloud-init-0.7.9.tar.gz
 Source0  : file:///home/clear/tar/cloud-init-0.7.9.tar.gz
 Summary  : No detailed summary available
@@ -15,16 +15,16 @@ Requires: cloud-init-config = %{version}-%{release}
 Requires: cloud-init-python = %{version}-%{release}
 Requires: cloud-init-python3 = %{version}-%{release}
 Requires: cloud-init-services = %{version}-%{release}
+Requires: Jinja2
 Requires: PyYAML
 Requires: configobj
 Requires: dmidecode
 Requires: e2fsprogs
 Requires: iproute2
-Requires: jinja2
 Requires: jsonpatch
 Requires: net-tools
 Requires: prettytable
-Requires: procps
+Requires: procps-ng
 Requires: pyserial
 Requires: requests
 Requires: setuptools
@@ -191,7 +191,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1567562559
+export SOURCE_DATE_EPOCH=1569208314
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
