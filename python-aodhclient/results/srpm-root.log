@@ -1,0 +1,742 @@
+INFO buildroot.py:307:  Mock Version: 1.2.14
+DEBUG util.py:96:  ensuring that dir exists: /var/lib/mock/clear-python-aodhclient/root/dev/pts
+DEBUG util.py:99:  creating dir: /var/lib/mock/clear-python-aodhclient/root/dev/pts
+DEBUG util.py:96:  ensuring that dir exists: /var/lib/mock/clear-python-aodhclient/root/dev/shm
+DEBUG util.py:99:  creating dir: /var/lib/mock/clear-python-aodhclient/root/dev/shm
+DEBUG buildroot.py:445:  kernel version == 5.2.10-828.native
+DEBUG util.py:108:  touching file: /var/lib/mock/clear-python-aodhclient/root/etc/fstab
+DEBUG util.py:108:  touching file: /var/lib/mock/clear-python-aodhclient/root/etc/yum.conf
+DEBUG util.py:108:  touching file: /var/lib/mock/clear-python-aodhclient/root/etc/dnf.conf
+DEBUG util.py:108:  touching file: /var/lib/mock/clear-python-aodhclient/root/var/log/yum.log
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: ['/bin/mount', '-n', '-t', 'proc', 'proc', '/var/lib/mock/clear-python-aodhclient/root/proc'] with env {'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
+DEBUG util.py:526:  Child return code was: 0
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: ['/bin/mount', '-n', '-t', 'sysfs', 'sysfs', '/var/lib/mock/clear-python-aodhclient/root/sys'] with env {'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
+DEBUG util.py:526:  Child return code was: 0
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: ['/bin/mount', '-n', '-t', 'tmpfs', 'tmpfs', '/var/lib/mock/clear-python-aodhclient/root/dev/shm'] with env {'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
+DEBUG util.py:526:  Child return code was: 0
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: ['/bin/mount', '-n', '-t', 'devpts', '-o', 'gid=5,mode=0620,ptmxmode=0666,newinstance', 'devpts', '/var/lib/mock/clear-python-aodhclient/root/dev/pts'] with env {'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
+DEBUG util.py:526:  Child return code was: 0
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: ['/bin/mount', '-n', '--bind', '/var/cache/mock/clear/dnf_cache/', '/var/lib/mock/clear-python-aodhclient/root/var/cache/dnf/'] with env {'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
+DEBUG util.py:526:  Child return code was: 0
+DEBUG buildroot.py:133:  rootdir = /var/lib/mock/clear-python-aodhclient/root
+DEBUG buildroot.py:134:  resultdir = results/
+DEBUG util.py:96:  ensuring that dir exists: /var/lib/mock/clear-python-aodhclient/root/etc/pki/mock
+DEBUG util.py:96:  ensuring that dir exists: /var/lib/mock/clear-python-aodhclient/root/etc/dnf
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: ['/usr/sbin/userdel', '-r', '-f', 'mockbuild'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
+DEBUG util.py:273:  Unsharing. Flags: 134217728
+DEBUG util.py:526:  Child return code was: 0
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: ['/usr/sbin/userdel', '-r', '-f', 'mockbuild'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
+DEBUG util.py:273:  Unsharing. Flags: 134217728
+DEBUG util.py:399:  userdel: user 'mockbuild' does not exist
+DEBUG util.py:526:  Child return code was: 6
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: ['/usr/sbin/groupdel', 'mockbuild'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
+DEBUG util.py:273:  Unsharing. Flags: 134217728
+DEBUG util.py:399:  groupdel: group 'mockbuild' does not exist
+DEBUG util.py:526:  Child return code was: 6
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: ['/usr/sbin/groupadd', '-g', '1000', 'mockbuild'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
+DEBUG util.py:273:  Unsharing. Flags: 134217728
+DEBUG util.py:526:  Child return code was: 0
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: /usr/sbin/useradd -m -u 1000 -g 1000 -d /builddir  mockbuild with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell True
+DEBUG util.py:273:  Unsharing. Flags: 134217728
+DEBUG util.py:526:  Child return code was: 0
+DEBUG util.py:96:  ensuring that dir exists: /var/lib/mock/clear-python-aodhclient/root/builddir/build/RPMS
+DEBUG util.py:99:  creating dir: /var/lib/mock/clear-python-aodhclient/root/builddir/build/RPMS
+DEBUG util.py:96:  ensuring that dir exists: /var/lib/mock/clear-python-aodhclient/root/builddir/build/SPECS
+DEBUG util.py:99:  creating dir: /var/lib/mock/clear-python-aodhclient/root/builddir/build/SPECS
+DEBUG util.py:96:  ensuring that dir exists: /var/lib/mock/clear-python-aodhclient/root/builddir/build/SRPMS
+DEBUG util.py:99:  creating dir: /var/lib/mock/clear-python-aodhclient/root/builddir/build/SRPMS
+DEBUG util.py:96:  ensuring that dir exists: /var/lib/mock/clear-python-aodhclient/root/builddir/build/SOURCES
+DEBUG util.py:99:  creating dir: /var/lib/mock/clear-python-aodhclient/root/builddir/build/SOURCES
+DEBUG util.py:96:  ensuring that dir exists: /var/lib/mock/clear-python-aodhclient/root/builddir/build/BUILD
+DEBUG util.py:99:  creating dir: /var/lib/mock/clear-python-aodhclient/root/builddir/build/BUILD
+DEBUG util.py:96:  ensuring that dir exists: /var/lib/mock/clear-python-aodhclient/root/builddir/build/BUILDROOT
+DEBUG util.py:99:  creating dir: /var/lib/mock/clear-python-aodhclient/root/builddir/build/BUILDROOT
+DEBUG util.py:96:  ensuring that dir exists: /var/lib/mock/clear-python-aodhclient/root/builddir/build/originals
+DEBUG util.py:99:  creating dir: /var/lib/mock/clear-python-aodhclient/root/builddir/build/originals
+DEBUG package_manager.py:92:  ['/usr/bin/dnf', '--installroot', '/var/lib/mock/clear-python-aodhclient/root/', '-y', '--releasever', 'clear', '--setopt=deltarpm=false', 'update']
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: ['/usr/bin/dnf', '--installroot', '/var/lib/mock/clear-python-aodhclient/root/', '-y', '--releasever', 'clear', '--setopt=deltarpm=false', 'update'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'LC_MESSAGES': 'C'} and shell False
+DEBUG util.py:399:  Dependencies resolved.
+DEBUG util.py:399:  ================================================================================
+DEBUG util.py:399:   Package                           Arch     Version               Repo     Size
+DEBUG util.py:399:  ================================================================================
+DEBUG util.py:399:  Upgrading:
+DEBUG util.py:399:   Linux-PAM-data                    x86_64   1.3.1-47              local    15 k
+DEBUG util.py:399:   Linux-PAM-lib                     x86_64   1.3.1-47              local   220 k
+DEBUG util.py:399:   Linux-PAM-license                 x86_64   1.3.1-47              local   7.7 k
+DEBUG util.py:399:   gcc                               x86_64   9.2.1-650             local    82 M
+DEBUG util.py:399:   gcc-dev                           x86_64   9.2.1-650             local    10 M
+DEBUG util.py:399:   gcc-doc                           x86_64   9.2.1-650             local   2.4 M
+DEBUG util.py:399:   gcc-libs-math                     x86_64   9.2.1-650             local   2.2 M
+DEBUG util.py:399:   gcc-libubsan                      x86_64   9.2.1-650             local   5.2 M
+DEBUG util.py:399:   libgcc1                           x86_64   9.2.1-650             local    54 k
+DEBUG util.py:399:   libstdc++                         x86_64   9.2.1-650             local   672 k
+DEBUG util.py:399:   nghttp2-data                      x86_64   1.39.2-51             local   9.4 k
+DEBUG util.py:399:   nghttp2-lib                       x86_64   1.39.2-51             local    66 k
+DEBUG util.py:399:   nghttp2-license                   x86_64   1.39.2-51             local   7.9 k
+DEBUG util.py:399:   p11-kit                           x86_64   0.23.15-55            local   6.3 k
+DEBUG util.py:399:   p11-kit-bin                       x86_64   0.23.15-55            local    93 k
+DEBUG util.py:399:   p11-kit-data                      x86_64   0.23.15-55            local   6.8 k
+DEBUG util.py:399:   p11-kit-lib                       x86_64   0.23.15-55            local   637 k
+DEBUG util.py:399:   p11-kit-libexec                   x86_64   0.23.15-55            local    29 k
+DEBUG util.py:399:   p11-kit-license                   x86_64   0.23.15-55            local   7.1 k
+DEBUG util.py:399:   p11-kit-services                  x86_64   0.23.15-55            local   6.7 k
+DEBUG util.py:399:   pcre-lib                          x86_64   8.43-51               local   200 k
+DEBUG util.py:399:   pcre-license                      x86_64   8.43-51               local   8.0 k
+DEBUG util.py:399:   util-linux-lib                    x86_64   2.33.2-141            local   357 k
+DEBUG util.py:399:   util-linux-license                x86_64   2.33.2-141            local    24 k
+DEBUG util.py:399:  Reinstalling:
+DEBUG util.py:399:   LVM2-extras-lib                   x86_64   2.02.186-82           local   154 k
+DEBUG util.py:399:   LVM2-lib                          x86_64   2.02.186-82           local   1.0 M
+DEBUG util.py:399:   LVM2-license                      x86_64   2.02.186-82           local    19 k
+DEBUG util.py:399:   acl-lib                           x86_64   2.2.53-35             local    18 k
+DEBUG util.py:399:   acl-license                       x86_64   2.2.53-35             local    18 k
+DEBUG util.py:399:   attr-lib                          x86_64   2.4.48-40             local    14 k
+DEBUG util.py:399:   attr-license                      x86_64   2.4.48-40             local    18 k
+DEBUG util.py:399:   autoconf                          x86_64   2.69-22               local   6.1 k
+DEBUG util.py:399:   autoconf-bin                      x86_64   2.69-22               local    46 k
+DEBUG util.py:399:   autoconf-data                     x86_64   2.69-22               local   483 k
+DEBUG util.py:399:   autoconf-doc                      x86_64   2.69-22               local   318 k
+DEBUG util.py:399:   automake                          x86_64   1.16.1-22             local   5.8 k
+DEBUG util.py:399:   automake-bin                      x86_64   1.16.1-22             local    92 k
+DEBUG util.py:399:   automake-data                     x86_64   1.16.1-22             local   289 k
+DEBUG util.py:399:   automake-dev                      x86_64   1.16.1-22             local    30 k
+DEBUG util.py:399:   automake-doc                      x86_64   1.16.1-22             local   283 k
+DEBUG util.py:399:   bash-bin                          x86_64   5.0-47                local   459 k
+DEBUG util.py:399:   bash-license                      x86_64   5.0-47                local    29 k
+DEBUG util.py:399:   binutils                          x86_64   2.32-312              local    81 k
+DEBUG util.py:399:   binutils-bin                      x86_64   2.32-312              local   2.2 M
+DEBUG util.py:399:   binutils-lib                      x86_64   2.32-312              local   622 k
+DEBUG util.py:399:   binutils-license                  x86_64   2.32-312              local    76 k
+DEBUG util.py:399:   binutils-locales                  x86_64   2.32-312              local   3.9 M
+DEBUG util.py:399:   binutils-man                      x86_64   2.32-312              local   141 k
+DEBUG util.py:399:   bzip2                             x86_64   1.0.8-53              local   6.0 k
+DEBUG util.py:399:   bzip2-bin                         x86_64   1.0.8-53              local    31 k
+DEBUG util.py:399:   bzip2-lib                         x86_64   1.0.8-53              local   119 k
+DEBUG util.py:399:   bzip2-license                     x86_64   1.0.8-53              local   7.2 k
+DEBUG util.py:399:   bzip2-man                         x86_64   1.0.8-53              local    16 k
+DEBUG util.py:399:   ca-certs                          x86_64   2.4-39                local   162 k
+DEBUG util.py:399:   clr-avx-tools                     x86_64   7-7                   local   5.7 k
+DEBUG util.py:399:   clr-avx-tools-bin                 x86_64   7-7                   local   8.0 k
+DEBUG util.py:399:   clr-avx-tools-data                x86_64   7-7                   local   9.2 k
+DEBUG util.py:399:   clr-avx-tools-license             x86_64   7-7                   local   9.8 k
+DEBUG util.py:399:   clr-python-timestamp              x86_64   17-35                 local   5.9 k
+DEBUG util.py:399:   clr-python-timestamp-bin          x86_64   17-35                 local    11 k
+DEBUG util.py:399:   clr-python-timestamp-license      x86_64   17-35                 local   9.9 k
+DEBUG util.py:399:   clr-rpm-config                    x86_64   210-210               local    60 k
+DEBUG util.py:399:   clr-rpm-config-license            x86_64   210-210               local    13 k
+DEBUG util.py:399:   clr-systemd-config-data           x86_64   192-215               local   9.2 k
+DEBUG util.py:399:   clrtrust                          x86_64   0.1.2-22              local   6.3 k
+DEBUG util.py:399:   clrtrust-bin                      x86_64   0.1.2-22              local    14 k
+DEBUG util.py:399:   clrtrust-libexec                  x86_64   0.1.2-22              local   9.6 k
+DEBUG util.py:399:   clrtrust-license                  x86_64   0.1.2-22              local    13 k
+DEBUG util.py:399:   compat-readline-soname7-lib       x86_64   7.0-5                 local   529 k
+DEBUG util.py:399:   compat-readline-soname7-license   x86_64   7.0-5                 local    18 k
+DEBUG util.py:399:   coreutils                         x86_64   8.31-51               local   5.9 k
+DEBUG util.py:399:   coreutils-bin                     x86_64   8.31-51               local   608 k
+DEBUG util.py:399:   coreutils-libexec                 x86_64   8.31-51               local   8.8 k
+DEBUG util.py:399:   coreutils-license                 x86_64   8.31-51               local    18 k
+DEBUG util.py:399:   coreutils-locales                 x86_64   8.31-51               local   3.0 M
+DEBUG util.py:399:   coreutils-man                     x86_64   8.31-51               local    74 k
+DEBUG util.py:399:   cpio                              x86_64   2.12-26               local   5.9 k
+DEBUG util.py:399:   cpio-bin                          x86_64   2.12-26               local    86 k
+DEBUG util.py:399:   cpio-libexec                      x86_64   2.12-26               local   5.7 k
+DEBUG util.py:399:   cpio-license                      x86_64   2.12-26               local    18 k
+DEBUG util.py:399:   cpio-locales                      x86_64   2.12-26               local   193 k
+DEBUG util.py:399:   cpio-man                          x86_64   2.12-26               local    11 k
+DEBUG util.py:399:   cracklib-data                     x86_64   2.9.7-42              local   117 k
+DEBUG util.py:399:   cracklib-lib                      x86_64   2.9.7-42              local    21 k
+DEBUG util.py:399:   cracklib-license                  x86_64   2.9.7-42              local    19 k
+DEBUG util.py:399:   cryptsetup-lib                    x86_64   2.0.6-55              local   361 k
+DEBUG util.py:399:   cryptsetup-license                x86_64   2.0.6-55              local    21 k
+DEBUG util.py:399:   curl-bin                          x86_64   7.66.0-98             local   124 k
+DEBUG util.py:399:   curl-lib                          x86_64   7.66.0-98             local   195 k
+DEBUG util.py:399:   curl-license                      x86_64   7.66.0-98             local   6.9 k
+DEBUG util.py:399:   db                                x86_64   5.3.28-17             local   567 k
+DEBUG util.py:399:   dbus-config                       x86_64   1.12.16-72            local   6.5 k
+DEBUG util.py:399:   dbus-data                         x86_64   1.12.16-72            local    10 k
+DEBUG util.py:399:   dbus-lib                          x86_64   1.12.16-72            local   152 k
+DEBUG util.py:399:   dbus-libexec                      x86_64   1.12.16-72            local    33 k
+DEBUG util.py:399:   dbus-license                      x86_64   1.12.16-72            local    17 k
+DEBUG util.py:399:   debugedit                         x86_64   4.14.2.1-84           local   5.7 k
+DEBUG util.py:399:   debugedit-bin                     x86_64   4.14.2.1-84           local    25 k
+DEBUG util.py:399:   debugedit-lib                     x86_64   4.14.2.1-84           local    73 k
+DEBUG util.py:399:   diffutils                         x86_64   3.7-25                local   5.9 k
+DEBUG util.py:399:   diffutils-bin                     x86_64   3.7-25                local   179 k
+DEBUG util.py:399:   diffutils-license                 x86_64   3.7-25                local    18 k
+DEBUG util.py:399:   diffutils-locales                 x86_64   3.7-25                local   309 k
+DEBUG util.py:399:   diffutils-man                     x86_64   3.7-25                local    10 k
+DEBUG util.py:399:   elfutils                          x86_64   0.177-66              local   6.4 k
+DEBUG util.py:399:   elfutils-bin                      x86_64   0.177-66              local   305 k
+DEBUG util.py:399:   elfutils-lib                      x86_64   0.177-66              local   252 k
+DEBUG util.py:399:   elfutils-license                  x86_64   0.177-66              local    25 k
+DEBUG util.py:399:   elfutils-locales                  x86_64   0.177-66              local   234 k
+DEBUG util.py:399:   expat-lib                         x86_64   2.2.8-40              local   145 k
+DEBUG util.py:399:   expat-license                     x86_64   2.2.8-40              local   7.0 k
+DEBUG util.py:399:   file                              x86_64   5.37-46               local   6.0 k
+DEBUG util.py:399:   file-bin                          x86_64   5.37-46               local    17 k
+DEBUG util.py:399:   file-data                         x86_64   5.37-46               local   288 k
+DEBUG util.py:399:   file-dev                          x86_64   5.37-46               local    12 k
+DEBUG util.py:399:   file-lib                          x86_64   5.37-46               local    81 k
+DEBUG util.py:399:   file-license                      x86_64   5.37-46               local   7.3 k
+DEBUG util.py:399:   file-man                          x86_64   5.37-46               local    21 k
+DEBUG util.py:399:   filesystem                        x86_64   3.0.14-191            local    15 k
+DEBUG util.py:399:   findutils                         x86_64   4.7.0-24              local   6.1 k
+DEBUG util.py:399:   findutils-bin                     x86_64   4.7.0-24              local   195 k
+DEBUG util.py:399:   findutils-license                 x86_64   4.7.0-24              local    18 k
+DEBUG util.py:399:   findutils-locales                 x86_64   4.7.0-24              local   365 k
+DEBUG util.py:399:   findutils-man                     x86_64   4.7.0-24              local    32 k
+DEBUG util.py:399:   gawk                              x86_64   5.0.1-53              local   6.2 k
+DEBUG util.py:399:   gawk-bin                          x86_64   5.0.1-53              local   384 k
+DEBUG util.py:399:   gawk-data                         x86_64   5.0.1-53              local   7.3 k
+DEBUG util.py:399:   gawk-lib                          x86_64   5.0.1-53              local    45 k
+DEBUG util.py:399:   gawk-libexec                      x86_64   5.0.1-53              local   9.7 k
+DEBUG util.py:399:   gawk-license                      x86_64   5.0.1-53              local    36 k
+DEBUG util.py:399:   gawk-locales                      x86_64   5.0.1-53              local   438 k
+DEBUG util.py:399:   gawk-man                          x86_64   5.0.1-53              local    37 k
+DEBUG util.py:399:   gdbm-lib                          x86_64   1.14-24               local    36 k
+DEBUG util.py:399:   gettext                           x86_64   0.19.8.1-30           local    31 k
+DEBUG util.py:399:   gettext-bin                       x86_64   0.19.8.1-30           local   390 k
+DEBUG util.py:399:   gettext-data                      x86_64   0.19.8.1-30           local   899 k
+DEBUG util.py:399:   gettext-dev                       x86_64   0.19.8.1-30           local   730 k
+DEBUG util.py:399:   gettext-lib                       x86_64   0.19.8.1-30           local   183 k
+DEBUG util.py:399:   gettext-license                   x86_64   0.19.8.1-30           local    29 k
+DEBUG util.py:399:   gettext-locales                   x86_64   0.19.8.1-30           local   1.0 M
+DEBUG util.py:399:   gettext-man                       x86_64   0.19.8.1-30           local    19 k
+DEBUG util.py:399:   git                               x86_64   2.23.0-153            local   6.0 k
+DEBUG util.py:399:   git-bin                           x86_64   2.23.0-153            local   4.5 M
+DEBUG util.py:399:   git-data                          x86_64   2.23.0-153            local    52 k
+DEBUG util.py:399:   git-libexec                       x86_64   2.23.0-153            local   8.8 M
+DEBUG util.py:399:   git-license                       x86_64   2.23.0-153            local    21 k
+DEBUG util.py:399:   git-locales                       x86_64   2.23.0-153            local   2.0 M
+DEBUG util.py:399:   git-man                           x86_64   2.23.0-153            local   745 k
+DEBUG util.py:399:   glib-config                       x86_64   2.62.0-100            local   6.3 k
+DEBUG util.py:399:   glib-data                         x86_64   2.62.0-100            local    58 k
+DEBUG util.py:399:   glib-lib                          x86_64   2.62.0-100            local   1.6 M
+DEBUG util.py:399:   glib-libexec                      x86_64   2.62.0-100            local    27 k
+DEBUG util.py:399:   glib-license                      x86_64   2.62.0-100            local    16 k
+DEBUG util.py:399:   glibc-dev                         x86_64   2.30-288              local   623 k
+DEBUG util.py:399:   glibc-locale                      x86_64   2.30-288              local    51 M
+DEBUG util.py:399:   glibc-utils                       x86_64   2.30-288              local   200 k
+DEBUG util.py:399:   gmp-lib                           x86_64   6.1.2-40              local   268 k
+DEBUG util.py:399:   gmp-lib-hsw                       x86_64   6.1.2-40              local   273 k
+DEBUG util.py:399:   grep                              x86_64   3.3-37                local   5.9 k
+DEBUG util.py:399:   grep-bin                          x86_64   3.3-37                local   126 k
+DEBUG util.py:399:   grep-license                      x86_64   3.3-37                local    18 k
+DEBUG util.py:399:   grep-locales                      x86_64   3.3-37                local   132 k
+DEBUG util.py:399:   grep-man                          x86_64   3.3-37                local    17 k
+DEBUG util.py:399:   gzip                              x86_64   1.10-27               local   6.0 k
+DEBUG util.py:399:   gzip-bin                          x86_64   1.10-27               local    16 k
+DEBUG util.py:399:   gzip-license                      x86_64   1.10-27               local    18 k
+DEBUG util.py:399:   gzip-man                          x86_64   1.10-27               local    17 k
+DEBUG util.py:399:   hostname                          x86_64   3.21-17               local   5.8 k
+DEBUG util.py:399:   hostname-bin                      x86_64   3.21-17               local    13 k
+DEBUG util.py:399:   hostname-license                  x86_64   3.21-17               local   7.2 k
+DEBUG util.py:399:   hostname-man                      x86_64   3.21-17               local   9.0 k
+DEBUG util.py:399:   iptables-extras                   x86_64   1.8.3-34              local    24 k
+DEBUG util.py:399:   json-c-lib                        x86_64   0.13.1-13             local    33 k
+DEBUG util.py:399:   kmod-data                         x86_64   26-40                 local   7.4 k
+DEBUG util.py:399:   kmod-lib                          x86_64   26-40                 local    40 k
+DEBUG util.py:399:   kmod-license                      x86_64   26-40                 local    24 k
+DEBUG util.py:399:   libaio-lib                        x86_64   0.3.112-19            local   8.9 k
+DEBUG util.py:399:   libaio-license                    x86_64   0.3.112-19            local    16 k
+DEBUG util.py:399:   libc6                             x86_64   2.30-288              local   6.2 M
+DEBUG util.py:399:   libc6-dev                         x86_64   2.30-288              local   5.7 k
+DEBUG util.py:399:   libcap                            x86_64   2.27-36               local   5.9 k
+DEBUG util.py:399:   libcap-bin                        x86_64   2.27-36               local    22 k
+DEBUG util.py:399:   libcap-lib                        x86_64   2.27-36               local    18 k
+DEBUG util.py:399:   libcap-license                    x86_64   2.27-36               local    14 k
+DEBUG util.py:399:   libcap-man                        x86_64   2.27-36               local   9.4 k
+DEBUG util.py:399:   libcroco-lib                      x86_64   0.6.13-16             local    90 k
+DEBUG util.py:399:   libcroco-license                  x86_64   0.6.13-16             local    16 k
+DEBUG util.py:399:   libffi-lib                        x86_64   3.2.1-30              local    24 k
+DEBUG util.py:399:   libffi-license                    x86_64   3.2.1-30              local   6.9 k
+DEBUG util.py:399:   libgcrypt-lib                     x86_64   1.8.5-36              local   415 k
+DEBUG util.py:399:   libgcrypt-license                 x86_64   1.8.5-36              local    22 k
+DEBUG util.py:399:   libgpg-error-data                 x86_64   1.36-45               local    17 k
+DEBUG util.py:399:   libgpg-error-lib                  x86_64   1.36-45               local    53 k
+DEBUG util.py:399:   libgpg-error-license              x86_64   1.36-45               local    18 k
+DEBUG util.py:399:   libseccomp                        x86_64   2.4.1-20              local   6.1 k
+DEBUG util.py:399:   libseccomp-bin                    x86_64   2.4.1-20              local   9.3 k
+DEBUG util.py:399:   libseccomp-lib                    x86_64   2.4.1-20              local    72 k
+DEBUG util.py:399:   libseccomp-license                x86_64   2.4.1-20              local    15 k
+DEBUG util.py:399:   libseccomp-man                    x86_64   2.4.1-20              local   7.2 k
+DEBUG util.py:399:   libtasn1-lib                      x86_64   4.13-32               local    43 k
+DEBUG util.py:399:   libtasn1-license                  x86_64   4.13-32               local    26 k
+DEBUG util.py:399:   libtool                           x86_64   2.4.6-26              local   6.0 k
+DEBUG util.py:399:   libtool-bin                       x86_64   2.4.6-26              local   128 k
+DEBUG util.py:399:   libtool-data                      x86_64   2.4.6-26              local   310 k
+DEBUG util.py:399:   libtool-dev                       x86_64   2.4.6-26              local    96 k
+DEBUG util.py:399:   libtool-lib                       x86_64   2.4.6-26              local    25 k
+DEBUG util.py:399:   libtool-license                   x86_64   2.4.6-26              local    18 k
+DEBUG util.py:399:   libtool-man                       x86_64   2.4.6-26              local   8.5 k
+DEBUG util.py:399:   libxml2-lib                       x86_64   2.9.9-71              local   775 k
+DEBUG util.py:399:   libxml2-license                   x86_64   2.9.9-71              local   7.1 k
+DEBUG util.py:399:   linux-libc-headers                x86_64   4.19-20               local   1.3 M
+DEBUG util.py:399:   lz4-lib                           x86_64   1.9.1-27              local    45 k
+DEBUG util.py:399:   lz4-license                       x86_64   1.9.1-27              local    16 k
+DEBUG util.py:399:   lzlib-lib                         x86_64   1.11-2                local    41 k
+DEBUG util.py:399:   lzlib-license                     x86_64   1.11-2                local    13 k
+DEBUG util.py:399:   m4                                x86_64   1.4.18-88             local   6.1 k
+DEBUG util.py:399:   m4-bin                            x86_64   1.4.18-88             local    80 k
+DEBUG util.py:399:   m4-license                        x86_64   1.4.18-88             local    19 k
+DEBUG util.py:399:   m4-man                            x86_64   1.4.18-88             local   8.1 k
+DEBUG util.py:399:   make                              x86_64   4.2.1-35              local   5.9 k
+DEBUG util.py:399:   make-bin                          x86_64   4.2.1-35              local   116 k
+DEBUG util.py:399:   make-doc                          x86_64   4.2.1-35              local   171 k
+DEBUG util.py:399:   make-license                      x86_64   4.2.1-35              local    36 k
+DEBUG util.py:399:   make-locales                      x86_64   4.2.1-35              local   318 k
+DEBUG util.py:399:   make-man                          x86_64   4.2.1-35              local    11 k
+DEBUG util.py:399:   mpc-lib                           x86_64   1.1.0-24              local    52 k
+DEBUG util.py:399:   mpfr-lib                          x86_64   4.0.2-27              local   258 k
+DEBUG util.py:399:   mpfr-license                      x86_64   4.0.2-27              local    20 k
+DEBUG util.py:399:   ncurses-data                      x86_64   6.1-55                local   118 k
+DEBUG util.py:399:   ncurses-lib                       x86_64   6.1-55                local   220 k
+DEBUG util.py:399:   ncurses-lib-narrow                x86_64   6.1-55                local   195 k
+DEBUG util.py:399:   netbase                           x86_64   5.6-19                local   5.7 k
+DEBUG util.py:399:   netbase-data                      x86_64   5.6-19                local    15 k
+DEBUG util.py:399:   netbase-license                   x86_64   5.6-19                local   6.6 k
+DEBUG util.py:399:   nspr                              x86_64   4.22-24               local   136 k
+DEBUG util.py:399:   nss-altfiles                      x86_64   2.19.4-21             local   5.9 k
+DEBUG util.py:399:   nss-altfiles-lib                  x86_64   2.19.4-21             local    23 k
+DEBUG util.py:399:   nss-lib                           x86_64   3.46-30               local   1.1 M
+DEBUG util.py:399:   openssl                           x86_64   1.1.1d-89             local   287 k
+DEBUG util.py:399:   openssl-lib                       x86_64   1.1.1d-89             local   1.4 M
+DEBUG util.py:399:   patch                             x86_64   2.7.6-42              local   6.3 k
+DEBUG util.py:399:   patch-bin                         x86_64   2.7.6-42              local   109 k
+DEBUG util.py:399:   patch-license                     x86_64   2.7.6-42              local    18 k
+DEBUG util.py:399:   patch-man                         x86_64   2.7.6-42              local    18 k
+DEBUG util.py:399:   pcre2-lib                         x86_64   10.33-22              local   916 k
+DEBUG util.py:399:   pcre2-license                     x86_64   10.33-22              local   8.1 k
+DEBUG util.py:399:   perl                              x86_64   5.28.2-59             local    13 M
+DEBUG util.py:399:   perl-Math-BigInt-GMP              x86_64   1.6006-18             local   8.2 k
+DEBUG util.py:399:   perl-Math-BigInt-GMP-lib          x86_64   1.6006-18             local    21 k
+DEBUG util.py:399:   perl-Test-Simple                  x86_64   1.302168-77           local   165 k
+DEBUG util.py:399:   perl-Test-Simple-license          x86_64   1.302168-77           local    13 k
+DEBUG util.py:399:   pigz                              x86_64   2.4-36                local   5.9 k
+DEBUG util.py:399:   pigz-bin                          x86_64   2.4-36                local    70 k
+DEBUG util.py:399:   pigz-doc                          x86_64   2.4-36                local   8.7 k
+DEBUG util.py:399:   pkg-config                        x86_64   0.29.2-21             local   5.9 k
+DEBUG util.py:399:   pkg-config-bin                    x86_64   0.29.2-21             local    27 k
+DEBUG util.py:399:   pkg-config-dev                    x86_64   0.29.2-21             local   9.8 k
+DEBUG util.py:399:   pkg-config-license                x86_64   0.29.2-21             local    18 k
+DEBUG util.py:399:   pkg-config-man                    x86_64   0.29.2-21             local    14 k
+DEBUG util.py:399:   plzip                             x86_64   1.8-2                 local   5.8 k
+DEBUG util.py:399:   plzip-bin                         x86_64   1.8-2                 local    42 k
+DEBUG util.py:399:   plzip-license                     x86_64   1.8-2                 local    13 k
+DEBUG util.py:399:   plzip-man                         x86_64   1.8-2                 local   8.3 k
+DEBUG util.py:399:   popt-lib                          x86_64   1.16-19               local    27 k
+DEBUG util.py:399:   python3-core                      x86_64   3.7.4-185             local    13 M
+DEBUG util.py:399:   rpm                               x86_64   4.12.0.2-92           local   158 k
+DEBUG util.py:399:   rpm-build                         x86_64   4.12.0.2-92           local   165 k
+DEBUG util.py:399:   rpm-libs                          x86_64   4.12.0.2-92           local   1.4 M
+DEBUG util.py:399:   sed                               x86_64   4.7-27                local   5.8 k
+DEBUG util.py:399:   sed-bin                           x86_64   4.7-27                local    82 k
+DEBUG util.py:399:   sed-doc                           x86_64   4.7-27                local    60 k
+DEBUG util.py:399:   sed-license                       x86_64   4.7-27                local    18 k
+DEBUG util.py:399:   sed-locales                       x86_64   4.7-27                local   135 k
+DEBUG util.py:399:   sed-man                           x86_64   4.7-27                local    10 k
+DEBUG util.py:399:   setuptools-bin                    x86_64   41.2.0-147            local   6.8 k
+DEBUG util.py:399:   setuptools-license                x86_64   41.2.0-147            local   7.0 k
+DEBUG util.py:399:   setuptools-python3                x86_64   41.2.0-147            local   961 k
+DEBUG util.py:399:   shadow                            x86_64   4.6-59                local   5.9 k
+DEBUG util.py:399:   shadow-bin                        x86_64   4.6-59                local   585 k
+DEBUG util.py:399:   shadow-data                       x86_64   4.6-59                local   8.2 k
+DEBUG util.py:399:   shadow-license                    x86_64   4.6-59                local   8.4 k
+DEBUG util.py:399:   shadow-locales                    x86_64   4.6-59                local   474 k
+DEBUG util.py:399:   shadow-man                        x86_64   4.6-59                local   424 k
+DEBUG util.py:399:   sqlite-autoconf-lib               x86_64   3290000-72            local   803 k
+DEBUG util.py:399:   systemd-data                      x86_64   243-261               local    60 k
+DEBUG util.py:399:   systemd-lib                       x86_64   243-261               local   2.1 M
+DEBUG util.py:399:   systemd-license                   x86_64   243-261               local    18 k
+DEBUG util.py:399:   tar                               x86_64   1.32-30               local   5.9 k
+DEBUG util.py:399:   tar-bin                           x86_64   1.32-30               local   735 k
+DEBUG util.py:399:   tar-libexec                       x86_64   1.32-30               local   332 k
+DEBUG util.py:399:   tar-license                       x86_64   1.32-30               local    18 k
+DEBUG util.py:399:   tar-locales                       x86_64   1.32-30               local   791 k
+DEBUG util.py:399:   tar-man                           x86_64   1.32-30               local    21 k
+DEBUG util.py:399:   unzip                             x86_64   6.0-25                local   5.9 k
+DEBUG util.py:399:   unzip-bin                         x86_64   6.0-25                local   146 k
+DEBUG util.py:399:   unzip-license                     x86_64   6.0-25                local   7.9 k
+DEBUG util.py:399:   unzip-man                         x86_64   6.0-25                local    38 k
+DEBUG util.py:399:   usrbinpython                      x86_64   3-12                  local   5.7 k
+DEBUG util.py:399:   usrbinpython-bin                  x86_64   3-12                  local   9.5 k
+DEBUG util.py:399:   wget                              x86_64   1.20.3-40             local   6.0 k
+DEBUG util.py:399:   wget-bin                          x86_64   1.20.3-40             local   247 k
+DEBUG util.py:399:   wget-license                      x86_64   1.20.3-40             local    18 k
+DEBUG util.py:399:   wget-locales                      x86_64   1.20.3-40             local   825 k
+DEBUG util.py:399:   wget-man                          x86_64   1.20.3-40             local    42 k
+DEBUG util.py:399:   which                             x86_64   2.21-14               local   5.8 k
+DEBUG util.py:399:   which-bin                         x86_64   2.21-14               local    18 k
+DEBUG util.py:399:   which-doc                         x86_64   2.21-14               local   9.5 k
+DEBUG util.py:399:   xz                                x86_64   5.2.4-52              local   6.0 k
+DEBUG util.py:399:   xz-bin                            x86_64   5.2.4-52              local    58 k
+DEBUG util.py:399:   xz-lib                            x86_64   5.2.4-52              local   198 k
+DEBUG util.py:399:   xz-license                        x86_64   5.2.4-52              local    32 k
+DEBUG util.py:399:   xz-locales                        x86_64   5.2.4-52              local    47 k
+DEBUG util.py:399:   xz-man                            x86_64   5.2.4-52              local    31 k
+DEBUG util.py:399:   zip                               x86_64   3.0-24                local   5.9 k
+DEBUG util.py:399:   zip-bin                           x86_64   3.0-24                local   252 k
+DEBUG util.py:399:   zip-license                       x86_64   3.0-24                local   7.8 k
+DEBUG util.py:399:   zip-man                           x86_64   3.0-24                local    36 k
+DEBUG util.py:399:   zlib-lib                          x86_64   1.2.11.1.jtkv6.3-56   local   172 k
+DEBUG util.py:399:   zlib-license                      x86_64   1.2.11.1.jtkv6.3-56   local   7.1 k
+DEBUG util.py:399:   zstd-bin                          x86_64   1.4.3-50              local   100 k
+DEBUG util.py:399:   zstd-lib                          x86_64   1.4.3-50              local   663 k
+DEBUG util.py:399:   zstd-license                      x86_64   1.4.3-50              local    14 k
+DEBUG util.py:399:  Transaction Summary
+DEBUG util.py:399:  ================================================================================
+DEBUG util.py:399:  Upgrade  24 Packages
+DEBUG util.py:399:  Total size: 253 M
+DEBUG util.py:399:  Downloading Packages:
+DEBUG util.py:399:  Running transaction check
+DEBUG util.py:399:  Transaction check succeeded.
+DEBUG util.py:399:  Running transaction test
+DEBUG util.py:399:  Transaction test succeeded.
+DEBUG util.py:399:  Running transaction
+DEBUG util.py:399:  Upgraded:
+DEBUG util.py:399:    Linux-PAM-data-1.3.1-47.x86_64        Linux-PAM-lib-1.3.1-47.x86_64           
+DEBUG util.py:399:    Linux-PAM-license-1.3.1-47.x86_64     gcc-9.2.1-650.x86_64                    
+DEBUG util.py:399:    gcc-dev-9.2.1-650.x86_64              gcc-doc-9.2.1-650.x86_64                
+DEBUG util.py:399:    gcc-libs-math-9.2.1-650.x86_64        gcc-libubsan-9.2.1-650.x86_64           
+DEBUG util.py:399:    libgcc1-9.2.1-650.x86_64              libstdc++-9.2.1-650.x86_64              
+DEBUG util.py:399:    nghttp2-data-1.39.2-51.x86_64         nghttp2-lib-1.39.2-51.x86_64            
+DEBUG util.py:399:    nghttp2-license-1.39.2-51.x86_64      p11-kit-0.23.15-55.x86_64               
+DEBUG util.py:399:    p11-kit-bin-0.23.15-55.x86_64         p11-kit-data-0.23.15-55.x86_64          
+DEBUG util.py:399:    p11-kit-lib-0.23.15-55.x86_64         p11-kit-libexec-0.23.15-55.x86_64       
+DEBUG util.py:399:    p11-kit-license-0.23.15-55.x86_64     p11-kit-services-0.23.15-55.x86_64      
+DEBUG util.py:399:    pcre-lib-8.43-51.x86_64               pcre-license-8.43-51.x86_64             
+DEBUG util.py:399:    util-linux-lib-2.33.2-141.x86_64      util-linux-license-2.33.2-141.x86_64    
+DEBUG util.py:399:  Reinstalled:
+DEBUG util.py:399:    LVM2-extras-lib-2.02.186-82.x86_64                                            
+DEBUG util.py:399:    LVM2-lib-2.02.186-82.x86_64                                                   
+DEBUG util.py:399:    LVM2-license-2.02.186-82.x86_64                                               
+DEBUG util.py:399:    acl-lib-2.2.53-35.x86_64                                                      
+DEBUG util.py:399:    acl-license-2.2.53-35.x86_64                                                  
+DEBUG util.py:399:    attr-lib-2.4.48-40.x86_64                                                     
+DEBUG util.py:399:    attr-license-2.4.48-40.x86_64                                                 
+DEBUG util.py:399:    autoconf-2.69-22.x86_64                                                       
+DEBUG util.py:399:    autoconf-bin-2.69-22.x86_64                                                   
+DEBUG util.py:399:    autoconf-data-2.69-22.x86_64                                                  
+DEBUG util.py:399:    autoconf-doc-2.69-22.x86_64                                                   
+DEBUG util.py:399:    automake-1.16.1-22.x86_64                                                     
+DEBUG util.py:399:    automake-bin-1.16.1-22.x86_64                                                 
+DEBUG util.py:399:    automake-data-1.16.1-22.x86_64                                                
+DEBUG util.py:399:    automake-dev-1.16.1-22.x86_64                                                 
+DEBUG util.py:399:    automake-doc-1.16.1-22.x86_64                                                 
+DEBUG util.py:399:    bash-bin-5.0-47.x86_64                                                        
+DEBUG util.py:399:    bash-license-5.0-47.x86_64                                                    
+DEBUG util.py:399:    binutils-2.32-312.x86_64                                                      
+DEBUG util.py:399:    binutils-bin-2.32-312.x86_64                                                  
+DEBUG util.py:399:    binutils-lib-2.32-312.x86_64                                                  
+DEBUG util.py:399:    binutils-license-2.32-312.x86_64                                              
+DEBUG util.py:399:    binutils-locales-2.32-312.x86_64                                              
+DEBUG util.py:399:    binutils-man-2.32-312.x86_64                                                  
+DEBUG util.py:399:    bzip2-1.0.8-53.x86_64                                                         
+DEBUG util.py:399:    bzip2-bin-1.0.8-53.x86_64                                                     
+DEBUG util.py:399:    bzip2-lib-1.0.8-53.x86_64                                                     
+DEBUG util.py:399:    bzip2-license-1.0.8-53.x86_64                                                 
+DEBUG util.py:399:    bzip2-man-1.0.8-53.x86_64                                                     
+DEBUG util.py:399:    ca-certs-2.4-39.x86_64                                                        
+DEBUG util.py:399:    clr-avx-tools-7-7.x86_64                                                      
+DEBUG util.py:399:    clr-avx-tools-bin-7-7.x86_64                                                  
+DEBUG util.py:399:    clr-avx-tools-data-7-7.x86_64                                                 
+DEBUG util.py:399:    clr-avx-tools-license-7-7.x86_64                                              
+DEBUG util.py:399:    clr-python-timestamp-17-35.x86_64                                             
+DEBUG util.py:399:    clr-python-timestamp-bin-17-35.x86_64                                         
+DEBUG util.py:399:    clr-python-timestamp-license-17-35.x86_64                                     
+DEBUG util.py:399:    clr-rpm-config-210-210.x86_64                                                 
+DEBUG util.py:399:    clr-rpm-config-license-210-210.x86_64                                         
+DEBUG util.py:399:    clr-systemd-config-data-192-215.x86_64                                        
+DEBUG util.py:399:    clrtrust-0.1.2-22.x86_64                                                      
+DEBUG util.py:399:    clrtrust-bin-0.1.2-22.x86_64                                                  
+DEBUG util.py:399:    clrtrust-libexec-0.1.2-22.x86_64                                              
+DEBUG util.py:399:    clrtrust-license-0.1.2-22.x86_64                                              
+DEBUG util.py:399:    compat-readline-soname7-lib-7.0-5.x86_64                                      
+DEBUG util.py:399:    compat-readline-soname7-license-7.0-5.x86_64                                  
+DEBUG util.py:399:    coreutils-8.31-51.x86_64                                                      
+DEBUG util.py:399:    coreutils-bin-8.31-51.x86_64                                                  
+DEBUG util.py:399:    coreutils-libexec-8.31-51.x86_64                                              
+DEBUG util.py:399:    coreutils-license-8.31-51.x86_64                                              
+DEBUG util.py:399:    coreutils-locales-8.31-51.x86_64                                              
+DEBUG util.py:399:    coreutils-man-8.31-51.x86_64                                                  
+DEBUG util.py:399:    cpio-2.12-26.x86_64                                                           
+DEBUG util.py:399:    cpio-bin-2.12-26.x86_64                                                       
+DEBUG util.py:399:    cpio-libexec-2.12-26.x86_64                                                   
+DEBUG util.py:399:    cpio-license-2.12-26.x86_64                                                   
+DEBUG util.py:399:    cpio-locales-2.12-26.x86_64                                                   
+DEBUG util.py:399:    cpio-man-2.12-26.x86_64                                                       
+DEBUG util.py:399:    cracklib-data-2.9.7-42.x86_64                                                 
+DEBUG util.py:399:    cracklib-lib-2.9.7-42.x86_64                                                  
+DEBUG util.py:399:    cracklib-license-2.9.7-42.x86_64                                              
+DEBUG util.py:399:    cryptsetup-lib-2.0.6-55.x86_64                                                
+DEBUG util.py:399:    cryptsetup-license-2.0.6-55.x86_64                                            
+DEBUG util.py:399:    curl-bin-7.66.0-98.x86_64                                                     
+DEBUG util.py:399:    curl-lib-7.66.0-98.x86_64                                                     
+DEBUG util.py:399:    curl-license-7.66.0-98.x86_64                                                 
+DEBUG util.py:399:    db-5.3.28-17.x86_64                                                           
+DEBUG util.py:399:    dbus-config-1.12.16-72.x86_64                                                 
+DEBUG util.py:399:    dbus-data-1.12.16-72.x86_64                                                   
+DEBUG util.py:399:    dbus-lib-1.12.16-72.x86_64                                                    
+DEBUG util.py:399:    dbus-libexec-1.12.16-72.x86_64                                                
+DEBUG util.py:399:    dbus-license-1.12.16-72.x86_64                                                
+DEBUG util.py:399:    debugedit-4.14.2.1-84.x86_64                                                  
+DEBUG util.py:399:    debugedit-bin-4.14.2.1-84.x86_64                                              
+DEBUG util.py:399:    debugedit-lib-4.14.2.1-84.x86_64                                              
+DEBUG util.py:399:    diffutils-3.7-25.x86_64                                                       
+DEBUG util.py:399:    diffutils-bin-3.7-25.x86_64                                                   
+DEBUG util.py:399:    diffutils-license-3.7-25.x86_64                                               
+DEBUG util.py:399:    diffutils-locales-3.7-25.x86_64                                               
+DEBUG util.py:399:    diffutils-man-3.7-25.x86_64                                                   
+DEBUG util.py:399:    elfutils-0.177-66.x86_64                                                      
+DEBUG util.py:399:    elfutils-bin-0.177-66.x86_64                                                  
+DEBUG util.py:399:    elfutils-lib-0.177-66.x86_64                                                  
+DEBUG util.py:399:    elfutils-license-0.177-66.x86_64                                              
+DEBUG util.py:399:    elfutils-locales-0.177-66.x86_64                                              
+DEBUG util.py:399:    expat-lib-2.2.8-40.x86_64                                                     
+DEBUG util.py:399:    expat-license-2.2.8-40.x86_64                                                 
+DEBUG util.py:399:    file-5.37-46.x86_64                                                           
+DEBUG util.py:399:    file-bin-5.37-46.x86_64                                                       
+DEBUG util.py:399:    file-data-5.37-46.x86_64                                                      
+DEBUG util.py:399:    file-dev-5.37-46.x86_64                                                       
+DEBUG util.py:399:    file-lib-5.37-46.x86_64                                                       
+DEBUG util.py:399:    file-license-5.37-46.x86_64                                                   
+DEBUG util.py:399:    file-man-5.37-46.x86_64                                                       
+DEBUG util.py:399:    filesystem-3.0.14-191.x86_64                                                  
+DEBUG util.py:399:    findutils-4.7.0-24.x86_64                                                     
+DEBUG util.py:399:    findutils-bin-4.7.0-24.x86_64                                                 
+DEBUG util.py:399:    findutils-license-4.7.0-24.x86_64                                             
+DEBUG util.py:399:    findutils-locales-4.7.0-24.x86_64                                             
+DEBUG util.py:399:    findutils-man-4.7.0-24.x86_64                                                 
+DEBUG util.py:399:    gawk-5.0.1-53.x86_64                                                          
+DEBUG util.py:399:    gawk-bin-5.0.1-53.x86_64                                                      
+DEBUG util.py:399:    gawk-data-5.0.1-53.x86_64                                                     
+DEBUG util.py:399:    gawk-lib-5.0.1-53.x86_64                                                      
+DEBUG util.py:399:    gawk-libexec-5.0.1-53.x86_64                                                  
+DEBUG util.py:399:    gawk-license-5.0.1-53.x86_64                                                  
+DEBUG util.py:399:    gawk-locales-5.0.1-53.x86_64                                                  
+DEBUG util.py:399:    gawk-man-5.0.1-53.x86_64                                                      
+DEBUG util.py:399:    gdbm-lib-1.14-24.x86_64                                                       
+DEBUG util.py:399:    gettext-0.19.8.1-30.x86_64                                                    
+DEBUG util.py:399:    gettext-bin-0.19.8.1-30.x86_64                                                
+DEBUG util.py:399:    gettext-data-0.19.8.1-30.x86_64                                               
+DEBUG util.py:399:    gettext-dev-0.19.8.1-30.x86_64                                                
+DEBUG util.py:399:    gettext-lib-0.19.8.1-30.x86_64                                                
+DEBUG util.py:399:    gettext-license-0.19.8.1-30.x86_64                                            
+DEBUG util.py:399:    gettext-locales-0.19.8.1-30.x86_64                                            
+DEBUG util.py:399:    gettext-man-0.19.8.1-30.x86_64                                                
+DEBUG util.py:399:    git-2.23.0-153.x86_64                                                         
+DEBUG util.py:399:    git-bin-2.23.0-153.x86_64                                                     
+DEBUG util.py:399:    git-data-2.23.0-153.x86_64                                                    
+DEBUG util.py:399:    git-libexec-2.23.0-153.x86_64                                                 
+DEBUG util.py:399:    git-license-2.23.0-153.x86_64                                                 
+DEBUG util.py:399:    git-locales-2.23.0-153.x86_64                                                 
+DEBUG util.py:399:    git-man-2.23.0-153.x86_64                                                     
+DEBUG util.py:399:    glib-config-2.62.0-100.x86_64                                                 
+DEBUG util.py:399:    glib-data-2.62.0-100.x86_64                                                   
+DEBUG util.py:399:    glib-lib-2.62.0-100.x86_64                                                    
+DEBUG util.py:399:    glib-libexec-2.62.0-100.x86_64                                                
+DEBUG util.py:399:    glib-license-2.62.0-100.x86_64                                                
+DEBUG util.py:399:    glibc-dev-2.30-288.x86_64                                                     
+DEBUG util.py:399:    glibc-locale-2.30-288.x86_64                                                  
+DEBUG util.py:399:    glibc-utils-2.30-288.x86_64                                                   
+DEBUG util.py:399:    gmp-lib-6.1.2-40.x86_64                                                       
+DEBUG util.py:399:    gmp-lib-hsw-6.1.2-40.x86_64                                                   
+DEBUG util.py:399:    grep-3.3-37.x86_64                                                            
+DEBUG util.py:399:    grep-bin-3.3-37.x86_64                                                        
+DEBUG util.py:399:    grep-license-3.3-37.x86_64                                                    
+DEBUG util.py:399:    grep-locales-3.3-37.x86_64                                                    
+DEBUG util.py:399:    grep-man-3.3-37.x86_64                                                        
+DEBUG util.py:399:    gzip-1.10-27.x86_64                                                           
+DEBUG util.py:399:    gzip-bin-1.10-27.x86_64                                                       
+DEBUG util.py:399:    gzip-license-1.10-27.x86_64                                                   
+DEBUG util.py:399:    gzip-man-1.10-27.x86_64                                                       
+DEBUG util.py:399:    hostname-3.21-17.x86_64                                                       
+DEBUG util.py:399:    hostname-bin-3.21-17.x86_64                                                   
+DEBUG util.py:399:    hostname-license-3.21-17.x86_64                                               
+DEBUG util.py:399:    hostname-man-3.21-17.x86_64                                                   
+DEBUG util.py:399:    iptables-extras-1.8.3-34.x86_64                                               
+DEBUG util.py:399:    json-c-lib-0.13.1-13.x86_64                                                   
+DEBUG util.py:399:    kmod-data-26-40.x86_64                                                        
+DEBUG util.py:399:    kmod-lib-26-40.x86_64                                                         
+DEBUG util.py:399:    kmod-license-26-40.x86_64                                                     
+DEBUG util.py:399:    libaio-lib-0.3.112-19.x86_64                                                  
+DEBUG util.py:399:    libaio-license-0.3.112-19.x86_64                                              
+DEBUG util.py:399:    libc6-2.30-288.x86_64                                                         
+DEBUG util.py:399:    libc6-dev-2.30-288.x86_64                                                     
+DEBUG util.py:399:    libcap-2.27-36.x86_64                                                         
+DEBUG util.py:399:    libcap-bin-2.27-36.x86_64                                                     
+DEBUG util.py:399:    libcap-lib-2.27-36.x86_64                                                     
+DEBUG util.py:399:    libcap-license-2.27-36.x86_64                                                 
+DEBUG util.py:399:    libcap-man-2.27-36.x86_64                                                     
+DEBUG util.py:399:    libcroco-lib-0.6.13-16.x86_64                                                 
+DEBUG util.py:399:    libcroco-license-0.6.13-16.x86_64                                             
+DEBUG util.py:399:    libffi-lib-3.2.1-30.x86_64                                                    
+DEBUG util.py:399:    libffi-license-3.2.1-30.x86_64                                                
+DEBUG util.py:399:    libgcrypt-lib-1.8.5-36.x86_64                                                 
+DEBUG util.py:399:    libgcrypt-license-1.8.5-36.x86_64                                             
+DEBUG util.py:399:    libgpg-error-data-1.36-45.x86_64                                              
+DEBUG util.py:399:    libgpg-error-lib-1.36-45.x86_64                                               
+DEBUG util.py:399:    libgpg-error-license-1.36-45.x86_64                                           
+DEBUG util.py:399:    libseccomp-2.4.1-20.x86_64                                                    
+DEBUG util.py:399:    libseccomp-bin-2.4.1-20.x86_64                                                
+DEBUG util.py:399:    libseccomp-lib-2.4.1-20.x86_64                                                
+DEBUG util.py:399:    libseccomp-license-2.4.1-20.x86_64                                            
+DEBUG util.py:399:    libseccomp-man-2.4.1-20.x86_64                                                
+DEBUG util.py:399:    libtasn1-lib-4.13-32.x86_64                                                   
+DEBUG util.py:399:    libtasn1-license-4.13-32.x86_64                                               
+DEBUG util.py:399:    libtool-2.4.6-26.x86_64                                                       
+DEBUG util.py:399:    libtool-bin-2.4.6-26.x86_64                                                   
+DEBUG util.py:399:    libtool-data-2.4.6-26.x86_64                                                  
+DEBUG util.py:399:    libtool-dev-2.4.6-26.x86_64                                                   
+DEBUG util.py:399:    libtool-lib-2.4.6-26.x86_64                                                   
+DEBUG util.py:399:    libtool-license-2.4.6-26.x86_64                                               
+DEBUG util.py:399:    libtool-man-2.4.6-26.x86_64                                                   
+DEBUG util.py:399:    libxml2-lib-2.9.9-71.x86_64                                                   
+DEBUG util.py:399:    libxml2-license-2.9.9-71.x86_64                                               
+DEBUG util.py:399:    linux-libc-headers-4.19-20.x86_64                                             
+DEBUG util.py:399:    lz4-lib-1.9.1-27.x86_64                                                       
+DEBUG util.py:399:    lz4-license-1.9.1-27.x86_64                                                   
+DEBUG util.py:399:    lzlib-lib-1.11-2.x86_64                                                       
+DEBUG util.py:399:    lzlib-license-1.11-2.x86_64                                                   
+DEBUG util.py:399:    m4-1.4.18-88.x86_64                                                           
+DEBUG util.py:399:    m4-bin-1.4.18-88.x86_64                                                       
+DEBUG util.py:399:    m4-license-1.4.18-88.x86_64                                                   
+DEBUG util.py:399:    m4-man-1.4.18-88.x86_64                                                       
+DEBUG util.py:399:    make-4.2.1-35.x86_64                                                          
+DEBUG util.py:399:    make-bin-4.2.1-35.x86_64                                                      
+DEBUG util.py:399:    make-doc-4.2.1-35.x86_64                                                      
+DEBUG util.py:399:    make-license-4.2.1-35.x86_64                                                  
+DEBUG util.py:399:    make-locales-4.2.1-35.x86_64                                                  
+DEBUG util.py:399:    make-man-4.2.1-35.x86_64                                                      
+DEBUG util.py:399:    mpc-lib-1.1.0-24.x86_64                                                       
+DEBUG util.py:399:    mpfr-lib-4.0.2-27.x86_64                                                      
+DEBUG util.py:399:    mpfr-license-4.0.2-27.x86_64                                                  
+DEBUG util.py:399:    ncurses-data-6.1-55.x86_64                                                    
+DEBUG util.py:399:    ncurses-lib-6.1-55.x86_64                                                     
+DEBUG util.py:399:    ncurses-lib-narrow-6.1-55.x86_64                                              
+DEBUG util.py:399:    netbase-5.6-19.x86_64                                                         
+DEBUG util.py:399:    netbase-data-5.6-19.x86_64                                                    
+DEBUG util.py:399:    netbase-license-5.6-19.x86_64                                                 
+DEBUG util.py:399:    nspr-4.22-24.x86_64                                                           
+DEBUG util.py:399:    nss-altfiles-2.19.4-21.x86_64                                                 
+DEBUG util.py:399:    nss-altfiles-lib-2.19.4-21.x86_64                                             
+DEBUG util.py:399:    nss-lib-3.46-30.x86_64                                                        
+DEBUG util.py:399:    openssl-1.1.1d-89.x86_64                                                      
+DEBUG util.py:399:    openssl-lib-1.1.1d-89.x86_64                                                  
+DEBUG util.py:399:    patch-2.7.6-42.x86_64                                                         
+DEBUG util.py:399:    patch-bin-2.7.6-42.x86_64                                                     
+DEBUG util.py:399:    patch-license-2.7.6-42.x86_64                                                 
+DEBUG util.py:399:    patch-man-2.7.6-42.x86_64                                                     
+DEBUG util.py:399:    pcre2-lib-10.33-22.x86_64                                                     
+DEBUG util.py:399:    pcre2-license-10.33-22.x86_64                                                 
+DEBUG util.py:399:    perl-5.28.2-59.x86_64                                                         
+DEBUG util.py:399:    perl-Math-BigInt-GMP-1.6006-18.x86_64                                         
+DEBUG util.py:399:    perl-Math-BigInt-GMP-lib-1.6006-18.x86_64                                     
+DEBUG util.py:399:    perl-Test-Simple-1.302168-77.x86_64                                           
+DEBUG util.py:399:    perl-Test-Simple-license-1.302168-77.x86_64                                   
+DEBUG util.py:399:    pigz-2.4-36.x86_64                                                            
+DEBUG util.py:399:    pigz-bin-2.4-36.x86_64                                                        
+DEBUG util.py:399:    pigz-doc-2.4-36.x86_64                                                        
+DEBUG util.py:399:    pkg-config-0.29.2-21.x86_64                                                   
+DEBUG util.py:399:    pkg-config-bin-0.29.2-21.x86_64                                               
+DEBUG util.py:399:    pkg-config-dev-0.29.2-21.x86_64                                               
+DEBUG util.py:399:    pkg-config-license-0.29.2-21.x86_64                                           
+DEBUG util.py:399:    pkg-config-man-0.29.2-21.x86_64                                               
+DEBUG util.py:399:    plzip-1.8-2.x86_64                                                            
+DEBUG util.py:399:    plzip-bin-1.8-2.x86_64                                                        
+DEBUG util.py:399:    plzip-license-1.8-2.x86_64                                                    
+DEBUG util.py:399:    plzip-man-1.8-2.x86_64                                                        
+DEBUG util.py:399:    popt-lib-1.16-19.x86_64                                                       
+DEBUG util.py:399:    python3-core-3.7.4-185.x86_64                                                 
+DEBUG util.py:399:    rpm-4.12.0.2-92.x86_64                                                        
+DEBUG util.py:399:    rpm-build-4.12.0.2-92.x86_64                                                  
+DEBUG util.py:399:    rpm-libs-4.12.0.2-92.x86_64                                                   
+DEBUG util.py:399:    sed-4.7-27.x86_64                                                             
+DEBUG util.py:399:    sed-bin-4.7-27.x86_64                                                         
+DEBUG util.py:399:    sed-doc-4.7-27.x86_64                                                         
+DEBUG util.py:399:    sed-license-4.7-27.x86_64                                                     
+DEBUG util.py:399:    sed-locales-4.7-27.x86_64                                                     
+DEBUG util.py:399:    sed-man-4.7-27.x86_64                                                         
+DEBUG util.py:399:    setuptools-bin-41.2.0-147.x86_64                                              
+DEBUG util.py:399:    setuptools-license-41.2.0-147.x86_64                                          
+DEBUG util.py:399:    setuptools-python3-41.2.0-147.x86_64                                          
+DEBUG util.py:399:    shadow-4.6-59.x86_64                                                          
+DEBUG util.py:399:    shadow-bin-4.6-59.x86_64                                                      
+DEBUG util.py:399:    shadow-data-4.6-59.x86_64                                                     
+DEBUG util.py:399:    shadow-license-4.6-59.x86_64                                                  
+DEBUG util.py:399:    shadow-locales-4.6-59.x86_64                                                  
+DEBUG util.py:399:    shadow-man-4.6-59.x86_64                                                      
+DEBUG util.py:399:    sqlite-autoconf-lib-3290000-72.x86_64                                         
+DEBUG util.py:399:    systemd-data-243-261.x86_64                                                   
+DEBUG util.py:399:    systemd-lib-243-261.x86_64                                                    
+DEBUG util.py:399:    systemd-license-243-261.x86_64                                                
+DEBUG util.py:399:    tar-1.32-30.x86_64                                                            
+DEBUG util.py:399:    tar-bin-1.32-30.x86_64                                                        
+DEBUG util.py:399:    tar-libexec-1.32-30.x86_64                                                    
+DEBUG util.py:399:    tar-license-1.32-30.x86_64                                                    
+DEBUG util.py:399:    tar-locales-1.32-30.x86_64                                                    
+DEBUG util.py:399:    tar-man-1.32-30.x86_64                                                        
+DEBUG util.py:399:    unzip-6.0-25.x86_64                                                           
+DEBUG util.py:399:    unzip-bin-6.0-25.x86_64                                                       
+DEBUG util.py:399:    unzip-license-6.0-25.x86_64                                                   
+DEBUG util.py:399:    unzip-man-6.0-25.x86_64                                                       
+DEBUG util.py:399:    usrbinpython-3-12.x86_64                                                      
+DEBUG util.py:399:    usrbinpython-bin-3-12.x86_64                                                  
+DEBUG util.py:399:    wget-1.20.3-40.x86_64                                                         
+DEBUG util.py:399:    wget-bin-1.20.3-40.x86_64                                                     
+DEBUG util.py:399:    wget-license-1.20.3-40.x86_64                                                 
+DEBUG util.py:399:    wget-locales-1.20.3-40.x86_64                                                 
+DEBUG util.py:399:    wget-man-1.20.3-40.x86_64                                                     
+DEBUG util.py:399:    which-2.21-14.x86_64                                                          
+DEBUG util.py:399:    which-bin-2.21-14.x86_64                                                      
+DEBUG util.py:399:    which-doc-2.21-14.x86_64                                                      
+DEBUG util.py:399:    xz-5.2.4-52.x86_64                                                            
+DEBUG util.py:399:    xz-bin-5.2.4-52.x86_64                                                        
+DEBUG util.py:399:    xz-lib-5.2.4-52.x86_64                                                        
+DEBUG util.py:399:    xz-license-5.2.4-52.x86_64                                                    
+DEBUG util.py:399:    xz-locales-5.2.4-52.x86_64                                                    
+DEBUG util.py:399:    xz-man-5.2.4-52.x86_64                                                        
+DEBUG util.py:399:    zip-3.0-24.x86_64                                                             
+DEBUG util.py:399:    zip-bin-3.0-24.x86_64                                                         
+DEBUG util.py:399:    zip-license-3.0-24.x86_64                                                     
+DEBUG util.py:399:    zip-man-3.0-24.x86_64                                                         
+DEBUG util.py:399:    zlib-lib-1.2.11.1.jtkv6.3-56.x86_64                                           
+DEBUG util.py:399:    zlib-license-1.2.11.1.jtkv6.3-56.x86_64                                       
+DEBUG util.py:399:    zstd-bin-1.4.3-50.x86_64                                                      
+DEBUG util.py:399:    zstd-lib-1.4.3-50.x86_64                                                      
+DEBUG util.py:399:    zstd-license-1.4.3-50.x86_64                                                  
+DEBUG util.py:399:  Complete!
+DEBUG util.py:526:  Child return code was: 0
+DEBUG util.py:108:  touching file: /var/lib/mock/clear-python-aodhclient/root/.initialized
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:273:  Unsharing. Flags: 134217728
+DEBUG backend.py:341:  Copying package to result dir
+DEBUG util.py:172:  kill orphans
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: ['/bin/umount', '-n', '/var/lib/mock/clear-python-aodhclient/root/var/cache/dnf/'] with env {'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
+DEBUG util.py:526:  Child return code was: 0
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/clear-python-aodhclient/root/dev/pts'] with env {'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
+DEBUG util.py:526:  Child return code was: 0
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/clear-python-aodhclient/root/dev/shm'] with env {'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
+DEBUG util.py:526:  Child return code was: 0
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/clear-python-aodhclient/root/sys'] with env {'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
+DEBUG util.py:526:  Child return code was: 0
+DEBUG util.py:546:  child environment: None
+DEBUG util.py:479:  Executing command: ['/bin/umount', '-n', '-l', '/var/lib/mock/clear-python-aodhclient/root/proc'] with env {'TERM': 'vt100', 'SHELL': '/bin/sh', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
+DEBUG util.py:526:  Child return code was: 0
+DEBUG util.py:96:  ensuring that dir exists: /var/lib/mock/clear-python-aodhclient
+DEBUG util.py:172:  kill orphans

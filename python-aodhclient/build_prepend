@@ -1,0 +1,2 @@
+export PBR_VERSION=%{version}
+%define debug_package %{nil}
