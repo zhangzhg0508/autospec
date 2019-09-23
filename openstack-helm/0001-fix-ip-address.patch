@@ -1,0 +1,155 @@
+From 2c14a34737ae194ff9da5fd49de72bcf48433edb Mon Sep 17 00:00:00 2001
+From: fuyong <fuyong@neusoft.com>
+Date: Fri, 20 Sep 2019 16:45:18 +0800
+Subject: [PATCH] fix ip address
+
+---
+ openstack-helm/barbican/requirements.yaml   | 2 +-
+ openstack-helm/ceilometer/requirements.yaml | 2 +-
+ openstack-helm/cinder/requirements.yaml     | 2 +-
+ openstack-helm/glance/requirements.yaml     | 2 +-
+ openstack-helm/heat/requirements.yaml       | 2 +-
+ openstack-helm/horizon/requirements.yaml    | 2 +-
+ openstack-helm/ironic/requirements.yaml     | 2 +-
+ openstack-helm/keystone/requirements.yaml   | 2 +-
+ openstack-helm/magnum/requirements.yaml     | 2 +-
+ openstack-helm/neutron/requirements.yaml    | 2 +-
+ openstack-helm/nova/requirements.yaml       | 2 +-
+ openstack-helm/panko/requirements.yaml      | 2 +-
+ 12 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/openstack-helm/barbican/requirements.yaml b/openstack-helm/barbican/requirements.yaml
+index 5669e12..e67b216 100644
+--- a/openstack-helm/barbican/requirements.yaml
++++ b/openstack-helm/barbican/requirements.yaml
+@@ -12,5 +12,5 @@
+ 
+ dependencies:
+   - name: helm-toolkit
+-    repository: http://localhost:8879/charts
++    repository: http://127.0.0.1:8879/charts
+     version: 0.1.0
+diff --git a/openstack-helm/ceilometer/requirements.yaml b/openstack-helm/ceilometer/requirements.yaml
+index 53782e6..6df71ab 100644
+--- a/openstack-helm/ceilometer/requirements.yaml
++++ b/openstack-helm/ceilometer/requirements.yaml
+@@ -14,5 +14,5 @@
+ 
+ dependencies:
+   - name: helm-toolkit
+-    repository: http://localhost:8879/charts
++    repository: http://127.0.0.1:8879/charts
+     version: 0.1.0
+diff --git a/openstack-helm/cinder/requirements.yaml b/openstack-helm/cinder/requirements.yaml
+index 53782e6..6df71ab 100644
+--- a/openstack-helm/cinder/requirements.yaml
++++ b/openstack-helm/cinder/requirements.yaml
+@@ -14,5 +14,5 @@
+ 
+ dependencies:
+   - name: helm-toolkit
+-    repository: http://localhost:8879/charts
++    repository: http://127.0.0.1:8879/charts
+     version: 0.1.0
+diff --git a/openstack-helm/glance/requirements.yaml b/openstack-helm/glance/requirements.yaml
+index 53782e6..6df71ab 100644
+--- a/openstack-helm/glance/requirements.yaml
++++ b/openstack-helm/glance/requirements.yaml
+@@ -14,5 +14,5 @@
+ 
+ dependencies:
+   - name: helm-toolkit
+-    repository: http://localhost:8879/charts
++    repository: http://127.0.0.1:8879/charts
+     version: 0.1.0
+diff --git a/openstack-helm/heat/requirements.yaml b/openstack-helm/heat/requirements.yaml
+index 53782e6..6df71ab 100644
+--- a/openstack-helm/heat/requirements.yaml
++++ b/openstack-helm/heat/requirements.yaml
+@@ -14,5 +14,5 @@
+ 
+ dependencies:
+   - name: helm-toolkit
+-    repository: http://localhost:8879/charts
++    repository: http://127.0.0.1:8879/charts
+     version: 0.1.0
+diff --git a/openstack-helm/horizon/requirements.yaml b/openstack-helm/horizon/requirements.yaml
+index 53782e6..6df71ab 100644
+--- a/openstack-helm/horizon/requirements.yaml
++++ b/openstack-helm/horizon/requirements.yaml
+@@ -14,5 +14,5 @@
+ 
+ dependencies:
+   - name: helm-toolkit
+-    repository: http://localhost:8879/charts
++    repository: http://127.0.0.1:8879/charts
+     version: 0.1.0
+diff --git a/openstack-helm/ironic/requirements.yaml b/openstack-helm/ironic/requirements.yaml
+index 53782e6..6df71ab 100644
+--- a/openstack-helm/ironic/requirements.yaml
++++ b/openstack-helm/ironic/requirements.yaml
+@@ -14,5 +14,5 @@
+ 
+ dependencies:
+   - name: helm-toolkit
+-    repository: http://localhost:8879/charts
++    repository: http://127.0.0.1:8879/charts
+     version: 0.1.0
+diff --git a/openstack-helm/keystone/requirements.yaml b/openstack-helm/keystone/requirements.yaml
+index 53782e6..6df71ab 100644
+--- a/openstack-helm/keystone/requirements.yaml
++++ b/openstack-helm/keystone/requirements.yaml
+@@ -14,5 +14,5 @@
+ 
+ dependencies:
+   - name: helm-toolkit
+-    repository: http://localhost:8879/charts
++    repository: http://127.0.0.1:8879/charts
+     version: 0.1.0
+diff --git a/openstack-helm/magnum/requirements.yaml b/openstack-helm/magnum/requirements.yaml
+index 53782e6..6df71ab 100644
+--- a/openstack-helm/magnum/requirements.yaml
++++ b/openstack-helm/magnum/requirements.yaml
+@@ -14,5 +14,5 @@
+ 
+ dependencies:
+   - name: helm-toolkit
+-    repository: http://localhost:8879/charts
++    repository: http://127.0.0.1:8879/charts
+     version: 0.1.0
+diff --git a/openstack-helm/neutron/requirements.yaml b/openstack-helm/neutron/requirements.yaml
+index 53782e6..6df71ab 100644
+--- a/openstack-helm/neutron/requirements.yaml
++++ b/openstack-helm/neutron/requirements.yaml
+@@ -14,5 +14,5 @@
+ 
+ dependencies:
+   - name: helm-toolkit
+-    repository: http://localhost:8879/charts
++    repository: http://127.0.0.1:8879/charts
+     version: 0.1.0
+diff --git a/openstack-helm/nova/requirements.yaml b/openstack-helm/nova/requirements.yaml
+index 53782e6..6df71ab 100644
+--- a/openstack-helm/nova/requirements.yaml
++++ b/openstack-helm/nova/requirements.yaml
+@@ -14,5 +14,5 @@
+ 
+ dependencies:
+   - name: helm-toolkit
+-    repository: http://localhost:8879/charts
++    repository: http://127.0.0.1:8879/charts
+     version: 0.1.0
+diff --git a/openstack-helm/panko/requirements.yaml b/openstack-helm/panko/requirements.yaml
+index 780e525..4a36b87 100644
+--- a/openstack-helm/panko/requirements.yaml
++++ b/openstack-helm/panko/requirements.yaml
+@@ -14,5 +14,5 @@
+ 
+ dependencies:
+   - name: helm-toolkit
+-    repository: http://localhost:8879/charts
++    repository: http://127.0.0.1:8879/charts
+     version: 0.1.0
+-- 
+2.23.0
+

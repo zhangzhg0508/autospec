@@ -1,0 +1,767 @@
+Mock Version: 1.2.14
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/openstack-helm.spec'], chrootPath='/var/lib/mock/clear-openstack-helm/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f17db12ae10>timeout=0uid=1000gid=1000user='mockbuild'printOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/openstack-helm.spec'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/openstack-helm-1.0-1.src.rpm
+Child return code was: 0
+LEAVE do --> 
+
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/openstack-helm.spec '], chrootPath='/var/lib/mock/clear-openstack-helm/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f17db12ae10>timeout=0uid=1000gid=1000user='mockbuild'private_network=TrueprintOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/openstack-helm.spec '] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.gcahK1
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
++ rm -rf openstack-helm
++ /usr/bin/gzip -dc /builddir/build/SOURCES/openstack-helm-1.0.tar.gz
++ /usr/bin/tar -xf -
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd openstack-helm
++ /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ cd ..
++ cd /builddir/build/BUILD
++ /usr/bin/gzip -dc /builddir/build/SOURCES/openstack-helm.tar.gz
++ /usr/bin/tar -xf -
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd openstack-helm
++ /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ echo 'Patch #1 (0001-Add-Aodh-Chart.patch):'
+Patch #1 (0001-Add-Aodh-Chart.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0001-Add-Aodh-Chart.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file aodh/Chart.yaml
+patching file aodh/requirements.yaml
+patching file aodh/templates/bin/_aodh-alarms-cleaner.sh.tpl
+patching file aodh/templates/bin/_aodh-api.sh.tpl
+patching file aodh/templates/bin/_aodh-evaluator.sh.tpl
+patching file aodh/templates/bin/_aodh-listener.sh.tpl
+patching file aodh/templates/bin/_aodh-notifier.sh.tpl
+patching file aodh/templates/bin/_aodh-test.sh.tpl
+patching file aodh/templates/bin/_bootstrap.sh.tpl
+patching file aodh/templates/bin/_db-sync.sh.tpl
+patching file aodh/templates/configmap-bin.yaml
+patching file aodh/templates/configmap-etc.yaml
+patching file aodh/templates/cron-job-alarms-cleaner.yaml
+patching file aodh/templates/deployment-api.yaml
+patching file aodh/templates/deployment-evaluator.yaml
+patching file aodh/templates/deployment-listener.yaml
+patching file aodh/templates/deployment-notifier.yaml
+patching file aodh/templates/ingress-api.yaml
+patching file aodh/templates/job-bootstrap.yaml
+patching file aodh/templates/job-db-drop.yaml
+patching file aodh/templates/job-db-init.yaml
+patching file aodh/templates/job-db-sync.yaml
+patching file aodh/templates/job-image-repo-sync.yaml
+patching file aodh/templates/job-ks-endpoints.yaml
+patching file aodh/templates/job-ks-service.yaml
+patching file aodh/templates/job-ks-user.yaml
+patching file aodh/templates/job-rabbit-init.yaml
+patching file aodh/templates/pdb-api.yaml
+patching file aodh/templates/pod-aodh-test.yaml
+patching file aodh/templates/secret-db.yaml
+patching file aodh/templates/secret-keystone.yaml
+patching file aodh/templates/secret-rabbitmq.yaml
+patching file aodh/templates/service-api.yaml
+patching file aodh/templates/service-ingress-api.yaml
+patching file aodh/values.yaml
+patching file tools/deployment/multinode/250-aodh.sh
+patching file tools/deployment/multinode/260-ceilometer.sh (renamed from tools/deployment/multinode/250-ceilometer.sh)
++ echo 'Patch #2 (0002-Ceilometer-chart-add-the-ability-to-publish-events-t.patch):'
+Patch #2 (0002-Ceilometer-chart-add-the-ability-to-publish-events-t.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0002-Ceilometer-chart-add-the-ability-to-publish-events-t.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file ceilometer/values.yaml
+Patch #3 (0003-Remove-stale-Apache2-service-pids-when-a-POD-starts.patch):
++ echo 'Patch #3 (0003-Remove-stale-Apache2-service-pids-when-a-POD-starts.patch):'
++ /usr/bin/cat /builddir/build/SOURCES/0003-Remove-stale-Apache2-service-pids-when-a-POD-starts.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file ceilometer/templates/bin/_ceilometer-api.sh.tpl
+patching file keystone/templates/bin/_keystone-api.sh.tpl
+patching file nova/templates/bin/_nova-placement-api.sh.tpl
++ echo 'Patch #4 (0004-Fix-ssh-config-in-nova-to-support-cold-migrations.patch):'
+Patch #4 (0004-Fix-ssh-config-in-nova-to-support-cold-migrations.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0004-Fix-ssh-config-in-nova-to-support-cold-migrations.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file nova/templates/bin/_ssh-start.sh.tpl
+patching file nova/templates/configmap-etc.yaml
+patching file nova/templates/configmap-ssh.yaml
+patching file nova/templates/daemonset-compute.yaml
+patching file nova/values.yaml
++ echo 'Patch #5 (0005-Nova-console-ip-address-search-optionality.patch):'
+Patch #5 (0005-Nova-console-ip-address-search-optionality.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0005-Nova-console-ip-address-search-optionality.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file nova/templates/bin/_nova-compute.sh.tpl
+patching file nova/values.yaml
+Patch #6 (0006-Nova-chart-Support-ephemeral-pool-creation.patch):
++ echo 'Patch #6 (0006-Nova-chart-Support-ephemeral-pool-creation.patch):'
++ /usr/bin/cat /builddir/build/SOURCES/0006-Nova-chart-Support-ephemeral-pool-creation.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file nova/templates/bin/_nova-storage-init.sh.tpl
+patching file nova/templates/configmap-bin.yaml
+patching file nova/templates/job-storage-init.yaml
+patching file nova/values.yaml
+Patch #7 (0007-Horizon-Disable-apache2-status_module.patch):
++ echo 'Patch #7 (0007-Horizon-Disable-apache2-status_module.patch):'
++ /usr/bin/cat /builddir/build/SOURCES/0007-Horizon-Disable-apache2-status_module.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file horizon/templates/bin/_horizon.sh.tpl
++ echo 'Patch #8 (0008-Neutron-Add-support-for-disabling-Readiness-Liveness.patch):'
+Patch #8 (0008-Neutron-Add-support-for-disabling-Readiness-Liveness.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0008-Neutron-Add-support-for-disabling-Readiness-Liveness.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file neutron/templates/daemonset-dhcp-agent.yaml
+patching file neutron/templates/daemonset-l3-agent.yaml
+patching file neutron/templates/daemonset-lb-agent.yaml
+patching file neutron/templates/daemonset-metadata-agent.yaml
+patching file neutron/templates/daemonset-ovs-agent.yaml
+patching file neutron/templates/daemonset-sriov-agent.yaml
+patching file neutron/values.yaml
+Patch #9 (0009-Nova-Add-support-for-disabling-Readiness-Liveness-pr.patch):
++ echo 'Patch #9 (0009-Nova-Add-support-for-disabling-Readiness-Liveness-pr.patch):'
++ /usr/bin/cat /builddir/build/SOURCES/0009-Nova-Add-support-for-disabling-Readiness-Liveness-pr.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file nova/templates/daemonset-compute.yaml
+patching file nova/templates/deployment-conductor.yaml
+patching file nova/templates/deployment-consoleauth.yaml
+patching file nova/templates/deployment-novncproxy.yaml
+patching file nova/templates/deployment-scheduler.yaml
+patching file nova/templates/deployment-spiceproxy.yaml
+patching file nova/values.yaml
++ echo 'Patch #10 (0010-Ironic-Add-pxe-boot-support-for-centos-image.patch):'
+Patch #10 (0010-Ironic-Add-pxe-boot-support-for-centos-image.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0010-Ironic-Add-pxe-boot-support-for-centos-image.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file ironic/templates/bin/_ironic-conductor-pxe-init.sh.tpl
++ echo 'Patch #11 (0011-Use-nova-s-ping-method-to-find-out-if-the-service-is.patch):'
+Patch #11 (0011-Use-nova-s-ping-method-to-find-out-if-the-service-is.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0011-Use-nova-s-ping-method-to-find-out-if-the-service-is.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file nova/templates/bin/_health-probe.py.tpl
++ echo 'Patch #12 (0012-Add-internal-tenant-id-in-conf.patch):'
+Patch #12 (0012-Add-internal-tenant-id-in-conf.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0012-Add-internal-tenant-id-in-conf.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file cinder/templates/bin/_cinder-volume.sh.tpl
+patching file cinder/templates/bin/_create-internal-tenant-id.sh.tpl
+patching file cinder/templates/bin/_retrieve-internal-tenant-id.sh.tpl
+patching file cinder/templates/configmap-bin.yaml
+patching file cinder/templates/deployment-volume.yaml
+patching file cinder/templates/job-create-internal-tenant.yaml
+patching file cinder/values.yaml
++ echo 'Patch #13 (0013-cinder-allow-configuring-the-rbd-app-name.patch):'
+Patch #13 (0013-cinder-allow-configuring-the-rbd-app-name.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0013-cinder-allow-configuring-the-rbd-app-name.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file cinder/templates/bin/_backup-storage-init.sh.tpl
+patching file cinder/templates/bin/_storage-init.sh.tpl
+patching file cinder/templates/job-backup-storage-init.yaml
+patching file cinder/templates/job-storage-init.yaml
+patching file cinder/values.yaml
++ echo 'Patch #14 (0014-Cinder-Support-backup-driver-specification-by-module.patch):'
+Patch #14 (0014-Cinder-Support-backup-driver-specification-by-module.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0014-Cinder-Support-backup-driver-specification-by-module.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file cinder/templates/bin/_backup-storage-init.sh.tpl
+patching file cinder/templates/configmap-etc.yaml
+patching file cinder/templates/deployment-backup.yaml
+patching file cinder/templates/job-backup-storage-init.yaml
+patching file cinder/templates/job-clean.yaml
+patching file cinder/templates/pvc-backup.yaml
+patching file cinder/values.yaml
++ echo 'Patch #15 (0015-Add-Placement-Chart.patch):'
+Patch #15 (0015-Add-Placement-Chart.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0015-Add-Placement-Chart.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file placement/Chart.yaml
+patching file placement/requirements.yaml
+patching file placement/templates/bin/_db-sync.sh.tpl
+patching file placement/templates/bin/_placement-api.sh.tpl
+patching file placement/templates/configmap-bin.yaml
+patching file placement/templates/configmap-etc.yaml
+patching file placement/templates/deployment.yaml
+patching file placement/templates/ingress.yaml
+patching file placement/templates/job-db-drop.yaml
+patching file placement/templates/job-db-init.yaml
+patching file placement/templates/job-db-sync.yaml
+patching file placement/templates/job-image-repo-sync.yaml
+patching file placement/templates/job-ks-endpoints.yaml
+patching file placement/templates/job-ks-service.yaml
+patching file placement/templates/job-ks-user.yaml
+patching file placement/templates/network_policy.yaml
+patching file placement/templates/pdb.yaml
+patching file placement/templates/secret-db.yaml
+patching file placement/templates/secret-ingress-tls.yaml
+patching file placement/templates/secret-keystone.yaml
+patching file placement/templates/service-ingress.yaml
+patching file placement/templates/service.yaml
+patching file placement/values.yaml
+Patch #16 (0016-Cinder-rename-is_ceph_volume-configured.patch):
++ echo 'Patch #16 (0016-Cinder-rename-is_ceph_volume-configured.patch):'
++ /usr/bin/cat /builddir/build/SOURCES/0016-Cinder-rename-is_ceph_volume-configured.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file cinder/templates/deployment-backup.yaml
+patching file cinder/templates/deployment-volume.yaml
+patching file cinder/templates/job-clean.yaml
+patching file cinder/templates/job-storage-init.yaml
+patching file cinder/templates/utils/_has_ceph_backend.tpl
+patching file cinder/templates/utils/_is_ceph_volume_configured.tpl
++ echo 'Patch #17 (0017-Cinder-support-multiple-ceph-volume-backends.patch):'
+Patch #17 (0017-Cinder-support-multiple-ceph-volume-backends.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0017-Cinder-support-multiple-ceph-volume-backends.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file cinder/templates/deployment-backup.yaml
+patching file cinder/templates/deployment-volume.yaml
+patching file cinder/templates/job-backup-storage-init.yaml
+patching file cinder/templates/job-storage-init.yaml
+patching file cinder/templates/utils/_ceph_backend_list.tpl
+patching file cinder/templates/utils/_ceph_volume_section_name.tpl
+patching file cinder/templates/utils/_is_ceph_backend.tpl
+patching file cinder/values.yaml
++ echo 'Patch #18 (0018-Nova-add-service-token.patch):'
+Patch #18 (0018-Nova-add-service-token.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0018-Nova-add-service-token.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file nova/templates/configmap-etc.yaml
+patching file nova/values.yaml
+Patch #19 (0019-Add-TLS-support-for-Aodh-and-Panko-public-endpoints.patch):
++ echo 'Patch #19 (0019-Add-TLS-support-for-Aodh-and-Panko-public-endpoints.patch):'
++ /usr/bin/cat /builddir/build/SOURCES/0019-Add-TLS-support-for-Aodh-and-Panko-public-endpoints.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file aodh/templates/secret-ingress-tls.yaml
+patching file aodh/values.yaml
+patching file panko/templates/secret-ingress-tls.yaml
+patching file panko/values.yaml
++ echo 'Patch #20 (0020-Change-cinder-bootstrap-script.patch):'
+Patch #20 (0020-Change-cinder-bootstrap-script.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0020-Change-cinder-bootstrap-script.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file cinder/templates/bin/_bootstrap.sh.tpl
++ echo 'Patch #21 (0001-fix-ip-address.patch):'
+Patch #21 (0001-fix-ip-address.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0001-fix-ip-address.patch
++ /usr/bin/patch -p2 --fuzz=2
+patching file barbican/requirements.yaml
+patching file ceilometer/requirements.yaml
+patching file cinder/requirements.yaml
+patching file glance/requirements.yaml
+patching file heat/requirements.yaml
+patching file horizon/requirements.yaml
+patching file ironic/requirements.yaml
+patching file keystone/requirements.yaml
+patching file magnum/requirements.yaml
+patching file neutron/requirements.yaml
+patching file nova/requirements.yaml
+patching file panko/requirements.yaml
++ exit 0
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.C6XKE4
++ umask 022
++ cd /builddir/build/BUILD
++ cd openstack-helm
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CFLAGS
++ http_proxy=http://127.0.0.1:9/
++ export http_proxy
++ https_proxy=http://127.0.0.1:9/
++ export https_proxy
++ ftp_proxy=http://127.0.0.1:9/
++ export ftp_proxy
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export no_proxy
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CXXFLAGS
++ FFLAGS='-g -O3 -feliminate-unused-debug-types  -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -m64 -fasynchronous-unwind-tables -Wp,-D_REENTRANT -ftree-loop-distribute-patterns -Wl,-z -Wl,now -Wl,-z -Wl,relro -malign-data=abi -fno-semantic-interposition -ftree-vectorize  -ftree-loop-vectorize -Wl,--enable-new-dtags '
++ export FFLAGS
++ LD_AS_NEEDED=1
++ export LD_AS_NEEDED
++ PKG_CONFIG_LIBDIR=/usr/lib64/pkgconfig
++ export PKG_CONFIG_LIBDIR
++ PATH=/usr/lib64/ccache/bin:/usr/local/bin:/usr/bin
++ export PATH
++ export PBR_VERSION=1.0
++ PBR_VERSION=1.0
++ mkdir /builddir/.helm
++ mkdir /builddir/.helm/repository
++ mkdir /builddir/.helm/repository/cache
++ mkdir /builddir/.helm/repository/local
++ mkdir /builddir/.helm/plugins
++ mkdir /builddir/.helm/starters
++ mkdir /builddir/.helm/cache
++ mkdir /builddir/.helm/cache/archive
++ tar -zxvf /builddir/build/SOURCES/openstack-helm.tar.gz
+index.yaml
+repositories.yaml
++ cp repositories.yaml /builddir/.helm/repository/repositories.yaml
++ cp index.yaml /builddir/.helm/repository/local/index.yaml
++ cp /usr/lib/helm/helm-toolkit-0.1.0.tgz .
++ helm repo rm local
++ helm serve --repo-path .
+"local" has been removed from your repositories
++ helm repo add local http://127.0.0.1:8879/charts
+Regenerating index. This may take a moment.
+Now serving you on 127.0.0.1:8879
+"local" has been added to your repositories
++ make aodh
+===== Processing [aodh] chart =====
+make[1]: Entering directory '/builddir/build/BUILD/openstack-helm'
+if [ -f aodh/Makefile ]; then make -C aodh; fi
+if [ -f aodh/requirements.yaml ]; then helm dep up aodh; fi
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "local" chart repository
+Update Complete.
+Saving 1 charts
+Downloading helm-toolkit from repo http://127.0.0.1:8879/charts
+Deleting outdated charts
+if [ -d aodh ]; then helm lint aodh; fi
+==> Linting aodh
+[INFO] Chart.yaml: icon is recommended
+1 chart(s) linted, no failures
+if [ -d aodh ]; then helm package aodh; fi
+Successfully packaged chart and saved it to: /builddir/build/BUILD/openstack-helm/aodh-0.1.0.tgz
+make[1]: Leaving directory '/builddir/build/BUILD/openstack-helm'
++ make barbican
+===== Processing [barbican] chart =====
+make[1]: Entering directory '/builddir/build/BUILD/openstack-helm'
+if [ -f barbican/Makefile ]; then make -C barbican; fi
+if [ -f barbican/requirements.yaml ]; then helm dep up barbican; fi
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "local" chart repository
+Update Complete.
+Saving 1 charts
+Downloading helm-toolkit from repo http://127.0.0.1:8879/charts
+Deleting outdated charts
+if [ -d barbican ]; then helm lint barbican; fi
+==> Linting barbican
+Lint OK
+1 chart(s) linted, no failures
+if [ -d barbican ]; then helm package barbican; fi
+Successfully packaged chart and saved it to: /builddir/build/BUILD/openstack-helm/barbican-0.1.0.tgz
+make[1]: Leaving directory '/builddir/build/BUILD/openstack-helm'
++ make ceilometer
+===== Processing [ceilometer] chart =====
+make[1]: Entering directory '/builddir/build/BUILD/openstack-helm'
+if [ -f ceilometer/Makefile ]; then make -C ceilometer; fi
+if [ -f ceilometer/requirements.yaml ]; then helm dep up ceilometer; fi
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "local" chart repository
+Update Complete.
+Saving 1 charts
+Downloading helm-toolkit from repo http://127.0.0.1:8879/charts
+Deleting outdated charts
+if [ -d ceilometer ]; then helm lint ceilometer; fi
+==> Linting ceilometer
+[INFO] Chart.yaml: icon is recommended
+1 chart(s) linted, no failures
+if [ -d ceilometer ]; then helm package ceilometer; fi
+Successfully packaged chart and saved it to: /builddir/build/BUILD/openstack-helm/ceilometer-0.1.0.tgz
+make[1]: Leaving directory '/builddir/build/BUILD/openstack-helm'
++ make cinder
+===== Processing [cinder] chart =====
+make[1]: Entering directory '/builddir/build/BUILD/openstack-helm'
+if [ -f cinder/Makefile ]; then make -C cinder; fi
+if [ -f cinder/requirements.yaml ]; then helm dep up cinder; fi
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "local" chart repository
+Update Complete.
+Saving 1 charts
+Downloading helm-toolkit from repo http://127.0.0.1:8879/charts
+Deleting outdated charts
+if [ -d cinder ]; then helm lint cinder; fi
+==> Linting cinder
+Lint OK
+1 chart(s) linted, no failures
+if [ -d cinder ]; then helm package cinder; fi
+Successfully packaged chart and saved it to: /builddir/build/BUILD/openstack-helm/cinder-0.1.0.tgz
+make[1]: Leaving directory '/builddir/build/BUILD/openstack-helm'
++ make glance
+===== Processing [glance] chart =====
+make[1]: Entering directory '/builddir/build/BUILD/openstack-helm'
+if [ -f glance/Makefile ]; then make -C glance; fi
+if [ -f glance/requirements.yaml ]; then helm dep up glance; fi
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "local" chart repository
+Update Complete.
+Saving 1 charts
+Downloading helm-toolkit from repo http://127.0.0.1:8879/charts
+Deleting outdated charts
+if [ -d glance ]; then helm lint glance; fi
+==> Linting glance
+Lint OK
+1 chart(s) linted, no failures
+if [ -d glance ]; then helm package glance; fi
+Successfully packaged chart and saved it to: /builddir/build/BUILD/openstack-helm/glance-0.1.0.tgz
+make[1]: Leaving directory '/builddir/build/BUILD/openstack-helm'
++ make heat
+===== Processing [heat] chart =====
+make[1]: Entering directory '/builddir/build/BUILD/openstack-helm'
+if [ -f heat/Makefile ]; then make -C heat; fi
+if [ -f heat/requirements.yaml ]; then helm dep up heat; fi
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "local" chart repository
+Update Complete.
+Saving 1 charts
+Downloading helm-toolkit from repo http://127.0.0.1:8879/charts
+Deleting outdated charts
+if [ -d heat ]; then helm lint heat; fi
+==> Linting heat
+Lint OK
+1 chart(s) linted, no failures
+if [ -d heat ]; then helm package heat; fi
+Successfully packaged chart and saved it to: /builddir/build/BUILD/openstack-helm/heat-0.1.0.tgz
+make[1]: Leaving directory '/builddir/build/BUILD/openstack-helm'
++ make horizon
+===== Processing [horizon] chart =====
+make[1]: Entering directory '/builddir/build/BUILD/openstack-helm'
+if [ -f horizon/Makefile ]; then make -C horizon; fi
+if [ -f horizon/requirements.yaml ]; then helm dep up horizon; fi
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "local" chart repository
+Update Complete.
+Saving 1 charts
+Downloading helm-toolkit from repo http://127.0.0.1:8879/charts
+Deleting outdated charts
+if [ -d horizon ]; then helm lint horizon; fi
+==> Linting horizon
+Lint OK
+1 chart(s) linted, no failures
+if [ -d horizon ]; then helm package horizon; fi
+Successfully packaged chart and saved it to: /builddir/build/BUILD/openstack-helm/horizon-0.1.0.tgz
+make[1]: Leaving directory '/builddir/build/BUILD/openstack-helm'
++ make ironic
+===== Processing [ironic] chart =====
+make[1]: Entering directory '/builddir/build/BUILD/openstack-helm'
+if [ -f ironic/Makefile ]; then make -C ironic; fi
+if [ -f ironic/requirements.yaml ]; then helm dep up ironic; fi
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "local" chart repository
+Update Complete.
+Saving 1 charts
+Downloading helm-toolkit from repo http://127.0.0.1:8879/charts
+Deleting outdated charts
+if [ -d ironic ]; then helm lint ironic; fi
+==> Linting ironic
+Lint OK
+1 chart(s) linted, no failures
+if [ -d ironic ]; then helm package ironic; fi
+Successfully packaged chart and saved it to: /builddir/build/BUILD/openstack-helm/ironic-0.1.0.tgz
+make[1]: Leaving directory '/builddir/build/BUILD/openstack-helm'
++ make keystone
+===== Processing [keystone] chart =====
+make[1]: Entering directory '/builddir/build/BUILD/openstack-helm'
+if [ -f keystone/Makefile ]; then make -C keystone; fi
+if [ -f keystone/requirements.yaml ]; then helm dep up keystone; fi
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "local" chart repository
+Update Complete.
+Saving 1 charts
+Downloading helm-toolkit from repo http://127.0.0.1:8879/charts
+Deleting outdated charts
+if [ -d keystone ]; then helm lint keystone; fi
+==> Linting keystone
+Lint OK
+1 chart(s) linted, no failures
+if [ -d keystone ]; then helm package keystone; fi
+Successfully packaged chart and saved it to: /builddir/build/BUILD/openstack-helm/keystone-0.1.0.tgz
+make[1]: Leaving directory '/builddir/build/BUILD/openstack-helm'
++ make magnum
+===== Processing [magnum] chart =====
+make[1]: Entering directory '/builddir/build/BUILD/openstack-helm'
+if [ -f magnum/Makefile ]; then make -C magnum; fi
+if [ -f magnum/requirements.yaml ]; then helm dep up magnum; fi
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "local" chart repository
+Update Complete.
+Saving 1 charts
+Downloading helm-toolkit from repo http://127.0.0.1:8879/charts
+Deleting outdated charts
+if [ -d magnum ]; then helm lint magnum; fi
+==> Linting magnum
+Lint OK
+1 chart(s) linted, no failures
+if [ -d magnum ]; then helm package magnum; fi
+Successfully packaged chart and saved it to: /builddir/build/BUILD/openstack-helm/magnum-0.1.0.tgz
+make[1]: Leaving directory '/builddir/build/BUILD/openstack-helm'
++ make neutron
+===== Processing [neutron] chart =====
+make[1]: Entering directory '/builddir/build/BUILD/openstack-helm'
+if [ -f neutron/Makefile ]; then make -C neutron; fi
+if [ -f neutron/requirements.yaml ]; then helm dep up neutron; fi
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "local" chart repository
+Update Complete.
+Saving 1 charts
+Downloading helm-toolkit from repo http://127.0.0.1:8879/charts
+Deleting outdated charts
+if [ -d neutron ]; then helm lint neutron; fi
+==> Linting neutron
+Lint OK
+1 chart(s) linted, no failures
+if [ -d neutron ]; then helm package neutron; fi
+Successfully packaged chart and saved it to: /builddir/build/BUILD/openstack-helm/neutron-0.1.0.tgz
+make[1]: Leaving directory '/builddir/build/BUILD/openstack-helm'
++ make nova
+===== Processing [nova] chart =====
+make[1]: Entering directory '/builddir/build/BUILD/openstack-helm'
+if [ -f nova/Makefile ]; then make -C nova; fi
+if [ -f nova/requirements.yaml ]; then helm dep up nova; fi
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "local" chart repository
+Update Complete.
+Saving 1 charts
+Downloading helm-toolkit from repo http://127.0.0.1:8879/charts
+Deleting outdated charts
+if [ -d nova ]; then helm lint nova; fi
+==> Linting nova
+Lint OK
+1 chart(s) linted, no failures
+if [ -d nova ]; then helm package nova; fi
+Successfully packaged chart and saved it to: /builddir/build/BUILD/openstack-helm/nova-0.1.0.tgz
+make[1]: Leaving directory '/builddir/build/BUILD/openstack-helm'
++ make panko
+===== Processing [panko] chart =====
+make[1]: Entering directory '/builddir/build/BUILD/openstack-helm'
+if [ -f panko/Makefile ]; then make -C panko; fi
+if [ -f panko/requirements.yaml ]; then helm dep up panko; fi
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "local" chart repository
+Update Complete.
+Saving 1 charts
+Downloading helm-toolkit from repo http://127.0.0.1:8879/charts
+Deleting outdated charts
+if [ -d panko ]; then helm lint panko; fi
+==> Linting panko
+[INFO] Chart.yaml: icon is recommended
+1 chart(s) linted, no failures
+if [ -d panko ]; then helm package panko; fi
+Successfully packaged chart and saved it to: /builddir/build/BUILD/openstack-helm/panko-0.1.0.tgz
+make[1]: Leaving directory '/builddir/build/BUILD/openstack-helm'
++ make placement
+===== Processing [placement] chart =====
+make[1]: Entering directory '/builddir/build/BUILD/openstack-helm'
+if [ -f placement/Makefile ]; then make -C placement; fi
+if [ -f placement/requirements.yaml ]; then helm dep up placement; fi
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "local" chart repository
+Update Complete.
+Saving 1 charts
+Downloading helm-toolkit from repo http://127.0.0.1:8879/charts
+Deleting outdated charts
+if [ -d placement ]; then helm lint placement; fi
+==> Linting placement
+[INFO] Chart.yaml: icon is recommended
+1 chart(s) linted, no failures
+if [ -d placement ]; then helm package placement; fi
+Successfully packaged chart and saved it to: /builddir/build/BUILD/openstack-helm/placement-0.1.0.tgz
+make[1]: Leaving directory '/builddir/build/BUILD/openstack-helm'
++ kill %1
++ rm helm-toolkit-0.1.0.tgz
++ export http_proxy=http://127.0.0.1:9/
++ http_proxy=http://127.0.0.1:9/
++ export https_proxy=http://127.0.0.1:9/
++ https_proxy=http://127.0.0.1:9/
++ export no_proxy=localhost,127.0.0.1,0.0.0.0
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export LANG=C.UTF-8
++ LANG=C.UTF-8
++ export SOURCE_DATE_EPOCH=1568969430
++ SOURCE_DATE_EPOCH=1568969430
++ export GCC_IGNORE_WERROR=1
++ GCC_IGNORE_WERROR=1
++ export AR=gcc-ar
++ AR=gcc-ar
++ export RANLIB=gcc-ranlib
++ RANLIB=gcc-ranlib
++ export NM=gcc-nm
++ NM=gcc-nm
++ export 'CFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ export 'FCFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FCFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'FFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'CXXFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ export MAKEFLAGS=-j4
++ MAKEFLAGS=-j4
++ python3 setup.py build
+running build
++ exit 0
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.EA0Mz1
++ umask 022
++ cd /builddir/build/BUILD
++ cd openstack-helm
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ rm -rf /builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64
++ mkdir -p /builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64
++ export MAKEFLAGS=-j4
++ MAKEFLAGS=-j4
++ rm -rf /builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64
++ export PBR_VERSION=1.0
++ PBR_VERSION=1.0
++ install -d -m 755 /builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64/usr/lib/helm
++ python3 -tt setup.py build install --root=/builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64
+running build
+running install
+[pbr] Generating AUTHORS
+[pbr] AUTHORS complete (0.0s)
+running install_egg_info
+running egg_info
+creating openstack_helm.egg-info
+writing openstack_helm.egg-info/PKG-INFO
+writing dependency_links to openstack_helm.egg-info/dependency_links.txt
+writing top-level names to openstack_helm.egg-info/top_level.txt
+[pbr] Processing SOURCES.txt
+writing manifest file 'openstack_helm.egg-info/SOURCES.txt'
+warning: no files found matching 'AUTHORS'
+warning: no files found matching 'ChangeLog'
+warning: no previously-included files found matching '.gitignore'
+warning: no previously-included files found matching '.gitreview'
+warning: no previously-included files matching '*.pyc' found anywhere in distribution
+writing manifest file 'openstack_helm.egg-info/SOURCES.txt'
+Copying openstack_helm.egg-info to /builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64/usr/lib/python3.7/site-packages/openstack_helm-1.0-py3.7.egg-info
+running install_scripts
+/usr/lib/python3.7/site-packages/pbr/packaging.py:435: EasyInstallDeprecationWarning: Use get_header
+  header = easy_install.get_script_header("", executable, is_wininst)
++ echo '----[' mark ']----'
+----[ mark ]----
++ cat '/builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64/usr/lib/python3*/site-packages/*/requires.txt'
+cat: '/builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64/usr/lib/python3*/site-packages/*/requires.txt': No such file or directory
++ :
+----[ mark ]----
++ echo '----[' mark ']----'
++ install -p -D -m 755 aodh-0.1.0.tgz barbican-0.1.0.tgz ceilometer-0.1.0.tgz cinder-0.1.0.tgz glance-0.1.0.tgz heat-0.1.0.tgz horizon-0.1.0.tgz ironic-0.1.0.tgz keystone-0.1.0.tgz magnum-0.1.0.tgz neutron-0.1.0.tgz nova-0.1.0.tgz panko-0.1.0.tgz placement-0.1.0.tgz /builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64/usr/lib/helm
++ rm -f /builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64/usr/share/info/dir
+++ find /builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64 -path 'etc/*' '!' -type d
++ test -z ''
++ rm -rf '/builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64/etc/*'
++ rm -rf '/builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64/usr/share/factory/*'
++ find /builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64 -name __pycache__
++ xargs rm -rf --
++ '[' -d /builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64/usr/share/mime ']'
+++ getconf _NPROCESSORS_ONLN
++ RPM_XARGS_PFLAG=-P4
++ find /builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64 -name '*.so.avx512' -print0
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -5
++ find /builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64/usr/lib64/haswell/avx512_1 -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64/usr/lib64/haswell/avx512_1’: No such file or directory
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -2
++ find /builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64 -name '*.so.avx2' -print0
++ find /builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64/usr/lib64/haswell '!' -path '/usr/lib64/haswell/avx512_1/*' -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64/usr/lib64/haswell’: No such file or directory
++ find /builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64/usr/lib64/ -maxdepth 1 -name '*.so*' -type f -print0
++ xargs -0rtn1 -P4 /usr/lib/rpm/clr/brp-create-abi
++ sort -u
+find: ‘/builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64/usr/lib64/’: No such file or directory
++ /usr/lib/rpm/find-debuginfo.sh --strict-build-id /builddir/build/BUILD/openstack-helm
+find: ‘debug’: No such file or directory
++ '[' -d /builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64/usr/lib/debug ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64/usr/lib/debug ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64/usr/src/debug ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64/usr/lib/debug.force ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64/usr/src/debug.force ']'
++ :
++ /usr/lib/rpm/check-buildroot
++ /usr/lib/rpm/clr/brp-strip-static-archive /usr/bin/strip
++ /usr/lib/rpm/clr/brp-strip-comment-note /usr/bin/strip /usr/bin/objdump
++ /usr/lib/rpm/clr/brp-python-bytecompile
+[BYTECOMPILE] Building for /builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64/usr/lib/python3.7 using /usr/bin/python3.7
++ find /builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64 -print0
++ xargs -0 touch -h -d '@1549052798 '
++ /usr/lib/rpm/clr/brp-java-repack-jars
+Executing(%check): /bin/sh -e /var/tmp/rpm-tmp.Y29Og2
++ umask 022
++ cd /builddir/build/BUILD
+dont need check
++ cd openstack-helm
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ export http_proxy=http://127.0.0.1:9/
++ http_proxy=http://127.0.0.1:9/
++ export https_proxy=http://127.0.0.1:9/
++ https_proxy=http://127.0.0.1:9/
++ export no_proxy=localhost,127.0.0.1,0.0.0.0
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ echo 'dont need check'
++ exit 0
+Processing files: openstack-helm-1.0-1.x86_64
+Processing files: openstack-helm-debuginfo-1.0-1.x86_64
+Processing files: openstack-helm-abi-1.0-1.x86_64
+warning: Empty %files file /builddir/build/BUILD/openstack-helm/debugfiles.list
+warning: Empty %files file /builddir/build/BUILD/openstack-helm/abifiles.list
+Checking for unpackaged file(s): /usr/lib/rpm/check-files /builddir/build/BUILDROOT/openstack-helm-1.0-1.x86_64
+RPM build errors:
+error: Installed (but unpackaged) file(s) found:
+   /usr/lib/helm/aodh-0.1.0.tgz
+   /usr/lib/helm/barbican-0.1.0.tgz
+   /usr/lib/helm/ceilometer-0.1.0.tgz
+   /usr/lib/helm/cinder-0.1.0.tgz
+   /usr/lib/helm/glance-0.1.0.tgz
+   /usr/lib/helm/heat-0.1.0.tgz
+   /usr/lib/helm/horizon-0.1.0.tgz
+   /usr/lib/helm/ironic-0.1.0.tgz
+   /usr/lib/helm/keystone-0.1.0.tgz
+   /usr/lib/helm/magnum-0.1.0.tgz
+   /usr/lib/helm/neutron-0.1.0.tgz
+   /usr/lib/helm/nova-0.1.0.tgz
+   /usr/lib/helm/panko-0.1.0.tgz
+   /usr/lib/helm/placement-0.1.0.tgz
+   /usr/lib/python3.7/site-packages/openstack_helm-1.0-py3.7.egg-info/PKG-INFO
+   /usr/lib/python3.7/site-packages/openstack_helm-1.0-py3.7.egg-info/SOURCES.txt
+   /usr/lib/python3.7/site-packages/openstack_helm-1.0-py3.7.egg-info/dependency_links.txt
+   /usr/lib/python3.7/site-packages/openstack_helm-1.0-py3.7.egg-info/not-zip-safe
+   /usr/lib/python3.7/site-packages/openstack_helm-1.0-py3.7.egg-info/top_level.txt
+    Empty %files file /builddir/build/BUILD/openstack-helm/debugfiles.list
+    Empty %files file /builddir/build/BUILD/openstack-helm/abifiles.list
+    Installed (but unpackaged) file(s) found:
+   /usr/lib/helm/aodh-0.1.0.tgz
+   /usr/lib/helm/barbican-0.1.0.tgz
+   /usr/lib/helm/ceilometer-0.1.0.tgz
+   /usr/lib/helm/cinder-0.1.0.tgz
+   /usr/lib/helm/glance-0.1.0.tgz
+   /usr/lib/helm/heat-0.1.0.tgz
+   /usr/lib/helm/horizon-0.1.0.tgz
+   /usr/lib/helm/ironic-0.1.0.tgz
+   /usr/lib/helm/keystone-0.1.0.tgz
+   /usr/lib/helm/magnum-0.1.0.tgz
+   /usr/lib/helm/neutron-0.1.0.tgz
+   /usr/lib/helm/nova-0.1.0.tgz
+   /usr/lib/helm/panko-0.1.0.tgz
+   /usr/lib/helm/placement-0.1.0.tgz
+   /usr/lib/python3.7/site-packages/openstack_helm-1.0-py3.7.egg-info/PKG-INFO
+   /usr/lib/python3.7/site-packages/openstack_helm-1.0-py3.7.egg-info/SOURCES.txt
+   /usr/lib/python3.7/site-packages/openstack_helm-1.0-py3.7.egg-info/dependency_links.txt
+   /usr/lib/python3.7/site-packages/openstack_helm-1.0-py3.7.egg-info/not-zip-safe
+   /usr/lib/python3.7/site-packages/openstack_helm-1.0-py3.7.egg-info/top_level.txt
+Child return code was: 1
+EXCEPTION: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/openstack-helm.spec 
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/mockbuild/trace_decorator.py", line 84, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python3.7/site-packages/mockbuild/util.py", line 531, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+mockbuild.exception.Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/openstack-helm.spec 
+LEAVE do --> EXCEPTION RAISED
+

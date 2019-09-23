@@ -1,0 +1,37 @@
+2019-09-20 16:50:33,433 - Mock Version: 1.2.14
+2019-09-20 16:50:33,690 - Start: dnf update
+2019-09-20 16:50:43,955 - Finish: dnf update
+2019-09-20 16:50:43,960 - Finish: chroot init
+2019-09-20 16:50:43,963 - Start: buildsrpm
+2019-09-20 16:50:43,971 - Start: rpmbuild -bs
+2019-09-20 16:50:44,015 - Finish: rpmbuild -bs
+2019-09-20 16:50:44,017 - Finish: buildsrpm
+2019-09-20 16:50:44,018 - Finish: run
+2019-09-20 16:50:47,036 - Mock Version: 1.2.14
+2019-09-20 16:50:47,294 - Start: dnf update
+2019-09-20 16:50:56,892 - Finish: dnf update
+2019-09-20 16:50:56,898 - Finish: chroot init
+2019-09-20 16:50:56,899 - Start: build phase for openstack-helm-1.0-1.src.rpm
+2019-09-20 16:50:56,901 - Start: build setup for openstack-helm-1.0-1.src.rpm
+2019-09-20 16:50:58,303 - Finish: build setup for openstack-helm-1.0-1.src.rpm
+2019-09-20 16:50:58,303 - Start: rpmbuild openstack-helm-1.0-1.src.rpm
+2019-09-20 16:51:05,575 - Mock Version: 1.2.14
+2019-09-20 16:51:05,830 - Start: dnf update
+2019-09-20 16:51:16,112 - Finish: dnf update
+2019-09-20 16:51:16,118 - Finish: chroot init
+2019-09-20 16:51:16,121 - Start: buildsrpm
+2019-09-20 16:51:16,129 - Start: rpmbuild -bs
+2019-09-20 16:51:16,173 - Finish: rpmbuild -bs
+2019-09-20 16:51:16,175 - Finish: buildsrpm
+2019-09-20 16:51:16,176 - Finish: run
+2019-09-20 16:51:19,239 - Mock Version: 1.2.14
+2019-09-20 16:51:19,496 - Start: dnf update
+2019-09-20 16:51:29,312 - Finish: dnf update
+2019-09-20 16:51:29,317 - Finish: chroot init
+2019-09-20 16:51:29,319 - Start: build phase for openstack-helm-1.0-1.src.rpm
+2019-09-20 16:51:29,321 - Start: build setup for openstack-helm-1.0-1.src.rpm
+2019-09-20 16:51:30,881 - Finish: build setup for openstack-helm-1.0-1.src.rpm
+2019-09-20 16:51:30,882 - Start: rpmbuild openstack-helm-1.0-1.src.rpm
+2019-09-20 16:51:34,653 - Finish: rpmbuild openstack-helm-1.0-1.src.rpm
+2019-09-20 16:51:34,654 - Finish: build phase for openstack-helm-1.0-1.src.rpm
+2019-09-20 16:51:34,655 - Finish: run

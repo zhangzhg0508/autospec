@@ -1,0 +1,49 @@
+%define helm_home %{getenv:HOME}/.helm
+%global helm_folder  /usr/lib/helm
+%global toolkit_version 0.1.0
+export PBR_VERSION=%{version}
+mkdir %{helm_home}
+mkdir %{helm_home}/repository
+mkdir %{helm_home}/repository/cache
+mkdir %{helm_home}/repository/local
+mkdir %{helm_home}/plugins
+mkdir %{helm_home}/starters
+mkdir %{helm_home}/cache
+mkdir %{helm_home}/cache/archive
+
+tar -zxvf %{SOURCE1}
+# Stage a repository file that only has a local repo
+cp repositories.yaml %{helm_home}/repository/repositories.yaml
+
+# Stage a local repo index that can be updated by the build
+cp index.yaml %{helm_home}/repository/local/index.yaml
+
+# Stage helm-toolkit in the local repo
+cp %{helm_folder}/helm-toolkit-%{toolkit_version}.tgz .
+
+# Host a server for the charts
+helm serve --repo-path . &
+helm repo rm local
+helm repo add local http://127.0.0.1:8879/charts
+
+# Make the charts. These produce a tgz file
+make aodh
+make barbican
+make ceilometer
+make cinder
+make glance
+make heat
+make horizon
+make ironic
+make keystone
+make magnum
+make neutron
+make nova
+make panko
+make placement
+
+# terminate helm server (the last backgrounded task)
+kill %1
+
+# Remove the helm-toolkit tarball
+rm helm-toolkit-%{toolkit_version}.tgz

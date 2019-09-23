@@ -1,0 +1,21 @@
+0001-Add-Aodh-Chart.patch
+0002-Ceilometer-chart-add-the-ability-to-publish-events-t.patch
+0003-Remove-stale-Apache2-service-pids-when-a-POD-starts.patch
+0004-Fix-ssh-config-in-nova-to-support-cold-migrations.patch
+0005-Nova-console-ip-address-search-optionality.patch
+0006-Nova-chart-Support-ephemeral-pool-creation.patch
+0007-Horizon-Disable-apache2-status_module.patch
+0008-Neutron-Add-support-for-disabling-Readiness-Liveness.patch
+0009-Nova-Add-support-for-disabling-Readiness-Liveness-pr.patch
+0010-Ironic-Add-pxe-boot-support-for-centos-image.patch
+0011-Use-nova-s-ping-method-to-find-out-if-the-service-is.patch
+0012-Add-internal-tenant-id-in-conf.patch
+0013-cinder-allow-configuring-the-rbd-app-name.patch
+0014-Cinder-Support-backup-driver-specification-by-module.patch
+0015-Add-Placement-Chart.patch
+0016-Cinder-rename-is_ceph_volume-configured.patch
+0017-Cinder-support-multiple-ceph-volume-backends.patch
+0018-Nova-add-service-token.patch
+0019-Add-TLS-support-for-Aodh-and-Panko-public-endpoints.patch
+0020-Change-cinder-bootstrap-script.patch
+0001-fix-ip-address.patch -p2

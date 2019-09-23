@@ -1,0 +1,1 @@
+install -p -D -m 755 *.tgz %{buildroot}%{helm_folder}

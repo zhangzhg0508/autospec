@@ -1,0 +1,2 @@
+export PBR_VERSION=%{version}
+install -d -m 755 ${RPM_BUILD_ROOT}%{helm_folder}
