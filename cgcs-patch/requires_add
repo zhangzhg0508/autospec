@@ -2,5 +2,5 @@
 # picked up automatically. One name per line, no whitespace.
 python-dev
 pycrypto
-python-smartpm
+#python-smartpm
 /bin/bash

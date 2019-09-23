@@ -1,17 +1,17 @@
 Mock Version: 1.2.14
-ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/cgcs-patch.spec'], chrootPath='/var/lib/mock/clear-cgcs-patch/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f75b8fede50>timeout=0uid=1000gid=1000user='mockbuild'printOutput=False)
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/cgcs-patch.spec'], chrootPath='/var/lib/mock/clear-cgcs-patch/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7fced1e86f90>timeout=0uid=1000gid=1000user='mockbuild'printOutput=False)
 Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/cgcs-patch.spec'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
 Building target platforms: x86_64
 Building for target x86_64
-Wrote: /builddir/build/SRPMS/cgcs-patch-1.0-1.src.rpm
+Wrote: /builddir/build/SRPMS/cgcs-patch-1.0-4.src.rpm
 Child return code was: 0
 LEAVE do --> 
 
-ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/cgcs-patch.spec '], chrootPath='/var/lib/mock/clear-cgcs-patch/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f75b8fede50>timeout=0uid=1000gid=1000user='mockbuild'private_network=TrueprintOutput=False)
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/cgcs-patch.spec '], chrootPath='/var/lib/mock/clear-cgcs-patch/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7fced1e86f90>timeout=0uid=1000gid=1000user='mockbuild'private_network=TrueprintOutput=False)
 Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/cgcs-patch.spec '] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
 Building target platforms: x86_64
 Building for target x86_64
-Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.aLGEcQ
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.HaSqmX
 + umask 022
 + cd /builddir/build/BUILD
 + LANG=en_US.UTF-8
@@ -25,8 +25,23 @@ Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.aLGEcQ
 + '[' 0 -ne 0 ']'
 + cd cgcs-patch-1.0
 + /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ echo 'Patch #1 (0001-change-sysconfig-dir.patch):'
+Patch #1 (0001-change-sysconfig-dir.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0001-change-sysconfig-dir.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file bin/patch-functions
+patching file bin/pmon-sw-patch-controller-daemon.conf
+patching file bin/run-patch-scripts
+patching file bin/sw-patch-agent-restart
+patching file bin/sw-patch-agent.service
+patching file bin/sw-patch-controller-daemon-restart
+patching file bin/sw-patch-controller-daemon.service
+patching file bin/sw-patch-controller.service
+patching file bin/sw-patch-init.sh
+patching file bin/sw-patch.service
+patching file bin/upgrade-start-pkg-extract
 + exit 0
-Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.3vJMJN
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.qKz44U
 + umask 022
 + cd /builddir/build/BUILD
 + cd cgcs-patch-1.0
@@ -62,8 +77,8 @@ Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.3vJMJN
 + no_proxy=localhost,127.0.0.1,0.0.0.0
 + export LANG=C.UTF-8
 + LANG=C.UTF-8
-+ export SOURCE_DATE_EPOCH=1568181701
-+ SOURCE_DATE_EPOCH=1568181701
++ export SOURCE_DATE_EPOCH=1568960437
++ SOURCE_DATE_EPOCH=1568960437
 + export GCC_IGNORE_WERROR=1
 + GCC_IGNORE_WERROR=1
 + export AR=gcc-ar
@@ -132,7 +147,7 @@ copying cgcs_patch/templates/query_hosts.xml -> build/lib/cgcs_patch/templates
 copying cgcs_patch/templates/show.html -> build/lib/cgcs_patch/templates
 copying cgcs_patch/templates/query.html -> build/lib/cgcs_patch/templates
 + exit 0
-Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.7PFyHP
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.BRxuhX
 + umask 022
 + cd /builddir/build/BUILD
 + cd cgcs-patch-1.0
@@ -140,97 +155,97 @@ Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.7PFyHP
 + export LANG
 + unset DISPLAY
 + unset PYTHONOPTIMIZE
-+ rm -rf /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64
-+ mkdir -p /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64
++ rm -rf /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64
++ mkdir -p /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64
 + export MAKEFLAGS=-j4
 + MAKEFLAGS=-j4
-+ rm -rf /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64
-+ python3 -tt setup.py build install --root=/builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64
++ rm -rf /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64
++ python3 -tt setup.py build install --root=/builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64
 running build
 running build_py
 running install
 running install_lib
-creating /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64
-creating /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr
-creating /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib
-creating /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7
-creating /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages
-creating /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
-copying build/lib/cgcs_patch/utils.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
-copying build/lib/cgcs_patch/exceptions.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
-copying build/lib/cgcs_patch/__init__.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
-copying build/lib/cgcs_patch/patch_client.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
-copying build/lib/cgcs_patch/certificates.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
-creating /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/authapi
-copying build/lib/cgcs_patch/authapi/hooks.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/authapi
-copying build/lib/cgcs_patch/authapi/__init__.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/authapi
-copying build/lib/cgcs_patch/authapi/auth_token.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/authapi
-copying build/lib/cgcs_patch/authapi/policy.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/authapi
-copying build/lib/cgcs_patch/authapi/acl.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/authapi
-copying build/lib/cgcs_patch/authapi/app.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/authapi
-copying build/lib/cgcs_patch/authapi/config.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/authapi
-creating /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/templates
-copying build/lib/cgcs_patch/templates/show.xml -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/templates
-copying build/lib/cgcs_patch/templates/query_agents.html -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/templates
-copying build/lib/cgcs_patch/templates/query.xml -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/templates
-copying build/lib/cgcs_patch/templates/query_hosts.xml -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/templates
-copying build/lib/cgcs_patch/templates/show.html -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/templates
-copying build/lib/cgcs_patch/templates/query.html -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/templates
-copying build/lib/cgcs_patch/constants.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
-copying build/lib/cgcs_patch/patch_functions.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
-creating /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/api
-copying build/lib/cgcs_patch/api/__init__.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/api
-creating /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/api/controllers
-copying build/lib/cgcs_patch/api/controllers/__init__.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/api/controllers
-copying build/lib/cgcs_patch/api/controllers/root.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/api/controllers
-copying build/lib/cgcs_patch/api/app.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/api
-copying build/lib/cgcs_patch/api/config.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/api
-copying build/lib/cgcs_patch/app.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
-copying build/lib/cgcs_patch/patch_signing.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
-copying build/lib/cgcs_patch/patch_controller.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
-copying build/lib/cgcs_patch/patch_verify.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
-creating /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/tests
-copying build/lib/cgcs_patch/tests/__init__.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/tests
-copying build/lib/cgcs_patch/tests/test_patch_controller.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/tests
-copying build/lib/cgcs_patch/tests/test_patch_agent.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/tests
-copying build/lib/cgcs_patch/tests/test_patch_utils.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/tests
-copying build/lib/cgcs_patch/tests/test_basics.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/tests
-copying build/lib/cgcs_patch/base.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
-copying build/lib/cgcs_patch/patch_agent.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
-copying build/lib/cgcs_patch/config.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
-copying build/lib/cgcs_patch/messages.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/utils.py to utils.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/exceptions.py to exceptions.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/__init__.py to __init__.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/patch_client.py to patch_client.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/certificates.py to certificates.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/authapi/hooks.py to hooks.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/authapi/__init__.py to __init__.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/authapi/auth_token.py to auth_token.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/authapi/policy.py to policy.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/authapi/acl.py to acl.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/authapi/app.py to app.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/authapi/config.py to config.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/constants.py to constants.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/patch_functions.py to patch_functions.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/api/__init__.py to __init__.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/api/controllers/__init__.py to __init__.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/api/controllers/root.py to root.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/api/app.py to app.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/api/config.py to config.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/app.py to app.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/patch_signing.py to patch_signing.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/patch_controller.py to patch_controller.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/patch_verify.py to patch_verify.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/tests/__init__.py to __init__.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/tests/test_patch_controller.py to test_patch_controller.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/tests/test_patch_agent.py to test_patch_agent.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/tests/test_patch_utils.py to test_patch_utils.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/tests/test_basics.py to test_basics.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/base.py to base.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/patch_agent.py to patch_agent.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/config.py to config.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/messages.py to messages.cpython-37.pyc
+creating /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64
+creating /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr
+creating /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib
+creating /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7
+creating /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages
+creating /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
+copying build/lib/cgcs_patch/utils.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
+copying build/lib/cgcs_patch/exceptions.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
+copying build/lib/cgcs_patch/__init__.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
+copying build/lib/cgcs_patch/patch_client.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
+copying build/lib/cgcs_patch/certificates.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
+creating /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/authapi
+copying build/lib/cgcs_patch/authapi/hooks.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/authapi
+copying build/lib/cgcs_patch/authapi/__init__.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/authapi
+copying build/lib/cgcs_patch/authapi/auth_token.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/authapi
+copying build/lib/cgcs_patch/authapi/policy.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/authapi
+copying build/lib/cgcs_patch/authapi/acl.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/authapi
+copying build/lib/cgcs_patch/authapi/app.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/authapi
+copying build/lib/cgcs_patch/authapi/config.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/authapi
+creating /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/templates
+copying build/lib/cgcs_patch/templates/show.xml -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/templates
+copying build/lib/cgcs_patch/templates/query_agents.html -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/templates
+copying build/lib/cgcs_patch/templates/query.xml -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/templates
+copying build/lib/cgcs_patch/templates/query_hosts.xml -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/templates
+copying build/lib/cgcs_patch/templates/show.html -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/templates
+copying build/lib/cgcs_patch/templates/query.html -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/templates
+copying build/lib/cgcs_patch/constants.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
+copying build/lib/cgcs_patch/patch_functions.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
+creating /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/api
+copying build/lib/cgcs_patch/api/__init__.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/api
+creating /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/api/controllers
+copying build/lib/cgcs_patch/api/controllers/__init__.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/api/controllers
+copying build/lib/cgcs_patch/api/controllers/root.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/api/controllers
+copying build/lib/cgcs_patch/api/app.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/api
+copying build/lib/cgcs_patch/api/config.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/api
+copying build/lib/cgcs_patch/app.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
+copying build/lib/cgcs_patch/patch_signing.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
+copying build/lib/cgcs_patch/patch_controller.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
+copying build/lib/cgcs_patch/patch_verify.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
+creating /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/tests
+copying build/lib/cgcs_patch/tests/__init__.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/tests
+copying build/lib/cgcs_patch/tests/test_patch_controller.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/tests
+copying build/lib/cgcs_patch/tests/test_patch_agent.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/tests
+copying build/lib/cgcs_patch/tests/test_patch_utils.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/tests
+copying build/lib/cgcs_patch/tests/test_basics.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/tests
+copying build/lib/cgcs_patch/base.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
+copying build/lib/cgcs_patch/patch_agent.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
+copying build/lib/cgcs_patch/config.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
+copying build/lib/cgcs_patch/messages.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/utils.py to utils.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/exceptions.py to exceptions.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/patch_client.py to patch_client.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/certificates.py to certificates.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/authapi/hooks.py to hooks.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/authapi/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/authapi/auth_token.py to auth_token.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/authapi/policy.py to policy.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/authapi/acl.py to acl.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/authapi/app.py to app.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/authapi/config.py to config.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/constants.py to constants.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/patch_functions.py to patch_functions.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/api/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/api/controllers/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/api/controllers/root.py to root.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/api/app.py to app.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/api/config.py to config.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/app.py to app.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/patch_signing.py to patch_signing.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/patch_controller.py to patch_controller.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/patch_verify.py to patch_verify.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/tests/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/tests/test_patch_controller.py to test_patch_controller.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/tests/test_patch_agent.py to test_patch_agent.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/tests/test_patch_utils.py to test_patch_utils.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/tests/test_basics.py to test_basics.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/base.py to base.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/patch_agent.py to patch_agent.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/config.py to config.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch/messages.py to messages.cpython-37.pyc
 running install_egg_info
 running egg_info
 creating cgcs_patch.egg-info
@@ -240,99 +255,99 @@ writing top-level names to cgcs_patch.egg-info/top_level.txt
 writing manifest file 'cgcs_patch.egg-info/SOURCES.txt'
 reading manifest file 'cgcs_patch.egg-info/SOURCES.txt'
 writing manifest file 'cgcs_patch.egg-info/SOURCES.txt'
-Copying cgcs_patch.egg-info to /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7/site-packages/cgcs_patch-1.0-py3.7.egg-info
+Copying cgcs_patch.egg-info to /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7/site-packages/cgcs_patch-1.0-py3.7.egg-info
 running install_scripts
 ----[ mark ]----
 + echo '----[' mark ']----'
-+ cat '/builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3*/site-packages/*/requires.txt'
-cat: '/builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3*/site-packages/*/requires.txt': No such file or directory
++ cat '/builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3*/site-packages/*/requires.txt'
+cat: '/builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3*/site-packages/*/requires.txt': No such file or directory
+----[ mark ]----
 + :
 + echo '----[' mark ']----'
-----[ mark ]----
-+ /usr/bin/python setup.py install --root=/builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64 --install-lib=/usr/lib64/python2.7/site-packages --prefix=/usr --install-data=/usr/share --single-version-externally-managed
++ /usr/bin/python setup.py install --root=/builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64 --install-lib=/usr/lib64/python2.7/site-packages --prefix=/usr --install-data=/usr/share --single-version-externally-managed
 running install
 running build
 running build_py
 running install_lib
-creating /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64
-creating /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7
-creating /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages
-creating /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
-copying build/lib/cgcs_patch/utils.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
-copying build/lib/cgcs_patch/exceptions.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
-copying build/lib/cgcs_patch/__init__.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
-copying build/lib/cgcs_patch/patch_client.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
-copying build/lib/cgcs_patch/certificates.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
-creating /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/authapi
-copying build/lib/cgcs_patch/authapi/hooks.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/authapi
-copying build/lib/cgcs_patch/authapi/__init__.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/authapi
-copying build/lib/cgcs_patch/authapi/auth_token.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/authapi
-copying build/lib/cgcs_patch/authapi/policy.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/authapi
-copying build/lib/cgcs_patch/authapi/acl.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/authapi
-copying build/lib/cgcs_patch/authapi/app.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/authapi
-copying build/lib/cgcs_patch/authapi/config.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/authapi
-creating /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/templates
-copying build/lib/cgcs_patch/templates/show.xml -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/templates
-copying build/lib/cgcs_patch/templates/query_agents.html -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/templates
-copying build/lib/cgcs_patch/templates/query.xml -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/templates
-copying build/lib/cgcs_patch/templates/query_hosts.xml -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/templates
-copying build/lib/cgcs_patch/templates/show.html -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/templates
-copying build/lib/cgcs_patch/templates/query.html -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/templates
-copying build/lib/cgcs_patch/constants.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
-copying build/lib/cgcs_patch/patch_functions.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
-creating /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/api
-copying build/lib/cgcs_patch/api/__init__.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/api
-creating /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/api/controllers
-copying build/lib/cgcs_patch/api/controllers/__init__.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/api/controllers
-copying build/lib/cgcs_patch/api/controllers/root.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/api/controllers
-copying build/lib/cgcs_patch/api/app.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/api
-copying build/lib/cgcs_patch/api/config.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/api
-copying build/lib/cgcs_patch/app.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
-copying build/lib/cgcs_patch/patch_signing.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
-copying build/lib/cgcs_patch/patch_controller.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
-copying build/lib/cgcs_patch/patch_verify.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
-creating /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/tests
-copying build/lib/cgcs_patch/tests/__init__.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/tests
-copying build/lib/cgcs_patch/tests/test_patch_controller.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/tests
-copying build/lib/cgcs_patch/tests/test_patch_agent.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/tests
-copying build/lib/cgcs_patch/tests/test_patch_utils.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/tests
-copying build/lib/cgcs_patch/tests/test_basics.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/tests
-copying build/lib/cgcs_patch/base.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
-copying build/lib/cgcs_patch/patch_agent.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
-copying build/lib/cgcs_patch/config.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
-copying build/lib/cgcs_patch/messages.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/utils.py to utils.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/exceptions.py to exceptions.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/__init__.py to __init__.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/patch_client.py to patch_client.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/certificates.py to certificates.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/authapi/hooks.py to hooks.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/authapi/__init__.py to __init__.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/authapi/auth_token.py to auth_token.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/authapi/policy.py to policy.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/authapi/acl.py to acl.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/authapi/app.py to app.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/authapi/config.py to config.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/constants.py to constants.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/patch_functions.py to patch_functions.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/api/__init__.py to __init__.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/api/controllers/__init__.py to __init__.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/api/controllers/root.py to root.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/api/app.py to app.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/api/config.py to config.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/app.py to app.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/patch_signing.py to patch_signing.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/patch_controller.py to patch_controller.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/patch_verify.py to patch_verify.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/tests/__init__.py to __init__.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/tests/test_patch_controller.py to test_patch_controller.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/tests/test_patch_agent.py to test_patch_agent.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/tests/test_patch_utils.py to test_patch_utils.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/tests/test_basics.py to test_basics.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/base.py to base.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/patch_agent.py to patch_agent.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/config.py to config.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/messages.py to messages.cpython-37.pyc
+creating /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64
+creating /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7
+creating /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages
+creating /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
+copying build/lib/cgcs_patch/utils.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
+copying build/lib/cgcs_patch/exceptions.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
+copying build/lib/cgcs_patch/__init__.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
+copying build/lib/cgcs_patch/patch_client.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
+copying build/lib/cgcs_patch/certificates.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
+creating /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/authapi
+copying build/lib/cgcs_patch/authapi/hooks.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/authapi
+copying build/lib/cgcs_patch/authapi/__init__.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/authapi
+copying build/lib/cgcs_patch/authapi/auth_token.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/authapi
+copying build/lib/cgcs_patch/authapi/policy.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/authapi
+copying build/lib/cgcs_patch/authapi/acl.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/authapi
+copying build/lib/cgcs_patch/authapi/app.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/authapi
+copying build/lib/cgcs_patch/authapi/config.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/authapi
+creating /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/templates
+copying build/lib/cgcs_patch/templates/show.xml -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/templates
+copying build/lib/cgcs_patch/templates/query_agents.html -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/templates
+copying build/lib/cgcs_patch/templates/query.xml -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/templates
+copying build/lib/cgcs_patch/templates/query_hosts.xml -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/templates
+copying build/lib/cgcs_patch/templates/show.html -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/templates
+copying build/lib/cgcs_patch/templates/query.html -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/templates
+copying build/lib/cgcs_patch/constants.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
+copying build/lib/cgcs_patch/patch_functions.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
+creating /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/api
+copying build/lib/cgcs_patch/api/__init__.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/api
+creating /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/api/controllers
+copying build/lib/cgcs_patch/api/controllers/__init__.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/api/controllers
+copying build/lib/cgcs_patch/api/controllers/root.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/api/controllers
+copying build/lib/cgcs_patch/api/app.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/api
+copying build/lib/cgcs_patch/api/config.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/api
+copying build/lib/cgcs_patch/app.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
+copying build/lib/cgcs_patch/patch_signing.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
+copying build/lib/cgcs_patch/patch_controller.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
+copying build/lib/cgcs_patch/patch_verify.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
+creating /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/tests
+copying build/lib/cgcs_patch/tests/__init__.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/tests
+copying build/lib/cgcs_patch/tests/test_patch_controller.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/tests
+copying build/lib/cgcs_patch/tests/test_patch_agent.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/tests
+copying build/lib/cgcs_patch/tests/test_patch_utils.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/tests
+copying build/lib/cgcs_patch/tests/test_basics.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/tests
+copying build/lib/cgcs_patch/base.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
+copying build/lib/cgcs_patch/patch_agent.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
+copying build/lib/cgcs_patch/config.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
+copying build/lib/cgcs_patch/messages.py -> /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/utils.py to utils.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/exceptions.py to exceptions.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/patch_client.py to patch_client.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/certificates.py to certificates.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/authapi/hooks.py to hooks.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/authapi/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/authapi/auth_token.py to auth_token.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/authapi/policy.py to policy.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/authapi/acl.py to acl.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/authapi/app.py to app.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/authapi/config.py to config.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/constants.py to constants.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/patch_functions.py to patch_functions.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/api/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/api/controllers/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/api/controllers/root.py to root.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/api/app.py to app.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/api/config.py to config.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/app.py to app.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/patch_signing.py to patch_signing.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/patch_controller.py to patch_controller.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/patch_verify.py to patch_verify.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/tests/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/tests/test_patch_controller.py to test_patch_controller.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/tests/test_patch_agent.py to test_patch_agent.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/tests/test_patch_utils.py to test_patch_utils.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/tests/test_basics.py to test_basics.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/base.py to base.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/patch_agent.py to patch_agent.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/config.py to config.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch/messages.py to messages.cpython-37.pyc
 running install_egg_info
 running egg_info
 writing cgcs_patch.egg-info/PKG-INFO
@@ -340,113 +355,115 @@ writing dependency_links to cgcs_patch.egg-info/dependency_links.txt
 writing top-level names to cgcs_patch.egg-info/top_level.txt
 reading manifest file 'cgcs_patch.egg-info/SOURCES.txt'
 writing manifest file 'cgcs_patch.egg-info/SOURCES.txt'
-Copying cgcs_patch.egg-info to /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch-1.0-py3.7.egg-info
+Copying cgcs_patch.egg-info to /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/python2.7/site-packages/cgcs_patch-1.0-py3.7.egg-info
 running install_scripts
-+ install -m 755 -d /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/bin
-+ install -m 755 -d /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/local/etc/bash_completion.d
-+ install -m 755 -d /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/local/etc/goenabled.d
-+ install -m 755 -d /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/local/etc/init.d
-+ install -m 755 -d /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/local/etc/logrotate.d
-+ install -m 755 -d /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/local/etc/patching
-+ install -m 700 -d /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/local/etc/patching/patch-scripts
-+ install -m 755 -d /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/local/etc/pmon.d
-+ install -m 755 -d /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/systemd/system/
-+ install -m 500 /builddir/build/BUILD/bin/sw-patch-agent /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/bin/sw-patch-agent
-+ install -m 500 /builddir/build/BUILD/bin/sw-patch-controller-daemon /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/bin/sw-patch-controller-daemon
-+ install -m 555 /builddir/build/BUILD/bin/sw-patch /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/bin/sw-patch
-+ install -m 555 /builddir/build/BUILD/bin/rpm-audit /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/bin/rpm-audit
-+ install -m 500 /builddir/build/BUILD/bin/sw-patch-controller-daemon-init.sh /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/local/etc/init.d/sw-patch-controller-daemon
-+ install -m 500 /builddir/build/BUILD/bin/sw-patch-agent-init.sh /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/local/etc/init.d/sw-patch-agent
-+ install -m 600 /builddir/build/BUILD/bin/patching.conf /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/local/etc/patching/patching.conf
-+ install -m 644 /builddir/build/BUILD/bin/policy.json /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/local/etc/patching/policy.json
-+ install -m 444 /builddir/build/BUILD/bin/pmon-sw-patch-controller-daemon.conf /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/local/etc/pmon.d/sw-patch-controller-daemon.conf
-+ install -m 444 /builddir/build/BUILD/bin/pmon-sw-patch-agent.conf /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/local/etc/pmon.d/sw-patch-agent.conf
-+ install -m 444 /builddir/build/BUILD/bin/sw-patch-agent.service /builddir/build/BUILD/bin/sw-patch-controller-daemon.service /builddir/build/BUILD/bin/sw-patch-controller.service /builddir/build/BUILD/bin/sw-patch.service /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/systemd/system/
-+ install -m 444 /builddir/build/BUILD/bin/sw-patch.completion /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/local/etc/bash_completion.d/sw-patch
-+ install -m 400 /builddir/build/BUILD/bin/patch-functions /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/local/etc/patching/patch-functions
-+ install -D -m 444 /builddir/build/BUILD/bin/patch-tmpdirs.conf '/builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64%{_tmpfilesdir}/patch-tmpdirs.conf'
-+ install -m 500 /builddir/build/BUILD/bin/run-patch-scripts /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/bin/run-patch-scripts
-+ install -m 500 /builddir/build/BUILD/bin/sw-patch-controller-daemon-restart /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/bin/sw-patch-controller-daemon-restart
-+ install -m 500 /builddir/build/BUILD/bin/sw-patch-agent-restart /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/bin/sw-patch-agent-restart
-+ install -m 500 /builddir/build/BUILD/bin/sw-patch-init.sh /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/local/etc/init.d/sw-patch
-+ install -m 500 /builddir/build/BUILD/bin/sw-patch-controller-init.sh /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/local/etc/init.d/sw-patch-controller
-+ install -m 555 /builddir/build/BUILD/bin/patch_check_goenabled.sh /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/local/etc/goenabled.d/patch_check_goenabled.sh
-+ install -m 444 /builddir/build/BUILD/bin/patching.logrotate /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/local/etc/logrotate.d/patching
-+ install -m 500 /builddir/build/BUILD/bin/upgrade-start-pkg-extract /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/bin/upgrade-start-pkg-extract
-+ rm -f /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/share/info/dir
-++ find /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64 -path 'etc/*' '!' -type d
++ install -m 755 -d /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/bin
++ install -m 755 -d /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/local/etc/bash_completion.d
++ install -m 755 -d /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/local/etc/goenabled.d
++ install -m 755 -d /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/local/etc/init.d
++ install -m 755 -d /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/local/etc/logrotate.d
++ install -m 755 -d /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/local/etc/patching
++ install -m 700 -d /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/local/etc/patching/patch-scripts
++ install -m 755 -d /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/local/etc/pmon.d
++ install -m 755 -d /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/systemd/system/
+/builddir/build/BUILD/cgcs-patch-1.0
++ pwd
++ install -m 500 /builddir/build/BUILD/cgcs-patch-1.0/bin/sw-patch-agent /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/bin/sw-patch-agent
++ install -m 500 /builddir/build/BUILD/cgcs-patch-1.0/bin/sw-patch-controller-daemon /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/bin/sw-patch-controller-daemon
++ install -m 555 /builddir/build/BUILD/cgcs-patch-1.0/bin/sw-patch /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/bin/sw-patch
++ install -m 555 /builddir/build/BUILD/cgcs-patch-1.0/bin/rpm-audit /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/bin/rpm-audit
++ install -m 500 /builddir/build/BUILD/cgcs-patch-1.0/bin/sw-patch-controller-daemon-init.sh /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/local/etc/init.d/sw-patch-controller-daemon
++ install -m 500 /builddir/build/BUILD/cgcs-patch-1.0/bin/sw-patch-agent-init.sh /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/local/etc/init.d/sw-patch-agent
++ install -m 600 /builddir/build/BUILD/cgcs-patch-1.0/bin/patching.conf /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/local/etc/patching/patching.conf
++ install -m 644 /builddir/build/BUILD/cgcs-patch-1.0/bin/policy.json /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/local/etc/patching/policy.json
++ install -m 444 /builddir/build/BUILD/cgcs-patch-1.0/bin/pmon-sw-patch-controller-daemon.conf /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/local/etc/pmon.d/sw-patch-controller-daemon.conf
++ install -m 444 /builddir/build/BUILD/cgcs-patch-1.0/bin/pmon-sw-patch-agent.conf /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/local/etc/pmon.d/sw-patch-agent.conf
++ install -m 444 /builddir/build/BUILD/cgcs-patch-1.0/bin/sw-patch-agent.service /builddir/build/BUILD/cgcs-patch-1.0/bin/sw-patch-controller-daemon.service /builddir/build/BUILD/cgcs-patch-1.0/bin/sw-patch-controller.service /builddir/build/BUILD/cgcs-patch-1.0/bin/sw-patch.service /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/systemd/system/
++ install -m 444 /builddir/build/BUILD/cgcs-patch-1.0/bin/sw-patch.completion /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/local/etc/bash_completion.d/sw-patch
++ install -m 400 /builddir/build/BUILD/cgcs-patch-1.0/bin/patch-functions /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/local/etc/patching/patch-functions
++ install -D -m 444 /builddir/build/BUILD/cgcs-patch-1.0/bin/patch-tmpdirs.conf '/builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64%{_tmpfilesdir}/patch-tmpdirs.conf'
++ install -m 500 /builddir/build/BUILD/cgcs-patch-1.0/bin/run-patch-scripts /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/bin/run-patch-scripts
++ install -m 500 /builddir/build/BUILD/cgcs-patch-1.0/bin/sw-patch-controller-daemon-restart /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/bin/sw-patch-controller-daemon-restart
++ install -m 500 /builddir/build/BUILD/cgcs-patch-1.0/bin/sw-patch-agent-restart /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/bin/sw-patch-agent-restart
++ install -m 500 /builddir/build/BUILD/cgcs-patch-1.0/bin/sw-patch-init.sh /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/local/etc/init.d/sw-patch
++ install -m 500 /builddir/build/BUILD/cgcs-patch-1.0/bin/sw-patch-controller-init.sh /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/local/etc/init.d/sw-patch-controller
++ install -m 555 /builddir/build/BUILD/cgcs-patch-1.0/bin/patch_check_goenabled.sh /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/local/etc/goenabled.d/patch_check_goenabled.sh
++ install -m 444 /builddir/build/BUILD/cgcs-patch-1.0/bin/patching.logrotate /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/local/etc/logrotate.d/patching
++ install -m 500 /builddir/build/BUILD/cgcs-patch-1.0/bin/upgrade-start-pkg-extract /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/bin/upgrade-start-pkg-extract
++ rm -f /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/share/info/dir
+++ find /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64 -path 'etc/*' '!' -type d
 + test -z ''
-+ rm -rf '/builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/etc/*'
-+ rm -rf '/builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/share/factory/*'
-+ find /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64 -name __pycache__
++ rm -rf '/builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/etc/*'
++ rm -rf '/builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/share/factory/*'
++ find /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64 -name __pycache__
 + xargs rm -rf --
-+ '[' -d /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/share/mime ']'
++ '[' -d /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/share/mime ']'
 ++ getconf _NPROCESSORS_ONLN
 + RPM_XARGS_PFLAG=-P4
-+ find /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64 -name '*.so.avx512' -print0
++ find /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64 -name '*.so.avx512' -print0
 + xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -5
-+ find /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/haswell/avx512_1 -name '*.so*' -print0
-find: ‘/builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/haswell/avx512_1’: No such file or directory
-+ find /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64 -name '*.so.avx2' -print0
++ find /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/haswell/avx512_1 -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/haswell/avx512_1’: No such file or directory
++ find /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64 -name '*.so.avx2' -print0
 + xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -2
-+ find /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/haswell '!' -path '/usr/lib64/haswell/avx512_1/*' -name '*.so*' -print0
-find: ‘/builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/haswell’: No such file or directory
-+ find /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib64/ -maxdepth 1 -name '*.so*' -type f -print0
++ find /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/haswell '!' -path '/usr/lib64/haswell/avx512_1/*' -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/haswell’: No such file or directory
++ find /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib64/ -maxdepth 1 -name '*.so*' -type f -print0
 + xargs -0rtn1 -P4 /usr/lib/rpm/clr/brp-create-abi
 + sort -u
-+ '[' -d /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/debug ']'
++ '[' -d /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/debug ']'
 + :
-+ '[' -d /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/debug ']'
++ '[' -d /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/debug ']'
 + :
-+ '[' -d /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/src/debug ']'
++ '[' -d /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/src/debug ']'
 + :
-+ '[' -d /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/debug.force ']'
++ '[' -d /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/debug.force ']'
 + :
-+ '[' -d /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/src/debug.force ']'
++ '[' -d /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/src/debug.force ']'
 + :
 + /usr/lib/rpm/check-buildroot
 + /usr/lib/rpm/clr/brp-strip /usr/bin/strip
 + /usr/lib/rpm/clr/brp-strip-static-archive /usr/bin/strip
 + /usr/lib/rpm/clr/brp-strip-comment-note /usr/bin/strip /usr/bin/objdump
 + /usr/lib/rpm/clr/brp-python-bytecompile
-[BYTECOMPILE] Building for /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64/usr/lib/python3.7 using /usr/bin/python3.7
-+ find /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64 -print0
+[BYTECOMPILE] Building for /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64/usr/lib/python3.7 using /usr/bin/python3.7
 + xargs -0 touch -h -d '@1549052798 '
++ find /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64 -print0
 + /usr/lib/rpm/clr/brp-java-repack-jars
-Processing files: cgcs-patch-1.0-1.x86_64
-Provides: cgcs-patch = 1.0-1 cgcs-patch(x86-64) = 1.0-1
+Processing files: cgcs-patch-1.0-4.x86_64
+Provides: cgcs-patch = 1.0-4 cgcs-patch(x86-64) = 1.0-4
 Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
 Requires: /bin/bash /bin/sh
-Processing files: cgcs-patch-bin-1.0-1.x86_64
-Provides: cgcs-patch-bin = 1.0-1 cgcs-patch-bin(x86-64) = 1.0-1
+Processing files: cgcs-patch-bin-1.0-4.x86_64
+Provides: cgcs-patch-bin = 1.0-4 cgcs-patch-bin(x86-64) = 1.0-4
 Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
 Requires: /bin/bash /usr/bin/python
-Processing files: cgcs-patch-python-1.0-1.x86_64
-Provides: cgcs-patch-python = 1.0-1 cgcs-patch-python(x86-64) = 1.0-1
+Processing files: cgcs-patch-python-1.0-4.x86_64
+Provides: cgcs-patch-python = 1.0-4 cgcs-patch-python(x86-64) = 1.0-4
 Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
 Requires: python(abi) = 2.7
-Processing files: cgcs-patch-python3-1.0-1.x86_64
-Provides: cgcs-patch-python3 = 1.0-1 cgcs-patch-python3(x86-64) = 1.0-1
+Processing files: cgcs-patch-python3-1.0-4.x86_64
+Provides: cgcs-patch-python3 = 1.0-4 cgcs-patch-python3(x86-64) = 1.0-4
 Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
 Requires: python(abi) = 3.7
-Processing files: cgcs-patch-services-1.0-1.x86_64
-Provides: cgcs-patch-services = 1.0-1 cgcs-patch-services(x86-64) = 1.0-1
+Processing files: cgcs-patch-services-1.0-4.x86_64
+Provides: cgcs-patch-services = 1.0-4 cgcs-patch-services(x86-64) = 1.0-4
 Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
-Processing files: cgcs-patch-abi-1.0-1.x86_64
-Checking for unpackaged file(s): /usr/lib/rpm/check-files /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64
+Processing files: cgcs-patch-abi-1.0-4.x86_64
+Checking for unpackaged file(s): /usr/lib/rpm/check-files /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64
 warning: Empty %files file /builddir/build/BUILD/cgcs-patch-1.0/abifiles.list
-Wrote: /builddir/build/RPMS/cgcs-patch-1.0-1.x86_64.rpm
-Wrote: /builddir/build/RPMS/cgcs-patch-bin-1.0-1.x86_64.rpm
-Wrote: /builddir/build/RPMS/cgcs-patch-python-1.0-1.x86_64.rpm
-Wrote: /builddir/build/RPMS/cgcs-patch-python3-1.0-1.x86_64.rpm
-Wrote: /builddir/build/RPMS/cgcs-patch-services-1.0-1.x86_64.rpm
-Wrote: /builddir/build/RPMS/cgcs-patch-abi-1.0-1.x86_64.rpm
-Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.MdhhOO
+Wrote: /builddir/build/RPMS/cgcs-patch-1.0-4.x86_64.rpm
+Wrote: /builddir/build/RPMS/cgcs-patch-bin-1.0-4.x86_64.rpm
+Wrote: /builddir/build/RPMS/cgcs-patch-python-1.0-4.x86_64.rpm
+Wrote: /builddir/build/RPMS/cgcs-patch-python3-1.0-4.x86_64.rpm
+Wrote: /builddir/build/RPMS/cgcs-patch-services-1.0-4.x86_64.rpm
+Wrote: /builddir/build/RPMS/cgcs-patch-abi-1.0-4.x86_64.rpm
+Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.w2KTmW
 + umask 022
 + cd /builddir/build/BUILD
 + cd cgcs-patch-1.0
-+ rm -rf /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64
-+ rm -rf /builddir/build/BUILDROOT/cgcs-patch-1.0-1.x86_64
++ rm -rf /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64
++ rm -rf /builddir/build/BUILDROOT/cgcs-patch-1.0-4.x86_64
 + exit 0
 Child return code was: 0
 LEAVE do --> 

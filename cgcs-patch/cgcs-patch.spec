@@ -4,7 +4,7 @@
 #
 Name     : cgcs-patch
 Version  : 1.0
-Release  : 1
+Release  : 4
 URL      : file:///home/clear/tar/cgcs-patch-1.0.tar.gz
 Source0  : file:///home/clear/tar/cgcs-patch-1.0.tar.gz
 Summary  : No detailed summary available
@@ -17,7 +17,6 @@ Requires: cgcs-patch-services = %{version}-%{release}
 Requires: /bin/bash
 Requires: pycrypto
 Requires: python-dev
-Requires: python-smartpm
 BuildRequires : buildreq-distutils3
 BuildRequires : pip
 BuildRequires : pluggy
@@ -29,6 +28,7 @@ BuildRequires : systemd-dev
 BuildRequires : tox
 BuildRequires : virtualenv
 BuildRequires : wheel
+Patch1: 0001-change-sysconfig-dir.patch
 
 %description
 No detailed description available
@@ -70,6 +70,7 @@ services components for the cgcs-patch package.
 
 %prep
 %setup -q -n cgcs-patch-1.0
+%patch1 -p1
 
 %build
 ## build_prepend content
@@ -82,7 +83,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1568181741
+export SOURCE_DATE_EPOCH=1568960468
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -116,47 +117,48 @@ install -m 755 -d %{buildroot}%{_sysconfdir}/patching
 install -m 700 -d %{buildroot}%{_sysconfdir}/patching/patch-scripts
 install -m 755 -d %{buildroot}%{_sysconfdir}/pmon.d
 install -m 755 -d %{buildroot}%{_unitdir}
-install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-agent \
+pwd
+install -m 500 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/sw-patch-agent \
 %{buildroot}%{_sbindir}/sw-patch-agent
-install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-controller-daemon \
+install -m 500 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/sw-patch-controller-daemon \
 %{buildroot}%{_sbindir}/sw-patch-controller-daemon
-install -m 555 ${RPM_BUILD_DIR}/bin/sw-patch \
+install -m 555 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/sw-patch \
 %{buildroot}%{_sbindir}/sw-patch
-install -m 555 ${RPM_BUILD_DIR}/bin/rpm-audit \
+install -m 555 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/rpm-audit \
 %{buildroot}%{_sbindir}/rpm-audit
-install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-controller-daemon-init.sh \
+install -m 500 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/sw-patch-controller-daemon-init.sh \
 %{buildroot}%{_sysconfdir}/init.d/sw-patch-controller-daemon
-install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-agent-init.sh \
+install -m 500 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/sw-patch-agent-init.sh \
 %{buildroot}%{_sysconfdir}/init.d/sw-patch-agent
-install -m 600 ${RPM_BUILD_DIR}/bin/patching.conf \
+install -m 600 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/patching.conf \
 %{buildroot}%{_sysconfdir}/patching/patching.conf
-install -m 644 ${RPM_BUILD_DIR}/bin/policy.json \
+install -m 644 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/policy.json \
 %{buildroot}%{_sysconfdir}/patching/policy.json
-install -m 444 ${RPM_BUILD_DIR}/bin/pmon-sw-patch-controller-daemon.conf \
+install -m 444 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/pmon-sw-patch-controller-daemon.conf \
 %{buildroot}%{_sysconfdir}/pmon.d/sw-patch-controller-daemon.conf
-install -m 444 ${RPM_BUILD_DIR}/bin/pmon-sw-patch-agent.conf \
+install -m 444 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/pmon-sw-patch-agent.conf \
 %{buildroot}%{_sysconfdir}/pmon.d/sw-patch-agent.conf
-install -m 444 ${RPM_BUILD_DIR}/bin/*.service %{buildroot}%{_unitdir}
-install -m 444 ${RPM_BUILD_DIR}/bin/sw-patch.completion %{buildroot}%{_sysconfdir}/bash_completion.d/sw-patch
-install -m 400 ${RPM_BUILD_DIR}/bin/patch-functions \
+install -m 444 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/*.service %{buildroot}%{_unitdir}
+install -m 444 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/sw-patch.completion %{buildroot}%{_sysconfdir}/bash_completion.d/sw-patch
+install -m 400 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/patch-functions \
 %{buildroot}%{_sysconfdir}/patching/patch-functions
-install -D -m 444 ${RPM_BUILD_DIR}/bin/patch-tmpdirs.conf \
+install -D -m 444 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/patch-tmpdirs.conf \
 %{buildroot}%{_tmpfilesdir}/patch-tmpdirs.conf
-install -m 500 ${RPM_BUILD_DIR}/bin/run-patch-scripts \
+install -m 500 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/run-patch-scripts \
 %{buildroot}%{_sbindir}/run-patch-scripts
-install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-controller-daemon-restart \
+install -m 500 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/sw-patch-controller-daemon-restart \
 %{buildroot}%{_sbindir}/sw-patch-controller-daemon-restart
-install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-agent-restart \
+install -m 500 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/sw-patch-agent-restart \
 %{buildroot}%{_sbindir}/sw-patch-agent-restart
-install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-init.sh \
+install -m 500 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/sw-patch-init.sh \
 %{buildroot}%{_sysconfdir}/init.d/sw-patch
-install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-controller-init.sh \
+install -m 500 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/sw-patch-controller-init.sh \
 %{buildroot}%{_sysconfdir}/init.d/sw-patch-controller
-install -m 555 ${RPM_BUILD_DIR}/bin/patch_check_goenabled.sh \
+install -m 555 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/patch_check_goenabled.sh \
 %{buildroot}%{_sysconfdir}/goenabled.d/patch_check_goenabled.sh
-install -m 444 ${RPM_BUILD_DIR}/bin/patching.logrotate \
+install -m 444 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/patching.logrotate \
 %{buildroot}%{_sysconfdir}/logrotate.d/patching
-install -m 500 ${RPM_BUILD_DIR}/bin/upgrade-start-pkg-extract \
+install -m 500 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/upgrade-start-pkg-extract \
 %{buildroot}%{_sbindir}/upgrade-start-pkg-extract
 %clean
 rm -rf $RPM_BUILD_ROOT

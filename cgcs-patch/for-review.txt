@@ -1,551 +1,401 @@
-From c668f7b671ccc4c06c92cb3cb37e0b854686273f Mon Sep 17 00:00:00 2001
+From b97654c20efc84652573f8d0ba04f3bef4eb62e3 Mon Sep 17 00:00:00 2001
 From: chen-dq <chen.dq@neusoft.com>
-Date: Wed, 11 Sep 2019 06:02:22 +0000
+Date: Fri, 20 Sep 2019 06:21:08 +0000
 Subject: [PATCH cgcs-patch] cgcs-patch: Autospec creation for version 1.0
 
 ---
- .gitignore         |  14 ++++
- Makefile           |   5 ++
- build_prepend      |   4 +
- buildreq_add       |   7 ++
- buildreq_ban       |   2 +
- cgcs-patch.license |   1 +
- cgcs-patch.spec    | 204 +++++++++++++++++++++++++++++++++++++++++++++
- cgcs-patchbk.spec  | 196 +++++++++++++++++++++++++++++++++++++++++++
- excludes           |   2 +
- install_append     |  75 +++++++++++++++++
- options.conf       |  58 +++++++++++++
- pkgconfig_add      |   2 +
- pkgconfig_ban      |   2 +
- release            |   1 +
- requires_add       |   6 ++
- requires_ban       |   2 +
- testresults        |   5 ++
- upstream           |   1 +
- 18 files changed, 587 insertions(+)
- create mode 100644 .gitignore
- create mode 100644 Makefile
- create mode 100644 build_prepend
- create mode 100644 buildreq_add
- create mode 100644 buildreq_ban
- create mode 100644 cgcs-patch.license
- create mode 100644 cgcs-patch.spec
- create mode 100644 cgcs-patchbk.spec
- create mode 100644 excludes
- create mode 100644 install_append
- create mode 100644 options.conf
- create mode 100644 pkgconfig_add
- create mode 100644 pkgconfig_ban
- create mode 100644 release
- create mode 100644 requires_add
- create mode 100644 requires_ban
- create mode 100644 testresults
- create mode 100644 upstream
+ 0001-change-sysconfig-dir.patch | 191 ++++++++++++++++++++++++++++++++
+ cgcs-patch.spec                 |  51 +++++----
+ install_append                  |  46 ++++----
+ release                         |   2 +-
+ series                          |   1 +
+ upstream                        |   2 +-
+ 6 files changed, 244 insertions(+), 49 deletions(-)
+ create mode 100644 0001-change-sysconfig-dir.patch
+ create mode 100644 series
 
-diff --git a/build_prepend b/build_prepend
+diff --git a/0001-change-sysconfig-dir.patch b/0001-change-sysconfig-dir.patch
 new file mode 100644
-index 0000000..436b4e7
+index 0000000..7e7979d
 --- /dev/null
-+++ b/build_prepend
-@@ -0,0 +1,4 @@
-+%define pythonroot           /usr/lib64/python2.7/site-packages
-+%define debug_package %{nil}
-+%define _sysconfdir /usr/local/etc
-+%define _unitdir /usr/lib/systemd/system/
-diff --git a/buildreq_add b/buildreq_add
-new file mode 100644
-index 0000000..11b1042
---- /dev/null
-+++ b/buildreq_add
-@@ -0,0 +1,7 @@
-+setuptools
-+pip
-+wheel
-+systemd
-+systemd-dev
-diff --git a/cgcs-patch.license b/cgcs-patch.license
-new file mode 100644
-index 0000000..622901a
---- /dev/null
-+++ b/cgcs-patch.license
-@@ -0,0 +1 @@
-+Apache-2.0
++++ b/0001-change-sysconfig-dir.patch
+@@ -0,0 +1,191 @@
++From 70a96a86f8972e4021ecc09a6d6e64294e64c12a Mon Sep 17 00:00:00 2001
++From: chen-dq <chen.dq@neusoft.com>
++Date: Fri, 20 Sep 2019 02:51:05 +0000
++Subject: [PATCH] change-sysconfig-dir
++
++---
++ bin/patch-functions                      | 2 +-
++ bin/pmon-sw-patch-controller-daemon.conf | 2 +-
++ bin/run-patch-scripts                    | 2 +-
++ bin/sw-patch-agent-restart               | 2 +-
++ bin/sw-patch-agent.service               | 6 +++---
++ bin/sw-patch-controller-daemon-restart   | 2 +-
++ bin/sw-patch-controller-daemon.service   | 6 +++---
++ bin/sw-patch-controller.service          | 2 +-
++ bin/sw-patch-init.sh                     | 6 +++---
++ bin/sw-patch.service                     | 2 +-
++ bin/upgrade-start-pkg-extract            | 2 +-
++ 11 files changed, 17 insertions(+), 17 deletions(-)
++
++diff --git a/bin/patch-functions b/bin/patch-functions
++index 2da087c..53610a0 100644
++--- a/bin/patch-functions
+++++ b/bin/patch-functions
++@@ -10,7 +10,7 @@
++ #
++ 
++ # Source platform.conf, for nodetype and subfunctions
++-. /etc/platform/platform.conf
+++. /usr/local/etc/platform/platform.conf
++ 
++ declare PATCH_SCRIPTDIR=/run/patching/patch-scripts
++ declare PATCH_FLAGDIR=/run/patching/patch-flags
++diff --git a/bin/pmon-sw-patch-controller-daemon.conf b/bin/pmon-sw-patch-controller-daemon.conf
++index 834cd20..687804d 100644
++--- a/bin/pmon-sw-patch-controller-daemon.conf
+++++ b/bin/pmon-sw-patch-controller-daemon.conf
++@@ -1,7 +1,7 @@
++ [process]
++ process      = sw-patch-controller-daemon
++ pidfile      = /var/run/sw-patch-controller-daemon.pid
++-script       = /etc/init.d/sw-patch-controller-daemon
+++script       = /usr/local/etc/init.d/sw-patch-controller-daemon
++ style        = lsb            ; ocf or lsb
++ severity     = major          ; Process failure severity
++                               ;     critical : host is failed
++diff --git a/bin/run-patch-scripts b/bin/run-patch-scripts
++index 9ed433b..f80e357 100644
++--- a/bin/run-patch-scripts
+++++ b/bin/run-patch-scripts
++@@ -5,7 +5,7 @@
++ # SPDX-License-Identifier: Apache-2.0
++ #
++ 
++-. /etc/patching/patch-functions
+++. /usr/local/etc/patching/patch-functions
++ 
++ declare SCRIPTS=$(find $PATCH_SCRIPTDIR -type f -executable | sort)
++ declare -i NUM_SCRIPTS=$(echo "$SCRIPTS" | wc -l)
++diff --git a/bin/sw-patch-agent-restart b/bin/sw-patch-agent-restart
++index 45e8679..a8c257f 100644
++--- a/bin/sw-patch-agent-restart
+++++ b/bin/sw-patch-agent-restart
++@@ -5,7 +5,7 @@
++ # SPDX-License-Identifier: Apache-2.0
++ #
++ 
++-. /etc/patching/patch-functions
+++. /usr/local/etc/patching/patch-functions
++ 
++ #
++ # Triggering a restart of the patching daemons is done by
++diff --git a/bin/sw-patch-agent.service b/bin/sw-patch-agent.service
++index 6701369..2796458 100644
++--- a/bin/sw-patch-agent.service
+++++ b/bin/sw-patch-agent.service
++@@ -6,9 +6,9 @@ Before=pmon.service
++ [Service]
++ Type=forking
++ User=root
++-ExecStart=/etc/init.d/sw-patch-agent start
++-ExecStop=/etc/init.d/sw-patch-agent stop
++-ExecReload=/etc/init.d/sw-patch-agent restart
+++ExecStart=/usr/local/etc/init.d/sw-patch-agent start
+++ExecStop=/usr/local/etc/init.d/sw-patch-agent stop
+++ExecReload=/usr/local/etc/init.d/sw-patch-agent restart
++ PIDFile=/var/run/sw-patch-agent.pid
++ 
++ [Install]
++diff --git a/bin/sw-patch-controller-daemon-restart b/bin/sw-patch-controller-daemon-restart
++index 129348f..0d9b2dc 100644
++--- a/bin/sw-patch-controller-daemon-restart
+++++ b/bin/sw-patch-controller-daemon-restart
++@@ -5,7 +5,7 @@
++ # SPDX-License-Identifier: Apache-2.0
++ #
++ 
++-. /etc/patching/patch-functions
+++. /usr/local/etc/patching/patch-functions
++ 
++ #
++ # Triggering a restart of the patching daemons is done by
++diff --git a/bin/sw-patch-controller-daemon.service b/bin/sw-patch-controller-daemon.service
++index 73baad5..c5f085f 100644
++--- a/bin/sw-patch-controller-daemon.service
+++++ b/bin/sw-patch-controller-daemon.service
++@@ -6,9 +6,9 @@ Before=pmon.service
++ [Service]
++ Type=forking
++ User=root
++-ExecStart=/etc/init.d/sw-patch-controller-daemon start
++-ExecStop=/etc/init.d/sw-patch-controller-daemon stop
++-ExecReload=/etc/init.d/sw-patch-controller-daemon restart
+++ExecStart=/usr/local/etc/init.d/sw-patch-controller-daemon start
+++ExecStop=/usr/local/etc/init.d/sw-patch-controller-daemon stop
+++ExecReload=/usr/local/etc/init.d/sw-patch-controller-daemon restart
++ PIDFile=/var/run/sw-patch-controller-daemon.pid
++ 
++ [Install]
++diff --git a/bin/sw-patch-controller.service b/bin/sw-patch-controller.service
++index 49e2425..6211ab4 100644
++--- a/bin/sw-patch-controller.service
+++++ b/bin/sw-patch-controller.service
++@@ -6,7 +6,7 @@ Before=sw-patch-agent.service sw-patch-controller-daemon.service
++ [Service]
++ Type=oneshot
++ User=root
++-ExecStart=/etc/init.d/sw-patch-controller start
+++ExecStart=/usr/local/etc/init.d/sw-patch-controller start
++ RemainAfterExit=yes
++ 
++ [Install]
++diff --git a/bin/sw-patch-init.sh b/bin/sw-patch-init.sh
++index 2428edb..40dea44 100644
++--- a/bin/sw-patch-init.sh
+++++ b/bin/sw-patch-init.sh
++@@ -21,7 +21,7 @@
++ NAME=$(basename $0)
++ 
++ . /usr/bin/tsconfig
++-. /etc/platform/platform.conf
+++. /usr/local/etc/platform/platform.conf
++ 
++ logfile=/var/log/patching.log
++ patch_failed_file=/var/run/patch_install_failed
++@@ -107,7 +107,7 @@ case "$1" in
++             # On a simplex CPE, we need to launch the http server first,
++             # before we can do the patch installation
++             LOG_TO_FILE "***** Launching lighttpd *****"
++-            /etc/init.d/lighttpd start
+++            /usr/local/etc/init.d/lighttpd start
++ 
++             LOG_TO_FILE "***** Starting patch operation *****"
++             /usr/sbin/sw-patch-agent --install 2>>$logfile
++@@ -118,7 +118,7 @@ case "$1" in
++             LOG_TO_FILE "***** Finished patch operation *****"
++ 
++             LOG_TO_FILE "***** Shutting down lighttpd *****"
++-            /etc/init.d/lighttpd stop
+++            /usr/local/etc/init.d/lighttpd stop
++         else
++             check_install_uuid
++             if [ $? -ne 0 ]; then
++diff --git a/bin/sw-patch.service b/bin/sw-patch.service
++index 5786ceb..118e20a 100644
++--- a/bin/sw-patch.service
+++++ b/bin/sw-patch.service
++@@ -6,7 +6,7 @@ Before=sw-patch-agent.service
++ [Service]
++ Type=oneshot
++ User=root
++-ExecStart=/etc/init.d/sw-patch start
+++ExecStart=/usr/local/etc/init.d/sw-patch start
++ RemainAfterExit=yes
++ StandardOutput=syslog+console
++ StandardError=syslog+console
++diff --git a/bin/upgrade-start-pkg-extract b/bin/upgrade-start-pkg-extract
++index f5cab7f..bdb4405 100644
++--- a/bin/upgrade-start-pkg-extract
+++++ b/bin/upgrade-start-pkg-extract
++@@ -19,7 +19,7 @@ EOF
++     exit 1
++ }
++ 
++-. /etc/build.info
+++. /usr/local/etc/build.info
++ if [ -z "${SW_VERSION}" ]; then
++     logger -t $0 "Unable to identify running release ID"
++     exit 1
++-- 
++2.23.0
++
 diff --git a/cgcs-patch.spec b/cgcs-patch.spec
-new file mode 100644
-index 0000000..d49e882
---- /dev/null
+index 65fe7df..088f4bb 100644
+--- a/cgcs-patch.spec
 +++ b/cgcs-patch.spec
-@@ -0,0 +1,204 @@
-+#
-+# This file is auto-generated. DO NOT EDIT
-+# Generated by: autospec.py
-+#
-+Name     : cgcs-patch
-+License  : Apache-2.0
-+Requires: cgcs-patch-bin = %{version}-%{release}
-+Requires: cgcs-patch-python = %{version}-%{release}
-+Requires: cgcs-patch-python3 = %{version}-%{release}
-+Requires: cgcs-patch-services = %{version}-%{release}
-+Requires: /bin/bash
-+Requires: pycrypto
-+Requires: python-dev
-+Requires: python-smartpm
-+BuildRequires : buildreq-distutils3
-+BuildRequires : pip
-+BuildRequires : pluggy
-+BuildRequires : py-python
-+BuildRequires : pytest
-+BuildRequires : setuptools
-+BuildRequires : systemd
-+BuildRequires : systemd-dev
-+BuildRequires : tox
-+BuildRequires : virtualenv
-+BuildRequires : wheel
-+
-+%description
-+
-+%package bin
-+Requires: cgcs-patch-services = %{version}-%{release}
-+
-+
-+
-+%package python
-+Requires: cgcs-patch-python3 = %{version}-%{release}
-+
-+%description python
-+python components for the cgcs-patch package.
-+
-+
-+%package python3
-+Requires: python3-core
-+
-+%description python3
-+python3 components for the cgcs-patch package.
-+
-+
-+%package services
-+Group: Systemd services
-+
-+%description services
-+services components for the cgcs-patch package.
-+
-+
-+%prep
-+
-+%build
-+## build_prepend content
-+%define pythonroot           /usr/lib64/python2.7/site-packages
-+%define debug_package %{nil}
-+%define _sysconfdir /usr/local/etc
-+%define _unitdir /usr/lib/systemd/system/
-+## build_prepend end
-+export MAKEFLAGS=%{?_smp_mflags}
-+python3 setup.py build
-+
-+%install
-+export MAKEFLAGS=%{?_smp_mflags}
-+rm -rf %{buildroot}
-+python3 -tt setup.py build  install --root=%{buildroot}
-+echo ----[ mark ]----
-+cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
-+echo ----[ mark ]----
-+## install_append content
-+%{__python} setup.py install --root=$RPM_BUILD_ROOT \
-+--install-lib=%{pythonroot} \
-+--prefix=/usr \
-+--install-data=/usr/share \
-+--single-version-externally-managed
-+install -m 755 -d %{buildroot}%{_sbindir}
-+install -m 755 -d %{buildroot}%{_sysconfdir}/bash_completion.d
-+install -m 755 -d %{buildroot}%{_sysconfdir}/goenabled.d
-+install -m 755 -d %{buildroot}%{_sysconfdir}/init.d
-+install -m 755 -d %{buildroot}%{_sysconfdir}/logrotate.d
-+install -m 755 -d %{buildroot}%{_sysconfdir}/patching
-+install -m 700 -d %{buildroot}%{_sysconfdir}/patching/patch-scripts
-+install -m 755 -d %{buildroot}%{_sysconfdir}/pmon.d
-+install -m 755 -d %{buildroot}%{_unitdir}
-+install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-agent \
-+%{buildroot}%{_sbindir}/sw-patch-agent
-+install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-controller-daemon \
-+%{buildroot}%{_sbindir}/sw-patch-controller-daemon
-+install -m 555 ${RPM_BUILD_DIR}/bin/sw-patch \
-+%{buildroot}%{_sbindir}/sw-patch
-+install -m 555 ${RPM_BUILD_DIR}/bin/rpm-audit \
-+%{buildroot}%{_sbindir}/rpm-audit
-+install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-controller-daemon-init.sh \
-+%{buildroot}%{_sysconfdir}/init.d/sw-patch-controller-daemon
-+install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-agent-init.sh \
-+%{buildroot}%{_sysconfdir}/init.d/sw-patch-agent
-+install -m 600 ${RPM_BUILD_DIR}/bin/patching.conf \
-+%{buildroot}%{_sysconfdir}/patching/patching.conf
-+install -m 644 ${RPM_BUILD_DIR}/bin/policy.json \
-+%{buildroot}%{_sysconfdir}/patching/policy.json
-+install -m 444 ${RPM_BUILD_DIR}/bin/pmon-sw-patch-controller-daemon.conf \
-+%{buildroot}%{_sysconfdir}/pmon.d/sw-patch-controller-daemon.conf
-+install -m 444 ${RPM_BUILD_DIR}/bin/pmon-sw-patch-agent.conf \
-+%{buildroot}%{_sysconfdir}/pmon.d/sw-patch-agent.conf
-+install -m 444 ${RPM_BUILD_DIR}/bin/*.service %{buildroot}%{_unitdir}
-+install -m 444 ${RPM_BUILD_DIR}/bin/sw-patch.completion %{buildroot}%{_sysconfdir}/bash_completion.d/sw-patch
-+install -m 400 ${RPM_BUILD_DIR}/bin/patch-functions \
-+%{buildroot}%{_sysconfdir}/patching/patch-functions
-+install -D -m 444 ${RPM_BUILD_DIR}/bin/patch-tmpdirs.conf \
-+%{buildroot}%{_tmpfilesdir}/patch-tmpdirs.conf
-+install -m 500 ${RPM_BUILD_DIR}/bin/run-patch-scripts \
-+%{buildroot}%{_sbindir}/run-patch-scripts
-+install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-controller-daemon-restart \
-+%{buildroot}%{_sbindir}/sw-patch-controller-daemon-restart
-+install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-agent-restart \
-+%{buildroot}%{_sbindir}/sw-patch-agent-restart
-+install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-init.sh \
-+%{buildroot}%{_sysconfdir}/init.d/sw-patch
-+install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-controller-init.sh \
-+%{buildroot}%{_sysconfdir}/init.d/sw-patch-controller
-+install -m 555 ${RPM_BUILD_DIR}/bin/patch_check_goenabled.sh \
-+%{buildroot}%{_sysconfdir}/goenabled.d/patch_check_goenabled.sh
-+install -m 444 ${RPM_BUILD_DIR}/bin/patching.logrotate \
-+%{buildroot}%{_sysconfdir}/logrotate.d/patching
-+install -m 500 ${RPM_BUILD_DIR}/bin/upgrade-start-pkg-extract \
-+%{buildroot}%{_sbindir}/upgrade-start-pkg-extract
-+%clean
-+rm -rf $RPM_BUILD_ROOT
-+## install_append end
-+
-+%files
-+%defattr(-,root,root,-)
-+/usr/local/etc/bash_completion.d/sw-patch
-+/usr/local/etc/goenabled.d/patch_check_goenabled.sh
-+/usr/local/etc/init.d/sw-patch
-+/usr/local/etc/init.d/sw-patch-agent
-+/usr/local/etc/init.d/sw-patch-controller
-+/usr/local/etc/init.d/sw-patch-controller-daemon
-+/usr/local/etc/logrotate.d/patching
-+/usr/local/etc/patching/patch-functions
-+/usr/local/etc/patching/patching.conf
-+/usr/local/etc/patching/policy.json
-+/usr/local/etc/pmon.d/sw-patch-agent.conf
-+/usr/local/etc/pmon.d/sw-patch-controller-daemon.conf
-+
-+%files bin
-+%defattr(-,root,root,-)
-+/usr/bin/rpm-audit
-+/usr/bin/run-patch-scripts
-+/usr/bin/sw-patch
-+/usr/bin/sw-patch-agent
-+/usr/bin/sw-patch-agent-restart
-+/usr/bin/sw-patch-controller-daemon
-+/usr/bin/sw-patch-controller-daemon-restart
-+/usr/bin/upgrade-start-pkg-extract
-+
-+%files python
-+%defattr(-,root,root,-)
-+/usr/lib64/python*/*
-+
-+%files python3
-+%defattr(-,root,root,-)
-+/usr/lib/python3*/*
-+
-+%files services
-+%defattr(-,root,root,-)
-+/usr/lib/systemd/system/sw-patch-agent.service
-+/usr/lib/systemd/system/sw-patch-controller-daemon.service
-+/usr/lib/systemd/system/sw-patch-controller.service
-+/usr/lib/systemd/system/sw-patch.service
-diff --git a/cgcs-patchbk.spec b/cgcs-patchbk.spec
-new file mode 100644
-index 0000000..7e105ee
---- /dev/null
-+++ b/cgcs-patchbk.spec
-@@ -0,0 +1,196 @@
-+%define tis_patch_ver 28
-+Name: cgcs-patch
-+Version: 1.0
-+Release: %{tis_patch_ver}%{?_tis_dist}
-+License: Apache-2.0
-+Group: base
-+Packager: Wind River <info@windriver.com>
-+URL: unknown
-+Source0: %{name}-%{version}.tar.gz
-+Source1: LICENSE
-+
-+BuildRequires: python-setuptools
-+BuildRequires: python2-pip
-+BuildRequires: python2-wheel
-+BuildRequires: systemd-units
-+BuildRequires: systemd-devel
-+Requires: python-devel
-+Requires: python-crypto
-+Requires: python-smartpm
-+Requires: /bin/bash
-+
-+%description
-+TIS Platform Patching
-+
-+%define pythonroot           /usr/lib64/python2.7/site-packages
-+
-+%define debug_package %{nil}
-+
-+%prep
-+%setup
-+
-+%build
-+%{__python} setup.py build
-+%py2_build_wheel
-+
-+%install
-+%{__python} setup.py install --root=$RPM_BUILD_ROOT \
-+                             --install-lib=%{pythonroot} \
-+                             --prefix=/usr \
-+                             --install-data=/usr/share \
-+                             --single-version-externally-managed
-+mkdir -p $RPM_BUILD_ROOT/wheels
-+install -m 644 dist/*.whl $RPM_BUILD_ROOT/wheels/
-+
-+    install -m 755 -d %{buildroot}%{_sbindir}
-+    install -m 755 -d %{buildroot}%{_sysconfdir}/bash_completion.d
-+    install -m 755 -d %{buildroot}%{_sysconfdir}/goenabled.d
-+    install -m 755 -d %{buildroot}%{_sysconfdir}/init.d
-+    install -m 755 -d %{buildroot}%{_sysconfdir}/logrotate.d
-+    install -m 755 -d %{buildroot}%{_sysconfdir}/patching
-+    install -m 700 -d %{buildroot}%{_sysconfdir}/patching/patch-scripts
-+    install -m 755 -d %{buildroot}%{_sysconfdir}/pmon.d
-+    install -m 755 -d %{buildroot}%{_unitdir}
-+
-+
-+    install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-agent \
-+        %{buildroot}%{_sbindir}/sw-patch-agent
-+    install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-controller-daemon \
-+        %{buildroot}%{_sbindir}/sw-patch-controller-daemon
-+    install -m 555 ${RPM_BUILD_DIR}/bin/sw-patch \
-+        %{buildroot}%{_sbindir}/sw-patch
-+
-+    install -m 555 ${RPM_BUILD_DIR}/bin/rpm-audit \
-+        %{buildroot}%{_sbindir}/rpm-audit
-+
-+    install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-controller-daemon-init.sh \
-+        %{buildroot}%{_sysconfdir}/init.d/sw-patch-controller-daemon
-+    install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-agent-init.sh \
-+        %{buildroot}%{_sysconfdir}/init.d/sw-patch-agent
-+
-+    install -m 600 ${RPM_BUILD_DIR}/bin/patching.conf \
-+        %{buildroot}%{_sysconfdir}/patching/patching.conf
-+    install -m 644 ${RPM_BUILD_DIR}/bin/policy.json \
-+        %{buildroot}%{_sysconfdir}/patching/policy.json
-+
-+    install -m 444 ${RPM_BUILD_DIR}/bin/pmon-sw-patch-controller-daemon.conf \
-+        %{buildroot}%{_sysconfdir}/pmon.d/sw-patch-controller-daemon.conf
-+    install -m 444 ${RPM_BUILD_DIR}/bin/pmon-sw-patch-agent.conf \
-+        %{buildroot}%{_sysconfdir}/pmon.d/sw-patch-agent.conf
-+
-+    install -m 444 ${RPM_BUILD_DIR}/bin/*.service %{buildroot}%{_unitdir}
-+
-+    install -m 444 ${RPM_BUILD_DIR}/bin/sw-patch.completion %{buildroot}%{_sysconfdir}/bash_completion.d/sw-patch
-+
-+    install -m 400 ${RPM_BUILD_DIR}/bin/patch-functions \
-+        %{buildroot}%{_sysconfdir}/patching/patch-functions
-+
-+    install -D -m 444 ${RPM_BUILD_DIR}/bin/patch-tmpdirs.conf \
-+        %{buildroot}%{_tmpfilesdir}/patch-tmpdirs.conf
-+    install -m 500 ${RPM_BUILD_DIR}/bin/run-patch-scripts \
-+        %{buildroot}%{_sbindir}/run-patch-scripts
-+
-+    install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-controller-daemon-restart \
-+        %{buildroot}%{_sbindir}/sw-patch-controller-daemon-restart
-+    install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-agent-restart \
-+        %{buildroot}%{_sbindir}/sw-patch-agent-restart
-+
-+    install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-init.sh \
-+        %{buildroot}%{_sysconfdir}/init.d/sw-patch
-+    install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-controller-init.sh \
-+        %{buildroot}%{_sysconfdir}/init.d/sw-patch-controller
-+
-+    install -m 555 ${RPM_BUILD_DIR}/bin/patch_check_goenabled.sh \
-+        %{buildroot}%{_sysconfdir}/goenabled.d/patch_check_goenabled.sh
-+
-+    install -m 444 ${RPM_BUILD_DIR}/bin/patching.logrotate \
-+        %{buildroot}%{_sysconfdir}/logrotate.d/patching
-+
-+    install -m 500 ${RPM_BUILD_DIR}/bin/upgrade-start-pkg-extract \
-+        %{buildroot}%{_sbindir}/upgrade-start-pkg-extract
-+
-+%clean
-+rm -rf $RPM_BUILD_ROOT 
-+
-+%package -n cgcs-patch-controller
-+Group: base
-+Requires: /usr/bin/env
-+Requires: /bin/sh
-+Requires: requests-toolbelt
-+Requires: createrepo
-+Requires(post): /usr/bin/env
-+Requires(post): /bin/sh
-+
-+%description -n cgcs-patch-controller
-+TIS Platform Patching
-+
-+%post -n cgcs-patch-controller
-+/usr/bin/systemctl enable sw-patch-controller.service
-+/usr/bin/systemctl enable sw-patch-controller-daemon.service
-+
-+
-+%package -n cgcs-patch-agent
-+Group: base
-+Requires: /usr/bin/env
-+Requires: /bin/sh
-+Requires(post): /usr/bin/env
-+Requires(post): /bin/sh
-+
-+%description -n cgcs-patch-agent
-+TIS Platform Patching
-+
-+%post -n cgcs-patch-agent
-+/usr/bin/systemctl enable sw-patch-agent.service
-+
-+%post
-+/usr/bin/systemctl enable sw-patch.service
-+
-+%files
-+%license ../LICENSE
-+%defattr(-,root,root,-)
-+%{pythonroot}/cgcs_patch
-+%{pythonroot}/cgcs_patch-*.egg-info
-+%{_sbindir}/rpm-audit
-+%config(noreplace) %{_sysconfdir}/patching/policy.json
-+%config(noreplace) %{_sysconfdir}/patching/patching.conf
-+%dir %{_sysconfdir}/patching/patch-scripts
-+%{_sysconfdir}/patching/patch-functions
-+%{_tmpfilesdir}/patch-tmpdirs.conf
-+%{_sbindir}/run-patch-scripts
-+%{_sysconfdir}/init.d/sw-patch
-+%{_unitdir}/sw-patch.service
-+%{_sysconfdir}/goenabled.d/patch_check_goenabled.sh
-+%{_sysconfdir}/logrotate.d/patching
-+
-+%files -n cgcs-patch-controller
-+%defattr(-,root,root,-)
-+%{_sbindir}/sw-patch
-+%{_sbindir}/sw-patch-controller-daemon
-+%{_sbindir}/sw-patch-controller-daemon-restart
-+%{_sbindir}/upgrade-start-pkg-extract
-+%{_sysconfdir}/pmon.d/sw-patch-controller-daemon.conf
-+%{_sysconfdir}/init.d/sw-patch-controller-daemon
-+%{_unitdir}/sw-patch-controller-daemon.service
-+%{_sysconfdir}/bash_completion.d/sw-patch
-+%{_sysconfdir}/init.d/sw-patch-controller
-+%{_unitdir}/sw-patch-controller.service
-+
-+%files -n cgcs-patch-agent
-+%defattr(-,root,root,-)
-+%{_sbindir}/sw-patch-agent
-+%{_sbindir}/sw-patch-agent-restart
-+%{_sysconfdir}/pmon.d/sw-patch-agent.conf
-+%{_sysconfdir}/init.d/sw-patch-agent
-+%{_unitdir}/sw-patch-agent.service
-+
-+%package wheels
-+
-+%description wheels
-+Contains python wheels for %{name}
-+
-+%files wheels
-+/wheels/*
+@@ -28,6 +28,7 @@ BuildRequires : systemd-dev
+ BuildRequires : tox
+ BuildRequires : virtualenv
+ BuildRequires : wheel
++Patch1: 0001-change-sysconfig-dir.patch
+ 
+ %description
+ No detailed description available
+@@ -69,6 +70,7 @@ services components for the cgcs-patch package.
+ 
+ %prep
+ %setup -q -n cgcs-patch-1.0
++%patch1 -p1
+ 
+ %build
+ ## build_prepend content
+@@ -115,47 +117,48 @@ install -m 755 -d %{buildroot}%{_sysconfdir}/patching
+ install -m 700 -d %{buildroot}%{_sysconfdir}/patching/patch-scripts
+ install -m 755 -d %{buildroot}%{_sysconfdir}/pmon.d
+ install -m 755 -d %{buildroot}%{_unitdir}
+-install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-agent \
++pwd
++install -m 500 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/sw-patch-agent \
+ %{buildroot}%{_sbindir}/sw-patch-agent
+-install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-controller-daemon \
++install -m 500 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/sw-patch-controller-daemon \
+ %{buildroot}%{_sbindir}/sw-patch-controller-daemon
+-install -m 555 ${RPM_BUILD_DIR}/bin/sw-patch \
++install -m 555 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/sw-patch \
+ %{buildroot}%{_sbindir}/sw-patch
+-install -m 555 ${RPM_BUILD_DIR}/bin/rpm-audit \
++install -m 555 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/rpm-audit \
+ %{buildroot}%{_sbindir}/rpm-audit
+-install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-controller-daemon-init.sh \
++install -m 500 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/sw-patch-controller-daemon-init.sh \
+ %{buildroot}%{_sysconfdir}/init.d/sw-patch-controller-daemon
+-install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-agent-init.sh \
++install -m 500 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/sw-patch-agent-init.sh \
+ %{buildroot}%{_sysconfdir}/init.d/sw-patch-agent
+-install -m 600 ${RPM_BUILD_DIR}/bin/patching.conf \
++install -m 600 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/patching.conf \
+ %{buildroot}%{_sysconfdir}/patching/patching.conf
+-install -m 644 ${RPM_BUILD_DIR}/bin/policy.json \
++install -m 644 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/policy.json \
+ %{buildroot}%{_sysconfdir}/patching/policy.json
+-install -m 444 ${RPM_BUILD_DIR}/bin/pmon-sw-patch-controller-daemon.conf \
++install -m 444 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/pmon-sw-patch-controller-daemon.conf \
+ %{buildroot}%{_sysconfdir}/pmon.d/sw-patch-controller-daemon.conf
+-install -m 444 ${RPM_BUILD_DIR}/bin/pmon-sw-patch-agent.conf \
++install -m 444 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/pmon-sw-patch-agent.conf \
+ %{buildroot}%{_sysconfdir}/pmon.d/sw-patch-agent.conf
+-install -m 444 ${RPM_BUILD_DIR}/bin/*.service %{buildroot}%{_unitdir}
+-install -m 444 ${RPM_BUILD_DIR}/bin/sw-patch.completion %{buildroot}%{_sysconfdir}/bash_completion.d/sw-patch
+-install -m 400 ${RPM_BUILD_DIR}/bin/patch-functions \
++install -m 444 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/*.service %{buildroot}%{_unitdir}
++install -m 444 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/sw-patch.completion %{buildroot}%{_sysconfdir}/bash_completion.d/sw-patch
++install -m 400 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/patch-functions \
+ %{buildroot}%{_sysconfdir}/patching/patch-functions
+-install -D -m 444 ${RPM_BUILD_DIR}/bin/patch-tmpdirs.conf \
++install -D -m 444 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/patch-tmpdirs.conf \
+ %{buildroot}%{_tmpfilesdir}/patch-tmpdirs.conf
+-install -m 500 ${RPM_BUILD_DIR}/bin/run-patch-scripts \
++install -m 500 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/run-patch-scripts \
+ %{buildroot}%{_sbindir}/run-patch-scripts
+-install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-controller-daemon-restart \
++install -m 500 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/sw-patch-controller-daemon-restart \
+ %{buildroot}%{_sbindir}/sw-patch-controller-daemon-restart
+-install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-agent-restart \
++install -m 500 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/sw-patch-agent-restart \
+ %{buildroot}%{_sbindir}/sw-patch-agent-restart
+-install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-init.sh \
++install -m 500 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/sw-patch-init.sh \
+ %{buildroot}%{_sysconfdir}/init.d/sw-patch
+-install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-controller-init.sh \
++install -m 500 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/sw-patch-controller-init.sh \
+ %{buildroot}%{_sysconfdir}/init.d/sw-patch-controller
+-install -m 555 ${RPM_BUILD_DIR}/bin/patch_check_goenabled.sh \
++install -m 555 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/patch_check_goenabled.sh \
+ %{buildroot}%{_sysconfdir}/goenabled.d/patch_check_goenabled.sh
+-install -m 444 ${RPM_BUILD_DIR}/bin/patching.logrotate \
++install -m 444 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/patching.logrotate \
+ %{buildroot}%{_sysconfdir}/logrotate.d/patching
+-install -m 500 ${RPM_BUILD_DIR}/bin/upgrade-start-pkg-extract \
++install -m 500 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/upgrade-start-pkg-extract \
+ %{buildroot}%{_sbindir}/upgrade-start-pkg-extract
+ %clean
+ rm -rf $RPM_BUILD_ROOT
 diff --git a/install_append b/install_append
-new file mode 100644
-index 0000000..0b4c0b0
---- /dev/null
+index 0b4c0b0..55ddea3 100644
+--- a/install_append
 +++ b/install_append
-@@ -0,0 +1,75 @@
-+%{__python} setup.py install --root=$RPM_BUILD_ROOT \
-+                             --install-lib=%{pythonroot} \
-+                             --prefix=/usr \
-+                             --install-data=/usr/share \
-+                             --single-version-externally-managed
-+
-+    install -m 755 -d %{buildroot}%{_sbindir}
-+    install -m 755 -d %{buildroot}%{_sysconfdir}/bash_completion.d
-+    install -m 755 -d %{buildroot}%{_sysconfdir}/goenabled.d
-+    install -m 755 -d %{buildroot}%{_sysconfdir}/init.d
-+    install -m 755 -d %{buildroot}%{_sysconfdir}/logrotate.d
-+    install -m 755 -d %{buildroot}%{_sysconfdir}/patching
-+    install -m 700 -d %{buildroot}%{_sysconfdir}/patching/patch-scripts
-+    install -m 755 -d %{buildroot}%{_sysconfdir}/pmon.d
-+    install -m 755 -d %{buildroot}%{_unitdir}
-+
-+
-+    install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-agent \
-+        %{buildroot}%{_sbindir}/sw-patch-agent
-+    install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-controller-daemon \
-+        %{buildroot}%{_sbindir}/sw-patch-controller-daemon
-+    install -m 555 ${RPM_BUILD_DIR}/bin/sw-patch \
-+        %{buildroot}%{_sbindir}/sw-patch
-+
-+    install -m 555 ${RPM_BUILD_DIR}/bin/rpm-audit \
-+        %{buildroot}%{_sbindir}/rpm-audit
-+
-+    install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-controller-daemon-init.sh \
-+        %{buildroot}%{_sysconfdir}/init.d/sw-patch-controller-daemon
-+    install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-agent-init.sh \
-+        %{buildroot}%{_sysconfdir}/init.d/sw-patch-agent
-+
-+    install -m 600 ${RPM_BUILD_DIR}/bin/patching.conf \
-+        %{buildroot}%{_sysconfdir}/patching/patching.conf
-+    install -m 644 ${RPM_BUILD_DIR}/bin/policy.json \
-+        %{buildroot}%{_sysconfdir}/patching/policy.json
-+
-+    install -m 444 ${RPM_BUILD_DIR}/bin/pmon-sw-patch-controller-daemon.conf \
-+        %{buildroot}%{_sysconfdir}/pmon.d/sw-patch-controller-daemon.conf
-+    install -m 444 ${RPM_BUILD_DIR}/bin/pmon-sw-patch-agent.conf \
-+        %{buildroot}%{_sysconfdir}/pmon.d/sw-patch-agent.conf
-+
-+    install -m 444 ${RPM_BUILD_DIR}/bin/*.service %{buildroot}%{_unitdir}
-+
-+    install -m 444 ${RPM_BUILD_DIR}/bin/sw-patch.completion %{buildroot}%{_sysconfdir}/bash_completion.d/sw-patch
-+
-+    install -m 400 ${RPM_BUILD_DIR}/bin/patch-functions \
-+        %{buildroot}%{_sysconfdir}/patching/patch-functions
-+
-+    install -D -m 444 ${RPM_BUILD_DIR}/bin/patch-tmpdirs.conf \
-+        %{buildroot}%{_tmpfilesdir}/patch-tmpdirs.conf
-+    install -m 500 ${RPM_BUILD_DIR}/bin/run-patch-scripts \
-+        %{buildroot}%{_sbindir}/run-patch-scripts
-+
-+    install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-controller-daemon-restart \
-+        %{buildroot}%{_sbindir}/sw-patch-controller-daemon-restart
-+    install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-agent-restart \
-+        %{buildroot}%{_sbindir}/sw-patch-agent-restart
-+
-+    install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-init.sh \
-+        %{buildroot}%{_sysconfdir}/init.d/sw-patch
-+    install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-controller-init.sh \
-+        %{buildroot}%{_sysconfdir}/init.d/sw-patch-controller
-+
-+    install -m 555 ${RPM_BUILD_DIR}/bin/patch_check_goenabled.sh \
-+        %{buildroot}%{_sysconfdir}/goenabled.d/patch_check_goenabled.sh
-+
-+    install -m 444 ${RPM_BUILD_DIR}/bin/patching.logrotate \
-+        %{buildroot}%{_sysconfdir}/logrotate.d/patching
-+
-+    install -m 500 ${RPM_BUILD_DIR}/bin/upgrade-start-pkg-extract \
-+        %{buildroot}%{_sbindir}/upgrade-start-pkg-extract
-+
-+%clean
-+rm -rf $RPM_BUILD_ROOT 
-diff --git a/options.conf b/options.conf
+@@ -13,62 +13,62 @@
+     install -m 700 -d %{buildroot}%{_sysconfdir}/patching/patch-scripts
+     install -m 755 -d %{buildroot}%{_sysconfdir}/pmon.d
+     install -m 755 -d %{buildroot}%{_unitdir}
++	pwd
+ 
+-
+-    install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-agent \
++    install -m 500 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/sw-patch-agent \
+         %{buildroot}%{_sbindir}/sw-patch-agent
+-    install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-controller-daemon \
++    install -m 500 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/sw-patch-controller-daemon \
+         %{buildroot}%{_sbindir}/sw-patch-controller-daemon
+-    install -m 555 ${RPM_BUILD_DIR}/bin/sw-patch \
++    install -m 555 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/sw-patch \
+         %{buildroot}%{_sbindir}/sw-patch
+ 
+-    install -m 555 ${RPM_BUILD_DIR}/bin/rpm-audit \
++    install -m 555 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/rpm-audit \
+         %{buildroot}%{_sbindir}/rpm-audit
+ 
+-    install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-controller-daemon-init.sh \
++    install -m 500 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/sw-patch-controller-daemon-init.sh \
+         %{buildroot}%{_sysconfdir}/init.d/sw-patch-controller-daemon
+-    install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-agent-init.sh \
++    install -m 500 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/sw-patch-agent-init.sh \
+         %{buildroot}%{_sysconfdir}/init.d/sw-patch-agent
+ 
+-    install -m 600 ${RPM_BUILD_DIR}/bin/patching.conf \
++    install -m 600 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/patching.conf \
+         %{buildroot}%{_sysconfdir}/patching/patching.conf
+-    install -m 644 ${RPM_BUILD_DIR}/bin/policy.json \
++    install -m 644 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/policy.json \
+         %{buildroot}%{_sysconfdir}/patching/policy.json
+ 
+-    install -m 444 ${RPM_BUILD_DIR}/bin/pmon-sw-patch-controller-daemon.conf \
++    install -m 444 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/pmon-sw-patch-controller-daemon.conf \
+         %{buildroot}%{_sysconfdir}/pmon.d/sw-patch-controller-daemon.conf
+-    install -m 444 ${RPM_BUILD_DIR}/bin/pmon-sw-patch-agent.conf \
++    install -m 444 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/pmon-sw-patch-agent.conf \
+         %{buildroot}%{_sysconfdir}/pmon.d/sw-patch-agent.conf
+ 
+-    install -m 444 ${RPM_BUILD_DIR}/bin/*.service %{buildroot}%{_unitdir}
++    install -m 444 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/*.service %{buildroot}%{_unitdir}
+ 
+-    install -m 444 ${RPM_BUILD_DIR}/bin/sw-patch.completion %{buildroot}%{_sysconfdir}/bash_completion.d/sw-patch
++    install -m 444 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/sw-patch.completion %{buildroot}%{_sysconfdir}/bash_completion.d/sw-patch
+ 
+-    install -m 400 ${RPM_BUILD_DIR}/bin/patch-functions \
++    install -m 400 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/patch-functions \
+         %{buildroot}%{_sysconfdir}/patching/patch-functions
+ 
+-    install -D -m 444 ${RPM_BUILD_DIR}/bin/patch-tmpdirs.conf \
++    install -D -m 444 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/patch-tmpdirs.conf \
+         %{buildroot}%{_tmpfilesdir}/patch-tmpdirs.conf
+-    install -m 500 ${RPM_BUILD_DIR}/bin/run-patch-scripts \
++    install -m 500 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/run-patch-scripts \
+         %{buildroot}%{_sbindir}/run-patch-scripts
+ 
+-    install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-controller-daemon-restart \
++    install -m 500 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/sw-patch-controller-daemon-restart \
+         %{buildroot}%{_sbindir}/sw-patch-controller-daemon-restart
+-    install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-agent-restart \
++    install -m 500 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/sw-patch-agent-restart \
+         %{buildroot}%{_sbindir}/sw-patch-agent-restart
+ 
+-    install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-init.sh \
++    install -m 500 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/sw-patch-init.sh \
+         %{buildroot}%{_sysconfdir}/init.d/sw-patch
+-    install -m 500 ${RPM_BUILD_DIR}/bin/sw-patch-controller-init.sh \
++    install -m 500 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/sw-patch-controller-init.sh \
+         %{buildroot}%{_sysconfdir}/init.d/sw-patch-controller
+ 
+-    install -m 555 ${RPM_BUILD_DIR}/bin/patch_check_goenabled.sh \
++    install -m 555 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/patch_check_goenabled.sh \
+         %{buildroot}%{_sysconfdir}/goenabled.d/patch_check_goenabled.sh
+ 
+-    install -m 444 ${RPM_BUILD_DIR}/bin/patching.logrotate \
++    install -m 444 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/patching.logrotate \
+         %{buildroot}%{_sysconfdir}/logrotate.d/patching
+ 
+-    install -m 500 ${RPM_BUILD_DIR}/bin/upgrade-start-pkg-extract \
++    install -m 500 ${RPM_BUILD_DIR}/%{name}-%{version}/bin/upgrade-start-pkg-extract \
+         %{buildroot}%{_sbindir}/upgrade-start-pkg-extract
+ 
+ %clean
+diff --git a/series b/series
 new file mode 100644
-index 0000000..a614bb4
+index 0000000..c30a986
 --- /dev/null
-+++ b/options.conf
-@@ -0,0 +1,58 @@
-+name = cgcs-patch
-+url = file:///home/clear/tar/cgcs-patch-1.0.tar.gz
-+use_lto = true
-+verify_required = false
-diff --git a/requires_add b/requires_add
-new file mode 100644
-index 0000000..3ac978f
---- /dev/null
-+++ b/requires_add
-@@ -0,0 +1,6 @@
-+python-dev
-+pycrypto
-+python-smartpm
-+/bin/bash
++++ b/series
+@@ -0,0 +1 @@
++0001-change-sysconfig-dir.patch
