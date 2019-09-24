@@ -1,0 +1,50 @@
+diff -urNp setup-2.8.71-orig/uidgid setup-2.8.71/uidgid
+--- setup-2.8.71-orig/uidgid	2013-06-07 16:31:32.000000000 +0200
++++ setup-2.8.71/uidgid	2014-08-15 09:59:45.423988877 +0200
+@@ -22,7 +22,7 @@ games	12	(100)	/usr/games		/sbin/nologin
+ gopher	13	30	/var/gopher		/sbin/nologin	-(not created by default)
+ ftp	14	50	/var/ftp		/sbin/nologin	setup
+ man	-	15	-		-	setup
+-oprofile	16	16	/home/oprofile		/sbin/nologin	oprofile
++oprofile	16	16	/var/lib/oprofile		/sbin/nologin	oprofile
+ pkiuser	17	17	/usr/share/pki		/sbin/nologin	pki-ca,rhpki-ca
+ dialout	-	18	-		-	setup
+ floppy	-	19	-		-	setup
+@@ -121,6 +121,7 @@ cimsrvr	134	134	/		/sbin/nologin	tog-peg
+ mock	-	135	/		-	mock
+ ricci	140	140	/var/lib/ricci		/sbin/nologin	ricci
+ luci	141	141	/var/lib/luci		/sbin/nologin	luci
++activemq	142	142	/usr/share/activemq		/sbin/nologin	activemq
+ stap-server	155	155	/var/lib/stap-server		/sbin/nologin	systemtap
+ stapusr	-	156	/		-	systemtap-runtime
+ stapsys	-	157	/		-	systemtap-runtime
+@@ -132,6 +133,7 @@ keystone	163	163	/var/lib/keystone		/sbi
+ quantum	164	164	/var/lib/quantum		/sbin/nologin	openstack-quantum
+ cinder	165	165	/var/lib/cinder		/sbin/nologin	openstack-cinder
+ ceilometer	166	166	/var/lib/ceilometer		/sbin/nologin	openstack-ceilometer
++ceph	167	167	/var/lib/ceph		/sbin/nologin	ceph-common
+ avahi-autoipd	170	170	/var/lib/avahi-autoipd		/sbin/nologin	avahi
+ pulse	171	171	/var/run/pulse		/sbin/nologin	pulseaudio
+ rtkit	172	172	/proc		/sbin/nologin	rtkit
+@@ -147,7 +149,7 @@ wallaby	181	181	/var/lib/wallaby		/sbin/
+ katello	182	182	/usr/share/katello		/sbin/nologin	katello-common
+ elasticsearch	183	183	/usr/share/java/elasticsearch		/sbin/nologin	elasticsearch
+ mongodb	184	184	/var/lib/mongodb		/sbin/nologin	mongodb
+-jboss-as	185	185	/usr/share/jboss-as		/sbin/nologin	jboss-as
++jboss	185	185	/var/lib/jbossas		/sbin/nologin	jbossas-core	#was jboss-as and wildfly
+ jbosson-agent	186	-	/		/sbin/nologin	jboss-on-agent
+ jbosson	-	186	-		-	jboss-on-agent
+ heat	187	187	/var/lib/heat		/sbin/nologin	heat
+@@ -156,8 +158,11 @@ haproxy	188	188	/var/lib/haproxy		/sbin/
+ haclient	-	189	-		-	pacemaker
+ systemd-journal	-	190	-		-	systemd
+ systemd-journal-gateway	191	191	/		/sbin/nologin	systemd
++#systemd-journal-gateway dynamic on new systems (may have different uid/gid)
++systemd-network	192	192	/		/sbin/nologin	systemd
++systemd-resolve	193	193	/		/sbin/nologin	systemd
+ gnats	?	?	?		?	gnats, gnats-db
+ listar	?	?	?		?	listar
+ nfsnobody	65534	65534	/var/lib/nfs		/sbin/nologin	nfs-utils
+ 
+-# Note: nfsnobdy is 4294967294 on 64-bit platforms (-2)
++# Note: nfsnobody is 4294967294 on 64-bit platforms (-2)

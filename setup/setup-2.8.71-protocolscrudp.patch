@@ -1,0 +1,12 @@
+diff -urNp setup-2.8.71-orig/protocols setup-2.8.71/protocols
+--- setup-2.8.71-orig/protocols	2013-06-07 16:31:32.000000000 +0200
++++ setup-2.8.71/protocols	2018-06-21 13:05:21.507242494 +0200
+@@ -140,7 +140,7 @@ ptp	123	PTP		# Performance Transparency
+ isis	124	ISIS		# ISIS over IPv4
+ fire	125	FIRE
+ crtp	126	CRTP		# Combat Radio Transport Protocol
+-crdup	127	CRUDP		# Combat Radio User Datagram
++crudp	127	CRUDP		# Combat Radio User Datagram
+ sscopmce	128	SSCOPMCE
+ iplt	129	IPLT
+ sps	130	SPS		# Secure Packet Shield

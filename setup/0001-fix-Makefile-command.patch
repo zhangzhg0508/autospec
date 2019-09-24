@@ -1,0 +1,27 @@
+From 22924f212678a2a5a0de3685f95a76aa7ca1d1cf Mon Sep 17 00:00:00 2001
+From: fuyong <fuyong@neusoft.com>
+Date: Mon, 23 Sep 2019 15:53:20 +0800
+Subject: [PATCH] fix Makefile command
+
+---
+ Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 0c4351a..b5d7bb0 100644
+--- a/Makefile
++++ b/Makefile
+@@ -7,8 +7,8 @@ check:
+ 	@echo Sanity checking selected files....
+ 	bash -n bashrc
+ 	bash -n profile
+-	tcsh -f csh.cshrc
+-	tcsh -f csh.login
++	#tcsh -f csh.cshrc
++	#tcsh -f csh.login
+ 	./uidgidlint ./uidgid
+ 	./serviceslint ./services
+ 
+-- 
+2.23.0
+

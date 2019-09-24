@@ -1,0 +1,12 @@
+diff -urNp setup-2.8.71-orig/group setup-2.8.71/group
+--- setup-2.8.71-orig/group	2017-08-31 10:09:47.179007135 +0200
++++ setup-2.8.71/group	2017-08-31 10:10:19.823124046 +0200
+@@ -15,7 +15,7 @@ man:x:15:
+ dialout::18:
+ floppy::19:
+ games::20:
+-tape::30:
++tape::33:
+ video::39:
+ ftp::50:
+ lock::54:

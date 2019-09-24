@@ -1,0 +1,24 @@
+diff -urNp setup-2.8.71-orig/csh.login setup-2.8.71/csh.login
+--- setup-2.8.71-orig/csh.login	2013-06-07 16:31:32.000000000 +0200
++++ setup-2.8.71/csh.login	2017-11-17 09:36:56.353503683 +0100
+@@ -22,7 +22,7 @@ set history=1000
+ 
+ if ( -d /etc/profile.d ) then
+         set nonomatch
+-        foreach i ( /etc/profile.d/*.csh )
++        foreach i ( /etc/profile.d/*.csh /etc/profile.d/csh.local )
+                 if ( -r "$i" ) then
+ 	                        if ($?prompt) then
+ 	                              source "$i"
+diff -urNp setup-2.8.71-orig/profile setup-2.8.71/profile
+--- setup-2.8.71-orig/profile	2017-11-17 09:35:43.584674057 +0100
++++ setup-2.8.71/profile	2017-11-17 09:36:30.892213403 +0100
+@@ -62,7 +62,7 @@ else
+     umask 022
+ fi
+ 
+-for i in /etc/profile.d/*.sh ; do
++for i in /etc/profile.d/*.sh /etc/profile.d/sh.local ; do
+     if [ -r "$i" ]; then
+         if [ "${-#*i}" != "$-" ]; then 
+             . "$i"

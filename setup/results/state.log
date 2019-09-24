@@ -1,0 +1,37 @@
+2019-09-23 16:02:26,401 - Mock Version: 1.2.14
+2019-09-23 16:02:26,648 - Start: dnf update
+2019-09-23 16:02:36,813 - Finish: dnf update
+2019-09-23 16:02:36,818 - Finish: chroot init
+2019-09-23 16:02:36,821 - Start: buildsrpm
+2019-09-23 16:02:36,827 - Start: rpmbuild -bs
+2019-09-23 16:02:36,865 - Finish: rpmbuild -bs
+2019-09-23 16:02:36,867 - Finish: buildsrpm
+2019-09-23 16:02:36,868 - Finish: run
+2019-09-23 16:02:40,097 - Mock Version: 1.2.14
+2019-09-23 16:02:40,370 - Start: dnf update
+2019-09-23 16:02:50,700 - Finish: dnf update
+2019-09-23 16:02:50,706 - Finish: chroot init
+2019-09-23 16:02:50,707 - Start: build phase for setup-2.8.71-1.src.rpm
+2019-09-23 16:02:50,709 - Start: build setup for setup-2.8.71-1.src.rpm
+2019-09-23 16:02:51,591 - Finish: build setup for setup-2.8.71-1.src.rpm
+2019-09-23 16:02:51,591 - Start: rpmbuild setup-2.8.71-1.src.rpm
+2019-09-23 16:02:55,639 - Mock Version: 1.2.14
+2019-09-23 16:02:55,888 - Start: dnf update
+2019-09-23 16:03:06,327 - Finish: dnf update
+2019-09-23 16:03:06,333 - Finish: chroot init
+2019-09-23 16:03:06,336 - Start: buildsrpm
+2019-09-23 16:03:06,342 - Start: rpmbuild -bs
+2019-09-23 16:03:06,381 - Finish: rpmbuild -bs
+2019-09-23 16:03:06,383 - Finish: buildsrpm
+2019-09-23 16:03:06,383 - Finish: run
+2019-09-23 16:03:09,574 - Mock Version: 1.2.14
+2019-09-23 16:03:09,833 - Start: dnf update
+2019-09-23 16:03:19,939 - Finish: dnf update
+2019-09-23 16:03:19,946 - Finish: chroot init
+2019-09-23 16:03:19,947 - Start: build phase for setup-2.8.71-1.src.rpm
+2019-09-23 16:03:19,949 - Start: build setup for setup-2.8.71-1.src.rpm
+2019-09-23 16:03:20,854 - Finish: build setup for setup-2.8.71-1.src.rpm
+2019-09-23 16:03:20,854 - Start: rpmbuild setup-2.8.71-1.src.rpm
+2019-09-23 16:03:21,713 - Finish: rpmbuild setup-2.8.71-1.src.rpm
+2019-09-23 16:03:21,715 - Finish: build phase for setup-2.8.71-1.src.rpm
+2019-09-23 16:03:21,715 - Finish: run

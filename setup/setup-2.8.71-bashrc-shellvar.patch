@@ -1,0 +1,11 @@
+diff -urNp setup-2.8.71-orig/bashrc setup-2.8.71/bashrc
+--- setup-2.8.71-orig/bashrc	2013-06-07 16:31:32.000000000 +0200
++++ setup-2.8.71/bashrc	2014-02-25 14:10:03.253913395 +0100
+@@ -73,6 +73,7 @@ if ! shopt -q login_shell ; then # We're
+        umask 022
+     fi
+ 
++    SHELL=/bin/bash
+     # Only display echos from profile.d scripts if we are no login shell
+     # and interactive - otherwise just process them to set envvars
+     for i in /etc/profile.d/*.sh; do

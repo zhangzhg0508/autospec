@@ -1,0 +1,11 @@
+setup-2.8.71-securetty-mainframes.patch
+setup-2.8.71-bashrc-shellvar.patch
+setup-2.8.71-uidgidchanges.patch
+setup-2.8.71-filesystems.patch
+setup-2.8.71-fullpath.patch
+setup-2.8.71-tapeid.patch
+setup-2.8.71-shlocal.patch
+setup-2.8.71-protocolscrudp.patch
+setup-2.8.71-shellsnologin.patch
+0001-Change-group-passwd-and-uidgid.patch
+0001-fix-Makefile-command.patch

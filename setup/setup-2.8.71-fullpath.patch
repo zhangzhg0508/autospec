@@ -1,0 +1,50 @@
+diff -urNp setup-2.8.71-orig/bashrc setup-2.8.71/bashrc
+--- setup-2.8.71-orig/bashrc	2016-05-04 14:13:10.974376102 +0200
++++ setup-2.8.71/bashrc	2016-05-04 14:15:20.723433321 +0200
+@@ -67,7 +67,7 @@ if ! shopt -q login_shell ; then # We're
+     # Current threshold for system reserved uid/gids is 200
+     # You could check uidgid reservation validity in
+     # /usr/share/doc/setup-*/uidgid file
+-    if [ $UID -gt 199 ] && [ "`id -gn`" = "`id -un`" ]; then
++    if [ $UID -gt 199 ] && [ "`/usr/bin/id -gn`" = "`/usr/bin/id -un`" ]; then
+        umask 002
+     else
+        umask 022
+diff -urNp setup-2.8.71-orig/csh.cshrc setup-2.8.71/csh.cshrc
+--- setup-2.8.71-orig/csh.cshrc	2013-06-07 16:31:32.000000000 +0200
++++ setup-2.8.71/csh.cshrc	2016-05-04 14:16:38.275065224 +0200
+@@ -7,7 +7,7 @@
+ # Current threshold for system reserved uid/gids is 200
+ # You could check uidgid reservation validity in
+ # /usr/share/doc/setup-*/uidgid file
+-if ($uid > 199 && "`id -gn`" == "`id -un`") then
++if ($uid > 199 && "`/usr/bin/id -gn`" == "`/usr/bin/id -un`") then
+     umask 002
+ else
+     umask 022
+diff -urNp setup-2.8.71-orig/profile setup-2.8.71/profile
+--- setup-2.8.71-orig/profile	2013-06-07 16:31:32.000000000 +0200
++++ setup-2.8.71/profile	2016-05-04 14:14:27.289997935 +0200
+@@ -25,10 +25,10 @@ pathmunge () {
+ if [ -x /usr/bin/id ]; then
+     if [ -z "$EUID" ]; then
+         # ksh workaround
+-        EUID=`id -u`
+-        UID=`id -ru`
++        EUID=`/usr/bin/id -u`
++        UID=`/usr/bin/id -ru`
+     fi
+-    USER="`id -un`"
++    USER="`/usr/bin/id -un`"
+     LOGNAME=$USER
+     MAIL="/var/spool/mail/$USER"
+ fi
+@@ -56,7 +56,7 @@ export PATH USER LOGNAME MAIL HOSTNAME H
+ # Current threshold for system reserved uid/gids is 200
+ # You could check uidgid reservation validity in
+ # /usr/share/doc/setup-*/uidgid file
+-if [ $UID -gt 199 ] && [ "`id -gn`" = "`id -un`" ]; then
++if [ $UID -gt 199 ] && [ "`/usr/bin/id -gn`" = "`/usr/bin/id -un`" ]; then
+     umask 002
+ else
+     umask 022

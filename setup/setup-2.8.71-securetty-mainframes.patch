@@ -1,0 +1,22 @@
+diff -urNp setup-2.8.71-orig/securetty setup-2.8.71/securetty
+--- setup-2.8.71-orig/securetty	2013-06-07 16:31:32.000000000 +0200
++++ setup-2.8.71/securetty	2014-02-25 14:08:57.883857304 +0100
+@@ -21,8 +21,18 @@ tty8
+ tty9
+ tty10
+ tty11
++ttyS0
++ttysclp0
++sclp_line0
++3270/tty1
+ hvc0
+ hvc1
++hvc2
++hvc3
++hvc4
++hvc5
++hvc6
++hvc7
+ hvsi0
+ hvsi1
+ hvsi2

@@ -1,0 +1,29 @@
+cp -ar * %{buildroot}/usr/local/etc
+rm -f %{buildroot}/usr/local/etc/uidgid
+rm -f %{buildroot}/usr/local/etc/COPYING
+mkdir -p %{buildroot}/var/log
+touch %{buildroot}/var/log/lastlog
+touch %{buildroot}/usr/local/etc/environment
+chmod 0644 %{buildroot}/usr/local/etc/environment
+#chmod 0400 %{buildroot}/usr/local/etc/shadow
+#chmod 0400 %{buildroot}/usr/local/etc/gshadow
+chmod 0644 %{buildroot}/var/log/lastlog
+touch %{buildroot}/usr/local/etc/fstab
+touch %{buildroot}/usr/local/etc/subuid
+touch %{buildroot}/usr/local/etc/subgid
+mkdir -p %{buildroot}/usr/local/etc/profile.d
+echo "#Add any required envvar overrides to this file, it is sourced from /usr/local/etc/profile" >%{buildroot}/usr/local/etc/profile.d/sh.local
+echo "#Add any required envvar overrides to this file, is sourced from /usr/local/etc/csh.login" >%{buildroot}/usr/local/etc/profile.d/csh.local
+
+
+# remove unpackaged files from the buildroot
+rm -f %{buildroot}/usr/local/etc/Makefile
+rm -f %{buildroot}/usr/local/etc/serviceslint
+rm -f %{buildroot}/usr/local/etc/uidgidlint
+rm -f %{buildroot}/usr/local/etc/shadowconvert.sh
+rm -f %{buildroot}/usr/local/etc/setup.spec
+# remove the "originals" of patched files
+rm -f %{buildroot}/usr/local/etc/securetty.mainframe
+rm -f %{buildroot}/usr/local/etc/bashrc.envvar
+rm -f %{buildroot}/usr/local/etc/*.orig
+

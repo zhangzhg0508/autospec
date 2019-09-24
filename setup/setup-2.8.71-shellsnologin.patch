@@ -1,0 +1,10 @@
+diff -urNp setup-2.8.71-orig/shells setup-2.8.71/shells
+--- setup-2.8.71-orig/shells	2013-06-07 16:31:32.000000000 +0200
++++ setup-2.8.71/shells	2018-06-21 13:09:40.352389479 +0200
+@@ -1,6 +1,4 @@
+ /bin/sh
+ /bin/bash
+-/sbin/nologin
+ /usr/bin/sh
+ /usr/bin/bash
+-/usr/sbin/nologin
