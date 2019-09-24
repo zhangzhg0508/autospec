@@ -1,37 +1,37 @@
-2019-09-24 16:34:42,731 - Mock Version: 1.2.14
-2019-09-24 16:34:42,981 - Start: dnf update
-2019-09-24 16:34:53,045 - Finish: dnf update
-2019-09-24 16:34:53,050 - Finish: chroot init
-2019-09-24 16:34:53,053 - Start: buildsrpm
-2019-09-24 16:34:53,061 - Start: rpmbuild -bs
-2019-09-24 16:34:53,101 - Finish: rpmbuild -bs
-2019-09-24 16:34:53,103 - Finish: buildsrpm
-2019-09-24 16:34:53,103 - Finish: run
-2019-09-24 16:34:56,168 - Mock Version: 1.2.14
-2019-09-24 16:34:56,426 - Start: dnf update
-2019-09-24 16:35:06,375 - Finish: dnf update
-2019-09-24 16:35:06,380 - Finish: chroot init
-2019-09-24 16:35:06,382 - Start: build phase for python-fmclient-1.0-4.src.rpm
-2019-09-24 16:35:06,384 - Start: build setup for python-fmclient-1.0-4.src.rpm
-2019-09-24 16:35:07,363 - Finish: build setup for python-fmclient-1.0-4.src.rpm
-2019-09-24 16:35:07,364 - Start: rpmbuild python-fmclient-1.0-4.src.rpm
-2019-09-24 16:35:11,452 - Mock Version: 1.2.14
-2019-09-24 16:35:11,709 - Start: dnf update
-2019-09-24 16:35:21,753 - Finish: dnf update
-2019-09-24 16:35:21,758 - Finish: chroot init
-2019-09-24 16:35:21,761 - Start: buildsrpm
-2019-09-24 16:35:21,771 - Start: rpmbuild -bs
-2019-09-24 16:35:21,811 - Finish: rpmbuild -bs
-2019-09-24 16:35:21,812 - Finish: buildsrpm
-2019-09-24 16:35:21,813 - Finish: run
-2019-09-24 16:35:24,825 - Mock Version: 1.2.14
-2019-09-24 16:35:25,082 - Start: dnf update
-2019-09-24 16:35:35,297 - Finish: dnf update
-2019-09-24 16:35:35,303 - Finish: chroot init
-2019-09-24 16:35:35,304 - Start: build phase for python-fmclient-1.0-4.src.rpm
-2019-09-24 16:35:35,306 - Start: build setup for python-fmclient-1.0-4.src.rpm
-2019-09-24 16:35:36,318 - Finish: build setup for python-fmclient-1.0-4.src.rpm
-2019-09-24 16:35:36,318 - Start: rpmbuild python-fmclient-1.0-4.src.rpm
-2019-09-24 16:35:37,540 - Finish: rpmbuild python-fmclient-1.0-4.src.rpm
-2019-09-24 16:35:37,541 - Finish: build phase for python-fmclient-1.0-4.src.rpm
-2019-09-24 16:35:37,542 - Finish: run
+2019-09-24 16:42:36,699 - Mock Version: 1.2.14
+2019-09-24 16:42:36,939 - Start: dnf update
+2019-09-24 16:42:47,311 - Finish: dnf update
+2019-09-24 16:42:47,317 - Finish: chroot init
+2019-09-24 16:42:47,319 - Start: buildsrpm
+2019-09-24 16:42:47,329 - Start: rpmbuild -bs
+2019-09-24 16:42:47,368 - Finish: rpmbuild -bs
+2019-09-24 16:42:47,369 - Finish: buildsrpm
+2019-09-24 16:42:47,370 - Finish: run
+2019-09-24 16:42:50,377 - Mock Version: 1.2.14
+2019-09-24 16:42:50,613 - Start: dnf update
+2019-09-24 16:43:00,535 - Finish: dnf update
+2019-09-24 16:43:00,541 - Finish: chroot init
+2019-09-24 16:43:00,542 - Start: build phase for python-fmclient-1.0-5.src.rpm
+2019-09-24 16:43:00,544 - Start: build setup for python-fmclient-1.0-5.src.rpm
+2019-09-24 16:43:01,642 - Finish: build setup for python-fmclient-1.0-5.src.rpm
+2019-09-24 16:43:01,642 - Start: rpmbuild python-fmclient-1.0-5.src.rpm
+2019-09-24 16:43:05,840 - Mock Version: 1.2.14
+2019-09-24 16:43:06,222 - Start: dnf update
+2019-09-24 16:43:16,099 - Finish: dnf update
+2019-09-24 16:43:16,105 - Finish: chroot init
+2019-09-24 16:43:16,108 - Start: buildsrpm
+2019-09-24 16:43:16,117 - Start: rpmbuild -bs
+2019-09-24 16:43:16,157 - Finish: rpmbuild -bs
+2019-09-24 16:43:16,159 - Finish: buildsrpm
+2019-09-24 16:43:16,159 - Finish: run
+2019-09-24 16:43:19,205 - Mock Version: 1.2.14
+2019-09-24 16:43:19,604 - Start: dnf update
+2019-09-24 16:43:28,991 - Finish: dnf update
+2019-09-24 16:43:28,997 - Finish: chroot init
+2019-09-24 16:43:28,998 - Start: build phase for python-fmclient-1.0-5.src.rpm
+2019-09-24 16:43:29,001 - Start: build setup for python-fmclient-1.0-5.src.rpm
+2019-09-24 16:43:29,997 - Finish: build setup for python-fmclient-1.0-5.src.rpm
+2019-09-24 16:43:29,997 - Start: rpmbuild python-fmclient-1.0-5.src.rpm
+2019-09-24 16:43:31,220 - Finish: rpmbuild python-fmclient-1.0-5.src.rpm
+2019-09-24 16:43:31,221 - Finish: build phase for python-fmclient-1.0-5.src.rpm
+2019-09-24 16:43:31,222 - Finish: run

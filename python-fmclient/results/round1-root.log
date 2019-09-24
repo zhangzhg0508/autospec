@@ -732,13 +732,13 @@ DEBUG util.py:399:  Complete!
 DEBUG util.py:526:  Child return code was: 0
 DEBUG util.py:108:  touching file: /var/lib/mock/clear-python-fmclient/root/.initialized
 DEBUG util.py:546:  child environment: None
-DEBUG util.py:479:  Executing command: ['/bin/rpm', '-Uvh', '--nodeps', '/builddir/build/originals/python-fmclient-1.0-4.src.rpm'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+DEBUG util.py:479:  Executing command: ['/bin/rpm', '-Uvh', '--nodeps', '/builddir/build/originals/python-fmclient-1.0-5.src.rpm'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
 DEBUG util.py:273:  Unsharing. Flags: 134217728
 DEBUG util.py:399:  Updating / installing...
-DEBUG util.py:399:  python-fmclient-1.0-4                 ########################################
+DEBUG util.py:399:  python-fmclient-1.0-5                 ########################################
 DEBUG util.py:526:  Child return code was: 0
 DEBUG util.py:546:  child environment: None
-DEBUG util.py:479:  Executing command: ['/bin/rpm', '-qpl', '/builddir/build/originals/python-fmclient-1.0-4.src.rpm'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+DEBUG util.py:479:  Executing command: ['/bin/rpm', '-qpl', '/builddir/build/originals/python-fmclient-1.0-5.src.rpm'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
 DEBUG util.py:273:  Unsharing. Flags: 134217728
 DEBUG util.py:399:  python-fmclient-1.0.tar.gz
 DEBUG util.py:399:  python-fmclient.spec
@@ -748,7 +748,7 @@ DEBUG util.py:273:  Unsharing. Flags: 134217728
 DEBUG package_manager.py:92:  ['/usr/bin/dnf', '--installroot', '/var/lib/mock/clear-python-fmclient/root/', '--releasever', 'clear', '--setopt=deltarpm=false', 'install', 'ccache']
 DEBUG util.py:546:  child environment: None
 DEBUG util.py:479:  Executing command: ['/usr/bin/dnf', '--installroot', '/var/lib/mock/clear-python-fmclient/root/', '--releasever', 'clear', '--setopt=deltarpm=false', 'install', 'ccache'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002', 'LC_MESSAGES': 'C'} and shell False
-DEBUG util.py:399:  Last metadata expiration check: 0:00:08 ago on Tue 24 Sep 2019 04:34:58 PM CST.
+DEBUG util.py:399:  Last metadata expiration check: 0:00:08 ago on Tue 24 Sep 2019 04:42:52 PM CST.
 DEBUG util.py:399:  Dependencies resolved.
 DEBUG util.py:399:  ================================================================================
 DEBUG util.py:399:   Package                 Architecture    Version           Repository      Size
@@ -779,10 +779,10 @@ DEBUG util.py:399:    ccache-data-3.6-38.x86_64             ccache-license-3.6-3
 DEBUG util.py:399:    ccache-man-3.6-38.x86_64             
 DEBUG util.py:399:  Complete!
 DEBUG util.py:526:  Child return code was: 0
-DEBUG package_manager.py:92:  ['/usr/bin/dnf', 'builddep', '--installroot', '/var/lib/mock/clear-python-fmclient/root/', '--releasever', 'clear', '/var/lib/mock/clear-python-fmclient/root//builddir/build/SRPMS/python-fmclient-1.0-4.src.rpm']
+DEBUG package_manager.py:92:  ['/usr/bin/dnf', 'builddep', '--installroot', '/var/lib/mock/clear-python-fmclient/root/', '--releasever', 'clear', '/var/lib/mock/clear-python-fmclient/root//builddir/build/SRPMS/python-fmclient-1.0-5.src.rpm']
 DEBUG util.py:546:  child environment: None
-DEBUG util.py:479:  Executing command: ['/usr/bin/dnf', 'builddep', '--installroot', '/var/lib/mock/clear-python-fmclient/root/', '--releasever', 'clear', '/var/lib/mock/clear-python-fmclient/root//builddir/build/SRPMS/python-fmclient-1.0-4.src.rpm'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002', 'LC_MESSAGES': 'C'} and shell False
-DEBUG util.py:399:  Last metadata expiration check: 0:00:08 ago on Tue 24 Sep 2019 04:34:58 PM CST.
+DEBUG util.py:479:  Executing command: ['/usr/bin/dnf', 'builddep', '--installroot', '/var/lib/mock/clear-python-fmclient/root/', '--releasever', 'clear', '/var/lib/mock/clear-python-fmclient/root//builddir/build/SRPMS/python-fmclient-1.0-5.src.rpm'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002', 'LC_MESSAGES': 'C'} and shell False
+DEBUG util.py:399:  Last metadata expiration check: 0:00:09 ago on Tue 24 Sep 2019 04:42:52 PM CST.
 DEBUG util.py:399:  Dependencies resolved.
 DEBUG util.py:399:  ================================================================================
 DEBUG util.py:399:   Package                      Arch        Version              Repository  Size

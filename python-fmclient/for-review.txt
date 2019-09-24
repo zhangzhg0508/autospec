@@ -1,79 +1,54 @@
-From 2d9e9e3f93a17d63bdc5db0677d8a5336a8ddecd Mon Sep 17 00:00:00 2001
+From 44390cb69fb1d9ee31cd7e6dd591226ab909cc94 Mon Sep 17 00:00:00 2001
 From: fuyong <fuyong@neusoft.com>
-Date: Tue, 24 Sep 2019 16:35:38 +0800
+Date: Tue, 24 Sep 2019 16:43:31 +0800
 Subject: [PATCH python-fmclient] python-fmclient: Autospec creation for
  version 1.0
 
 ---
- build_prepend        |  2 +-
- install_append       |  6 ++++++
- install_macro        |  6 ------
- python-fmclient.spec | 13 ++++++++++---
+ python-fmclient.spec | 12 ++++++------
  release              |  2 +-
- 5 files changed, 18 insertions(+), 11 deletions(-)
- delete mode 100644 install_macro
+ requires_add         |  8 ++++----
+ 3 files changed, 11 insertions(+), 11 deletions(-)
 
-diff --git a/build_prepend b/build_prepend
-index 2706b2f..0479d16 100644
---- a/build_prepend
-+++ b/build_prepend
-@@ -1,5 +1,5 @@
- %define local_bindir /usr/bin/
--%define local_etc_bash_completiond /etc/bash_completion.d/
-+%define local_etc_bash_completiond /usr/local/etc/bash_completion.d/
- %define pythonroot /usr/lib64/python2.7/site-packages
- 
- %define debug_package %{nil}
-diff --git a/install_append b/install_append
-index 7ec2d70..ef80570 100644
---- a/install_append
-+++ b/install_append
-@@ -1,2 +1,8 @@
-+%{__python} setup.py install --root=%{buildroot} \
-+                             --install-lib=%{pythonroot} \
-+                             --prefix=/usr \
-+                             --install-data=/usr/share \
-+                             --single-version-externally-managed
-+
- install -d -m 755 %{buildroot}%{local_etc_bash_completiond}
- install -p -D -m 664 tools/fm.bash_completion %{buildroot}%{local_etc_bash_completiond}/fm.bash_completion
 diff --git a/python-fmclient.spec b/python-fmclient.spec
-index 4ba6e91..54532bf 100644
+index 54532bf..775ad58 100644
 --- a/python-fmclient.spec
 +++ b/python-fmclient.spec
-@@ -61,7 +61,7 @@ python3 components for the python-fmclient package.
- %build
- ## build_prepend content
- %define local_bindir /usr/bin/
--%define local_etc_bash_completiond /etc/bash_completion.d/
-+%define local_etc_bash_completiond /usr/local/etc/bash_completion.d/
- %define pythonroot /usr/lib64/python2.7/site-packages
- %define debug_package %{nil}
- export PBR_VERSION=%{version}
-@@ -98,12 +98,18 @@ echo ----[ mark ]----
- cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
- echo ----[ mark ]----
- ## install_append content
-+%{__python} setup.py install --root=%{buildroot} \
-+--install-lib=%{pythonroot} \
-+--prefix=/usr \
-+--install-data=/usr/share \
-+--single-version-externally-managed
- install -d -m 755 %{buildroot}%{local_etc_bash_completiond}
- install -p -D -m 664 tools/fm.bash_completion %{buildroot}%{local_etc_bash_completiond}/fm.bash_completion
- ## install_append end
- 
- %files
- %defattr(-,root,root,-)
-+/usr/local/etc/bash_completion.d/fm.bash_completion
- 
- %files bin
- %defattr(-,root,root,-)
-@@ -111,6 +117,7 @@ install -p -D -m 664 tools/fm.bash_completion %{buildroot}%{local_etc_bash_compl
- 
- %files python
- %defattr(-,root,root,-)
-+/usr/lib64/python*/*
- 
- %files python3
- %defattr(-,root,root,-)
+@@ -14,11 +14,11 @@ Requires: python-fmclient-bin = %{version}-%{release}
+ Requires: python-fmclient-python = %{version}-%{release}
+ Requires: python-fmclient-python3 = %{version}-%{release}
+ Requires: bash-completion
++Requires: keystoneauth1 >= 3.1.0
++Requires: oslo.i18n >= 2.1.0
++Requires: oslo.utils >= 3.20.0
+ Requires: pbr
+-Requires: python-keystoneauth1 >= 3.1.0
+-Requires: python-oslo-i18n >= 2.1.0
+-Requires: python-oslo-utils >= 3.20.0
+-Requires: python-requests
++Requires: requests
+ Requires: six >= 1.9.0
+ BuildRequires : buildreq-distutils3
+ BuildRequires : git
+diff --git a/requires_add b/requires_add
+index 6ec13e0..72bb2bd 100644
+--- a/requires_add
++++ b/requires_add
+@@ -1,9 +1,9 @@
+ # This file contains additional runtime requirements that did not get
+ # picked up automatically. One name per line, no whitespace.
+-python-keystoneauth1 >= 3.1.0
++keystoneauth1 >= 3.1.0
+ pbr
+ six >= 1.9.0
+-python-oslo-i18n >= 2.1.0
+-python-oslo-utils >= 3.20.0
+-python-requests
++oslo.i18n >= 2.1.0
++oslo.utils >= 3.20.0
++requests
+ bash-completion
+-- 
+2.23.0
+
+

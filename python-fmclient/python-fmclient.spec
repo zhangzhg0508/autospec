@@ -4,7 +4,7 @@
 #
 Name     : python-fmclient
 Version  : 1.0
-Release  : 4
+Release  : 5
 URL      : file:///home/clr/stx-tar/python-fmclient-1.0.tar.gz
 Source0  : file:///home/clr/stx-tar/python-fmclient-1.0.tar.gz
 Summary  : No detailed summary available
@@ -14,11 +14,11 @@ Requires: python-fmclient-bin = %{version}-%{release}
 Requires: python-fmclient-python = %{version}-%{release}
 Requires: python-fmclient-python3 = %{version}-%{release}
 Requires: bash-completion
+Requires: keystoneauth1 >= 3.1.0
+Requires: oslo.i18n >= 2.1.0
+Requires: oslo.utils >= 3.20.0
 Requires: pbr
-Requires: python-keystoneauth1 >= 3.1.0
-Requires: python-oslo-i18n >= 2.1.0
-Requires: python-oslo-utils >= 3.20.0
-Requires: python-requests
+Requires: requests
 Requires: six >= 1.9.0
 BuildRequires : buildreq-distutils3
 BuildRequires : git
@@ -70,7 +70,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1569314137
+export SOURCE_DATE_EPOCH=1569314611
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
