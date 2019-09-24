@@ -1,0 +1,9 @@
+# This file contains additional runtime requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+python-keystoneauth1 >= 3.1.0
+pbr
+six >= 1.9.0
+python-oslo-i18n >= 2.1.0
+python-oslo-utils >= 3.20.0
+python-requests
+bash-completion
