@@ -4,7 +4,7 @@
 #
 Name     : initscripts
 Version  : 9.49.46
-Release  : 2
+Release  : 4
 URL      : file:///home/clear/tar/initscripts-9.49.46.tar.gz
 Source0  : file:///home/clear/tar/initscripts-9.49.46.tar.gz
 Summary  : The inittab file and the /etc/init.d scripts
@@ -111,11 +111,14 @@ services components for the initscripts package.
 %patch14 -p1
 
 %build
+## build_prepend content
+%define local_etc_initd /usr/local/etc/init.d
+## build_prepend end
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1568255952
+export SOURCE_DATE_EPOCH=1569294094
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -128,7 +131,7 @@ make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1568255952
+export SOURCE_DATE_EPOCH=1569294094
 rm -rf %{buildroot}
 make ROOT=$RPM_BUILD_ROOT SUPERUSER=`id -un` SUPERGROUP=`id -gn` mandir=%{_mandir} install
 %find_lang initscripts
@@ -137,6 +140,8 @@ make ROOT=$RPM_BUILD_ROOT SUPERUSER=`id -un` SUPERGROUP=`id -gn` mandir=%{_mandi
 rm -f $RPM_BUILD_ROOT/etc/sysconfig/init.s390
 touch $RPM_BUILD_ROOT/etc/crypttab
 chmod 600 $RPM_BUILD_ROOT/etc/crypttab
+install -d -m 755 $RPM_BUILD_ROOT%{local_etc_initd}
+install -p -D -m 755 rc.d/init.d/* $RPM_BUILD_ROOT%{local_etc_initd}/
 ## install_append end
 
 %files
@@ -150,6 +155,9 @@ chmod 600 $RPM_BUILD_ROOT/etc/crypttab
 /usr/lib/systemd/rhel-readonly
 /usr/lib/udev/rename_device
 /usr/lib/udev/udev-kvm-check
+/usr/local/etc/init.d/functions
+/usr/local/etc/init.d/netconsole
+/usr/local/etc/init.d/network
 /var/log/btmp
 /var/log/wtmp
 /var/run/utmp

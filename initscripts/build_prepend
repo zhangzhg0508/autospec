@@ -1,0 +1,2 @@
+%define local_etc_initd /usr/local/etc/init.d
+

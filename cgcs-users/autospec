@@ -1,0 +1,38 @@
+[master 14f1944] build-
+ 44 files changed, 4001 insertions(+), 1004 deletions(-)
+ delete mode 100644 cgcs-users/LICENSE
+ delete mode 100644 cgcs-users/admin.cmds
+ delete mode 100644 cgcs-users/admin.xtns
+ rewrite cgcs-users/cgcs-users.spec (63%)
+ create mode 100644 cgcs-users/cgcs-users.tar.gz
+ create mode 100644 cgcs-users/for-review.txt
+ delete mode 100644 cgcs-users/operator.cmds
+ delete mode 100644 cgcs-users/operator.xtns
+ create mode 100644 cgcs-users/release
+ rename cgcs-users/results/{cgcs-users-1.0-0.2.src.rpm => cgcs-users-0.3e-1.src.rpm} (71%)
+ create mode 100644 cgcs-users/results/cgcs-users-0.3e-1.x86_64.rpm
+ delete mode 100644 cgcs-users/results/cgcs-users-1.0-0.2.x86_64.rpm
+ rename cgcs-users/results/{cgcs-users-abi-1.0-0.2.x86_64.rpm => cgcs-users-abi-0.3e-1.x86_64.rpm} (74%)
+ create mode 100644 cgcs-users/results/cgcs-users-bin-0.3e-1.x86_64.rpm
+ create mode 100644 cgcs-users/results/cgcs-users-debuginfo-0.3e-1.x86_64.rpm
+ delete mode 100644 cgcs-users/results/cgcs-users-debuginfo-1.0-0.2.x86_64.rpm
+ delete mode 100644 cgcs-users/results/cgcs-users-devel-1.0-0.2.x86_64.rpm
+ create mode 100644 cgcs-users/results/mock_build.log
+ create mode 100644 cgcs-users/results/mock_srpm.log
+ create mode 100644 cgcs-users/results/round1-build.log
+ create mode 100644 cgcs-users/results/round1-mock_build.log
+ create mode 100644 cgcs-users/results/round1-mock_srpm.log
+ create mode 100644 cgcs-users/results/round1-root.log
+ create mode 100644 cgcs-users/results/round1-srpm-build.log
+ create mode 100644 cgcs-users/results/round1-srpm-root.log
+ rewrite cgcs-users/results/state.log (99%)
+ create mode 100644 cgcs-users/rpms/cgcs-users-0.3e-1.x86_64.rpm
+ delete mode 100644 cgcs-users/rpms/cgcs-users-1.0-0.2.x86_64.rpm
+ rename cgcs-users/rpms/{cgcs-users-abi-1.0-0.2.x86_64.rpm => cgcs-users-abi-0.3e-1.x86_64.rpm} (74%)
+ create mode 100644 cgcs-users/rpms/cgcs-users-bin-0.3e-1.x86_64.rpm
+ create mode 100644 cgcs-users/rpms/cgcs-users-debuginfo-0.3e-1.x86_64.rpm
+ delete mode 100644 cgcs-users/rpms/cgcs-users-debuginfo-1.0-0.2.x86_64.rpm
+ delete mode 100644 cgcs-users/rpms/cgcs-users-devel-1.0-0.2.x86_64.rpm
+ delete mode 100644 cgcs-users/secadmin.cmds
+ delete mode 100644 cgcs-users/secadmin.xtns
+ create mode 100644 cgcs-users/used_libs

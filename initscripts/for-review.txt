@@ -1,130 +1,36 @@
-From 08548ffb59233213e410b0821c1dd141c8a698c0 Mon Sep 17 00:00:00 2001
-From: "zhiguo.zhang" <zhiguox.zhang@intel.com>
-Date: Thu, 12 Sep 2019 02:39:13 +0000
+From 67d792bdaadf3add54a9ccc3496381d98c604654 Mon Sep 17 00:00:00 2001
+From: chen-dq <chen.dq@neusoft.com>
+Date: Tue, 24 Sep 2019 03:01:34 +0000
 Subject: [PATCH initscripts] initscripts: Autospec creation for version
  9.49.46
 
 ---
- 0001-python2-upgrade-python3.patch | 87 ++++++++++++++++++++++++++++++
- initscripts.spec                   |  8 +--
- release                            |  2 +-
- series                             |  1 +
- upstream                           |  2 +-
- 5 files changed, 95 insertions(+), 5 deletions(-)
- create mode 100644 0001-python2-upgrade-python3.patch
+ build_prepend    |  2 ++
+ initscripts.spec | 14 +++++++++++---
+ install_append   |  3 ++-
+ release          |  2 +-
+ 4 files changed, 16 insertions(+), 5 deletions(-)
+ create mode 100644 build_prepend
 
-diff --git a/0001-python2-upgrade-python3.patch b/0001-python2-upgrade-python3.patch
+diff --git a/build_prepend b/build_prepend
 new file mode 100644
-index 0000000..c06ae4e
+index 0000000..77ab1fc
 --- /dev/null
-+++ b/0001-python2-upgrade-python3.patch
-@@ -0,0 +1,87 @@
-+From ba7463b366974b3610462743504b752362570fbc Mon Sep 17 00:00:00 2001
-+From: "zhiguo.zhang" <zhiguox.zhang@intel.com>
-+Date: Thu, 12 Sep 2019 02:26:15 +0000
-+Subject: [PATCH initscripts] python2-upgrade-python3
-+
-+---
-+ po/xgettext_sh.py | 37 +++++++++++++--------------
-+ 1 file changed, 18 insertions(+), 19 deletions(-)
-+
-+diff --git a/po/xgettext_sh.py b/po/xgettext_sh.py
-+index 167ed5e..c0715a7 100755
-+--- a/po/xgettext_sh.py
-++++ b/po/xgettext_sh.py
-+@@ -24,7 +24,6 @@
-+ 
-+ 
-+ from sys import argv
-+-from string import find, split, strip
-+ import re
-+ 
-+ s = {}
-+@@ -33,7 +32,7 @@ pattern = re.compile('[ =]\$"')
-+ def xgettext(arq):
-+ 	line = 0
-+ 	f = open(arq, "r")
-+-        while 1:
-++	while 1:
-+ 		l = f.readline()
-+ 		if not l: break
-+ 		line = line + 1
-+@@ -53,36 +52,36 @@ def xgettext(arq):
-+                                         p2 = p2 + 1
-+                                     else:
-+                                         break
-+-                                text = l[p1:p2]
-++				text = l[p1:p2]
-+ 				#text = split(l[pos:], '"')[1]
-+-				if s.has_key(text):
-++				if text in s:
-+ 				    s[text].append((arq, line))
-+ 				else:
-+ 				    s[text] = [(arq, line)]
-+ 	f.close()
-+ 
-+ def print_header():
-+-	print 'msgid ""' 
-+-	print 'msgstr ""' 
-+-	print '"Project-Id-Version: \\n"'
-+-	print '"PO-Revision-Date: YYYY-MM-DD HH:MM TZO DST\\n"'
-+-	print '"Last-Translator: \\n"'
-+-	print '"Language-Team: <XX@li.org>\\n"'
-+-	print '"MIME-Version: 1.0\\n"'
-+-	print '"Content-Type: text/plain; charset=ISO-8859-1\\n"'
-+-	print '"Content-Transfer-Encoding: 8-bit\\n"\n'
-++	print ('msgid ""')
-++	print ('msgstr ""') 
-++	print ('"Project-Id-Version: \\n"')
-++	print ('"PO-Revision-Date: YYYY-MM-DD HH:MM TZO DST\\n"')
-++	print ('"Last-Translator: \\n"')
-++	print ('"Language-Team: <XX@li.org>\\n"')
-++	print ('"MIME-Version: 1.0\\n"')
-++	print ('"Content-Type: text/plain; charset=ISO-8859-1\\n"')
-++	print ('"Content-Transfer-Encoding: 8-bit\\n"\n')
-+ 
-+ def print_pot():
-+ 	print_header()
-+ 
-+ 	for text in s.keys():
-+-		print '#:',
-++		print ('#:'),
-+ 		for p in s[text]:
-+-			print '%s:%d' % p,
-+-		if find(text, '%') != -1:
-+-			print '\n#, c-format',
-+-		print '\nmsgid "' + text + '"'
-+-		print 'msgstr ""\n'
-++			print ('%s:%d' % p),
-++		if text.find('%') != -1:
-++			print ('\n#, c-format'),
-++		print ('\nmsgid "' + text + '"')
-++		print ('msgstr ""\n')
-+ 				
-+ def main():
-+ 	for a in argv:
-+-- 
-+2.23.0
++++ b/build_prepend
+@@ -0,0 +1,2 @@
++%define local_etc_initd /usr/local/etc/init.d
 +
 diff --git a/initscripts.spec b/initscripts.spec
-index d0f0c9a..b52dd1c 100644
+index 4f2b2db..244db4b 100644
 --- a/initscripts.spec
 +++ b/initscripts.spec
-@@ -34,6 +34,7 @@ Patch10: ipv6-static-route-support.patch
- Patch11: ifup-eth-stop-waiting-if-link-is-up.patch
- Patch12: run-dhclient-as-daemon-for-ipv6.patch
- Patch13: ifup-alias-scope.patch
-+Patch14: 0001-python2-upgrade-python3.patch
- 
- %description
- The initscripts package contains basic system scripts used
-@@ -107,13 +108,14 @@ services components for the initscripts package.
- %patch11 -p1
- %patch12 -p1
- %patch13 -p1
-+%patch14 -p1
+@@ -111,11 +111,14 @@ services components for the initscripts package.
+ %patch14 -p1
  
  %build
++## build_prepend content
++%define local_etc_initd /usr/local/etc/init.d
++## build_prepend end
  export http_proxy=http://127.0.0.1:9/
  export https_proxy=http://127.0.0.1:9/
  export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -132,12 +38,34 @@ index d0f0c9a..b52dd1c 100644
  export GCC_IGNORE_WERROR=1
  export AR=gcc-ar
  export RANLIB=gcc-ranlib
-diff --git a/series b/series
-index f2605d9..a9e5c88 100644
---- a/series
-+++ b/series
-@@ -11,3 +11,4 @@ ipv6-static-route-support.patch
- ifup-eth-stop-waiting-if-link-is-up.patch
- run-dhclient-as-daemon-for-ipv6.patch
- ifup-alias-scope.patch
-+0001-python2-upgrade-python3.patch
+@@ -137,6 +140,8 @@ make ROOT=$RPM_BUILD_ROOT SUPERUSER=`id -un` SUPERGROUP=`id -gn` mandir=%{_mandi
+ rm -f $RPM_BUILD_ROOT/etc/sysconfig/init.s390
+ touch $RPM_BUILD_ROOT/etc/crypttab
+ chmod 600 $RPM_BUILD_ROOT/etc/crypttab
++install -d -m 755 $RPM_BUILD_ROOT%{local_etc_initd}
++install -p -D -m 755 rc.d/init.d/* $RPM_BUILD_ROOT%{local_etc_initd}/
+ ## install_append end
+ 
+ %files
+@@ -150,6 +155,9 @@ chmod 600 $RPM_BUILD_ROOT/etc/crypttab
+ /usr/lib/systemd/rhel-readonly
+ /usr/lib/udev/rename_device
+ /usr/lib/udev/udev-kvm-check
++/usr/local/etc/init.d/functions
++/usr/local/etc/init.d/netconsole
++/usr/local/etc/init.d/network
+ /var/log/btmp
+ /var/log/wtmp
+ /var/run/utmp
+diff --git a/install_append b/install_append
+index 72849e4..6cfa956 100644
+--- a/install_append
++++ b/install_append
+@@ -3,5 +3,6 @@ rm -f $RPM_BUILD_ROOT/etc/sysconfig/init.s390
+ 
+ touch $RPM_BUILD_ROOT/etc/crypttab
+ chmod 600 $RPM_BUILD_ROOT/etc/crypttab
+-
++install -d -m 755 $RPM_BUILD_ROOT%{local_etc_initd}
++install -p -D -m 755 rc.d/init.d/* $RPM_BUILD_ROOT%{local_etc_initd}/
+ 

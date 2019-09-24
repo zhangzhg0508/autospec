@@ -1,0 +1,788 @@
+Mock Version: 1.2.14
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/initscripts.spec'], chrootPath='/var/lib/mock/clear-initscripts/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f752a82c5d0>timeout=0uid=1000gid=1000user='mockbuild'printOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/initscripts.spec'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/initscripts-9.49.46-4.src.rpm
+Child return code was: 0
+LEAVE do --> 
+
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/initscripts.spec '], chrootPath='/var/lib/mock/clear-initscripts/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f752a82c5d0>timeout=0uid=1000gid=1000user='mockbuild'private_network=TrueprintOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/initscripts.spec '] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.gbkHoY
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
++ rm -rf initscripts-9.49.46
++ /usr/bin/gzip -dc /builddir/build/SOURCES/initscripts-9.49.46.tar.gz
++ /usr/bin/tar -xf -
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd initscripts-9.49.46
++ /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ echo 'Patch #1 (support-interface-scriptlets.patch):'
+Patch #1 (support-interface-scriptlets.patch):
++ /usr/bin/cat /builddir/build/SOURCES/support-interface-scriptlets.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file sysconfig/network-scripts/ifdown
+patching file sysconfig/network-scripts/ifdown-post
+patching file sysconfig/network-scripts/ifup
+patching file sysconfig/network-scripts/ifup-post
++ echo 'Patch #2 (relocate-dhclient-leases-to-var-run.patch):'
+Patch #2 (relocate-dhclient-leases-to-var-run.patch):
++ /usr/bin/cat /builddir/build/SOURCES/relocate-dhclient-leases-to-var-run.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file sysconfig/network-scripts/network-functions
++ echo 'Patch #3 (dhclient-restrict-interfaces-to-those-on-c.patch):'
+Patch #3 (dhclient-restrict-interfaces-to-those-on-c.patch):
++ /usr/bin/cat /builddir/build/SOURCES/dhclient-restrict-interfaces-to-those-on-c.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file sysconfig/network-scripts/ifdown-eth
+patching file sysconfig/network-scripts/ifup-eth
+Patch #4 (support-interface-promisc.patch):
++ echo 'Patch #4 (support-interface-promisc.patch):'
++ /usr/bin/cat /builddir/build/SOURCES/support-interface-promisc.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file sysconfig/network-scripts/ifdown-eth
+patching file sysconfig/network-scripts/ifup-eth
++ echo 'Patch #5 (0001-dhclient-remove-1-arg.patch):'
+Patch #5 (0001-dhclient-remove-1-arg.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0001-dhclient-remove-1-arg.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file sysconfig/network-scripts/ifup-eth
++ echo 'Patch #6 (0001-force-delay-check-link-down.patch):'
+Patch #6 (0001-force-delay-check-link-down.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0001-force-delay-check-link-down.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file sysconfig/network-scripts/network-functions
+Patch #7 (run-ifdown-on-all-interfaces.patch):
++ echo 'Patch #7 (run-ifdown-on-all-interfaces.patch):'
++ /usr/bin/cat /builddir/build/SOURCES/run-ifdown-on-all-interfaces.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file rc.d/init.d/network
++ echo 'Patch #8 (sysconfig-affirmative-check-for-link-carrier.patch):'
+Patch #8 (sysconfig-affirmative-check-for-link-carrier.patch):
++ /usr/bin/cat /builddir/build/SOURCES/sysconfig-affirmative-check-for-link-carrier.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file sysconfig/network-scripts/network-functions
+Patch #9 (sysconfig-unsafe-usage-of-linkdelay-variable.patch):
++ echo 'Patch #9 (sysconfig-unsafe-usage-of-linkdelay-variable.patch):'
++ /usr/bin/cat /builddir/build/SOURCES/sysconfig-unsafe-usage-of-linkdelay-variable.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file sysconfig/network-scripts/network-functions
+Patch #10 (ipv6-static-route-support.patch):
++ echo 'Patch #10 (ipv6-static-route-support.patch):'
++ /usr/bin/cat /builddir/build/SOURCES/ipv6-static-route-support.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file sysconfig/network-scripts/ifup-routes
+Patch #11 (ifup-eth-stop-waiting-if-link-is-up.patch):
++ echo 'Patch #11 (ifup-eth-stop-waiting-if-link-is-up.patch):'
++ /usr/bin/cat /builddir/build/SOURCES/ifup-eth-stop-waiting-if-link-is-up.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file sysconfig/network-scripts/ifup-eth
+Patch #12 (run-dhclient-as-daemon-for-ipv6.patch):
++ echo 'Patch #12 (run-dhclient-as-daemon-for-ipv6.patch):'
++ /usr/bin/cat /builddir/build/SOURCES/run-dhclient-as-daemon-for-ipv6.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file sysconfig/network-scripts/ifup-eth
++ echo 'Patch #13 (ifup-alias-scope.patch):'
+Patch #13 (ifup-alias-scope.patch):
++ /usr/bin/cat /builddir/build/SOURCES/ifup-alias-scope.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file sysconfig/network-scripts/ifup-aliases
++ echo 'Patch #14 (0001-python2-upgrade-python3.patch):'
+Patch #14 (0001-python2-upgrade-python3.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0001-python2-upgrade-python3.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file po/xgettext_sh.py
++ exit 0
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.YkLdI2
++ umask 022
++ cd /builddir/build/BUILD
++ cd initscripts-9.49.46
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CFLAGS
++ http_proxy=http://127.0.0.1:9/
++ export http_proxy
++ https_proxy=http://127.0.0.1:9/
++ export https_proxy
++ ftp_proxy=http://127.0.0.1:9/
++ export ftp_proxy
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export no_proxy
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CXXFLAGS
++ FFLAGS='-g -O3 -feliminate-unused-debug-types  -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -m64 -fasynchronous-unwind-tables -Wp,-D_REENTRANT -ftree-loop-distribute-patterns -Wl,-z -Wl,now -Wl,-z -Wl,relro -malign-data=abi -fno-semantic-interposition -ftree-vectorize  -ftree-loop-vectorize -Wl,--enable-new-dtags '
++ export FFLAGS
++ LD_AS_NEEDED=1
++ export LD_AS_NEEDED
++ PKG_CONFIG_LIBDIR=/usr/lib64/pkgconfig
++ export PKG_CONFIG_LIBDIR
++ PATH=/usr/lib64/ccache/bin:/usr/local/bin:/usr/bin
++ export PATH
++ export http_proxy=http://127.0.0.1:9/
++ http_proxy=http://127.0.0.1:9/
++ export https_proxy=http://127.0.0.1:9/
++ https_proxy=http://127.0.0.1:9/
++ export no_proxy=localhost,127.0.0.1,0.0.0.0
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export LANG=C.UTF-8
++ LANG=C.UTF-8
++ export SOURCE_DATE_EPOCH=1569294031
++ SOURCE_DATE_EPOCH=1569294031
++ export GCC_IGNORE_WERROR=1
++ GCC_IGNORE_WERROR=1
++ export AR=gcc-ar
++ AR=gcc-ar
++ export RANLIB=gcc-ranlib
++ RANLIB=gcc-ranlib
++ export NM=gcc-nm
++ NM=gcc-nm
++ export 'CFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ export 'FCFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FCFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'FFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'CXXFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ make -j4
+make -C src
+make[1]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[1]: Entering directory '/builddir/build/BUILD/initscripts-9.49.46/src'
+gcc -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -Wall -D_GNU_SOURCE -fPIE -c usernetctl.c -o usernetctl.o
+usernetctl.c: In function ‘main’:
+usernetctl.c:238:5: warning: ignoring return value of ‘setuid’, declared with attribute warn_unused_result [-Wunused-result]
+  238 |     setuid(geteuid());
+      |     ^~~~~~~~~~~~~~~~~
+usernetctl.c:240:5: warning: ignoring return value of ‘setgid’, declared with attribute warn_unused_result [-Wunused-result]
+  240 |     setgid(0);
+      |     ^~~~~~~~~
+gcc  -pie -z relro -z now -o usernetctl usernetctl.o
+gcc -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -Wall -D_GNU_SOURCE -fPIE -c netreport.c -o netreport.o
+gcc  -pie -z relro -z now -o netreport netreport.o
+gcc -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -Wall -D_GNU_SOURCE -fPIE   -c -o usleep.o usleep.c
+usleep.c: In function ‘main’:
+usleep.c:47:43: warning: passing argument 3 of ‘poptGetContext’ from incompatible pointer type [-Wincompatible-pointer-types]
+   47 |   optCon = poptGetContext("usleep", argc, argv, options,0);
+      |                                           ^~~~
+      |                                           |
+      |                                           char **
+In file included from usleep.c:29:
+/usr/include/popt.h:263:54: note: expected ‘const char **’ but argument is of type ‘char **’
+  263 |   int argc, /*@dependent@*/ /*@keep@*/ const char ** argv,
+      |                                        ~~~~~~~~~~~~~~^~~~
+usleep.c:68:12: warning: assignment discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   68 |   countStr = poptGetArg(optCon);
+      |            ^
+gcc  -pie -z relro -z now -o usleep usleep.o -lpopt
+gcc -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -Wall -D_GNU_SOURCE -fPIE   -c -o ipcalc.o ipcalc.c
+gcc -D_GNU_SOURCE  -pie -z relro -z now -o ipcalc ipcalc.o -lpopt
+gcc -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -Wall -D_GNU_SOURCE -fPIE `pkg-config glib-2.0 --cflags` -c brandbot.c -o brandbot.o
+gcc -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -Wall -D_GNU_SOURCE -fPIE `pkg-config glib-2.0 --cflags` -c shvar.c -o shvar.o
+gcc  -pie -z relro -z now -o brandbot brandbot.o shvar.o `pkg-config glib-2.0 --libs`
+gcc -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -Wall -D_GNU_SOURCE -fPIE `pkg-config glib-2.0 --cflags` -c ppp-watch.c -o ppp-watch.o
+ppp-watch.c: In function ‘doPidFile’:
+ppp-watch.c:302:10: warning: ignoring return value of ‘fscanf’, declared with attribute warn_unused_result [-Wunused-result]
+  302 |          fscanf(f, "%d", &pid);
+      |          ^~~~~~~~~~~~~~~~~~~~~
+ppp-watch.c: In function ‘relay_exitcode’:
+ppp-watch.c:378:5: warning: ignoring return value of ‘write’, declared with attribute warn_unused_result [-Wunused-result]
+  378 |     write(pipeArray[1], &exitCode, 1);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ppp-watch.c: In function ‘hangup’:
+ppp-watch.c:544:13: warning: ignoring return value of ‘write’, declared with attribute warn_unused_result [-Wunused-result]
+  544 |             write(fd, "\r", 1); /* tickle modems that do not like dropped DTR */
+      |             ^~~~~~~~~~~~~~~~~~
+gcc  -pie -z relro -z now -o ppp-watch ppp-watch.o shvar.o `pkg-config glib-2.0 --libs`
+gcc -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -Wall -D_GNU_SOURCE -fPIE   -pie -z relro -z now  consoletype.c   -o consoletype
+gcc -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -Wall -D_GNU_SOURCE -fPIE   -pie -z relro -z now  genhostid.c   -o genhostid
+gcc -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -Wall -D_GNU_SOURCE -fPIE `pkg-config glib-2.0 --cflags` -o rename_device rename_device.c  -pie -z relro -z now `pkg-config glib-2.0 --libs`
+rename_device.c: In function ‘take_lock’:
+rename_device.c:271:4: warning: ignoring return value of ‘write’, declared with attribute warn_unused_result [-Wunused-result]
+  271 |    write(lockfd,buf,strlen(buf));
+      |    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+rename_device.c:287:4: warning: ignoring return value of ‘read’, declared with attribute warn_unused_result [-Wunused-result]
+  287 |    read(fd,buf,32);
+      |    ^~~~~~~~~~~~~~~
+gcc -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -Wall -D_GNU_SOURCE -fPIE `pkg-config glib-2.0 --cflags` -c udev-kvm-check.c -o udev-kvm-check.o
+gcc  -pie -z relro -z now -o udev-kvm-check udev-kvm-check.o shvar.o `pkg-config glib-2.0 --libs`
+make[1]: Leaving directory '/builddir/build/BUILD/initscripts-9.49.46/src'
+make -C po
+make[1]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[1]: Entering directory '/builddir/build/BUILD/initscripts-9.49.46/po'
+./xgettext_sh.py ../ppp/ip* ../sysconfig/network-scripts/ifdown ../sysconfig/network-scripts/ifdown-bnep ../sysconfig/network-scripts/ifdown-eth ../sysconfig/network-scripts/ifdown-ippp ../sysconfig/network-scripts/ifdown-ipv6 ../sysconfig/network-scripts/ifdown-post ../sysconfig/network-scripts/ifdown-ppp ../sysconfig/network-scripts/ifdown-routes ../sysconfig/network-scripts/ifdown-sit ../sysconfig/network-scripts/ifdown-tunnel ../sysconfig/network-scripts/ifup ../sysconfig/network-scripts/ifup-aliases ../sysconfig/network-scripts/ifup-bnep ../sysconfig/network-scripts/ifup-ctc ../sysconfig/network-scripts/ifup-eth ../sysconfig/network-scripts/ifup-ippp ../sysconfig/network-scripts/ifup-ipv6 ../sysconfig/network-scripts/ifup-plip ../sysconfig/network-scripts/ifup-plusb ../sysconfig/network-scripts/ifup-post ../sysconfig/network-scripts/ifup-ppp ../sysconfig/network-scripts/ifup-routes ../sysconfig/network-scripts/ifup-sit ../sysconfig/network-scripts/ifup-tunnel ../sysconfig/network-scripts/ifup-wireless ../sysconfig/network-scripts/init.ipv6-global ../sysconfig/network-scripts/network-functions ../sysconfig/network-scripts/network-functions-ipv6 ../service ../sys-unconfig ../systemd/rhel-* ../rc.d/init.d/* > initscripts.po
+if cmp -s initscripts.po initscripts.pot; then \
+    rm -f initscripts.po; \
+else \
+    mv initscripts.po initscripts.pot; \
+fi
+msgfmt -o ar.mo ar.po
+msgfmt -o as.mo as.po
+msgfmt -o ast.mo ast.po
+msgfmt -o bal.mo bal.po
+msgfmt -o bg.mo bg.po
+msgfmt -o bn.mo bn.po
+msgfmt -o bn_IN.mo bn_IN.po
+msgfmt -o bo.mo bo.po
+msgfmt -o br.mo br.po
+msgfmt -o bs.mo bs.po
+msgfmt -o ca.mo ca.po
+msgfmt -o cs.mo cs.po
+msgfmt -o cy.mo cy.po
+msgfmt -o da.mo da.po
+msgfmt -o de.mo de.po
+msgfmt -o el.mo el.po
+msgfmt -o en_GB.mo en_GB.po
+msgfmt -o es.mo es.po
+msgfmt -o et.mo et.po
+msgfmt -o eu.mo eu.po
+msgfmt -o eu_ES.mo eu_ES.po
+msgfmt -o fa.mo fa.po
+msgfmt -o fi.mo fi.po
+msgfmt -o fr.mo fr.po
+msgfmt -o ga.mo ga.po
+msgfmt -o gl.mo gl.po
+msgfmt -o gu.mo gu.po
+msgfmt -o he.mo he.po
+msgfmt -o hi.mo hi.po
+msgfmt -o hr.mo hr.po
+msgfmt -o hu.mo hu.po
+msgfmt -o hy.mo hy.po
+msgfmt -o ia.mo ia.po
+msgfmt -o id.mo id.po
+msgfmt -o is.mo is.po
+msgfmt -o it.mo it.po
+msgfmt -o ja.mo ja.po
+msgfmt -o ka.mo ka.po
+msgfmt -o kk.mo kk.po
+msgfmt -o kn.mo kn.po
+msgfmt -o ko.mo ko.po
+msgfmt -o ks.mo ks.po
+msgfmt -o ku.mo ku.po
+msgfmt -o lo.mo lo.po
+msgfmt -o lt.mo lt.po
+msgfmt -o lv.mo lv.po
+msgfmt -o mai.mo mai.po
+msgfmt -o mk.mo mk.po
+msgfmt -o ml.mo ml.po
+msgfmt -o mr.mo mr.po
+msgfmt -o ms.mo ms.po
+msgfmt -o my.mo my.po
+msgfmt -o nb.mo nb.po
+msgfmt -o nds.mo nds.po
+msgfmt -o nl.mo nl.po
+msgfmt -o nn.mo nn.po
+msgfmt -o or.mo or.po
+msgfmt -o pa.mo pa.po
+msgfmt -o pl.mo pl.po
+msgfmt -o pt.mo pt.po
+msgfmt -o pt_BR.mo pt_BR.po
+msgfmt -o ro.mo ro.po
+msgfmt -o ru.mo ru.po
+msgfmt -o si.mo si.po
+msgfmt -o sk.mo sk.po
+msgfmt -o sl.mo sl.po
+msgfmt -o sq.mo sq.po
+msgfmt -o sr.mo sr.po
+msgfmt -o sr@latin.mo sr@latin.po
+msgfmt -o sv.mo sv.po
+msgfmt -o ta.mo ta.po
+msgfmt -o te.mo te.po
+msgfmt -o tg.mo tg.po
+msgfmt -o tr.mo tr.po
+msgfmt -o uk.mo uk.po
+msgfmt -o ur.mo ur.po
+msgfmt -o vi.mo vi.po
+msgfmt -o wa.mo wa.po
+msgfmt -o zh_CN.mo zh_CN.po
+msgfmt -o zh_HK.mo zh_HK.po
+msgfmt -o zh_TW.mo zh_TW.po
+make[1]: Leaving directory '/builddir/build/BUILD/initscripts-9.49.46/po'
++ exit 0
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.S39oj1
++ umask 022
++ cd /builddir/build/BUILD
++ cd initscripts-9.49.46
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ rm -rf /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64
++ mkdir -p /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64
++ export SOURCE_DATE_EPOCH=1569294031
++ SOURCE_DATE_EPOCH=1569294031
++ rm -rf /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64
+++ id -un
+++ id -gn
++ make ROOT=/builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64 SUPERUSER=mockbuild SUPERGROUP=mockbuild mandir=/usr/share/man install
+mkdir -p /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/profile.d /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/sbin
+mkdir -p /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/share/man/man{5,8}
+mkdir -p /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/rwtab.d /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/statetab.d
+mkdir -p /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/var/lib/stateless/writable
+mkdir -p /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/var/lib/stateless/state
+install -m644  adjtime /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc
+install -m644  inittab /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc
+install -m644  rwtab statetab networks /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc
+install -m755  service /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/sbin
+install -m644  lang.csh lang.sh /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/profile.d
+install -m644  256term.csh 256term.sh /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/profile.d
+install -m644  debug.csh debug.sh /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/profile.d
+install -m755  sys-unconfig /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/sbin
+install -m644  service.8 sys-unconfig.8 /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/share/man/man8
+mkdir -p -m 755 /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/lib/sysctl.d
+mkdir -p -m 755 /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/sysctl.d
+install -m644 sysctl.conf /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/lib/sysctl.d/00-system.conf
+if uname -m | grep -q sparc ; then \
+  install -m644 sysctl.conf.sparc /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/lib/sysctl.d/00-system.conf ; fi
+if uname -m | grep -q s390 ; then \
+  install -m644 sysctl.conf.s390 /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/lib/sysctl.d/00-system.conf ; fi
+install -m 644 sysctl.conf.README /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/sysctl.conf
+ln -s ../sysctl.conf /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/sysctl.d/99-sysctl.conf
+install -m755 -d /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/rc.d /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/sysconfig
+cp -af rc.d/init.d /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/rc.d/
+install -m644 sysconfig/debug sysconfig/init sysconfig/netconsole sysconfig/readonly-root /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/sysconfig/
+cp -af sysconfig/network-scripts /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/sysconfig/
+cp -af ppp NetworkManager /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc
+mkdir -p /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/lib/systemd/
+cp -af systemd/* /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/lib/systemd/
+mkdir -p /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/ppp/peers
+mkdir -p /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/lib
+cp -af udev /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/lib
+chmod 755 /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/rc.d/* /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/rc.d/init.d/*
+chmod 644 /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/rc.d/init.d/functions
+chmod 755 /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/ppp/peers
+chmod 755 /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/ppp/ip*
+chmod 755 /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/sysconfig/network-scripts/ifup-*
+chmod 755 /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/sysconfig/network-scripts/ifdown-*
+chmod 755 /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/sysconfig/network-scripts/init*
+chmod 755 /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/NetworkManager/dispatcher.d/00-netreport
+mkdir -p /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/sysconfig/modules
+mkdir -p /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/sysconfig/console
+if uname -m | grep -q s390 ; then \
+  install -m644 sysconfig/init.s390 /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/sysconfig/init ; \
+fi
+mv /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/sysconfig/network-scripts/ifup /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/sbin
+mv /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/sysconfig/network-scripts/ifdown /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/sbin
+(cd /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/sysconfig/network-scripts; \
+  ln -sf ifup-ippp ifup-isdn ; \
+  ln -sf ifdown-ippp ifdown-isdn ; \
+  ln -sf ../../../usr/sbin/ifup . ; \
+  ln -sf ../../../usr/sbin/ifdown . )
+make install ROOT=/builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64 mandir=/usr/share/man -C src
+make[1]: Entering directory '/builddir/build/BUILD/initscripts-9.49.46/src'
+mkdir -p /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/bin /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/sbin /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/share/man/man{1,8} /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/lib/udev /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/libexec/initscripts/
+install -m 755 usleep /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/bin/usleep
+install -m 4755 usernetctl /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/sbin/usernetctl
+install -m 2755 netreport /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/sbin/netreport
+install -m 755 ipcalc /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/bin/ipcalc
+install -m 755 genhostid /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/sbin/genhostid
+install -m 755 ppp-watch /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/sbin/ppp-watch
+install -m 755 consoletype /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/sbin/consoletype
+install -m 755 sushell /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/sbin/sushell
+install -m 755 brandbot /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/libexec/initscripts/brandbot
+install -m 755 rename_device /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/lib/udev/rename_device
+install -m 755 udev-kvm-check /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/lib/udev/udev-kvm-check
+install -m 644 genhostid.1 /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/share/man/man1
+install -m 644 netreport.1 /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/share/man/man1
+install -m 644 usleep.1 /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/share/man/man1
+install -m 644 usernetctl.8 /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/share/man/man8
+install -m 644 ppp-watch.8 /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/share/man/man8
+install -m 644 ipcalc.1 /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/share/man/man1
+install -m 644 consoletype.1 /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/share/man/man1
+install -m 644 ifup.8 /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/share/man/man8
+install -m 644 sushell.8 /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/share/man/man8
+ln -s ifup.8 /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/share/man/man8/ifdown.8
+make[1]: Leaving directory '/builddir/build/BUILD/initscripts-9.49.46/src'
+make install PREFIX=/builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64 -C po
+make[1]: Entering directory '/builddir/build/BUILD/initscripts-9.49.46/po'
+mkdir -p /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64//usr/share/locale
+for n in ar.po as.po ast.po bal.po bg.po bn_IN.po bn.po bo.po br.po bs.po ca.po cs.po cy.po da.po de.po el.po en_GB.po es.po et.po eu_ES.po eu.po fa.po fi.po fr.po ga.po gl.po gu.po he.po hi.po hr.po hu.po hy.po ia.po id.po is.po it.po ja.po ka.po kk.po kn.po ko.po ks.po ku.po lo.po lt.po lv.po mai.po mk.po ml.po mr.po ms.po my.po nb.po nds.po nl.po nn.po or.po pa.po pl.po pt_BR.po pt.po ro.po ru.po si.po sk.po sl.po sq.po sr@latin.po sr.po sv.po ta.po te.po tg.po tr.po uk.po ur.po vi.po wa.po zh_CN.po zh_HK.po zh_TW.po; do \
+    l=`basename $n .po`; \
+    mo=$l.mo; \
+    /usr/bin/install -c -m 755 -d /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64//usr/share/locale/$l; \
+    /usr/bin/install -c -m 755 -d /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64//usr/share/locale/$l/LC_MESSAGES; \
+    /usr/bin/install -c -m 644 $mo \
+	/builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64//usr/share/locale/$l/LC_MESSAGES/initscripts.mo; \
+done
+make[1]: Leaving directory '/builddir/build/BUILD/initscripts-9.49.46/po'
+mkdir -p /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/var/run/netreport /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/var/log
+chown mockbuild:mockbuild /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/var/run/netreport
+chmod u=rwx,g=rwx,o=rx /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/var/run/netreport
+touch /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/var/run/utmp
+touch /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/var/log/wtmp
+touch /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/var/log/btmp
+for i in 0 1 2 3 4 5 6 ; do \
+	dir=/builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/rc.d/rc$i.d; \
+  	mkdir $dir; \
+	chmod u=rwx,g=rx,o=rx $dir; \
+done
+mkdir -p /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/lib/tmpfiles.d
+install -m 644 initscripts.tmpfiles.d /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/lib/tmpfiles.d/initscripts.conf
+for i in 0 1 2 3 4 5 6 ; do \
+	ln -s rc.d/rc$i.d /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/rc$i.d; \
+done
+mkdir -p -m 755 /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/libexec/initscripts/legacy-actions
++ /usr/lib/rpm/find-lang.sh /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64 initscripts
++ rm -f /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/sysconfig/init.s390
++ touch /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/crypttab
++ chmod 600 /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/crypttab
++ install -d -m 755 /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/local/etc/init.d
++ install -p -D -m 755 rc.d/init.d/functions rc.d/init.d/netconsole rc.d/init.d/network /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/local/etc/init.d/
++ rm -f /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/share/info/dir
+++ find /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64 -path 'etc/*' '!' -type d
++ test -z ''
++ rm -rf /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/adjtime /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/crypttab /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/inittab /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/NetworkManager /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/networks /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/ppp /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/profile.d /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/rc0.d /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/rc1.d /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/rc2.d /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/rc3.d /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/rc4.d /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/rc5.d /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/rc6.d /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/rc.d /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/rwtab /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/rwtab.d /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/statetab /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/statetab.d /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/sysconfig /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/sysctl.conf /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/etc/sysctl.d
++ rm -rf '/builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/share/factory/*'
++ find /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64 -name __pycache__
++ xargs rm -rf --
++ '[' -d /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/share/mime ']'
+++ getconf _NPROCESSORS_ONLN
++ RPM_XARGS_PFLAG=-P4
++ find /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64 -name '*.so.avx512' -print0
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -5
++ find /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/lib64/haswell/avx512_1 -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/lib64/haswell/avx512_1’: No such file or directory
++ find /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64 -name '*.so.avx2' -print0
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -2
++ find /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/lib64/haswell '!' -path '/usr/lib64/haswell/avx512_1/*' -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/lib64/haswell’: No such file or directory
++ find /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/lib64/ -maxdepth 1 -name '*.so*' -type f -print0
++ xargs -0rtn1 -P4 /usr/lib/rpm/clr/brp-create-abi
++ sort -u
+find: ‘/builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/lib64/’: No such file or directory
++ /usr/lib/rpm/find-debuginfo.sh --strict-build-id /builddir/build/BUILD/initscripts-9.49.46
+extracting debug info from /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/lib/udev/rename_device
+extracting debug info from /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/lib/udev/udev-kvm-check
+extracting debug info from /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/bin/usleep
+extracting debug info from /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/bin/ipcalc
+extracting debug info from /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/libexec/initscripts/brandbot
+extracting debug info from /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/sbin/consoletype
+extracting debug info from /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/sbin/genhostid
+extracting debug info from /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/sbin/ppp-watch
+extracting debug info from /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/sbin/netreport
+extracting debug info from /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/sbin/usernetctl
+cpio: glibc-2.30/csu: Cannot stat: No such file or directory
+cpio: glibc-2.30/csu/elf-init.c: Cannot stat: No such file or directory
+cpio: glibc-2.30/csu/init.c: Cannot stat: No such file or directory
+cpio: glibc-2.30/sysdeps/x86_64/crti.S: Cannot stat: No such file or directory
+cpio: glibc-2.30/sysdeps/x86_64/crtn.S: Cannot stat: No such file or directory
+cpio: glibc-2.30/sysdeps/x86_64/start.S: Cannot stat: No such file or directory
+150 blocks
++ '[' -d /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/lib/debug ']'
++ mkdir -p /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/share
++ '[' -d /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/lib/debug ']'
++ mv /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/lib/debug /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/share
++ '[' -d /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/src/debug ']'
++ mv /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/src/debug /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/share/debug/src
++ '[' -d /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/lib/debug.force ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64/usr/src/debug.force ']'
++ :
++ /usr/lib/rpm/check-buildroot
++ /usr/lib/rpm/clr/brp-strip-static-archive /usr/bin/strip
++ /usr/lib/rpm/clr/brp-strip-comment-note /usr/bin/strip /usr/bin/objdump
++ /usr/lib/rpm/clr/brp-python-bytecompile
++ find /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64 -print0
++ xargs -0 touch -h -d @1569294031
++ /usr/lib/rpm/clr/brp-java-repack-jars
+Processing files: initscripts-9.49.46-4.x86_64
+Processing files: initscripts-debuginfo-9.49.46-4.x86_64
+Processing files: initscripts-abi-9.49.46-4.x86_64
+warning: Empty %files file /builddir/build/BUILD/initscripts-9.49.46/abifiles.list
+Checking for unpackaged file(s): /usr/lib/rpm/check-files /builddir/build/BUILDROOT/initscripts-9.49.46-4.x86_64
+RPM build errors:
+error: Installed (but unpackaged) file(s) found:
+   /usr/bin/ipcalc
+   /usr/bin/usleep
+   /usr/lib/sysctl.d/00-system.conf
+   /usr/lib/systemd/rhel-autorelabel
+   /usr/lib/systemd/rhel-configure
+   /usr/lib/systemd/rhel-dmesg
+   /usr/lib/systemd/rhel-domainname
+   /usr/lib/systemd/rhel-import-state
+   /usr/lib/systemd/rhel-loadmodules
+   /usr/lib/systemd/rhel-readonly
+   /usr/lib/systemd/system/brandbot.path
+   /usr/lib/systemd/system/brandbot.service
+   /usr/lib/systemd/system/rhel-autorelabel-mark.service
+   /usr/lib/systemd/system/rhel-autorelabel.service
+   /usr/lib/systemd/system/rhel-configure.service
+   /usr/lib/systemd/system/rhel-dmesg.service
+   /usr/lib/systemd/system/rhel-domainname.service
+   /usr/lib/systemd/system/rhel-import-state.service
+   /usr/lib/systemd/system/rhel-loadmodules.service
+   /usr/lib/systemd/system/rhel-readonly.service
+   /usr/lib/tmpfiles.d/initscripts.conf
+   /usr/lib/udev/rename_device
+   /usr/lib/udev/rules.d/60-net.rules
+   /usr/lib/udev/rules.d/81-kvm-rhel.rules
+   /usr/lib/udev/udev-kvm-check
+   /usr/libexec/initscripts/brandbot
+   /usr/local/etc/init.d/functions
+   /usr/local/etc/init.d/netconsole
+   /usr/local/etc/init.d/network
+   /usr/sbin/consoletype
+   /usr/sbin/genhostid
+   /usr/sbin/ifdown
+   /usr/sbin/ifup
+   /usr/sbin/netreport
+   /usr/sbin/ppp-watch
+   /usr/sbin/service
+   /usr/sbin/sushell
+   /usr/sbin/sys-unconfig
+   /usr/sbin/usernetctl
+   /usr/share/locale/ar/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/as/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/ast/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/bal/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/bg/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/bn/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/bn_IN/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/bo/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/br/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/bs/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/ca/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/cs/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/cy/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/da/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/de/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/el/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/en_GB/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/es/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/et/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/eu/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/eu_ES/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/fa/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/fi/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/fr/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/ga/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/gl/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/gu/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/he/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/hi/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/hr/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/hu/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/hy/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/ia/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/id/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/is/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/it/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/ja/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/ka/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/kk/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/kn/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/ko/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/ks/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/ku/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/lo/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/lt/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/lv/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/mai/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/mk/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/ml/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/mr/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/ms/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/my/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/nb/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/nds/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/nl/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/nn/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/or/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/pa/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/pl/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/pt/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/pt_BR/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/ro/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/ru/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/si/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/sk/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/sl/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/sq/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/sr/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/sr@latin/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/sv/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/ta/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/te/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/tg/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/tr/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/uk/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/ur/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/vi/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/wa/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/zh_CN/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/zh_HK/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/zh_TW/LC_MESSAGES/initscripts.mo
+   /usr/share/man/man1/consoletype.1
+   /usr/share/man/man1/genhostid.1
+   /usr/share/man/man1/ipcalc.1
+   /usr/share/man/man1/netreport.1
+   /usr/share/man/man1/usleep.1
+   /usr/share/man/man8/ifdown.8
+   /usr/share/man/man8/ifup.8
+   /usr/share/man/man8/ppp-watch.8
+   /usr/share/man/man8/service.8
+   /usr/share/man/man8/sushell.8
+   /usr/share/man/man8/sys-unconfig.8
+   /usr/share/man/man8/usernetctl.8
+   /var/log/btmp
+   /var/log/wtmp
+   /var/run/utmp
+    Empty %files file /builddir/build/BUILD/initscripts-9.49.46/abifiles.list
+    Installed (but unpackaged) file(s) found:
+   /usr/bin/ipcalc
+   /usr/bin/usleep
+   /usr/lib/sysctl.d/00-system.conf
+   /usr/lib/systemd/rhel-autorelabel
+   /usr/lib/systemd/rhel-configure
+   /usr/lib/systemd/rhel-dmesg
+   /usr/lib/systemd/rhel-domainname
+   /usr/lib/systemd/rhel-import-state
+   /usr/lib/systemd/rhel-loadmodules
+   /usr/lib/systemd/rhel-readonly
+   /usr/lib/systemd/system/brandbot.path
+   /usr/lib/systemd/system/brandbot.service
+   /usr/lib/systemd/system/rhel-autorelabel-mark.service
+   /usr/lib/systemd/system/rhel-autorelabel.service
+   /usr/lib/systemd/system/rhel-configure.service
+   /usr/lib/systemd/system/rhel-dmesg.service
+   /usr/lib/systemd/system/rhel-domainname.service
+   /usr/lib/systemd/system/rhel-import-state.service
+   /usr/lib/systemd/system/rhel-loadmodules.service
+   /usr/lib/systemd/system/rhel-readonly.service
+   /usr/lib/tmpfiles.d/initscripts.conf
+   /usr/lib/udev/rename_device
+   /usr/lib/udev/rules.d/60-net.rules
+   /usr/lib/udev/rules.d/81-kvm-rhel.rules
+   /usr/lib/udev/udev-kvm-check
+   /usr/libexec/initscripts/brandbot
+   /usr/local/etc/init.d/functions
+   /usr/local/etc/init.d/netconsole
+   /usr/local/etc/init.d/network
+   /usr/sbin/consoletype
+   /usr/sbin/genhostid
+   /usr/sbin/ifdown
+   /usr/sbin/ifup
+   /usr/sbin/netreport
+   /usr/sbin/ppp-watch
+   /usr/sbin/service
+   /usr/sbin/sushell
+   /usr/sbin/sys-unconfig
+   /usr/sbin/usernetctl
+   /usr/share/locale/ar/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/as/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/ast/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/bal/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/bg/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/bn/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/bn_IN/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/bo/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/br/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/bs/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/ca/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/cs/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/cy/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/da/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/de/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/el/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/en_GB/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/es/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/et/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/eu/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/eu_ES/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/fa/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/fi/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/fr/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/ga/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/gl/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/gu/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/he/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/hi/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/hr/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/hu/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/hy/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/ia/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/id/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/is/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/it/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/ja/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/ka/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/kk/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/kn/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/ko/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/ks/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/ku/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/lo/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/lt/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/lv/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/mai/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/mk/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/ml/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/mr/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/ms/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/my/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/nb/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/nds/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/nl/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/nn/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/or/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/pa/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/pl/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/pt/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/pt_BR/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/ro/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/ru/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/si/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/sk/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/sl/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/sq/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/sr/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/sr@latin/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/sv/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/ta/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/te/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/tg/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/tr/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/uk/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/ur/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/vi/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/wa/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/zh_CN/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/zh_HK/LC_MESSAGES/initscripts.mo
+   /usr/share/locale/zh_TW/LC_MESSAGES/initscripts.mo
+   /usr/share/man/man1/consoletype.1
+   /usr/share/man/man1/genhostid.1
+   /usr/share/man/man1/ipcalc.1
+   /usr/share/man/man1/netreport.1
+   /usr/share/man/man1/usleep.1
+   /usr/share/man/man8/ifdown.8
+   /usr/share/man/man8/ifup.8
+   /usr/share/man/man8/ppp-watch.8
+   /usr/share/man/man8/service.8
+   /usr/share/man/man8/sushell.8
+   /usr/share/man/man8/sys-unconfig.8
+   /usr/share/man/man8/usernetctl.8
+   /var/log/btmp
+   /var/log/wtmp
+   /var/run/utmp
+Child return code was: 1
+EXCEPTION: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/initscripts.spec 
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/mockbuild/trace_decorator.py", line 84, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python3.7/site-packages/mockbuild/util.py", line 531, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+mockbuild.exception.Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/initscripts.spec 
+LEAVE do --> EXCEPTION RAISED
+

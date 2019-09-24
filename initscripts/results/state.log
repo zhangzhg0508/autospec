@@ -1,0 +1,37 @@
+2019-09-24 03:00:34,977 - Mock Version: 1.2.14
+2019-09-24 03:00:35,220 - Start: dnf update
+2019-09-24 03:00:45,700 - Finish: dnf update
+2019-09-24 03:00:45,706 - Finish: chroot init
+2019-09-24 03:00:45,709 - Start: buildsrpm
+2019-09-24 03:00:45,720 - Start: rpmbuild -bs
+2019-09-24 03:00:45,764 - Finish: rpmbuild -bs
+2019-09-24 03:00:45,766 - Finish: buildsrpm
+2019-09-24 03:00:45,767 - Finish: run
+2019-09-24 03:00:48,792 - Mock Version: 1.2.14
+2019-09-24 03:00:49,045 - Start: dnf update
+2019-09-24 03:00:59,111 - Finish: dnf update
+2019-09-24 03:00:59,117 - Finish: chroot init
+2019-09-24 03:00:59,118 - Start: build phase for initscripts-9.49.46-4.src.rpm
+2019-09-24 03:00:59,120 - Start: build setup for initscripts-9.49.46-4.src.rpm
+2019-09-24 03:01:00,321 - Finish: build setup for initscripts-9.49.46-4.src.rpm
+2019-09-24 03:01:00,321 - Start: rpmbuild initscripts-9.49.46-4.src.rpm
+2019-09-24 03:01:06,440 - Mock Version: 1.2.14
+2019-09-24 03:01:06,686 - Start: dnf update
+2019-09-24 03:01:16,845 - Finish: dnf update
+2019-09-24 03:01:16,850 - Finish: chroot init
+2019-09-24 03:01:16,853 - Start: buildsrpm
+2019-09-24 03:01:16,866 - Start: rpmbuild -bs
+2019-09-24 03:01:16,911 - Finish: rpmbuild -bs
+2019-09-24 03:01:16,913 - Finish: buildsrpm
+2019-09-24 03:01:16,914 - Finish: run
+2019-09-24 03:01:20,008 - Mock Version: 1.2.14
+2019-09-24 03:01:20,266 - Start: dnf update
+2019-09-24 03:01:30,120 - Finish: dnf update
+2019-09-24 03:01:30,126 - Finish: chroot init
+2019-09-24 03:01:30,127 - Start: build phase for initscripts-9.49.46-4.src.rpm
+2019-09-24 03:01:30,130 - Start: build setup for initscripts-9.49.46-4.src.rpm
+2019-09-24 03:01:31,334 - Finish: build setup for initscripts-9.49.46-4.src.rpm
+2019-09-24 03:01:31,334 - Start: rpmbuild initscripts-9.49.46-4.src.rpm
+2019-09-24 03:01:34,080 - Finish: rpmbuild initscripts-9.49.46-4.src.rpm
+2019-09-24 03:01:34,081 - Finish: build phase for initscripts-9.49.46-4.src.rpm
+2019-09-24 03:01:34,082 - Finish: run

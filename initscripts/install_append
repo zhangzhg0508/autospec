@@ -3,5 +3,6 @@ rm -f $RPM_BUILD_ROOT/etc/sysconfig/init.s390
 
 touch $RPM_BUILD_ROOT/etc/crypttab
 chmod 600 $RPM_BUILD_ROOT/etc/crypttab
-
+install -d -m 755 $RPM_BUILD_ROOT%{local_etc_initd}
+install -p -D -m 755 rc.d/init.d/* $RPM_BUILD_ROOT%{local_etc_initd}/
 

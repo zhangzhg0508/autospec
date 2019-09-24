@@ -1,0 +1,253 @@
+From f9c63c352eba3cfb63a3ae8d6b8bbbd5bbd92956 Mon Sep 17 00:00:00 2001
+From: chen-dq <chen.dq@neusoft.com>
+Date: Tue, 24 Sep 2019 08:08:06 +0000
+Subject: [PATCH 2/2] change-sysconfig-dir
+
+---
+ Makefile                      |  6 +++---
+ worker_config                 | 34 +++++++++++++++++-----------------
+ worker_services               | 16 ++++++++--------
+ workerconfig-combined.service |  2 +-
+ workerconfig.service          |  2 +-
+ 5 files changed, 30 insertions(+), 30 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 16f2993..e60c97d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -2,9 +2,9 @@
+ # SPDX-License-Identifier: Apache-2.0
+ #
+ 
+-INITDDIR ?= /etc/init.d/
+-GOENABLEDDIR ?= /etc/goenabled.d/
+-SYSTEMDDIR ?= /etc/systemd/system/
++INITDDIR ?= /usr/local/etc/init.d/
++GOENABLEDDIR ?= /usr/local/etc/goenabled.d/
++SYSTEMDDIR ?= /usr/local/etc/systemd/system/
+ 
+ install:
+ 	install -d -m 755 $(INITDDIR)
+diff --git a/worker_config b/worker_config
+index cfc4d2d..98a20d8 100644
+--- a/worker_config
++++ b/worker_config
+@@ -19,14 +19,14 @@
+ ### END INIT INFO
+ 
+ . /usr/bin/tsconfig
+-. /etc/platform/platform.conf
++. /usr/local/etc/platform/platform.conf
+ 
+ PLATFORM_DIR=/opt/platform
+ CONFIG_DIR=$CONFIG_PATH
+ VOLATILE_CONFIG_PASS="/var/run/.config_pass"
+ VOLATILE_CONFIG_FAIL="/var/run/.config_fail"
+ LOGFILE="/var/log/worker_config.log"
+-IMA_POLICY=/etc/ima.policy
++IMA_POLICY=/usr/local/etc/ima.policy
+ 
+ # Copy of /opt/platform required for worker_services
+ VOLATILE_PLATFORM_PATH=$VOLATILE_PATH/cpe_upgrade_opt_platform
+@@ -59,8 +59,8 @@ get_ip()
+ {
+     local host=$1
+ 
+-    # Check /etc/hosts for the hostname
+-    local ipaddr=$(cat /etc/hosts | awk -v host=$host '$2 == host {print $1}')
++    # Check /usr/local/etc/hosts for the hostname
++    local ipaddr=$(cat /usr/local/etc/hosts | awk -v host=$host '$2 == host {print $1}')
+     if [ -n "$ipaddr" ]
+     then
+         echo $ipaddr
+@@ -116,8 +116,8 @@ wait_for_controller_services()
+ 
+ start()
+ {
+-    if [ -f /etc/platform/installation_failed ] ; then
+-        fatal_error "/etc/platform/installation_failed flag is set. Aborting."
++    if [ -f /usr/local/etc/platform/installation_failed ] ; then
++        fatal_error "/usr/local/etc/platform/installation_failed flag is set. Aborting."
+     fi
+ 
+     function=`echo "$subfunction" | cut -f 2 -d','`
+@@ -128,7 +128,7 @@ start()
+     fi
+ 
+     # If we're on a controller, ensure we only run if the controller config is complete
+-    if [ "$nodetype" = "controller" -a ! -f /etc/platform/.initial_controller_config_complete ]
++    if [ "$nodetype" = "controller" -a ! -f /usr/local/etc/platform/.initial_controller_config_complete ]
+     then
+         logger -t $0 -p warn "exiting because this is controller that has not completed initial config"
+         exit 0
+@@ -211,7 +211,7 @@ start()
+          fi
+     fi
+     # Write the hostname to file so it's persistent
+-    echo $HOST > /etc/hostname
++    echo $HOST > /usr/local/etc/hostname
+ 
+     if ! [ -e "${PLATFORM_SIMPLEX_FLAG}" ]
+     then
+@@ -230,7 +230,7 @@ start()
+         # Copy over external_ceph config files
+         if [ -e $CONFIG_DIR/ceph-config ]
+         then
+-            cp $CONFIG_DIR/ceph-config/*.conf /etc/ceph/
++            cp $CONFIG_DIR/ceph-config/*.conf /usr/local/etc/ceph/
+             if [ $? -ne 0 ]
+             then
+                 fatal_error "Unable to copy ceph-external config files"
+@@ -252,9 +252,9 @@ start()
+             fatal_error "This node is running a different load than the active controller and must be reinstalled"
+         fi
+ 
+-        mkdir -p /etc/docker/certs.d/registry.local:9001/
+-        chmod 700 /etc/docker/certs.d/registry.local:9001/
+-        cp $CONFIG_DIR/registry-cert.crt /etc/docker/certs.d/registry.local:9001/registry-cert.crt
++        mkdir -p /usr/local/etc/docker/certs.d/registry.local:9001/
++        chmod 700 /usr/local/etc/docker/certs.d/registry.local:9001/
++        cp $CONFIG_DIR/registry-cert.crt /usr/local/etc/docker/certs.d/registry.local:9001/registry-cert.crt
+         if [ $? -ne 0 ]
+         then
+             fatal_error "Unable to copy $CONFIG_DIR/registry-cert.crt to docker dir"
+@@ -264,7 +264,7 @@ start()
+     # banner customization always returns 0, success:
+     /usr/sbin/install_banner_customization
+ 
+-    cp $CONFIG_DIR/hosts /etc/hosts
++    cp $CONFIG_DIR/hosts /usr/local/etc/hosts
+     if [ $? -ne 0 ]
+     then
+         fatal_error "Unable to copy $CONFIG_DIR/hosts"
+@@ -278,7 +278,7 @@ start()
+         if [ -d "$MATE_INSTANCES_DIR" ]
+         then
+             echo "Restoring instance data from mate controller"
+-            cp -Rp $MATE_INSTANCES_DIR/* /etc/nova/instances/
++            cp -Rp $MATE_INSTANCES_DIR/* /usr/local/etc/nova/instances/
+             rm -rf $MATE_INSTANCES_DIR
+         fi
+     fi
+@@ -301,9 +301,9 @@ start()
+         then
+             # This controller is not active so it is safe to check the version
+             # of the mate controller.
+-            VOLATILE_ETC_PLATFORM_MOUNT=$VOLATILE_PATH/etc_platform
++            VOLATILE_ETC_PLATFORM_MOUNT=$VOLATILE_PATH/usr/local/etc_platform
+             mkdir $VOLATILE_ETC_PLATFORM_MOUNT
+-            nfs-mount controller-0:/etc/platform $VOLATILE_ETC_PLATFORM_MOUNT
++            nfs-mount controller-0:/usr/local/etc/platform $VOLATILE_ETC_PLATFORM_MOUNT
+             if [ $? -eq 0 ]
+             then
+                 # Check whether software versions match on the two controllers
+@@ -334,7 +334,7 @@ start()
+                 rmdir $VOLATILE_ETC_PLATFORM_MOUNT
+             else
+                 rmdir $VOLATILE_ETC_PLATFORM_MOUNT
+-                fatal_error "Unable to mount /etc/platform"
++                fatal_error "Unable to mount /usr/local/etc/platform"
+             fi
+         else
+             # Controller-1 (CPE) is active and is rebooting. This is probably a DOR. Since this
+diff --git a/worker_services b/worker_services
+index b37ca3a..75576bf 100644
+--- a/worker_services
++++ b/worker_services
+@@ -32,14 +32,14 @@
+ ### END INIT INFO
+ 
+ . /usr/bin/tsconfig
+-. /etc/platform/platform.conf
++. /usr/local/etc/platform/platform.conf
+ 
+ VOLATILE_CONFIG_PASS="/var/run/.config_pass"
+ VOLATILE_CONFIG_FAIL="/var/run/.config_fail"
+ 
+ IN_PROGRESS="/var/run/.worker_services_in_progress"
+ 
+-TEMP_MATE_ETC_DIR="$VOLATILE_PATH/etc_platform_worker"
++TEMP_MATE_ETC_DIR="$VOLATILE_PATH/usr/local/etc_platform_worker"
+ TEMP_PUPPET_DIR="$VOLATILE_PATH/puppet_worker"
+ 
+ # Copy of /opt/platform populate by worker_config
+@@ -108,12 +108,12 @@ init()
+     fi
+ 
+     # Ensure we only run if the controller config is complete
+-    if [ ! -f /etc/platform/.initial_controller_config_complete ] ; then
++    if [ ! -f /usr/local/etc/platform/.initial_controller_config_complete ] ; then
+         logger -t $NAME -p local1.warn "exiting because CPE controller that has not completed initial config"
+         end_exec
+     fi
+ 
+-    IPADDR=$(cat /etc/hosts | awk -v host=$HOST '$2 == host {print $1}')
++    IPADDR=$(cat /usr/local/etc/hosts | awk -v host=$HOST '$2 == host {print $1}')
+     if [ -z "$IPADDR" ] ; then
+         logger -t $NAME -p local1.error "Unable to get IP from host: $HOST"
+         end_exec
+@@ -129,7 +129,7 @@ init()
+     # Check the release version of controller-0
+     mkdir $TEMP_MATE_ETC_DIR
+ 
+-    nfs-mount controller-0:/etc/platform $TEMP_MATE_ETC_DIR
++    nfs-mount controller-0:/usr/local/etc/platform $TEMP_MATE_ETC_DIR
+     if [ $? -eq 0 ] ; then
+         # Should only be executed when the releases do not match
+         MATE_SW_VERSION=$(source $TEMP_MATE_ETC_DIR/platform.conf && echo $sw_version)
+@@ -147,7 +147,7 @@ init()
+            end_exec
+         fi
+     else
+-        logger -t $NAME -p local1.error "Unable to mount /etc/platform"
++        logger -t $NAME -p local1.error "Unable to mount /usr/local/etc/platform"
+         rmdir $TEMP_MATE_ETC_DIR
+         end_exec
+     fi
+@@ -176,7 +176,7 @@ init()
+ 
+         # Stop nova-compute
+         logger -t $NAME -p local1.info  "Stopping nova-compute"
+-        /etc/init.d/e_nova-init stop
++        /usr/local/etc/init.d/e_nova-init stop
+     else
+         logger -t $NAME -p local1.info  "Enabling compute services"
+ 
+@@ -203,7 +203,7 @@ init()
+     # Start nova-compute is we are starting compute services
+     if [ $action_to_perform == "start" ] ; then
+         logger -t $NAME -p local1.info  "Starting nova-compute"
+-        /etc/init.d/e_nova-init start
++        /usr/local/etc/init.d/e_nova-init start
+     fi
+ 
+     # Cleanup
+diff --git a/workerconfig-combined.service b/workerconfig-combined.service
+index 6aefb66..f981a40 100644
+--- a/workerconfig-combined.service
++++ b/workerconfig-combined.service
+@@ -10,7 +10,7 @@ After=network-online.target
+ 
+ [Service]
+ Type=simple
+-ExecStart=/etc/init.d/worker_config start
++ExecStart=/usr/local/etc/init.d/worker_config start
+ ExecStop=
+ ExecReload=
+ StandardOutput=syslog+console
+diff --git a/workerconfig.service b/workerconfig.service
+index 97e6a1a..55c9148 100644
+--- a/workerconfig.service
++++ b/workerconfig.service
+@@ -11,7 +11,7 @@ Before=goenabled.service
+ 
+ [Service]
+ Type=simple
+-ExecStart=/etc/init.d/worker_config start
++ExecStart=/usr/local/etc/init.d/worker_config start
+ ExecStop=
+ ExecReload=
+ StandardOutput=syslog+console
+-- 
+2.23.0
+
