@@ -1,0 +1,6 @@
+git
+setuptools
+pip
+pbr
+pytools
+buildreq-distutils

@@ -1,0 +1,37 @@
+2019-09-17 09:53:24,094 - Mock Version: 1.2.14
+2019-09-17 09:53:24,346 - Start: dnf update
+2019-09-17 09:53:34,134 - Finish: dnf update
+2019-09-17 09:53:34,140 - Finish: chroot init
+2019-09-17 09:53:34,142 - Start: buildsrpm
+2019-09-17 09:53:34,150 - Start: rpmbuild -bs
+2019-09-17 09:53:34,192 - Finish: rpmbuild -bs
+2019-09-17 09:53:34,194 - Finish: buildsrpm
+2019-09-17 09:53:34,194 - Finish: run
+2019-09-17 09:53:37,308 - Mock Version: 1.2.14
+2019-09-17 09:53:37,573 - Start: dnf update
+2019-09-17 09:53:47,270 - Finish: dnf update
+2019-09-17 09:53:47,275 - Finish: chroot init
+2019-09-17 09:53:47,276 - Start: build phase for python-pankoclient-0.5.0-2.src.rpm
+2019-09-17 09:53:47,279 - Start: build setup for python-pankoclient-0.5.0-2.src.rpm
+2019-09-17 09:53:49,464 - Finish: build setup for python-pankoclient-0.5.0-2.src.rpm
+2019-09-17 09:53:49,464 - Start: rpmbuild python-pankoclient-0.5.0-2.src.rpm
+2019-09-17 09:53:54,089 - Mock Version: 1.2.14
+2019-09-17 09:53:54,365 - Start: dnf update
+2019-09-17 09:54:04,149 - Finish: dnf update
+2019-09-17 09:54:04,155 - Finish: chroot init
+2019-09-17 09:54:04,158 - Start: buildsrpm
+2019-09-17 09:54:04,166 - Start: rpmbuild -bs
+2019-09-17 09:54:04,207 - Finish: rpmbuild -bs
+2019-09-17 09:54:04,208 - Finish: buildsrpm
+2019-09-17 09:54:04,209 - Finish: run
+2019-09-17 09:54:07,350 - Mock Version: 1.2.14
+2019-09-17 09:54:07,612 - Start: dnf update
+2019-09-17 09:54:17,305 - Finish: dnf update
+2019-09-17 09:54:17,311 - Finish: chroot init
+2019-09-17 09:54:17,312 - Start: build phase for python-pankoclient-0.5.0-2.src.rpm
+2019-09-17 09:54:17,315 - Start: build setup for python-pankoclient-0.5.0-2.src.rpm
+2019-09-17 09:54:19,491 - Finish: build setup for python-pankoclient-0.5.0-2.src.rpm
+2019-09-17 09:54:19,491 - Start: rpmbuild python-pankoclient-0.5.0-2.src.rpm
+2019-09-17 09:54:20,462 - Finish: rpmbuild python-pankoclient-0.5.0-2.src.rpm
+2019-09-17 09:54:20,464 - Finish: build phase for python-pankoclient-0.5.0-2.src.rpm
+2019-09-17 09:54:20,464 - Finish: run

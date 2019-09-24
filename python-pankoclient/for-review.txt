@@ -1,0 +1,38 @@
+From dd67de85a1113ff89288ae26922030419fea48d5 Mon Sep 17 00:00:00 2001
+From: fuyong <fuyong@neusoft.com>
+Date: Tue, 17 Sep 2019 09:54:21 +0800
+Subject: [PATCH python-pankoclient] python-pankoclient: Autospec creation for
+ version 0.5.0
+
+---
+ install_append          | 22 ----------------------
+ python-pankoclient.spec | 13 +++----------
+ release                 |  2 +-
+ 3 files changed, 4 insertions(+), 33 deletions(-)
+
+diff --git a/python-pankoclient.spec b/python-pankoclient.spec
+index 8add1f2..57a3ab5 100644
+--- a/python-pankoclient.spec
++++ b/python-pankoclient.spec
+@@ -98,20 +98,13 @@ python3 -tt setup.py build  install --root=%{buildroot}
+ echo ----[ mark ]----
+ cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
+ echo ----[ mark ]----
+-## install_append content
+-LANG=en_US.UTF-8 python3 setup.py install --skip-build --root %{buildroot}
+-mv %{buildroot}%{_bindir}/panko %{buildroot}%{_bindir}/panko-%{python3_version}
+-ln -s ./panko-%{python3_version} %{buildroot}%{_bindir}/panko-3
+-rm -rf doc/build/html/.doctrees doc/build/html/.buildinfo
+-## install_append end
+ 
+ %files
+ %defattr(-,root,root,-)
+ 
+ %files bin
+ %defattr(-,root,root,-)
+-/usr/bin/panko-%{python3_version}
+-/usr/bin/panko-3
++/usr/bin/panko
+ 
+ %files python
+ %defattr(-,root,root,-)
