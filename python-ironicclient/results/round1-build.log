@@ -1,0 +1,1270 @@
+Mock Version: 1.2.14
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/python-ironicclient.spec'], chrootPath='/var/lib/mock/clear-python-ironicclient/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f8235bc8f50>timeout=0uid=1000gid=1000user='mockbuild'printOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/python-ironicclient.spec'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/python-ironicclient-2.7.0-1.src.rpm
+Child return code was: 0
+LEAVE do --> 
+
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/python-ironicclient.spec '], chrootPath='/var/lib/mock/clear-python-ironicclient/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f8235bc8f50>timeout=0uid=1000gid=1000user='mockbuild'private_network=TrueprintOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/python-ironicclient.spec '] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.0kiK65
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
++ rm -rf python-ironicclient-2.7.0
++ /usr/bin/gzip -dc /builddir/build/SOURCES/python-ironicclient-2.7.0.tar.gz
++ /usr/bin/tar -xf -
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd python-ironicclient-2.7.0
++ /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ exit 0
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.F5qPi4
++ umask 022
++ cd /builddir/build/BUILD
++ cd python-ironicclient-2.7.0
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CFLAGS
++ http_proxy=http://127.0.0.1:9/
++ export http_proxy
++ https_proxy=http://127.0.0.1:9/
++ export https_proxy
++ ftp_proxy=http://127.0.0.1:9/
++ export ftp_proxy
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export no_proxy
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CXXFLAGS
++ FFLAGS='-g -O3 -feliminate-unused-debug-types  -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -m64 -fasynchronous-unwind-tables -Wp,-D_REENTRANT -ftree-loop-distribute-patterns -Wl,-z -Wl,now -Wl,-z -Wl,relro -malign-data=abi -fno-semantic-interposition -ftree-vectorize  -ftree-loop-vectorize -Wl,--enable-new-dtags '
++ export FFLAGS
++ LD_AS_NEEDED=1
++ export LD_AS_NEEDED
++ PKG_CONFIG_LIBDIR=/usr/lib64/pkgconfig
++ export PKG_CONFIG_LIBDIR
++ PATH=/usr/lib64/ccache/bin:/usr/local/bin:/usr/bin
++ export PATH
++ export PBR_VERSION=2.7.0
++ PBR_VERSION=2.7.0
++ export http_proxy=http://127.0.0.1:9/
++ http_proxy=http://127.0.0.1:9/
++ export https_proxy=http://127.0.0.1:9/
++ https_proxy=http://127.0.0.1:9/
++ export no_proxy=localhost,127.0.0.1,0.0.0.0
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export LANG=C.UTF-8
++ LANG=C.UTF-8
++ export SOURCE_DATE_EPOCH=1569392847
++ SOURCE_DATE_EPOCH=1569392847
++ export GCC_IGNORE_WERROR=1
++ GCC_IGNORE_WERROR=1
++ export AR=gcc-ar
++ AR=gcc-ar
++ export RANLIB=gcc-ranlib
++ RANLIB=gcc-ranlib
++ export NM=gcc-nm
++ NM=gcc-nm
++ export 'CFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ export 'FCFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FCFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'FFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'CXXFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ export MAKEFLAGS=-j4
++ MAKEFLAGS=-j4
++ python3 setup.py build
+running build
+running build_py
+creating build
+creating build/lib
+creating build/lib/ironicclient
+creating build/lib/ironicclient/tests
+creating build/lib/ironicclient/tests/unit
+creating build/lib/ironicclient/tests/unit/common
+copying ironicclient/tests/unit/common/test_utils.py -> build/lib/ironicclient/tests/unit/common
+copying ironicclient/tests/unit/common/test_base.py -> build/lib/ironicclient/tests/unit/common
+copying ironicclient/tests/unit/common/test_http.py -> build/lib/ironicclient/tests/unit/common
+copying ironicclient/tests/unit/common/__init__.py -> build/lib/ironicclient/tests/unit/common
+copying ironicclient/tests/unit/common/test_filecache.py -> build/lib/ironicclient/tests/unit/common
+copying ironicclient/tests/unit/common/test_cliutils.py -> build/lib/ironicclient/tests/unit/common
+creating build/lib/ironicclient/v1
+copying ironicclient/v1/portgroup.py -> build/lib/ironicclient/v1
+copying ironicclient/v1/deploy_template.py -> build/lib/ironicclient/v1
+copying ironicclient/v1/port_shell.py -> build/lib/ironicclient/v1
+copying ironicclient/v1/volume_target_shell.py -> build/lib/ironicclient/v1
+copying ironicclient/v1/volume_target.py -> build/lib/ironicclient/v1
+copying ironicclient/v1/chassis.py -> build/lib/ironicclient/v1
+copying ironicclient/v1/allocation.py -> build/lib/ironicclient/v1
+copying ironicclient/v1/port.py -> build/lib/ironicclient/v1
+copying ironicclient/v1/portgroup_shell.py -> build/lib/ironicclient/v1
+copying ironicclient/v1/events.py -> build/lib/ironicclient/v1
+copying ironicclient/v1/driver.py -> build/lib/ironicclient/v1
+copying ironicclient/v1/chassis_shell.py -> build/lib/ironicclient/v1
+copying ironicclient/v1/volume_connector.py -> build/lib/ironicclient/v1
+copying ironicclient/v1/conductor.py -> build/lib/ironicclient/v1
+copying ironicclient/v1/resource_fields.py -> build/lib/ironicclient/v1
+copying ironicclient/v1/__init__.py -> build/lib/ironicclient/v1
+copying ironicclient/v1/driver_shell.py -> build/lib/ironicclient/v1
+copying ironicclient/v1/volume_connector_shell.py -> build/lib/ironicclient/v1
+copying ironicclient/v1/client.py -> build/lib/ironicclient/v1
+copying ironicclient/v1/create_resources_shell.py -> build/lib/ironicclient/v1
+copying ironicclient/v1/utils.py -> build/lib/ironicclient/v1
+copying ironicclient/v1/create_resources.py -> build/lib/ironicclient/v1
+copying ironicclient/v1/node.py -> build/lib/ironicclient/v1
+copying ironicclient/v1/node_shell.py -> build/lib/ironicclient/v1
+copying ironicclient/v1/shell.py -> build/lib/ironicclient/v1
+creating build/lib/ironicclient/tests/unit/common/apiclient
+copying ironicclient/tests/unit/common/apiclient/test_exceptions.py -> build/lib/ironicclient/tests/unit/common/apiclient
+copying ironicclient/tests/unit/common/apiclient/test_base.py -> build/lib/ironicclient/tests/unit/common/apiclient
+copying ironicclient/tests/unit/common/apiclient/__init__.py -> build/lib/ironicclient/tests/unit/common/apiclient
+creating build/lib/ironicclient/common
+creating build/lib/ironicclient/common/apiclient
+copying ironicclient/common/apiclient/exceptions.py -> build/lib/ironicclient/common/apiclient
+copying ironicclient/common/apiclient/__init__.py -> build/lib/ironicclient/common/apiclient
+copying ironicclient/common/apiclient/base.py -> build/lib/ironicclient/common/apiclient
+copying ironicclient/tests/unit/test_shell.py -> build/lib/ironicclient/tests/unit
+copying ironicclient/tests/unit/test_exc.py -> build/lib/ironicclient/tests/unit
+copying ironicclient/tests/unit/test_client.py -> build/lib/ironicclient/tests/unit
+copying ironicclient/tests/unit/__init__.py -> build/lib/ironicclient/tests/unit
+copying ironicclient/tests/unit/utils.py -> build/lib/ironicclient/tests/unit
+copying ironicclient/tests/unit/test_import.py -> build/lib/ironicclient/tests/unit
+creating build/lib/ironicclient/tests/functional
+creating build/lib/ironicclient/tests/functional/osc
+creating build/lib/ironicclient/tests/functional/osc/v1
+copying ironicclient/tests/functional/osc/v1/test_baremetal_port_basic.py -> build/lib/ironicclient/tests/functional/osc/v1
+copying ironicclient/tests/functional/osc/v1/test_baremetal_portgroup_basic.py -> build/lib/ironicclient/tests/functional/osc/v1
+copying ironicclient/tests/functional/osc/v1/test_baremetal_conductor_basic.py -> build/lib/ironicclient/tests/functional/osc/v1
+copying ironicclient/tests/functional/osc/v1/test_baremetal_node_fields.py -> build/lib/ironicclient/tests/functional/osc/v1
+copying ironicclient/tests/functional/osc/v1/test_baremetal_node_negative.py -> build/lib/ironicclient/tests/functional/osc/v1
+copying ironicclient/tests/functional/osc/v1/test_baremetal_allocation.py -> build/lib/ironicclient/tests/functional/osc/v1
+copying ironicclient/tests/functional/osc/v1/test_baremetal_node_power_states.py -> build/lib/ironicclient/tests/functional/osc/v1
+copying ironicclient/tests/functional/osc/v1/__init__.py -> build/lib/ironicclient/tests/functional/osc/v1
+copying ironicclient/tests/functional/osc/v1/test_baremetal_node_provision_states.py -> build/lib/ironicclient/tests/functional/osc/v1
+copying ironicclient/tests/functional/osc/v1/test_baremetal_node_basic.py -> build/lib/ironicclient/tests/functional/osc/v1
+copying ironicclient/tests/functional/osc/v1/test_baremetal_driver_basic.py -> build/lib/ironicclient/tests/functional/osc/v1
+copying ironicclient/tests/functional/osc/v1/test_baremetal_chassis_basic.py -> build/lib/ironicclient/tests/functional/osc/v1
+copying ironicclient/tests/functional/osc/v1/test_baremetal_node_create_negative.py -> build/lib/ironicclient/tests/functional/osc/v1
+copying ironicclient/tests/functional/osc/v1/base.py -> build/lib/ironicclient/tests/functional/osc/v1
+copying ironicclient/tests/functional/osc/v1/test_baremetal_deploy_template_basic.py -> build/lib/ironicclient/tests/functional/osc/v1
+creating build/lib/ironicclient/tests/unit/v1
+copying ironicclient/tests/unit/v1/test_deploy_template.py -> build/lib/ironicclient/tests/unit/v1
+copying ironicclient/tests/unit/v1/test_portgroup.py -> build/lib/ironicclient/tests/unit/v1
+copying ironicclient/tests/unit/v1/test_create_resources.py -> build/lib/ironicclient/tests/unit/v1
+copying ironicclient/tests/unit/v1/test_node.py -> build/lib/ironicclient/tests/unit/v1
+copying ironicclient/tests/unit/v1/test_portgroup_shell.py -> build/lib/ironicclient/tests/unit/v1
+copying ironicclient/tests/unit/v1/test_resource_fields.py -> build/lib/ironicclient/tests/unit/v1
+copying ironicclient/tests/unit/v1/test_driver.py -> build/lib/ironicclient/tests/unit/v1
+copying ironicclient/tests/unit/v1/test_allocation.py -> build/lib/ironicclient/tests/unit/v1
+copying ironicclient/tests/unit/v1/test_events.py -> build/lib/ironicclient/tests/unit/v1
+copying ironicclient/tests/unit/v1/test_volume_target.py -> build/lib/ironicclient/tests/unit/v1
+copying ironicclient/tests/unit/v1/test_client.py -> build/lib/ironicclient/tests/unit/v1
+copying ironicclient/tests/unit/v1/test_node_shell.py -> build/lib/ironicclient/tests/unit/v1
+copying ironicclient/tests/unit/v1/test_volume_target_shell.py -> build/lib/ironicclient/tests/unit/v1
+copying ironicclient/tests/unit/v1/test_driver_shell.py -> build/lib/ironicclient/tests/unit/v1
+copying ironicclient/tests/unit/v1/__init__.py -> build/lib/ironicclient/tests/unit/v1
+copying ironicclient/tests/unit/v1/test_port.py -> build/lib/ironicclient/tests/unit/v1
+copying ironicclient/tests/unit/v1/test_volume_connector_shell.py -> build/lib/ironicclient/tests/unit/v1
+copying ironicclient/tests/unit/v1/test_conductor.py -> build/lib/ironicclient/tests/unit/v1
+copying ironicclient/tests/unit/v1/test_port_shell.py -> build/lib/ironicclient/tests/unit/v1
+copying ironicclient/tests/unit/v1/test_chassis.py -> build/lib/ironicclient/tests/unit/v1
+copying ironicclient/tests/unit/v1/test_chassis_shell.py -> build/lib/ironicclient/tests/unit/v1
+copying ironicclient/tests/unit/v1/test_volume_connector.py -> build/lib/ironicclient/tests/unit/v1
+copying ironicclient/tests/unit/v1/test_create_resources_shell.py -> build/lib/ironicclient/tests/unit/v1
+creating build/lib/ironicclient/tests/unit/osc
+copying ironicclient/tests/unit/osc/test_plugin.py -> build/lib/ironicclient/tests/unit/osc
+copying ironicclient/tests/unit/osc/fakes.py -> build/lib/ironicclient/tests/unit/osc
+copying ironicclient/tests/unit/osc/__init__.py -> build/lib/ironicclient/tests/unit/osc
+copying ironicclient/tests/functional/osc/__init__.py -> build/lib/ironicclient/tests/functional/osc
+copying ironicclient/__init__.py -> build/lib/ironicclient
+copying ironicclient/client.py -> build/lib/ironicclient
+copying ironicclient/exc.py -> build/lib/ironicclient
+copying ironicclient/shell.py -> build/lib/ironicclient
+copying ironicclient/common/http.py -> build/lib/ironicclient/common
+copying ironicclient/common/i18n.py -> build/lib/ironicclient/common
+copying ironicclient/common/cliutils.py -> build/lib/ironicclient/common
+copying ironicclient/common/__init__.py -> build/lib/ironicclient/common
+copying ironicclient/common/utils.py -> build/lib/ironicclient/common
+copying ironicclient/common/filecache.py -> build/lib/ironicclient/common
+copying ironicclient/common/base.py -> build/lib/ironicclient/common
+creating build/lib/ironicclient/osc
+creating build/lib/ironicclient/osc/v1
+copying ironicclient/osc/v1/baremetal_volume_target.py -> build/lib/ironicclient/osc/v1
+copying ironicclient/osc/v1/baremetal_chassis.py -> build/lib/ironicclient/osc/v1
+copying ironicclient/osc/v1/baremetal_portgroup.py -> build/lib/ironicclient/osc/v1
+copying ironicclient/osc/v1/baremetal_conductor.py -> build/lib/ironicclient/osc/v1
+copying ironicclient/osc/v1/baremetal_deploy_template.py -> build/lib/ironicclient/osc/v1
+copying ironicclient/osc/v1/baremetal_create.py -> build/lib/ironicclient/osc/v1
+copying ironicclient/osc/v1/baremetal_port.py -> build/lib/ironicclient/osc/v1
+copying ironicclient/osc/v1/baremetal_driver.py -> build/lib/ironicclient/osc/v1
+copying ironicclient/osc/v1/__init__.py -> build/lib/ironicclient/osc/v1
+copying ironicclient/osc/v1/baremetal_node.py -> build/lib/ironicclient/osc/v1
+copying ironicclient/osc/v1/baremetal_allocation.py -> build/lib/ironicclient/osc/v1
+copying ironicclient/osc/v1/baremetal_volume_connector.py -> build/lib/ironicclient/osc/v1
+copying ironicclient/tests/functional/test_portgroup.py -> build/lib/ironicclient/tests/functional
+copying ironicclient/tests/functional/test_node.py -> build/lib/ironicclient/tests/functional
+copying ironicclient/tests/functional/test_help_msg.py -> build/lib/ironicclient/tests/functional
+copying ironicclient/tests/functional/test_driver.py -> build/lib/ironicclient/tests/functional
+copying ironicclient/tests/functional/test_table_structure.py -> build/lib/ironicclient/tests/functional
+copying ironicclient/tests/functional/test_chassis_create.py -> build/lib/ironicclient/tests/functional
+copying ironicclient/tests/functional/__init__.py -> build/lib/ironicclient/tests/functional
+copying ironicclient/tests/functional/test_port.py -> build/lib/ironicclient/tests/functional
+copying ironicclient/tests/functional/test_node_set_power_state.py -> build/lib/ironicclient/tests/functional
+copying ironicclient/tests/functional/utils.py -> build/lib/ironicclient/tests/functional
+copying ironicclient/tests/functional/test_chassis.py -> build/lib/ironicclient/tests/functional
+copying ironicclient/tests/functional/test_json_response.py -> build/lib/ironicclient/tests/functional
+copying ironicclient/tests/functional/base.py -> build/lib/ironicclient/tests/functional
+copying ironicclient/osc/plugin.py -> build/lib/ironicclient/osc
+copying ironicclient/osc/__init__.py -> build/lib/ironicclient/osc
+copying ironicclient/tests/__init__.py -> build/lib/ironicclient/tests
+creating build/lib/ironicclient/tests/unit/osc/v1
+copying ironicclient/tests/unit/osc/v1/test_baremetal_volume_connector.py -> build/lib/ironicclient/tests/unit/osc/v1
+copying ironicclient/tests/unit/osc/v1/test_baremetal_port.py -> build/lib/ironicclient/tests/unit/osc/v1
+copying ironicclient/tests/unit/osc/v1/test_baremetal_deploy_template.py -> build/lib/ironicclient/tests/unit/osc/v1
+copying ironicclient/tests/unit/osc/v1/test_baremetal_conductor.py -> build/lib/ironicclient/tests/unit/osc/v1
+copying ironicclient/tests/unit/osc/v1/fakes.py -> build/lib/ironicclient/tests/unit/osc/v1
+copying ironicclient/tests/unit/osc/v1/test_baremetal_driver.py -> build/lib/ironicclient/tests/unit/osc/v1
+copying ironicclient/tests/unit/osc/v1/test_baremetal_volume_target.py -> build/lib/ironicclient/tests/unit/osc/v1
+copying ironicclient/tests/unit/osc/v1/test_baremetal_allocation.py -> build/lib/ironicclient/tests/unit/osc/v1
+copying ironicclient/tests/unit/osc/v1/__init__.py -> build/lib/ironicclient/tests/unit/osc/v1
+copying ironicclient/tests/unit/osc/v1/test_baremetal_chassis.py -> build/lib/ironicclient/tests/unit/osc/v1
+copying ironicclient/tests/unit/osc/v1/test_baremetal_portgroup.py -> build/lib/ironicclient/tests/unit/osc/v1
+copying ironicclient/tests/unit/osc/v1/test_baremetal_node.py -> build/lib/ironicclient/tests/unit/osc/v1
+copying ironicclient/tests/unit/osc/v1/test_baremetal_create.py -> build/lib/ironicclient/tests/unit/osc/v1
+running egg_info
+creating python_ironicclient.egg-info
+writing python_ironicclient.egg-info/PKG-INFO
+writing dependency_links to python_ironicclient.egg-info/dependency_links.txt
+writing entry points to python_ironicclient.egg-info/entry_points.txt
+writing requirements to python_ironicclient.egg-info/requires.txt
+writing top-level names to python_ironicclient.egg-info/top_level.txt
+[pbr] Processing SOURCES.txt
+writing manifest file 'python_ironicclient.egg-info/SOURCES.txt'
+warning: no files found matching 'AUTHORS'
+warning: no files found matching 'ChangeLog'
+warning: no previously-included files found matching '.gitignore'
+warning: no previously-included files found matching '.gitreview'
+warning: no previously-included files matching '*.pyc' found anywhere in distribution
+writing manifest file 'python_ironicclient.egg-info/SOURCES.txt'
++ exit 0
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.jONI54
++ umask 022
++ cd /builddir/build/BUILD
++ cd python-ironicclient-2.7.0
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ rm -rf /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64
++ mkdir -p /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64
++ export MAKEFLAGS=-j4
++ MAKEFLAGS=-j4
++ rm -rf /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64
++ export PBR_VERSION=2.7.0
++ PBR_VERSION=2.7.0
++ python3 -tt setup.py build install --root=/builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64
+running build
+running build_py
+running egg_info
+writing python_ironicclient.egg-info/PKG-INFO
+writing dependency_links to python_ironicclient.egg-info/dependency_links.txt
+writing entry points to python_ironicclient.egg-info/entry_points.txt
+writing requirements to python_ironicclient.egg-info/requires.txt
+writing top-level names to python_ironicclient.egg-info/top_level.txt
+[pbr] Reusing existing SOURCES.txt
+running install
+[pbr] Generating AUTHORS
+[pbr] AUTHORS complete (0.0s)
+running install_lib
+creating /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64
+creating /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr
+creating /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib
+creating /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7
+creating /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages
+creating /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient
+creating /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1
+copying build/lib/ironicclient/v1/portgroup.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1
+copying build/lib/ironicclient/v1/deploy_template.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1
+copying build/lib/ironicclient/v1/port_shell.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1
+copying build/lib/ironicclient/v1/volume_target_shell.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1
+copying build/lib/ironicclient/v1/volume_target.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1
+copying build/lib/ironicclient/v1/chassis.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1
+copying build/lib/ironicclient/v1/allocation.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1
+copying build/lib/ironicclient/v1/port.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1
+copying build/lib/ironicclient/v1/portgroup_shell.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1
+copying build/lib/ironicclient/v1/events.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1
+copying build/lib/ironicclient/v1/driver.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1
+copying build/lib/ironicclient/v1/chassis_shell.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1
+copying build/lib/ironicclient/v1/volume_connector.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1
+copying build/lib/ironicclient/v1/conductor.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1
+copying build/lib/ironicclient/v1/resource_fields.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1
+copying build/lib/ironicclient/v1/__init__.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1
+copying build/lib/ironicclient/v1/driver_shell.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1
+copying build/lib/ironicclient/v1/volume_connector_shell.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1
+copying build/lib/ironicclient/v1/client.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1
+copying build/lib/ironicclient/v1/create_resources_shell.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1
+copying build/lib/ironicclient/v1/utils.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1
+copying build/lib/ironicclient/v1/create_resources.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1
+copying build/lib/ironicclient/v1/node.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1
+copying build/lib/ironicclient/v1/node_shell.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1
+copying build/lib/ironicclient/v1/shell.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1
+creating /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/osc
+creating /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/osc/v1
+copying build/lib/ironicclient/osc/v1/baremetal_volume_target.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/osc/v1
+copying build/lib/ironicclient/osc/v1/baremetal_chassis.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/osc/v1
+copying build/lib/ironicclient/osc/v1/baremetal_portgroup.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/osc/v1
+copying build/lib/ironicclient/osc/v1/baremetal_conductor.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/osc/v1
+copying build/lib/ironicclient/osc/v1/baremetal_deploy_template.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/osc/v1
+copying build/lib/ironicclient/osc/v1/baremetal_create.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/osc/v1
+copying build/lib/ironicclient/osc/v1/baremetal_port.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/osc/v1
+copying build/lib/ironicclient/osc/v1/baremetal_driver.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/osc/v1
+copying build/lib/ironicclient/osc/v1/__init__.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/osc/v1
+copying build/lib/ironicclient/osc/v1/baremetal_node.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/osc/v1
+copying build/lib/ironicclient/osc/v1/baremetal_allocation.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/osc/v1
+copying build/lib/ironicclient/osc/v1/baremetal_volume_connector.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/osc/v1
+copying build/lib/ironicclient/osc/plugin.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/osc
+copying build/lib/ironicclient/osc/__init__.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/osc
+copying build/lib/ironicclient/__init__.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient
+copying build/lib/ironicclient/client.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient
+copying build/lib/ironicclient/exc.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient
+creating /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests
+copying build/lib/ironicclient/tests/__init__.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests
+creating /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional
+copying build/lib/ironicclient/tests/functional/test_portgroup.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional
+copying build/lib/ironicclient/tests/functional/test_node.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional
+copying build/lib/ironicclient/tests/functional/test_help_msg.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional
+copying build/lib/ironicclient/tests/functional/test_driver.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional
+copying build/lib/ironicclient/tests/functional/test_table_structure.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional
+copying build/lib/ironicclient/tests/functional/test_chassis_create.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional
+creating /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc
+creating /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1
+copying build/lib/ironicclient/tests/functional/osc/v1/test_baremetal_port_basic.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1
+copying build/lib/ironicclient/tests/functional/osc/v1/test_baremetal_portgroup_basic.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1
+copying build/lib/ironicclient/tests/functional/osc/v1/test_baremetal_conductor_basic.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1
+copying build/lib/ironicclient/tests/functional/osc/v1/test_baremetal_node_fields.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1
+copying build/lib/ironicclient/tests/functional/osc/v1/test_baremetal_node_negative.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1
+copying build/lib/ironicclient/tests/functional/osc/v1/test_baremetal_allocation.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1
+copying build/lib/ironicclient/tests/functional/osc/v1/test_baremetal_node_power_states.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1
+copying build/lib/ironicclient/tests/functional/osc/v1/__init__.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1
+copying build/lib/ironicclient/tests/functional/osc/v1/test_baremetal_node_provision_states.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1
+copying build/lib/ironicclient/tests/functional/osc/v1/test_baremetal_node_basic.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1
+copying build/lib/ironicclient/tests/functional/osc/v1/test_baremetal_driver_basic.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1
+copying build/lib/ironicclient/tests/functional/osc/v1/test_baremetal_chassis_basic.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1
+copying build/lib/ironicclient/tests/functional/osc/v1/test_baremetal_node_create_negative.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1
+copying build/lib/ironicclient/tests/functional/osc/v1/base.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1
+copying build/lib/ironicclient/tests/functional/osc/v1/test_baremetal_deploy_template_basic.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1
+copying build/lib/ironicclient/tests/functional/osc/__init__.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc
+copying build/lib/ironicclient/tests/functional/__init__.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional
+copying build/lib/ironicclient/tests/functional/test_port.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional
+copying build/lib/ironicclient/tests/functional/test_node_set_power_state.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional
+copying build/lib/ironicclient/tests/functional/utils.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional
+copying build/lib/ironicclient/tests/functional/test_chassis.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional
+copying build/lib/ironicclient/tests/functional/test_json_response.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional
+copying build/lib/ironicclient/tests/functional/base.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional
+creating /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit
+copying build/lib/ironicclient/tests/unit/test_shell.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit
+copying build/lib/ironicclient/tests/unit/test_exc.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit
+copying build/lib/ironicclient/tests/unit/test_client.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit
+creating /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1
+copying build/lib/ironicclient/tests/unit/v1/test_deploy_template.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1
+copying build/lib/ironicclient/tests/unit/v1/test_portgroup.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1
+copying build/lib/ironicclient/tests/unit/v1/test_create_resources.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1
+copying build/lib/ironicclient/tests/unit/v1/test_node.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1
+copying build/lib/ironicclient/tests/unit/v1/test_portgroup_shell.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1
+copying build/lib/ironicclient/tests/unit/v1/test_resource_fields.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1
+copying build/lib/ironicclient/tests/unit/v1/test_driver.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1
+copying build/lib/ironicclient/tests/unit/v1/test_allocation.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1
+copying build/lib/ironicclient/tests/unit/v1/test_events.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1
+copying build/lib/ironicclient/tests/unit/v1/test_volume_target.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1
+copying build/lib/ironicclient/tests/unit/v1/test_client.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1
+copying build/lib/ironicclient/tests/unit/v1/test_node_shell.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1
+copying build/lib/ironicclient/tests/unit/v1/test_volume_target_shell.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1
+copying build/lib/ironicclient/tests/unit/v1/test_driver_shell.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1
+copying build/lib/ironicclient/tests/unit/v1/__init__.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1
+copying build/lib/ironicclient/tests/unit/v1/test_port.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1
+copying build/lib/ironicclient/tests/unit/v1/test_volume_connector_shell.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1
+copying build/lib/ironicclient/tests/unit/v1/test_conductor.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1
+copying build/lib/ironicclient/tests/unit/v1/test_port_shell.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1
+copying build/lib/ironicclient/tests/unit/v1/test_chassis.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1
+copying build/lib/ironicclient/tests/unit/v1/test_chassis_shell.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1
+copying build/lib/ironicclient/tests/unit/v1/test_volume_connector.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1
+copying build/lib/ironicclient/tests/unit/v1/test_create_resources_shell.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1
+creating /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc
+copying build/lib/ironicclient/tests/unit/osc/test_plugin.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc
+copying build/lib/ironicclient/tests/unit/osc/fakes.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc
+creating /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1
+copying build/lib/ironicclient/tests/unit/osc/v1/test_baremetal_volume_connector.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1
+copying build/lib/ironicclient/tests/unit/osc/v1/test_baremetal_port.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1
+copying build/lib/ironicclient/tests/unit/osc/v1/test_baremetal_deploy_template.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1
+copying build/lib/ironicclient/tests/unit/osc/v1/test_baremetal_conductor.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1
+copying build/lib/ironicclient/tests/unit/osc/v1/fakes.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1
+copying build/lib/ironicclient/tests/unit/osc/v1/test_baremetal_driver.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1
+copying build/lib/ironicclient/tests/unit/osc/v1/test_baremetal_volume_target.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1
+copying build/lib/ironicclient/tests/unit/osc/v1/test_baremetal_allocation.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1
+copying build/lib/ironicclient/tests/unit/osc/v1/__init__.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1
+copying build/lib/ironicclient/tests/unit/osc/v1/test_baremetal_chassis.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1
+copying build/lib/ironicclient/tests/unit/osc/v1/test_baremetal_portgroup.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1
+copying build/lib/ironicclient/tests/unit/osc/v1/test_baremetal_node.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1
+copying build/lib/ironicclient/tests/unit/osc/v1/test_baremetal_create.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1
+copying build/lib/ironicclient/tests/unit/osc/__init__.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc
+copying build/lib/ironicclient/tests/unit/__init__.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit
+copying build/lib/ironicclient/tests/unit/utils.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit
+copying build/lib/ironicclient/tests/unit/test_import.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit
+creating /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/common
+copying build/lib/ironicclient/tests/unit/common/test_utils.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/common
+copying build/lib/ironicclient/tests/unit/common/test_base.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/common
+copying build/lib/ironicclient/tests/unit/common/test_http.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/common
+copying build/lib/ironicclient/tests/unit/common/__init__.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/common
+copying build/lib/ironicclient/tests/unit/common/test_filecache.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/common
+creating /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/apiclient
+copying build/lib/ironicclient/tests/unit/common/apiclient/test_exceptions.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/apiclient
+copying build/lib/ironicclient/tests/unit/common/apiclient/test_base.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/apiclient
+copying build/lib/ironicclient/tests/unit/common/apiclient/__init__.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/apiclient
+copying build/lib/ironicclient/tests/unit/common/test_cliutils.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/common
+creating /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/common
+copying build/lib/ironicclient/common/http.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/common
+copying build/lib/ironicclient/common/i18n.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/common
+copying build/lib/ironicclient/common/cliutils.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/common
+copying build/lib/ironicclient/common/__init__.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/common
+copying build/lib/ironicclient/common/utils.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/common
+copying build/lib/ironicclient/common/filecache.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/common
+creating /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/common/apiclient
+copying build/lib/ironicclient/common/apiclient/exceptions.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/common/apiclient
+copying build/lib/ironicclient/common/apiclient/__init__.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/common/apiclient
+copying build/lib/ironicclient/common/apiclient/base.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/common/apiclient
+copying build/lib/ironicclient/common/base.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/common
+copying build/lib/ironicclient/shell.py -> /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1/portgroup.py to portgroup.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1/deploy_template.py to deploy_template.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1/port_shell.py to port_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1/volume_target_shell.py to volume_target_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1/volume_target.py to volume_target.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1/chassis.py to chassis.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1/allocation.py to allocation.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1/port.py to port.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1/portgroup_shell.py to portgroup_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1/events.py to events.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1/driver.py to driver.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1/chassis_shell.py to chassis_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1/volume_connector.py to volume_connector.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1/conductor.py to conductor.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1/resource_fields.py to resource_fields.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1/driver_shell.py to driver_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1/volume_connector_shell.py to volume_connector_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1/client.py to client.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1/create_resources_shell.py to create_resources_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1/utils.py to utils.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1/create_resources.py to create_resources.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1/node.py to node.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1/node_shell.py to node_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/v1/shell.py to shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_volume_target.py to baremetal_volume_target.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_chassis.py to baremetal_chassis.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_portgroup.py to baremetal_portgroup.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_conductor.py to baremetal_conductor.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_deploy_template.py to baremetal_deploy_template.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_create.py to baremetal_create.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_port.py to baremetal_port.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_driver.py to baremetal_driver.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/osc/v1/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_node.py to baremetal_node.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_allocation.py to baremetal_allocation.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_volume_connector.py to baremetal_volume_connector.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/osc/plugin.py to plugin.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/osc/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/client.py to client.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/exc.py to exc.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/test_portgroup.py to test_portgroup.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/test_node.py to test_node.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/test_help_msg.py to test_help_msg.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/test_driver.py to test_driver.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/test_table_structure.py to test_table_structure.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/test_chassis_create.py to test_chassis_create.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_port_basic.py to test_baremetal_port_basic.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_portgroup_basic.py to test_baremetal_portgroup_basic.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_conductor_basic.py to test_baremetal_conductor_basic.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_node_fields.py to test_baremetal_node_fields.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_node_negative.py to test_baremetal_node_negative.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_allocation.py to test_baremetal_allocation.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_node_power_states.py to test_baremetal_node_power_states.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_node_provision_states.py to test_baremetal_node_provision_states.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_node_basic.py to test_baremetal_node_basic.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_driver_basic.py to test_baremetal_driver_basic.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_chassis_basic.py to test_baremetal_chassis_basic.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_node_create_negative.py to test_baremetal_node_create_negative.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/base.py to base.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_deploy_template_basic.py to test_baremetal_deploy_template_basic.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/test_port.py to test_port.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/test_node_set_power_state.py to test_node_set_power_state.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/utils.py to utils.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/test_chassis.py to test_chassis.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/test_json_response.py to test_json_response.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/functional/base.py to base.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/test_shell.py to test_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/test_exc.py to test_exc.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/test_client.py to test_client.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_deploy_template.py to test_deploy_template.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_portgroup.py to test_portgroup.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_create_resources.py to test_create_resources.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_node.py to test_node.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_portgroup_shell.py to test_portgroup_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_resource_fields.py to test_resource_fields.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_driver.py to test_driver.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_allocation.py to test_allocation.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_events.py to test_events.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_volume_target.py to test_volume_target.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_client.py to test_client.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_node_shell.py to test_node_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_volume_target_shell.py to test_volume_target_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_driver_shell.py to test_driver_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_port.py to test_port.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_volume_connector_shell.py to test_volume_connector_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_conductor.py to test_conductor.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_port_shell.py to test_port_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_chassis.py to test_chassis.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_chassis_shell.py to test_chassis_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_volume_connector.py to test_volume_connector.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_create_resources_shell.py to test_create_resources_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/test_plugin.py to test_plugin.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/fakes.py to fakes.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_volume_connector.py to test_baremetal_volume_connector.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_port.py to test_baremetal_port.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_deploy_template.py to test_baremetal_deploy_template.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_conductor.py to test_baremetal_conductor.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/fakes.py to fakes.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_driver.py to test_baremetal_driver.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_volume_target.py to test_baremetal_volume_target.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_allocation.py to test_baremetal_allocation.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_chassis.py to test_baremetal_chassis.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_portgroup.py to test_baremetal_portgroup.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_node.py to test_baremetal_node.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_create.py to test_baremetal_create.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/utils.py to utils.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/test_import.py to test_import.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/test_utils.py to test_utils.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/test_base.py to test_base.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/test_http.py to test_http.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/test_filecache.py to test_filecache.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/apiclient/test_exceptions.py to test_exceptions.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/apiclient/test_base.py to test_base.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/apiclient/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/test_cliutils.py to test_cliutils.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/common/http.py to http.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/common/i18n.py to i18n.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/common/cliutils.py to cliutils.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/common/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/common/utils.py to utils.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/common/filecache.py to filecache.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/common/apiclient/exceptions.py to exceptions.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/common/apiclient/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/common/apiclient/base.py to base.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/common/base.py to base.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/ironicclient/shell.py to shell.cpython-37.pyc
+running install_egg_info
+Copying python_ironicclient.egg-info to /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/python_ironicclient-2.7.0-py3.7.egg-info
+running install_scripts
+Installing ironic script to /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/bin
+/usr/lib/python3.7/site-packages/pbr/packaging.py:435: EasyInstallDeprecationWarning: Use get_header
+  header = easy_install.get_script_header("", executable, is_wininst)
+----[ mark ]----
++ echo '----[' mark ']----'
++ cat /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7/site-packages/python_ironicclient-2.7.0-py3.7.egg-info/requires.txt
+pbr!=2.1.0,>=2.0.0
+appdirs>=1.3.0
+dogpile.cache>=0.6.2
+jsonschema<3.0.0,>=2.6.0
+keystoneauth1>=3.4.0
+osc-lib>=1.10.0
+oslo.i18n>=3.15.3
+oslo.serialization!=2.19.1,>=2.18.0
+oslo.utils>=3.33.0
+PrettyTable<0.8,>=0.7.1
+PyYAML>=3.12
+requests>=2.14.2
+six>=1.10.0
+[cli]
+python-openstackclient>=3.12.0
+[test]
+hacking<1.1.0,>=1.0.0
+coverage!=4.4,>=4.0
+doc8>=0.6.0
+fixtures>=3.0.0
+requests-mock>=1.2.0
+mock>=2.0.0
+Babel!=2.4.0,>=2.3.4
+oslotest>=3.2.0
+testtools>=2.2.0
+tempest>=17.1.0
+stestr>=1.0.0
+ddt>=1.0.1
+python-openstackclient>=3.12.0
+----[ mark ]----
++ echo '----[' mark ']----'
++ rm -f /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/share/info/dir
+++ find /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64 -path 'etc/*' '!' -type d
++ test -z ''
++ rm -rf '/builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/etc/*'
++ rm -rf '/builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/share/factory/*'
++ find /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64 -name __pycache__
++ xargs rm -rf --
++ '[' -d /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/share/mime ']'
+++ getconf _NPROCESSORS_ONLN
++ RPM_XARGS_PFLAG=-P4
++ find /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64 -name '*.so.avx512' -print0
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -5
++ find /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib64/haswell/avx512_1 -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib64/haswell/avx512_1’: No such file or directory
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -2
++ find /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64 -name '*.so.avx2' -print0
++ find /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib64/haswell '!' -path '/usr/lib64/haswell/avx512_1/*' -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib64/haswell’: No such file or directory
++ xargs -0rtn1 -P4 /usr/lib/rpm/clr/brp-create-abi
++ sort -u
++ find /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib64/ -maxdepth 1 -name '*.so*' -type f -print0
+find: ‘/builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib64/’: No such file or directory
++ /usr/lib/rpm/find-debuginfo.sh --strict-build-id /builddir/build/BUILD/python-ironicclient-2.7.0
+find: ‘debug’: No such file or directory
++ '[' -d /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/debug ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/debug ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/src/debug ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/debug.force ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/src/debug.force ']'
++ :
++ /usr/lib/rpm/check-buildroot
++ /usr/lib/rpm/clr/brp-strip-static-archive /usr/bin/strip
++ /usr/lib/rpm/clr/brp-strip-comment-note /usr/bin/strip /usr/bin/objdump
++ /usr/lib/rpm/clr/brp-python-bytecompile
+[BYTECOMPILE] Building for /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64/usr/lib/python3.7 using /usr/bin/python3.7
++ find /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64 -print0
++ xargs -0 touch -h -d '@1549052798 '
++ /usr/lib/rpm/clr/brp-java-repack-jars
+Executing(%check): /bin/sh -e /var/tmp/rpm-tmp.Ak0s65
++ umask 022
++ cd /builddir/build/BUILD
++ cd python-ironicclient-2.7.0
+dont need check
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ export http_proxy=http://127.0.0.1:9/
++ http_proxy=http://127.0.0.1:9/
++ export https_proxy=http://127.0.0.1:9/
++ https_proxy=http://127.0.0.1:9/
++ export no_proxy=localhost,127.0.0.1,0.0.0.0
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ echo 'dont need check'
++ exit 0
+Processing files: python-ironicclient-2.7.0-1.x86_64
+Processing files: python-ironicclient-debuginfo-2.7.0-1.x86_64
+Processing files: python-ironicclient-abi-2.7.0-1.x86_64
+Checking for unpackaged file(s): /usr/lib/rpm/check-files /builddir/build/BUILDROOT/python-ironicclient-2.7.0-1.x86_64
+warning: Empty %files file /builddir/build/BUILD/python-ironicclient-2.7.0/debugfiles.list
+warning: Empty %files file /builddir/build/BUILD/python-ironicclient-2.7.0/abifiles.list
+error: Installed (but unpackaged) file(s) found:
+   /usr/bin/ironic
+   /usr/lib/python3.7/site-packages/ironicclient/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/__pycache__/client.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/__pycache__/exc.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/__pycache__/shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/client.py
+   /usr/lib/python3.7/site-packages/ironicclient/common/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/common/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/common/__pycache__/base.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/common/__pycache__/cliutils.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/common/__pycache__/filecache.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/common/__pycache__/http.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/common/__pycache__/i18n.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/common/__pycache__/utils.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/common/apiclient/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/common/apiclient/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/common/apiclient/__pycache__/base.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/common/apiclient/__pycache__/exceptions.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/common/apiclient/base.py
+   /usr/lib/python3.7/site-packages/ironicclient/common/apiclient/exceptions.py
+   /usr/lib/python3.7/site-packages/ironicclient/common/base.py
+   /usr/lib/python3.7/site-packages/ironicclient/common/cliutils.py
+   /usr/lib/python3.7/site-packages/ironicclient/common/filecache.py
+   /usr/lib/python3.7/site-packages/ironicclient/common/http.py
+   /usr/lib/python3.7/site-packages/ironicclient/common/i18n.py
+   /usr/lib/python3.7/site-packages/ironicclient/common/utils.py
+   /usr/lib/python3.7/site-packages/ironicclient/exc.py
+   /usr/lib/python3.7/site-packages/ironicclient/osc/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/osc/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/osc/__pycache__/plugin.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/osc/plugin.py
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/__pycache__/baremetal_allocation.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/__pycache__/baremetal_chassis.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/__pycache__/baremetal_conductor.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/__pycache__/baremetal_create.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/__pycache__/baremetal_deploy_template.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/__pycache__/baremetal_driver.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/__pycache__/baremetal_node.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/__pycache__/baremetal_port.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/__pycache__/baremetal_portgroup.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/__pycache__/baremetal_volume_connector.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/__pycache__/baremetal_volume_target.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_allocation.py
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_chassis.py
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_conductor.py
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_create.py
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_deploy_template.py
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_driver.py
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_node.py
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_port.py
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_portgroup.py
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_volume_connector.py
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_volume_target.py
+   /usr/lib/python3.7/site-packages/ironicclient/shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/__pycache__/base.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/__pycache__/test_chassis.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/__pycache__/test_chassis_create.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/__pycache__/test_driver.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/__pycache__/test_help_msg.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/__pycache__/test_json_response.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/__pycache__/test_node.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/__pycache__/test_node_set_power_state.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/__pycache__/test_port.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/__pycache__/test_portgroup.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/__pycache__/test_table_structure.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/__pycache__/utils.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/base.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__pycache__/base.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__pycache__/test_baremetal_allocation.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__pycache__/test_baremetal_chassis_basic.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__pycache__/test_baremetal_conductor_basic.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__pycache__/test_baremetal_deploy_template_basic.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__pycache__/test_baremetal_driver_basic.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__pycache__/test_baremetal_node_basic.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__pycache__/test_baremetal_node_create_negative.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__pycache__/test_baremetal_node_fields.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__pycache__/test_baremetal_node_negative.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__pycache__/test_baremetal_node_power_states.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__pycache__/test_baremetal_node_provision_states.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__pycache__/test_baremetal_port_basic.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__pycache__/test_baremetal_portgroup_basic.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/base.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_allocation.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_chassis_basic.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_conductor_basic.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_deploy_template_basic.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_driver_basic.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_node_basic.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_node_create_negative.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_node_fields.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_node_negative.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_node_power_states.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_node_provision_states.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_port_basic.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_portgroup_basic.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/test_chassis.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/test_chassis_create.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/test_driver.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/test_help_msg.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/test_json_response.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/test_node.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/test_node_set_power_state.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/test_port.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/test_portgroup.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/test_table_structure.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/utils.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/__pycache__/test_client.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/__pycache__/test_exc.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/__pycache__/test_import.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/__pycache__/test_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/__pycache__/utils.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/__pycache__/test_base.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/__pycache__/test_cliutils.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/__pycache__/test_filecache.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/__pycache__/test_http.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/__pycache__/test_utils.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/apiclient/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/apiclient/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/apiclient/__pycache__/test_base.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/apiclient/__pycache__/test_exceptions.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/apiclient/test_base.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/apiclient/test_exceptions.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/test_base.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/test_cliutils.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/test_filecache.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/test_http.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/test_utils.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/__pycache__/fakes.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/__pycache__/test_plugin.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/fakes.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/test_plugin.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/__pycache__/fakes.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/__pycache__/test_baremetal_allocation.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/__pycache__/test_baremetal_chassis.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/__pycache__/test_baremetal_conductor.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/__pycache__/test_baremetal_create.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/__pycache__/test_baremetal_deploy_template.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/__pycache__/test_baremetal_driver.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/__pycache__/test_baremetal_node.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/__pycache__/test_baremetal_port.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/__pycache__/test_baremetal_portgroup.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/__pycache__/test_baremetal_volume_connector.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/__pycache__/test_baremetal_volume_target.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/fakes.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_allocation.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_chassis.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_conductor.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_create.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_deploy_template.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_driver.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_node.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_port.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_portgroup.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_volume_connector.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_volume_target.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/test_client.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/test_exc.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/test_import.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/test_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/utils.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_allocation.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_chassis.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_chassis_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_client.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_conductor.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_create_resources.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_create_resources_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_deploy_template.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_driver.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_driver_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_events.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_node.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_node_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_port.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_port_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_portgroup.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_portgroup_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_resource_fields.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_volume_connector.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_volume_connector_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_volume_target.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_volume_target_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_allocation.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_chassis.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_chassis_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_client.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_conductor.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_create_resources.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_create_resources_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_deploy_template.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_driver.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_driver_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_events.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_node.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_node_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_port.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_port_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_portgroup.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_portgroup_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_resource_fields.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_volume_connector.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_volume_connector_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_volume_target.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_volume_target_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/allocation.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/chassis.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/chassis_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/client.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/conductor.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/create_resources.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/create_resources_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/deploy_template.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/driver.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/driver_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/events.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/node.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/node_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/port.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/port_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/portgroup.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/portgroup_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/resource_fields.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/utils.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/volume_connector.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/volume_connector_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/volume_target.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/volume_target_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/allocation.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/chassis.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/chassis_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/client.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/conductor.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/create_resources.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/create_resources_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/deploy_template.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/driver.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/driver_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/events.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/node.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/node_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/port.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/port_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/portgroup.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/portgroup_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/resource_fields.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/utils.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/volume_connector.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/volume_connector_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/volume_target.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/volume_target_shell.py
+   /usr/lib/python3.7/site-packages/python_ironicclient-2.7.0-py3.7.egg-info/PKG-INFO
+   /usr/lib/python3.7/site-packages/python_ironicclient-2.7.0-py3.7.egg-info/SOURCES.txt
+   /usr/lib/python3.7/site-packages/python_ironicclient-2.7.0-py3.7.egg-info/dependency_links.txt
+   /usr/lib/python3.7/site-packages/python_ironicclient-2.7.0-py3.7.egg-info/entry_points.txt
+   /usr/lib/python3.7/site-packages/python_ironicclient-2.7.0-py3.7.egg-info/not-zip-safe
+   /usr/lib/python3.7/site-packages/python_ironicclient-2.7.0-py3.7.egg-info/requires.txt
+   /usr/lib/python3.7/site-packages/python_ironicclient-2.7.0-py3.7.egg-info/top_level.txt
+    Empty %files file /builddir/build/BUILD/python-ironicclient-2.7.0/debugfiles.list
+    Empty %files file /builddir/build/BUILD/python-ironicclient-2.7.0/abifiles.list
+    Installed (but unpackaged) file(s) found:
+   /usr/bin/ironic
+   /usr/lib/python3.7/site-packages/ironicclient/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/__pycache__/client.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/__pycache__/exc.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/__pycache__/shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/client.py
+   /usr/lib/python3.7/site-packages/ironicclient/common/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/common/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/common/__pycache__/base.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/common/__pycache__/cliutils.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/common/__pycache__/filecache.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/common/__pycache__/http.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/common/__pycache__/i18n.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/common/__pycache__/utils.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/common/apiclient/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/common/apiclient/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/common/apiclient/__pycache__/base.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/common/apiclient/__pycache__/exceptions.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/common/apiclient/base.py
+   /usr/lib/python3.7/site-packages/ironicclient/common/apiclient/exceptions.py
+   /usr/lib/python3.7/site-packages/ironicclient/common/base.py
+   /usr/lib/python3.7/site-packages/ironicclient/common/cliutils.py
+   /usr/lib/python3.7/site-packages/ironicclient/common/filecache.py
+   /usr/lib/python3.7/site-packages/ironicclient/common/http.py
+   /usr/lib/python3.7/site-packages/ironicclient/common/i18n.py
+   /usr/lib/python3.7/site-packages/ironicclient/common/utils.py
+   /usr/lib/python3.7/site-packages/ironicclient/exc.py
+   /usr/lib/python3.7/site-packages/ironicclient/osc/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/osc/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/osc/__pycache__/plugin.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/osc/plugin.py
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/__pycache__/baremetal_allocation.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/__pycache__/baremetal_chassis.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/__pycache__/baremetal_conductor.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/__pycache__/baremetal_create.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/__pycache__/baremetal_deploy_template.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/__pycache__/baremetal_driver.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/__pycache__/baremetal_node.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/__pycache__/baremetal_port.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/__pycache__/baremetal_portgroup.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/__pycache__/baremetal_volume_connector.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/__pycache__/baremetal_volume_target.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_allocation.py
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_chassis.py
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_conductor.py
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_create.py
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_deploy_template.py
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_driver.py
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_node.py
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_port.py
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_portgroup.py
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_volume_connector.py
+   /usr/lib/python3.7/site-packages/ironicclient/osc/v1/baremetal_volume_target.py
+   /usr/lib/python3.7/site-packages/ironicclient/shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/__pycache__/base.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/__pycache__/test_chassis.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/__pycache__/test_chassis_create.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/__pycache__/test_driver.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/__pycache__/test_help_msg.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/__pycache__/test_json_response.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/__pycache__/test_node.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/__pycache__/test_node_set_power_state.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/__pycache__/test_port.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/__pycache__/test_portgroup.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/__pycache__/test_table_structure.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/__pycache__/utils.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/base.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__pycache__/base.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__pycache__/test_baremetal_allocation.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__pycache__/test_baremetal_chassis_basic.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__pycache__/test_baremetal_conductor_basic.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__pycache__/test_baremetal_deploy_template_basic.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__pycache__/test_baremetal_driver_basic.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__pycache__/test_baremetal_node_basic.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__pycache__/test_baremetal_node_create_negative.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__pycache__/test_baremetal_node_fields.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__pycache__/test_baremetal_node_negative.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__pycache__/test_baremetal_node_power_states.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__pycache__/test_baremetal_node_provision_states.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__pycache__/test_baremetal_port_basic.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/__pycache__/test_baremetal_portgroup_basic.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/base.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_allocation.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_chassis_basic.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_conductor_basic.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_deploy_template_basic.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_driver_basic.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_node_basic.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_node_create_negative.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_node_fields.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_node_negative.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_node_power_states.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_node_provision_states.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_port_basic.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/osc/v1/test_baremetal_portgroup_basic.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/test_chassis.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/test_chassis_create.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/test_driver.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/test_help_msg.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/test_json_response.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/test_node.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/test_node_set_power_state.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/test_port.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/test_portgroup.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/test_table_structure.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/functional/utils.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/__pycache__/test_client.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/__pycache__/test_exc.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/__pycache__/test_import.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/__pycache__/test_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/__pycache__/utils.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/__pycache__/test_base.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/__pycache__/test_cliutils.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/__pycache__/test_filecache.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/__pycache__/test_http.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/__pycache__/test_utils.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/apiclient/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/apiclient/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/apiclient/__pycache__/test_base.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/apiclient/__pycache__/test_exceptions.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/apiclient/test_base.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/apiclient/test_exceptions.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/test_base.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/test_cliutils.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/test_filecache.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/test_http.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/common/test_utils.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/__pycache__/fakes.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/__pycache__/test_plugin.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/fakes.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/test_plugin.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/__pycache__/fakes.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/__pycache__/test_baremetal_allocation.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/__pycache__/test_baremetal_chassis.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/__pycache__/test_baremetal_conductor.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/__pycache__/test_baremetal_create.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/__pycache__/test_baremetal_deploy_template.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/__pycache__/test_baremetal_driver.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/__pycache__/test_baremetal_node.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/__pycache__/test_baremetal_port.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/__pycache__/test_baremetal_portgroup.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/__pycache__/test_baremetal_volume_connector.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/__pycache__/test_baremetal_volume_target.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/fakes.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_allocation.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_chassis.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_conductor.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_create.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_deploy_template.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_driver.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_node.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_port.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_portgroup.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_volume_connector.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/osc/v1/test_baremetal_volume_target.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/test_client.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/test_exc.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/test_import.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/test_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/utils.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_allocation.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_chassis.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_chassis_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_client.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_conductor.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_create_resources.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_create_resources_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_deploy_template.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_driver.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_driver_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_events.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_node.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_node_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_port.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_port_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_portgroup.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_portgroup_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_resource_fields.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_volume_connector.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_volume_connector_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_volume_target.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/__pycache__/test_volume_target_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_allocation.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_chassis.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_chassis_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_client.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_conductor.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_create_resources.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_create_resources_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_deploy_template.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_driver.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_driver_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_events.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_node.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_node_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_port.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_port_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_portgroup.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_portgroup_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_resource_fields.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_volume_connector.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_volume_connector_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_volume_target.py
+   /usr/lib/python3.7/site-packages/ironicclient/tests/unit/v1/test_volume_target_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__init__.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/__init__.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/allocation.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/chassis.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/chassis_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/client.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/conductor.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/create_resources.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/create_resources_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/deploy_template.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/driver.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/driver_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/events.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/node.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/node_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/port.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/port_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/portgroup.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/portgroup_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/resource_fields.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/utils.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/volume_connector.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/volume_connector_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/volume_target.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/__pycache__/volume_target_shell.cpython-37.pyc
+   /usr/lib/python3.7/site-packages/ironicclient/v1/allocation.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/chassis.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/chassis_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/client.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/conductor.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/create_resources.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/create_resources_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/deploy_template.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/driver.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/driver_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/events.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/node.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/node_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/port.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/port_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/portgroup.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/portgroup_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/resource_fields.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/utils.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/volume_connector.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/volume_connector_shell.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/volume_target.py
+   /usr/lib/python3.7/site-packages/ironicclient/v1/volume_target_shell.py
+   /usr/lib/python3.7/site-packages/python_ironicclient-2.7.0-py3.7.egg-info/PKG-INFO
+   /usr/lib/python3.7/site-packages/python_ironicclient-2.7.0-py3.7.egg-info/SOURCES.txt
+   /usr/lib/python3.7/site-packages/python_ironicclient-2.7.0-py3.7.egg-info/dependency_links.txt
+   /usr/lib/python3.7/site-packages/python_ironicclient-2.7.0-py3.7.egg-info/entry_points.txt
+   /usr/lib/python3.7/site-packages/python_ironicclient-2.7.0-py3.7.egg-info/not-zip-safe
+   /usr/lib/python3.7/site-packages/python_ironicclient-2.7.0-py3.7.egg-info/requires.txt
+   /usr/lib/python3.7/site-packages/python_ironicclient-2.7.0-py3.7.egg-info/top_level.txt
+RPM build errors:
+Child return code was: 1
+EXCEPTION: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/python-ironicclient.spec 
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/mockbuild/trace_decorator.py", line 84, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python3.7/site-packages/mockbuild/util.py", line 531, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+mockbuild.exception.Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/python-ironicclient.spec 
+LEAVE do --> EXCEPTION RAISED
+

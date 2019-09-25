@@ -1,0 +1,37 @@
+2019-09-25 14:27:30,559 - Mock Version: 1.2.14
+2019-09-25 14:27:30,802 - Start: dnf update
+2019-09-25 14:27:41,307 - Finish: dnf update
+2019-09-25 14:27:41,313 - Finish: chroot init
+2019-09-25 14:27:41,316 - Start: buildsrpm
+2019-09-25 14:27:41,321 - Start: rpmbuild -bs
+2019-09-25 14:27:41,362 - Finish: rpmbuild -bs
+2019-09-25 14:27:41,364 - Finish: buildsrpm
+2019-09-25 14:27:41,365 - Finish: run
+2019-09-25 14:27:44,589 - Mock Version: 1.2.14
+2019-09-25 14:27:44,846 - Start: dnf update
+2019-09-25 14:27:55,030 - Finish: dnf update
+2019-09-25 14:27:55,036 - Finish: chroot init
+2019-09-25 14:27:55,037 - Start: build phase for python-ironicclient-2.7.0-1.src.rpm
+2019-09-25 14:27:55,039 - Start: build setup for python-ironicclient-2.7.0-1.src.rpm
+2019-09-25 14:27:56,491 - Finish: build setup for python-ironicclient-2.7.0-1.src.rpm
+2019-09-25 14:27:56,491 - Start: rpmbuild python-ironicclient-2.7.0-1.src.rpm
+2019-09-25 14:28:01,601 - Mock Version: 1.2.14
+2019-09-25 14:28:01,861 - Start: dnf update
+2019-09-25 14:28:12,130 - Finish: dnf update
+2019-09-25 14:28:12,136 - Finish: chroot init
+2019-09-25 14:28:12,139 - Start: buildsrpm
+2019-09-25 14:28:12,145 - Start: rpmbuild -bs
+2019-09-25 14:28:12,188 - Finish: rpmbuild -bs
+2019-09-25 14:28:12,190 - Finish: buildsrpm
+2019-09-25 14:28:12,190 - Finish: run
+2019-09-25 14:28:15,265 - Mock Version: 1.2.14
+2019-09-25 14:28:15,537 - Start: dnf update
+2019-09-25 14:28:25,304 - Finish: dnf update
+2019-09-25 14:28:25,309 - Finish: chroot init
+2019-09-25 14:28:25,310 - Start: build phase for python-ironicclient-2.7.0-1.src.rpm
+2019-09-25 14:28:25,313 - Start: build setup for python-ironicclient-2.7.0-1.src.rpm
+2019-09-25 14:28:26,748 - Finish: build setup for python-ironicclient-2.7.0-1.src.rpm
+2019-09-25 14:28:26,749 - Start: rpmbuild python-ironicclient-2.7.0-1.src.rpm
+2019-09-25 14:28:29,542 - Finish: rpmbuild python-ironicclient-2.7.0-1.src.rpm
+2019-09-25 14:28:29,543 - Finish: build phase for python-ironicclient-2.7.0-1.src.rpm
+2019-09-25 14:28:29,544 - Finish: run
