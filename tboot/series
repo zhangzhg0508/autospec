@@ -1,0 +1,17 @@
+0001-Fix-a-logical-error-in-function-bool-evtlog_append.patch
+0002-Reset-debug-PCR16-to-zero.patch
+0003-port-to-openssl-1.1.0.patch
+0004-lcptools-v2-utilities-fixes.patch
+0005-Make-policy-element-stm_elt-use-unique-type-name.patch
+0006-Fix-openssl-1.0.2-double-frees.patch
+0007-The-size-field-of-the-MB2-tag-is-the-size-of-the-tag.patch
+0008-Fix-security-vulnerabilities-rooted-in-tpm_if-struct.patch
+0009-Optimize-tboot-docs-installation.patch
+0010-Fix-a-null-pointer-dereference-bug-when-Intel-TXT-is.patch
+0011-Fix-TPM-1.2-locality-selection-issue.patch
+0012-Fix-memory-leak-and-invalid-reads-and-writes-issues.patch
+0013-Add-centos7-instructions-for-Use-in-EFI-boot-mode.patch
+0014-Ensure-tboot-log-is-available-even-when-measured-lau.patch
+0015-Add-support-for-appending-to-a-TPM2-TCG-style-event-.patch
+0016-Add-an-option-in-tboot-to-force-SINIT-to-use-the-leg.patch
+1000-tboot-for-tis.patch

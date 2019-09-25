@@ -1,0 +1,1 @@
+make debug=y DISTDIR=$RPM_BUILD_ROOT install

@@ -1,0 +1,43 @@
+From c5368df3c6687e7c8f4578f6329d5ecb5f890e75 Mon Sep 17 00:00:00 2001
+From: Ning Sun <ning.sun@intel.com>
+Date: Sat, 2 Sep 2017 01:28:57 -0700
+Subject: [PATCH 05/16] Make policy element stm_elt use unique type name
+
+The stm_elt policy element plugin registers as type "mle" which
+conflicts with the mle_elt policy plugin that also registers as type
+"mle".
+
+The plugin architecture uses C constructors to register plugins within
+the framework.  When multiple compilation units use constructors, the
+order in which the constructors are called is somewhat arbitrary.  It
+depends on the compiler and the dynamic loader.
+
+This patch registers the stm_elt as type "stm", which looks to have
+been the original intent.
+
+Signed-off-by: Curt Brune <curt@cumulusnetworks.com>
+Reviewed-by: Ning Sun <ning.sun@intel.com>
+Signed-off-by: Tony Camuso <tcamuso@redhat.com>
+---
+ lcptools-v2/stm_elt.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lcptools-v2/stm_elt.c b/lcptools-v2/stm_elt.c
+index 43a64dd..f91fa30 100644
+--- a/lcptools-v2/stm_elt.c
++++ b/lcptools-v2/stm_elt.c
+@@ -132,9 +132,9 @@ static struct option opts[] = {
+ };
+ 
+ static polelt_plugin_t plugin = {
+-    "mle",
++    "stm",
+     opts,
+-    "      mle\n"
++    "      stm\n"
+     "        [--alg <sha1|sha256|sha384|sha512>]    hash alg of element\n"
+     "        <FILE1> [FILE2] ...         one or more files containing STM\n"
+     "                                    hash(es); each file can contain\n"
+-- 
+1.8.3.1
+

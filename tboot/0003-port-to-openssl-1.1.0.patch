@@ -1,0 +1,47 @@
+From ba863da2fb60acc977356e6036409970c880258d Mon Sep 17 00:00:00 2001
+From: Ning Sun <ning.sun@intel.com>
+Date: Mon, 28 Aug 2017 02:10:28 -0700
+Subject: [PATCH 03/16] port to openssl-1.1.0
+
+SSL 1.1.0 made various structure opaque, so these objects can no
+longer be created on the stack.  The life cycle of these objects is
+now managed with allocators and de-allocators.
+
+This patch ports tboot to be compatible with openssl-1.1.0.
+
+Signed-off-by: Curt Brune <curt@cumulusnetworks.com>
+Signed-off-by: Tony Camuso <tcamuso@redhat.com>
+---
+ lcptools/hash.c | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/lcptools/hash.c b/lcptools/hash.c
+index 4e328c6..71df5e3 100644
+--- a/lcptools/hash.c
++++ b/lcptools/hash.c
+@@ -74,13 +74,18 @@ bool hash_buffer(const unsigned char* buf, size_t size, tb_hash_t *hash,
+         return false;
+ 
+     if ( hash_alg == TB_HALG_SHA1_LG ) {
+-        EVP_MD_CTX ctx;
++        EVP_MD_CTX *ctx = EVP_MD_CTX_create();
++        if (ctx == NULL) {
++            fprintf(stderr, "%s(): EVP_MD_CTX_create() failed.\n", __func__);
++            return false;
++        }
+         const EVP_MD *md;
+ 
+         md = EVP_sha1();
+-        EVP_DigestInit(&ctx, md);
+-        EVP_DigestUpdate(&ctx, buf, size);
+-        EVP_DigestFinal(&ctx, hash->sha1, NULL);
++        EVP_DigestInit(ctx, md);
++        EVP_DigestUpdate(ctx, buf, size);
++        EVP_DigestFinal(ctx, hash->sha1, NULL);
++        EVP_MD_CTX_destroy(ctx);
+         return true;
+     }
+     else
+-- 
+1.8.3.1
+
