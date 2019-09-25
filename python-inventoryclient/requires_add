@@ -1,0 +1,9 @@
+# This file contains additional runtime requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+keystoneauth1 >= 3.1.0
+pbr >= 2.0.0
+six >= 1.9.0
+oslo.i18n >= 2.1.0
+oslo.utils >= 3.20.0
+requests
+bash-completion

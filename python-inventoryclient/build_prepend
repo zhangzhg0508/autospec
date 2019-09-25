@@ -1,0 +1,6 @@
+%define local_bindir /usr/bin/
+%define local_etc_bash_completiond /usr/local/etc/bash_completion.d/
+%define pythonroot /usr/lib64/python2.7/site-packages
+
+%define debug_package %{nil}
+export PBR_VERSION=%{version}

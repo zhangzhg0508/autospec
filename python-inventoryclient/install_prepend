@@ -1,0 +1,9 @@
+export PBR_VERSION=%{version}
+%{__python} setup.py install --root=%{buildroot} \
+                             --install-lib=%{pythonroot} \
+                             --prefix=/usr \
+                             --install-data=/usr/share \
+                             --single-version-externally-managed
+
+install -d -m 755 %{buildroot}%{local_etc_bash_completiond}
+install -p -D -m 664 tools/inventory.bash_completion %{buildroot}%{local_etc_bash_completiond}/inventory.bash_completion
