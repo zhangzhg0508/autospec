@@ -1,0 +1,535 @@
+Mock Version: 1.2.14
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/python-muranoclient.spec'], chrootPath='/var/lib/mock/clear-python-muranoclient/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7fe7181f6fd0>timeout=0uid=1000gid=1000user='mockbuild'printOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/python-muranoclient.spec'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/python-muranoclient-1.1.1-2.src.rpm
+Child return code was: 0
+LEAVE do --> 
+
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/python-muranoclient.spec '], chrootPath='/var/lib/mock/clear-python-muranoclient/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7fe7181f6fd0>timeout=0uid=1000gid=1000user='mockbuild'private_network=TrueprintOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/python-muranoclient.spec '] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.esdntN
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
++ rm -rf python-muranoclient-1.1.1
++ /usr/bin/gzip -dc /builddir/build/SOURCES/python-muranoclient-1.1.1.tar.gz
++ /usr/bin/tar -xf -
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd python-muranoclient-1.1.1
++ /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ exit 0
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.UfBWMK
++ umask 022
++ cd /builddir/build/BUILD
++ cd python-muranoclient-1.1.1
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CFLAGS
++ http_proxy=http://127.0.0.1:9/
++ export http_proxy
++ https_proxy=http://127.0.0.1:9/
++ export https_proxy
++ ftp_proxy=http://127.0.0.1:9/
++ export ftp_proxy
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export no_proxy
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CXXFLAGS
++ FFLAGS='-g -O3 -feliminate-unused-debug-types  -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -m64 -fasynchronous-unwind-tables -Wp,-D_REENTRANT -ftree-loop-distribute-patterns -Wl,-z -Wl,now -Wl,-z -Wl,relro -malign-data=abi -fno-semantic-interposition -ftree-vectorize  -ftree-loop-vectorize -Wl,--enable-new-dtags '
++ export FFLAGS
++ LD_AS_NEEDED=1
++ export LD_AS_NEEDED
++ PKG_CONFIG_LIBDIR=/usr/lib64/pkgconfig
++ export PKG_CONFIG_LIBDIR
++ PATH=/usr/lib64/ccache/bin:/usr/local/bin:/usr/bin
++ export PATH
++ export PBR_VERSION=1.1.1
++ PBR_VERSION=1.1.1
++ export http_proxy=http://127.0.0.1:9/
++ http_proxy=http://127.0.0.1:9/
++ export https_proxy=http://127.0.0.1:9/
++ https_proxy=http://127.0.0.1:9/
++ export no_proxy=localhost,127.0.0.1,0.0.0.0
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export LANG=C.UTF-8
++ LANG=C.UTF-8
++ export SOURCE_DATE_EPOCH=1569376575
++ SOURCE_DATE_EPOCH=1569376575
++ export GCC_IGNORE_WERROR=1
++ GCC_IGNORE_WERROR=1
++ export AR=gcc-ar
++ AR=gcc-ar
++ export RANLIB=gcc-ranlib
++ RANLIB=gcc-ranlib
++ export NM=gcc-nm
++ NM=gcc-nm
++ export 'CFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ export 'FCFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FCFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'FFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'CXXFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ export MAKEFLAGS=-j4
++ MAKEFLAGS=-j4
++ python3 setup.py build
+running build
+running build_py
+creating build
+creating build/lib
+creating build/lib/muranoclient
+creating build/lib/muranoclient/v1
+copying muranoclient/v1/artifact_packages.py -> build/lib/muranoclient/v1
+copying muranoclient/v1/sessions.py -> build/lib/muranoclient/v1
+copying muranoclient/v1/environments.py -> build/lib/muranoclient/v1
+copying muranoclient/v1/packages.py -> build/lib/muranoclient/v1
+copying muranoclient/v1/request_statistics.py -> build/lib/muranoclient/v1
+copying muranoclient/v1/deployments.py -> build/lib/muranoclient/v1
+copying muranoclient/v1/categories.py -> build/lib/muranoclient/v1
+copying muranoclient/v1/instance_statistics.py -> build/lib/muranoclient/v1
+copying muranoclient/v1/static_actions.py -> build/lib/muranoclient/v1
+copying muranoclient/v1/actions.py -> build/lib/muranoclient/v1
+copying muranoclient/v1/__init__.py -> build/lib/muranoclient/v1
+copying muranoclient/v1/client.py -> build/lib/muranoclient/v1
+copying muranoclient/v1/services.py -> build/lib/muranoclient/v1
+copying muranoclient/v1/templates.py -> build/lib/muranoclient/v1
+copying muranoclient/v1/shell.py -> build/lib/muranoclient/v1
+copying muranoclient/v1/schemas.py -> build/lib/muranoclient/v1
+creating build/lib/muranoclient/tests
+creating build/lib/muranoclient/tests/unit
+creating build/lib/muranoclient/tests/unit/osc
+copying muranoclient/tests/unit/osc/test_plugin.py -> build/lib/muranoclient/tests/unit/osc
+copying muranoclient/tests/unit/osc/__init__.py -> build/lib/muranoclient/tests/unit/osc
+creating build/lib/muranoclient/tests/unit/osc/v1
+copying muranoclient/tests/unit/osc/v1/test_category.py -> build/lib/muranoclient/tests/unit/osc/v1
+copying muranoclient/tests/unit/osc/v1/test_deployment.py -> build/lib/muranoclient/tests/unit/osc/v1
+copying muranoclient/tests/unit/osc/v1/test_package.py -> build/lib/muranoclient/tests/unit/osc/v1
+copying muranoclient/tests/unit/osc/v1/fakes.py -> build/lib/muranoclient/tests/unit/osc/v1
+copying muranoclient/tests/unit/osc/v1/test_action.py -> build/lib/muranoclient/tests/unit/osc/v1
+copying muranoclient/tests/unit/osc/v1/__init__.py -> build/lib/muranoclient/tests/unit/osc/v1
+copying muranoclient/tests/unit/osc/v1/test_environment.py -> build/lib/muranoclient/tests/unit/osc/v1
+copying muranoclient/tests/unit/osc/v1/test_schema.py -> build/lib/muranoclient/tests/unit/osc/v1
+creating build/lib/muranoclient/glance
+copying muranoclient/glance/__init__.py -> build/lib/muranoclient/glance
+copying muranoclient/glance/artifacts.py -> build/lib/muranoclient/glance
+copying muranoclient/glance/client.py -> build/lib/muranoclient/glance
+copying muranoclient/tests/unit/test_shell.py -> build/lib/muranoclient/tests/unit
+copying muranoclient/tests/unit/test_utils.py -> build/lib/muranoclient/tests/unit
+copying muranoclient/tests/unit/test_exc.py -> build/lib/muranoclient/tests/unit
+copying muranoclient/tests/unit/fakes.py -> build/lib/muranoclient/tests/unit
+copying muranoclient/tests/unit/test_base.py -> build/lib/muranoclient/tests/unit
+copying muranoclient/tests/unit/test_common_http.py -> build/lib/muranoclient/tests/unit
+copying muranoclient/tests/unit/__init__.py -> build/lib/muranoclient/tests/unit
+copying muranoclient/tests/unit/test_methods.py -> build/lib/muranoclient/tests/unit
+copying muranoclient/tests/unit/test_package_creator.py -> build/lib/muranoclient/tests/unit
+copying muranoclient/tests/unit/base.py -> build/lib/muranoclient/tests/unit
+copying muranoclient/i18n.py -> build/lib/muranoclient
+copying muranoclient/__init__.py -> build/lib/muranoclient
+copying muranoclient/version.py -> build/lib/muranoclient
+copying muranoclient/client.py -> build/lib/muranoclient
+copying muranoclient/shell.py -> build/lib/muranoclient
+copying muranoclient/tests/__init__.py -> build/lib/muranoclient/tests
+creating build/lib/muranoclient/osc
+creating build/lib/muranoclient/osc/v1
+copying muranoclient/osc/v1/action.py -> build/lib/muranoclient/osc/v1
+copying muranoclient/osc/v1/category.py -> build/lib/muranoclient/osc/v1
+copying muranoclient/osc/v1/schema.py -> build/lib/muranoclient/osc/v1
+copying muranoclient/osc/v1/deployment.py -> build/lib/muranoclient/osc/v1
+copying muranoclient/osc/v1/environment.py -> build/lib/muranoclient/osc/v1
+copying muranoclient/osc/v1/__init__.py -> build/lib/muranoclient/osc/v1
+copying muranoclient/osc/v1/package.py -> build/lib/muranoclient/osc/v1
+creating build/lib/muranoclient/tests/functional
+copying muranoclient/tests/functional/muranoclient.py -> build/lib/muranoclient/tests/functional
+copying muranoclient/tests/functional/__init__.py -> build/lib/muranoclient/tests/functional
+copying muranoclient/osc/plugin.py -> build/lib/muranoclient/osc
+copying muranoclient/osc/__init__.py -> build/lib/muranoclient/osc
+creating build/lib/muranoclient/apiclient
+copying muranoclient/apiclient/fake_client.py -> build/lib/muranoclient/apiclient
+copying muranoclient/apiclient/exceptions.py -> build/lib/muranoclient/apiclient
+copying muranoclient/apiclient/__init__.py -> build/lib/muranoclient/apiclient
+copying muranoclient/apiclient/client.py -> build/lib/muranoclient/apiclient
+copying muranoclient/apiclient/auth.py -> build/lib/muranoclient/apiclient
+copying muranoclient/apiclient/base.py -> build/lib/muranoclient/apiclient
+creating build/lib/muranoclient/common
+copying muranoclient/common/exceptions.py -> build/lib/muranoclient/common
+copying muranoclient/common/http.py -> build/lib/muranoclient/common
+copying muranoclient/common/yaqlexpression_legacy.py -> build/lib/muranoclient/common
+copying muranoclient/common/yaqlexpression.py -> build/lib/muranoclient/common
+copying muranoclient/common/__init__.py -> build/lib/muranoclient/common
+copying muranoclient/common/utils.py -> build/lib/muranoclient/common
+copying muranoclient/common/base.py -> build/lib/muranoclient/common
+creating build/lib/muranoclient/v1/package_creator
+copying muranoclient/v1/package_creator/hot_package.py -> build/lib/muranoclient/v1/package_creator
+copying muranoclient/v1/package_creator/mpl_package.py -> build/lib/muranoclient/v1/package_creator
+copying muranoclient/v1/package_creator/__init__.py -> build/lib/muranoclient/v1/package_creator
+creating build/lib/muranoclient/tests/functional/cli
+copying muranoclient/tests/functional/cli/test_murano.py -> build/lib/muranoclient/tests/functional/cli
+copying muranoclient/tests/functional/cli/__init__.py -> build/lib/muranoclient/tests/functional/cli
+copying muranoclient/tests/functional/cli/utils.py -> build/lib/muranoclient/tests/functional/cli
+copying muranoclient/tests/functional/cli/murano_test_utils.py -> build/lib/muranoclient/tests/functional/cli
+running egg_info
+creating python_muranoclient.egg-info
+writing python_muranoclient.egg-info/PKG-INFO
+writing dependency_links to python_muranoclient.egg-info/dependency_links.txt
+writing entry points to python_muranoclient.egg-info/entry_points.txt
+writing requirements to python_muranoclient.egg-info/requires.txt
+writing top-level names to python_muranoclient.egg-info/top_level.txt
+[pbr] Processing SOURCES.txt
+writing manifest file 'python_muranoclient.egg-info/SOURCES.txt'
+warning: no files found matching 'AUTHORS'
+warning: no files found matching 'ChangeLog'
+warning: no previously-included files found matching '.gitignore'
+warning: no previously-included files found matching '.gitreview'
+warning: no previously-included files matching '*.pyc' found anywhere in distribution
+writing manifest file 'python_muranoclient.egg-info/SOURCES.txt'
++ exit 0
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.Q8P9UK
++ umask 022
++ cd /builddir/build/BUILD
++ cd python-muranoclient-1.1.1
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ rm -rf /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64
++ mkdir -p /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64
++ export MAKEFLAGS=-j4
++ MAKEFLAGS=-j4
++ rm -rf /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64
++ export PBR_VERSION=1.1.1
++ PBR_VERSION=1.1.1
++ python3 -tt setup.py build install --root=/builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64
+running build
+running build_py
+running egg_info
+writing python_muranoclient.egg-info/PKG-INFO
+writing dependency_links to python_muranoclient.egg-info/dependency_links.txt
+writing entry points to python_muranoclient.egg-info/entry_points.txt
+writing requirements to python_muranoclient.egg-info/requires.txt
+writing top-level names to python_muranoclient.egg-info/top_level.txt
+[pbr] Reusing existing SOURCES.txt
+running install
+[pbr] Generating AUTHORS
+[pbr] AUTHORS complete (0.0s)
+running install_lib
+creating /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64
+creating /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr
+creating /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib
+creating /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7
+creating /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages
+creating /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient
+creating /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/glance
+copying build/lib/muranoclient/glance/__init__.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/glance
+copying build/lib/muranoclient/glance/artifacts.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/glance
+copying build/lib/muranoclient/glance/client.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/glance
+copying build/lib/muranoclient/i18n.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient
+creating /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1
+copying build/lib/muranoclient/v1/artifact_packages.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1
+copying build/lib/muranoclient/v1/sessions.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1
+copying build/lib/muranoclient/v1/environments.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1
+copying build/lib/muranoclient/v1/packages.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1
+copying build/lib/muranoclient/v1/request_statistics.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1
+copying build/lib/muranoclient/v1/deployments.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1
+copying build/lib/muranoclient/v1/categories.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1
+copying build/lib/muranoclient/v1/instance_statistics.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1
+copying build/lib/muranoclient/v1/static_actions.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1
+creating /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1/package_creator
+copying build/lib/muranoclient/v1/package_creator/hot_package.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1/package_creator
+copying build/lib/muranoclient/v1/package_creator/mpl_package.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1/package_creator
+copying build/lib/muranoclient/v1/package_creator/__init__.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1/package_creator
+copying build/lib/muranoclient/v1/actions.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1
+copying build/lib/muranoclient/v1/__init__.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1
+copying build/lib/muranoclient/v1/client.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1
+copying build/lib/muranoclient/v1/services.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1
+copying build/lib/muranoclient/v1/templates.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1
+copying build/lib/muranoclient/v1/shell.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1
+copying build/lib/muranoclient/v1/schemas.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1
+creating /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/osc
+creating /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/osc/v1
+copying build/lib/muranoclient/osc/v1/action.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/osc/v1
+copying build/lib/muranoclient/osc/v1/category.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/osc/v1
+copying build/lib/muranoclient/osc/v1/schema.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/osc/v1
+copying build/lib/muranoclient/osc/v1/deployment.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/osc/v1
+copying build/lib/muranoclient/osc/v1/environment.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/osc/v1
+copying build/lib/muranoclient/osc/v1/__init__.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/osc/v1
+copying build/lib/muranoclient/osc/v1/package.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/osc/v1
+copying build/lib/muranoclient/osc/plugin.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/osc
+copying build/lib/muranoclient/osc/__init__.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/osc
+copying build/lib/muranoclient/__init__.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient
+copying build/lib/muranoclient/version.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient
+copying build/lib/muranoclient/client.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient
+creating /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests
+copying build/lib/muranoclient/tests/__init__.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests
+creating /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/functional
+copying build/lib/muranoclient/tests/functional/muranoclient.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/functional
+copying build/lib/muranoclient/tests/functional/__init__.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/functional
+creating /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/functional/cli
+copying build/lib/muranoclient/tests/functional/cli/test_murano.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/functional/cli
+copying build/lib/muranoclient/tests/functional/cli/__init__.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/functional/cli
+copying build/lib/muranoclient/tests/functional/cli/utils.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/functional/cli
+copying build/lib/muranoclient/tests/functional/cli/murano_test_utils.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/functional/cli
+creating /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit
+copying build/lib/muranoclient/tests/unit/test_shell.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit
+copying build/lib/muranoclient/tests/unit/test_utils.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit
+copying build/lib/muranoclient/tests/unit/test_exc.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit
+copying build/lib/muranoclient/tests/unit/fakes.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit
+copying build/lib/muranoclient/tests/unit/test_base.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit
+copying build/lib/muranoclient/tests/unit/test_common_http.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit
+creating /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/osc
+copying build/lib/muranoclient/tests/unit/osc/test_plugin.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/osc
+creating /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/osc/v1
+copying build/lib/muranoclient/tests/unit/osc/v1/test_category.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/osc/v1
+copying build/lib/muranoclient/tests/unit/osc/v1/test_deployment.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/osc/v1
+copying build/lib/muranoclient/tests/unit/osc/v1/test_package.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/osc/v1
+copying build/lib/muranoclient/tests/unit/osc/v1/fakes.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/osc/v1
+copying build/lib/muranoclient/tests/unit/osc/v1/test_action.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/osc/v1
+copying build/lib/muranoclient/tests/unit/osc/v1/__init__.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/osc/v1
+copying build/lib/muranoclient/tests/unit/osc/v1/test_environment.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/osc/v1
+copying build/lib/muranoclient/tests/unit/osc/v1/test_schema.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/osc/v1
+copying build/lib/muranoclient/tests/unit/osc/__init__.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/osc
+copying build/lib/muranoclient/tests/unit/__init__.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit
+copying build/lib/muranoclient/tests/unit/test_methods.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit
+copying build/lib/muranoclient/tests/unit/test_package_creator.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit
+copying build/lib/muranoclient/tests/unit/base.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit
+creating /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/common
+copying build/lib/muranoclient/common/exceptions.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/common
+copying build/lib/muranoclient/common/http.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/common
+copying build/lib/muranoclient/common/yaqlexpression_legacy.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/common
+copying build/lib/muranoclient/common/yaqlexpression.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/common
+copying build/lib/muranoclient/common/__init__.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/common
+copying build/lib/muranoclient/common/utils.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/common
+copying build/lib/muranoclient/common/base.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/common
+creating /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/apiclient
+copying build/lib/muranoclient/apiclient/fake_client.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/apiclient
+copying build/lib/muranoclient/apiclient/exceptions.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/apiclient
+copying build/lib/muranoclient/apiclient/__init__.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/apiclient
+copying build/lib/muranoclient/apiclient/client.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/apiclient
+copying build/lib/muranoclient/apiclient/auth.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/apiclient
+copying build/lib/muranoclient/apiclient/base.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/apiclient
+copying build/lib/muranoclient/shell.py -> /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/glance/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/glance/artifacts.py to artifacts.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/glance/client.py to client.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/i18n.py to i18n.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1/artifact_packages.py to artifact_packages.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1/sessions.py to sessions.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1/environments.py to environments.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1/packages.py to packages.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1/request_statistics.py to request_statistics.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1/deployments.py to deployments.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1/categories.py to categories.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1/instance_statistics.py to instance_statistics.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1/static_actions.py to static_actions.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1/package_creator/hot_package.py to hot_package.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1/package_creator/mpl_package.py to mpl_package.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1/package_creator/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1/actions.py to actions.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1/client.py to client.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1/services.py to services.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1/templates.py to templates.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1/shell.py to shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/v1/schemas.py to schemas.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/osc/v1/action.py to action.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/osc/v1/category.py to category.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/osc/v1/schema.py to schema.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/osc/v1/deployment.py to deployment.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/osc/v1/environment.py to environment.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/osc/v1/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/osc/v1/package.py to package.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/osc/plugin.py to plugin.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/osc/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/version.py to version.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/client.py to client.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/functional/muranoclient.py to muranoclient.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/functional/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/functional/cli/test_murano.py to test_murano.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/functional/cli/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/functional/cli/utils.py to utils.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/functional/cli/murano_test_utils.py to murano_test_utils.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/test_shell.py to test_shell.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/test_utils.py to test_utils.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/test_exc.py to test_exc.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/fakes.py to fakes.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/test_base.py to test_base.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/test_common_http.py to test_common_http.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/osc/test_plugin.py to test_plugin.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/osc/v1/test_category.py to test_category.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/osc/v1/test_deployment.py to test_deployment.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/osc/v1/test_package.py to test_package.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/osc/v1/fakes.py to fakes.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/osc/v1/test_action.py to test_action.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/osc/v1/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/osc/v1/test_environment.py to test_environment.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/osc/v1/test_schema.py to test_schema.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/osc/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/test_methods.py to test_methods.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/test_package_creator.py to test_package_creator.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/tests/unit/base.py to base.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/common/exceptions.py to exceptions.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/common/http.py to http.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/common/yaqlexpression_legacy.py to yaqlexpression_legacy.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/common/yaqlexpression.py to yaqlexpression.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/common/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/common/utils.py to utils.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/common/base.py to base.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/apiclient/fake_client.py to fake_client.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/apiclient/exceptions.py to exceptions.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/apiclient/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/apiclient/client.py to client.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/apiclient/auth.py to auth.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/apiclient/base.py to base.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/muranoclient/shell.py to shell.cpython-37.pyc
+running install_egg_info
+Copying python_muranoclient.egg-info to /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/python_muranoclient-1.1.1-py3.7.egg-info
+running install_scripts
+Installing murano script to /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/bin
+/usr/lib/python3.7/site-packages/pbr/packaging.py:435: EasyInstallDeprecationWarning: Use get_header
+  header = easy_install.get_script_header("", executable, is_wininst)
+----[ mark ]----
++ echo '----[' mark ']----'
++ cat /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/python_muranoclient-1.1.1-py3.7.egg-info/requires.txt
+pbr!=2.1.0,>=2.0.0
+PrettyTable<0.8,>=0.7.2
+python-glanceclient>=2.8.0
+python-keystoneclient>=3.8.0
+iso8601>=0.1.11
+six>=1.10.0
+Babel!=2.4.0,>=2.3.4
+pyOpenSSL>=17.1.0
+requests>=2.14.2
+PyYAML>=3.12
+yaql>=1.1.3
+osc-lib>=1.8.0
+murano-pkg-check>=0.3.0
+oslo.serialization!=2.19.1,>=2.18.0
+oslo.utils>=3.33.0
+oslo.log>=3.36.0
+oslo.i18n>=3.15.3
+----[ mark ]----
++ echo '----[' mark ']----'
++ LANG=en_US.UTF-8
++ python3 setup.py install --skip-build --root /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64
+running install
+[pbr] Generating AUTHORS
+[pbr] AUTHORS complete (0.0s)
+running install_lib
+running install_egg_info
+running egg_info
+writing python_muranoclient.egg-info/PKG-INFO
+writing dependency_links to python_muranoclient.egg-info/dependency_links.txt
+writing entry points to python_muranoclient.egg-info/entry_points.txt
+writing requirements to python_muranoclient.egg-info/requires.txt
+writing top-level names to python_muranoclient.egg-info/top_level.txt
+[pbr] Reusing existing SOURCES.txt
+removing '/builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/python_muranoclient-1.1.1-py3.7.egg-info' (and everything under it)
+Copying python_muranoclient.egg-info to /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7/site-packages/python_muranoclient-1.1.1-py3.7.egg-info
+running install_scripts
+Installing murano script to /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/bin
+/usr/lib/python3.7/site-packages/pbr/packaging.py:435: EasyInstallDeprecationWarning: Use get_header
+  header = easy_install.get_script_header("", executable, is_wininst)
++ mv /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/bin/murano /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/bin/python3-murano
++ rm -f /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/share/info/dir
+++ find /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64 -path 'etc/*' '!' -type d
++ test -z ''
++ rm -rf '/builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/etc/*'
++ rm -rf '/builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/share/factory/*'
++ find /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64 -name __pycache__
++ xargs rm -rf --
++ '[' -d /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/share/mime ']'
+++ getconf _NPROCESSORS_ONLN
++ RPM_XARGS_PFLAG=-P4
++ find /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64 -name '*.so.avx512' -print0
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -5
++ find /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib64/haswell/avx512_1 -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib64/haswell/avx512_1’: No such file or directory
++ find /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64 -name '*.so.avx2' -print0
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -2
++ find /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib64/haswell '!' -path '/usr/lib64/haswell/avx512_1/*' -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib64/haswell’: No such file or directory
++ xargs -0rtn1 -P4 /usr/lib/rpm/clr/brp-create-abi
++ sort -u
++ find /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib64/ -maxdepth 1 -name '*.so*' -type f -print0
+find: ‘/builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib64/’: No such file or directory
++ /usr/lib/rpm/find-debuginfo.sh --strict-build-id /builddir/build/BUILD/python-muranoclient-1.1.1
+find: ‘debug’: No such file or directory
++ '[' -d /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/debug ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/debug ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/src/debug ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/debug.force ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/src/debug.force ']'
++ :
++ /usr/lib/rpm/check-buildroot
++ /usr/lib/rpm/clr/brp-strip-static-archive /usr/bin/strip
++ /usr/lib/rpm/clr/brp-strip-comment-note /usr/bin/strip /usr/bin/objdump
++ /usr/lib/rpm/clr/brp-python-bytecompile
+[BYTECOMPILE] Building for /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64/usr/lib/python3.7 using /usr/bin/python3.7
++ find /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64 -print0
++ xargs -0 touch -h -d '@1549052798 '
++ /usr/lib/rpm/clr/brp-java-repack-jars
+Executing(%check): /bin/sh -e /var/tmp/rpm-tmp.oQ78DM
++ umask 022
++ cd /builddir/build/BUILD
+dont need check
++ cd python-muranoclient-1.1.1
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ export http_proxy=http://127.0.0.1:9/
++ http_proxy=http://127.0.0.1:9/
++ export https_proxy=http://127.0.0.1:9/
++ https_proxy=http://127.0.0.1:9/
++ export no_proxy=localhost,127.0.0.1,0.0.0.0
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ echo 'dont need check'
++ exit 0
+Processing files: python-muranoclient-1.1.1-2.x86_64
+Processing files: python-muranoclient-bin-1.1.1-2.x86_64
+Provides: python-muranoclient-bin = 1.1.1-2 python-muranoclient-bin(x86-64) = 1.1.1-2
+Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+Requires: /usr/bin/python3
+Processing files: python-muranoclient-python-1.1.1-2.x86_64
+Processing files: python-muranoclient-python3-1.1.1-2.x86_64
+Provides: python-muranoclient-python3 = 1.1.1-2 python-muranoclient-python3(x86-64) = 1.1.1-2
+Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+Requires: python(abi) = 3.7
+Processing files: python-muranoclient-debuginfo-1.1.1-2.x86_64
+warning: Empty %files file /builddir/build/BUILD/python-muranoclient-1.1.1/debugfiles.list
+Processing files: python-muranoclient-abi-1.1.1-2.x86_64
+warning: Empty %files file /builddir/build/BUILD/python-muranoclient-1.1.1/abifiles.list
+Checking for unpackaged file(s): /usr/lib/rpm/check-files /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64
+Wrote: /builddir/build/RPMS/python-muranoclient-1.1.1-2.x86_64.rpm
+Wrote: /builddir/build/RPMS/python-muranoclient-bin-1.1.1-2.x86_64.rpm
+Wrote: /builddir/build/RPMS/python-muranoclient-python-1.1.1-2.x86_64.rpm
+Wrote: /builddir/build/RPMS/python-muranoclient-python3-1.1.1-2.x86_64.rpm
+Wrote: /builddir/build/RPMS/python-muranoclient-debuginfo-1.1.1-2.x86_64.rpm
+Wrote: /builddir/build/RPMS/python-muranoclient-abi-1.1.1-2.x86_64.rpm
+Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.8PSH5L
++ umask 022
++ cd /builddir/build/BUILD
++ cd python-muranoclient-1.1.1
++ /usr/bin/rm -rf /builddir/build/BUILDROOT/python-muranoclient-1.1.1-2.x86_64
++ exit 0
+Child return code was: 0
+LEAVE do --> 
+
