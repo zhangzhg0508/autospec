@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : mtce
 Version  : 1.0
-Release  : 17
+Release  : 19
 URL      : file:///home/clear/tar/mtce-1.0.tar.gz
 Source0  : file:///home/clear/tar/mtce-1.0.tar.gz
 Summary  : No detailed summary available
@@ -139,7 +139,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1567648491
+export SOURCE_DATE_EPOCH=1569313966
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -152,7 +152,7 @@ make  %{?_smp_mflags} MAJOR=$MAJOR MINOR=$MINOR build
 
 
 %install
-export SOURCE_DATE_EPOCH=1567648491
+export SOURCE_DATE_EPOCH=1569313966
 rm -rf %{buildroot}
 ## install_prepend content
 VER=%{version}

@@ -3,7 +3,7 @@ Start: init plugins
 INFO: selinux disabled
 Finish: init plugins
 Start: run
-INFO: Start(results/mtce-1.0-17.src.rpm)  Config(clear)
+INFO: Start(results/mtce-1.0-19.src.rpm)  Config(clear)
 Start: clean chroot
 Finish: clean chroot
 Start: chroot init
@@ -20,11 +20,11 @@ INFO: Mock Version: 1.2.14
 Start: dnf update
 Finish: dnf update
 Finish: chroot init
-Start: build phase for mtce-1.0-17.src.rpm
-Start: build setup for mtce-1.0-17.src.rpm
-Finish: build setup for mtce-1.0-17.src.rpm
-Start: rpmbuild mtce-1.0-17.src.rpm
-ERROR: Exception(results/mtce-1.0-17.src.rpm) Config(clear) 0 minutes 24 seconds
+Start: build phase for mtce-1.0-19.src.rpm
+Start: build setup for mtce-1.0-19.src.rpm
+Finish: build setup for mtce-1.0-19.src.rpm
+Start: rpmbuild mtce-1.0-19.src.rpm
+ERROR: Exception(results/mtce-1.0-19.src.rpm) Config(clear) 0 minutes 20 seconds
 INFO: Results and/or logs in: results/
 ERROR: Command failed. See logs for output.
  # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/mtce.spec 

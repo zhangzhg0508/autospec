@@ -1,28 +1,70 @@
-From 4ab50a84f8ba4f36c473e5623989650dc4b6af24 Mon Sep 17 00:00:00 2001
-From: "chen.dq" <chen.dq@neusoft.com>
-Date: Tue, 3 Sep 2019 02:06:09 +0000
+From 285a22f5c35c03f7775cb65a31abe1a904af3769 Mon Sep 17 00:00:00 2001
+From: "yongx.fu" <yongx.fu@intel.com>
+Date: Wed, 14 Aug 2019 13:53:27 +0800
 Subject: [PATCH] change-sysconfig-dir
 
 ---
+ alarm/scripts/mtcalarm.init      | 4 ++--
  alarm/scripts/mtcalarm.pmon.conf | 2 +-
  alarm/scripts/mtcalarm.service   | 6 +++---
+ fsmon/scripts/fsmon              | 2 +-
  fsmon/scripts/fsmon.conf         | 2 +-
  fsmon/scripts/fsmon.service      | 6 +++---
+ hostw/scripts/hostw              | 2 +-
  hostw/scripts/hostw.service      | 6 +++---
  hwmon/scripts/hwmon.service      | 6 +++---
+ hwmon/scripts/lsb/hwmon          | 2 +-
+ hwmon/scripts/ocf/hwmon          | 2 +-
+ lmon/scripts/lmon                | 2 +-
  lmon/scripts/lmon.service        | 6 +++---
+ pmon/scripts/pmon                | 2 +-
+ pmon/scripts/pmon-restart        | 2 +-
+ pmon/scripts/pmon-start          | 2 +-
+ pmon/scripts/pmon-stop           | 2 +-
+ pmon/scripts/pmon-test.sh        | 2 +-
  pmon/scripts/pmon.service        | 6 +++---
  scripts/config.service           | 4 ++--
+ scripts/goenabled                | 2 +-
  scripts/goenabled.service        | 4 ++--
+ scripts/hbs-query                | 2 +-
+ scripts/hbsAgent                 | 2 +-
+ scripts/hbsClient                | 2 +-
+ scripts/hbsClient.conf           | 2 +-
  scripts/hbsClient.service        | 6 +++---
  scripts/hwclock.service          | 4 ++--
+ scripts/hwclock.sh               | 4 ++--
+ scripts/mgmtlinkup               | 4 ++--
+ scripts/mtcAgent                 | 2 +-
+ scripts/mtcClient                | 4 ++--
  scripts/mtcClient.conf           | 2 +-
  scripts/mtcClient.service        | 6 +++---
+ scripts/mtcinit                  | 2 +-
+ scripts/mtclog                   | 4 ++--
  scripts/mtclog.service           | 6 +++---
  scripts/mtclogd.conf             | 2 +-
+ scripts/runservices              | 2 +-
  scripts/runservices.service      | 4 ++--
- 17 files changed, 39 insertions(+), 39 deletions(-)
+ 40 files changed, 67 insertions(+), 67 deletions(-)
 
+diff --git a/alarm/scripts/mtcalarm.init b/alarm/scripts/mtcalarm.init
+index 4d33179..b36166d 100644
+--- a/alarm/scripts/mtcalarm.init
++++ b/alarm/scripts/mtcalarm.init
+@@ -15,12 +15,12 @@
+ # Short-Description: Maintenance Alarm Daemon
+ ### END INIT INFO
+ 
+-. /etc/init.d/functions
++. /usr/local/etc/init.d/functions
+ 
+ DAEMON_NAME="mtcalarmd"
+ DAEMON="/usr/local/bin/${DAEMON_NAME}"
+ PIDFILE="/var/run/${DAEMON_NAME}.pid"
+-PLATFORM_CONF="/etc/platform/platform.conf"
++PLATFORM_CONF="/usr/local/etc/platform/platform.conf"
+ 
+ IFACE=""
+ 
 diff --git a/alarm/scripts/mtcalarm.pmon.conf b/alarm/scripts/mtcalarm.pmon.conf
 index 8e132dc..d77783f 100644
 --- a/alarm/scripts/mtcalarm.pmon.conf
@@ -37,7 +79,7 @@ index 8e132dc..d77783f 100644
  severity = major          ; minor, major, critical
  restarts = 3              ; restart retries before error assertion
 diff --git a/alarm/scripts/mtcalarm.service b/alarm/scripts/mtcalarm.service
-index d97fa7b..7a1a0a1 100644
+index d97fa7b..04a3150 100644
 --- a/alarm/scripts/mtcalarm.service
 +++ b/alarm/scripts/mtcalarm.service
 @@ -5,9 +5,9 @@ Before=pmon.service
@@ -47,12 +89,25 @@ index d97fa7b..7a1a0a1 100644
 -ExecStart=/etc/rc.d/init.d/mtcalarm start
 -ExecStop=/etc/rc.d/init.d/mtcalarm stop
 -ExecReload=/etc/rc.d/init.d/mtcalarm reload
-+ExecStart=/usr/loacl/etc/init.d/mtcalarm start
-+ExecStop=/usr/loacl/etc/init.d/mtcalarm stop
-+ExecReload=/usr/loacl/etc/init.d/mtcalarm reload
++ExecStart=/usr/local/etc/init.d/mtcalarm start
++ExecStop=/usr/local/etc/init.d/mtcalarm stop
++ExecReload=/usr/local/etc/init.d/mtcalarm reload
  PIDFile=/var/run/mtcalarmd.pid
  
  [Install]
+diff --git a/fsmon/scripts/fsmon b/fsmon/scripts/fsmon
+index b29f85f..33f27f4 100644
+--- a/fsmon/scripts/fsmon
++++ b/fsmon/scripts/fsmon
+@@ -5,7 +5,7 @@
+ # SPDX-License-Identifier: Apache-2.0
+ #
+ 
+-. /etc/init.d/functions
++. /usr/local/etc/init.d/functions
+ 
+ DAEMON_NAME="fsmond"
+ DAEMON="/usr/local/bin/${DAEMON_NAME}"
 diff --git a/fsmon/scripts/fsmon.conf b/fsmon/scripts/fsmon.conf
 index 1b56626..95d13f6 100644
 --- a/fsmon/scripts/fsmon.conf
@@ -67,7 +122,7 @@ index 1b56626..95d13f6 100644
  pidfile  = /var/run/fsmond.pid
  severity = major          ; minor, major, critical
 diff --git a/fsmon/scripts/fsmon.service b/fsmon/scripts/fsmon.service
-index 5c8282a..43b00d0 100644
+index 5c8282a..d11dbc2 100644
 --- a/fsmon/scripts/fsmon.service
 +++ b/fsmon/scripts/fsmon.service
 @@ -5,9 +5,9 @@ Before=pmon.service
@@ -83,8 +138,21 @@ index 5c8282a..43b00d0 100644
  PIDFile=/var/run/fsmond.pid
  
  # Failure handling
+diff --git a/hostw/scripts/hostw b/hostw/scripts/hostw
+index 9f5526c..c4e3984 100644
+--- a/hostw/scripts/hostw
++++ b/hostw/scripts/hostw
+@@ -17,7 +17,7 @@
+ 
+ # echo "7:3:respawn:/usr/local/bin/hostwd" >> /etc/inittab
+ 
+-. /etc/init.d/functions
++. /usr/local/etc/init.d/functions
+ 
+ DAEMON_NAME="hostwd"
+ DAEMON="/usr/local/bin/${DAEMON_NAME}"
 diff --git a/hostw/scripts/hostw.service b/hostw/scripts/hostw.service
-index 9fc4ba1..9e42a0e 100644
+index 9fc4ba1..de1d7a5 100644
 --- a/hostw/scripts/hostw.service
 +++ b/hostw/scripts/hostw.service
 @@ -5,9 +5,9 @@ After=syslog.service network.target hbsClient.service mtcClient.service sm.servi
@@ -101,7 +169,7 @@ index 9fc4ba1..9e42a0e 100644
  
  # Failure handling
 diff --git a/hwmon/scripts/hwmon.service b/hwmon/scripts/hwmon.service
-index 8c8f5b9..21d21bf 100644
+index 8c8f5b9..3c301ec 100644
 --- a/hwmon/scripts/hwmon.service
 +++ b/hwmon/scripts/hwmon.service
 @@ -4,9 +4,9 @@ After=network.target syslog.service
@@ -117,8 +185,47 @@ index 8c8f5b9..21d21bf 100644
  PIDFile=/var/run/hwmond.pid
  
  Restart=no
+diff --git a/hwmon/scripts/lsb/hwmon b/hwmon/scripts/lsb/hwmon
+index 45c75d8..c98eb72 100644
+--- a/hwmon/scripts/lsb/hwmon
++++ b/hwmon/scripts/lsb/hwmon
+@@ -5,7 +5,7 @@
+ # SPDX-License-Identifier: Apache-2.0
+ #
+ 
+-. /etc/init.d/functions
++. /usr/local/etc/init.d/functions
+ 
+ DAEMON_NAME="hwmond"
+ DAEMON="/usr/local/bin/${DAEMON_NAME}"
+diff --git a/hwmon/scripts/ocf/hwmon b/hwmon/scripts/ocf/hwmon
+index 14f52a2..0d15689 100644
+--- a/hwmon/scripts/ocf/hwmon
++++ b/hwmon/scripts/ocf/hwmon
+@@ -27,7 +27,7 @@
+ 
+ # Fill in some defaults if no values are specified
+ OCF_RESKEY_binary_default="hwmond"
+-OCF_RESKEY_config_default="/etc/mtc/hwmond.conf"
++OCF_RESKEY_config_default="/usr/local/etc/mtc/hwmond.conf"
+ OCF_RESKEY_dbg_default="false"
+ OCF_RESKEY_logging_default="true"
+ OCF_RESKEY_mode_default="normal"
+diff --git a/lmon/scripts/lmon b/lmon/scripts/lmon
+index e55dac5..dbb43d6 100644
+--- a/lmon/scripts/lmon
++++ b/lmon/scripts/lmon
+@@ -15,7 +15,7 @@
+ # Short-Description: Link Monitor daemon
+ ### END INIT INFO
+ 
+-. /etc/init.d/functions
++. /usr/local/etc/init.d/functions
+ 
+ DAEMON_NAME="lmond"
+ DAEMON="/usr/local/bin/${DAEMON_NAME}"
 diff --git a/lmon/scripts/lmon.service b/lmon/scripts/lmon.service
-index 84b14d4..94c5fe5 100644
+index 84b14d4..e4817e7 100644
 --- a/lmon/scripts/lmon.service
 +++ b/lmon/scripts/lmon.service
 @@ -7,9 +7,9 @@ Before=pmon.service
@@ -134,8 +241,73 @@ index 84b14d4..94c5fe5 100644
  PIDFile=/var/run/lmond.pid
  KillMode=process
  
+diff --git a/pmon/scripts/pmon b/pmon/scripts/pmon
+index 0b02880..0d84931 100644
+--- a/pmon/scripts/pmon
++++ b/pmon/scripts/pmon
+@@ -17,7 +17,7 @@
+ 
+ # echo "7:3:respawn:/usr/local/bin/pmond" >> /etc/inittab
+ 
+-. /etc/init.d/functions
++. /usr/local/etc/init.d/functions
+ 
+ DAEMON_NAME="pmond"
+ DAEMON="/usr/local/bin/${DAEMON_NAME}"
+diff --git a/pmon/scripts/pmon-restart b/pmon/scripts/pmon-restart
+index 9262972..bdd3b42 100755
+--- a/pmon/scripts/pmon-restart
++++ b/pmon/scripts/pmon-restart
+@@ -36,7 +36,7 @@ if [ ! -z ${process} ] ; then
+     if [ "${process}" == "hostwd" ] ; then
+         systemctl restart hostw
+     else
+-        port=$(cat /etc/mtc/pmond.conf | awk '{if ($1 == "pmon_cmd_port") { print $3; }}')
++        port=$(cat /usr/local/etc/mtc/pmond.conf | awk '{if ($1 == "pmon_cmd_port") { print $3; }}')
+         echo "{\"command\":\"restart\", \"process\":\"${process}\"}" | socat - ${PROTOCOL}:${ADDRESS}:${port}
+     fi
+ else
+diff --git a/pmon/scripts/pmon-start b/pmon/scripts/pmon-start
+index 8e37acb..3fd0dbd 100755
+--- a/pmon/scripts/pmon-start
++++ b/pmon/scripts/pmon-start
+@@ -36,7 +36,7 @@ if [ ! -z ${process} ] ; then
+     if [ "${process}" == "hostwd" ] ; then
+         systemctl restart hostw
+     else
+-        port=$(cat /etc/mtc/pmond.conf | awk '{if ($1 == "pmon_cmd_port") { print $3; }}')
++        port=$(cat /usr/local/etc/mtc/pmond.conf | awk '{if ($1 == "pmon_cmd_port") { print $3; }}')
+         echo "{\"command\":\"start\", \"process\":\"${process}\"}" | socat - ${PROTOCOL}:${ADDRESS}:${port}
+     fi
+ else
+diff --git a/pmon/scripts/pmon-stop b/pmon/scripts/pmon-stop
+index e5f7936..90bdcb7 100755
+--- a/pmon/scripts/pmon-stop
++++ b/pmon/scripts/pmon-stop
+@@ -36,7 +36,7 @@ if [ ! -z ${process} ] ; then
+     if [ "${process}" == "hostwd" ] ; then
+         systemctl restart hostw
+     else
+-        port=$(cat /etc/mtc/pmond.conf | awk '{if ($1 == "pmon_cmd_port") { print $3; }}')
++        port=$(cat /usr/local/etc/mtc/pmond.conf | awk '{if ($1 == "pmon_cmd_port") { print $3; }}')
+         echo "{\"command\":\"stop\", \"process\":\"${process}\"}" | socat - ${PROTOCOL}:${ADDRESS}:${port}
+     fi
+ else
+diff --git a/pmon/scripts/pmon-test.sh b/pmon/scripts/pmon-test.sh
+index 9b06b57..699e136 100755
+--- a/pmon/scripts/pmon-test.sh
++++ b/pmon/scripts/pmon-test.sh
+@@ -51,7 +51,7 @@
+ # vswitch                        does not support restart
+ 
+ ############################################################################
+-. /etc/nova/openrc
++. /usr/local/etc/nova/openrc
+ 
+ # Linux Standard Base (LSB) Error Codes
+ RETVAL=0
 diff --git a/pmon/scripts/pmon.service b/pmon/scripts/pmon.service
-index 298ded8..6328724 100644
+index 298ded8..0fdfca8 100644
 --- a/pmon/scripts/pmon.service
 +++ b/pmon/scripts/pmon.service
 @@ -9,9 +9,9 @@ Before=hostw.service
@@ -166,6 +338,19 @@ index f4fc0a5..2f5df4f 100644
  
  [Install]
  WantedBy=multi-user.target
+diff --git a/scripts/goenabled b/scripts/goenabled
+index b91f4b7..ff292ed 100644
+--- a/scripts/goenabled
++++ b/scripts/goenabled
+@@ -15,7 +15,7 @@
+ # Short-Description: Maintenance Client "Go Enable" script
+ ### END INIT INFO
+ 
+-GOENABLED_PATH=${GOENABLED_PATH:-"/etc/goenabled.d"}
++GOENABLED_PATH=${GOENABLED_PATH:-"/usr/local/etc/goenabled.d"}
+ GOENABLED_FILE=${GOENABLED_FILE:-"/var/run/.goenabled"}
+ GOENABLED_TAG=${GOENABLED_TAG:-"GOENABLED"}
+ 
 diff --git a/scripts/goenabled.service b/scripts/goenabled.service
 index 8f23390..e57a831 100644
 --- a/scripts/goenabled.service
@@ -181,8 +366,60 @@ index 8f23390..e57a831 100644
  
  [Install]
  WantedBy=multi-user.target
+diff --git a/scripts/hbs-query b/scripts/hbs-query
+index 491e185..4f9c4de 100755
+--- a/scripts/hbs-query
++++ b/scripts/hbs-query
+@@ -34,7 +34,7 @@ if [ "${1}" != "" ] ; then
+     reqid=${1}
+ fi
+ 
+-port=$(cat /etc/mtc.ini | awk '{if ($1 == "sm_server_port") { print $3; }}')
++port=$(cat /usr/local/etc/mtc.ini | awk '{if ($1 == "sm_server_port") { print $3; }}')
+ echo "{\"origin\":\"sm\", \"service\":\"heartbeat\", \"request\":\"cluster_info\", \"reqid\": $reqid }" | socat - ${PROTOCOL}:${ADDRESS}:${port}
+ 
+ exit ${RETVAL} 
+diff --git a/scripts/hbsAgent b/scripts/hbsAgent
+index d1a2f4f..9c9800b 100755
+--- a/scripts/hbsAgent
++++ b/scripts/hbsAgent
+@@ -27,7 +27,7 @@
+ 
+ # Fill in some defaults if no values are specified
+ OCF_RESKEY_binary_default="hbsAgent"
+-OCF_RESKEY_config_default="/etc/mtc.ini"
++OCF_RESKEY_config_default="/usr/local/etc/mtc.ini"
+ OCF_RESKEY_dbg_default="false"
+ OCF_RESKEY_logging_default="true"
+ OCF_RESKEY_user_default="admin"
+diff --git a/scripts/hbsClient b/scripts/hbsClient
+index f493c0d..d3dea62 100644
+--- a/scripts/hbsClient
++++ b/scripts/hbsClient
+@@ -15,7 +15,7 @@
+ # Short-Description: Heartbeat Client Daemon 
+ ### END INIT INFO
+ 
+-. /etc/init.d/functions
++. /usr/local/etc/init.d/functions
+ 
+ DAEMON_NAME="hbsClient"
+ DAEMON="/usr/local/bin/${DAEMON_NAME}"
+diff --git a/scripts/hbsClient.conf b/scripts/hbsClient.conf
+index 333c159..a5458dd 100644
+--- a/scripts/hbsClient.conf
++++ b/scripts/hbsClient.conf
+@@ -1,7 +1,7 @@
+ [process]
+ process  = hbsClient
+ service  = hbsClient
+-script   = /etc/init.d/hbsClient
++script   = /usr/local/etc/init.d/hbsClient
+ style     = lsb
+ pidfile  = /var/run/hbsClient.pid
+ severity = major          ; minor, major, critical
 diff --git a/scripts/hbsClient.service b/scripts/hbsClient.service
-index 9a31fc7..dd3173c 100644
+index 9a31fc7..d2200eb 100644
 --- a/scripts/hbsClient.service
 +++ b/scripts/hbsClient.service
 @@ -5,9 +5,9 @@ Before=pmon.service mtcClient.service
@@ -213,6 +450,72 @@ index 4919957..57eab08 100644
  
  [Install]
  WantedBy=multi-user.target
+diff --git a/scripts/hwclock.sh b/scripts/hwclock.sh
+index 8adb9b8..8ad5287 100755
+--- a/scripts/hwclock.sh
++++ b/scripts/hwclock.sh
+@@ -21,11 +21,11 @@
+ #               in /etc/default/rcS, or in the proper place below.
+ 
+ # Source function library.
+-. /etc/init.d/functions
++. /usr/local/etc/init.d/functions
+ 
+ [ ! -x /sbin/hwclock ] && exit 0
+ 
+-[ -f /etc/default/rcS ] && . /etc/default/rcS
++[ -f /usr/local/etc/default/rcS ] && . /usr/local/etc/default/rcS
+ 
+ [ "$UTC" = "yes" ] && tz="--utc" || tz="--localtime"
+ case "$1" in
+diff --git a/scripts/mgmtlinkup b/scripts/mgmtlinkup
+index 3cffbd0..6f8e48b 100644
+--- a/scripts/mgmtlinkup
++++ b/scripts/mgmtlinkup
+@@ -15,9 +15,9 @@
+ # Short-Description: Loop trying to bring up the mgmt interface 
+ ### END INIT INFO
+ 
+-. /etc/init.d/functions
++. /usr/local/etc/init.d/functions
+ 
+-PLATFORM_CONF="/etc/platform/platform.conf"
++PLATFORM_CONF="/usr/local/etc/platform/platform.conf"
+ 
+ IFACE=""
+ 
+diff --git a/scripts/mtcAgent b/scripts/mtcAgent
+index 6e75ace..07b8fab 100755
+--- a/scripts/mtcAgent
++++ b/scripts/mtcAgent
+@@ -27,7 +27,7 @@
+ 
+ # Fill in some defaults if no values are specified
+ OCF_RESKEY_binary_default="mtcAgent"
+-OCF_RESKEY_config_default="/etc/mtc.ini"
++OCF_RESKEY_config_default="/usr/local/etc/mtc.ini"
+ OCF_RESKEY_dbg_default="false"
+ OCF_RESKEY_logging_default="true"
+ OCF_RESKEY_mode_default="normal"
+diff --git a/scripts/mtcClient b/scripts/mtcClient
+index 5accff3..293c227 100644
+--- a/scripts/mtcClient
++++ b/scripts/mtcClient
+@@ -15,12 +15,12 @@
+ # Short-Description: Maintenance Client Daemon 
+ ### END INIT INFO
+ 
+-. /etc/init.d/functions
++. /usr/local/etc/init.d/functions
+ 
+ DAEMON_NAME="mtcClient"
+ DAEMON="/usr/local/bin/${DAEMON_NAME}"
+ PIDFILE="/var/run/${DAEMON_NAME}.pid"
+-PLATFORM_CONF="/etc/platform/platform.conf"
++PLATFORM_CONF="/usr/local/etc/platform/platform.conf"
+ 
+ IFACE=""
+ 
 diff --git a/scripts/mtcClient.conf b/scripts/mtcClient.conf
 index 174bd4c..015faf9 100644
 --- a/scripts/mtcClient.conf
@@ -227,7 +530,7 @@ index 174bd4c..015faf9 100644
  severity = major          ; minor, major, critical
  restarts = 1              ; restart retries before error assertion
 diff --git a/scripts/mtcClient.service b/scripts/mtcClient.service
-index 28c0c4f..c70c918 100644
+index 28c0c4f..da5ee40 100644
 --- a/scripts/mtcClient.service
 +++ b/scripts/mtcClient.service
 @@ -5,9 +5,9 @@ Before=pmon.service
@@ -243,8 +546,40 @@ index 28c0c4f..c70c918 100644
  PIDFile=/var/run/mtcClient.pid
  KillMode=process
  SendSIGKILL=no
+diff --git a/scripts/mtcinit b/scripts/mtcinit
+index 8ff9bbb..e262734 100755
+--- a/scripts/mtcinit
++++ b/scripts/mtcinit
+@@ -6,7 +6,7 @@
+ #
+ 
+ 
+-. /etc/init.d/functions
++. /usr/local/etc/init.d/functions
+ 
+ MTCCLIENT_NAME="mtcClient"
+ MTCCLIENT="/usr/local/bin/${MTCCLIENT_NAME}"
+diff --git a/scripts/mtclog b/scripts/mtclog
+index ba102f9..448b798 100644
+--- a/scripts/mtclog
++++ b/scripts/mtclog
+@@ -7,12 +7,12 @@
+ 
+ # This script starts and stops a mtclogd Daemon process
+ 
+-. /etc/init.d/functions
++. /usr/local/etc/init.d/functions
+ 
+ DAEMON_NAME="mtclogd"
+ DAEMON="/usr/local/bin/${DAEMON_NAME}"
+ PIDFILE="/var/run/${DAEMON_NAME}.pid"
+-PLATFORM_CONF="/etc/platform/platform.conf"
++PLATFORM_CONF="/usr/local/etc/platform/platform.conf"
+ 
+ # Linux Standard Base (LSB) Error Codes
+ RETVAL=0
 diff --git a/scripts/mtclog.service b/scripts/mtclog.service
-index c7ec2e0..70ecc6b 100644
+index c7ec2e0..2a78e68 100644
 --- a/scripts/mtclog.service
 +++ b/scripts/mtclog.service
 @@ -5,9 +5,9 @@ Before=pmon.service
@@ -273,8 +608,21 @@ index 1ee07e6..4c47963 100755
  style    = lsb            ; ocf or lsb
  severity = minor          ; minor, major, critical
  restarts = 3              ; restart retries before error assertion
+diff --git a/scripts/runservices b/scripts/runservices
+index b670846..b5e072c 100755
+--- a/scripts/runservices
++++ b/scripts/runservices
+@@ -15,7 +15,7 @@
+ # Short-Description: Maintenance "Run Host Services" script
+ ### END INIT INFO
+ 
+-RUNSERVICES_PATH=${RUNSERVICES_PATH:-"/etc/services.d"}
++RUNSERVICES_PATH=${RUNSERVICES_PATH:-"/usr/local/etc/services.d"}
+ RUNSERVICES_FILE=${RUNSERVICES_FILE:-"/var/run/runservices"}
+ RUNSERVICES_LOG=${RUNSERVICES_LOG:-"/var/log/runservices.log"}
+ RUNSERVICES_TAG=${RUNSERVICES_TAG:-"RUNSERVICES"}
 diff --git a/scripts/runservices.service b/scripts/runservices.service
-index f29a5b3..e1cd363 100644
+index f29a5b3..273414b 100644
 --- a/scripts/runservices.service
 +++ b/scripts/runservices.service
 @@ -4,8 +4,8 @@ After=network.target syslog.service
@@ -289,5 +637,5 @@ index f29a5b3..e1cd363 100644
  [Install]
  WantedBy=multi-user.target
 -- 
-2.23.0
+2.22.0
 

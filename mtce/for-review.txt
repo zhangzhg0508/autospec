@@ -1,40 +1,143 @@
-From 5160804370982c826e7326e4d75481959eed00f7 Mon Sep 17 00:00:00 2001
-From: "chen.dq" <chen.dq@neusoft.com>
-Date: Thu, 5 Sep 2019 01:54:52 +0000
+From f53aa90cad2d566eac620f5aadc6e1845a8b4e6a Mon Sep 17 00:00:00 2001
+From: chen-dq <chen.dq@neusoft.com>
+Date: Tue, 24 Sep 2019 08:32:46 +0000
 Subject: [PATCH mtce] mtce: Autospec creation for version 1.0
 
 ---
- mtce.spec    | 7 ++++---
- release      | 2 +-
- requires_add | 2 +-
- 3 files changed, 6 insertions(+), 5 deletions(-)
+ 0001-change-sysconfig-dir.patch | 58 ++++++++++++++++-----------------
+ mtce.spec                       |  6 ++--
+ release                         |  2 +-
+ 3 files changed, 33 insertions(+), 33 deletions(-)
 
-diff --git a/mtce.spec b/mtce.spec
-index 2cc368c..28a0783 100644
---- a/mtce.spec
-+++ b/mtce.spec
-@@ -18,6 +18,7 @@ Requires: /bin/bash
- Requires: /bin/sh
- Requires: /usr/bin/expect
- Requires: /usr/bin/ipmitool
-+Requires: dpkg
- Requires: expect
- Requires: fm-common >= 1.0
- Requires: libamon.so.1()(64bit)
-diff --git a/requires_add b/requires_add
-index 70e8089..6667d4a 100644
---- a/requires_add
-+++ b/requires_add
-@@ -3,7 +3,7 @@
- util-linux
- /bin/bash
- systemd
--#dpkg
-+dpkg
- time
- libevent-2.1.so.6()(64bit)
- expect
--- 
-2.23.0
-
-
+diff --git a/0001-change-sysconfig-dir.patch b/0001-change-sysconfig-dir.patch
+index 7b64f03..eb95928 100644
+--- a/0001-change-sysconfig-dir.patch
++++ b/0001-change-sysconfig-dir.patch
+@@ -89,9 +89,9 @@ index d97fa7b..04a3150 100644
+ -ExecStart=/etc/rc.d/init.d/mtcalarm start
+ -ExecStop=/etc/rc.d/init.d/mtcalarm stop
+ -ExecReload=/etc/rc.d/init.d/mtcalarm reload
+-+ExecStart=/usr/local/etc/rc.d/init.d/mtcalarm start
+-+ExecStop=/usr/local/etc/rc.d/init.d/mtcalarm stop
+-+ExecReload=/usr/local/etc/rc.d/init.d/mtcalarm reload
+++ExecStart=/usr/local/etc/init.d/mtcalarm start
+++ExecStop=/usr/local/etc/init.d/mtcalarm stop
+++ExecReload=/usr/local/etc/init.d/mtcalarm reload
+  PIDFile=/var/run/mtcalarmd.pid
+  
+  [Install]
+@@ -132,9 +132,9 @@ index 5c8282a..d11dbc2 100644
+ -ExecStart=/etc/rc.d/init.d/fsmon start
+ -ExecStop=/etc/rc.d/init.d/fsmon stop
+ -ExecReload=/etc/rc.d/init.d/fsmon reload
+-+ExecStart=/usr/local/etc/rc.d/init.d/fsmon start
+-+ExecStop=/usr/local/etc/rc.d/init.d/fsmon stop
+-+ExecReload=/usr/local/etc/rc.d/init.d/fsmon reload
+++ExecStart=/usr/local/etc/init.d/fsmon start
+++ExecStop=/usr/local/etc/init.d/fsmon stop
+++ExecReload=/usr/local/etc/init.d/fsmon reload
+  PIDFile=/var/run/fsmond.pid
+  
+  # Failure handling
+@@ -162,9 +162,9 @@ index 9fc4ba1..de1d7a5 100644
+ -ExecStart=/etc/rc.d/init.d/hostw start
+ -ExecStop=/etc/rc.d/init.d/hostw stop
+ -ExecReload=/etc/rc.d/init.d/hostw reload
+-+ExecStart=/usr/local/etc/rc.d/init.d/hostw start
+-+ExecStop=/usr/local/etc/rc.d/init.d/hostw stop
+-+ExecReload=/usr/local/etc/rc.d/init.d/hostw reload
+++ExecStart=/usr/local/etc/init.d/hostw start
+++ExecStop=/usr/local/etc/init.d/hostw stop
+++ExecReload=/usr/local/etc/init.d/hostw reload
+  PIDFile=/var/run/hostwd.pid
+  
+  # Failure handling
+@@ -179,9 +179,9 @@ index 8c8f5b9..3c301ec 100644
+ -ExecStart=/etc/rc.d/init.d/hwmon start
+ -ExecStop=/etc/rc.d/init.d/hwmon stop
+ -ExecReload=/etc/rc.d/init.d/hwmon reload
+-+ExecStart=/usr/local/etc/rc.d/init.d/hwmon start
+-+ExecStop=/usr/local/etc/rc.d/init.d/hwmon stop
+-+ExecReload=/usr/local/etc/rc.d/init.d/hwmon reload
+++ExecStart=/usr/local/etc/init.d/hwmon start
+++ExecStop=/usr/local/etc/init.d/hwmon stop
+++ExecReload=/usr/local/etc/init.d/hwmon reload
+  PIDFile=/var/run/hwmond.pid
+  
+  Restart=no
+@@ -235,9 +235,9 @@ index 84b14d4..e4817e7 100644
+ -ExecStart=/etc/rc.d/init.d/lmon start
+ -ExecStop=/etc/rc.d/init.d/lmon stop
+ -ExecReload=/etc/rc.d/init.d/lmon reload
+-+ExecStart=/usr/local/etc/rc.d/init.d/lmon start
+-+ExecStop=/usr/local/etc/rc.d/init.d/lmon stop
+-+ExecReload=/usr/local/etc/rc.d/init.d/lmon reload
+++ExecStart=/usr/local/etc/init.d/lmon start
+++ExecStop=/usr/local/etc/init.d/lmon stop
+++ExecReload=/usr/local/etc/init.d/lmon reload
+  PIDFile=/var/run/lmond.pid
+  KillMode=process
+  
+@@ -317,9 +317,9 @@ index 298ded8..0fdfca8 100644
+ -ExecStart=/etc/rc.d/init.d/pmon start
+ -ExecStop=/etc/rc.d/init.d/pmon stop
+ -ExecReload=/etc/rc.d/init.d/pmon reload
+-+ExecStart=/usr/local/etc/rc.d/init.d/pmon start
+-+ExecStop=/usr/local/etc/rc.d/init.d/pmon stop
+-+ExecReload=/usr/local/etc/rc.d/init.d/pmon reload
+++ExecStart=/usr/local/etc/init.d/pmon start
+++ExecStop=/usr/local/etc/init.d/pmon stop
+++ExecReload=/usr/local/etc/init.d/pmon reload
+  PIDFile=/var/run/pmond.pid
+  KillMode=process
+  
+@@ -429,9 +429,9 @@ index 9a31fc7..d2200eb 100644
+ -ExecStart=/etc/rc.d/init.d/hbsClient start
+ -ExecStop=/etc/rc.d/init.d/hbsClient stop
+ -ExecReload=/etc/rc.d/init.d/hbsClient reload
+-+ExecStart=/usr/local/etc/rc.d/init.d/hbsClient start
+-+ExecStop=/usr/local/etc/rc.d/init.d/hbsClient stop
+-+ExecReload=/usr/local/etc/rc.d/init.d/hbsClient reload
+++ExecStart=/usr/local/etc/init.d/hbsClient start
+++ExecStop=/usr/local/etc/init.d/hbsClient stop
+++ExecReload=/usr/local/etc/init.d/hbsClient reload
+  PIDFile=/var/run/hbsClient.pid
+  
+  # Failure handling
+@@ -540,9 +540,9 @@ index 28c0c4f..da5ee40 100644
+ -ExecStart=/etc/rc.d/init.d/mtcClient start
+ -ExecStop=/etc/rc.d/init.d/mtcClient stop
+ -ExecReload=/etc/rc.d/init.d/mtcClient reload
+-+ExecStart=/usr/local/etc/rc.d/init.d/mtcClient start
+-+ExecStop=/usr/local/etc/rc.d/init.d/mtcClient stop
+-+ExecReload=/usr/local/etc/rc.d/init.d/mtcClient reload
+++ExecStart=/usr/local/etc/init.d/mtcClient start
+++ExecStop=/usr/local/etc/init.d/mtcClient stop
+++ExecReload=/usr/local/etc/init.d/mtcClient reload
+  PIDFile=/var/run/mtcClient.pid
+  KillMode=process
+  SendSIGKILL=no
+@@ -589,9 +589,9 @@ index c7ec2e0..2a78e68 100644
+ -ExecStart=/etc/rc.d/init.d/mtclog start
+ -ExecStop=/etc/rc.d/init.d/mtclog stop
+ -ExecReload=/etc/rc.d/init.d/mtclog reload
+-+ExecStart=/usr/local/etc/rc.d/init.d/mtclog start
+-+ExecStop=/usr/local/etc/rc.d/init.d/mtclog stop
+-+ExecReload=/usr/local/etc/rc.d/init.d/mtclog reload
+++ExecStart=/usr/local/etc/init.d/mtclog start
+++ExecStop=/usr/local/etc/init.d/mtclog stop
+++ExecReload=/usr/local/etc/init.d/mtclog reload
+  PIDFile=/var/run/mtclogd.pid
+  
+  # Failure handling
+@@ -631,8 +631,8 @@ index f29a5b3..273414b 100644
+  Type=simple
+ -ExecStart=/etc/rc.d/init.d/runservices start
+ -ExecStop=/etc/rc.d/init.d/runservices stop
+-+ExecStart=/usr/local/etc/rc.d/init.d/runservices start
+-+ExecStop=/usr/local/etc/rc.d/init.d/runservices stop
+++ExecStart=/usr/local/etc/init.d/runservices start
+++ExecStop=/usr/local/etc/init.d/runservices stop
+  
+  [Install]
+  WantedBy=multi-user.target
