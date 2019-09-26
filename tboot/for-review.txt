@@ -1,0 +1,3561 @@
+From eca9e00425c7d269233045d38fde5709bc26547f Mon Sep 17 00:00:00 2001
+From: zhang zhiguo <zhangzhg0508@126.com>
+Date: Wed, 25 Sep 2019 15:01:27 +0800
+Subject: [PATCH tboot] tboot: Autospec creation for version 1.9.6
+
+---
+ .gitignore                                    |   14 +
+ ...error-in-function-bool-evtlog_append.patch |   46 +
+ 0002-Reset-debug-PCR16-to-zero.patch          |   34 +
+ 0003-port-to-openssl-1.1.0.patch              |   47 +
+ 0004-lcptools-v2-utilities-fixes.patch        |  442 +++++++
+ ...element-stm_elt-use-unique-type-name.patch |   43 +
+ 0006-Fix-openssl-1.0.2-double-frees.patch     |  107 ++
+ ...f-the-MB2-tag-is-the-size-of-the-tag.patch |   39 +
+ ...nerabilities-rooted-in-tpm_if-struct.patch | 1100 +++++++++++++++++
+ 0009-Optimize-tboot-docs-installation.patch   |   55 +
+ ...er-dereference-bug-when-Intel-TXT-is.patch |   33 +
+ ...Fix-TPM-1.2-locality-selection-issue.patch |   62 +
+ ...-and-invalid-reads-and-writes-issues.patch |  286 +++++
+ ...nstructions-for-Use-in-EFI-boot-mode.patch |   42 +
+ ...-is-available-even-when-measured-lau.patch |   95 ++
+ ...appending-to-a-TPM2-TCG-style-event-.patch |  175 +++
+ ...-tboot-to-force-SINIT-to-use-the-leg.patch |  345 ++++++
+ 1000-tboot-for-tis.patch                      |  188 +++
+ ChangeLog                                     |  436 +++++++
+ Makefile                                      |    5 +
+ build_prepend                                 |    1 +
+ buildreq_add                                  |    4 +
+ buildreq_ban                                  |    2 +
+ buildreq_cache                                |    3 +
+ excludes                                      |    2 +
+ install_append                                |    4 +
+ install_macro                                 |    1 +
+ install_prepend                               |    1 +
+ make_args                                     |    1 +
+ options.conf                                  |   58 +
+ pkgconfig_add                                 |    2 +
+ pkgconfig_ban                                 |    2 +
+ release                                       |    1 +
+ requires_add                                  |    2 +
+ requires_ban                                  |    2 +
+ series                                        |   17 +
+ tboot.license                                 |    1 +
+ tboot.spec                                    |  151 +++
+ testresults                                   |    5 +
+ upstream                                      |    1 +
+ used_libs                                     |    4 +
+ 41 files changed, 3859 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 0001-Fix-a-logical-error-in-function-bool-evtlog_append.patch
+ create mode 100644 0002-Reset-debug-PCR16-to-zero.patch
+ create mode 100644 0003-port-to-openssl-1.1.0.patch
+ create mode 100644 0004-lcptools-v2-utilities-fixes.patch
+ create mode 100644 0005-Make-policy-element-stm_elt-use-unique-type-name.patch
+ create mode 100644 0006-Fix-openssl-1.0.2-double-frees.patch
+ create mode 100644 0007-The-size-field-of-the-MB2-tag-is-the-size-of-the-tag.patch
+ create mode 100644 0008-Fix-security-vulnerabilities-rooted-in-tpm_if-struct.patch
+ create mode 100644 0009-Optimize-tboot-docs-installation.patch
+ create mode 100644 0010-Fix-a-null-pointer-dereference-bug-when-Intel-TXT-is.patch
+ create mode 100644 0011-Fix-TPM-1.2-locality-selection-issue.patch
+ create mode 100644 0012-Fix-memory-leak-and-invalid-reads-and-writes-issues.patch
+ create mode 100644 0013-Add-centos7-instructions-for-Use-in-EFI-boot-mode.patch
+ create mode 100644 0014-Ensure-tboot-log-is-available-even-when-measured-lau.patch
+ create mode 100644 0015-Add-support-for-appending-to-a-TPM2-TCG-style-event-.patch
+ create mode 100644 0016-Add-an-option-in-tboot-to-force-SINIT-to-use-the-leg.patch
+ create mode 100644 1000-tboot-for-tis.patch
+ create mode 100644 ChangeLog
+ create mode 100644 Makefile
+ create mode 100644 build_prepend
+ create mode 100644 buildreq_add
+ create mode 100644 buildreq_ban
+ create mode 100644 buildreq_cache
+ create mode 100644 excludes
+ create mode 100644 install_append
+ create mode 100644 install_macro
+ create mode 100644 install_prepend
+ create mode 100644 make_args
+ create mode 100644 options.conf
+ create mode 100644 pkgconfig_add
+ create mode 100644 pkgconfig_ban
+ create mode 100644 release
+ create mode 100644 requires_add
+ create mode 100644 requires_ban
+ create mode 100644 series
+ create mode 100644 tboot.license
+ create mode 100644 tboot.spec
+ create mode 100644 testresults
+ create mode 100644 upstream
+ create mode 100644 used_libs
+
+diff --git a/0001-Fix-a-logical-error-in-function-bool-evtlog_append.patch b/0001-Fix-a-logical-error-in-function-bool-evtlog_append.patch
+new file mode 100644
+index 0000000..0edfebe
+--- /dev/null
++++ b/0001-Fix-a-logical-error-in-function-bool-evtlog_append.patch
+@@ -0,0 +1,46 @@
++From 9e6a264ddc64a713c771342f388e5b9dde3d4753 Mon Sep 17 00:00:00 2001
++From: Ning Sun <ning.sun@intel.com>
++Date: Fri, 21 Jul 2017 02:18:02 -0700
++Subject: [PATCH 01/16] Fix a logical error in function bool
++ evtlog_append(...).
++
++There is a logical error in function
++bool evtlog_append(uint8_t pcr, hash_list_t *hl, uint32_t type).
++The function always returns true whether event log append is
++successful or not for both TPM1.2 or TPM2.0.
++
++
++Signed-off-by: Shi Wangyi <shiwangyi@gohighsec.com>
++Reviewed-by: Ning Sun <ning.sun@intel.com>
++Signed-off-by: Tony Camuso <tcamuso@redhat.com>
++---
++ tboot/txt/txt.c | 11 +++++++----
++ 1 file changed, 7 insertions(+), 4 deletions(-)
++
++diff --git a/tboot/txt/txt.c b/tboot/txt/txt.c
++index b920b28..44d0d23 100644
++--- a/tboot/txt/txt.c
+++++ b/tboot/txt/txt.c
++@@ -430,12 +430,15 @@ bool evtlog_append(uint8_t pcr, hash_list_t *hl, uint32_t type)
++ {
++     switch (g_tpm->major) {
++     case TPM12_VER_MAJOR:
++-        evtlog_append_tpm12(pcr, &hl->entries[0].hash, type);
+++        if ( !evtlog_append_tpm12(pcr, &hl->entries[0].hash, type) )
+++            return false;
++         break;
++     case TPM20_VER_MAJOR:
++-        for (unsigned int i=0; i<hl->count; i++)
++-            evtlog_append_tpm20(pcr, hl->entries[i].alg,
++-                    &hl->entries[i].hash, type);
+++        for (unsigned int i=0; i<hl->count; i++) {
+++            if ( !evtlog_append_tpm20(pcr, hl->entries[i].alg,
+++                    &hl->entries[i].hash, type))
+++                return false;
+++	}
++         break;
++     default:
++         return false;
++-- 
++1.8.3.1
++
+diff --git a/0002-Reset-debug-PCR16-to-zero.patch b/0002-Reset-debug-PCR16-to-zero.patch
+new file mode 100644
+index 0000000..7693e8f
+--- /dev/null
++++ b/0002-Reset-debug-PCR16-to-zero.patch
+@@ -0,0 +1,34 @@
++From 7bf8782decfe8f7f9d30b5d1a0690b23c61600bf Mon Sep 17 00:00:00 2001
++From: Ning Sun <ning.sun@intel.com>
++Date: Mon, 24 Jul 2017 05:34:17 -0700
++Subject: [PATCH 02/16] Reset debug PCR16 to zero. PCR16 is used to identify
++ TPM2.0 supported banks and hash algorithms. Upon successful execution,
++ TPM2_PCR_Event command will extend a hashed value in each discovered bank of
++ PCR16. PCR16 needs to be reset to zero after this discovery.
++
++Signed-off-by: Ning Sun <ning.sun@intel.com>
++Signed-off-by: Tony Camuso <tcamuso@redhat.com>
++---
++ tboot/common/tpm_20.c | 6 ++++++
++ 1 file changed, 6 insertions(+)
++
++diff --git a/tboot/common/tpm_20.c b/tboot/common/tpm_20.c
++index b9b67c9..e4a22b4 100644
++--- a/tboot/common/tpm_20.c
+++++ b/tboot/common/tpm_20.c
++@@ -2555,6 +2555,12 @@ static bool tpm20_init(struct tpm_if *ti)
++     for (unsigned int i=0; i<ti->alg_count; i++)
++         printk(TBOOT_INFO"tboot: hash alg = %08X\n", ti->algs[i]);
++ 
+++    /* reset debug PCR 16 */
+++    if (!tpm20_pcr_reset(ti, ti->cur_loc, 16)){
+++        printk(TBOOT_WARN"TPM: tpm20_pcr_reset failed...\n");
+++	return false;
+++    }
+++
++     if (handle2048 != 0)
++         goto out;
++ 
++-- 
++1.8.3.1
++
+diff --git a/0003-port-to-openssl-1.1.0.patch b/0003-port-to-openssl-1.1.0.patch
+new file mode 100644
+index 0000000..2ec3688
+--- /dev/null
++++ b/0003-port-to-openssl-1.1.0.patch
+@@ -0,0 +1,47 @@
++From ba863da2fb60acc977356e6036409970c880258d Mon Sep 17 00:00:00 2001
++From: Ning Sun <ning.sun@intel.com>
++Date: Mon, 28 Aug 2017 02:10:28 -0700
++Subject: [PATCH 03/16] port to openssl-1.1.0
++
++SSL 1.1.0 made various structure opaque, so these objects can no
++longer be created on the stack.  The life cycle of these objects is
++now managed with allocators and de-allocators.
++
++This patch ports tboot to be compatible with openssl-1.1.0.
++
++Signed-off-by: Curt Brune <curt@cumulusnetworks.com>
++Signed-off-by: Tony Camuso <tcamuso@redhat.com>
++---
++ lcptools/hash.c | 13 +++++++++----
++ 1 file changed, 9 insertions(+), 4 deletions(-)
++
++diff --git a/lcptools/hash.c b/lcptools/hash.c
++index 4e328c6..71df5e3 100644
++--- a/lcptools/hash.c
+++++ b/lcptools/hash.c
++@@ -74,13 +74,18 @@ bool hash_buffer(const unsigned char* buf, size_t size, tb_hash_t *hash,
++         return false;
++ 
++     if ( hash_alg == TB_HALG_SHA1_LG ) {
++-        EVP_MD_CTX ctx;
+++        EVP_MD_CTX *ctx = EVP_MD_CTX_create();
+++        if (ctx == NULL) {
+++            fprintf(stderr, "%s(): EVP_MD_CTX_create() failed.\n", __func__);
+++            return false;
+++        }
++         const EVP_MD *md;
++ 
++         md = EVP_sha1();
++-        EVP_DigestInit(&ctx, md);
++-        EVP_DigestUpdate(&ctx, buf, size);
++-        EVP_DigestFinal(&ctx, hash->sha1, NULL);
+++        EVP_DigestInit(ctx, md);
+++        EVP_DigestUpdate(ctx, buf, size);
+++        EVP_DigestFinal(ctx, hash->sha1, NULL);
+++        EVP_MD_CTX_destroy(ctx);
++         return true;
++     }
++     else
++-- 
++1.8.3.1
++
+diff --git a/0004-lcptools-v2-utilities-fixes.patch b/0004-lcptools-v2-utilities-fixes.patch
+new file mode 100644
+index 0000000..8541fa9
+--- /dev/null
++++ b/0004-lcptools-v2-utilities-fixes.patch
+@@ -0,0 +1,442 @@
++From cda9c10daf9d01eb2bb633e2bad6688db47f345c Mon Sep 17 00:00:00 2001
++From: Ning Sun <ning.sun@intel.com>
++Date: Fri, 1 Sep 2017 14:05:34 -0700
++Subject: [PATCH 04/16] lcptools-v2 utilities fixes
++
++This is a significant patch that corrects omissions I found in the lcptools-v2 utilities.
++It adds definitions based on the Intel TXT Software Development Guide
++(https://www.intel.com/content/www/us/en/software-developers/intel-txt-software-development-guide.html).
++I used Revision 013. Looking at Section 4.6 of Revision 014, it seems my patch still applies.
++Appendix E has a couple changes, notably the removal of ECDSA as an approved signing algorithm.
++This could be changed from what I'm providing if we want to update the tools to match Revision 014.
++
++I've added the following:
++-Ability to define the allowed policy hashing algorithms (stored in a mask)
++-Ability to define the signing algorithm
++-Ability to define the AUX hashing algorithm -constants for hashing and signing algorithms
++-Ability to define LCP version
++
++I also changed some of the options as well as some of my added options to required based on
++my experience of ACMs rejecting LCPs without those fields and common sense. For example,
++the policy hash could be defined without defining the allowed policy hashing algorithms.
++Now, since you have to define the policy hash, you must also define the policy hashing "allowed algorithms" mask.
++
++
++Signed-off-by: Travis Gilbert <travis.gilbert@dell.com>
++Reviewed-by: Ning Sun <ning.sun@intel.com>
++Signed-off-by: Tony Camuso <tcamuso@redhat.com>
++---
++ include/lcp3.h         |  23 ++++++++-
++ lcptools-v2/crtpol.c   | 123 ++++++++++++++++++++++++++++++++++++++++++-------
++ lcptools-v2/lcputils.c |  79 +++++++++++++++++++++++++++++--
++ lcptools-v2/lcputils.h |  20 ++++----
++ 4 files changed, 215 insertions(+), 30 deletions(-)
++
++diff --git a/include/lcp3.h b/include/lcp3.h
++index 4c717fe..e730ff0 100644
++--- a/include/lcp3.h
+++++ b/include/lcp3.h
++@@ -55,13 +55,16 @@
++ #define LCP_POLTYPE_LIST    0
++ #define LCP_POLTYPE_ANY     1
++ 
+++#define LCP_VER_2_0  0x0200
+++#define LCP_VER_3_0  0x0300
+++#define LCP_VER_3_1  0x0301
+++#define LCP_VER_NULL    0x0000
++ 
++-#define LCP_DEFAULT_POLICY_VERSION     0x0300
+++#define LCP_DEFAULT_POLICY_VERSION     LCP_VER_3_0
++ #define LCP_DEFAULT_POLICY_CONTROL     0x00
++ 
++ #define LCP_MAX_LISTS      8
++ 
++-
++ /*--------- with LCP_POLICY version 2.0 ------------*/
++ #define SHA1_LENGTH        20
++ #define SHA256_LENGTH      32
++@@ -140,6 +143,22 @@ typedef struct __packed {
++ #define TPM_ALG_SHA512	0x000D
++ #define TPM_ALG_NULL	0x0010
++ #define TPM_ALG_SM3_256	0x0012
+++ 
+++#define TPM_ALG_MASK_NULL	    0x0000
+++#define TPM_ALG_MASK_SHA1	    0x0001
+++#define TPM_ALG_MASK_SHA256	    0x0008
+++#define TPM_ALG_MASK_SM3_256	    0x0020
+++#define TPM_ALG_MASK_SHA384	    0x0040
+++#define TPM_ALG_MASK_SHA512	    0x0080
+++
+++#define SIGN_ALG_MASK_NULL                  0x00000000
+++#define SIGN_ALG_MASK_RSASSA_1024_SHA1      0x00000001
+++#define SIGN_ALG_MASK_RSASSA_1024_SHA256    0x00000002
+++#define SIGN_ALG_MASK_RSASSA_2048_SHA1      0x00000004
+++#define SIGN_ALG_MASK_RSASSA_2048_SHA256    0x00000008
+++#define SIGN_ALG_MASK_ECDSA_P256            0x00001000
+++#define SIGN_ALG_MASK_ECDSA_P384            0x00002000
+++#define SIGN_ALG_MASK_SM2                   0x00010000
++ 
++ #define TPM_ALG_RSASSA  0x0014
++ #define TPM_ALG_ECDSA   0x0018
++diff --git a/lcptools-v2/crtpol.c b/lcptools-v2/crtpol.c
++index 9379745..d1c61fd 100644
++--- a/lcptools-v2/crtpol.c
+++++ b/lcptools-v2/crtpol.c
++@@ -60,18 +60,23 @@
++ #include "pollist1.h"
++ 
++ static const char help[] =
++-    "Usage: lcp_crtpol2 <COMMAND> [OPTION]\n"
+++    "Usage: lcp2_crtpol <COMMAND> [OPTION]\n"
++     "Create an Intel(R) TXT policy (and policy data file)\n\n"
++     "--create\n"
++-    "        --alg <sha1|sha256|sm3>    hash_alg\n"
+++    
+++    "        --alg <sha1|sha256|sm3>    hash algorithm for the policy\n"
++     "        --type <any|list>          type\n"
++     "        [--minver <ver>]           SINITMinVersion\n"
++     "        [--rev <ctr1>[,ctrN]       revocation values (comma separated,\n"
++     "                                   no spaces\n"
++     "        [--ctrl <pol ctrl]         policy control\n"
++     "        --pol <FILE>               policy file\n"
++-    "        [--data <FILE>             policy data file\n"
+++    "        [--data <FILE>]            policy data file\n"
++     "        [FILE]...                  policy list files\n"
+++    "        [--mask]                   Allowed policy hash algorithm(s)\n"
+++    "        [--auxalg]                 AUX allowed hash algorithm(s)\n"
+++    "        --sign                     LCP allowed signing algorithm(s)\n"
+++    "        [--polver]                 LCP version\n"
++     "--show\n"
++     "        [--brief]                  brief format output\n"
++     "        [policy file]              policy file\n"
++@@ -99,21 +104,34 @@ static struct option long_opts[] =
++     {"pol",            required_argument,    NULL,     'p'},
++     {"data",           required_argument,    NULL,     'd'},
++     {"brief",          no_argument,          NULL,     'b'},
+++    {"mask",           required_argument,    NULL,     'k'},
+++    {"auxalg",         required_argument,    NULL,     'x'},
+++    {"sign",           required_argument,    NULL,     's'},
+++    {"polver",         required_argument,    NULL,     'e'},
++ 
++     {"verbose",        no_argument,          (int *)&verbose, true},
++     {0, 0, 0, 0}
++ };
++ 
++-uint16_t       version = LCP_DEFAULT_POLICY_VERSION;
+++uint16_t       pol_ver = LCP_DEFAULT_POLICY_VERSION;
++ char           policy_file[MAX_PATH] = "";
++ char           poldata_file[MAX_PATH] = "";
++-char           alg_name[32] = "";
++-uint16_t       alg_type = TPM_ALG_NULL;
+++
+++char           lcp_alg_name[32] = "";
+++char           aux_alg_name[32] = "";
+++char           sign_alg_name[32] = "";
+++char           pol_ver_name[32] = "";
+++char           lcp_hash_mask_name[32] = "";
+++uint16_t       lcp_hash_alg = TPM_ALG_NULL;
+++uint16_t       aux_hash_alg = TPM_ALG_MASK_NULL;
+++uint16_t       lcp_hash_mask = TPM_ALG_MASK_NULL;
+++ 
++ char           type[32] = "";
++ uint8_t        sinit_min_ver = 0;
++ unsigned int   nr_rev_ctrs = 0;
++ uint16_t       rev_ctrs[LCP_MAX_LISTS] = { 0 };
++ uint32_t       policy_ctrl = LCP_DEFAULT_POLICY_CONTROL;
+++uint32_t       lcp_sign_alg = SIGN_ALG_MASK_NULL;
++ bool           brief = false;
++ unsigned int   nr_files = 0;
++ char           files[LCP_MAX_LISTS][MAX_PATH];
++@@ -128,12 +146,27 @@ static int create(void)
++         return 1;
++     }
++     memset(pol, 0, sizeof(*pol));
++-    pol->version = version;
++-    pol->hash_alg = alg_type;
+++    pol->version = pol_ver;
+++    pol->hash_alg = lcp_hash_alg;
++     pol->sinit_min_version = sinit_min_ver;
++     for ( unsigned int i = 0; i < nr_rev_ctrs; i++ )
++         pol->data_revocation_counters[i] = rev_ctrs[i];
++     pol->policy_control = policy_ctrl;
+++  
+++    if(aux_hash_alg == TPM_ALG_MASK_NULL){
+++        pol->aux_hash_alg_mask = convert_hash_alg_to_mask(pol->hash_alg);
+++    }
+++    else{
+++        pol->aux_hash_alg_mask = aux_hash_alg;
+++    }
+++
+++    if(lcp_hash_mask == TPM_ALG_MASK_NULL){
+++        pol->lcp_hash_alg_mask = convert_hash_alg_to_mask(pol->hash_alg);
+++    }
+++    else{
+++        pol->lcp_hash_alg_mask = lcp_hash_mask;
+++    }
+++    pol->lcp_sign_alg_mask = lcp_sign_alg;
++ 
++     if ( strcmp(type, "any") == 0 ) {
++         pol->policy_type = LCP_POLTYPE_ANY;
++@@ -178,6 +211,8 @@ static int create(void)
++         }
++         calc_policy_data_hash(poldata, &pol->policy_hash, pol->hash_alg);
++     }
+++    
+++    LOG("pol alg=0x%x, mask=0x%x, aux_mask=0x%x, sign_mask=0x%x\n", pol->hash_alg, pol->lcp_hash_alg_mask, pol->aux_hash_alg_mask, pol->lcp_sign_alg_mask);
++ 
++     bool ok;
++     ok = write_file(policy_file, pol, get_policy_size(pol));
++@@ -280,7 +315,7 @@ int main (int argc, char *argv[])
++ 
++     do {
++         c = getopt_long_only(argc, argv, "", long_opts, NULL);
++-
+++        /*LOG("getopt: %c %s\n", c, optarg);*/
++         switch (c) {
++             /* commands */
++         case 'H':          /* help */
++@@ -295,12 +330,13 @@ int main (int argc, char *argv[])
++             LOG("cmdline opt: command: %c\n", cmd);
++             break;
++ 
++-	case 'a':
++-            strlcpy(alg_name, optarg, sizeof(alg_name));
++-            LOG("cmdline opt: alg: %s\n", alg_name);
+++	    case 'a':
+++            strlcpy(lcp_alg_name, optarg, sizeof(lcp_alg_name));
+++            lcp_hash_alg = str_to_hash_alg(lcp_alg_name);
+++            LOG("cmdline opt: alg: %s\n", lcp_alg_name);
++             break;
++ 
++-        case 'p':            /* policy file */
+++    	    case 'p':            /* policy file */
++             strlcpy(policy_file, optarg, sizeof(policy_file));
++             LOG("cmdline opt: pol: %s\n", policy_file);
++             break;
++@@ -339,6 +375,47 @@ int main (int argc, char *argv[])
++             LOG("cmdline opt: brief: %u\n", brief);
++             break;
++ 
+++        case 'k':           /* policy hash algorithm mask */
+++            strlcpy(lcp_hash_mask_name, optarg, sizeof(lcp_hash_mask_name));
+++            lcp_hash_mask = str_to_lcp_hash_mask(lcp_hash_mask_name);
+++            LOG("cmdline opt: mask: %s = 0x%04X\n", lcp_hash_mask_name, lcp_hash_mask);
+++            if ( lcp_hash_mask == TPM_ALG_MASK_NULL ) {
+++                 ERROR("Error: LCP hash alg not supported\n");
+++                 return 1;
+++            }
+++            break;
+++
+++        case 'x':           /* AUX hash algorithm */
+++            strlcpy(aux_alg_name, optarg, sizeof(aux_alg_name));
+++            LOG("cmdline opt: auxalg: %s\n", aux_alg_name);
+++            aux_hash_alg = str_to_lcp_hash_mask(aux_alg_name);
+++            if ( aux_hash_alg == TPM_ALG_MASK_NULL) {
+++                 ERROR("Error: AUX hash alg not supported\n");
+++                 return 1;
+++            }
+++            break;
+++
+++        case 's':           /* LCP signing algorithm */
+++            strlcpy(sign_alg_name, optarg, sizeof(sign_alg_name));
+++            LOG("cmdline opt: sign: %s\n", sign_alg_name);
+++
+++            lcp_sign_alg = str_to_sig_alg_mask(sign_alg_name, pol_ver);
+++            if ( lcp_sign_alg == SIGN_ALG_MASK_NULL) {
+++                 ERROR("Error: signing alg not supported\n");
+++                 return 1;
+++            }
+++            break;
+++        case 'e':           /* LCP version */
+++            strlcpy(pol_ver_name, optarg, sizeof(pol_ver_name));
+++            LOG("cmdline opt: sign: %s\n", pol_ver_name);
+++
+++            pol_ver = str_to_pol_ver(pol_ver_name);
+++            if ( pol_ver == LCP_VER_NULL) {
+++                 ERROR("Error: Invalid policy version\n");
+++                 return 1;
+++            }
+++            break;
+++
++         case 0:
++         case -1:
++             break;
++@@ -365,11 +442,23 @@ int main (int argc, char *argv[])
++         return 0;
++     }
++     else if ( cmd == 'C' ) {      /* --create */
++-	alg_type = str_to_hash_alg(alg_name);
++-        if ( alg_type == TPM_ALG_NULL) {
++-             ERROR("Error: alg not supported\n");
++-             return 1;
+++	uint16_t lcp_major_version = pol_ver & 0xFF00;
+++
+++        if ( lcp_hash_alg == TPM_ALG_NULL) {
+++            ERROR("Error: alg not supported\n");
+++            return 1;
+++        }
+++        LOG("pol_ver & 0xFF00 is 0x%x", lcp_major_version);
+++        if ( lcp_major_version == LCP_VER_2_0 ){
+++            if ( lcp_sign_alg != SIGN_ALG_MASK_NULL) {
+++                LOG("Info: Signature algorithm mask not defined for LCPv2, specified mask is ignored.\n");
+++            }        
++         }
+++        else if ( lcp_sign_alg == SIGN_ALG_MASK_NULL) {
+++            ERROR("Error: LCPv3 signing alg mask not supported or not specified\n");
+++            return 1;
+++        }
+++
++         if ( *type == '\0' ) {
++             ERROR("Error: no type specified\n");
++             return 1;
++diff --git a/lcptools-v2/lcputils.c b/lcptools-v2/lcputils.c
++index 5bf0de4..6a85b4a 100644
++--- a/lcptools-v2/lcputils.c
+++++ b/lcptools-v2/lcputils.c
++@@ -292,7 +292,7 @@ const char *sig_alg_to_str(uint16_t alg)
++     }
++ }
++ 
++-extern uint16_t str_to_hash_alg(const char *str) 
+++uint16_t str_to_hash_alg(const char *str) 
++ {
++     if (strcmp(str,"sha1") == 0)
++         return TPM_ALG_SHA1;
++@@ -308,12 +308,32 @@ extern uint16_t str_to_hash_alg(const char *str)
++         return  TPM_ALG_NULL;
++ }
++ 
++-extern uint16_t str_to_sig_alg(const char *str, const uint16_t version)
+++uint16_t str_to_lcp_hash_mask(const char *str)
+++{
+++    if (strcmp(str,"sha1") == 0)
+++        return TPM_ALG_MASK_SHA1;
+++    else if (strcmp(str,"sha256") == 0)
+++        return TPM_ALG_MASK_SHA256;
+++    else if (strcmp(str,"sha384") == 0)
+++        return TPM_ALG_MASK_SHA384;
+++    else if (strcmp(str,"sha512") == 0)
+++        return TPM_ALG_MASK_SHA512;
+++    else if (strcmp(str,"sm3") == 0)
+++        return TPM_ALG_MASK_SM3_256;
+++    else if(strncmp(str, "0X", 2) || strncmp(str, "0x", 2))
+++        return strtoul(str, NULL, 0);
+++    else
+++        return  TPM_ALG_MASK_NULL;
+++}
+++
+++uint16_t str_to_sig_alg(const char *str, const uint16_t version)
++ {
++     LOG("str_to_sig_alg:version=%x\n",version);
++     if( version == LCP_TPM12_POLICY_LIST_VERSION) {
++         if (strcmp(str,"rsa") == 0)
++             return LCP_POLSALG_RSA_PKCS_15;
+++        else if(strncmp(str, "0X", 2) || strncmp(str, "0x", 2))
+++            return strtoul(str, NULL, 0);
++         else 
++             return LCP_POLSALG_NONE;
++     }
++@@ -329,9 +349,62 @@ extern uint16_t str_to_sig_alg(const char *str, const uint16_t version)
++         else 
++             return TPM_ALG_NULL;
++     }
++-    else 
+++    else if(strncmp(str, "0X", 2) || strncmp(str, "0x", 2))
+++        return strtoul(str, NULL, 0);
+++    else
++         return TPM_ALG_NULL;
++ }
+++uint32_t str_to_sig_alg_mask(const char *str, const uint16_t version)
+++{
+++    LOG("str_to_sig_alg_mask:version=%x\n",version);
+++    uint16_t lcp_major_ver = version & 0xFF00;
+++    if( lcp_major_ver == LCP_VER_2_0 ) {
+++        //signature algorithm mask is undefined in LCPv2
+++        return SIGN_ALG_MASK_NULL;
+++    }
+++    else if( lcp_major_ver == LCP_VER_3_0) {
+++        if(strncmp(str, "0X", 2) || strncmp(str, "0x", 2)){
+++            return strtoul(str, NULL, 0);
+++        }
+++        else{
+++            //mask must be specified explicitly, no string parsing yet
+++            return SIGN_ALG_MASK_NULL;
+++        }
+++    }
+++    else 
+++        return SIGN_ALG_MASK_NULL;
+++}
+++uint16_t str_to_pol_ver(const char *str)
+++{
+++    if( strcmp(str,"2.0") == 0)
+++       return LCP_VER_2_0;
+++    else if ( strcmp(str,"3.0") == 0)
+++        return LCP_VER_3_0;
+++    else if ( strcmp(str,"3.1") == 0)
+++        return LCP_VER_3_1;
+++    else 
+++        return LCP_VER_NULL;
+++}
+++
+++uint16_t convert_hash_alg_to_mask(uint16_t hash_alg)
+++{
+++    LOG("convert_hash_alg_to_mask hash_alg = 0x%x\n", hash_alg);
+++    switch(hash_alg){
+++    case TPM_ALG_SHA1:
+++        return TPM_ALG_MASK_SHA1;
+++    case TPM_ALG_SHA256:
+++        return TPM_ALG_MASK_SHA256;
+++    case TPM_ALG_SHA384:
+++        return TPM_ALG_MASK_SHA384;
+++    case TPM_ALG_SHA512:
+++        return TPM_ALG_MASK_SHA512;
+++    case TPM_ALG_SM3_256:
+++        return TPM_ALG_MASK_SM3_256;
+++    default:
+++        return 0;
+++    }
+++    return 0;
+++}
++ 
++ size_t get_lcp_hash_size(uint16_t hash_alg)
++ {
++diff --git a/lcptools-v2/lcputils.h b/lcptools-v2/lcputils.h
++index 3509ab4..d7e4c7b 100644
++--- a/lcptools-v2/lcputils.h
+++++ b/lcptools-v2/lcputils.h
++@@ -62,20 +62,24 @@ extern bool parse_line_hashes(const char *line, tb_hash_t *hash, uint16_t alg);
++ extern bool parse_file(const char *filename,
++ 		       bool (*parse_line)(const char *line));
++ 
++-extern const char *hash_alg_to_str(uint16_t alg);
+++const char *hash_alg_to_str(uint16_t alg);
++ 
++-extern const char *sig_alg_to_str(uint16_t alg);
+++const char *sig_alg_to_str(uint16_t alg);
++ 
++-extern uint16_t str_to_hash_alg(const char *str);
+++uint16_t str_to_hash_alg(const char *str);
+++uint16_t str_to_lcp_hash_mask(const char *str);
+++uint16_t convert_hash_alg_to_mask(uint16_t hash_alg);
++ 
++-extern uint16_t str_to_sig_alg(const char *str, const uint16_t version);
+++uint16_t str_to_sig_alg(const char *str, const uint16_t version);
+++uint32_t str_to_sig_alg_mask(const char *str, const uint16_t version);
++ 
++-extern size_t get_lcp_hash_size(uint16_t hash_alg);
+++uint16_t str_to_pol_ver(const char *str);
++ 
++-extern bool verify_signature(const uint8_t *data, size_t data_size,
++-                             const uint8_t *pubkey, size_t pubkey_size,
++-                             const uint8_t *sig, bool is_sig_little_endian);
+++size_t get_lcp_hash_size(uint16_t hash_alg);
++ 
+++bool verify_signature(const uint8_t *data, size_t data_size,
+++                      const uint8_t *pubkey, size_t pubkey_size,
+++                      const uint8_t *sig, bool is_sig_little_endian);
++ #endif    /* __LCPUTILS_H__ */
++ 
++ 
++-- 
++1.8.3.1
++
+diff --git a/0005-Make-policy-element-stm_elt-use-unique-type-name.patch b/0005-Make-policy-element-stm_elt-use-unique-type-name.patch
+new file mode 100644
+index 0000000..9696e12
+--- /dev/null
++++ b/0005-Make-policy-element-stm_elt-use-unique-type-name.patch
+@@ -0,0 +1,43 @@
++From c5368df3c6687e7c8f4578f6329d5ecb5f890e75 Mon Sep 17 00:00:00 2001
++From: Ning Sun <ning.sun@intel.com>
++Date: Sat, 2 Sep 2017 01:28:57 -0700
++Subject: [PATCH 05/16] Make policy element stm_elt use unique type name
++
++The stm_elt policy element plugin registers as type "mle" which
++conflicts with the mle_elt policy plugin that also registers as type
++"mle".
++
++The plugin architecture uses C constructors to register plugins within
++the framework.  When multiple compilation units use constructors, the
++order in which the constructors are called is somewhat arbitrary.  It
++depends on the compiler and the dynamic loader.
++
++This patch registers the stm_elt as type "stm", which looks to have
++been the original intent.
++
++Signed-off-by: Curt Brune <curt@cumulusnetworks.com>
++Reviewed-by: Ning Sun <ning.sun@intel.com>
++Signed-off-by: Tony Camuso <tcamuso@redhat.com>
++---
++ lcptools-v2/stm_elt.c | 4 ++--
++ 1 file changed, 2 insertions(+), 2 deletions(-)
++
++diff --git a/lcptools-v2/stm_elt.c b/lcptools-v2/stm_elt.c
++index 43a64dd..f91fa30 100644
++--- a/lcptools-v2/stm_elt.c
+++++ b/lcptools-v2/stm_elt.c
++@@ -132,9 +132,9 @@ static struct option opts[] = {
++ };
++ 
++ static polelt_plugin_t plugin = {
++-    "mle",
+++    "stm",
++     opts,
++-    "      mle\n"
+++    "      stm\n"
++     "        [--alg <sha1|sha256|sha384|sha512>]    hash alg of element\n"
++     "        <FILE1> [FILE2] ...         one or more files containing STM\n"
++     "                                    hash(es); each file can contain\n"
++-- 
++1.8.3.1
++
+diff --git a/0006-Fix-openssl-1.0.2-double-frees.patch b/0006-Fix-openssl-1.0.2-double-frees.patch
+new file mode 100644
+index 0000000..a66e798
+--- /dev/null
++++ b/0006-Fix-openssl-1.0.2-double-frees.patch
+@@ -0,0 +1,107 @@
++From 69e783621e44b96dd47bfa0d64287ffc931f87db Mon Sep 17 00:00:00 2001
++From: Ning Sun <ning.sun@intel.com>
++Date: Sat, 2 Sep 2017 01:40:15 -0700
++Subject: [PATCH 06/16] Fix openssl-1.0.2 double frees
++
++Changeset 487:4e7bfa7aaa00 introduced double free bugs, which leads to
++segmentation faults when running the lcp_crtpollist and lcp2_crtpollish
++utilities.
++
++The original code copies the BN object pointers to/from the RSA public
++key.  During clean up the code frees the BN objects *and* frees the
++RSA public key, which also tries to free its internal BN objects.
++
++For openssl-1.0.2, this patch uses BN_dup() to create a duplicate BN
++object instead of just copying the pointer.
++
++With this patch in place the segmentation faults are no longer
++witnessed.
++
++Signed-off-by: Curt Brune <curt@cumulusnetworks.com>
++Reviewed-by: Ning Sun <ning.sun@intel.com>
++Signed-off-by: Tony Camuso <tcamuso@redhat.com>
++---
++ lcptools-v2/crtpollist.c | 7 +++----
++ lcptools-v2/lcputils.c   | 4 ++--
++ lcptools/crtpollist.c    | 6 +++---
++ lcptools/lcputils2.c     | 4 ++--
++ 4 files changed, 10 insertions(+), 11 deletions(-)
++
++diff --git a/lcptools-v2/crtpollist.c b/lcptools-v2/crtpollist.c
++index 4c1a12a..3a9d349 100644
++--- a/lcptools-v2/crtpollist.c
+++++ b/lcptools-v2/crtpollist.c
++@@ -160,15 +160,14 @@ static lcp_signature_t2 *read_rsa_pubkey_file(const char *file)
++ 
++     memset(sig, 0, sizeof(lcp_rsa_signature_t) + 2*keysize);
++     sig->rsa_signature.pubkey_size = keysize;
++-   
++-    BIGNUM *modulus = BN_new();
++-    
+++
++     /* OpenSSL Version 1.1.0 and later don't allow direct access to RSA 
++        stuct */    
++     #if OPENSSL_VERSION_NUMBER >= 0x10100000L
+++        BIGNUM *modulus = BN_new();
++         RSA_get0_key(pubkey, (const BIGNUM **)&modulus, NULL, NULL); 
++     #else
++-        modulus = pubkey->n;
+++        BIGNUM *modulus = BN_dup(pubkey->n);
++     #endif
++ 
++     unsigned char key[keysize];
++diff --git a/lcptools-v2/lcputils.c b/lcptools-v2/lcputils.c
++index 6a85b4a..a81a02f 100644
++--- a/lcptools-v2/lcputils.c
+++++ b/lcptools-v2/lcputils.c
++@@ -457,8 +457,8 @@ bool verify_signature(const uint8_t *data, size_t data_size,
++     #if OPENSSL_VERSION_NUMBER >= 0x10100000L
++         RSA_set0_key(rsa_pubkey, modulus, exponent, NULL); 
++     #else
++-        rsa_pubkey->n = modulus;
++-        rsa_pubkey->e = exponent;
+++        rsa_pubkey->n = BN_dup(modulus);
+++        rsa_pubkey->e = BN_dup(exponent);
++         rsa_pubkey->d = rsa_pubkey->p = rsa_pubkey->q = NULL;
++     #endif
++ 
++diff --git a/lcptools/crtpollist.c b/lcptools/crtpollist.c
++index 0583ffa..01c45f1 100644
++--- a/lcptools/crtpollist.c
+++++ b/lcptools/crtpollist.c
++@@ -155,14 +155,14 @@ static lcp_signature_t *read_pubkey_file(const char *file)
++ 
++     memset(sig, 0, sizeof(*sig) + 2*keysize);
++     sig->pubkey_size = keysize;
++-   
++-    BIGNUM *modulus = BN_new();
+++
++     /* OpenSSL Version 1.1.0 and later don't allow direct access to RSA 
++        stuct */ 
++     #if OPENSSL_VERSION_NUMBER >= 0x10100000L
+++        BIGNUM *modulus = BN_new();
++         RSA_get0_key(pubkey, (const BIGNUM **)&modulus, NULL, NULL); 
++     #else
++-    	modulus = pubkey->n;
+++        BIGNUM *modulus = BN_dup(pubkey->n);
++     #endif
++     unsigned char key[keysize];
++     BN_bn2bin(modulus, key);
++diff --git a/lcptools/lcputils2.c b/lcptools/lcputils2.c
++index 3d6f855..797b71d 100644
++--- a/lcptools/lcputils2.c
+++++ b/lcptools/lcputils2.c
++@@ -288,8 +288,8 @@ bool verify_signature(const uint8_t *data, size_t data_size,
++     #if OPENSSL_VERSION_NUMBER >= 0x10100000L
++         RSA_set0_key(rsa_pubkey, modulus, exponent, NULL); 
++     #else
++-      	rsa_pubkey->n = modulus;
++-    	rsa_pubkey->e = exponent;
+++      	rsa_pubkey->n = BN_dup(modulus);
+++    	rsa_pubkey->e = BN_dup(exponent);
++   	rsa_pubkey->d = rsa_pubkey->p = rsa_pubkey->q = NULL;
++     #endif
++ 
++-- 
++1.8.3.1
++
+diff --git a/0007-The-size-field-of-the-MB2-tag-is-the-size-of-the-tag.patch b/0007-The-size-field-of-the-MB2-tag-is-the-size-of-the-tag.patch
+new file mode 100644
+index 0000000..59e2315
+--- /dev/null
++++ b/0007-The-size-field-of-the-MB2-tag-is-the-size-of-the-tag.patch
+@@ -0,0 +1,39 @@
++From ac63a6a27168f6f5d3dd3c67114943b2fa1d0791 Mon Sep 17 00:00:00 2001
++From: Ning Sun <ning.sun@intel.com>
++Date: Wed, 4 Oct 2017 11:13:07 -0700
++Subject: [PATCH 07/16] The size field of the MB2 tag is the size of the tag
++ header + the size of the memmap entries. So we need to subtract the size of
++ the header before returning the memmap size.
++
++Test Plan: Boot with 4.11 kernel. Verify system boots correctly and
++"Invalid EFI memory map entries" message is not present in dmesg.
++
++Signed-off-by: Sahil Rihan <srihan@fb.com>
++Reviewed-by: Ning Sun <ning.sun@intel.com>
++Signed-off-by: Tony Camuso <tcamuso@redhat.com>
++---
++ tboot/common/loader.c | 8 ++++++--
++ 1 file changed, 6 insertions(+), 2 deletions(-)
++
++diff --git a/tboot/common/loader.c b/tboot/common/loader.c
++index cb38ceb..188cd39 100644
++--- a/tboot/common/loader.c
+++++ b/tboot/common/loader.c
++@@ -1977,8 +1977,12 @@ find_efi_memmap(loader_ctx *lctx, uint32_t *descr_size,
++     efi_mmap = (struct mb2_tag_efi_mmap *)hit;
++     *descr_size = efi_mmap->descr_size;
++     *descr_vers = efi_mmap->descr_vers;
++-    *mmap_size = efi_mmap->size;
++-    return (uint32_t)(&efi_mmap->efi_mmap); 
+++    *mmap_size = efi_mmap->size - sizeof(struct mb2_tag_efi_mmap);
+++    if (*mmap_size % *descr_size) {
+++        printk(TBOOT_WARN "EFI memmmap (0x%x) should be a multiple of descriptor size (0x%x)\n",
+++	       *mmap_size, *descr_size);
+++    }
+++    return (uint32_t)(&efi_mmap->efi_mmap);
++ }
++ 
++ bool
++-- 
++1.8.3.1
++
+diff --git a/0008-Fix-security-vulnerabilities-rooted-in-tpm_if-struct.patch b/0008-Fix-security-vulnerabilities-rooted-in-tpm_if-struct.patch
+new file mode 100644
+index 0000000..8a21590
+--- /dev/null
++++ b/0008-Fix-security-vulnerabilities-rooted-in-tpm_if-struct.patch
+@@ -0,0 +1,1100 @@
++From 812c20410240a4064190dabf84b5768428fb9400 Mon Sep 17 00:00:00 2001
++From: Ning Sun <ning.sun@intel.com>
++Date: Mon, 13 Nov 2017 12:02:07 -0800
++Subject: [PATCH 08/16] Fix security vulnerabilities rooted in tpm_if structure
++ and g_tpm variable.
++
++I'm a senior security researcher at National Security Research Institute of
++South Korea.
++
++The current implementation of tboot does not measure function pointers of
++TPM devices because the tpm_if structure has mutable values such as a locality,
++an algorithm type, and indexes.
++Therefore, the attacker can change them to hijack control flow of tboot and
++can manipulate the PCR values of TPM by extending known hashes.
++
++This is severe security vulnerability because we do not trust PCRs anymore.
++
++To fix the vulnerability, I divide the tpm_if structure into two parts,
++a mutable part, and an immutable part. The mutable part, tpm_if structure, has
++only the data for TPM. The immutable part, tpm_if_fp structure, has only the
++function pointers, so it can be measured.
++I also change the type of g_tpm variable from structure to integer for fixing
++the security vulnerability.
++
++
++Signed-off-by: Seunghun Han <kkamagui@gmail.com>
++Reviewed-by: Ning Sun <ning.sun@intel.com>
++Signed-off-by: Tony Camuso <tcamuso@redhat.com>
++---
++ tboot/common/cmdline.c   | 25 +++++++++--------
++ tboot/common/integrity.c | 49 +++++++++++++++++++++-----------
++ tboot/common/loader.c    | 10 +++----
++ tboot/common/policy.c    | 73 ++++++++++++++++++++++++++++--------------------
++ tboot/common/tb_error.c  | 15 ++++++----
++ tboot/common/tboot.c     | 45 ++++++++++++++++-------------
++ tboot/common/tpm.c       | 70 +++++++++++++++++++++++++++-------------------
++ tboot/common/tpm_12.c    |  8 +-----
++ tboot/common/tpm_20.c    |  2 +-
++ tboot/include/tpm.h      | 17 +++++++++--
++ tboot/txt/acmod.c        |  6 ++--
++ tboot/txt/heap.c         | 39 +++++++++++++-------------
++ tboot/txt/txt.c          | 35 +++++++++++++----------
++ 13 files changed, 230 insertions(+), 164 deletions(-)
++
++diff --git a/tboot/common/cmdline.c b/tboot/common/cmdline.c
++index 1e10cf5..8644d01 100644
++--- a/tboot/common/cmdline.c
+++++ b/tboot/common/cmdline.c
++@@ -503,28 +503,29 @@ bool get_tboot_measure_nv(void)
++ void get_tboot_extpol(void)
++ {
++     const char *extpol = get_option_val(g_tboot_cmdline_options, g_tboot_param_values, "extpol");
+++    struct tpm_if *tpm = get_tpm();
++ 
++     if ( extpol == NULL ) {
++-        g_tpm->extpol = TB_EXTPOL_FIXED;
++-        g_tpm->cur_alg = TB_HALG_SHA256;
+++        tpm->extpol = TB_EXTPOL_FIXED;
+++        tpm->cur_alg = TB_HALG_SHA256;
++         return;
++     }
++ 
++     if ( strcmp(extpol, "agile") == 0 ) {
++-        g_tpm->extpol = TB_EXTPOL_AGILE;
++-        g_tpm->cur_alg = TB_HALG_SHA256;
+++        tpm->extpol = TB_EXTPOL_AGILE;
+++        tpm->cur_alg = TB_HALG_SHA256;
++     } else if ( strcmp(extpol, "embedded") == 0 ) {
++-        g_tpm->extpol = TB_EXTPOL_EMBEDDED;
++-        g_tpm->cur_alg = TB_HALG_SHA256;
+++        tpm->extpol = TB_EXTPOL_EMBEDDED;
+++        tpm->cur_alg = TB_HALG_SHA256;
++     } else if ( strcmp(extpol, "sha256") == 0 ) {
++-        g_tpm->extpol = TB_EXTPOL_FIXED;
++-        g_tpm->cur_alg = TB_HALG_SHA256;
+++        tpm->extpol = TB_EXTPOL_FIXED;
+++        tpm->cur_alg = TB_HALG_SHA256;
++     } else if ( strcmp(extpol, "sha1") == 0 ) {
++-        g_tpm->extpol = TB_EXTPOL_FIXED;
++-        g_tpm->cur_alg = TB_HALG_SHA1;
+++        tpm->extpol = TB_EXTPOL_FIXED;
+++        tpm->cur_alg = TB_HALG_SHA1;
++     } else if ( strcmp(extpol, "sm3") == 0 ) {
++-        g_tpm->extpol = TB_EXTPOL_FIXED;
++-        g_tpm->cur_alg = TB_HALG_SM3;
+++        tpm->extpol = TB_EXTPOL_FIXED;
+++        tpm->cur_alg = TB_HALG_SM3;
++     }
++ }
++ 
++diff --git a/tboot/common/integrity.c b/tboot/common/integrity.c
++index 66dafe3..3d48502 100644
++--- a/tboot/common/integrity.c
+++++ b/tboot/common/integrity.c
++@@ -87,8 +87,10 @@ typedef struct {
++ 
++ static bool extend_pcrs(void)
++ {
+++    struct tpm_if *tpm = get_tpm();
+++    const struct tpm_if_fp *tpm_fp = get_tpm_fp();
++     for ( int i = 0; i < g_pre_k_s3_state.num_vl_entries; i++ ) {
++-        if ( !g_tpm->pcr_extend(g_tpm, 2, g_pre_k_s3_state.vl_entries[i].pcr,
+++        if ( !tpm_fp->pcr_extend(tpm, 2, g_pre_k_s3_state.vl_entries[i].pcr,
++                     &g_pre_k_s3_state.vl_entries[i].hl) )
++             return false;
++         if ( !evtlog_append(g_pre_k_s3_state.vl_entries[i].pcr,
++@@ -102,13 +104,15 @@ static bool extend_pcrs(void)
++ 
++ static void print_pre_k_s3_state(void)
++ {
+++    struct tpm_if *tpm = get_tpm();
+++    
++     printk(TBOOT_DETA"pre_k_s3_state:\n");
++     printk(TBOOT_DETA"\t vtd_pmr_lo_base: 0x%Lx\n", g_pre_k_s3_state.vtd_pmr_lo_base);
++     printk(TBOOT_DETA"\t vtd_pmr_lo_size: 0x%Lx\n", g_pre_k_s3_state.vtd_pmr_lo_size);
++     printk(TBOOT_DETA"\t vtd_pmr_hi_base: 0x%Lx\n", g_pre_k_s3_state.vtd_pmr_hi_base);
++     printk(TBOOT_DETA"\t vtd_pmr_hi_size: 0x%Lx\n", g_pre_k_s3_state.vtd_pmr_hi_size);
++     printk(TBOOT_DETA"\t pol_hash: ");
++-    print_hash(&g_pre_k_s3_state.pol_hash, g_tpm->cur_alg);
+++    print_hash(&g_pre_k_s3_state.pol_hash, tpm->cur_alg);
++     printk(TBOOT_DETA"\t VL measurements:\n");
++     for ( unsigned int i = 0; i < g_pre_k_s3_state.num_vl_entries; i++ ) {
++         printk(TBOOT_DETA"\t   PCR %d (alg count %d):\n",
++@@ -141,16 +145,18 @@ static bool seal_data(const void *data, size_t data_size, const void *secrets, s
++         uint8_t   secrets[secrets_size];
++     } blob;
++     uint32_t err;
+++    struct tpm_if *tpm = get_tpm();
+++    const struct tpm_if_fp *tpm_fp = get_tpm_fp();
++ 
++     memset(&blob, 0, sizeof(blob));
++-    if ( !hash_buffer(data, data_size, &blob.data_hash, g_tpm->cur_alg) ) {
+++    if ( !hash_buffer(data, data_size, &blob.data_hash, tpm->cur_alg) ) {
++         printk(TBOOT_ERR"failed to hash data\n");
++         return false;
++     }
++ 
++     if ( secrets != NULL && secrets_size > 0 )  memcpy(blob.secrets, secrets, secrets_size);
++ 
++-    err = g_tpm->seal(g_tpm, 2, sizeof(blob), (const uint8_t *)&blob, sealed_data_size, sealed_data);
+++    err = tpm_fp->seal(tpm, 2, sizeof(blob), (const uint8_t *)&blob, sealed_data_size, sealed_data);
++     if ( !err )  printk(TBOOT_WARN"failed to seal data\n");
++ 
++     /* since blob might contain secret, clear it */
++@@ -167,9 +173,11 @@ static bool verify_sealed_data(const uint8_t *sealed_data,  uint32_t sealed_data
++         uint8_t   secrets[secrets_size];
++     } blob;
++     bool err = true;
+++    struct tpm_if *tpm = get_tpm();
+++    const struct tpm_if_fp *tpm_fp = get_tpm_fp();
++ 
++     uint32_t data_size = sizeof(blob);
++-    if ( !g_tpm->unseal(g_tpm, g_tpm->cur_loc, sealed_data_size, sealed_data, &data_size, (uint8_t *)&blob) ) {
+++    if ( !tpm_fp->unseal(tpm, tpm->cur_loc, sealed_data_size, sealed_data, &data_size, (uint8_t *)&blob) ) {
++         printk(TBOOT_ERR"failed to unseal blob\n");
++         return false;
++     }
++@@ -181,11 +189,11 @@ static bool verify_sealed_data(const uint8_t *sealed_data,  uint32_t sealed_data
++     /* verify that (hash of) current data maches sealed hash */
++     tb_hash_t curr_data_hash;
++     memset(&curr_data_hash, 0, sizeof(curr_data_hash));
++-    if ( !hash_buffer(curr_data, curr_data_size, &curr_data_hash, g_tpm->cur_alg) ) {
+++    if ( !hash_buffer(curr_data, curr_data_size, &curr_data_hash, tpm->cur_alg) ) {
++         printk(TBOOT_WARN"failed to hash state data\n");
++         goto done;
++     }
++-    if ( !are_hashes_equal(&blob.data_hash, &curr_data_hash, g_tpm->cur_alg) ) {
+++    if ( !are_hashes_equal(&blob.data_hash, &curr_data_hash, tpm->cur_alg) ) {
++         printk(TBOOT_WARN"sealed hash does not match current hash\n");
++         goto done;
++     }
++@@ -208,9 +216,12 @@ static bool verify_sealed_data(const uint8_t *sealed_data,  uint32_t sealed_data
++  */
++ bool seal_pre_k_state(void)
++ {
+++    struct tpm_if *tpm = get_tpm();
+++    const struct tpm_if_fp *tpm_fp = get_tpm_fp();
+++    
++     /* save hash of current policy into g_pre_k_s3_state */
++     memset(&g_pre_k_s3_state.pol_hash, 0, sizeof(g_pre_k_s3_state.pol_hash));
++-    if ( !hash_policy(&g_pre_k_s3_state.pol_hash, g_tpm->cur_alg) ) {
+++    if ( !hash_policy(&g_pre_k_s3_state.pol_hash, tpm->cur_alg) ) {
++         printk(TBOOT_ERR"failed to hash policy\n");
++         goto error;
++     }
++@@ -218,9 +229,9 @@ bool seal_pre_k_state(void)
++     print_pre_k_s3_state();
++ 
++     /* read PCR 17/18, only for tpm1.2 */
++-    if ( g_tpm->major == TPM12_VER_MAJOR ) {
++-        if ( !g_tpm->pcr_read(g_tpm, 2, 17, &post_launch_pcr17) ||
++-             !g_tpm->pcr_read(g_tpm, 2, 18, &post_launch_pcr18) )
+++    if ( tpm->major == TPM12_VER_MAJOR ) {
+++        if ( !tpm_fp->pcr_read(tpm, 2, 17, &post_launch_pcr17) ||
+++             !tpm_fp->pcr_read(tpm, 2, 18, &post_launch_pcr18) )
++             goto error;
++     }
++ 
++@@ -371,11 +382,13 @@ static bool measure_memory_integrity(vmac_t *mac, uint8_t key[VMAC_KEY_LEN/8])
++ bool verify_integrity(void)
++ {
++     tpm_pcr_value_t pcr17, pcr18;
+++    struct tpm_if *tpm = get_tpm();
+++    const struct tpm_if_fp *tpm_fp = get_tpm_fp();
++ 
++     /* read PCR 17/18, only for tpm1.2 */
++-    if ( g_tpm->major == TPM12_VER_MAJOR ) {
++-        if ( !g_tpm->pcr_read(g_tpm, 2, 17, &pcr17) ||
++-             !g_tpm->pcr_read(g_tpm, 2, 18, &pcr18) )
+++    if ( tpm->major == TPM12_VER_MAJOR ) {
+++        if ( !tpm_fp->pcr_read(tpm, 2, 17, &pcr17) ||
+++             !tpm_fp->pcr_read(tpm, 2, 18, &pcr18) )
++             goto error;
++         printk(TBOOT_DETA"PCRs before unseal:\n");
++         printk(TBOOT_DETA"  PCR 17: ");
++@@ -391,7 +404,7 @@ bool verify_integrity(void)
++                              NULL, 0) )
++         goto error;
++ 
++-    if ( !g_tpm->verify_creation(g_tpm, sealed_post_k_state_size,  sealed_post_k_state) ) {
+++    if ( !tpm_fp->verify_creation(tpm, sealed_post_k_state_size,  sealed_post_k_state) ) {
++         printk(TBOOT_ERR"extended PCR values don't match creation values in sealed blob.\n");
++         goto error;
++     }
++@@ -440,7 +453,7 @@ bool verify_integrity(void)
++     /* since we can't leave the system without any measurments representing the
++        code-about-to-execute, and yet there is no integrity of that code,
++        just cap PCR 18 */
++-    if ( !g_tpm->cap_pcrs(g_tpm, g_tpm->cur_loc, 18) )
+++    if ( !tpm_fp->cap_pcrs(tpm, tpm->cur_loc, 18) )
++         apply_policy(TB_ERR_FATAL);
++     return false;
++ }
++@@ -452,6 +465,8 @@ bool verify_integrity(void)
++ bool seal_post_k_state(void)
++ {
++     sealed_secrets_t secrets;
+++    struct tpm_if *tpm = get_tpm();
+++    const struct tpm_if_fp *tpm_fp = get_tpm_fp();
++ 
++     /* since tboot relies on the module it launches for resource protection,
++        that module should have at least one region for itself, otherwise
++@@ -464,7 +479,7 @@ bool seal_post_k_state(void)
++     /* calculate the memory integrity hash */
++     uint32_t key_size = sizeof(secrets.mac_key);
++     /* key must be random and secret even though auth not necessary */
++-    if ( !g_tpm->get_random(g_tpm, g_tpm->cur_loc, secrets.mac_key, &key_size) ||key_size != sizeof(secrets.mac_key) ) return false;
+++    if ( !tpm_fp->get_random(tpm, tpm->cur_loc, secrets.mac_key, &key_size) ||key_size != sizeof(secrets.mac_key) ) return false;
++     if ( !measure_memory_integrity(&g_post_k_s3_state.kernel_integ, secrets.mac_key) ) return false;
++ 
++     /* copy s3_key into secrets to be sealed */
++diff --git a/tboot/common/loader.c b/tboot/common/loader.c
++index 188cd39..524f37d 100644
++--- a/tboot/common/loader.c
+++++ b/tboot/common/loader.c
++@@ -1355,15 +1355,15 @@ bool launch_kernel(bool is_measured_launch)
++ 
++     void *kernel_entry_point;
++     uint32_t mb_type = MB_NONE;
++-
+++    struct tpm_if *tpm = get_tpm();
++ 
++     if (g_tpm_family != TPM_IF_20_CRB ) {
++-        if (!release_locality(g_tpm->cur_loc))
++-            printk(TBOOT_ERR"Release TPM FIFO locality %d failed \n", g_tpm->cur_loc);
+++        if (!release_locality(tpm->cur_loc))
+++            printk(TBOOT_ERR"Release TPM FIFO locality %d failed \n", tpm->cur_loc);
++     }
++     else {
++-        if (!tpm_relinquish_locality_crb(g_tpm->cur_loc))
++-            printk(TBOOT_ERR"Relinquish TPM CRB locality %d failed \n", g_tpm->cur_loc);
+++        if (!tpm_relinquish_locality_crb(tpm->cur_loc))
+++            printk(TBOOT_ERR"Relinquish TPM CRB locality %d failed \n", tpm->cur_loc);
++         if (!tpm_workaround_crb())
++             printk(TBOOT_ERR"CRB workaround failed \n");
++     }
++diff --git a/tboot/common/policy.c b/tboot/common/policy.c
++index 9678b7c..39fd8b2 100644
++--- a/tboot/common/policy.c
+++++ b/tboot/common/policy.c
++@@ -209,13 +209,15 @@ static bool read_policy_from_tpm(uint32_t index, void* policy_index, size_t *pol
++     unsigned int offset = 0;
++     unsigned int data_size = 0;
++     uint32_t ret, index_size;
+++    struct tpm_if *tpm = get_tpm();
+++    const struct tpm_if_fp *tpm_fp = get_tpm_fp();
++ 
++     if ( policy_index_size == NULL ) {
++         printk(TBOOT_ERR"size is NULL\n");
++         return false;
++     }
++ 
++-    ret = g_tpm->get_nvindex_size(g_tpm, g_tpm->cur_loc, index, &index_size);
+++    ret = tpm_fp->get_nvindex_size(tpm, tpm->cur_loc, index, &index_size);
++     if ( !ret )
++         return false;
++ 
++@@ -233,7 +235,7 @@ static bool read_policy_from_tpm(uint32_t index, void* policy_index, size_t *pol
++             data_size = (uint32_t)(index_size - offset);
++ 
++         /* read! */
++-        ret = g_tpm->nv_read(g_tpm, g_tpm->cur_loc, index, offset,
+++        ret = tpm_fp->nv_read(tpm, tpm->cur_loc, index, offset,
++                              (uint8_t *)policy_index + offset, &data_size);
++         if ( !ret || data_size == 0 )
++             break;
++@@ -330,10 +332,12 @@ static bool unwrap_lcp_policy(void)
++  */
++ tb_error_t set_policy(void)
++ {
+++    const struct tpm_if *tpm = get_tpm();
+++    
++     /* try to read tboot policy from TB_POLICY_INDEX in TPM NV */
++     size_t policy_index_size = sizeof(_policy_index_buf);
++     printk(TBOOT_INFO"reading Verified Launch Policy from TPM NV...\n");
++-    if ( read_policy_from_tpm(g_tpm->tb_policy_index,
+++    if ( read_policy_from_tpm(tpm->tb_policy_index,
++              _policy_index_buf, &policy_index_size) ) {
++         printk(TBOOT_DETA"\t:%lu bytes read\n", policy_index_size);
++         if ( verify_policy((tb_policy_t *)_policy_index_buf,
++@@ -349,7 +353,7 @@ tb_error_t set_policy(void)
++      * type is LCP_POLTYPE_LIST (since we could have been give a policy data
++      * file even though the policy was not a LIST */
++     printk(TBOOT_INFO"reading Launch Control Policy from TPM NV...\n");
++-    if ( read_policy_from_tpm(g_tpm->lcp_own_index,
+++    if ( read_policy_from_tpm(tpm->lcp_own_index,
++              _policy_index_buf, &policy_index_size) ) {
++         printk(TBOOT_DETA"\t:%lu bytes read\n", policy_index_size);
++         /* assume lcp policy has been verified by sinit already */
++@@ -411,6 +415,9 @@ static bool hash_module(hash_list_t *hl,
++                         const char* cmdline, void *base,
++                         size_t size)
++ {
+++    struct tpm_if *tpm = get_tpm();
+++    const struct tpm_if_fp *tpm_fp = get_tpm_fp();
+++
++     if ( hl == NULL ) {
++         printk(TBOOT_ERR"Error: input parameter is wrong.\n");
++         return false;
++@@ -427,19 +434,19 @@ static bool hash_module(hash_list_t *hl,
++     // else
++     //    cmdline = skip_filename(cmdline);
++ 
++-    switch (g_tpm->extpol) {
+++    switch (tpm->extpol) {
++     case TB_EXTPOL_FIXED: 
++         hl->count = 1;
++-        hl->entries[0].alg = g_tpm->cur_alg;
+++        hl->entries[0].alg = tpm->cur_alg;
++ 
++         if ( !hash_buffer((const unsigned char *)cmdline, strlen(cmdline),
++-                    &hl->entries[0].hash, g_tpm->cur_alg) )
+++                    &hl->entries[0].hash, tpm->cur_alg) )
++             return false;
++         /* hash image and extend into cmdline hash */
++         tb_hash_t img_hash;
++-        if ( !hash_buffer(base, size, &img_hash, g_tpm->cur_alg) )
+++        if ( !hash_buffer(base, size, &img_hash, tpm->cur_alg) )
++             return false;
++-        if ( !extend_hash(&hl->entries[0].hash, &img_hash, g_tpm->cur_alg) )
+++        if ( !extend_hash(&hl->entries[0].hash, &img_hash, tpm->cur_alg) )
++             return false;
++ 
++         break;
++@@ -447,16 +454,16 @@ static bool hash_module(hash_list_t *hl,
++     case TB_EXTPOL_AGILE: 
++     {
++         hash_list_t img_hl, final_hl;
++-        if ( !g_tpm->hash(g_tpm, 2, (const unsigned char *)cmdline,
+++        if ( !tpm_fp->hash(tpm, 2, (const unsigned char *)cmdline,
++                 strlen(cmdline), hl) ) {
++-            if ( !g_tpm->hash(g_tpm, 2, base, size, hl) )
+++            if ( !tpm_fp->hash(tpm, 2, base, size, hl) )
++                 return false;
++             return true;
++         }
++ 
++         uint8_t buf[128];
++ 
++-        if ( !g_tpm->hash(g_tpm, 2, base, size, &img_hl) )
+++        if ( !tpm_fp->hash(tpm, 2, base, size, &img_hl) )
++             return false;
++         for (unsigned int i=0; i<hl->count; i++) {
++             for (unsigned int j=0; j<img_hl.count; j++) {
++@@ -465,7 +472,7 @@ static bool hash_module(hash_list_t *hl,
++                             hl->entries[i].alg);
++                     copy_hash((tb_hash_t *)buf + get_hash_size(hl->entries[i].alg),
++                             &img_hl.entries[j].hash, hl->entries[i].alg);
++-                    if ( !g_tpm->hash(g_tpm, 2, buf,
+++                    if ( !tpm_fp->hash(tpm, 2, buf,
++                             2*get_hash_size(hl->entries[i].alg), &final_hl) )
++                         return false;
++ 
++@@ -489,16 +496,16 @@ static bool hash_module(hash_list_t *hl,
++     case TB_EXTPOL_EMBEDDED: 
++     {
++         tb_hash_t img_hash;
++-        hl->count = g_tpm->alg_count;
+++        hl->count = tpm->alg_count;
++         for (unsigned int i=0; i<hl->count; i++) {
++-            hl->entries[i].alg = g_tpm->algs[i];
+++            hl->entries[i].alg = tpm->algs[i];
++             if ( !hash_buffer((const unsigned char *)cmdline, strlen(cmdline),
++-                        &hl->entries[i].hash, g_tpm->algs[i]) )
+++                        &hl->entries[i].hash, tpm->algs[i]) )
++                 return false;
++ 
++-            if ( !hash_buffer(base, size, &img_hash, g_tpm->algs[i]) )
+++            if ( !hash_buffer(base, size, &img_hash, tpm->algs[i]) )
++                 return false;
++-            if ( !extend_hash(&hl->entries[i].hash, &img_hash, g_tpm->algs[i]) )
+++            if ( !extend_hash(&hl->entries[i].hash, &img_hash, tpm->algs[i]) )
++                 return false;
++         }
++ 
++@@ -616,6 +623,7 @@ static tb_error_t verify_module(module_t *module, tb_policy_entry_t *pol_entry,
++     void *base = (void *)module->mod_start;
++     size_t size = module->mod_end - module->mod_start;
++     char *cmdline = get_module_cmd(g_ldr_ctx, module);
+++    const struct tpm_if *tpm = get_tpm();
++ 
++     if ( pol_entry != NULL ) {
++         /* chunk the command line into 80 byte chunks */
++@@ -653,7 +661,7 @@ static tb_error_t verify_module(module_t *module, tb_policy_entry_t *pol_entry,
++         VL_ENTRIES(NUM_VL_ENTRIES++).hl = hl;
++     }
++ 
++-    if ( g_tpm->extpol != TB_EXTPOL_FIXED )
+++    if ( tpm->extpol != TB_EXTPOL_FIXED )
++         return TB_ERR_NONE;
++ 
++     if ( pol_entry != NULL &&
++@@ -671,6 +679,9 @@ static tb_error_t verify_module(module_t *module, tb_policy_entry_t *pol_entry,
++ 
++ static void verify_g_policy(void)
++ {
+++    struct tpm_if *tpm = get_tpm();
+++    const struct tpm_if_fp *tpm_fp = get_tpm_fp();
+++   
++     /* assumes mbi is valid */
++     printk(TBOOT_INFO"verifying policy \n");
++ 
++@@ -682,35 +693,35 @@ static void verify_g_policy(void)
++     memcpy(buf, &g_policy->policy_control, sizeof(g_policy->policy_control));
++     if ( g_policy->policy_control & TB_POLCTL_EXTEND_PCR17 ) {
++         if ( !hash_policy((tb_hash_t *)&buf[sizeof(g_policy->policy_control)],
++-                          g_tpm->cur_alg) ) {
+++                          tpm->cur_alg) ) {
++             printk(TBOOT_ERR"policy hash failed\n");
++             apply_policy(TB_ERR_MODULE_VERIFICATION_FAILED);
++         }
++     }
++ 
++-    u32 size = get_hash_size(g_tpm->cur_alg) + sizeof(g_policy->policy_control);
++-    switch (g_tpm->extpol) {
+++    u32 size = get_hash_size(tpm->cur_alg) + sizeof(g_policy->policy_control);
+++    switch (tpm->extpol) {
++     case TB_EXTPOL_FIXED: 
++         VL_ENTRIES(NUM_VL_ENTRIES).hl.count = 1;
++-        VL_ENTRIES(NUM_VL_ENTRIES).hl.entries[0].alg = g_tpm->cur_alg;
+++        VL_ENTRIES(NUM_VL_ENTRIES).hl.entries[0].alg = tpm->cur_alg;
++         if ( !hash_buffer(buf, size,
++-                &VL_ENTRIES(NUM_VL_ENTRIES).hl.entries[0].hash, g_tpm->cur_alg) )
+++                &VL_ENTRIES(NUM_VL_ENTRIES).hl.entries[0].hash, tpm->cur_alg) )
++             apply_policy(TB_ERR_MODULE_VERIFICATION_FAILED);
++ 
++         break;
++ 
++     case TB_EXTPOL_AGILE: 
++-        if ( !g_tpm->hash(g_tpm, 2, buf, size, &VL_ENTRIES(NUM_VL_ENTRIES).hl) )
+++        if ( !tpm_fp->hash(tpm, 2, buf, size, &VL_ENTRIES(NUM_VL_ENTRIES).hl) )
++             apply_policy(TB_ERR_MODULE_VERIFICATION_FAILED);
++         break;
++ 
++     case TB_EXTPOL_EMBEDDED: 
++     {
++-        VL_ENTRIES(NUM_VL_ENTRIES).hl.count = g_tpm->alg_count;
++-        for (int i=0; i<g_tpm->alg_count; i++) {
++-            VL_ENTRIES(NUM_VL_ENTRIES).hl.entries[i].alg = g_tpm->algs[i];
+++        VL_ENTRIES(NUM_VL_ENTRIES).hl.count = tpm->alg_count;
+++        for (int i=0; i<tpm->alg_count; i++) {
+++            VL_ENTRIES(NUM_VL_ENTRIES).hl.entries[i].alg = tpm->algs[i];
++             if ( !hash_buffer(buf, size, &VL_ENTRIES(NUM_VL_ENTRIES).hl.entries[i].hash,
++-                        g_tpm->algs[i]) )
+++                        tpm->algs[i]) )
++                 return;
++         }
++ 
++@@ -807,6 +818,8 @@ static tb_error_t verify_nvindex(tb_policy_entry_t *pol_entry,
++     size_t nv_size = sizeof(nv_buf);
++     tb_hash_t digest;
++     uint32_t attribute;
+++    struct tpm_if *tpm = get_tpm();
+++    const struct tpm_if_fp *tpm_fp = get_tpm_fp();
++ 
++     if ( pol_entry == NULL )
++         return TB_ERR_NV_VERIFICATION_FAILED;
++@@ -814,7 +827,7 @@ static tb_error_t verify_nvindex(tb_policy_entry_t *pol_entry,
++     printk(TBOOT_INFO"verifying nv index 0x%08X\n", pol_entry->nv_index);
++ 
++     /* check nv attribute */
++-    if ( !g_tpm->get_nvindex_permission(g_tpm, 0, pol_entry->nv_index,
+++    if ( !tpm_fp->get_nvindex_permission(tpm, 0, pol_entry->nv_index,
++                                                    &attribute) ) {
++         printk(TBOOT_ERR"\t :reading nv index permission failed\n");
++         return TB_ERR_NV_VERIFICATION_FAILED;
++diff --git a/tboot/common/tb_error.c b/tboot/common/tb_error.c
++index c305c32..e9e8244 100644
++--- a/tboot/common/tb_error.c
+++++ b/tboot/common/tb_error.c
++@@ -135,6 +135,8 @@ void print_tb_error_msg(tb_error_t error)
++ bool read_tb_error_code(tb_error_t *error)
++ {
++     uint32_t size = sizeof(tb_error_t);
+++    struct tpm_if *tpm = get_tpm();
+++    const struct tpm_if_fp *tpm_fp = get_tpm_fp();
++ 
++     if ( error == NULL ) {
++         printk(TBOOT_ERR"Error: error pointer is zero.\n");
++@@ -144,9 +146,9 @@ bool read_tb_error_code(tb_error_t *error)
++     memset(error, 0, size);
++ 
++     /* read! */
++-    if ( !g_tpm->nv_read(g_tpm, 0, g_tpm->tb_err_index, 0,
+++    if ( !tpm_fp->nv_read(tpm, 0, tpm->tb_err_index, 0,
++                 (uint8_t *)error, &size) ) {
++-        printk(TBOOT_WARN"Error: read TPM error: 0x%x.\n", g_tpm->error);
+++        printk(TBOOT_WARN"Error: read TPM error: 0x%x.\n", tpm->error);
++         no_err_idx = true;
++         return false;
++     }
++@@ -163,12 +165,15 @@ bool read_tb_error_code(tb_error_t *error)
++  */
++ bool write_tb_error_code(tb_error_t error)
++ {
++-    if ( !g_tpm || no_err_idx )
+++    struct tpm_if *tpm = get_tpm();
+++    const struct tpm_if_fp *tpm_fp = get_tpm_fp();
+++
+++    if ( !tpm || no_err_idx )
++         return false;
++ 
++-    if ( !g_tpm->nv_write(g_tpm, g_tpm->cur_loc, g_tpm->tb_err_index, 0,
+++    if ( !tpm_fp->nv_write(tpm, tpm->cur_loc, tpm->tb_err_index, 0,
++ 				      (uint8_t *)&error, sizeof(tb_error_t)) ) {
++-        printk(TBOOT_WARN"Error: write TPM error: 0x%x.\n", g_tpm->error);
+++        printk(TBOOT_WARN"Error: write TPM error: 0x%x.\n", tpm->error);
++         no_err_idx = true;
++         return false;
++     }
++diff --git a/tboot/common/tboot.c b/tboot/common/tboot.c
++index 7af494f..3338fd1 100644
++--- a/tboot/common/tboot.c
+++++ b/tboot/common/tboot.c
++@@ -156,6 +156,8 @@ static void post_launch(void)
++ {
++     uint64_t base, size;
++     tb_error_t err;
+++    struct tpm_if *tpm = get_tpm();
+++    const struct tpm_if_fp *tpm_fp = get_tpm_fp();
++     extern tboot_log_t *g_log;
++     extern void shutdown_entry(void);
++ 
++@@ -228,7 +230,7 @@ static void post_launch(void)
++     /*
++      * verify nv indices against policy
++      */
++-    if ( (g_tpm->major == TPM12_VER_MAJOR) &&  get_tboot_measure_nv() ) 
+++    if ( (tpm->major == TPM12_VER_MAJOR) &&  get_tboot_measure_nv() ) 
++ 	verify_all_nvindices();
++ 
++     /*
++@@ -238,8 +240,8 @@ static void post_launch(void)
++ 	apply_policy(TB_ERR_S3_INTEGRITY);
++ 
++ 	
++-    if ( g_tpm->major == TPM20_VER_MAJOR ) {
++-	g_tpm->context_save(g_tpm, g_tpm->cur_loc, handle2048, &tpm2_context_saved);
+++    if ( tpm->major == TPM20_VER_MAJOR ) {
+++	tpm_fp->context_save(tpm, tpm->cur_loc, handle2048, &tpm2_context_saved);
++     }
++ 
++ 	/*
++@@ -253,7 +255,7 @@ static void post_launch(void)
++     _tboot_shared.tboot_base = (uint32_t)&_start;
++     _tboot_shared.tboot_size = (uint32_t)&_end - (uint32_t)&_start;
++     uint32_t key_size = sizeof(_tboot_shared.s3_key);
++-    if ( !g_tpm->get_random(g_tpm, 2, _tboot_shared.s3_key, &key_size) || key_size != sizeof(_tboot_shared.s3_key) )
+++    if ( !tpm_fp->get_random(tpm, 2, _tboot_shared.s3_key, &key_size) || key_size != sizeof(_tboot_shared.s3_key) )
++         apply_policy(TB_ERR_S3_INTEGRITY);
++     _tboot_shared.num_in_wfs = atomic_read(&ap_wfs_count);
++     if ( use_mwait() ) {
++@@ -475,15 +477,15 @@ void begin_launch(void *addr, uint32_t magic)
++ 
++ void s3_launch(void)
++ {
+++    struct tpm_if *tpm = get_tpm();
+++    const struct tpm_if_fp *tpm_fp = get_tpm_fp();
++     /* restore backed-up s3 wakeup page */
++     restore_saved_s3_wakeup_page();
++-
++-	/* load saved tpm2 context for unseal */
++-	if ( g_tpm->major == TPM20_VER_MAJOR ) {
++-	    g_tpm->context_flush(g_tpm, g_tpm->cur_loc, handle2048);
++-	    g_tpm->context_load(g_tpm, g_tpm->cur_loc, &tpm2_context_saved, &handle2048);
++-	}
++-
+++    /* load saved tpm2 context for unseal */
+++    if ( tpm->major == TPM20_VER_MAJOR ) {
+++        tpm_fp->context_flush(tpm, tpm->cur_loc, handle2048);
+++        tpm_fp->context_load(tpm, tpm->cur_loc, &tpm2_context_saved, &handle2048);
+++    }
++ 
++     /* remove DMAR table if necessary */
++     remove_vtd_dmar_table();
++@@ -560,6 +562,9 @@ static void shutdown_system(uint32_t shutdown_type)
++ 
++ void shutdown(void)
++ {
+++    struct tpm_if *tpm = get_tpm();
+++    const struct tpm_if_fp *tpm_fp = get_tpm_fp();
+++   
++     /* wait-for-sipi only invoked for APs, so skip all BSP shutdown code */
++     if ( _tboot_shared.shutdown_type == TB_SHUTDOWN_WFS ) {
++         atomic_inc(&ap_wfs_count);
++@@ -585,24 +590,24 @@ void shutdown(void)
++             printk(TBOOT_ERR"Release TPM FIFO locality 0 failed \n");
++         if (!release_locality(1))
++             printk(TBOOT_ERR"Release TPM FIFO locality 1 failed \n");
++-        if (!tpm_wait_cmd_ready(g_tpm->cur_loc))
++-            printk(TBOOT_ERR"Request TPM FIFO locality %d failed \n", g_tpm->cur_loc);
+++        if (!tpm_wait_cmd_ready(tpm->cur_loc))
+++            printk(TBOOT_ERR"Request TPM FIFO locality %d failed \n", tpm->cur_loc);
++     }
++     else {
++         if (!tpm_relinquish_locality_crb(0))
++             printk(TBOOT_ERR"Release TPM CRB locality 0 failed \n");
++         if (!tpm_relinquish_locality_crb(1))			 
++             printk(TBOOT_ERR"Release TPM CRB locality 1 failed \n");
++-        if (!tpm_request_locality_crb(g_tpm->cur_loc))
++-            printk(TBOOT_ERR"Request TPM CRB locality %d failed \n", g_tpm->cur_loc);
+++        if (!tpm_request_locality_crb(tpm->cur_loc))
+++            printk(TBOOT_ERR"Request TPM CRB locality %d failed \n", tpm->cur_loc);
++     }
++ 
++     if ( _tboot_shared.shutdown_type == TB_SHUTDOWN_S3 ) {
++         /* restore DMAR table if needed */
++         restore_vtd_dmar_table();
++-	if ( g_tpm->major == TPM20_VER_MAJOR ) {
++-	    g_tpm->context_flush(g_tpm, g_tpm->cur_loc, handle2048);
++-	    g_tpm->context_load(g_tpm, g_tpm->cur_loc, &tpm2_context_saved, &handle2048);
+++	if ( tpm->major == TPM20_VER_MAJOR ) {
+++	    tpm_fp->context_flush(tpm, tpm->cur_loc, handle2048);
+++	    tpm_fp->context_load(tpm, tpm->cur_loc, &tpm2_context_saved, &handle2048);
++  	}
++ 
++ 		
++@@ -624,13 +629,13 @@ void shutdown(void)
++     if ( is_launched() ) {
++ 
++         /* cap PCRs to ensure no follow-on code can access sealed data */
++-        g_tpm->cap_pcrs(g_tpm, g_tpm->cur_loc, -1);
+++        tpm_fp->cap_pcrs(tpm, tpm->cur_loc, -1);
++ 
++         /* have TPM save static PCRs (in case VMM/kernel didn't) */
++         /* per TCG spec, TPM can invalidate saved state if any other TPM
++            operation is performed afterwards--so do this last */
++         if ( _tboot_shared.shutdown_type == TB_SHUTDOWN_S3 )
++-            g_tpm->save_state(g_tpm, g_tpm->cur_loc);
+++            tpm_fp->save_state(tpm, tpm->cur_loc);
++ 
++         /* scrub any secrets by clearing their memory, then flush cache */
++         /* we don't have any secrets to scrub, however */
++diff --git a/tboot/common/tpm.c b/tboot/common/tpm.c
++index 85f3c29..5831ea6 100644
++--- a/tboot/common/tpm.c
+++++ b/tboot/common/tpm.c
++@@ -45,13 +45,16 @@
++ #include <tpm.h>
++ #include <sha1.h>
++ 
++-__data struct tpm_if *g_tpm = NULL;
++-u16 tboot_alg_list[] = {TB_HALG_SHA1, TB_HALG_SHA256};
++-
++-
++-
++-
+++__data uint8_t g_tpm_ver = TPM_VER_UNKNOWN;
+++__data struct tpm_if g_tpm = {
+++    .cur_loc = 0,
+++    .timeout.timeout_a = TIMEOUT_A,
+++    .timeout.timeout_b = TIMEOUT_B,
+++    .timeout.timeout_c = TIMEOUT_C,
+++    .timeout.timeout_d = TIMEOUT_D,
+++};
++ 
+++u16 tboot_alg_list[] = {TB_HALG_SHA1, TB_HALG_SHA256};
++ 
++ /* Global variables for TPM status register */
++ static tpm20_reg_sts_t       g_reg_sts, *g_reg_sts_20 = &g_reg_sts;
++@@ -70,15 +73,15 @@ typedef union {
++ } tpm_reg_data_crb_t;
++ 
++ #define TPM_ACTIVE_LOCALITY_TIME_OUT    \
++-          (TIMEOUT_UNIT * g_tpm->timeout.timeout_a)  /* according to spec */
+++          (TIMEOUT_UNIT *get_tpm()->timeout.timeout_a)  /* according to spec */
++ #define TPM_CMD_READY_TIME_OUT          \
++-          (TIMEOUT_UNIT * g_tpm->timeout.timeout_b)  /* according to spec */
+++          (TIMEOUT_UNIT *get_tpm()->timeout.timeout_b)  /* according to spec */
++ #define TPM_CMD_WRITE_TIME_OUT          \
++-          (TIMEOUT_UNIT * g_tpm->timeout.timeout_d)  /* let it long enough */
+++          (TIMEOUT_UNIT *get_tpm()->timeout.timeout_d)  /* let it long enough */
++ #define TPM_DATA_AVAIL_TIME_OUT         \
++-          (TIMEOUT_UNIT * g_tpm->timeout.timeout_c)  /* let it long enough */
+++          (TIMEOUT_UNIT *get_tpm()->timeout.timeout_c)  /* let it long enough */
++ #define TPM_RSP_READ_TIME_OUT           \
++-          (TIMEOUT_UNIT * g_tpm->timeout.timeout_d)  /* let it long enough */
+++          (TIMEOUT_UNIT *get_tpm()->timeout.timeout_d)  /* let it long enough */
++ #define TPM_VALIDATE_LOCALITY_TIME_OUT  0x100
++ 
++ #define read_tpm_sts_reg(locality) { \
++@@ -828,6 +831,8 @@ bool tpm_workaround_crb(void)
++ 
++ bool tpm_detect(void)
++ {
+++    struct tpm_if *tpm;
+++    const struct tpm_if_fp *tpm_fp;
++     if (is_tpm_crb()) {
++          printk(TBOOT_INFO"TPM: This is Intel PTT, TPM Family 0x%d\n", g_tpm_family);
++          if (!txt_is_launched()) {
++@@ -854,14 +859,17 @@ bool tpm_detect(void)
++     	  }
++     }
++     else {
++-		g_tpm = &tpm_12_if; /* Don't leave g_tpm as NULL*/
+++		g_tpm_ver = TPM_VER_12; 
+++		tpm = get_tpm(); /* Don't leave tpm and tpm_fp as NULL*/
+++		tpm_fp = get_tpm_fp();
+++
++ 		if ( tpm_validate_locality(0) )  printk(TBOOT_INFO"TPM: FIFO_INF Locality 0 is open\n");
++ 		else {	
++ 			printk(TBOOT_ERR"TPM: FIFO_INF Locality 0 is not open\n");
++ 			return false;
++ 			}
++ 		/* determine TPM family from command check */
++-		if ( g_tpm->check() )  {
+++		if ( tpm_fp->check() )  {
++ 			g_tpm_family = TPM_IF_12;
++ 			printk(TBOOT_INFO"TPM: discrete TPM1.2 Family 0x%d\n", g_tpm_family);	
++ 			}
++@@ -871,21 +879,12 @@ bool tpm_detect(void)
++ 			}
++ 	}
++    
++-    if (g_tpm_family == TPM_IF_12)  g_tpm = &tpm_12_if;
++-    if (g_tpm_family == TPM_IF_20_FIFO)  g_tpm = &tpm_20_if;
++-    if (g_tpm_family == TPM_IF_20_CRB)  g_tpm = &tpm_20_if;
++-
++-   /*  if (!txt_is_launched()) 
++-	   g_tpm->cur_loc = 0;
++-     else 
++-	   g_tpm->cur_loc = 2;
++-	 	
++-    g_tpm->timeout.timeout_a = TIMEOUT_A;
++-    g_tpm->timeout.timeout_b = TIMEOUT_B;
++-    g_tpm->timeout.timeout_c = TIMEOUT_C;
++-    g_tpm->timeout.timeout_d = TIMEOUT_D;
++-*/
++-    return g_tpm->init(g_tpm);
+++    if (g_tpm_family == TPM_IF_12)  g_tpm_ver = TPM_VER_12;
+++    if (g_tpm_family == TPM_IF_20_FIFO)  g_tpm_ver = TPM_VER_20;
+++    if (g_tpm_family == TPM_IF_20_CRB)  g_tpm_ver = TPM_VER_20;
+++
+++    tpm_fp = get_tpm_fp();
+++    return tpm_fp->init(tpm);
++ }
++ 
++ void tpm_print(struct tpm_if *ti)
++@@ -897,8 +896,23 @@ void tpm_print(struct tpm_if *ti)
++     printk(TBOOT_INFO"\t extend policy: %d\n", ti->extpol);
++     printk(TBOOT_INFO"\t current alg id: 0x%x\n", ti->cur_alg);
++     printk(TBOOT_INFO"\t timeout values: A: %u, B: %u, C: %u, D: %u\n", ti->timeout.timeout_a, ti->timeout.timeout_b, ti->timeout.timeout_c, ti->timeout.timeout_d);
+++} 
+++
+++struct tpm_if *get_tpm(void)
+++{
+++    return &g_tpm;
++ }
++ 
+++const struct tpm_if_fp *get_tpm_fp(void)
+++{
+++    if ( g_tpm_ver == TPM_VER_12 )
+++        return &tpm_12_if_fp;
+++    else if ( g_tpm_ver == TPM_VER_20)
+++        return &tpm_20_if_fp;
+++
+++    return NULL;
+++
+++}
++ /*
++  * Local variables:
++  * mode: C
++diff --git a/tboot/common/tpm_12.c b/tboot/common/tpm_12.c
++index af2d62f..b2fc522 100644
++--- a/tboot/common/tpm_12.c
+++++ b/tboot/common/tpm_12.c
++@@ -1914,8 +1914,7 @@ static bool tpm12_check(void)
++ 
++     return ( ret == TPM_BAD_ORDINAL );
++ }
++-
++-struct tpm_if tpm_12_if = {
+++const struct tpm_if_fp tpm_12_if_fp = {
++     .init = tpm12_init,
++     .pcr_read = tpm12_pcr_read,
++     .pcr_extend = tpm12_pcr_extend,
++@@ -1931,11 +1930,6 @@ struct tpm_if tpm_12_if = {
++     .save_state = tpm12_save_state,
++     .cap_pcrs = tpm12_cap_pcrs,
++     .check = tpm12_check,
++-    .cur_loc = 0,
++-    .timeout.timeout_a = TIMEOUT_A,
++-    .timeout.timeout_b = TIMEOUT_B,
++-    .timeout.timeout_c = TIMEOUT_C,
++-    .timeout.timeout_d = TIMEOUT_D,
++ };
++ 
++ /*
++diff --git a/tboot/common/tpm_20.c b/tboot/common/tpm_20.c
++index e4a22b4..9a4cd0d 100644
++--- a/tboot/common/tpm_20.c
+++++ b/tboot/common/tpm_20.c
++@@ -2615,7 +2615,7 @@ out:
++     return true;
++ }
++ 
++-struct tpm_if tpm_20_if = {
+++const struct tpm_if_fp tpm_20_if_fp = {
++     .init = tpm20_init,
++     .pcr_read = tpm20_pcr_read,
++     .pcr_extend = tpm20_pcr_extend,
++diff --git a/tboot/include/tpm.h b/tboot/include/tpm.h
++index e84c6ec..bf49d53 100644
++--- a/tboot/include/tpm.h
+++++ b/tboot/include/tpm.h
++@@ -48,6 +48,10 @@
++ #define TPM_IF_20_FIFO 1
++ #define TPM_IF_20_CRB 2
++ 
+++#define TPM_VER_UNKNOWN 0
+++#define TPM_VER_12 1
+++#define TPM_VER_20 2
+++
++ #define TPM_INTERFACE_ID_FIFO_20  0x0
++ #define TPM_INTERFACE_ID_CRB     0x1
++ #define TPM_INTERFACE_ID_FIFO_13   0xF
++@@ -413,6 +417,7 @@ extern tpm_pcr_value_t post_launch_pcr17;
++ extern tpm_pcr_value_t post_launch_pcr18;
++ 
++ struct tpm_if;
+++struct tpm_if_fp;
++ 
++ struct tpm_if {
++ #define TPM12_VER_MAJOR   1
++@@ -447,6 +452,9 @@ struct tpm_if {
++     u32 tb_policy_index;
++     u32 tb_err_index;
++     u32 sgx_svn_index;
+++};
+++
+++struct tpm_if_fp {
++ 
++     bool (*init)(struct tpm_if *ti);
++ 
++@@ -483,9 +491,10 @@ struct tpm_if {
++     bool (*check)(void);
++ };
++ 
++-extern struct tpm_if tpm_12_if;
++-extern struct tpm_if tpm_20_if;
++-extern struct tpm_if *g_tpm;
+++extern struct tpm_if_data tpm_if_data;
+++extern const struct tpm_if_fp tpm_12_if_fp;
+++extern const struct tpm_if_fp tpm_20_if_fp;
+++extern uint8_t g_tpm_ver;
++ extern uint8_t g_tpm_family;
++ 
++ extern bool tpm_validate_locality(uint32_t locality);
++@@ -501,6 +510,8 @@ extern bool tpm_request_locality_crb(uint32_t locality);
++ extern bool tpm_relinquish_locality_crb(uint32_t locality);
++ extern bool txt_is_launched(void);
++ extern bool tpm_workaround_crb(void);
+++extern struct tpm_if *get_tpm(void);
+++extern const struct tpm_if_fp *get_tpm_fp(void);
++ 
++ 
++ //#define TPM_UNIT_TEST 1
++diff --git a/tboot/txt/acmod.c b/tboot/txt/acmod.c
++index 99995d7..13d5cc6 100644
++--- a/tboot/txt/acmod.c
+++++ b/tboot/txt/acmod.c
++@@ -834,6 +834,8 @@ bool verify_racm(const acm_hdr_t *acm_hdr)
++ #ifndef IS_INCLUDED     /*  defined in utils/acminfo.c  */
++ void verify_IA32_se_svn_status(const acm_hdr_t *acm_hdr)
++ {
+++    struct tpm_if *tpm = get_tpm();
+++    const struct tpm_if_fp *tpm_fp = get_tpm_fp();
++   
++     printk(TBOOT_INFO"SGX:verify_IA32_se_svn_status is called\n");
++         
++@@ -847,8 +849,8 @@ void verify_IA32_se_svn_status(const acm_hdr_t *acm_hdr)
++     
++     if (((rdmsr(MSR_IA32_SE_SVN_STATUS)>>16) & 0xff) != acm_hdr->se_svn) {
++         printk(TBOOT_INFO"se_svn is not equal to ACM se_svn\n");
++-        if (!g_tpm->nv_write(g_tpm, 0, g_tpm->sgx_svn_index, 0, (uint8_t *)&(acm_hdr->se_svn), 1)) 
++-            printk(TBOOT_ERR"Write sgx_svn_index 0x%x failed. \n", g_tpm->sgx_svn_index);
+++        if (!tpm_fp->nv_write(tpm, 0, tpm->sgx_svn_index, 0, (uint8_t *)&(acm_hdr->se_svn), 1)) 
+++            printk(TBOOT_ERR"Write sgx_svn_index 0x%x failed. \n", tpm->sgx_svn_index);
++         else
++             printk(TBOOT_INFO"Write sgx_svn_index with 0x%x successful.\n", acm_hdr->se_svn);
++ 
++diff --git a/tboot/txt/heap.c b/tboot/txt/heap.c
++index 2592fbf..d27cf56 100644
++--- a/tboot/txt/heap.c
+++++ b/tboot/txt/heap.c
++@@ -709,30 +709,31 @@ uint64_t calc_os_sinit_data_size(uint32_t version)
++             2 * sizeof(heap_ext_data_element_t) +
++             sizeof(heap_event_log_ptr_elt_t)
++     };
++-	txt_caps_t sinit_caps;
+++    txt_caps_t sinit_caps;
+++    struct tpm_if *tpm = get_tpm();
++ 	
++-    if ( g_tpm->major == TPM20_VER_MAJOR ) {
++-		if (g_sinit != NULL) {
++-			sinit_caps = get_sinit_capabilities(g_sinit);
++-		}
+++    if ( tpm->major == TPM20_VER_MAJOR ) {
+++	if (g_sinit != NULL) {
+++  	    sinit_caps = get_sinit_capabilities(g_sinit);
+++	}
++         if (sinit_caps.tcg_event_log_format) {
++-			size[2] = sizeof(os_sinit_data_t) + sizeof(uint64_t) +
+++	    size[2] = sizeof(os_sinit_data_t) + sizeof(uint64_t) +
++             2 * sizeof(heap_ext_data_element_t) + 
++             sizeof(heap_event_log_ptr_elt2_1_t);
++         }
++-		else {
++-			u32 count;
++-			if ( g_tpm->extpol == TB_EXTPOL_AGILE )
++-				count = g_tpm->banks;
++-			else 
++-				if ( g_tpm->extpol == TB_EXTPOL_EMBEDDED )
++-					count = g_tpm->alg_count;
++-				else
++-					count = 1;
++-			size[2] = sizeof(os_sinit_data_t) + sizeof(uint64_t) +
++-				2 * sizeof(heap_ext_data_element_t) +
++-				4 + count*sizeof(heap_event_log_descr_t);
++-		}
+++	else {
+++            u32 count;
+++	    if ( tpm->extpol == TB_EXTPOL_AGILE )
+++               count = tpm->banks;
+++	    else 
+++		if ( tpm->extpol == TB_EXTPOL_EMBEDDED )
+++ 		    count = tpm->alg_count;
+++		else
+++		    count = 1;
+++   	    size[2] = sizeof(os_sinit_data_t) + sizeof(uint64_t) + 
+++                      2 * sizeof(heap_ext_data_element_t) + 4 + 
+++                      count*sizeof(heap_event_log_descr_t);
+++	}
++     }
++ 
++     if ( version >= 6 )
++diff --git a/tboot/txt/txt.c b/tboot/txt/txt.c
++index 44d0d23..4e4e158 100644
++--- a/tboot/txt/txt.c
+++++ b/tboot/txt/txt.c
++@@ -247,10 +247,11 @@ static void init_evtlog_desc(heap_event_log_ptr_elt2_t *evt_log)
++ {
++     unsigned int i;
++     os_mle_data_t *os_mle_data = get_os_mle_data_start(get_txt_heap());
++-    switch (g_tpm->extpol) {
+++    struct tpm_if *tpm = get_tpm();
+++    switch (tpm->extpol) {
++     case TB_EXTPOL_AGILE:
++         for (i=0; i<evt_log->count; i++) {
++-            evt_log->event_log_descr[i].alg = g_tpm->algs_banks[i];
+++            evt_log->event_log_descr[i].alg = tpm->algs_banks[i];
++             evt_log->event_log_descr[i].phys_addr =
++                     (uint64_t)(unsigned long)(os_mle_data->event_log_buffer + i*4096);
++             evt_log->event_log_descr[i].size = 4096;
++@@ -260,7 +261,7 @@ static void init_evtlog_desc(heap_event_log_ptr_elt2_t *evt_log)
++         break;
++     case TB_EXTPOL_EMBEDDED:
++         for (i=0; i<evt_log->count; i++) {
++-            evt_log->event_log_descr[i].alg = g_tpm->algs[i];
+++            evt_log->event_log_descr[i].alg = tpm->algs[i];
++             evt_log->event_log_descr[i].phys_addr =
++                     (uint64_t)(unsigned long)(os_mle_data->event_log_buffer + i*4096);
++             evt_log->event_log_descr[i].size = 4096;
++@@ -269,7 +270,7 @@ static void init_evtlog_desc(heap_event_log_ptr_elt2_t *evt_log)
++         }
++         break;
++     case TB_EXTPOL_FIXED:
++-        evt_log->event_log_descr[0].alg = g_tpm->cur_alg;
+++        evt_log->event_log_descr[0].alg = tpm->cur_alg;
++         evt_log->event_log_descr[0].phys_addr =
++                     (uint64_t)(unsigned long)os_mle_data->event_log_buffer;
++         evt_log->event_log_descr[0].size = 4096;
++@@ -286,15 +287,16 @@ static void init_os_sinit_ext_data(heap_ext_data_element_t* elts)
++     heap_ext_data_element_t* elt = elts;
++     heap_event_log_ptr_elt_t* evt_log;
++     txt_caps_t sinit_caps;
+++    struct tpm_if *tpm = get_tpm();
++ 	
++-    if ( g_tpm->major == TPM12_VER_MAJOR ) {
+++    if ( tpm->major == TPM12_VER_MAJOR ) {
++         evt_log = (heap_event_log_ptr_elt_t *)elt->data;
++         evt_log->event_log_phys_addr = (uint64_t)(unsigned long)init_event_log();
++         elt->type = HEAP_EXTDATA_TYPE_TPM_EVENT_LOG_PTR;
++         elt->size = sizeof(*elt) + sizeof(*evt_log);
++     } 
++     else 
++-        if ( g_tpm->major == TPM20_VER_MAJOR ) {
+++        if ( tpm->major == TPM20_VER_MAJOR ) {
++        	    if (g_sinit != NULL) {
++ 	        sinit_caps = get_sinit_capabilities(g_sinit);
++ 	    }
++@@ -311,11 +313,11 @@ static void init_os_sinit_ext_data(heap_ext_data_element_t* elts)
++ 	    }
++ 	    else {
++ 		g_elog_2 = (heap_event_log_ptr_elt2_t *)elt->data;
++-		if ( g_tpm->extpol == TB_EXTPOL_AGILE )
++-	    	    g_elog_2->count = g_tpm->banks;
+++		if ( tpm->extpol == TB_EXTPOL_AGILE )
+++	    	    g_elog_2->count = tpm->banks;
++ 		else 
++-		    if ( g_tpm->extpol == TB_EXTPOL_EMBEDDED )
++-			g_elog_2->count = g_tpm->alg_count;
+++		    if ( tpm->extpol == TB_EXTPOL_EMBEDDED )
+++			g_elog_2->count = tpm->alg_count;
++ 		    else
++ 			g_elog_2->count = 1;
++ 		init_evtlog_desc(g_elog_2);
++@@ -428,7 +430,8 @@ bool evtlog_append_tpm20(uint8_t pcr, uint16_t alg, tb_hash_t *hash, uint32_t ty
++ 
++ bool evtlog_append(uint8_t pcr, hash_list_t *hl, uint32_t type)
++ {
++-    switch (g_tpm->major) {
+++    struct tpm_if *tpm = get_tpm();
+++    switch (tpm->major) {
++     case TPM12_VER_MAJOR:
++         if ( !evtlog_append_tpm12(pcr, &hl->entries[0].hash, type) )
++             return false;
++@@ -457,6 +460,7 @@ static txt_heap_t *init_txt_heap(void *ptab_base, acm_hdr_t *sinit, loader_ctx *
++ {
++     txt_heap_t *txt_heap;
++     uint64_t *size;
+++    struct tpm_if *tpm = get_tpm();
++ 
++     txt_heap = get_txt_heap();
++ 
++@@ -591,8 +595,8 @@ static txt_heap_t *init_txt_heap(void *ptab_base, acm_hdr_t *sinit, loader_ctx *
++ 
++     /* PCR mapping selection MUST be zero in TPM2.0 mode
++      * since D/A mapping is the only supported by TPM2.0 */
++-    if ( g_tpm->major >= TPM20_VER_MAJOR ) {
++-        os_sinit_data->flags = (g_tpm->extpol == TB_EXTPOL_AGILE) ? 0 : 1;
+++    if ( tpm->major >= TPM20_VER_MAJOR ) {
+++        os_sinit_data->flags = (tpm->extpol == TB_EXTPOL_AGILE) ? 0 : 1;
++         os_sinit_data->capabilities.pcr_map_no_legacy = 0;
++         os_sinit_data->capabilities.pcr_map_da = 0;
++         g_using_da = 1;
++@@ -782,6 +786,7 @@ bool txt_s3_launch_environment(void)
++     /* so don't re-create; this is OK because it was untrusted initially */
++     /* and would be untrusted now */
++ 	txt_caps_t sinit_caps;
+++    struct tpm_if *tpm = get_tpm();
++ 
++     /* get sinit binary loaded */
++     g_sinit = (acm_hdr_t *)(uint32_t)read_pub_config_reg(TXTCR_SINIT_BASE);
++@@ -790,10 +795,10 @@ bool txt_s3_launch_environment(void)
++     }
++ 	/* initialize event log in os_sinit_data, so that events will not */
++ 	/* repeat when s3 */
++-	if ( g_tpm->major == TPM12_VER_MAJOR && g_elog )
+++	if ( tpm->major == TPM12_VER_MAJOR && g_elog )
++ 		g_elog = (event_log_container_t *)init_event_log();
++ 	else 
++-		if ( g_tpm->major == TPM20_VER_MAJOR ){
+++		if ( tpm->major == TPM20_VER_MAJOR ){
++ 			sinit_caps = get_sinit_capabilities(g_sinit);		
++ 			if (sinit_caps.tcg_event_log_format && g_elog_2_1) 
++ 				init_evtlog_desc_1(g_elog_2_1);
++-- 
++1.8.3.1
++
+diff --git a/0009-Optimize-tboot-docs-installation.patch b/0009-Optimize-tboot-docs-installation.patch
+new file mode 100644
+index 0000000..9bf5fbd
+--- /dev/null
++++ b/0009-Optimize-tboot-docs-installation.patch
+@@ -0,0 +1,55 @@
++From 861d376af7fff3be0b0578ec28ae421794e52dc8 Mon Sep 17 00:00:00 2001
++From: Ning Sun <ning.sun@intel.com>
++Date: Thu, 14 Dec 2017 02:18:08 -0800
++Subject: [PATCH 09/16] Optimize tboot docs installation.
++
++Signed-off-by: Tony Camuso <tcamuso@redhat.com>
++Reviewed-by: Ning Sun <ning.sun@intel.com>
++---
++ Config.mk     | 4 ++--
++ docs/Makefile | 7 +++----
++ 2 files changed, 5 insertions(+), 6 deletions(-)
++
++diff --git a/Config.mk b/Config.mk
++index bc6c8d4..6a64d1a 100644
++--- a/Config.mk
+++++ b/Config.mk
++@@ -20,8 +20,8 @@ debug ?= n
++ # for dist targets
++ ifdef DESTDIR
++ DISTDIR = $(DESTDIR)
++-else
++-DISTDIR     ?= /
+++#else
+++#DISTDIR     ?= /
++ endif
++ 
++ DESTDIR     ?= $(ROOTDIR)/dist
++diff --git a/docs/Makefile b/docs/Makefile
++index 37869d1..cc5adc2 100644
++--- a/docs/Makefile
+++++ b/docs/Makefile
++@@ -10,8 +10,7 @@
++ ROOTDIR ?= $(CURDIR)/..
++ 
++ include $(ROOTDIR)/Config.mk
++-
++-MANPATH ?= $(DISTDIR)/usr/share/man
+++TBOOT_MANPATH ?= $(DISTDIR)/usr/share/man
++ 
++ 
++ #
++@@ -26,8 +25,8 @@ dist : install
++ 
++ 
++ install :
++-	[ -d $(MANPATH)/man8 ] || $(INSTALL_DIR) $(MANPATH)/man8
++-	$(INSTALL_DATA) -t $(MANPATH)/man8 man/*.8*
+++	[ -d $(TBOOT_MANPATH)/man8 ] || $(INSTALL_DIR) $(TBOOT_MANPATH)/man8
+++	$(INSTALL_DATA) -t $(TBOOT_MANPATH)/man8 man/*.8*
++ 
++ 
++ clean :
++-- 
++1.8.3.1
++
+diff --git a/0010-Fix-a-null-pointer-dereference-bug-when-Intel-TXT-is.patch b/0010-Fix-a-null-pointer-dereference-bug-when-Intel-TXT-is.patch
+new file mode 100644
+index 0000000..47ac3cb
+--- /dev/null
++++ b/0010-Fix-a-null-pointer-dereference-bug-when-Intel-TXT-is.patch
+@@ -0,0 +1,33 @@
++From 1a5bdc2b07990c3792da8e1cf359a410414ec8ce Mon Sep 17 00:00:00 2001
++From: Ning Sun <ning.sun@intel.com>
++Date: Sun, 18 Feb 2018 08:08:30 -0800
++Subject: [PATCH 10/16] Fix a null pointer dereference bug when Intel TXT is
++ disabled. The issue can be found with Intel TXT being disabled and using
++ tboot to boot into Linux Kernel without launching TXT environment, tboot goes
++ into an endless loop.
++
++Signed-off-by: Bo Adler <thumper@fb.com>
++Reviewed-by: Ning Sun <ning.sun@intel.com>
++Signed-off-by: Tony Camuso <tcamuso@redhat.com>
++---
++ tboot/common/tb_error.c | 4 ++--
++ 1 file changed, 2 insertions(+), 2 deletions(-)
++
++diff --git a/tboot/common/tb_error.c b/tboot/common/tb_error.c
++index e9e8244..e02e9f1 100644
++--- a/tboot/common/tb_error.c
+++++ b/tboot/common/tb_error.c
++@@ -167,8 +167,8 @@ bool write_tb_error_code(tb_error_t error)
++ {
++     struct tpm_if *tpm = get_tpm();
++     const struct tpm_if_fp *tpm_fp = get_tpm_fp();
++-
++-    if ( !tpm || no_err_idx )
+++    
+++    if ( !tpm || !tpm_fp || no_err_idx )
++         return false;
++ 
++     if ( !tpm_fp->nv_write(tpm, tpm->cur_loc, tpm->tb_err_index, 0,
++-- 
++1.8.3.1
++
+diff --git a/0011-Fix-TPM-1.2-locality-selection-issue.patch b/0011-Fix-TPM-1.2-locality-selection-issue.patch
+new file mode 100644
+index 0000000..dacf68c
+--- /dev/null
++++ b/0011-Fix-TPM-1.2-locality-selection-issue.patch
+@@ -0,0 +1,62 @@
++From b107b8ad3ef61642fc66507780fca42f44b1d6d9 Mon Sep 17 00:00:00 2001
++From: Ning Sun <ning.sun@intel.com>
++Date: Thu, 15 Mar 2018 08:34:31 -0700
++Subject: [PATCH 11/16] Fix TPM 1.2 locality selection issue.
++
++The current implementation of tboot does not choose correct locality of TPM 1.2.
++Therefore, unseal is failed and PCRs are not recovered when the system wakes up
++after sleep mode.
++
++Signed-off-by: Seunghun Han <kkamagui@gmail.com>
++Reviewed-by: Ning Sun <ning.sun@intel.com>
++Signed-off-by: Tony Camuso <tcamuso@redhat.com>
++---
++ tboot/common/tpm_12.c |  5 +++++
++ tboot/common/tpm_20.c | 13 ++++++-------
++ 2 files changed, 11 insertions(+), 7 deletions(-)
++
++diff --git a/tboot/common/tpm_12.c b/tboot/common/tpm_12.c
++index b2fc522..3808256 100644
++--- a/tboot/common/tpm_12.c
+++++ b/tboot/common/tpm_12.c
++@@ -1671,6 +1671,11 @@ static bool tpm12_init(struct tpm_if *ti)
++     if ( ti == NULL )
++         return false;
++ 
+++    if (!txt_is_launched())
+++        ti->cur_loc = 0;
+++    else
+++        ti->cur_loc = 2;
+++
++     locality = ti->cur_loc;
++     if ( !tpm_validate_locality(locality) ) {
++         printk(TBOOT_WARN"TPM is not available.\n");
++diff --git a/tboot/common/tpm_20.c b/tboot/common/tpm_20.c
++index 9a4cd0d..c059c83 100644
++--- a/tboot/common/tpm_20.c
+++++ b/tboot/common/tpm_20.c
++@@ -2481,15 +2481,14 @@ static bool tpm20_init(struct tpm_if *ti)
++     u32 ret;
++     unsigned int i;
++     tpm_info_list_t *info_list = get_tpm_info_list(g_sinit);
++- 
++-   if ( ti == NULL )
+++
+++    if ( ti == NULL )
++         return false;
++    
++-   if (!txt_is_launched())
++-                ti->cur_loc = 0;
++-     else
++-                ti->cur_loc = 2;
++-   
+++    if (!txt_is_launched())
+++        ti->cur_loc = 0;
+++    else
+++        ti->cur_loc = 2;
++ 
++     /* init version */
++     ti->major = TPM20_VER_MAJOR;
++-- 
++1.8.3.1
++
+diff --git a/0012-Fix-memory-leak-and-invalid-reads-and-writes-issues.patch b/0012-Fix-memory-leak-and-invalid-reads-and-writes-issues.patch
+new file mode 100644
+index 0000000..803a77b
+--- /dev/null
++++ b/0012-Fix-memory-leak-and-invalid-reads-and-writes-issues.patch
+@@ -0,0 +1,286 @@
++From 97f081b66033c3cf844207a6479eb9a87f699ccd Mon Sep 17 00:00:00 2001
++From: Ning Sun <ning.sun@intel.com>
++Date: Thu, 15 Mar 2018 09:38:04 -0700
++Subject: [PATCH 12/16] Fix memory leak and invalid reads and writes issues.
++
++When setting BIGNUM pointers in RSA structures then the ownership of
++them is transferred into the RSA object. RSA_free() is enough to free
++all of them.
++
++When getting BIGNUM pointers from RSA structures then the ownership
++remains with the RSA object. There is no need to allocate the BIGNUMs
++before, or free them afterwards.
++
++BN_bin2bn with NULL as third parameter returns a newly allocated BIGNUM.
++
++
++Signed-off-by: Matthias Gerstner <mgerstner@suse.de>
++Reviewed-by: Ning Sun <ning.sun@intel.com>
++Signed-off-by: Tony Camuso <tcamuso@redhat.com>
++---
++ lcptools-v2/crtpollist.c | 24 +++++++++++++-----------
++ lcptools-v2/lcputils.c   | 22 ++++------------------
++ lcptools/crtpollist.c    |  8 ++++----
++ lcptools/lcputils2.c     | 14 ++++----------
++ 4 files changed, 25 insertions(+), 43 deletions(-)
++
++diff --git a/lcptools-v2/crtpollist.c b/lcptools-v2/crtpollist.c
++index 3a9d349..44a744a 100644
++--- a/lcptools-v2/crtpollist.c
+++++ b/lcptools-v2/crtpollist.c
++@@ -132,6 +132,7 @@ static lcp_signature_t2 *read_rsa_pubkey_file(const char *file)
++     if ( fp == NULL ) {
++         ERROR("Error: failed to open .pem file %s: %s\n", file,
++                 strerror(errno));
+++        fclose(fp);
++         return NULL;
++     }
++ 
++@@ -141,6 +142,7 @@ static lcp_signature_t2 *read_rsa_pubkey_file(const char *file)
++         ERROR("Error: failed to read .pem file %s: %s\n", file,
++                 ERR_error_string(ERR_get_error(), NULL));
++         ERR_free_strings();
+++        fclose(fp);
++         return NULL;
++     }
++ 
++@@ -148,6 +150,7 @@ static lcp_signature_t2 *read_rsa_pubkey_file(const char *file)
++     if ( keysize == 0 ) {
++         ERROR("Error: public key size is 0\n");
++         RSA_free(pubkey);
+++        fclose(fp);
++         return NULL;
++     }
++ 
++@@ -155,19 +158,19 @@ static lcp_signature_t2 *read_rsa_pubkey_file(const char *file)
++     if ( sig == NULL ) {
++         ERROR("Error: failed to allocate sig\n");
++         RSA_free(pubkey);
+++        fclose(fp);
++         return NULL;
++     }
++-
+++    const BIGNUM *modulus = NULL;
++     memset(sig, 0, sizeof(lcp_rsa_signature_t) + 2*keysize);
++     sig->rsa_signature.pubkey_size = keysize;
++ 
++     /* OpenSSL Version 1.1.0 and later don't allow direct access to RSA 
++        stuct */    
++     #if OPENSSL_VERSION_NUMBER >= 0x10100000L
++-        BIGNUM *modulus = BN_new();
++-        RSA_get0_key(pubkey, (const BIGNUM **)&modulus, NULL, NULL); 
+++        RSA_get0_key(pubkey, &modulus, NULL, NULL);
++     #else
++-        BIGNUM *modulus = BN_dup(pubkey->n);
+++        modulus = pubkey->n;
++     #endif
++ 
++     unsigned char key[keysize];
++@@ -183,8 +186,8 @@ static lcp_signature_t2 *read_rsa_pubkey_file(const char *file)
++     }
++ 
++     LOG("read rsa pubkey succeed!\n");
++-    BN_free(modulus);
++     RSA_free(pubkey);
+++    fclose(fp);
++     return sig;
++ }
++ 
++@@ -386,13 +389,13 @@ static bool ecdsa_sign_tpm20_list_data(lcp_policy_list_t2 *pollist, EC_KEY *ecke
++             return false;
++         }
++ 
++-        BIGNUM *r = BN_new();
++-        BIGNUM *s = BN_new();
++-        
+++        const BIGNUM *r = NULL;
+++        const BIGNUM *s = NULL; 
+++
++ 	/* OpenSSL Version 1.1.0 and later don't allow direct access to 
++ 	   ECDSA_SIG stuct */ 
++         #if OPENSSL_VERSION_NUMBER >= 0x10100000L
++-      	    ECDSA_SIG_get0(ecdsasig, (const BIGNUM **)&r, (const BIGNUM **)&s);
+++            ECDSA_SIG_get0(ecdsasig, &r, &s);
++         #else
++     	    r = ecdsasig->r;
++     	    s = ecdsasig->s;
++@@ -415,8 +418,7 @@ static bool ecdsa_sign_tpm20_list_data(lcp_policy_list_t2 *pollist, EC_KEY *ecke
++             display_tpm20_signature("    ", sig, pollist->sig_alg, false);
++         }
++ 
++-	BN_free(r);
++-	BN_free(s);
+++        ECDSA_SIG_free(ecdsasig);
++         return true;
++     }
++     return false;
++diff --git a/lcptools-v2/lcputils.c b/lcptools-v2/lcputils.c
++index a81a02f..981b9f8 100644
++--- a/lcptools-v2/lcputils.c
+++++ b/lcptools-v2/lcputils.c
++@@ -444,9 +444,8 @@ bool verify_signature(const uint8_t *data, size_t data_size,
++         return false;
++     }
++ 
++-    BIGNUM *modulus = BN_new();
+++    BIGNUM *modulus = BN_bin2bn(key, pubkey_size, NULL);
++     BIGNUM *exponent = BN_new();
++-    modulus = BN_bin2bn(key, pubkey_size, NULL);
++ 
++     /* uses fixed exponent (LCP_SIG_EXPONENT) */
++     char exp[32];
++@@ -457,8 +456,8 @@ bool verify_signature(const uint8_t *data, size_t data_size,
++     #if OPENSSL_VERSION_NUMBER >= 0x10100000L
++         RSA_set0_key(rsa_pubkey, modulus, exponent, NULL); 
++     #else
++-        rsa_pubkey->n = BN_dup(modulus);
++-        rsa_pubkey->e = BN_dup(exponent);
+++        rsa_pubkey->n = modulus;
+++        rsa_pubkey->e = exponent;
++         rsa_pubkey->d = rsa_pubkey->p = rsa_pubkey->q = NULL;
++     #endif
++ 
++@@ -480,8 +479,6 @@ bool verify_signature(const uint8_t *data, size_t data_size,
++     tb_hash_t digest;
++     if ( !hash_buffer(data, data_size, &digest, hashalg) ) {
++         ERROR("Error: failed to hash list\n");
++-	BN_free(modulus);
++-	BN_free(exponent);
++         RSA_free(rsa_pubkey);
++         return false;
++     }
++@@ -524,8 +521,6 @@ bool verify_signature(const uint8_t *data, size_t data_size,
++             ERROR("Error: failed to verify list: %s\n", 
++                     ERR_error_string(ERR_get_error(), NULL));
++             ERR_free_strings();
++-	    BN_free(modulus);
++-	    BN_free(exponent);
++             RSA_free(rsa_pubkey);
++             return false;
++         }
++@@ -540,8 +535,6 @@ bool verify_signature(const uint8_t *data, size_t data_size,
++             ERROR("Error: failed to verify list: %s\n", 
++                     ERR_error_string(ERR_get_error(), NULL));
++             ERR_free_strings();
++-	    BN_free(modulus);
++-	    BN_free(exponent);
++             RSA_free(rsa_pubkey);
++             return false;
++         }
++@@ -556,8 +549,6 @@ bool verify_signature(const uint8_t *data, size_t data_size,
++             ERROR("Error: failed to verify list: %s\n", 
++                     ERR_error_string(ERR_get_error(), NULL));
++             ERR_free_strings();
++-	    BN_free(modulus);
++-	    BN_free(exponent);
++             RSA_free(rsa_pubkey);
++             return false;
++         }
++@@ -572,8 +563,6 @@ bool verify_signature(const uint8_t *data, size_t data_size,
++             ERROR("Error: failed to verify list: %s\n", 
++                     ERR_error_string(ERR_get_error(), NULL));
++             ERR_free_strings();
++-	    BN_free(modulus);
++-	    BN_free(exponent);
++             RSA_free(rsa_pubkey);
++             return false;
++         }
++@@ -581,13 +570,10 @@ bool verify_signature(const uint8_t *data, size_t data_size,
++ 
++     default :
++         LOG("unknown hash alg\n");
++-	BN_free(modulus);
++-	BN_free(exponent);
++         return false;
+++        RSA_free(rsa_pubkey);
++     }
++ 
++-    BN_free(modulus);
++-    BN_free(exponent);
++     RSA_free(rsa_pubkey);
++     return true;
++ }
++diff --git a/lcptools/crtpollist.c b/lcptools/crtpollist.c
++index 01c45f1..52cb8d1 100644
++--- a/lcptools/crtpollist.c
+++++ b/lcptools/crtpollist.c
++@@ -156,13 +156,14 @@ static lcp_signature_t *read_pubkey_file(const char *file)
++     memset(sig, 0, sizeof(*sig) + 2*keysize);
++     sig->pubkey_size = keysize;
++ 
+++    const BIGNUM *modulus = NULL;
+++
++     /* OpenSSL Version 1.1.0 and later don't allow direct access to RSA 
++        stuct */ 
++     #if OPENSSL_VERSION_NUMBER >= 0x10100000L
++-        BIGNUM *modulus = BN_new();
++-        RSA_get0_key(pubkey, (const BIGNUM **)&modulus, NULL, NULL); 
+++        RSA_get0_key(pubkey, &modulus, NULL, NULL); 
++     #else
++-        BIGNUM *modulus = BN_dup(pubkey->n);
+++        modulus = pubkey->n;
++     #endif
++     unsigned char key[keysize];
++     BN_bn2bin(modulus, key);
++@@ -176,7 +177,6 @@ static lcp_signature_t *read_pubkey_file(const char *file)
++         display_signature("    ", sig, false);
++     }
++  
++-    BN_free(modulus);
++     RSA_free(pubkey);
++     return sig;
++ }
++diff --git a/lcptools/lcputils2.c b/lcptools/lcputils2.c
++index 797b71d..30447ad 100644
++--- a/lcptools/lcputils2.c
+++++ b/lcptools/lcputils2.c
++@@ -274,9 +274,9 @@ bool verify_signature(const uint8_t *data, size_t data_size,
++         ERROR("Error: failed to allocate key\n");
++         return false;
++     }
++-    BIGNUM *modulus = BN_new();
+++    
+++    BIGNUM *modulus = BN_bin2bn(key, pubkey_size, NULL);
++     BIGNUM *exponent = BN_new();
++-    modulus = BN_bin2bn(key, pubkey_size, NULL);
++ 
++     /* uses fixed exponent (LCP_SIG_EXPONENT) */
++     char exp[32];
++@@ -288,8 +288,8 @@ bool verify_signature(const uint8_t *data, size_t data_size,
++     #if OPENSSL_VERSION_NUMBER >= 0x10100000L
++         RSA_set0_key(rsa_pubkey, modulus, exponent, NULL); 
++     #else
++-      	rsa_pubkey->n = BN_dup(modulus);
++-    	rsa_pubkey->e = BN_dup(exponent);
+++      	rsa_pubkey->n = modulus;
+++    	rsa_pubkey->e = exponent;
++   	rsa_pubkey->d = rsa_pubkey->p = rsa_pubkey->q = NULL;
++     #endif
++ 
++@@ -297,8 +297,6 @@ bool verify_signature(const uint8_t *data, size_t data_size,
++     tb_hash_t digest;
++     if ( !hash_buffer(data, data_size, &digest, TB_HALG_SHA1_LG) ) {
++         ERROR("Error: failed to hash list\n");
++-        BN_free(modulus);
++-	BN_free(exponent);
++         RSA_free(rsa_pubkey);
++         return false;
++     }
++@@ -339,14 +337,10 @@ bool verify_signature(const uint8_t *data, size_t data_size,
++         ERROR("Error: failed to verify list: %s\n", 
++               ERR_error_string(ERR_get_error(), NULL));
++         ERR_free_strings();
++-        BN_free(modulus);
++-	BN_free(exponent);
++ 	RSA_free(rsa_pubkey);
++         return false;
++     }
++     
++-    BN_free(modulus);
++-    BN_free(exponent);
++     RSA_free(rsa_pubkey);
++     return true;
++ }
++-- 
++1.8.3.1
++
+diff --git a/0013-Add-centos7-instructions-for-Use-in-EFI-boot-mode.patch b/0013-Add-centos7-instructions-for-Use-in-EFI-boot-mode.patch
+new file mode 100644
+index 0000000..8d2167d
+--- /dev/null
++++ b/0013-Add-centos7-instructions-for-Use-in-EFI-boot-mode.patch
+@@ -0,0 +1,42 @@
++From 9c0a1ef250574152024ff85b02d31099e96c9009 Mon Sep 17 00:00:00 2001
++From: Ning Sun <ning.sun@intel.com>
++Date: Sat, 24 Mar 2018 10:56:58 -0700
++Subject: [PATCH 13/16] Add centos7 instructions for Use in EFI boot mode.
++
++Signed-off-by: Shi Wangyi<shiwangyi@gohighsec.com>
++Reviewed-by: Ning Sun<ning.sun@intel.com>
++Signed-off-by: Tony Camuso <tcamuso@redhat.com>
++---
++ README | 16 ++++++++++++++++
++ 1 file changed, 16 insertions(+)
++
++diff --git a/README b/README
++index 68fedb4..baa67d9 100644
++--- a/README
+++++ b/README
++@@ -224,6 +224,22 @@ o  Tboot support EFI boot via grub2 multiboot2 protocol.
++ 
++        Reboot to choose tboot grub option for TXT launch.
++ 
+++   In Centos 7, the OS should be installed and booted in EFI mode first,
+++   then:
+++       Under tboot code root folder: make; make install
+++
+++       Copy appropriate SINIT for platform into /boot.
+++
+++       Run: grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
+++
+++       Create directory /boot/efi/EFI/centos/x86_64-efi, and copy
+++       multiboot2.mod and relocator.mod from /usr/lib/grub/x86_64-efi into it.
+++
+++       If there aren't multiboot2.mod and relocator.mod in directory /usr/lib/grub/x86_64-efi,
+++       Run: yum install grub2-efi-modules
+++
+++       Reboot to choose tboot grub option for TXT launch.
+++
++    Linux launch works already. Xen for trad BIOS still work and Xen EFI is not
++    going to work until we can get a version with Daniel Kiper's multiboot2
++    changes in it -- and then we'll need to make some trivial changes to the
++-- 
++1.8.3.1
++
+diff --git a/0014-Ensure-tboot-log-is-available-even-when-measured-lau.patch b/0014-Ensure-tboot-log-is-available-even-when-measured-lau.patch
+new file mode 100644
+index 0000000..dc4d97f
+--- /dev/null
++++ b/0014-Ensure-tboot-log-is-available-even-when-measured-lau.patch
+@@ -0,0 +1,95 @@
++From 6c9c307876871163593f65bf1625cd7aa37f9759 Mon Sep 17 00:00:00 2001
++From: Ning Sun <ning.sun@intel.com>
++Date: Fri, 4 May 2018 17:10:58 -0700
++Subject: [PATCH 14/16] Ensure tboot log is available even when measured launch
++ is skipped.
++MIME-Version: 1.0
++Content-Type: text/plain; charset=UTF-8
++Content-Transfer-Encoding: 8bit
++
++Tboot only protects the log area in the e820 map in post_launch i.e. only if
++a measured launch has successfully been performed. This means that in cases
++where measured launch is skipped, tboot logâs memory is not reserved in the
++e820 map and can be reused by the kernel. This can make it hard to figure out
++why measured launch was skipped.
++
++This change moves the code to reserve the tboot log in the E820 map to the
++start of launch_kernel, which is called regardless of whether measured launch
++succeeded or not.
++
++Testing:  Disable TXT. Boot host. Verify no log is displayed without fix, and
++tboot log is displayed with fix.
++
++
++
++Signed-off-by: Sahil Rihan <srihan@fb.com>
++Reviewed-by: Ning Sun <ning.sun@intel.com>
++Signed-off-by: Tony Camuso <tcamuso@redhat.com>
++---
++ tboot/common/loader.c | 16 +++++++++++++++-
++ tboot/common/tboot.c  | 15 ---------------
++ 2 files changed, 15 insertions(+), 16 deletions(-)
++
++diff --git a/tboot/common/loader.c b/tboot/common/loader.c
++index 524f37d..622f05c 100644
++--- a/tboot/common/loader.c
+++++ b/tboot/common/loader.c
++@@ -76,7 +76,7 @@ extern bool jump_elf_image(const void *entry_point, uint32_t magic);
++ extern bool jump_linux_image(const void *entry_point);
++ extern bool is_sinit_acmod(const void *acmod_base, uint32_t acmod_size, 
++                            bool quiet);
++-
+++extern void apply_policy(tb_error_t error);
++ extern uint32_t g_mb_orig_size;
++ 
++ #define LOADER_CTX_BAD(xctx) \
++@@ -1368,6 +1368,20 @@ bool launch_kernel(bool is_measured_launch)
++             printk(TBOOT_ERR"CRB workaround failed \n");
++     }
++ 
+++    /* if using memory logging, reserve log area */
+++    if ( g_log_targets & TBOOT_LOG_TARGET_MEMORY ) {
+++        uint64_t base = TBOOT_SERIAL_LOG_ADDR;
+++        uint64_t size = TBOOT_SERIAL_LOG_SIZE;
+++        printk(TBOOT_INFO"reserving tboot memory log (%Lx - %Lx) in e820 table\n", base, (base + size - 1));
+++        if ( !e820_protect_region(base, size, E820_RESERVED) )
+++            apply_policy(TB_ERR_FATAL);
+++    }
+++
+++    /* replace map in loader context with copy */
+++    replace_e820_map(g_ldr_ctx);
+++    printk(TBOOT_DETA"adjusted e820 map:\n");
+++    print_e820_map();
+++
++     if ( !verify_loader_context(g_ldr_ctx) )
++         return false;
++ 
++diff --git a/tboot/common/tboot.c b/tboot/common/tboot.c
++index 3338fd1..5e11da4 100644
++--- a/tboot/common/tboot.c
+++++ b/tboot/common/tboot.c
++@@ -207,21 +207,6 @@ static void post_launch(void)
++     if ( !e820_protect_region(base, size, mem_type) )      
++         apply_policy(TB_ERR_FATAL);
++ 
++-    /* if using memory logging, reserve log area */
++-    if ( g_log_targets & TBOOT_LOG_TARGET_MEMORY ) {
++-        base = TBOOT_SERIAL_LOG_ADDR;
++-        size = TBOOT_SERIAL_LOG_SIZE;
++-        printk(TBOOT_INFO"reserving tboot memory log (%Lx - %Lx) in e820 table\n", base, (base + size - 1));
++-        if ( !e820_protect_region(base, size, E820_RESERVED) )         
++-            apply_policy(TB_ERR_FATAL);
++-    }
++-
++-    /* replace map in loader context with copy */
++-    replace_e820_map(g_ldr_ctx);
++-
++-    printk(TBOOT_DETA"adjusted e820 map:\n");
++-    print_e820_map();
++-
++     /*
++      * verify modules against policy
++      */
++-- 
++1.8.3.1
++
+diff --git a/0015-Add-support-for-appending-to-a-TPM2-TCG-style-event-.patch b/0015-Add-support-for-appending-to-a-TPM2-TCG-style-event-.patch
+new file mode 100644
+index 0000000..06c97ef
+--- /dev/null
++++ b/0015-Add-support-for-appending-to-a-TPM2-TCG-style-event-.patch
+@@ -0,0 +1,175 @@
++From 21e902c9a2a28e1ba4ac2dab1120dd7a0be075cb Mon Sep 17 00:00:00 2001
++From: Ning Sun <ning.sun@intel.com>
++Date: Mon, 21 May 2018 15:38:53 -0700
++Subject: [PATCH 15/16] Add support for appending to a TPM2 TCG style event
++ log.
++MIME-Version: 1.0
++Content-Type: text/plain; charset=UTF-8
++Content-Transfer-Encoding: 8bit
++
++Tboot didnât have support for appending to a TPM2 TCG style event log. As a result
++it would crash with a âgeneric fatal errorâ when it ran with an SINIT that supports
++the TCG log format.
++
++This change addresses that by adding code to handle the new log format.
++
++Testing done: Verify tboot crashes on Skylake system without patch, and successfully
++boots kernel with the patch.
++
++Signed-off-by: Sahil Rihan <srihan@fb.com>
++Reviewed-by: Ning Sun <ning.sun@intel.com>
++Signed-off-by: Tony Camuso <tcamuso@redhat.com>
++---
++ tboot/txt/txt.c | 101 +++++++++++++++++++++++++++++++++++++++++++++++++++-----
++ 1 file changed, 92 insertions(+), 9 deletions(-)
++
++diff --git a/tboot/txt/txt.c b/tboot/txt/txt.c
++index 4e4e158..7e1fd70 100644
++--- a/tboot/txt/txt.c
+++++ b/tboot/txt/txt.c
++@@ -69,6 +69,12 @@
++ /* counter timeout for waiting for all APs to enter wait-for-sipi */
++ #define AP_WFS_TIMEOUT     0x10000000
++ 
+++/* TPM event log types */
+++#define EVTLOG_UNKNOWN       0
+++#define EVTLOG_TPM12         1
+++#define EVTLOG_TPM2_LEGACY   2
+++#define EVTLOG_TPM2_TCG      3
+++
++ __data struct acpi_rsdp g_rsdp;
++ extern char _start[];             /* start of module */
++ extern char _end[];               /* end of module */
++@@ -87,7 +93,7 @@ extern void apply_policy(tb_error_t error);
++ extern void cpu_wakeup(uint32_t cpuid, uint32_t sipi_vec);
++ extern void print_event(const tpm12_pcr_event_t *evt);
++ extern void print_event_2(void *evt, uint16_t alg);
++-
+++extern uint32_t print_event_2_1(void *evt);
++ 
++ /*
++  * this is the structure whose addr we'll put in TXT heap
++@@ -282,6 +288,26 @@ static void init_evtlog_desc(heap_event_log_ptr_elt2_t *evt_log)
++     }
++ }
++ 
+++int get_evtlog_type(void)
+++{
+++    struct tpm_if *tpm = get_tpm();
+++
+++    if (tpm->major == TPM12_VER_MAJOR) {
+++        return EVTLOG_TPM12;
+++    } else if (tpm->major == TPM20_VER_MAJOR) {
+++        if (g_sinit) {
+++            txt_caps_t sinit_caps = get_sinit_capabilities(g_sinit);
+++            return sinit_caps.tcg_event_log_format ? EVTLOG_TPM2_TCG : EVTLOG_TPM2_LEGACY;
+++        } else {
+++            printk(TBOOT_ERR"SINIT not found\n");
+++        }
+++    } else {
+++        printk(TBOOT_ERR"Unknown TPM major version: %d\n", tpm->major);
+++    }
+++    printk(TBOOT_ERR"Unable to determine log type\n");
+++    return EVTLOG_UNKNOWN;
+++}
+++
++ static void init_os_sinit_ext_data(heap_ext_data_element_t* elts)
++ {
++     heap_ext_data_element_t* elt = elts;
++@@ -391,7 +417,7 @@ void dump_event_2(void)
++     }
++ }
++ 
++-bool evtlog_append_tpm20(uint8_t pcr, uint16_t alg, tb_hash_t *hash, uint32_t type)
+++bool evtlog_append_tpm2_legacy(uint8_t pcr, uint16_t alg, tb_hash_t *hash, uint32_t type)
++ {
++     heap_event_log_descr_t *cur_desc = NULL;
++     uint32_t hash_size; 
++@@ -428,20 +454,77 @@ bool evtlog_append_tpm20(uint8_t pcr, uint16_t alg, tb_hash_t *hash, uint32_t ty
++     return true;
++ }
++ 
+++bool evtlog_append_tpm2_tcg(uint8_t pcr, uint32_t type, hash_list_t *hl)
+++{
+++    uint32_t i, event_size;
+++    unsigned int hash_size;
+++    tcg_pcr_event2 *event;
+++    uint8_t *hash_entry;
+++    tcg_pcr_event2 dummy;
+++
+++    /*
+++     * Dont't use sizeof(tcg_pcr_event2) since that has TPML_DIGESTV_VALUES_1.digests
+++     * set to 5. Compute the static size as pcr_index + event_type +
+++     * digest.count + event_size. Then add the space taken up by the hashes.
+++     */
+++    event_size = sizeof(dummy.pcr_index) + sizeof(dummy.event_type) +
+++        sizeof(dummy.digest.count) + sizeof(dummy.event_size);
+++
+++    for (i = 0; i < hl->count; i++) {
+++        hash_size = get_hash_size(hl->entries[i].alg);
+++        if (hash_size == 0) {
+++            return false;
+++        }
+++        event_size += sizeof(uint16_t); // hash_alg field
+++        event_size += hash_size;
+++    }
+++
+++    // Check if event will fit in buffer.
+++    if (event_size + g_elog_2_1->next_record_offset >
+++        g_elog_2_1->allcoated_event_container_size) {
+++        return false;
+++    }
+++
+++    event = (tcg_pcr_event2*)(void *)(unsigned long)g_elog_2_1->phys_addr +
+++        g_elog_2_1->next_record_offset;
+++    event->pcr_index = pcr;
+++    event->event_type = type;
+++    event->event_size = 0;  // No event data passed by tboot.
+++    event->digest.count = hl->count;
+++
+++    hash_entry = (uint8_t *)&event->digest.digests[0];
+++    for (i = 0; i < hl->count; i++) {
+++        // Populate individual TPMT_HA_1 structs.
+++        *((uint16_t *)hash_entry) = hl->entries[i].alg; // TPMT_HA_1.hash_alg
+++        hash_entry += sizeof(uint16_t);
+++        hash_size = get_hash_size(hl->entries[i].alg);  // already checked above
+++        memcpy(hash_entry, &(hl->entries[i].hash), hash_size);
+++        hash_entry += hash_size;
+++    }
+++
+++    g_elog_2_1->next_record_offset += event_size;
+++    print_event_2_1(event);
+++    return true;
+++}
+++
++ bool evtlog_append(uint8_t pcr, hash_list_t *hl, uint32_t type)
++ {
++-    struct tpm_if *tpm = get_tpm();
++-    switch (tpm->major) {
++-    case TPM12_VER_MAJOR:
+++    int log_type = get_evtlog_type();
+++    switch (log_type) {
+++    case EVTLOG_TPM12:
++         if ( !evtlog_append_tpm12(pcr, &hl->entries[0].hash, type) )
++             return false;
++         break;
++-    case TPM20_VER_MAJOR:
+++    case EVTLOG_TPM2_LEGACY:
++         for (unsigned int i=0; i<hl->count; i++) {
++-            if ( !evtlog_append_tpm20(pcr, hl->entries[i].alg,
++-                    &hl->entries[i].hash, type))
+++            if ( !evtlog_append_tpm2_legacy(pcr, hl->entries[i].alg,
+++                &hl->entries[i].hash, type))
++                 return false;
++-	}
+++	    }
+++        break;
+++    case EVTLOG_TPM2_TCG:
+++        if ( !evtlog_append_tpm2_tcg(pcr, type, hl) )
+++            return false;
++         break;
++     default:
++         return false;
++-- 
++1.8.3.1
++
+diff --git a/0016-Add-an-option-in-tboot-to-force-SINIT-to-use-the-leg.patch b/0016-Add-an-option-in-tboot-to-force-SINIT-to-use-the-leg.patch
+new file mode 100644
+index 0000000..542197e
+--- /dev/null
++++ b/0016-Add-an-option-in-tboot-to-force-SINIT-to-use-the-leg.patch
+@@ -0,0 +1,345 @@
++From c9ca81f41b4a3eaa8e00c12a3d1d6d3c783782d4 Mon Sep 17 00:00:00 2001
++From: Ning Sun <ning.sun@intel.com>
++Date: Mon, 28 May 2018 13:50:34 -0700
++Subject: [PATCH 16/16] Add an option in tboot to force SINIT to use the legacy
++ TPM2 log format.
++
++Some SINITs have a bug where they don't extend the MLE hash to the event log.
++This makes it impossible to verify the measurement chain for PCR 17. However,
++if we force them to use the legacy (not TCG standardized) TPM2 log format, the
++SINITs in question log all the inputs to PCR 17 to the event log. This setting
++provides a way to force use of the legacy log format for TPM2 systems.
++
++Testing done:  Run tboot with and without option on TPM2 system that supports TCG
++log format. Verify MLE hash entry (0x404) is missing from event log when system is
++booted without the option (or option set to false). Verify legacy log format is used
++and MLE hash entry is present when system is booted with option set to true.
++
++
++Signed-off-by: Sahil Rihan <srihan@fb.com>
++Reviewed-by: Ning Sun <ning.sun@intel.com>
++Signed-off-by: Tony Camuso <tcamuso@redhat.com>
++---
++ README                  |  8 ++++
++ tboot/common/cmdline.c  | 13 +++++++
++ tboot/include/cmdline.h |  1 +
++ tboot/include/txt/txt.h |  7 ++++
++ tboot/txt/heap.c        | 45 +++++++++++-----------
++ tboot/txt/txt.c         | 99 +++++++++++++++++++++----------------------------
++ 6 files changed, 93 insertions(+), 80 deletions(-)
++
++diff --git a/README b/README
++index baa67d9..3893484 100644
++--- a/README
+++++ b/README
++@@ -307,6 +307,14 @@ o  Recovering from measured launch failures.
++    Note: TXT.ERRORCODE is only cleared if the system is power cycled. A reboot is not
++    sufficient to clear the error code.
++ 
+++o  Force TPM2 legacy log format.
+++   Some SINITs have a bug where they don't extend the MLE hash to the event log.
+++   This makes it impossible to verify the measurement chain for PCR 17. However,
+++   if we force them to use the legacy (not TCG standardized) TPM2 log format,
+++   the SINITs in question log all the inputs to PCR 17 to the event log. This
+++   setting provides a way to force use of the legacy log format for TPM 2 systems:
+++           force_tpm2_legacy_log=false|true  // defaults to false
+++
++ PCR Usage:
++ ---------
++ o  Legacy PCR mapping
++diff --git a/tboot/common/cmdline.c b/tboot/common/cmdline.c
++index 8644d01..5bba66e 100644
++--- a/tboot/common/cmdline.c
+++++ b/tboot/common/cmdline.c
++@@ -85,6 +85,8 @@ static const cmdline_option_t g_tboot_cmdline_options[] = {
++     { "measure_nv", "false" },       /* true|false */
++     { "extpol",    "sha1" },         /*agile|embedded|sha1|sha256|sm3|... */
++     { "ignore_prev_err", "true"},    /* true|false */
+++    { "force_tpm2_legacy_log", "false"}, /* true|false */
+++    { "force_tpm2_legacy_log", "false"}, /* true|false */
++     { NULL, NULL }
++ };
++ static char g_tboot_param_values[ARRAY_SIZE(g_tboot_cmdline_options)][MAX_VALUE_LEN];
++@@ -529,6 +531,17 @@ void get_tboot_extpol(void)
++     }
++ }
++ 
+++bool get_tboot_force_tpm2_legacy_log(void)
+++{
+++    const char *force_legacy_log =
+++       get_option_val(g_tboot_cmdline_options,
+++              g_tboot_param_values,
+++              "force_tpm2_legacy_log");
+++    if ( force_legacy_log != NULL && strcmp(force_legacy_log, "true") == 0 )
+++       return true;
+++    return false;
+++}
+++
++ bool get_tboot_ignore_prev_err(void)
++ {
++     const char *ignore_prev_err = 
++diff --git a/tboot/include/cmdline.h b/tboot/include/cmdline.h
++index 403c40e..39c6013 100644
++--- a/tboot/include/cmdline.h
+++++ b/tboot/include/cmdline.h
++@@ -55,6 +55,7 @@ extern bool get_tboot_call_racm_check(void);
++ extern bool get_tboot_ignore_prev_err(void);
++ extern bool get_tboot_measure_nv(void);
++ extern void get_tboot_extpol(void);
+++extern bool get_tboot_force_tpm2_legacy_log(void);
++ 
++ /* for parse cmdline of linux kernel, say vga and mem */
++ extern void linux_parse_cmdline(const char *cmdline);
++diff --git a/tboot/include/txt/txt.h b/tboot/include/txt/txt.h
++index dd734b0..30d07da 100644
++--- a/tboot/include/txt/txt.h
+++++ b/tboot/include/txt/txt.h
++@@ -38,6 +38,12 @@
++ 
++ // #include <multiboot.h>
++ 
+++/* TPM event log types */
+++#define EVTLOG_UNKNOWN       0
+++#define EVTLOG_TPM12         1
+++#define EVTLOG_TPM2_LEGACY   2
+++#define EVTLOG_TPM2_TCG      3
+++
++ extern bool txt_is_launched(void);
++ extern void txt_display_errors(void);
++ extern bool txt_has_error(void);
++@@ -54,6 +60,7 @@ extern bool txt_s3_launch_environment(void);
++ extern void txt_shutdown(void);
++ extern bool txt_is_powercycle_required(void);
++ extern void ap_wait(unsigned int cpuid);
+++extern int get_evtlog_type(void);
++ 
++ extern uint32_t g_using_da;
++ #endif      /* __TXT_TXT_H__ */
++diff --git a/tboot/txt/heap.c b/tboot/txt/heap.c
++index d27cf56..cefcff1 100644
++--- a/tboot/txt/heap.c
+++++ b/tboot/txt/heap.c
++@@ -46,9 +46,12 @@
++ #include <misc.h>
++ #include <hash.h>
++ #include <tpm.h>
+++#include <loader.h>
+++#include <tb_error.h>
++ #include <txt/mtrrs.h>
++ #include <txt/config_regs.h>
++ #include <txt/heap.h>
+++#include <txt/txt.h>
++ #endif
++ 
++ /*
++@@ -709,31 +712,25 @@ uint64_t calc_os_sinit_data_size(uint32_t version)
++             2 * sizeof(heap_ext_data_element_t) +
++             sizeof(heap_event_log_ptr_elt_t)
++     };
++-    txt_caps_t sinit_caps;
++     struct tpm_if *tpm = get_tpm();
++-	
++-    if ( tpm->major == TPM20_VER_MAJOR ) {
++-	if (g_sinit != NULL) {
++-  	    sinit_caps = get_sinit_capabilities(g_sinit);
++-	}
++-        if (sinit_caps.tcg_event_log_format) {
++-	    size[2] = sizeof(os_sinit_data_t) + sizeof(uint64_t) +
++-            2 * sizeof(heap_ext_data_element_t) + 
++-            sizeof(heap_event_log_ptr_elt2_1_t);
++-        }
++-	else {
++-            u32 count;
++-	    if ( tpm->extpol == TB_EXTPOL_AGILE )
++-               count = tpm->banks;
++-	    else 
++-		if ( tpm->extpol == TB_EXTPOL_EMBEDDED )
++- 		    count = tpm->alg_count;
++-		else
++-		    count = 1;
++-   	    size[2] = sizeof(os_sinit_data_t) + sizeof(uint64_t) + 
++-                      2 * sizeof(heap_ext_data_element_t) + 4 + 
++-                      count*sizeof(heap_event_log_descr_t);
++-	}
+++    int log_type = get_evtlog_type();
+++
+++    if ( log_type == EVTLOG_TPM2_TCG ) {
+++        size[2] = sizeof(os_sinit_data_t) + sizeof(uint64_t) +
+++        2 * sizeof(heap_ext_data_element_t) +
+++        sizeof(heap_event_log_ptr_elt2_1_t);
+++    } else if (log_type == EVTLOG_TPM2_LEGACY) {
+++        u32 count;
+++        if ( tpm->extpol == TB_EXTPOL_AGILE )
+++            count = tpm->banks;
+++        else
+++            if ( tpm->extpol == TB_EXTPOL_EMBEDDED )
+++                count = tpm->alg_count;
+++            else
+++                count = 1;
+++        size[2] = sizeof(os_sinit_data_t) + sizeof(uint64_t) +
+++            2 * sizeof(heap_ext_data_element_t) + 4 +
+++            count*sizeof(heap_event_log_descr_t);
++     }
++ 
++     if ( version >= 6 )
++diff --git a/tboot/txt/txt.c b/tboot/txt/txt.c
++index 7e1fd70..ef54135 100644
++--- a/tboot/txt/txt.c
+++++ b/tboot/txt/txt.c
++@@ -69,12 +69,6 @@
++ /* counter timeout for waiting for all APs to enter wait-for-sipi */
++ #define AP_WFS_TIMEOUT     0x10000000
++ 
++-/* TPM event log types */
++-#define EVTLOG_UNKNOWN       0
++-#define EVTLOG_TPM12         1
++-#define EVTLOG_TPM2_LEGACY   2
++-#define EVTLOG_TPM2_TCG      3
++-
++ __data struct acpi_rsdp g_rsdp;
++ extern char _start[];             /* start of module */
++ extern char _end[];               /* end of module */
++@@ -295,6 +289,13 @@ int get_evtlog_type(void)
++     if (tpm->major == TPM12_VER_MAJOR) {
++         return EVTLOG_TPM12;
++     } else if (tpm->major == TPM20_VER_MAJOR) {
+++        /*
+++         * Force use of legacy TPM2 log format to deal with a bug in some SINIT
+++         * ACMs that where they don't log the MLE hash to the event log.
+++         */
+++        if (get_tboot_force_tpm2_legacy_log()) {
+++            return EVTLOG_TPM2_LEGACY;
+++        }
++         if (g_sinit) {
++             txt_caps_t sinit_caps = get_sinit_capabilities(g_sinit);
++             return sinit_caps.tcg_event_log_format ? EVTLOG_TPM2_TCG : EVTLOG_TPM2_LEGACY;
++@@ -312,47 +313,37 @@ static void init_os_sinit_ext_data(heap_ext_data_element_t* elts)
++ {
++     heap_ext_data_element_t* elt = elts;
++     heap_event_log_ptr_elt_t* evt_log;
++-    txt_caps_t sinit_caps;
++     struct tpm_if *tpm = get_tpm();
++-	
++-    if ( tpm->major == TPM12_VER_MAJOR ) {
+++ 
+++    int log_type = get_evtlog_type();
+++    if ( log_type == EVTLOG_TPM12 ) {
++         evt_log = (heap_event_log_ptr_elt_t *)elt->data;
++         evt_log->event_log_phys_addr = (uint64_t)(unsigned long)init_event_log();
++         elt->type = HEAP_EXTDATA_TYPE_TPM_EVENT_LOG_PTR;
++         elt->size = sizeof(*elt) + sizeof(*evt_log);
++-    } 
++-    else 
++-        if ( tpm->major == TPM20_VER_MAJOR ) {
++-       	    if (g_sinit != NULL) {
++-	        sinit_caps = get_sinit_capabilities(g_sinit);
++-	    }
++-	    else 
++-		return;
++-            if (sinit_caps.tcg_event_log_format) {
++-		g_elog_2_1 = (heap_event_log_ptr_elt2_1_t *)elt->data;
++-		init_evtlog_desc_1(g_elog_2_1);
++-		elt->type = HEAP_EXTDATA_TYPE_TPM_EVENT_LOG_PTR_2_1;
++-		elt->size = sizeof(*elt) + sizeof(heap_event_log_ptr_elt2_1_t);
++-		printk(TBOOT_DETA"heap_ext_data_element TYPE = %d \n", elt->type);
++-		printk(TBOOT_DETA"heap_ext_data_element SIZE = %d \n", elt->size);
++-				
++-	    }
++-	    else {
++-		g_elog_2 = (heap_event_log_ptr_elt2_t *)elt->data;
++-		if ( tpm->extpol == TB_EXTPOL_AGILE )
++-	    	    g_elog_2->count = tpm->banks;
++-		else 
++-		    if ( tpm->extpol == TB_EXTPOL_EMBEDDED )
++-			g_elog_2->count = tpm->alg_count;
++-		    else
++-			g_elog_2->count = 1;
++-		init_evtlog_desc(g_elog_2);
++-                elt->type = HEAP_EXTDATA_TYPE_TPM_EVENT_LOG_PTR_2;
++-                elt->size = sizeof(*elt) + sizeof(u32) +
++-                g_elog_2->count * sizeof(heap_event_log_descr_t);
++-		printk(TBOOT_DETA"INTEL TXT LOG elt SIZE = %d \n", elt->size);
++-           }
++-       }
+++    } else if ( log_type == EVTLOG_TPM2_TCG ) {
+++        g_elog_2_1 = (heap_event_log_ptr_elt2_1_t *)elt->data;
+++        init_evtlog_desc_1(g_elog_2_1);
+++        elt->type = HEAP_EXTDATA_TYPE_TPM_EVENT_LOG_PTR_2_1;
+++        elt->size = sizeof(*elt) + sizeof(heap_event_log_ptr_elt2_1_t);
+++        printk(TBOOT_DETA"heap_ext_data_element TYPE = %d \n", elt->type);
+++        printk(TBOOT_DETA"heap_ext_data_element SIZE = %d \n", elt->size);
+++    }  else if ( log_type == EVTLOG_TPM2_LEGACY ) {
+++        g_elog_2 = (heap_event_log_ptr_elt2_t *)elt->data;
+++        if ( tpm->extpol == TB_EXTPOL_AGILE )
+++            g_elog_2->count = tpm->banks;
+++        else
+++            if ( tpm->extpol == TB_EXTPOL_EMBEDDED )
+++                g_elog_2->count = tpm->alg_count;
+++            else
+++                g_elog_2->count = 1;
+++        init_evtlog_desc(g_elog_2);
+++        elt->type = HEAP_EXTDATA_TYPE_TPM_EVENT_LOG_PTR_2;
+++        elt->size = sizeof(*elt) + sizeof(u32) +
+++            g_elog_2->count * sizeof(heap_event_log_descr_t);
+++        printk(TBOOT_DETA"INTEL TXT LOG elt SIZE = %d \n", elt->size);
+++    }
+++
++     elt = (void *)elt + elt->size;
++     elt->type = HEAP_EXTDATA_TYPE_END;
++     elt->size = sizeof(*elt);
++@@ -618,6 +609,8 @@ static txt_heap_t *init_txt_heap(void *ptab_base, acm_hdr_t *sinit, loader_ctx *
++     caps_mask.rlp_wake_getsec = 1;
++     caps_mask.rlp_wake_monitor = 1;
++     caps_mask.pcr_map_da = 1;
+++    caps_mask.tcg_event_log_format = 1;
+++    caps_mask.tcg_event_log_format = 1;
++     os_sinit_data->capabilities._raw = MLE_HDR_CAPS & ~caps_mask._raw;
++     if ( sinit_caps.rlp_wake_monitor )
++         os_sinit_data->capabilities.rlp_wake_monitor = 1;
++@@ -627,8 +620,7 @@ static txt_heap_t *init_txt_heap(void *ptab_base, acm_hdr_t *sinit, loader_ctx *
++         printk(TBOOT_ERR"SINIT capabilities are incompatible (0x%x)\n", sinit_caps._raw);
++         return NULL;
++     }
++-    
++-    if ( sinit_caps.tcg_event_log_format ){
+++    if ( get_evtlog_type() == EVTLOG_TPM2_TCG ) {
++         printk(TBOOT_INFO"SINIT ACM supports TCG compliant TPM 2.0 event log format, tcg_event_log_format = %d \n", 
++               sinit_caps.tcg_event_log_format);
++         os_sinit_data->capabilities.tcg_event_log_format = 1;
++@@ -868,9 +860,7 @@ bool txt_s3_launch_environment(void)
++     /* initial launch's TXT heap data is still in place and assumed valid */
++     /* so don't re-create; this is OK because it was untrusted initially */
++     /* and would be untrusted now */
++-	txt_caps_t sinit_caps;
++-    struct tpm_if *tpm = get_tpm();
++-
+++    int log_type = get_evtlog_type();
++     /* get sinit binary loaded */
++     g_sinit = (acm_hdr_t *)(uint32_t)read_pub_config_reg(TXTCR_SINIT_BASE);
++     if ( g_sinit == NULL ){
++@@ -878,16 +868,13 @@ bool txt_s3_launch_environment(void)
++     }
++ 	/* initialize event log in os_sinit_data, so that events will not */
++ 	/* repeat when s3 */
++-	if ( tpm->major == TPM12_VER_MAJOR && g_elog )
+++	if ( log_type == EVTLOG_TPM12 && g_elog ) {
++ 		g_elog = (event_log_container_t *)init_event_log();
++-	else 
++-		if ( tpm->major == TPM20_VER_MAJOR ){
++-			sinit_caps = get_sinit_capabilities(g_sinit);		
++-			if (sinit_caps.tcg_event_log_format && g_elog_2_1) 
++-				init_evtlog_desc_1(g_elog_2_1);
++-			if(!sinit_caps.tcg_event_log_format && g_elog_2) 
++-				init_evtlog_desc(g_elog_2);
++-		}
+++    } else if ( log_type == EVTLOG_TPM2_TCG && g_elog_2_1)  {
+++        init_evtlog_desc_1(g_elog_2_1);
+++    } else if ( log_type == EVTLOG_TPM2_LEGACY && g_elog_2)  {
+++        init_evtlog_desc(g_elog_2);
+++    }
++ 
++     /* set MTRRs properly for AC module (SINIT) */
++     set_mtrrs_for_acmod(g_sinit);
++-- 
++1.8.3.1
++
+diff --git a/1000-tboot-for-tis.patch b/1000-tboot-for-tis.patch
+new file mode 100644
+index 0000000..a12d40b
+--- /dev/null
++++ b/1000-tboot-for-tis.patch
+@@ -0,0 +1,188 @@
++From c2edea1ff347242a70075808652fa1ad4c86037a Mon Sep 17 00:00:00 2001
++From: Bin Qian <bin.qian@windriver.com>
++Date: Mon, 27 Nov 2017 08:35:11 -0500
++Subject: [PATCH 1/1] WRS: Patch1: 9000-tboot-for-tis.patch
++
++---
++ tboot/20_linux_tboot     | 21 ++++++++++++---------
++ tboot/20_linux_xen_tboot |  2 +-
++ tboot/common/policy.c    | 16 +++++++++++-----
++ tboot/common/tpm_20.c    |  7 ++++---
++ 4 files changed, 28 insertions(+), 18 deletions(-)
++
++diff --git a/tboot/20_linux_tboot b/tboot/20_linux_tboot
++index 816d50a..eed512d 100644
++--- a/tboot/20_linux_tboot
+++++ b/tboot/20_linux_tboot
++@@ -22,6 +22,13 @@ exec_prefix=${prefix}
++ bindir=${exec_prefix}/bin
++ libdir=${exec_prefix}/lib
++ sysconfdir=/etc
+++
+++
+++tboot=`cat /proc/cmdline | xargs -n1 | grep '^tboot=true$'` || true
+++if [ -z "$tboot"  ]; then
+++  exit 0
+++fi
+++
++ if test -e /usr/share/grub/grub-mkconfig_lib; then
++   . /usr/share/grub/grub-mkconfig_lib
++ elif test -e ${libdir}/grub/grub-mkconfig_lib; then
++@@ -40,7 +47,7 @@ fi
++ [ -z "${GRUB_CMDLINE_LINUX_TBOOT}" ] && unset GRUB_CMDLINE_LINUX_TBOOT
++ [ -z "${GRUB_TBOOT_POLICY_DATA}" ] && unset GRUB_TBOOT_POLICY_DATA
++ # Command line for tboot itself
++-: ${GRUB_CMDLINE_TBOOT='logging=serial,memory,vga'}
+++: ${GRUB_CMDLINE_TBOOT='logging=serial,memory,vga extpol=sha256'}
++ # Linux kernel parameters to append for tboot
++ : ${GRUB_CMDLINE_LINUX_TBOOT='intel_iommu=on'}
++ # Base name of LCP policy data file for list policy
++@@ -69,10 +76,8 @@ export TEXTDOMAINDIR=${prefix}/share/locale
++ 
++ CLASS="--class gnu-linux --class gnu --class os --class tboot"
++ 
++-if [ "x${GRUB_DISTRIBUTOR}" = "x" ] ; then
++-  OS=GNU/Linux
++-else
++-  OS="${GRUB_DISTRIBUTOR} GNU/Linux"
+++OS="CentOS GNU/Linux"
+++if [ -n "${GRUB_DISTRIBUTOR}" ] ; then
++   CLASS="--class $(echo ${GRUB_DISTRIBUTOR} | tr '[A-Z]' '[a-z]' | cut -d' ' -f1) ${CLASS}"
++ fi
++ 
++@@ -109,9 +114,9 @@ linux_entry ()
++   iommu_args="$7"
++   
++   if ${recovery} ; then
++-    title="$(gettext_quoted "%s, with tboot %s and Linux %s (recovery mode)")"
+++    title="$(gettext_quoted "%s, w/ tboot %s & Linux %s (recovery mode)")"
++   else
++-    title="$(gettext_quoted "%s, with tboot %s and Linux %s")"
+++    title="$(gettext_quoted "%s, w/ tboot %s & Linux %s")"
++   fi
++ 
++   if [ -d /sys/firmware/efi ] ; then
++@@ -202,7 +207,6 @@ while [ "x${tboot_list}" != "x" ] && [ "x$linux_list" != "x" ] ; do
++     rel_tboot_dirname=`make_system_path_relative_to_its_root $tboot_dirname`
++ #    tboot_version=`echo $tboot_basename | sed -e "s,.gz$,,g;s,^tboot-,,g"`
++     tboot_version="1.9.6"
++-    echo "submenu \"tboot ${tboot_version}\" {"
++     while [ "x$list" != "x" ] ; do
++ 	linux=`version_find_latest $list`
++ 	echo "Found linux image: $linux" >&2
++@@ -243,6 +247,5 @@ while [ "x${tboot_list}" != "x" ] && [ "x$linux_list" != "x" ] ; do
++ 
++ 	list=`echo $list | tr ' ' '\n' | grep -vx $linux | tr '\n' ' '`
++     done
++-    echo "}"
++     tboot_list=`echo $tboot_list | tr ' ' '\n' | grep -vx $current_tboot | tr '\n' ' '`
++ done
++diff --git a/tboot/20_linux_xen_tboot b/tboot/20_linux_xen_tboot
++index a113a3c..b1e4b09 100644
++--- a/tboot/20_linux_xen_tboot
+++++ b/tboot/20_linux_xen_tboot
++@@ -41,7 +41,7 @@ fi
++ [ -z "${GRUB_CMDLINE_LINUX_XEN_TBOOT}" ] && unset GRUB_CMDLINE_LINUX_XEN_TBOOT
++ [ -z "${GRUB_TBOOT_POLICY_DATA}" ] && unset GRUB_TBOOT_POLICY_DATA
++ # Command line for tboot itself
++-: ${GRUB_CMDLINE_TBOOT='logging=serial,memory,vga'}
+++: ${GRUB_CMDLINE_TBOOT='logging=serial,memory,vga extpol=sha256'}
++ # Xen parameters to append for tboot
++ : ${GRUB_CMDLINE_XEN_TBOOT=''}
++ # Linux kernel parameters to append for tboot + Xen
++diff --git a/tboot/common/policy.c b/tboot/common/policy.c
++index 9678b7c..5a16d81 100644
++--- a/tboot/common/policy.c
+++++ b/tboot/common/policy.c
++@@ -353,6 +353,7 @@ tb_error_t set_policy(void)
++      * type is LCP_POLTYPE_LIST (since we could have been give a policy data
++      * file even though the policy was not a LIST */
++     printk(TBOOT_INFO"reading Launch Control Policy from TPM NV...\n");
+++
++     if ( read_policy_from_tpm(tpm->lcp_own_index,
++              _policy_index_buf, &policy_index_size) ) {
++         printk(TBOOT_DETA"\t:%lu bytes read\n", policy_index_size);
++@@ -412,6 +413,7 @@ bool hash_policy(tb_hash_t *hash, uint16_t hash_alg)
++ 
++ /* generate hash by hashing cmdline and module image */
++ static bool hash_module(hash_list_t *hl,
+++                        u16 cur_alg,
++                         const char* cmdline, void *base,
++                         size_t size)
++ {
++@@ -423,6 +425,7 @@ static bool hash_module(hash_list_t *hl,
++         return false;
++     }
++ 
+++    printk(TBOOT_INFO"Using hash algorithm %d\n", cur_alg);
++     /* final hash is SHA-1( SHA-1(cmdline) | SHA-1(image) ) */
++     /* where cmdline is first stripped of leading spaces, file name, then */
++     /* any spaces until the next non-space char */
++@@ -437,16 +440,17 @@ static bool hash_module(hash_list_t *hl,
++     switch (tpm->extpol) {
++     case TB_EXTPOL_FIXED: 
++         hl->count = 1;
++-        hl->entries[0].alg = tpm->cur_alg;
+++        // hl->entries[0].alg = tpm->cur_alg;
+++        hl->entries[0].alg = cur_alg;
++ 
++         if ( !hash_buffer((const unsigned char *)cmdline, strlen(cmdline),
++-                    &hl->entries[0].hash, tpm->cur_alg) )
+++                    &hl->entries[0].hash, cur_alg) )
++             return false;
++         /* hash image and extend into cmdline hash */
++         tb_hash_t img_hash;
++-        if ( !hash_buffer(base, size, &img_hash, tpm->cur_alg) )
+++        if ( !hash_buffer(base, size, &img_hash, cur_alg) )
++             return false;
++-        if ( !extend_hash(&hl->entries[0].hash, &img_hash, tpm->cur_alg) )
+++        if ( !extend_hash(&hl->entries[0].hash, &img_hash, cur_alg) )
++             return false;
++ 
++         break;
++@@ -643,7 +647,7 @@ static tb_error_t verify_module(module_t *module, tb_policy_entry_t *pol_entry,
++     }
++ 
++     hash_list_t hl;
++-    if ( !hash_module(&hl, cmdline, base, size) ) {
+++    if ( !hash_module(&hl, hash_alg, cmdline, base, size) ) {
++         printk(TBOOT_ERR"\t hash cannot be generated.\n");
++         return TB_ERR_MODULE_VERIFICATION_FAILED;
++     }
++@@ -667,6 +671,8 @@ static tb_error_t verify_module(module_t *module, tb_policy_entry_t *pol_entry,
++     if ( pol_entry != NULL &&
++          !is_hash_in_policy_entry(pol_entry, &hl.entries[0].hash, hash_alg) ) {
++         printk(TBOOT_ERR"\t verification failed\n");
+++        print_hash(&hl.entries[0].hash, hash_alg);
+++        print_hash(&pol_entry->hashes[0], hash_alg);
++         return TB_ERR_MODULE_VERIFICATION_FAILED;
++     }
++ 
++diff --git a/tboot/common/tpm_20.c b/tboot/common/tpm_20.c
++index b9b67c9..b7c5d62 100644
++--- a/tboot/common/tpm_20.c
+++++ b/tboot/common/tpm_20.c
++@@ -2096,7 +2096,7 @@ static bool tpm20_nv_read(struct tpm_if *ti, uint32_t locality,
++ 
++     ret = _tpm20_nv_read(locality, &read_in, &read_out);
++     if ( ret != TPM_RC_SUCCESS ) {
++-        printk(TBOOT_WARN"TPM: read NV index %08x from offset %08x, return value = %08X\n",
+++        printk(TBOOT_WARN"TPM 2.0: read NV index %08x from offset %08x, return value = %08X\n",
++                 index, offset, ret);
++         ti->error = ret;
++         return false;
++@@ -2504,8 +2504,9 @@ static bool tpm20_init(struct tpm_if *ti)
++     get_tboot_extpol();
++     if (info_list->capabilities.tpm_nv_index_set == 0){
++         /* init NV index */
++-        ti->tb_policy_index = 0x1200001;
++-        ti->lcp_own_index = 0x1400001;
+++        ti->tb_policy_index = 0x1800001;
+++        // ti->lcp_own_index = 0x1400001;
+++        ti->lcp_own_index = 0x1c10131;
++         ti->tb_err_index = 0x1200002;
++         ti->sgx_svn_index = 0x01800004;
++     }
++-- 
++2.7.4
++
+diff --git a/build_prepend b/build_prepend
+new file mode 100644
+index 0000000..50f50e4
+--- /dev/null
++++ b/build_prepend
+@@ -0,0 +1 @@
++CFLAGS="$RPM_OPT_FLAGS"; export CFLAGS
+diff --git a/buildreq_add b/buildreq_add
+new file mode 100644
+index 0000000..29e2a23
+--- /dev/null
++++ b/buildreq_add
+@@ -0,0 +1,4 @@
++trousers-devel
++openssl-dev
+diff --git a/install_append b/install_append
+new file mode 100644
+index 0000000..33def2a
+--- /dev/null
++++ b/install_append
+@@ -0,0 +1,4 @@
++%post
++# Set immutable attribute on tboot modules
++chattr +i /boot/tboot.gz /boot/tboot-syms
++exit 0
+diff --git a/install_macro b/install_macro
+new file mode 100644
+index 0000000..84ba913
+--- /dev/null
++++ b/install_macro
+@@ -0,0 +1 @@
++make debug=y DISTDIR=$RPM_BUILD_ROOT install
+diff --git a/install_prepend b/install_prepend
+new file mode 100644
+index 0000000..d6cdd6a
+--- /dev/null
++++ b/install_prepend
+@@ -0,0 +1 @@
++%define _sysconfdir	/usr/local/etc
+diff --git a/make_args b/make_args
+new file mode 100644
+index 0000000..4f9d589
+--- /dev/null
++++ b/make_args
+@@ -0,0 +1 @@
++debug=y
+diff --git a/options.conf b/options.conf
+new file mode 100644
+index 0000000..63089f5
+--- /dev/null
++++ b/options.conf
+@@ -0,0 +1,58 @@
++name = tboot
++url = file:///home/clr/clearlinux/packages/tboot/tboot-1.9.6.tar.gz
++use_lto = true
++verify_required = false
+diff --git a/series b/series
+new file mode 100644
+index 0000000..ef288df
+--- /dev/null
++++ b/series
+@@ -0,0 +1,17 @@
++0001-Fix-a-logical-error-in-function-bool-evtlog_append.patch
++0002-Reset-debug-PCR16-to-zero.patch
++0003-port-to-openssl-1.1.0.patch
++0004-lcptools-v2-utilities-fixes.patch
++0005-Make-policy-element-stm_elt-use-unique-type-name.patch
++0006-Fix-openssl-1.0.2-double-frees.patch
++0007-The-size-field-of-the-MB2-tag-is-the-size-of-the-tag.patch
++0008-Fix-security-vulnerabilities-rooted-in-tpm_if-struct.patch
++0009-Optimize-tboot-docs-installation.patch
++0010-Fix-a-null-pointer-dereference-bug-when-Intel-TXT-is.patch
++0011-Fix-TPM-1.2-locality-selection-issue.patch
++0012-Fix-memory-leak-and-invalid-reads-and-writes-issues.patch
++0013-Add-centos7-instructions-for-Use-in-EFI-boot-mode.patch
++0014-Ensure-tboot-log-is-available-even-when-measured-lau.patch
++0015-Add-support-for-appending-to-a-TPM2-TCG-style-event-.patch
++0016-Add-an-option-in-tboot-to-force-SINIT-to-use-the-leg.patch
++1000-tboot-for-tis.patch
+diff --git a/tboot.license b/tboot.license
+new file mode 100644
+index 0000000..622901a
+--- /dev/null
++++ b/tboot.license
+@@ -0,0 +1 @@
++Apache-2.0
+diff --git a/tboot.spec b/tboot.spec
+new file mode 100644
+index 0000000..7ec7b26
+--- /dev/null
++++ b/tboot.spec
+@@ -0,0 +1,151 @@
++#
++# This file is auto-generated. DO NOT EDIT
++# Generated by: autospec.py
++#
++Name     : tboot
++License  : Apache-2.0
++Requires: tboot-bin = %{version}-%{release}
++Requires: tboot-man = %{version}-%{release}
++BuildRequires : openssl-dev
++BuildRequires : pkgconfig(zlib)
++BuildRequires : trousers-devel
++BuildRequires : zlib-dev
++Patch1: 0001-Fix-a-logical-error-in-function-bool-evtlog_append.patch
++Patch2: 0002-Reset-debug-PCR16-to-zero.patch
++Patch3: 0003-port-to-openssl-1.1.0.patch
++Patch4: 0004-lcptools-v2-utilities-fixes.patch
++Patch5: 0005-Make-policy-element-stm_elt-use-unique-type-name.patch
++Patch6: 0006-Fix-openssl-1.0.2-double-frees.patch
++Patch7: 0007-The-size-field-of-the-MB2-tag-is-the-size-of-the-tag.patch
++Patch8: 0008-Fix-security-vulnerabilities-rooted-in-tpm_if-struct.patch
++Patch9: 0009-Optimize-tboot-docs-installation.patch
++Patch10: 0010-Fix-a-null-pointer-dereference-bug-when-Intel-TXT-is.patch
++Patch11: 0011-Fix-TPM-1.2-locality-selection-issue.patch
++Patch12: 0012-Fix-memory-leak-and-invalid-reads-and-writes-issues.patch
++Patch13: 0013-Add-centos7-instructions-for-Use-in-EFI-boot-mode.patch
++Patch14: 0014-Ensure-tboot-log-is-available-even-when-measured-lau.patch
++Patch15: 0015-Add-support-for-appending-to-a-TPM2-TCG-style-event-.patch
++Patch16: 0016-Add-an-option-in-tboot-to-force-SINIT-to-use-the-leg.patch
++Patch17: 1000-tboot-for-tis.patch
++
++%description
++******************************************************************************
++* This version of tboot will not work with Xen versions < 3.4 (c/s < 19115)  *
++******************************************************************************
++
++%package bin
++
++
++
++%package man
++
++%description man
++man components for the tboot package.
++
++
++%prep
++%patch1 -p1
++%patch2 -p1
++%patch3 -p1
++%patch4 -p1
++%patch5 -p1
++%patch6 -p1
++%patch7 -p1
++%patch8 -p1
++%patch9 -p1
++%patch10 -p1
++%patch11 -p1
++%patch12 -p1
++%patch13 -p1
++%patch14 -p1
++%patch15 -p1
++%patch16 -p1
++%patch17 -p1
++
++%build
++## build_prepend content
++CFLAGS="$RPM_OPT_FLAGS"; export CFLAGS
++## build_prepend end
++make  %{?_smp_mflags} debug=y
++
++
++%install
++rm -rf %{buildroot}
++## install_prepend content
++%define _sysconfdir	/usr/local/etc
++## install_prepend end
++make debug=y DISTDIR=$RPM_BUILD_ROOT install
++## install_append content
++%post
++chattr +i /boot/tboot.gz /boot/tboot-syms
++exit 0
++## install_append end
++
++%files
++%defattr(-,root,root,-)
++/boot/tboot-syms
++/boot/tboot.gz
++
++%files bin
++%defattr(-,root,root,-)
++/usr/sbin/acminfo
++/usr/sbin/lcp2_crtpol
++/usr/sbin/lcp2_crtpolelt
++/usr/sbin/lcp2_crtpollist
++/usr/sbin/lcp2_mlehash
++/usr/sbin/lcp_crtpconf
++/usr/sbin/lcp_crtpol
++/usr/sbin/lcp_crtpol2
++/usr/sbin/lcp_crtpolelt
++/usr/sbin/lcp_crtpollist
++/usr/sbin/lcp_mlehash
++/usr/sbin/lcp_readpol
++/usr/sbin/lcp_writepol
++/usr/sbin/parse_err
++/usr/sbin/tb_polgen
++/usr/sbin/tpmnv_defindex
++/usr/sbin/tpmnv_getcap
++/usr/sbin/tpmnv_lock
++/usr/sbin/tpmnv_relindex
++/usr/sbin/txt-stat
++
++%files man
++%defattr(0644,root,root,0755)
++/usr/share/man/man8/acminfo.8
++/usr/share/man/man8/lcp_crtpconf.8
++/usr/share/man/man8/lcp_crtpol.8
++/usr/share/man/man8/lcp_crtpol2.8
++/usr/share/man/man8/lcp_crtpolelt.8
++/usr/share/man/man8/lcp_crtpollist.8
++/usr/share/man/man8/lcp_mlehash.8
++/usr/share/man/man8/lcp_readpol.8
++/usr/share/man/man8/lcp_writepol.8
++/usr/share/man/man8/tb_polgen.8
++/usr/share/man/man8/txt-stat.8
+diff --git a/used_libs b/used_libs
+new file mode 100644
+index 0000000..069d6a7
+--- /dev/null
++++ b/used_libs
+@@ -0,0 +1,4 @@
++libc.so.6
++libcrypto.so.1.1
++libtspi.so.1
++libz.so.1
+-- 
+2.23.0
+
+

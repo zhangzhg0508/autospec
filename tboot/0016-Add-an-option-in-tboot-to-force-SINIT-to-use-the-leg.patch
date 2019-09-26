@@ -1,0 +1,345 @@
+From c9ca81f41b4a3eaa8e00c12a3d1d6d3c783782d4 Mon Sep 17 00:00:00 2001
+From: Ning Sun <ning.sun@intel.com>
+Date: Mon, 28 May 2018 13:50:34 -0700
+Subject: [PATCH 16/16] Add an option in tboot to force SINIT to use the legacy
+ TPM2 log format.
+
+Some SINITs have a bug where they don't extend the MLE hash to the event log.
+This makes it impossible to verify the measurement chain for PCR 17. However,
+if we force them to use the legacy (not TCG standardized) TPM2 log format, the
+SINITs in question log all the inputs to PCR 17 to the event log. This setting
+provides a way to force use of the legacy log format for TPM2 systems.
+
+Testing done:  Run tboot with and without option on TPM2 system that supports TCG
+log format. Verify MLE hash entry (0x404) is missing from event log when system is
+booted without the option (or option set to false). Verify legacy log format is used
+and MLE hash entry is present when system is booted with option set to true.
+
+
+Signed-off-by: Sahil Rihan <srihan@fb.com>
+Reviewed-by: Ning Sun <ning.sun@intel.com>
+Signed-off-by: Tony Camuso <tcamuso@redhat.com>
+---
+ README                  |  8 ++++
+ tboot/common/cmdline.c  | 13 +++++++
+ tboot/include/cmdline.h |  1 +
+ tboot/include/txt/txt.h |  7 ++++
+ tboot/txt/heap.c        | 45 +++++++++++-----------
+ tboot/txt/txt.c         | 99 +++++++++++++++++++++----------------------------
+ 6 files changed, 93 insertions(+), 80 deletions(-)
+
+diff --git a/README b/README
+index baa67d9..3893484 100644
+--- a/README
++++ b/README
+@@ -307,6 +307,14 @@ o  Recovering from measured launch failures.
+    Note: TXT.ERRORCODE is only cleared if the system is power cycled. A reboot is not
+    sufficient to clear the error code.
+ 
++o  Force TPM2 legacy log format.
++   Some SINITs have a bug where they don't extend the MLE hash to the event log.
++   This makes it impossible to verify the measurement chain for PCR 17. However,
++   if we force them to use the legacy (not TCG standardized) TPM2 log format,
++   the SINITs in question log all the inputs to PCR 17 to the event log. This
++   setting provides a way to force use of the legacy log format for TPM 2 systems:
++           force_tpm2_legacy_log=false|true  // defaults to false
++
+ PCR Usage:
+ ---------
+ o  Legacy PCR mapping
+diff --git a/tboot/common/cmdline.c b/tboot/common/cmdline.c
+index 8644d01..5bba66e 100644
+--- a/tboot/common/cmdline.c
++++ b/tboot/common/cmdline.c
+@@ -85,6 +85,8 @@ static const cmdline_option_t g_tboot_cmdline_options[] = {
+     { "measure_nv", "false" },       /* true|false */
+     { "extpol",    "sha1" },         /*agile|embedded|sha1|sha256|sm3|... */
+     { "ignore_prev_err", "true"},    /* true|false */
++    { "force_tpm2_legacy_log", "false"}, /* true|false */
++    { "force_tpm2_legacy_log", "false"}, /* true|false */
+     { NULL, NULL }
+ };
+ static char g_tboot_param_values[ARRAY_SIZE(g_tboot_cmdline_options)][MAX_VALUE_LEN];
+@@ -529,6 +531,17 @@ void get_tboot_extpol(void)
+     }
+ }
+ 
++bool get_tboot_force_tpm2_legacy_log(void)
++{
++    const char *force_legacy_log =
++       get_option_val(g_tboot_cmdline_options,
++              g_tboot_param_values,
++              "force_tpm2_legacy_log");
++    if ( force_legacy_log != NULL && strcmp(force_legacy_log, "true") == 0 )
++       return true;
++    return false;
++}
++
+ bool get_tboot_ignore_prev_err(void)
+ {
+     const char *ignore_prev_err = 
+diff --git a/tboot/include/cmdline.h b/tboot/include/cmdline.h
+index 403c40e..39c6013 100644
+--- a/tboot/include/cmdline.h
++++ b/tboot/include/cmdline.h
+@@ -55,6 +55,7 @@ extern bool get_tboot_call_racm_check(void);
+ extern bool get_tboot_ignore_prev_err(void);
+ extern bool get_tboot_measure_nv(void);
+ extern void get_tboot_extpol(void);
++extern bool get_tboot_force_tpm2_legacy_log(void);
+ 
+ /* for parse cmdline of linux kernel, say vga and mem */
+ extern void linux_parse_cmdline(const char *cmdline);
+diff --git a/tboot/include/txt/txt.h b/tboot/include/txt/txt.h
+index dd734b0..30d07da 100644
+--- a/tboot/include/txt/txt.h
++++ b/tboot/include/txt/txt.h
+@@ -38,6 +38,12 @@
+ 
+ // #include <multiboot.h>
+ 
++/* TPM event log types */
++#define EVTLOG_UNKNOWN       0
++#define EVTLOG_TPM12         1
++#define EVTLOG_TPM2_LEGACY   2
++#define EVTLOG_TPM2_TCG      3
++
+ extern bool txt_is_launched(void);
+ extern void txt_display_errors(void);
+ extern bool txt_has_error(void);
+@@ -54,6 +60,7 @@ extern bool txt_s3_launch_environment(void);
+ extern void txt_shutdown(void);
+ extern bool txt_is_powercycle_required(void);
+ extern void ap_wait(unsigned int cpuid);
++extern int get_evtlog_type(void);
+ 
+ extern uint32_t g_using_da;
+ #endif      /* __TXT_TXT_H__ */
+diff --git a/tboot/txt/heap.c b/tboot/txt/heap.c
+index d27cf56..cefcff1 100644
+--- a/tboot/txt/heap.c
++++ b/tboot/txt/heap.c
+@@ -46,9 +46,12 @@
+ #include <misc.h>
+ #include <hash.h>
+ #include <tpm.h>
++#include <loader.h>
++#include <tb_error.h>
+ #include <txt/mtrrs.h>
+ #include <txt/config_regs.h>
+ #include <txt/heap.h>
++#include <txt/txt.h>
+ #endif
+ 
+ /*
+@@ -709,31 +712,25 @@ uint64_t calc_os_sinit_data_size(uint32_t version)
+             2 * sizeof(heap_ext_data_element_t) +
+             sizeof(heap_event_log_ptr_elt_t)
+     };
+-    txt_caps_t sinit_caps;
+     struct tpm_if *tpm = get_tpm();
+-	
+-    if ( tpm->major == TPM20_VER_MAJOR ) {
+-	if (g_sinit != NULL) {
+-  	    sinit_caps = get_sinit_capabilities(g_sinit);
+-	}
+-        if (sinit_caps.tcg_event_log_format) {
+-	    size[2] = sizeof(os_sinit_data_t) + sizeof(uint64_t) +
+-            2 * sizeof(heap_ext_data_element_t) + 
+-            sizeof(heap_event_log_ptr_elt2_1_t);
+-        }
+-	else {
+-            u32 count;
+-	    if ( tpm->extpol == TB_EXTPOL_AGILE )
+-               count = tpm->banks;
+-	    else 
+-		if ( tpm->extpol == TB_EXTPOL_EMBEDDED )
+- 		    count = tpm->alg_count;
+-		else
+-		    count = 1;
+-   	    size[2] = sizeof(os_sinit_data_t) + sizeof(uint64_t) + 
+-                      2 * sizeof(heap_ext_data_element_t) + 4 + 
+-                      count*sizeof(heap_event_log_descr_t);
+-	}
++    int log_type = get_evtlog_type();
++
++    if ( log_type == EVTLOG_TPM2_TCG ) {
++        size[2] = sizeof(os_sinit_data_t) + sizeof(uint64_t) +
++        2 * sizeof(heap_ext_data_element_t) +
++        sizeof(heap_event_log_ptr_elt2_1_t);
++    } else if (log_type == EVTLOG_TPM2_LEGACY) {
++        u32 count;
++        if ( tpm->extpol == TB_EXTPOL_AGILE )
++            count = tpm->banks;
++        else
++            if ( tpm->extpol == TB_EXTPOL_EMBEDDED )
++                count = tpm->alg_count;
++            else
++                count = 1;
++        size[2] = sizeof(os_sinit_data_t) + sizeof(uint64_t) +
++            2 * sizeof(heap_ext_data_element_t) + 4 +
++            count*sizeof(heap_event_log_descr_t);
+     }
+ 
+     if ( version >= 6 )
+diff --git a/tboot/txt/txt.c b/tboot/txt/txt.c
+index 7e1fd70..ef54135 100644
+--- a/tboot/txt/txt.c
++++ b/tboot/txt/txt.c
+@@ -69,12 +69,6 @@
+ /* counter timeout for waiting for all APs to enter wait-for-sipi */
+ #define AP_WFS_TIMEOUT     0x10000000
+ 
+-/* TPM event log types */
+-#define EVTLOG_UNKNOWN       0
+-#define EVTLOG_TPM12         1
+-#define EVTLOG_TPM2_LEGACY   2
+-#define EVTLOG_TPM2_TCG      3
+-
+ __data struct acpi_rsdp g_rsdp;
+ extern char _start[];             /* start of module */
+ extern char _end[];               /* end of module */
+@@ -295,6 +289,13 @@ int get_evtlog_type(void)
+     if (tpm->major == TPM12_VER_MAJOR) {
+         return EVTLOG_TPM12;
+     } else if (tpm->major == TPM20_VER_MAJOR) {
++        /*
++         * Force use of legacy TPM2 log format to deal with a bug in some SINIT
++         * ACMs that where they don't log the MLE hash to the event log.
++         */
++        if (get_tboot_force_tpm2_legacy_log()) {
++            return EVTLOG_TPM2_LEGACY;
++        }
+         if (g_sinit) {
+             txt_caps_t sinit_caps = get_sinit_capabilities(g_sinit);
+             return sinit_caps.tcg_event_log_format ? EVTLOG_TPM2_TCG : EVTLOG_TPM2_LEGACY;
+@@ -312,47 +313,37 @@ static void init_os_sinit_ext_data(heap_ext_data_element_t* elts)
+ {
+     heap_ext_data_element_t* elt = elts;
+     heap_event_log_ptr_elt_t* evt_log;
+-    txt_caps_t sinit_caps;
+     struct tpm_if *tpm = get_tpm();
+-	
+-    if ( tpm->major == TPM12_VER_MAJOR ) {
++ 
++    int log_type = get_evtlog_type();
++    if ( log_type == EVTLOG_TPM12 ) {
+         evt_log = (heap_event_log_ptr_elt_t *)elt->data;
+         evt_log->event_log_phys_addr = (uint64_t)(unsigned long)init_event_log();
+         elt->type = HEAP_EXTDATA_TYPE_TPM_EVENT_LOG_PTR;
+         elt->size = sizeof(*elt) + sizeof(*evt_log);
+-    } 
+-    else 
+-        if ( tpm->major == TPM20_VER_MAJOR ) {
+-       	    if (g_sinit != NULL) {
+-	        sinit_caps = get_sinit_capabilities(g_sinit);
+-	    }
+-	    else 
+-		return;
+-            if (sinit_caps.tcg_event_log_format) {
+-		g_elog_2_1 = (heap_event_log_ptr_elt2_1_t *)elt->data;
+-		init_evtlog_desc_1(g_elog_2_1);
+-		elt->type = HEAP_EXTDATA_TYPE_TPM_EVENT_LOG_PTR_2_1;
+-		elt->size = sizeof(*elt) + sizeof(heap_event_log_ptr_elt2_1_t);
+-		printk(TBOOT_DETA"heap_ext_data_element TYPE = %d \n", elt->type);
+-		printk(TBOOT_DETA"heap_ext_data_element SIZE = %d \n", elt->size);
+-				
+-	    }
+-	    else {
+-		g_elog_2 = (heap_event_log_ptr_elt2_t *)elt->data;
+-		if ( tpm->extpol == TB_EXTPOL_AGILE )
+-	    	    g_elog_2->count = tpm->banks;
+-		else 
+-		    if ( tpm->extpol == TB_EXTPOL_EMBEDDED )
+-			g_elog_2->count = tpm->alg_count;
+-		    else
+-			g_elog_2->count = 1;
+-		init_evtlog_desc(g_elog_2);
+-                elt->type = HEAP_EXTDATA_TYPE_TPM_EVENT_LOG_PTR_2;
+-                elt->size = sizeof(*elt) + sizeof(u32) +
+-                g_elog_2->count * sizeof(heap_event_log_descr_t);
+-		printk(TBOOT_DETA"INTEL TXT LOG elt SIZE = %d \n", elt->size);
+-           }
+-       }
++    } else if ( log_type == EVTLOG_TPM2_TCG ) {
++        g_elog_2_1 = (heap_event_log_ptr_elt2_1_t *)elt->data;
++        init_evtlog_desc_1(g_elog_2_1);
++        elt->type = HEAP_EXTDATA_TYPE_TPM_EVENT_LOG_PTR_2_1;
++        elt->size = sizeof(*elt) + sizeof(heap_event_log_ptr_elt2_1_t);
++        printk(TBOOT_DETA"heap_ext_data_element TYPE = %d \n", elt->type);
++        printk(TBOOT_DETA"heap_ext_data_element SIZE = %d \n", elt->size);
++    }  else if ( log_type == EVTLOG_TPM2_LEGACY ) {
++        g_elog_2 = (heap_event_log_ptr_elt2_t *)elt->data;
++        if ( tpm->extpol == TB_EXTPOL_AGILE )
++            g_elog_2->count = tpm->banks;
++        else
++            if ( tpm->extpol == TB_EXTPOL_EMBEDDED )
++                g_elog_2->count = tpm->alg_count;
++            else
++                g_elog_2->count = 1;
++        init_evtlog_desc(g_elog_2);
++        elt->type = HEAP_EXTDATA_TYPE_TPM_EVENT_LOG_PTR_2;
++        elt->size = sizeof(*elt) + sizeof(u32) +
++            g_elog_2->count * sizeof(heap_event_log_descr_t);
++        printk(TBOOT_DETA"INTEL TXT LOG elt SIZE = %d \n", elt->size);
++    }
++
+     elt = (void *)elt + elt->size;
+     elt->type = HEAP_EXTDATA_TYPE_END;
+     elt->size = sizeof(*elt);
+@@ -618,6 +609,8 @@ static txt_heap_t *init_txt_heap(void *ptab_base, acm_hdr_t *sinit, loader_ctx *
+     caps_mask.rlp_wake_getsec = 1;
+     caps_mask.rlp_wake_monitor = 1;
+     caps_mask.pcr_map_da = 1;
++    caps_mask.tcg_event_log_format = 1;
++    caps_mask.tcg_event_log_format = 1;
+     os_sinit_data->capabilities._raw = MLE_HDR_CAPS & ~caps_mask._raw;
+     if ( sinit_caps.rlp_wake_monitor )
+         os_sinit_data->capabilities.rlp_wake_monitor = 1;
+@@ -627,8 +620,7 @@ static txt_heap_t *init_txt_heap(void *ptab_base, acm_hdr_t *sinit, loader_ctx *
+         printk(TBOOT_ERR"SINIT capabilities are incompatible (0x%x)\n", sinit_caps._raw);
+         return NULL;
+     }
+-    
+-    if ( sinit_caps.tcg_event_log_format ){
++    if ( get_evtlog_type() == EVTLOG_TPM2_TCG ) {
+         printk(TBOOT_INFO"SINIT ACM supports TCG compliant TPM 2.0 event log format, tcg_event_log_format = %d \n", 
+               sinit_caps.tcg_event_log_format);
+         os_sinit_data->capabilities.tcg_event_log_format = 1;
+@@ -868,9 +860,7 @@ bool txt_s3_launch_environment(void)
+     /* initial launch's TXT heap data is still in place and assumed valid */
+     /* so don't re-create; this is OK because it was untrusted initially */
+     /* and would be untrusted now */
+-	txt_caps_t sinit_caps;
+-    struct tpm_if *tpm = get_tpm();
+-
++    int log_type = get_evtlog_type();
+     /* get sinit binary loaded */
+     g_sinit = (acm_hdr_t *)(uint32_t)read_pub_config_reg(TXTCR_SINIT_BASE);
+     if ( g_sinit == NULL ){
+@@ -878,16 +868,13 @@ bool txt_s3_launch_environment(void)
+     }
+ 	/* initialize event log in os_sinit_data, so that events will not */
+ 	/* repeat when s3 */
+-	if ( tpm->major == TPM12_VER_MAJOR && g_elog )
++	if ( log_type == EVTLOG_TPM12 && g_elog ) {
+ 		g_elog = (event_log_container_t *)init_event_log();
+-	else 
+-		if ( tpm->major == TPM20_VER_MAJOR ){
+-			sinit_caps = get_sinit_capabilities(g_sinit);		
+-			if (sinit_caps.tcg_event_log_format && g_elog_2_1) 
+-				init_evtlog_desc_1(g_elog_2_1);
+-			if(!sinit_caps.tcg_event_log_format && g_elog_2) 
+-				init_evtlog_desc(g_elog_2);
+-		}
++    } else if ( log_type == EVTLOG_TPM2_TCG && g_elog_2_1)  {
++        init_evtlog_desc_1(g_elog_2_1);
++    } else if ( log_type == EVTLOG_TPM2_LEGACY && g_elog_2)  {
++        init_evtlog_desc(g_elog_2);
++    }
+ 
+     /* set MTRRs properly for AC module (SINIT) */
+     set_mtrrs_for_acmod(g_sinit);
+-- 
+1.8.3.1
+

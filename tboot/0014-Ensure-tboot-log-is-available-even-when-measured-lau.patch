@@ -1,0 +1,95 @@
+From 6c9c307876871163593f65bf1625cd7aa37f9759 Mon Sep 17 00:00:00 2001
+From: Ning Sun <ning.sun@intel.com>
+Date: Fri, 4 May 2018 17:10:58 -0700
+Subject: [PATCH 14/16] Ensure tboot log is available even when measured launch
+ is skipped.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Tboot only protects the log area in the e820 map in post_launch i.e. only if
+a measured launch has successfully been performed. This means that in cases
+where measured launch is skipped, tboot log’s memory is not reserved in the
+e820 map and can be reused by the kernel. This can make it hard to figure out
+why measured launch was skipped.
+
+This change moves the code to reserve the tboot log in the E820 map to the
+start of launch_kernel, which is called regardless of whether measured launch
+succeeded or not.
+
+Testing:  Disable TXT. Boot host. Verify no log is displayed without fix, and
+tboot log is displayed with fix.
+
+
+
+Signed-off-by: Sahil Rihan <srihan@fb.com>
+Reviewed-by: Ning Sun <ning.sun@intel.com>
+Signed-off-by: Tony Camuso <tcamuso@redhat.com>
+---
+ tboot/common/loader.c | 16 +++++++++++++++-
+ tboot/common/tboot.c  | 15 ---------------
+ 2 files changed, 15 insertions(+), 16 deletions(-)
+
+diff --git a/tboot/common/loader.c b/tboot/common/loader.c
+index 524f37d..622f05c 100644
+--- a/tboot/common/loader.c
++++ b/tboot/common/loader.c
+@@ -76,7 +76,7 @@ extern bool jump_elf_image(const void *entry_point, uint32_t magic);
+ extern bool jump_linux_image(const void *entry_point);
+ extern bool is_sinit_acmod(const void *acmod_base, uint32_t acmod_size, 
+                            bool quiet);
+-
++extern void apply_policy(tb_error_t error);
+ extern uint32_t g_mb_orig_size;
+ 
+ #define LOADER_CTX_BAD(xctx) \
+@@ -1368,6 +1368,20 @@ bool launch_kernel(bool is_measured_launch)
+             printk(TBOOT_ERR"CRB workaround failed \n");
+     }
+ 
++    /* if using memory logging, reserve log area */
++    if ( g_log_targets & TBOOT_LOG_TARGET_MEMORY ) {
++        uint64_t base = TBOOT_SERIAL_LOG_ADDR;
++        uint64_t size = TBOOT_SERIAL_LOG_SIZE;
++        printk(TBOOT_INFO"reserving tboot memory log (%Lx - %Lx) in e820 table\n", base, (base + size - 1));
++        if ( !e820_protect_region(base, size, E820_RESERVED) )
++            apply_policy(TB_ERR_FATAL);
++    }
++
++    /* replace map in loader context with copy */
++    replace_e820_map(g_ldr_ctx);
++    printk(TBOOT_DETA"adjusted e820 map:\n");
++    print_e820_map();
++
+     if ( !verify_loader_context(g_ldr_ctx) )
+         return false;
+ 
+diff --git a/tboot/common/tboot.c b/tboot/common/tboot.c
+index 3338fd1..5e11da4 100644
+--- a/tboot/common/tboot.c
++++ b/tboot/common/tboot.c
+@@ -207,21 +207,6 @@ static void post_launch(void)
+     if ( !e820_protect_region(base, size, mem_type) )      
+         apply_policy(TB_ERR_FATAL);
+ 
+-    /* if using memory logging, reserve log area */
+-    if ( g_log_targets & TBOOT_LOG_TARGET_MEMORY ) {
+-        base = TBOOT_SERIAL_LOG_ADDR;
+-        size = TBOOT_SERIAL_LOG_SIZE;
+-        printk(TBOOT_INFO"reserving tboot memory log (%Lx - %Lx) in e820 table\n", base, (base + size - 1));
+-        if ( !e820_protect_region(base, size, E820_RESERVED) )         
+-            apply_policy(TB_ERR_FATAL);
+-    }
+-
+-    /* replace map in loader context with copy */
+-    replace_e820_map(g_ldr_ctx);
+-
+-    printk(TBOOT_DETA"adjusted e820 map:\n");
+-    print_e820_map();
+-
+     /*
+      * verify modules against policy
+      */
+-- 
+1.8.3.1
+

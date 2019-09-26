@@ -1,0 +1,37 @@
+2019-09-25 13:48:31,949 - Mock Version: 1.2.14
+2019-09-25 13:48:32,201 - Start: dnf update
+2019-09-25 13:48:42,618 - Finish: dnf update
+2019-09-25 13:48:42,624 - Finish: chroot init
+2019-09-25 13:48:42,627 - Start: buildsrpm
+2019-09-25 13:48:42,632 - Start: rpmbuild -bs
+2019-09-25 13:48:42,671 - Finish: rpmbuild -bs
+2019-09-25 13:48:42,673 - Finish: buildsrpm
+2019-09-25 13:48:42,674 - Finish: run
+2019-09-25 13:48:45,641 - Mock Version: 1.2.14
+2019-09-25 13:48:45,963 - Start: dnf update
+2019-09-25 13:48:55,846 - Finish: dnf update
+2019-09-25 13:48:55,852 - Finish: chroot init
+2019-09-25 13:48:55,853 - Start: build phase for python-inventoryclient-1.0-1.src.rpm
+2019-09-25 13:48:55,855 - Start: build setup for python-inventoryclient-1.0-1.src.rpm
+2019-09-25 13:48:56,976 - Finish: build setup for python-inventoryclient-1.0-1.src.rpm
+2019-09-25 13:48:56,976 - Start: rpmbuild python-inventoryclient-1.0-1.src.rpm
+2019-09-25 13:49:01,366 - Mock Version: 1.2.14
+2019-09-25 13:49:01,791 - Start: dnf update
+2019-09-25 13:49:12,311 - Finish: dnf update
+2019-09-25 13:49:12,316 - Finish: chroot init
+2019-09-25 13:49:12,319 - Start: buildsrpm
+2019-09-25 13:49:12,324 - Start: rpmbuild -bs
+2019-09-25 13:49:12,365 - Finish: rpmbuild -bs
+2019-09-25 13:49:12,366 - Finish: buildsrpm
+2019-09-25 13:49:12,367 - Finish: run
+2019-09-25 13:49:15,354 - Mock Version: 1.2.14
+2019-09-25 13:49:15,740 - Start: dnf update
+2019-09-25 13:49:25,630 - Finish: dnf update
+2019-09-25 13:49:25,635 - Finish: chroot init
+2019-09-25 13:49:25,637 - Start: build phase for python-inventoryclient-1.0-1.src.rpm
+2019-09-25 13:49:25,639 - Start: build setup for python-inventoryclient-1.0-1.src.rpm
+2019-09-25 13:49:26,619 - Finish: build setup for python-inventoryclient-1.0-1.src.rpm
+2019-09-25 13:49:26,619 - Start: rpmbuild python-inventoryclient-1.0-1.src.rpm
+2019-09-25 13:49:28,183 - Finish: rpmbuild python-inventoryclient-1.0-1.src.rpm
+2019-09-25 13:49:28,185 - Finish: build phase for python-inventoryclient-1.0-1.src.rpm
+2019-09-25 13:49:28,185 - Finish: run

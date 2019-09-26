@@ -1,0 +1,55 @@
+From 861d376af7fff3be0b0578ec28ae421794e52dc8 Mon Sep 17 00:00:00 2001
+From: Ning Sun <ning.sun@intel.com>
+Date: Thu, 14 Dec 2017 02:18:08 -0800
+Subject: [PATCH 09/16] Optimize tboot docs installation.
+
+Signed-off-by: Tony Camuso <tcamuso@redhat.com>
+Reviewed-by: Ning Sun <ning.sun@intel.com>
+---
+ Config.mk     | 4 ++--
+ docs/Makefile | 7 +++----
+ 2 files changed, 5 insertions(+), 6 deletions(-)
+
+diff --git a/Config.mk b/Config.mk
+index bc6c8d4..6a64d1a 100644
+--- a/Config.mk
++++ b/Config.mk
+@@ -20,8 +20,8 @@ debug ?= n
+ # for dist targets
+ ifdef DESTDIR
+ DISTDIR = $(DESTDIR)
+-else
+-DISTDIR     ?= /
++#else
++#DISTDIR     ?= /
+ endif
+ 
+ DESTDIR     ?= $(ROOTDIR)/dist
+diff --git a/docs/Makefile b/docs/Makefile
+index 37869d1..cc5adc2 100644
+--- a/docs/Makefile
++++ b/docs/Makefile
+@@ -10,8 +10,7 @@
+ ROOTDIR ?= $(CURDIR)/..
+ 
+ include $(ROOTDIR)/Config.mk
+-
+-MANPATH ?= $(DISTDIR)/usr/share/man
++TBOOT_MANPATH ?= $(DISTDIR)/usr/share/man
+ 
+ 
+ #
+@@ -26,8 +25,8 @@ dist : install
+ 
+ 
+ install :
+-	[ -d $(MANPATH)/man8 ] || $(INSTALL_DIR) $(MANPATH)/man8
+-	$(INSTALL_DATA) -t $(MANPATH)/man8 man/*.8*
++	[ -d $(TBOOT_MANPATH)/man8 ] || $(INSTALL_DIR) $(TBOOT_MANPATH)/man8
++	$(INSTALL_DATA) -t $(TBOOT_MANPATH)/man8 man/*.8*
+ 
+ 
+ clean :
+-- 
+1.8.3.1
+

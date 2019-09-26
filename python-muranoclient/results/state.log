@@ -1,0 +1,37 @@
+2019-09-25 09:55:49,186 - Mock Version: 1.2.14
+2019-09-25 09:55:49,437 - Start: dnf update
+2019-09-25 09:56:00,059 - Finish: dnf update
+2019-09-25 09:56:00,065 - Finish: chroot init
+2019-09-25 09:56:00,068 - Start: buildsrpm
+2019-09-25 09:56:00,075 - Start: rpmbuild -bs
+2019-09-25 09:56:00,116 - Finish: rpmbuild -bs
+2019-09-25 09:56:00,118 - Finish: buildsrpm
+2019-09-25 09:56:00,118 - Finish: run
+2019-09-25 09:56:03,152 - Mock Version: 1.2.14
+2019-09-25 09:56:03,564 - Start: dnf update
+2019-09-25 09:56:13,569 - Finish: dnf update
+2019-09-25 09:56:13,574 - Finish: chroot init
+2019-09-25 09:56:13,576 - Start: build phase for python-muranoclient-1.1.1-2.src.rpm
+2019-09-25 09:56:13,578 - Start: build setup for python-muranoclient-1.1.1-2.src.rpm
+2019-09-25 09:56:14,575 - Finish: build setup for python-muranoclient-1.1.1-2.src.rpm
+2019-09-25 09:56:14,575 - Start: rpmbuild python-muranoclient-1.1.1-2.src.rpm
+2019-09-25 09:56:18,970 - Mock Version: 1.2.14
+2019-09-25 09:56:19,365 - Start: dnf update
+2019-09-25 09:56:29,616 - Finish: dnf update
+2019-09-25 09:56:29,622 - Finish: chroot init
+2019-09-25 09:56:29,624 - Start: buildsrpm
+2019-09-25 09:56:29,633 - Start: rpmbuild -bs
+2019-09-25 09:56:29,675 - Finish: rpmbuild -bs
+2019-09-25 09:56:29,676 - Finish: buildsrpm
+2019-09-25 09:56:29,677 - Finish: run
+2019-09-25 09:56:32,753 - Mock Version: 1.2.14
+2019-09-25 09:56:33,007 - Start: dnf update
+2019-09-25 09:56:42,894 - Finish: dnf update
+2019-09-25 09:56:42,900 - Finish: chroot init
+2019-09-25 09:56:42,901 - Start: build phase for python-muranoclient-1.1.1-2.src.rpm
+2019-09-25 09:56:42,903 - Start: build setup for python-muranoclient-1.1.1-2.src.rpm
+2019-09-25 09:56:43,790 - Finish: build setup for python-muranoclient-1.1.1-2.src.rpm
+2019-09-25 09:56:43,790 - Start: rpmbuild python-muranoclient-1.1.1-2.src.rpm
+2019-09-25 09:56:45,655 - Finish: rpmbuild python-muranoclient-1.1.1-2.src.rpm
+2019-09-25 09:56:45,656 - Finish: build phase for python-muranoclient-1.1.1-2.src.rpm
+2019-09-25 09:56:45,657 - Finish: run

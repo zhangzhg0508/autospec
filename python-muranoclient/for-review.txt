@@ -1,0 +1,33 @@
+From 85732fbdb31d8d127e327864031265acf933aadf Mon Sep 17 00:00:00 2001
+From: fuyong <fuyong@neusoft.com>
+Date: Wed, 25 Sep 2019 09:56:46 +0800
+Subject: [PATCH python-muranoclient] python-muranoclient: Autospec creation
+ for version 1.1.1
+
+---
+ install_append           | 2 ++
+ python-muranoclient.spec | 6 ++++--
+ release                  | 2 +-
+ 3 files changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/install_append b/install_append
+index 01044b6..0cf9ddd 100644
+--- a/install_append
++++ b/install_append
+@@ -1 +1,3 @@
++LANG=en_US.UTF-8
++python3 setup.py install --skip-build --root %{buildroot}
+ mv %{buildroot}%{_bindir}/murano %{buildroot}%{_bindir}/python3-murano
+diff --git a/python-muranoclient.spec b/python-muranoclient.spec
+index 93f7793..220d249 100644
+--- a/python-muranoclient.spec
++++ b/python-muranoclient.spec
+@@ -91,6 +91,8 @@ echo ----[ mark ]----
+ cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
+ echo ----[ mark ]----
+ ## install_append content
++LANG=en_US.UTF-8
++python3 setup.py install --skip-build --root %{buildroot}
+ mv %{buildroot}%{_bindir}/murano %{buildroot}%{_bindir}/python3-murano
+ ## install_append end
+ 
