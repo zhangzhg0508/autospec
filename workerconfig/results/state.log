@@ -1,0 +1,37 @@
+2019-09-26 02:16:33,210 - Mock Version: 1.2.14
+2019-09-26 02:16:33,457 - Start: dnf update
+2019-09-26 02:16:43,658 - Finish: dnf update
+2019-09-26 02:16:43,664 - Finish: chroot init
+2019-09-26 02:16:43,666 - Start: buildsrpm
+2019-09-26 02:16:43,676 - Start: rpmbuild -bs
+2019-09-26 02:16:43,715 - Finish: rpmbuild -bs
+2019-09-26 02:16:43,716 - Finish: buildsrpm
+2019-09-26 02:16:43,717 - Finish: run
+2019-09-26 02:16:46,757 - Mock Version: 1.2.14
+2019-09-26 02:16:47,004 - Start: dnf update
+2019-09-26 02:16:56,875 - Finish: dnf update
+2019-09-26 02:16:56,881 - Finish: chroot init
+2019-09-26 02:16:56,882 - Start: build phase for workerconfig-1.0-6.src.rpm
+2019-09-26 02:16:56,884 - Start: build setup for workerconfig-1.0-6.src.rpm
+2019-09-26 02:16:57,533 - Finish: build setup for workerconfig-1.0-6.src.rpm
+2019-09-26 02:16:57,533 - Start: rpmbuild workerconfig-1.0-6.src.rpm
+2019-09-26 02:17:00,764 - Mock Version: 1.2.14
+2019-09-26 02:17:01,010 - Start: dnf update
+2019-09-26 02:17:11,382 - Finish: dnf update
+2019-09-26 02:17:11,387 - Finish: chroot init
+2019-09-26 02:17:11,390 - Start: buildsrpm
+2019-09-26 02:17:11,401 - Start: rpmbuild -bs
+2019-09-26 02:17:11,439 - Finish: rpmbuild -bs
+2019-09-26 02:17:11,441 - Finish: buildsrpm
+2019-09-26 02:17:11,441 - Finish: run
+2019-09-26 02:17:14,548 - Mock Version: 1.2.14
+2019-09-26 02:17:14,797 - Start: dnf update
+2019-09-26 02:17:24,641 - Finish: dnf update
+2019-09-26 02:17:24,646 - Finish: chroot init
+2019-09-26 02:17:24,648 - Start: build phase for workerconfig-1.0-6.src.rpm
+2019-09-26 02:17:24,650 - Start: build setup for workerconfig-1.0-6.src.rpm
+2019-09-26 02:17:25,297 - Finish: build setup for workerconfig-1.0-6.src.rpm
+2019-09-26 02:17:25,297 - Start: rpmbuild workerconfig-1.0-6.src.rpm
+2019-09-26 02:17:25,439 - Finish: rpmbuild workerconfig-1.0-6.src.rpm
+2019-09-26 02:17:25,440 - Finish: build phase for workerconfig-1.0-6.src.rpm
+2019-09-26 02:17:25,441 - Finish: run

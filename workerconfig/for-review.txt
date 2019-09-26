@@ -1,91 +1,177 @@
-From d64c8809bfe2a4398e9dac7c901da16975586773 Mon Sep 17 00:00:00 2001
-From: "zhiguo.zhang" <zhiguox.zhang@intel.com>
-Date: Wed, 11 Sep 2019 07:23:59 +0000
+From 2ccd627197b156b1e388d3f07a366bf6b3c55dac Mon Sep 17 00:00:00 2001
+From: chen-dq <chen.dq@neusoft.com>
+Date: Thu, 26 Sep 2019 02:17:25 +0000
 Subject: [PATCH workerconfig] workerconfig: Autospec creation for version 1.0
 
 ---
- 0001-install-perssion-denied.patch | 43 ++++++++++++++++++++++++++++++
+ 0001-install-perssion-denied.patch |  6 ++---
+ build_prepend                      |  6 ++---
+ install_append                     | 21 ++++++++--------
  release                            |  2 +-
- series                             |  1 +
- upstream                           |  2 +-
- workerconfig.spec                  |  8 +++---
- 5 files changed, 51 insertions(+), 5 deletions(-)
- create mode 100644 0001-install-perssion-denied.patch
- create mode 100644 series
+ workerconfig.spec                  | 39 ++++++++++++++++--------------
+ 5 files changed, 39 insertions(+), 35 deletions(-)
 
 diff --git a/0001-install-perssion-denied.patch b/0001-install-perssion-denied.patch
-new file mode 100644
-index 0000000..890fde8
---- /dev/null
+index 979e093..890fde8 100644
+--- a/0001-install-perssion-denied.patch
 +++ b/0001-install-perssion-denied.patch
-@@ -0,0 +1,43 @@
-+From 84c21aa12734998cdaf6620cc9f912977b59ca84 Mon Sep 17 00:00:00 2001
-+From: "zhiguo.zhang" <zhiguox.zhang@intel.com>
-+Date: Wed, 11 Sep 2019 07:21:05 +0000
-+Subject: [PATCH workerconfig] patch
-+
-+---
-+ Makefile | 23 +++++++++++++----------
-+ 1 file changed, 13 insertions(+), 10 deletions(-)
-+
-+diff --git a/Makefile b/Makefile
-+index 8679162..9d101d3 100644
-+--- a/Makefile
-++++ b/Makefile
+@@ -11,9 +11,9 @@ diff --git a/Makefile b/Makefile
+ index 8679162..9d101d3 100644
+ --- a/Makefile
+ +++ b/Makefile
+-@@ -6,13 +6,16 @@ INITDDIR ?= /etc/init.d/
+- GOENABLEDDIR ?= /etc/goenabled.d/
+- SYSTEMDDIR ?= /etc/systemd/system/
 +@@ -6,13 +6,16 @@ INITDDIR ?= /usr/local/etc/init.d/
 + GOENABLEDDIR ?= /usr/local/etc/goenabled.d/
 + SYSTEMDDIR ?= /usr/lib/systemd/system/
-+ 
-+-install:
-+-	install -d -m 755 $(INITDDIR)
-+-	install -d -m 755 $(GOENABLEDDIR)
-+-	install -d -m 755 $(SYSTEMDDIR)
-+-	install -d -m 755 $(SYSTEMDDIR)/config
-+-	install -p -D -m 700 worker_config $(INITDDIR)/worker_config
-+-	install -p -D -m 700 worker_services $(INITDDIR)/worker_services
-+-	install -p -D -m 755 config_goenabled_check.sh $(GOENABLEDDIR)/config_goenabled_check.sh
-+-	install -p -D -m 664 workerconfig.service $(SYSTEMDDIR)/config/workerconfig-standalone.service
-+-	install -p -D -m 664 workerconfig-combined.service $(SYSTEMDDIR)/config/workerconfig7-combined.service
-++#install:
-++#	install -d -m 755 $(INITDDIR)
-++#	install -d -m 755 $(GOENABLEDDIR)
-++#	install -d -m 755 $(SYSTEMDDIR)
-++#	install -d -m 755 $(SYSTEMDDIR)/config
-++#	install -p -D -m 700 worker_config $(INITDDIR)/worker_config
-++#	install -p -D -m 700 worker_services $(INITDDIR)/worker_services
-++#	install -p -D -m 755 config_goenabled_check.sh $(GOENABLEDDIR)/config_goenabled_check.sh
-++#	install -p -D -m 664 workerconfig.service $(SYSTEMDDIR)/config/workerconfig-standalone.service
-++#	install -p -D -m 664 workerconfig-combined.service $(SYSTEMDDIR)/config/workerconfig7-combined.service
-++
-++clean:
-++	@rm -f $(OBJ) *.o
-+-- 
-+2.23.0
-+
-diff --git a/series b/series
-new file mode 100644
-index 0000000..1190963
---- /dev/null
-+++ b/series
-@@ -0,0 +1 @@
-+0001-install-perssion-denied.patch
+  
+ -install:
+ -	install -d -m 755 $(INITDDIR)
+diff --git a/build_prepend b/build_prepend
+index 18bce9b..2f580d3 100644
+--- a/build_prepend
++++ b/build_prepend
+@@ -1,6 +1,6 @@
+-%define initddir /usr/local/etc/init.d
+-%define goenableddir /usr/local/etc/goenabled.d
+-%define systemddir /usr/lib/systemd/system
++%define initddir /usr/local/etc/init.d/
++%define goenableddir /usr/local/etc/goenabled.d/
++%define systemddir /usr/lib/systemd/system/
+ %define debug_package %{nil}
+ 
+ 
+diff --git a/install_append b/install_append
+index 17a321f..2cb2b02 100644
+--- a/install_append
++++ b/install_append
+@@ -1,30 +1,31 @@
+         install -d -m 755 %{buildroot}%{goenableddir}
+ 	install -d -m 755 %{buildroot}%{systemddir}
++	install -d -m 755 %{buildroot}%{systemddir}/config
+ 	install -p -D -m 700 worker_config %{buildroot}%{initddir}/worker_config
+-	install -p -D -m 700 worker_services %{buildroot}%{systemddir}/worker_services
+-	#install -p -D -m 755 config_goenabled_check.sh %{buildroot}%{goenableddir}/config_goenabled_check.sh
+-	install -p -D -m 664 workerconfig.service %{buildroot}%{systemddir}/workerconfig-standalone.service
+-	install -p -D -m 664 workerconfig-combined.service %{buildroot}%{systemddir}/workerconfig-combined.service
++	install -p -D -m 700 worker_services %{buildroot}%{initddir}/worker_services
++	install -p -D -m 755 config_goenabled_check.sh %{buildroot}%{goenableddir}/config_goenabled_check.sh
++	install -p -D -m 664 workerconfig.service %{buildroot}%{systemddir}/config/workerconfig-standalone.service
++	install -p -D -m 664 workerconfig-combined.service %{buildroot}%{systemddir}/config/workerconfig-combined.service
+ 
+ %post
+ if [ ! -e $D%{systemddir}/workerconfig.service ]; then
+-    cp $D%{systemddir}/workerconfig-standalone.service $D%{systemddir}/workerconfig.service
++    cp $D%{systemddir}/config/workerconfig-standalone.service $D%{systemddir}/workerconfig.service
+ else
+-    cmp -s $D%{systemddir}/workerconfig-standalone.service $D%{systemddir}/workerconfig.service
++    cmp -s $D%{systemddir}/config/workerconfig-standalone.service $D%{systemddir}/workerconfig.service
+     if [ $? -ne 0 ]; then
+         rm -f $D%{systemddir}/workerconfig.service
+-        cp $D%{systemddir}/workerconfig-standalone.service $D%{systemddir}/workerconfig.service
++        cp $D%{systemddir}/config/workerconfig-standalone.service $D%{systemddir}/workerconfig.service
+     fi
+ fi
+ systemctl enable workerconfig.service
+ 
+ if [ ! -e $D%{systemddir}/workerconfig.service ]; then
+-    cp $D%{systemddir}/workerconfig-combined.service $D%{systemddir}/workerconfig.service
++    cp $D%{systemddir}/config/workerconfig-combined.service $D%{systemddir}/workerconfig.service
+ else
+-    cmp -s $D%{systemddir}/workerconfig-combined.service $D%{systemddir}/workerconfig.service
++    cmp -s $D%{systemddir}/config/workerconfig-combined.service $D%{systemddir}/workerconfig.service
+     if [ $? -ne 0 ]; then
+         rm -f $D%{systemddir}/workerconfig.service
+-        cp $D%{systemddir}/workerconfig-combined.service $D%{systemddir}/workerconfig.service
++        cp $D%{systemddir}/config/workerconfig-combined.service $D%{systemddir}/workerconfig.service
+     fi
+ fi
+ systemctl enable workerconfig.service
 diff --git a/workerconfig.spec b/workerconfig.spec
-index aafaf9f..04b2d6b 100644
+index 6d4a06f..1db07d5 100644
 --- a/workerconfig.spec
 +++ b/workerconfig.spec
-@@ -12,6 +12,7 @@ Group    : Development/Tools
- License  : Apache-2.0
- Requires: workerconfig-services = %{version}-%{release}
- Requires: systemd
-+Patch1: 0001-install-perssion-denied.patch
- 
- %description
- No detailed description available
-@@ -26,6 +27,7 @@ services components for the workerconfig package.
- 
- %prep
- %setup -q -n workerconfig-1.0
-+%patch1 -p1
+@@ -31,16 +31,16 @@ services components for the workerconfig package.
  
  %build
  ## build_prepend content
+-%define initddir /usr/local/etc/init.d
+-%define goenableddir /usr/local/etc/goenabled.d
+-%define systemddir /usr/lib/systemd/system
++%define initddir /usr/local/etc/init.d/
++%define goenableddir /usr/local/etc/goenabled.d/
++%define systemddir /usr/lib/systemd/system/
+ %define debug_package %{nil}
+ ## build_prepend end
+ export http_proxy=http://127.0.0.1:9/
+ export https_proxy=http://127.0.0.1:9/
+ export no_proxy=localhost,127.0.0.1,0.0.0.0
+ export LANG=C.UTF-8
+ export GCC_IGNORE_WERROR=1
+ export AR=gcc-ar
+ export RANLIB=gcc-ranlib
+@@ -53,34 +53,36 @@ make  %{?_smp_mflags}
+ 
+ 
+ %install
+ rm -rf %{buildroot}
+ install -d -m 755 %{buildroot}%{initddir}
+ ## install_append content
+ install -d -m 755 %{buildroot}%{goenableddir}
+ install -d -m 755 %{buildroot}%{systemddir}
++install -d -m 755 %{buildroot}%{systemddir}/config
+ install -p -D -m 700 worker_config %{buildroot}%{initddir}/worker_config
+-install -p -D -m 700 worker_services %{buildroot}%{systemddir}/worker_services
+-install -p -D -m 664 workerconfig.service %{buildroot}%{systemddir}/workerconfig-standalone.service
+-install -p -D -m 664 workerconfig-combined.service %{buildroot}%{systemddir}/workerconfig-combined.service
++install -p -D -m 700 worker_services %{buildroot}%{initddir}/worker_services
++install -p -D -m 755 config_goenabled_check.sh %{buildroot}%{goenableddir}/config_goenabled_check.sh
++install -p -D -m 664 workerconfig.service %{buildroot}%{systemddir}/config/workerconfig-standalone.service
++install -p -D -m 664 workerconfig-combined.service %{buildroot}%{systemddir}/config/workerconfig-combined.service
+ %post
+ if [ ! -e $D%{systemddir}/workerconfig.service ]; then
+-cp $D%{systemddir}/workerconfig-standalone.service $D%{systemddir}/workerconfig.service
++cp $D%{systemddir}/config/workerconfig-standalone.service $D%{systemddir}/workerconfig.service
+ else
+-cmp -s $D%{systemddir}/workerconfig-standalone.service $D%{systemddir}/workerconfig.service
++cmp -s $D%{systemddir}/config/workerconfig-standalone.service $D%{systemddir}/workerconfig.service
+ if [ $? -ne 0 ]; then
+ rm -f $D%{systemddir}/workerconfig.service
+-cp $D%{systemddir}/workerconfig-standalone.service $D%{systemddir}/workerconfig.service
++cp $D%{systemddir}/config/workerconfig-standalone.service $D%{systemddir}/workerconfig.service
+ fi
+ fi
+ systemctl enable workerconfig.service
+ if [ ! -e $D%{systemddir}/workerconfig.service ]; then
+-cp $D%{systemddir}/workerconfig-combined.service $D%{systemddir}/workerconfig.service
++cp $D%{systemddir}/config/workerconfig-combined.service $D%{systemddir}/workerconfig.service
+ else
+-cmp -s $D%{systemddir}/workerconfig-combined.service $D%{systemddir}/workerconfig.service
++cmp -s $D%{systemddir}/config/workerconfig-combined.service $D%{systemddir}/workerconfig.service
+ if [ $? -ne 0 ]; then
+ rm -f $D%{systemddir}/workerconfig.service
+-cp $D%{systemddir}/workerconfig-combined.service $D%{systemddir}/workerconfig.service
++cp $D%{systemddir}/config/workerconfig-combined.service $D%{systemddir}/workerconfig.service
+ fi
+ fi
+ systemctl enable workerconfig.service
+@@ -88,10 +90,11 @@ systemctl enable workerconfig.service
+ 
+ %files
+ %defattr(-,root,root,-)
++/usr/local/etc/goenabled.d/config_goenabled_check.sh
+ /usr/local/etc/init.d/worker_config
++/usr/local/etc/init.d/worker_services
+ 
+ %files services
+ %defattr(-,root,root,-)
+-/usr/lib/systemd/system/worker_services
+-/usr/lib/systemd/system/workerconfig-combined.service
+-/usr/lib/systemd/system/workerconfig-standalone.service
++/usr/lib/systemd/system/config/workerconfig-combined.service
++/usr/lib/systemd/system/config/workerconfig-standalone.service
+-- 
+2.23.0
+
+
