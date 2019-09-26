@@ -1,0 +1,2 @@
+export PBR_VERSION=%{version}
+%define _sysconfdir	/usr/local/etc

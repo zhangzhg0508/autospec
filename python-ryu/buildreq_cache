@@ -1,0 +1,10 @@
+4.19
+WebOb
+msgpack-python-python
+oslo.config
+ovs
+ovs-python
+routes-python
+tinyrpc
+tinyrpc-python
+webob-python

@@ -1,0 +1,18 @@
+# This file contains additional build requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+python-dev
+pip
+wheel
+debtcollector
+eventlet
+greenlet
+lxml
+msgpack
+oslo.config
+paramiko
+repoze.lru
+Routes
+Sphinx
+tinyrpc
+setuptools
+WebOb

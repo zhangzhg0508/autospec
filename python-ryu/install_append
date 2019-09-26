@@ -1,0 +1,2 @@
+install -d -m 755 %{buildroot}%{_sysconfdir}/ryu
+mv %{buildroot}/usr/etc/ryu/ryu.conf %{buildroot}%{_sysconfdir}/ryu/ryu.conf
