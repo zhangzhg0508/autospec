@@ -1,0 +1,13 @@
+export PBR_VERSION=%{version}
+cd horizon && django-admin compilemessages && cd ..
+cd openstack_dashboard && django-admin compilemessages && cd ..
+cp openstack_dashboard/local/local_settings.py.example openstack_dashboard/local/local_settings.py
+
+#export PYTHONPATH="$( pwd ):$PYTHONPATH"
+#sphinx-build -b html doc/source html
+
+# undo hack
+#cp openstack_dashboard/local/local_settings.py.example openstack_dashboard/local/local_settings.py
+
+# Fix hidden-file-or-dir warnings
+#rm -fr html/.doctrees html/.buildinfo

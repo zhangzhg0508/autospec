@@ -1,0 +1,39 @@
+2019-09-29 15:45:35,647 - Mock Version: 1.2.14
+2019-09-29 15:45:35,708 - Start: dnf install
+2019-09-29 15:45:43,690 - Finish: dnf install
+2019-09-29 15:45:45,530 - Start: creating cache
+2019-09-29 15:45:50,865 - Finish: creating cache
+2019-09-29 15:45:50,866 - Finish: chroot init
+2019-09-29 15:45:50,894 - Start: buildsrpm
+2019-09-29 15:45:50,904 - Start: rpmbuild -bs
+2019-09-29 15:45:50,976 - Finish: rpmbuild -bs
+2019-09-29 15:45:50,980 - Finish: buildsrpm
+2019-09-29 15:45:50,980 - Finish: run
+2019-09-29 15:45:54,065 - Mock Version: 1.2.14
+2019-09-29 15:45:54,321 - Start: dnf update
+2019-09-29 15:46:04,517 - Finish: dnf update
+2019-09-29 15:46:04,523 - Finish: chroot init
+2019-09-29 15:46:04,524 - Start: build phase for python-django-horizon-15.1.0-2.src.rpm
+2019-09-29 15:46:04,526 - Start: build setup for python-django-horizon-15.1.0-2.src.rpm
+2019-09-29 15:46:08,968 - Finish: build setup for python-django-horizon-15.1.0-2.src.rpm
+2019-09-29 15:46:08,968 - Start: rpmbuild python-django-horizon-15.1.0-2.src.rpm
+2019-09-29 15:46:38,212 - Mock Version: 1.2.14
+2019-09-29 15:46:38,487 - Start: dnf update
+2019-09-29 15:46:53,881 - Finish: dnf update
+2019-09-29 15:46:53,886 - Finish: chroot init
+2019-09-29 15:46:53,889 - Start: buildsrpm
+2019-09-29 15:46:53,905 - Start: rpmbuild -bs
+2019-09-29 15:46:53,985 - Finish: rpmbuild -bs
+2019-09-29 15:46:53,990 - Finish: buildsrpm
+2019-09-29 15:46:53,991 - Finish: run
+2019-09-29 15:46:57,101 - Mock Version: 1.2.14
+2019-09-29 15:46:57,358 - Start: dnf update
+2019-09-29 15:47:07,182 - Finish: dnf update
+2019-09-29 15:47:07,188 - Finish: chroot init
+2019-09-29 15:47:07,189 - Start: build phase for python-django-horizon-15.1.0-2.src.rpm
+2019-09-29 15:47:07,191 - Start: build setup for python-django-horizon-15.1.0-2.src.rpm
+2019-09-29 15:47:11,654 - Finish: build setup for python-django-horizon-15.1.0-2.src.rpm
+2019-09-29 15:47:11,654 - Start: rpmbuild python-django-horizon-15.1.0-2.src.rpm
+2019-09-29 15:47:37,973 - Finish: rpmbuild python-django-horizon-15.1.0-2.src.rpm
+2019-09-29 15:47:37,974 - Finish: build phase for python-django-horizon-15.1.0-2.src.rpm
+2019-09-29 15:47:37,975 - Finish: run

@@ -1,0 +1,115 @@
+From 1c0f3f931eb30d19d087589d0e8a38a636279479 Mon Sep 17 00:00:00 2001
+From: fuyong <fuyong@neusoft.com>
+Date: Sun, 29 Sep 2019 15:47:44 +0800
+Subject: [PATCH python-django-horizon] python-django-horizon: Autospec
+ creation for version 15.1.0
+
+---
+ install_append             |  2 +-
+ python-django-horizon.spec | 28 ++++++++++++++++++++++++++--
+ release                    |  2 +-
+ 3 files changed, 28 insertions(+), 4 deletions(-)
+
+diff --git a/install_append b/install_append
+index 4075470..1affb0d 100644
+--- a/install_append
++++ b/install_append
+@@ -25,7 +25,7 @@ cp manage.py %{buildroot}%{_datadir}/openstack-dashboard
+ # STX
+ cp guni_config.py %{buildroot}%{_datadir}/openstack-dashboard
+ #rm -rf %{buildroot}%{python_sitelib}/openstack_dashboard
+-
++cp -r openstack_dashboard/ %{buildroot}%{_datadir}/openstack-dashboard
+ # remove unnecessary .po files
+ find %{buildroot} -name django.po -exec rm '{}' \;
+ find %{buildroot} -name djangojs.po -exec rm '{}' \;
+diff --git a/python-django-horizon.spec b/python-django-horizon.spec
+index a6494b2..5e21f2b 100644
+--- a/python-django-horizon.spec
++++ b/python-django-horizon.spec
+@@ -150,6 +150,7 @@ mv %{buildroot}%{python_sitelib}/openstack_dashboard \
+ %{buildroot}%{_datadir}/openstack-dashboard
+ cp manage.py %{buildroot}%{_datadir}/openstack-dashboard
+ cp guni_config.py %{buildroot}%{_datadir}/openstack-dashboard
++cp -r openstack_dashboard/ %{buildroot}%{_datadir}/openstack-dashboard
+ find %{buildroot} -name django.po -exec rm '{}' \;
+ find %{buildroot} -name djangojs.po -exec rm '{}' \;
+ mv %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/local_settings.py.example %{buildroot}%{_sysconfdir}/openstack-dashboard/local_settings
+@@ -199,6 +200,7 @@ systemctl daemon-reload >/dev/null 2>&1 || :
+ %defattr(-,root,root,-)
+ /usr/share/openstack-dashboard/guni_config.py
+ /usr/share/openstack-dashboard/manage.py
++/usr/share/openstack-dashboard/openstack_dashboard/.eslintrc
+ /usr/share/openstack-dashboard/openstack_dashboard/__init__.py
+ /usr/share/openstack-dashboard/openstack_dashboard/api/__init__.py
+ /usr/share/openstack-dashboard/openstack_dashboard/api/_nova.py
+@@ -224,6 +226,13 @@ systemctl daemon-reload >/dev/null 2>&1 || :
+ /usr/share/openstack-dashboard/openstack_dashboard/api/rest/urls.py
+ /usr/share/openstack-dashboard/openstack_dashboard/api/rest/utils.py
+ /usr/share/openstack-dashboard/openstack_dashboard/api/swift.py
++/usr/share/openstack-dashboard/openstack_dashboard/conf/cinder_policy.d/consistencygroup.yaml
++/usr/share/openstack-dashboard/openstack_dashboard/conf/cinder_policy.json
++/usr/share/openstack-dashboard/openstack_dashboard/conf/glance_policy.json
++/usr/share/openstack-dashboard/openstack_dashboard/conf/keystone_policy.json
++/usr/share/openstack-dashboard/openstack_dashboard/conf/neutron_policy.json
++/usr/share/openstack-dashboard/openstack_dashboard/conf/nova_policy.d/api-extensions.yaml
++/usr/share/openstack-dashboard/openstack_dashboard/conf/nova_policy.json
+ /usr/share/openstack-dashboard/openstack_dashboard/context_processors.py
+ /usr/share/openstack-dashboard/openstack_dashboard/contrib/__init__.py
+ /usr/share/openstack-dashboard/openstack_dashboard/contrib/developer/__init__.py
+@@ -252,7 +261,16 @@ systemctl daemon-reload >/dev/null 2>&1 || :
+ /usr/share/openstack-dashboard/openstack_dashboard/contrib/developer/static/dashboard/developer/developer.module.js
+ /usr/share/openstack-dashboard/openstack_dashboard/contrib/developer/static/dashboard/developer/developer.module.spec.js
+ /usr/share/openstack-dashboard/openstack_dashboard/contrib/developer/static/dashboard/developer/developer.scss
++/usr/share/openstack-dashboard/openstack_dashboard/contrib/developer/static/dashboard/developer/form-builder/example-forms/addons-required-feedback.json
++/usr/share/openstack-dashboard/openstack_dashboard/contrib/developer/static/dashboard/developer/form-builder/example-forms/array.json
++/usr/share/openstack-dashboard/openstack_dashboard/contrib/developer/static/dashboard/developer/form-builder/example-forms/buttons.json
++/usr/share/openstack-dashboard/openstack_dashboard/contrib/developer/static/dashboard/developer/form-builder/example-forms/confirmation-dialog.json
+ /usr/share/openstack-dashboard/openstack_dashboard/contrib/developer/static/dashboard/developer/form-builder/example-forms/example-help.html
++/usr/share/openstack-dashboard/openstack_dashboard/contrib/developer/static/dashboard/developer/form-builder/example-forms/radios-checkboxes-select.json
++/usr/share/openstack-dashboard/openstack_dashboard/contrib/developer/static/dashboard/developer/form-builder/example-forms/sections-fieldsets.json
++/usr/share/openstack-dashboard/openstack_dashboard/contrib/developer/static/dashboard/developer/form-builder/example-forms/tabarray.json
++/usr/share/openstack-dashboard/openstack_dashboard/contrib/developer/static/dashboard/developer/form-builder/example-forms/tabs.json
++/usr/share/openstack-dashboard/openstack_dashboard/contrib/developer/static/dashboard/developer/form-builder/example-forms/text-inputs.json
+ /usr/share/openstack-dashboard/openstack_dashboard/contrib/developer/static/dashboard/developer/form-builder/form-builder.controller.js
+ /usr/share/openstack-dashboard/openstack_dashboard/contrib/developer/static/dashboard/developer/form-builder/form-builder.directive.js
+ /usr/share/openstack-dashboard/openstack_dashboard/contrib/developer/static/dashboard/developer/form-builder/form-builder.html
+@@ -1832,6 +1850,7 @@ systemctl daemon-reload >/dev/null 2>&1 || :
+ /usr/share/openstack-dashboard/openstack_dashboard/static/dashboard/scss/components/_wizard.scss
+ /usr/share/openstack-dashboard/openstack_dashboard/static/dashboard/scss/horizon.scss
+ /usr/share/openstack-dashboard/openstack_dashboard/static/dashboard/scss/serial_console.scss
++/usr/share/openstack-dashboard/openstack_dashboard/static/js/.eslintrc
+ /usr/share/openstack-dashboard/openstack_dashboard/static/js/angular/directives/serialConsole.js
+ /usr/share/openstack-dashboard/openstack_dashboard/static/js/horizon.flatnetworktopology.js
+ /usr/share/openstack-dashboard/openstack_dashboard/static/js/horizon.instances.js
+@@ -1877,11 +1896,13 @@ systemctl daemon-reload >/dev/null 2>&1 || :
+ /usr/share/openstack-dashboard/openstack_dashboard/test/error_pages_urls.py
+ /usr/share/openstack-dashboard/openstack_dashboard/test/extensible_header_urls.py
+ /usr/share/openstack-dashboard/openstack_dashboard/test/helpers.py
++/usr/share/openstack-dashboard/openstack_dashboard/test/integration_tests/README.rst
+ /usr/share/openstack-dashboard/openstack_dashboard/test/integration_tests/__init__.py
+ /usr/share/openstack-dashboard/openstack_dashboard/test/integration_tests/basewebobject.py
+ /usr/share/openstack-dashboard/openstack_dashboard/test/integration_tests/config.py
+ /usr/share/openstack-dashboard/openstack_dashboard/test/integration_tests/decorators.py
+ /usr/share/openstack-dashboard/openstack_dashboard/test/integration_tests/helpers.py
++/usr/share/openstack-dashboard/openstack_dashboard/test/integration_tests/horizon.conf
+ /usr/share/openstack-dashboard/openstack_dashboard/test/integration_tests/pages/__init__.py
+ /usr/share/openstack-dashboard/openstack_dashboard/test/integration_tests/pages/admin/__init__.py
+ /usr/share/openstack-dashboard/openstack_dashboard/test/integration_tests/pages/admin/compute/__init__.py
+@@ -1949,6 +1970,8 @@ systemctl daemon-reload >/dev/null 2>&1 || :
+ /usr/share/openstack-dashboard/openstack_dashboard/test/integration_tests/regions/messages.py
+ /usr/share/openstack-dashboard/openstack_dashboard/test/integration_tests/regions/tables.py
+ /usr/share/openstack-dashboard/openstack_dashboard/test/integration_tests/tests/__init__.py
++/usr/share/openstack-dashboard/openstack_dashboard/test/integration_tests/tests/test-data/empty_namespace.json
++/usr/share/openstack-dashboard/openstack_dashboard/test/integration_tests/tests/test-data/stack_template
+ /usr/share/openstack-dashboard/openstack_dashboard/test/integration_tests/tests/test_credentials.py
+ /usr/share/openstack-dashboard/openstack_dashboard/test/integration_tests/tests/test_defaults.py
+ /usr/share/openstack-dashboard/openstack_dashboard/test/integration_tests/tests/test_flavors.py
+@@ -2111,6 +2134,7 @@ systemctl daemon-reload >/dev/null 2>&1 || :
+ /usr/share/openstack-dashboard/openstack_dashboard/themes/material/templates/horizon/client_side/_loading_inline_example.html
+ /usr/share/openstack-dashboard/openstack_dashboard/themes/material/templates/horizon/client_side/_loading_modal_example.html
+ /usr/share/openstack-dashboard/openstack_dashboard/themes/material/templates/material/openstack-one-color-alt.svg
++/usr/share/openstack-dashboard/openstack_dashboard/themes/material/templates/material/openstack-one-color-alt.svg.old
+ /usr/share/openstack-dashboard/openstack_dashboard/themes/material/templates/material/openstack-one-color.svg
+ /usr/share/openstack-dashboard/openstack_dashboard/urls.py
+ /usr/share/openstack-dashboard/openstack_dashboard/usage/__init__.py

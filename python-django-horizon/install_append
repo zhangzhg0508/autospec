@@ -1,0 +1,78 @@
+install -d -m 755 %{buildroot}/opt/branding
+pwd
+tar -zxvf %{SOURCE1}
+mkdir -p %{buildroot}%{_sysconfdir}/rc.d/init.d
+install -m 755 -D -p  horizon.init %{buildroot}%{_sysconfdir}/rc.d/init.d/horizon
+install -m 755 -D -p horizon-clearsessions %{buildroot}/%{_bindir}/horizon-clearsessions
+install -m 755 -D -p horizon-patching-restart %{buildroot}/%{_bindir}/horizon-patching-restart
+install -m 755 -D -p horizon-assets-compress %{buildroot}/%{_bindir}/horizon-assets-compress
+
+# drop httpd-conf snippet
+install -m 0644 -D -p openstack-dashboard-httpd-2.4.conf %{buildroot}%{_sysconfdir}/httpd/conf.d/openstack-dashboard.conf
+install -d -m 755 %{buildroot}%{_datadir}/openstack-dashboard
+install -d -m 755 %{buildroot}%{_sharedstatedir}/openstack-dashboard
+install -d -m 755 %{buildroot}%{_sysconfdir}/openstack-dashboard
+
+# create directory for systemd snippet
+mkdir -p %{buildroot}%{_unitdir}/httpd.service.d/
+cp python-django-horizon-systemd.conf %{buildroot}%{_unitdir}/httpd.service.d/openstack-dashboard.conf
+
+
+# Copy everything to /usr/share
+mv %{buildroot}%{python_sitelib}/openstack_dashboard \
+   %{buildroot}%{_datadir}/openstack-dashboard
+cp manage.py %{buildroot}%{_datadir}/openstack-dashboard
+# STX
+cp guni_config.py %{buildroot}%{_datadir}/openstack-dashboard
+#rm -rf %{buildroot}%{python_sitelib}/openstack_dashboard
+cp -r openstack_dashboard/ %{buildroot}%{_datadir}/openstack-dashboard
+# remove unnecessary .po files
+find %{buildroot} -name django.po -exec rm '{}' \;
+find %{buildroot} -name djangojs.po -exec rm '{}' \;
+
+# Move config to /etc, symlink it back to /usr/share
+mv %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/local_settings.py.example %{buildroot}%{_sysconfdir}/openstack-dashboard/local_settings
+# STX: we do not want to have this symlink, puppet will overwrite the content of local_settings
+#ln -s ../../../../../%{_sysconfdir}/openstack-dashboard/local_settings %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/local_settings.py
+
+pwd
+cp -r openstack_dashboard/conf/*.json %{buildroot}%{_sysconfdir}/openstack-dashboard
+cp -r openstack_dashboard/conf/cinder_policy.d %{buildroot}%{_sysconfdir}/openstack-dashboard
+cp -r openstack_dashboard/conf/nova_policy.d %{buildroot}%{_sysconfdir}/openstack-dashboard
+#mv %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/conf/*.json %{buildroot}%#{_sysconfdir}/openstack-dashboard
+#mv %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/conf/cinder_policy.d %{buildroot}%#{_sysconfdir}/openstack-dashboard
+#mv %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/conf/nova_policy.d %{buildroot}%#{_sysconfdir}/openstack-dashboard
+
+
+%find_lang django --all-name
+
+grep "\/usr\/share\/openstack-dashboard" django.lang > dashboard.lang
+grep "\/site-packages\/horizon" django.lang > horizon.lang
+
+# copy static files to %{_datadir}/openstack-dashboard/static
+mkdir -p %{buildroot}%{_datadir}/openstack-dashboard/static
+cp -a openstack_dashboard/static/* %{buildroot}%{_datadir}/openstack-dashboard/static
+cp -a horizon/static/* %{buildroot}%{_datadir}/openstack-dashboard/static
+# STX: there is no static folder, since compress step was skipped
+#cp -a static/* %{buildroot}%{_datadir}/openstack-dashboard/static
+
+# create /var/run/openstack-dashboard/ and own it
+mkdir -p %{buildroot}%{_sharedstatedir}/openstack-dashboard
+
+# create /var/log/horizon and own it
+mkdir -p %{buildroot}%{_var}/log/horizon
+
+# place logrotate config:
+mkdir -p %{buildroot}%{_sysconfdir}/logrotate.d
+cp -a python-django-horizon-logrotate.conf %{buildroot}%{_sysconfdir}/logrotate.d/openstack-dashboard
+
+%post
+# ugly hack to set a unique SECRET_KEY
+sed -i "/^from horizon.utils import secret_key$/d" /usr/loacl/etc/openstack-dashboard/local_settings
+sed -i "/^SECRET_KEY.*$/{N;s/^.*$/SECRET_KEY='`openssl rand -hex 10`'/}" /usr/loacl/etc/openstack-dashboard/local_settings
+# reload systemd unit files
+systemctl daemon-reload >/dev/null 2>&1 || :
+
+%postun
+# update systemd unit files
+%{systemd_postun}

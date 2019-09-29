@@ -1,0 +1,16 @@
+# This file contains additional build requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+Django
+cgts-client
+python-dev
+setuptools
+pip
+pbr >= 2.0.0
+git
+six >= 1.10.0
+gettext
+django-nose
+mox3
+#nose-exclude
+nose
+selenium
