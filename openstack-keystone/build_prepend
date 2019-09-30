@@ -1,0 +1,3 @@
+PYTHONPATH=. oslo-config-generator --config-file=config-generator/keystone.conf
+PYTHONPATH=. oslo-config-generator --config-file=config-generator/keystone.conf --format yaml --output-file=keystone-schema.yaml
+PYTHONPATH=. oslo-config-generator --config-file=config-generator/keystone.conf --format json --output-file=keystone-schema.json

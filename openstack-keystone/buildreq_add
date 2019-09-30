@@ -1,2 +1,26 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
+openstack-macros
+python-dev
+osprofiler >= 1.1.0
+pbr >= 1.8
+git
+# Required to build keystone.conf
+oslo.cache >= 1.26.0
+oslo.config
+passlib >= 1.6
+pycadf >= 2.1.0
+# Required to compile translation files
+Babel
+# Required to build man pages
+oslo.policy
+jsonschema
+oslo.db >= 4.27.0
+oauthlib
+pysaml2
+keystonemiddleware >= 4.17.0
+testresources
+testscenarios
+oslotest
+redis
+pyzmq

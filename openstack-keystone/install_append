@@ -1,0 +1,81 @@
+echo "{}" > policy.json
+pwd
+install -d -m 750 %{buildroot}%{_sysconfdir}/keystone/credential-keys/
+install -d -m 755 %{buildroot}%{_sysconfdir}/keystone
+install -p -D -m 640 etc/keystone.conf.sample %{buildroot}%{_sysconfdir}/keystone/keystone.conf
+install -p -D -m 640 policy.json %{buildroot}%{_sysconfdir}/keystone/policy.json
+install -p -D -m 640 keystone-schema.yaml %{buildroot}%{_datadir}/keystone/keystone-schema.yaml
+install -p -D -m 640 keystone-schema.json %{buildroot}%{_datadir}/keystone/keystone-schema.json
+install -p -D -m 644 keystone-dist.conf %{buildroot}%{_datadir}/keystone/keystone-dist.conf
+install -p -D -m 644 etc/policy.v3cloudsample.json %{buildroot}%{_datadir}/keystone/policy.v3cloudsample.json
+install -p -D -m 640 etc/logging.conf.sample %{buildroot}%{_sysconfdir}/keystone/logging.conf
+install -p -D -m 640 etc/default_catalog.templates %{buildroot}%{_sysconfdir}/keystone/default_catalog.templates
+install -p -D -m 640 etc/sso_callback_template.html %{buildroot}%{_sysconfdir}/keystone/sso_callback_template.html
+# STX: don't install a separate keystone logrotate file as this is managed by syslog-ng
+#install -p -D -m 644 openstack-keystone.logrotate %{buildroot}%{_sysconfdir}/logrotate.d/openstack-keystone
+install -d -m 755 %{buildroot}%{_prefix}/lib/sysctl.d
+install -p -D -m 644 openstack-keystone.sysctl %{buildroot}%{_prefix}/lib/sysctl.d/openstack-keystone.conf
+# Install sample data script.
+install -p -D -m 755 tools/sample_data.sh %{buildroot}%{_datadir}/keystone/sample_data.sh
+install -p -D -m 755 openstack-keystone-sample-data %{buildroot}%{_bindir}/openstack-keystone-sample-data
+# Install sample HTTPD integration files
+install -p -D -m 644 httpd/wsgi-keystone.conf  %{buildroot}%{_datadir}/keystone/
+
+# STX install keystone cron script
+install -p -D -m 755 keystone-fernet-keys-rotate-active %{buildroot}%{_bindir}/keystone-fernet-keys-rotate-active
+
+# STX: install password rules(readable only)
+install -p -D -m 440 password-rules.conf %{buildroot}%{_sysconfdir}/keystone/password-rules.conf
+
+# STX: install keystone public gunicorn app
+install -p -D -m 755 public.py  %{buildroot}/%{_datarootdir}/keystone/public.py
+
+# STX: install openstack-keystone service script
+install -p -D -m 644 openstack-keystone.service %{buildroot}%{_unitdir}/openstack-keystone.service
+
+# STX: Install keystone-all bash script
+install -p -D -m 755 keystone-all %{buildroot}%{_bindir}/keystone-all
+
+install -d -m 755 %{buildroot}%{_sharedstatedir}/keystone
+install -d -m 755 %{buildroot}%{_localstatedir}/log/keystone
+
+# cleanup config files installed by keystone
+# we already generate them w/ oslo-config-generator-%{pyver}
+rm -rf %{buildroot}/%{_prefix}%{_sysconfdir}
+
+# docs generation requires everything to be installed first
+%if 0%{?with_doc}
+sphinx-build-%{pyver} -b html doc/source doc/build/html
+
+sphinx-build-%{pyver} -b man doc/source doc/build/man
+mkdir -p %{buildroot}%{_mandir}/man1
+install -p -D -m 644 doc/build/man/*.1 %{buildroot}%{_mandir}/man1/
+%endif
+%if 0%{?with_doc}
+# Fix hidden-file-or-dir warnings
+rm -fr doc/build/html/.doctrees doc/build/html/.buildinfo
+%endif
+
+# Install i18n .mo files (.po and .pot are not required)
+install -d -m 755 %{buildroot}%{_datadir}
+rm -f %{buildroot}%{python_sitelib}/keystone/locale/*/LC_*/keystone*po
+rm -f %{buildroot}%{python_sitelib}/keystone/locale/*pot
+mv %{buildroot}%{python_sitelib}/keystone/locale %{buildroot}%{_datadir}/locale
+
+# Find language files
+#%find_lang keystone --all-name
+
+%pre
+# 163:163 for keystone (openstack-keystone) - rhbz#752842
+getent group keystone >/dev/null || groupadd -r --gid 163 keystone
+getent passwd keystone >/dev/null || \
+useradd --uid 163 -r -g keystone -d %{_sharedstatedir}/keystone -s /sbin/nologin \
+-c "OpenStack Keystone Daemons" keystone
+exit 0
+
+%post
+%sysctl_apply openstack-keystone.conf
+# Install keystone.log file before, so both keystone & root users can write in it.
+touch %{_localstatedir}/log/keystone/keystone.log
+chown root:keystone %{_localstatedir}/log/keystone/keystone.log
+chmod 660 %{_localstatedir}/log/keystone/keystone.log

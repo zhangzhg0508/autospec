@@ -1,0 +1,37 @@
+2019-09-30 10:18:01,205 - Mock Version: 1.2.14
+2019-09-30 10:18:01,480 - Start: dnf update
+2019-09-30 10:18:11,724 - Finish: dnf update
+2019-09-30 10:18:11,729 - Finish: chroot init
+2019-09-30 10:18:11,732 - Start: buildsrpm
+2019-09-30 10:18:11,739 - Start: rpmbuild -bs
+2019-09-30 10:18:11,833 - Finish: rpmbuild -bs
+2019-09-30 10:18:11,835 - Finish: buildsrpm
+2019-09-30 10:18:11,836 - Finish: run
+2019-09-30 10:18:14,890 - Mock Version: 1.2.14
+2019-09-30 10:18:15,155 - Start: dnf update
+2019-09-30 10:18:24,917 - Finish: dnf update
+2019-09-30 10:18:24,922 - Finish: chroot init
+2019-09-30 10:18:24,923 - Start: build phase for openstack-keystone-15.0.0.0rc2-1.src.rpm
+2019-09-30 10:18:24,926 - Start: build setup for openstack-keystone-15.0.0.0rc2-1.src.rpm
+2019-09-30 10:18:31,441 - Finish: build setup for openstack-keystone-15.0.0.0rc2-1.src.rpm
+2019-09-30 10:18:31,441 - Start: rpmbuild openstack-keystone-15.0.0.0rc2-1.src.rpm
+2019-09-30 10:18:49,187 - Mock Version: 1.2.14
+2019-09-30 10:18:49,471 - Start: dnf update
+2019-09-30 10:18:59,691 - Finish: dnf update
+2019-09-30 10:18:59,697 - Finish: chroot init
+2019-09-30 10:18:59,700 - Start: buildsrpm
+2019-09-30 10:18:59,708 - Start: rpmbuild -bs
+2019-09-30 10:18:59,803 - Finish: rpmbuild -bs
+2019-09-30 10:18:59,806 - Finish: buildsrpm
+2019-09-30 10:18:59,806 - Finish: run
+2019-09-30 10:19:02,906 - Mock Version: 1.2.14
+2019-09-30 10:19:03,169 - Start: dnf update
+2019-09-30 10:19:13,110 - Finish: dnf update
+2019-09-30 10:19:13,116 - Finish: chroot init
+2019-09-30 10:19:13,117 - Start: build phase for openstack-keystone-15.0.0.0rc2-1.src.rpm
+2019-09-30 10:19:13,119 - Start: build setup for openstack-keystone-15.0.0.0rc2-1.src.rpm
+2019-09-30 10:19:19,590 - Finish: build setup for openstack-keystone-15.0.0.0rc2-1.src.rpm
+2019-09-30 10:19:19,591 - Start: rpmbuild openstack-keystone-15.0.0.0rc2-1.src.rpm
+2019-09-30 10:19:35,344 - Finish: rpmbuild openstack-keystone-15.0.0.0rc2-1.src.rpm
+2019-09-30 10:19:35,346 - Finish: build phase for openstack-keystone-15.0.0.0rc2-1.src.rpm
+2019-09-30 10:19:35,346 - Finish: run
