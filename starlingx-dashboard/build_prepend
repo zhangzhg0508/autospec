@@ -1,0 +1,7 @@
+%define py_pkg_name          starlingx_dashboard
+%define enabled_dir          %{_datadir}/openstack-dashboard/openstack_dashboard/enabled/
+%define stx_themes_dir       %{_datadir}/openstack-dashboard/openstack_dashboard/themes/starlingx/
+%define local_settings_dir   %{_datadir}/openstack-dashboard/openstack_dashboard/local/local_settings.d
+
+%define debug_package %{nil}
+export PBR_VERSION=%{version}

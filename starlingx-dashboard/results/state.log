@@ -1,0 +1,37 @@
+2019-10-08 14:26:26,978 - Mock Version: 1.2.14
+2019-10-08 14:26:27,223 - Start: dnf update
+2019-10-08 14:26:37,630 - Finish: dnf update
+2019-10-08 14:26:37,635 - Finish: chroot init
+2019-10-08 14:26:37,638 - Start: buildsrpm
+2019-10-08 14:26:37,643 - Start: rpmbuild -bs
+2019-10-08 14:26:37,683 - Finish: rpmbuild -bs
+2019-10-08 14:26:37,685 - Finish: buildsrpm
+2019-10-08 14:26:37,686 - Finish: run
+2019-10-08 14:26:40,797 - Mock Version: 1.2.14
+2019-10-08 14:26:41,067 - Start: dnf update
+2019-10-08 14:26:50,796 - Finish: dnf update
+2019-10-08 14:26:50,801 - Finish: chroot init
+2019-10-08 14:26:50,803 - Start: build phase for starlingx-dashboard-1.0-1.src.rpm
+2019-10-08 14:26:50,805 - Start: build setup for starlingx-dashboard-1.0-1.src.rpm
+2019-10-08 14:26:52,268 - Finish: build setup for starlingx-dashboard-1.0-1.src.rpm
+2019-10-08 14:26:52,268 - Start: rpmbuild starlingx-dashboard-1.0-1.src.rpm
+2019-10-08 14:26:59,538 - Mock Version: 1.2.14
+2019-10-08 14:26:59,788 - Start: dnf update
+2019-10-08 14:27:10,162 - Finish: dnf update
+2019-10-08 14:27:10,168 - Finish: chroot init
+2019-10-08 14:27:10,170 - Start: buildsrpm
+2019-10-08 14:27:10,176 - Start: rpmbuild -bs
+2019-10-08 14:27:10,218 - Finish: rpmbuild -bs
+2019-10-08 14:27:10,220 - Finish: buildsrpm
+2019-10-08 14:27:10,220 - Finish: run
+2019-10-08 14:27:13,337 - Mock Version: 1.2.14
+2019-10-08 14:27:13,594 - Start: dnf update
+2019-10-08 14:27:23,399 - Finish: dnf update
+2019-10-08 14:27:23,405 - Finish: chroot init
+2019-10-08 14:27:23,407 - Start: build phase for starlingx-dashboard-1.0-1.src.rpm
+2019-10-08 14:27:23,409 - Start: build setup for starlingx-dashboard-1.0-1.src.rpm
+2019-10-08 14:27:24,872 - Finish: build setup for starlingx-dashboard-1.0-1.src.rpm
+2019-10-08 14:27:24,872 - Start: rpmbuild starlingx-dashboard-1.0-1.src.rpm
+2019-10-08 14:27:30,117 - Finish: rpmbuild starlingx-dashboard-1.0-1.src.rpm
+2019-10-08 14:27:30,118 - Finish: build phase for starlingx-dashboard-1.0-1.src.rpm
+2019-10-08 14:27:30,119 - Finish: run
