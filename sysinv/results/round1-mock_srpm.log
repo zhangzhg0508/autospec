@@ -23,6 +23,6 @@ Start: buildsrpm
 Start: rpmbuild -bs
 Finish: rpmbuild -bs
 Finish: buildsrpm
-INFO: Done(sysinv.spec) Config(clear) 0 minutes 14 seconds
+INFO: Done(sysinv.spec) Config(clear) 0 minutes 16 seconds
 INFO: Results and/or logs in: results/
 Finish: run

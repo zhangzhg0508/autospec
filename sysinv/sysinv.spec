@@ -4,7 +4,7 @@
 #
 Name     : sysinv
 Version  : 1.0
-Release  : 13
+Release  : 15
 URL      : file:///home/clr/stx-tar/sysinv-1.0.tar.gz
 Source0  : file:///home/clr/stx-tar/sysinv-1.0.tar.gz
 Summary  : No detailed summary available
@@ -13,6 +13,7 @@ License  : Apache-2.0
 Requires: sysinv-bin = %{version}-%{release}
 Requires: sysinv-python = %{version}-%{release}
 Requires: sysinv-python3 = %{version}-%{release}
+Requires: sysinv-services = %{version}-%{release}
 Requires: Django
 Requires: WSME
 Requires: WebTest
@@ -54,6 +55,7 @@ setup.py manifest.
 %package bin
 Summary: bin components for the sysinv package.
 Group: Binaries
+Requires: sysinv-services = %{version}-%{release}
 
 %description bin
 bin components for the sysinv package.
@@ -77,6 +79,14 @@ Requires: python3-core
 python3 components for the sysinv package.
 
 
+%package services
+Summary: services components for the sysinv package.
+Group: Systemd services
+
+%description services
+services components for the sysinv package.
+
+
 %prep
 %setup -q -n sysinv-1.0
 
@@ -88,6 +98,7 @@ python3 components for the sysinv package.
 %define local_etc_motdd      /usr/local/etc/motd.d/
 %define pythonroot           /usr/lib64/python2.7/site-packages
 %define ocf_resourced        /usr/lib/ocf/resource.d
+%define _unitdir /usr/lib/systemd/system/
 %define debug_package %{nil}
 export PBR_VERSION=%{version}
 ## build_prepend end
@@ -95,7 +106,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1568183900
+export SOURCE_DATE_EPOCH=1570604855
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -181,3 +192,8 @@ install -p -D -m 755 sysinv/cmd/query_pci_id %{buildroot}%{local_bindir}/query_p
 %files python3
 %defattr(-,root,root,-)
 /usr/lib/python3*/*
+
+%files services
+%defattr(-,root,root,-)
+/usr/lib/systemd/system/sysinv-api.service
+/usr/lib/systemd/system/sysinv-conductor.service
