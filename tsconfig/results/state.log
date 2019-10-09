@@ -1,37 +1,37 @@
-2019-09-11 14:57:25,970 - Mock Version: 1.2.14
-2019-09-11 14:57:26,235 - Start: dnf update
-2019-09-11 14:57:36,607 - Finish: dnf update
-2019-09-11 14:57:36,612 - Finish: chroot init
-2019-09-11 14:57:36,615 - Start: buildsrpm
-2019-09-11 14:57:36,641 - Start: rpmbuild -bs
-2019-09-11 14:57:36,682 - Finish: rpmbuild -bs
-2019-09-11 14:57:36,684 - Finish: buildsrpm
-2019-09-11 14:57:36,684 - Finish: run
-2019-09-11 14:57:39,799 - Mock Version: 1.2.14
-2019-09-11 14:57:40,063 - Start: dnf update
-2019-09-11 14:57:49,954 - Finish: dnf update
-2019-09-11 14:57:49,960 - Finish: chroot init
-2019-09-11 14:57:49,961 - Start: build phase for tsconfig-1.0-5.src.rpm
-2019-09-11 14:57:49,963 - Start: build setup for tsconfig-1.0-5.src.rpm
-2019-09-11 14:57:51,596 - Finish: build setup for tsconfig-1.0-5.src.rpm
-2019-09-11 14:57:51,596 - Start: rpmbuild tsconfig-1.0-5.src.rpm
-2019-09-11 14:57:55,834 - Mock Version: 1.2.14
-2019-09-11 14:57:56,092 - Start: dnf update
-2019-09-11 14:58:06,380 - Finish: dnf update
-2019-09-11 14:58:06,385 - Finish: chroot init
-2019-09-11 14:58:06,388 - Start: buildsrpm
-2019-09-11 14:58:06,397 - Start: rpmbuild -bs
-2019-09-11 14:58:06,438 - Finish: rpmbuild -bs
-2019-09-11 14:58:06,439 - Finish: buildsrpm
-2019-09-11 14:58:06,440 - Finish: run
-2019-09-11 14:58:09,631 - Mock Version: 1.2.14
-2019-09-11 14:58:09,889 - Start: dnf update
-2019-09-11 14:58:19,700 - Finish: dnf update
-2019-09-11 14:58:19,705 - Finish: chroot init
-2019-09-11 14:58:19,706 - Start: build phase for tsconfig-1.0-5.src.rpm
-2019-09-11 14:58:19,709 - Start: build setup for tsconfig-1.0-5.src.rpm
-2019-09-11 14:58:21,334 - Finish: build setup for tsconfig-1.0-5.src.rpm
-2019-09-11 14:58:21,334 - Start: rpmbuild tsconfig-1.0-5.src.rpm
-2019-09-11 14:58:21,990 - Finish: rpmbuild tsconfig-1.0-5.src.rpm
-2019-09-11 14:58:21,991 - Finish: build phase for tsconfig-1.0-5.src.rpm
-2019-09-11 14:58:21,992 - Finish: run
+2019-10-08 17:42:04,821 - Mock Version: 1.2.14
+2019-10-08 17:42:05,072 - Start: dnf update
+2019-10-08 17:42:14,787 - Finish: dnf update
+2019-10-08 17:42:14,793 - Finish: chroot init
+2019-10-08 17:42:14,796 - Start: buildsrpm
+2019-10-08 17:42:14,829 - Start: rpmbuild -bs
+2019-10-08 17:42:14,869 - Finish: rpmbuild -bs
+2019-10-08 17:42:14,870 - Finish: buildsrpm
+2019-10-08 17:42:14,871 - Finish: run
+2019-10-08 17:42:18,012 - Mock Version: 1.2.14
+2019-10-08 17:42:18,273 - Start: dnf update
+2019-10-08 17:42:28,213 - Finish: dnf update
+2019-10-08 17:42:28,218 - Finish: chroot init
+2019-10-08 17:42:28,220 - Start: build phase for tsconfig-1.0-6.src.rpm
+2019-10-08 17:42:28,222 - Start: build setup for tsconfig-1.0-6.src.rpm
+2019-10-08 17:42:34,238 - Finish: build setup for tsconfig-1.0-6.src.rpm
+2019-10-08 17:42:34,238 - Start: rpmbuild tsconfig-1.0-6.src.rpm
+2019-10-08 17:42:38,470 - Mock Version: 1.2.14
+2019-10-08 17:42:38,720 - Start: dnf update
+2019-10-08 17:42:48,981 - Finish: dnf update
+2019-10-08 17:42:48,987 - Finish: chroot init
+2019-10-08 17:42:48,989 - Start: buildsrpm
+2019-10-08 17:42:48,999 - Start: rpmbuild -bs
+2019-10-08 17:42:49,039 - Finish: rpmbuild -bs
+2019-10-08 17:42:49,041 - Finish: buildsrpm
+2019-10-08 17:42:49,041 - Finish: run
+2019-10-08 17:42:52,171 - Mock Version: 1.2.14
+2019-10-08 17:42:52,438 - Start: dnf update
+2019-10-08 17:43:02,874 - Finish: dnf update
+2019-10-08 17:43:02,883 - Finish: chroot init
+2019-10-08 17:43:02,884 - Start: build phase for tsconfig-1.0-6.src.rpm
+2019-10-08 17:43:02,887 - Start: build setup for tsconfig-1.0-6.src.rpm
+2019-10-08 17:43:04,569 - Finish: build setup for tsconfig-1.0-6.src.rpm
+2019-10-08 17:43:04,569 - Start: rpmbuild tsconfig-1.0-6.src.rpm
+2019-10-08 17:43:05,235 - Finish: rpmbuild tsconfig-1.0-6.src.rpm
+2019-10-08 17:43:05,236 - Finish: build phase for tsconfig-1.0-6.src.rpm
+2019-10-08 17:43:05,237 - Finish: run

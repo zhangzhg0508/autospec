@@ -4,13 +4,12 @@
 #
 Name     : tsconfig
 Version  : 1.0
-Release  : 5
+Release  : 6
 URL      : file:///home/clr/stx-tar/tsconfig-1.0.tar.gz
 Source0  : file:///home/clr/stx-tar/tsconfig-1.0.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0
-Requires: tsconfig-bin = %{version}-%{release}
 Requires: tsconfig-python = %{version}-%{release}
 Requires: tsconfig-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils
@@ -25,14 +24,6 @@ BuildRequires : virtualenv
 
 %description
 No detailed description available
-
-%package bin
-Summary: bin components for the tsconfig package.
-Group: Binaries
-
-%description bin
-bin components for the tsconfig package.
-
 
 %package python
 Summary: python components for the tsconfig package.
@@ -60,7 +51,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1568185102
+export SOURCE_DATE_EPOCH=1570527785
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -77,7 +68,7 @@ export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 ## install_prepend content
 %define debug_package %{nil}
-%define local_dir /usr/
+%define local_dir /usr/local
 %define local_bindir %{local_dir}/bin/
 %define pythonroot /usr/lib64/python2.7/site-packages
 ## install_prepend end
@@ -93,10 +84,7 @@ install -p -D -m 700 scripts/tsconfig %{buildroot}%{local_bindir}/tsconfig
 
 %files
 %defattr(-,root,root,-)
-
-%files bin
-%defattr(-,root,root,-)
-/usr/bin/tsconfig
+/usr/local/bin/tsconfig
 
 %files python
 %defattr(-,root,root,-)
