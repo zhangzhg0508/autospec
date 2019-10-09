@@ -9,20 +9,25 @@ Finish: clean chroot
 Start: chroot init
 INFO: calling preinit hooks
 INFO: enabled root cache
-Start: unpacking root cache
-Finish: unpacking root cache
 INFO: enabled dnf cache
+Start: Waiting for yumcache lock
+Finish: Waiting for yumcache lock
 Start: cleaning dnf metadata
 Finish: cleaning dnf metadata
 Mock Version: 1.2.14
 INFO: Mock Version: 1.2.14
-Start: dnf update
-Finish: dnf update
+WARNING: File /etc/hosts not present. It is not copied into the chroot.
+WARNING: File /etc/localtime not present. It is not copied into the chroot.
+Start: dnf install
+Finish: dnf install
+Start: creating cache
+Finish: creating cache
 Finish: chroot init
+INFO: Installed packages:
 Start: buildsrpm
 Start: rpmbuild -bs
 Finish: rpmbuild -bs
 Finish: buildsrpm
-INFO: Done(audit-config.spec) Config(clear) 0 minutes 14 seconds
+INFO: Done(audit-config.spec) Config(clear) 6 minutes 21 seconds
 INFO: Results and/or logs in: results/
 Finish: run

@@ -1,27 +1,10 @@
-From 75b8d0f766ad0f30363ae3737e2cb89dddb954c5 Mon Sep 17 00:00:00 2001
+From 7ae383f73d3f8455d3edacfdf3224245ca63782f Mon Sep 17 00:00:00 2001
 From: chen-dq <chen.dq@neusoft.com>
-Date: Thu, 19 Sep 2019 09:53:43 +0000
+Date: Fri, 27 Sep 2019 16:36:31 +0000
 Subject: [PATCH audit-config] audit-config: Autospec creation for version 1.0
 
 ---
- audit-config.spec | 8 +++-----
+ audit-config.spec | 6 +++---
  release           | 2 +-
- requires_add      | 4 ++--
- 3 files changed, 6 insertions(+), 8 deletions(-)
-
-diff --git a/requires_add b/requires_add
-index b1b09c5..5fcd37c 100644
---- a/requires_add
-+++ b/requires_add
-@@ -1,5 +1,5 @@
- # This file contains additional runtime requirements that did not get
- # picked up automatically. One name per line, no whitespace.
- audit
--audit-libs
--audit-libs-python
-+#audit-libs
-+#audit-libs-python
--- 
-2.23.0
-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 

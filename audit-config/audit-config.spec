@@ -4,7 +4,7 @@
 #
 Name     : audit-config
 Version  : 1.0
-Release  : 2
+Release  : 3
 URL      : file:///home/clear/tar/audit-config-1.0.tar.gz
 Source0  : file:///home/clear/tar/audit-config-1.0.tar.gz
 Summary  : No detailed summary available
@@ -34,7 +34,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1568886823
+export SOURCE_DATE_EPOCH=1569602191
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -47,7 +47,7 @@ make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1568886823
+export SOURCE_DATE_EPOCH=1569602191
 rm -rf %{buildroot}
 ## install_prepend content
 %define debug_package %{nil}
