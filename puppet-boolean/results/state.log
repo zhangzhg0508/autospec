@@ -1,0 +1,37 @@
+2019-09-19 10:14:18,864 - Mock Version: 1.2.14
+2019-09-19 10:14:19,265 - Start: dnf update
+2019-09-19 10:14:29,575 - Finish: dnf update
+2019-09-19 10:14:29,581 - Finish: chroot init
+2019-09-19 10:14:29,584 - Start: buildsrpm
+2019-09-19 10:14:29,592 - Start: rpmbuild -bs
+2019-09-19 10:14:29,630 - Finish: rpmbuild -bs
+2019-09-19 10:14:29,631 - Finish: buildsrpm
+2019-09-19 10:14:29,632 - Finish: run
+2019-09-19 10:14:32,705 - Mock Version: 1.2.14
+2019-09-19 10:14:32,970 - Start: dnf update
+2019-09-19 10:14:42,684 - Finish: dnf update
+2019-09-19 10:14:42,690 - Finish: chroot init
+2019-09-19 10:14:42,691 - Start: build phase for puppet-boolean-1.0.2-1.src.rpm
+2019-09-19 10:14:42,693 - Start: build setup for puppet-boolean-1.0.2-1.src.rpm
+2019-09-19 10:14:44,018 - Finish: build setup for puppet-boolean-1.0.2-1.src.rpm
+2019-09-19 10:14:44,018 - Start: rpmbuild puppet-boolean-1.0.2-1.src.rpm
+2019-09-19 10:14:47,615 - Mock Version: 1.2.14
+2019-09-19 10:14:47,866 - Start: dnf update
+2019-09-19 10:14:58,055 - Finish: dnf update
+2019-09-19 10:14:58,060 - Finish: chroot init
+2019-09-19 10:14:58,063 - Start: buildsrpm
+2019-09-19 10:14:58,069 - Start: rpmbuild -bs
+2019-09-19 10:14:58,108 - Finish: rpmbuild -bs
+2019-09-19 10:14:58,109 - Finish: buildsrpm
+2019-09-19 10:14:58,110 - Finish: run
+2019-09-19 10:15:01,187 - Mock Version: 1.2.14
+2019-09-19 10:15:01,448 - Start: dnf update
+2019-09-19 10:15:11,768 - Finish: dnf update
+2019-09-19 10:15:11,773 - Finish: chroot init
+2019-09-19 10:15:11,775 - Start: build phase for puppet-boolean-1.0.2-1.src.rpm
+2019-09-19 10:15:11,777 - Start: build setup for puppet-boolean-1.0.2-1.src.rpm
+2019-09-19 10:15:13,054 - Finish: build setup for puppet-boolean-1.0.2-1.src.rpm
+2019-09-19 10:15:13,054 - Start: rpmbuild puppet-boolean-1.0.2-1.src.rpm
+2019-09-19 10:15:13,317 - Finish: rpmbuild puppet-boolean-1.0.2-1.src.rpm
+2019-09-19 10:15:13,319 - Finish: build phase for puppet-boolean-1.0.2-1.src.rpm
+2019-09-19 10:15:13,319 - Finish: run
