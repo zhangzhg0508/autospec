@@ -1,33 +1,78 @@
-From b2d41d83c944f09b1a08fdf203d0ab20525dad33 Mon Sep 17 00:00:00 2001
-From: lgdfy <im.fuyong@gmail.com>
-Date: Wed, 11 Sep 2019 14:38:21 +0800
+From e7ad5d356341559845f441e74841a7e6db9df4ea Mon Sep 17 00:00:00 2001
+From: fuyong <fuyong@neusoft.com>
+Date: Wed, 9 Oct 2019 15:07:36 +0800
 Subject: [PATCH sysinv] sysinv: Autospec creation for version 1.0
 
 ---
- release      | 2 +-
- requires_add | 2 +-
- sysinv.spec  | 5 +++--
- 3 files changed, 5 insertions(+), 4 deletions(-)
+ build_prepend |  1 +
+ release       |  2 +-
+ sysinv.spec   | 20 ++++++++++++++++++--
+ 3 files changed, 20 insertions(+), 3 deletions(-)
 
-diff --git a/requires_add b/requires_add
-index a2585ce..73d4c1b 100644
---- a/requires_add
-+++ b/requires_add
-@@ -20,4 +20,4 @@ oslo.db
- oslo.log
- oslo.utils
- pecan
--#tsconfig
-+tsconfig
+diff --git a/build_prepend b/build_prepend
+index 7e7a633..9da241d 100644
+--- a/build_prepend
++++ b/build_prepend
+@@ -4,6 +4,7 @@
+ %define local_etc_motdd      /usr/local/etc/motd.d/
+ %define pythonroot           /usr/lib64/python2.7/site-packages
+ %define ocf_resourced        /usr/lib/ocf/resource.d
++%define _unitdir /usr/lib/systemd/system/
+ 
+ %define debug_package %{nil}
+ 
 diff --git a/sysinv.spec b/sysinv.spec
-index 55483ea..52230a6 100644
+index 6d3947c..0a35f31 100644
 --- a/sysinv.spec
 +++ b/sysinv.spec
-@@ -33,6 +33,7 @@ Requires: pbr
- Requires: pecan
- Requires: pyudev
- Requires: six
-+Requires: tsconfig
- BuildRequires : buildreq-distutils
- BuildRequires : buildreq-distutils3
- BuildRequires : pbr
+@@ -13,6 +13,7 @@ License  : Apache-2.0
+ Requires: sysinv-bin = %{version}-%{release}
+ Requires: sysinv-python = %{version}-%{release}
+ Requires: sysinv-python3 = %{version}-%{release}
++Requires: sysinv-services = %{version}-%{release}
+ Requires: Django
+ Requires: WSME
+ Requires: WebTest
+@@ -54,6 +55,7 @@ setup.py manifest.
+ %package bin
+ Summary: bin components for the sysinv package.
+ Group: Binaries
++Requires: sysinv-services = %{version}-%{release}
+ 
+ %description bin
+ bin components for the sysinv package.
+@@ -77,6 +79,14 @@ Requires: python3-core
+ python3 components for the sysinv package.
+ 
+ 
++%package services
++Group: Systemd services
++
++%description services
++services components for the sysinv package.
++
++
+ %prep
+ %setup -q -n sysinv-1.0
+ 
+@@ -88,6 +98,7 @@ python3 components for the sysinv package.
+ %define local_etc_motdd      /usr/local/etc/motd.d/
+ %define pythonroot           /usr/lib64/python2.7/site-packages
+ %define ocf_resourced        /usr/lib/ocf/resource.d
++%define _unitdir /usr/lib/systemd/system/
+ %define debug_package %{nil}
+ export PBR_VERSION=%{version}
+ ## build_prepend end
+@@ -181,3 +192,8 @@ install -p -D -m 755 sysinv/cmd/query_pci_id %{buildroot}%{local_bindir}/query_p
+ %files python3
+ %defattr(-,root,root,-)
+ /usr/lib/python3*/*
++
++%files services
++%defattr(-,root,root,-)
++/usr/lib/systemd/system/sysinv-api.service
++/usr/lib/systemd/system/sysinv-conductor.service
+-- 
+2.23.0
+
+

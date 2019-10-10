@@ -1,9 +1,9 @@
 Mock Version: 1.2.14
-ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/tsconfig.spec'], chrootPath='/var/lib/mock/clear-tsconfig/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f3c2573fdd0>timeout=0uid=1000gid=1000user='mockbuild'printOutput=False)
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/tsconfig.spec'], chrootPath='/var/lib/mock/clear-tsconfig/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7fd0d8f70290>timeout=0uid=1000gid=1000user='mockbuild'printOutput=False)
 Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/tsconfig.spec'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8'} and shell False
 Building target platforms: x86_64
 Building for target x86_64
-Wrote: /builddir/build/SRPMS/tsconfig-1.0-5.src.rpm
+Wrote: /builddir/build/SRPMS/tsconfig-1.0-6.src.rpm
 Child return code was: 0
 LEAVE do --> 
 
