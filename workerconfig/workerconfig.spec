@@ -4,7 +4,7 @@
 #
 Name     : workerconfig
 Version  : 1.0
-Release  : 6
+Release  : 8
 URL      : file:///home/clear/tar/workerconfig-1.0.tar.gz
 Source0  : file:///home/clear/tar/workerconfig-1.0.tar.gz
 Summary  : No detailed summary available
@@ -40,7 +40,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1569464245
+export SOURCE_DATE_EPOCH=1570603249
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -53,7 +53,7 @@ make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1569464245
+export SOURCE_DATE_EPOCH=1570603249
 rm -rf %{buildroot}
 install -d -m 755 %{buildroot}%{initddir}
 ## install_append content
@@ -62,9 +62,8 @@ install -d -m 755 %{buildroot}%{systemddir}
 install -d -m 755 %{buildroot}%{systemddir}/config
 install -p -D -m 700 worker_config %{buildroot}%{initddir}/worker_config
 install -p -D -m 700 worker_services %{buildroot}%{initddir}/worker_services
-install -p -D -m 755 config_goenabled_check.sh %{buildroot}%{goenableddir}/config_goenabled_check.sh
-install -p -D -m 664 workerconfig.service %{buildroot}%{systemddir}/config/workerconfig-standalone.service
-install -p -D -m 664 workerconfig-combined.service %{buildroot}%{systemddir}/config/workerconfig-combined.service
+install -p -D -m 664 workerconfig.service %{buildroot}%{systemddir}/workerconfig-standalone.service
+install -p -D -m 664 workerconfig-combined.service %{buildroot}%{systemddir}/workerconfig-combined.service
 %post
 if [ ! -e $D%{systemddir}/workerconfig.service ]; then
 cp $D%{systemddir}/config/workerconfig-standalone.service $D%{systemddir}/workerconfig.service
@@ -90,11 +89,10 @@ systemctl enable workerconfig.service
 
 %files
 %defattr(-,root,root,-)
-/usr/local/etc/goenabled.d/config_goenabled_check.sh
 /usr/local/etc/init.d/worker_config
 /usr/local/etc/init.d/worker_services
 
 %files services
 %defattr(-,root,root,-)
-/usr/lib/systemd/system/config/workerconfig-combined.service
-/usr/lib/systemd/system/config/workerconfig-standalone.service
+/usr/lib/systemd/system/workerconfig-combined.service
+/usr/lib/systemd/system/workerconfig-standalone.service

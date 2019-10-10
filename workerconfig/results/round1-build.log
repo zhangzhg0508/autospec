@@ -1,17 +1,17 @@
 Mock Version: 1.2.14
-ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/workerconfig.spec'], chrootPath='/var/lib/mock/clear-workerconfig/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f2fa18cea10>timeout=0uid=1000gid=1000user='mockbuild'printOutput=False)
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/workerconfig.spec'], chrootPath='/var/lib/mock/clear-workerconfig/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7ffa4133ddd0>timeout=0uid=1000gid=1000user='mockbuild'printOutput=False)
 Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/workerconfig.spec'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
 Building target platforms: x86_64
 Building for target x86_64
-Wrote: /builddir/build/SRPMS/workerconfig-1.0-6.src.rpm
+Wrote: /builddir/build/SRPMS/workerconfig-1.0-8.src.rpm
 Child return code was: 0
 LEAVE do --> 
 
-ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/workerconfig.spec '], chrootPath='/var/lib/mock/clear-workerconfig/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7f2fa18cea10>timeout=0uid=1000gid=1000user='mockbuild'private_network=TrueprintOutput=False)
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/workerconfig.spec '], chrootPath='/var/lib/mock/clear-workerconfig/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7ffa4133ddd0>timeout=0uid=1000gid=1000user='mockbuild'private_network=TrueprintOutput=False)
 Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/workerconfig.spec '] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
 Building target platforms: x86_64
 Building for target x86_64
-Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.zbaZMv
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.ziIM4o
 + umask 022
 + cd /builddir/build/BUILD
 + LANG=en_US.UTF-8
@@ -25,8 +25,8 @@ Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.zbaZMv
 + '[' 0 -ne 0 ']'
 + cd workerconfig-1.0
 + /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
-+ echo 'Patch #1 (0001-change-sysconfig-dir.patch):'
 Patch #1 (0001-change-sysconfig-dir.patch):
++ echo 'Patch #1 (0001-change-sysconfig-dir.patch):'
 + /usr/bin/cat /builddir/build/SOURCES/0001-change-sysconfig-dir.patch
 + /usr/bin/patch -p1 --fuzz=2
 patching file Makefile
@@ -35,7 +35,7 @@ patching file worker_services
 patching file workerconfig-combined.service
 patching file workerconfig.service
 + exit 0
-Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.O4Wx6s
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.QcVNAp
 + umask 022
 + cd /builddir/build/BUILD
 + cd workerconfig-1.0
@@ -71,8 +71,8 @@ Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.O4Wx6s
 + no_proxy=localhost,127.0.0.1,0.0.0.0
 + export LANG=C.UTF-8
 + LANG=C.UTF-8
-+ export SOURCE_DATE_EPOCH=1569464190
-+ SOURCE_DATE_EPOCH=1569464190
++ export SOURCE_DATE_EPOCH=1570603186
++ SOURCE_DATE_EPOCH=1570603186
 + export GCC_IGNORE_WERROR=1
 + GCC_IGNORE_WERROR=1
 + export AR=gcc-ar
@@ -91,7 +91,7 @@ Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.O4Wx6s
 + CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
 + make -j4
 + exit 0
-Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.cZ3gus
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.Uyp3Ps
 + umask 022
 + cd /builddir/build/BUILD
 + cd workerconfig-1.0
@@ -99,75 +99,72 @@ Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.cZ3gus
 + export LANG
 + unset DISPLAY
 + unset PYTHONOPTIMIZE
-+ rm -rf /builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64
-+ mkdir -p /builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64
-+ export SOURCE_DATE_EPOCH=1569464190
-+ SOURCE_DATE_EPOCH=1569464190
-+ rm -rf /builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64
-+ install -d -m 755 /builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64/usr/local/etc/init.d/
-+ install -d -m 755 /builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64/usr/local/etc/goenabled.d/
-+ install -d -m 755 /builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64/usr/lib/systemd/system/
-+ install -d -m 755 /builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64/usr/lib/systemd/system//config
-+ install -p -D -m 700 worker_config /builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64/usr/local/etc/init.d//worker_config
-+ install -p -D -m 700 worker_services /builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64/usr/local/etc/init.d//worker_services
-+ install -p -D -m 755 config_goenabled_check.sh /builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64/usr/local/etc/goenabled.d//config_goenabled_check.sh
-+ install -p -D -m 664 workerconfig.service /builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64/usr/lib/systemd/system//config/workerconfig-standalone.service
-+ install -p -D -m 664 workerconfig-combined.service /builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64/usr/lib/systemd/system//config/workerconfig-combined.service
-+ rm -f /builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64/usr/share/info/dir
-++ find /builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64 -path 'etc/*' '!' -type d
++ rm -rf /builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64
++ mkdir -p /builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64
++ export SOURCE_DATE_EPOCH=1570603186
++ SOURCE_DATE_EPOCH=1570603186
++ rm -rf /builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64
++ install -d -m 755 /builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64/usr/local/etc/init.d/
++ install -d -m 755 /builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64/usr/local/etc/goenabled.d/
++ install -d -m 755 /builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64/usr/lib/systemd/system/
++ install -d -m 755 /builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64/usr/lib/systemd/system//config
++ install -p -D -m 700 worker_config /builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64/usr/local/etc/init.d//worker_config
++ install -p -D -m 700 worker_services /builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64/usr/local/etc/init.d//worker_services
++ install -p -D -m 664 workerconfig.service /builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64/usr/lib/systemd/system//workerconfig-standalone.service
++ install -p -D -m 664 workerconfig-combined.service /builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64/usr/lib/systemd/system//workerconfig-combined.service
++ rm -f /builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64/usr/share/info/dir
+++ find /builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64 -path 'etc/*' '!' -type d
 + test -z ''
-+ rm -rf '/builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64/etc/*'
-+ rm -rf '/builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64/usr/share/factory/*'
-+ find /builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64 -name __pycache__
++ rm -rf '/builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64/etc/*'
++ rm -rf '/builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64/usr/share/factory/*'
++ find /builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64 -name __pycache__
 + xargs rm -rf --
-+ '[' -d /builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64/usr/share/mime ']'
++ '[' -d /builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64/usr/share/mime ']'
 ++ getconf _NPROCESSORS_ONLN
 + RPM_XARGS_PFLAG=-P4
-+ find /builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64 -name '*.so.avx512' -print0
++ find /builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64 -name '*.so.avx512' -print0
 + xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -5
-+ find /builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64/usr/lib64/haswell/avx512_1 -name '*.so*' -print0
-find: ‘/builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64/usr/lib64/haswell/avx512_1’: No such file or directory
-+ find /builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64 -name '*.so.avx2' -print0
++ find /builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64/usr/lib64/haswell/avx512_1 -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64/usr/lib64/haswell/avx512_1’: No such file or directory
++ find /builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64 -name '*.so.avx2' -print0
 + xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -2
-+ find /builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64/usr/lib64/haswell '!' -path '/usr/lib64/haswell/avx512_1/*' -name '*.so*' -print0
-find: ‘/builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64/usr/lib64/haswell’: No such file or directory
-+ find /builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64/usr/lib64/ -maxdepth 1 -name '*.so*' -type f -print0
++ find /builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64/usr/lib64/haswell '!' -path '/usr/lib64/haswell/avx512_1/*' -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64/usr/lib64/haswell’: No such file or directory
++ find /builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64/usr/lib64/ -maxdepth 1 -name '*.so*' -type f -print0
 + xargs -0rtn1 -P4 /usr/lib/rpm/clr/brp-create-abi
 + sort -u
-find: ‘/builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64/usr/lib64/’: No such file or directory
-+ '[' -d /builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64/usr/lib/debug ']'
+find: ‘/builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64/usr/lib64/’: No such file or directory
++ '[' -d /builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64/usr/lib/debug ']'
 + :
-+ '[' -d /builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64/usr/lib/debug ']'
++ '[' -d /builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64/usr/lib/debug ']'
 + :
-+ '[' -d /builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64/usr/src/debug ']'
++ '[' -d /builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64/usr/src/debug ']'
 + :
-+ '[' -d /builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64/usr/lib/debug.force ']'
++ '[' -d /builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64/usr/lib/debug.force ']'
 + :
-+ '[' -d /builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64/usr/src/debug.force ']'
++ '[' -d /builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64/usr/src/debug.force ']'
 + :
 + /usr/lib/rpm/check-buildroot
 + /usr/lib/rpm/clr/brp-strip /usr/bin/strip
 + /usr/lib/rpm/clr/brp-strip-static-archive /usr/bin/strip
 + /usr/lib/rpm/clr/brp-strip-comment-note /usr/bin/strip /usr/bin/objdump
 + /usr/lib/rpm/clr/brp-python-bytecompile
-+ find /builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64 -print0
-+ xargs -0 touch -h -d @1569464190
++ find /builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64 -print0
++ xargs -0 touch -h -d @1570603186
 + /usr/lib/rpm/clr/brp-java-repack-jars
-Processing files: workerconfig-1.0-6.x86_64
-Processing files: workerconfig-abi-1.0-6.x86_64
+Processing files: workerconfig-1.0-8.x86_64
+Processing files: workerconfig-abi-1.0-8.x86_64
 warning: Empty %files file /builddir/build/BUILD/workerconfig-1.0/abifiles.list
-Checking for unpackaged file(s): /usr/lib/rpm/check-files /builddir/build/BUILDROOT/workerconfig-1.0-6.x86_64
+Checking for unpackaged file(s): /usr/lib/rpm/check-files /builddir/build/BUILDROOT/workerconfig-1.0-8.x86_64
 error: Installed (but unpackaged) file(s) found:
-   /usr/lib/systemd/system/config/workerconfig-combined.service
-   /usr/lib/systemd/system/config/workerconfig-standalone.service
-   /usr/local/etc/goenabled.d/config_goenabled_check.sh
+   /usr/lib/systemd/system/workerconfig-combined.service
+   /usr/lib/systemd/system/workerconfig-standalone.service
    /usr/local/etc/init.d/worker_config
    /usr/local/etc/init.d/worker_services
     Empty %files file /builddir/build/BUILD/workerconfig-1.0/abifiles.list
     Installed (but unpackaged) file(s) found:
-   /usr/lib/systemd/system/config/workerconfig-combined.service
-   /usr/lib/systemd/system/config/workerconfig-standalone.service
-   /usr/local/etc/goenabled.d/config_goenabled_check.sh
+   /usr/lib/systemd/system/workerconfig-combined.service
+   /usr/lib/systemd/system/workerconfig-standalone.service
    /usr/local/etc/init.d/worker_config
    /usr/local/etc/init.d/worker_services
 RPM build errors:

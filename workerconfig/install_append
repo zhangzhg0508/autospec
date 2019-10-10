@@ -3,9 +3,9 @@
 	install -d -m 755 %{buildroot}%{systemddir}/config
 	install -p -D -m 700 worker_config %{buildroot}%{initddir}/worker_config
 	install -p -D -m 700 worker_services %{buildroot}%{initddir}/worker_services
-	install -p -D -m 755 config_goenabled_check.sh %{buildroot}%{goenableddir}/config_goenabled_check.sh
-	install -p -D -m 664 workerconfig.service %{buildroot}%{systemddir}/config/workerconfig-standalone.service
-	install -p -D -m 664 workerconfig-combined.service %{buildroot}%{systemddir}/config/workerconfig-combined.service
+	#install -p -D -m 755 config_goenabled_check.sh %{buildroot}%{goenableddir}/config_goenabled_check.sh
+	install -p -D -m 664 workerconfig.service %{buildroot}%{systemddir}/workerconfig-standalone.service
+	install -p -D -m 664 workerconfig-combined.service %{buildroot}%{systemddir}/workerconfig-combined.service
 
 %post
 if [ ! -e $D%{systemddir}/workerconfig.service ]; then
