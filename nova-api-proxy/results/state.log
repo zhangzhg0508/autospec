@@ -1,37 +1,37 @@
-2019-09-09 09:47:42,872 - Mock Version: 1.2.14
-2019-09-09 09:47:43,145 - Start: dnf update
-2019-09-09 09:47:55,798 - Finish: dnf update
-2019-09-09 09:47:55,804 - Finish: chroot init
-2019-09-09 09:47:55,807 - Start: buildsrpm
-2019-09-09 09:47:55,817 - Start: rpmbuild -bs
-2019-09-09 09:47:55,853 - Finish: rpmbuild -bs
-2019-09-09 09:47:55,854 - Finish: buildsrpm
-2019-09-09 09:47:55,855 - Finish: run
-2019-09-09 09:47:59,663 - Mock Version: 1.2.14
-2019-09-09 09:47:59,915 - Start: dnf update
-2019-09-09 09:48:12,319 - Finish: dnf update
-2019-09-09 09:48:12,324 - Finish: chroot init
-2019-09-09 09:48:12,326 - Start: build phase for nova-api-proxy-1.0-3.src.rpm
-2019-09-09 09:48:12,328 - Start: build setup for nova-api-proxy-1.0-3.src.rpm
-2019-09-09 09:48:13,353 - Finish: build setup for nova-api-proxy-1.0-3.src.rpm
-2019-09-09 09:48:13,354 - Start: rpmbuild nova-api-proxy-1.0-3.src.rpm
-2019-09-09 09:48:18,273 - Mock Version: 1.2.14
-2019-09-09 09:48:18,520 - Start: dnf update
-2019-09-09 09:48:31,040 - Finish: dnf update
-2019-09-09 09:48:31,046 - Finish: chroot init
-2019-09-09 09:48:31,049 - Start: buildsrpm
-2019-09-09 09:48:31,059 - Start: rpmbuild -bs
-2019-09-09 09:48:31,096 - Finish: rpmbuild -bs
-2019-09-09 09:48:31,098 - Finish: buildsrpm
-2019-09-09 09:48:31,099 - Finish: run
-2019-09-09 09:48:34,927 - Mock Version: 1.2.14
-2019-09-09 09:48:35,223 - Start: dnf update
-2019-09-09 09:48:47,813 - Finish: dnf update
-2019-09-09 09:48:47,819 - Finish: chroot init
-2019-09-09 09:48:47,821 - Start: build phase for nova-api-proxy-1.0-3.src.rpm
-2019-09-09 09:48:47,824 - Start: build setup for nova-api-proxy-1.0-3.src.rpm
-2019-09-09 09:48:48,860 - Finish: build setup for nova-api-proxy-1.0-3.src.rpm
-2019-09-09 09:48:48,860 - Start: rpmbuild nova-api-proxy-1.0-3.src.rpm
-2019-09-09 09:48:50,110 - Finish: rpmbuild nova-api-proxy-1.0-3.src.rpm
-2019-09-09 09:48:50,111 - Finish: build phase for nova-api-proxy-1.0-3.src.rpm
-2019-09-09 09:48:50,112 - Finish: run
+2019-10-09 06:44:16,774 - Mock Version: 1.2.14
+2019-10-09 06:44:17,023 - Start: dnf update
+2019-10-09 06:44:27,358 - Finish: dnf update
+2019-10-09 06:44:27,364 - Finish: chroot init
+2019-10-09 06:44:27,367 - Start: buildsrpm
+2019-10-09 06:44:27,378 - Start: rpmbuild -bs
+2019-10-09 06:44:27,419 - Finish: rpmbuild -bs
+2019-10-09 06:44:27,420 - Finish: buildsrpm
+2019-10-09 06:44:27,421 - Finish: run
+2019-10-09 06:44:30,570 - Mock Version: 1.2.14
+2019-10-09 06:44:30,837 - Start: dnf update
+2019-10-09 06:44:40,193 - Finish: dnf update
+2019-10-09 06:44:40,199 - Finish: chroot init
+2019-10-09 06:44:40,200 - Start: build phase for nova-api-proxy-1.0-7.src.rpm
+2019-10-09 06:44:40,202 - Start: build setup for nova-api-proxy-1.0-7.src.rpm
+2019-10-09 06:44:41,221 - Finish: build setup for nova-api-proxy-1.0-7.src.rpm
+2019-10-09 06:44:41,221 - Start: rpmbuild nova-api-proxy-1.0-7.src.rpm
+2019-10-09 06:44:45,531 - Mock Version: 1.2.14
+2019-10-09 06:44:45,778 - Start: dnf update
+2019-10-09 06:44:55,401 - Finish: dnf update
+2019-10-09 06:44:55,407 - Finish: chroot init
+2019-10-09 06:44:55,410 - Start: buildsrpm
+2019-10-09 06:44:55,421 - Start: rpmbuild -bs
+2019-10-09 06:44:55,462 - Finish: rpmbuild -bs
+2019-10-09 06:44:55,464 - Finish: buildsrpm
+2019-10-09 06:44:55,464 - Finish: run
+2019-10-09 06:44:58,608 - Mock Version: 1.2.14
+2019-10-09 06:44:58,867 - Start: dnf update
+2019-10-09 06:45:08,516 - Finish: dnf update
+2019-10-09 06:45:08,522 - Finish: chroot init
+2019-10-09 06:45:08,523 - Start: build phase for nova-api-proxy-1.0-7.src.rpm
+2019-10-09 06:45:08,526 - Start: build setup for nova-api-proxy-1.0-7.src.rpm
+2019-10-09 06:45:09,516 - Finish: build setup for nova-api-proxy-1.0-7.src.rpm
+2019-10-09 06:45:09,516 - Start: rpmbuild nova-api-proxy-1.0-7.src.rpm
+2019-10-09 06:45:10,488 - Finish: rpmbuild nova-api-proxy-1.0-7.src.rpm
+2019-10-09 06:45:10,490 - Finish: build phase for nova-api-proxy-1.0-7.src.rpm
+2019-10-09 06:45:10,490 - Finish: run

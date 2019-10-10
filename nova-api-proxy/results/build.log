@@ -1,17 +1,17 @@
 Mock Version: 1.2.14
-ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/nova-api-proxy.spec'], chrootPath='/var/lib/mock/clear-nova-api-proxy/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7fc3f3c6cf90>timeout=0uid=1000gid=1000user='mockbuild'printOutput=False)
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/nova-api-proxy.spec'], chrootPath='/var/lib/mock/clear-nova-api-proxy/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7fe7d6e6fe90>timeout=0uid=1000gid=1000user='mockbuild'printOutput=False)
 Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/nova-api-proxy.spec'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
 Building target platforms: x86_64
 Building for target x86_64
-Wrote: /builddir/build/SRPMS/nova-api-proxy-1.0-3.src.rpm
+Wrote: /builddir/build/SRPMS/nova-api-proxy-1.0-7.src.rpm
 Child return code was: 0
 LEAVE do --> 
 
-ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/nova-api-proxy.spec '], chrootPath='/var/lib/mock/clear-nova-api-proxy/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7fc3f3c6cf90>timeout=0uid=1000gid=1000user='mockbuild'private_network=TrueprintOutput=False)
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/nova-api-proxy.spec '], chrootPath='/var/lib/mock/clear-nova-api-proxy/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7fe7d6e6fe90>timeout=0uid=1000gid=1000user='mockbuild'private_network=TrueprintOutput=False)
 Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/nova-api-proxy.spec '] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
 Building target platforms: x86_64
 Building for target x86_64
-Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.vVh9uo
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.PZ6Bhg
 + umask 022
 + cd /builddir/build/BUILD
 + LANG=en_US.UTF-8
@@ -25,8 +25,14 @@ Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.vVh9uo
 + '[' 0 -ne 0 ']'
 + cd nova-api-proxy-1.0
 + /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ echo 'Patch #1 (0001-change-sysconfig-dir.patch):'
+Patch #1 (0001-change-sysconfig-dir.patch):
++ /usr/bin/cat /builddir/build/SOURCES/0001-change-sysconfig-dir.patch
++ /usr/bin/patch -p1 --fuzz=2
+patching file nova_api_proxy/scripts/api-proxy
+patching file nova_api_proxy/scripts/api-proxy.service
 + exit 0
-Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.ntgI8p
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.K2cNug
 + umask 022
 + cd /builddir/build/BUILD
 + cd nova-api-proxy-1.0
@@ -62,8 +68,8 @@ Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.ntgI8p
 + no_proxy=localhost,127.0.0.1,0.0.0.0
 + export LANG=C.UTF-8
 + LANG=C.UTF-8
-+ export SOURCE_DATE_EPOCH=1568022494
-+ SOURCE_DATE_EPOCH=1568022494
++ export SOURCE_DATE_EPOCH=1570603482
++ SOURCE_DATE_EPOCH=1570603482
 + export GCC_IGNORE_WERROR=1
 + GCC_IGNORE_WERROR=1
 + export AR=gcc-ar
@@ -88,23 +94,23 @@ running build_py
 creating build
 creating build/lib
 creating build/lib/nova_api_proxy
-copying nova_api_proxy/api_proxy.py -> build/lib/nova_api_proxy
 copying nova_api_proxy/__init__.py -> build/lib/nova_api_proxy
-creating build/lib/nova_api_proxy/apps
-copying nova_api_proxy/apps/dispatcher.py -> build/lib/nova_api_proxy/apps
-copying nova_api_proxy/apps/acceptor.py -> build/lib/nova_api_proxy/apps
-copying nova_api_proxy/apps/proxy.py -> build/lib/nova_api_proxy/apps
-copying nova_api_proxy/apps/__init__.py -> build/lib/nova_api_proxy/apps
+copying nova_api_proxy/api_proxy.py -> build/lib/nova_api_proxy
 creating build/lib/nova_api_proxy/common
 copying nova_api_proxy/common/exception.py -> build/lib/nova_api_proxy/common
+copying nova_api_proxy/common/__init__.py -> build/lib/nova_api_proxy/common
+copying nova_api_proxy/common/histogram.py -> build/lib/nova_api_proxy/common
 copying nova_api_proxy/common/service.py -> build/lib/nova_api_proxy/common
 copying nova_api_proxy/common/utils.py -> build/lib/nova_api_proxy/common
 copying nova_api_proxy/common/config.py -> build/lib/nova_api_proxy/common
-copying nova_api_proxy/common/__init__.py -> build/lib/nova_api_proxy/common
-copying nova_api_proxy/common/histogram.py -> build/lib/nova_api_proxy/common
 copying nova_api_proxy/common/timestamp.py -> build/lib/nova_api_proxy/common
+creating build/lib/nova_api_proxy/apps
+copying nova_api_proxy/apps/__init__.py -> build/lib/nova_api_proxy/apps
+copying nova_api_proxy/apps/proxy.py -> build/lib/nova_api_proxy/apps
+copying nova_api_proxy/apps/dispatcher.py -> build/lib/nova_api_proxy/apps
+copying nova_api_proxy/apps/acceptor.py -> build/lib/nova_api_proxy/apps
 + exit 0
-Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.dl4Cpn
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.cR6Oag
 + umask 022
 + cd /builddir/build/BUILD
 + cd nova-api-proxy-1.0
@@ -112,50 +118,50 @@ Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.dl4Cpn
 + export LANG
 + unset DISPLAY
 + unset PYTHONOPTIMIZE
-+ rm -rf /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64
-+ mkdir -p /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64
++ rm -rf /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64
++ mkdir -p /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64
 + export MAKEFLAGS=-j4
 + MAKEFLAGS=-j4
-+ rm -rf /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64
-+ python3 -tt setup.py build install --root=/builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64
++ rm -rf /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64
++ python3 -tt setup.py build install --root=/builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64
 running build
 running build_py
 running install
 running install_lib
-creating /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64
-creating /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr
-creating /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib
-creating /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7
-creating /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages
-creating /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy
-creating /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/apps
-copying build/lib/nova_api_proxy/apps/dispatcher.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/apps
-copying build/lib/nova_api_proxy/apps/acceptor.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/apps
-copying build/lib/nova_api_proxy/apps/proxy.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/apps
-copying build/lib/nova_api_proxy/apps/__init__.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/apps
-copying build/lib/nova_api_proxy/api_proxy.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy
-creating /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/common
-copying build/lib/nova_api_proxy/common/exception.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/common
-copying build/lib/nova_api_proxy/common/service.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/common
-copying build/lib/nova_api_proxy/common/utils.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/common
-copying build/lib/nova_api_proxy/common/config.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/common
-copying build/lib/nova_api_proxy/common/__init__.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/common
-copying build/lib/nova_api_proxy/common/histogram.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/common
-copying build/lib/nova_api_proxy/common/timestamp.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/common
-copying build/lib/nova_api_proxy/__init__.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy
-byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/apps/dispatcher.py to dispatcher.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/apps/acceptor.py to acceptor.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/apps/proxy.py to proxy.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/apps/__init__.py to __init__.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/api_proxy.py to api_proxy.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/common/exception.py to exception.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/common/service.py to service.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/common/utils.py to utils.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/common/config.py to config.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/common/__init__.py to __init__.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/common/histogram.py to histogram.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/common/timestamp.py to timestamp.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/__init__.py to __init__.cpython-37.pyc
+creating /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64
+creating /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr
+creating /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib
+creating /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7
+creating /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages
+creating /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy
+copying build/lib/nova_api_proxy/__init__.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy
+creating /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/common
+copying build/lib/nova_api_proxy/common/exception.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/common
+copying build/lib/nova_api_proxy/common/__init__.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/common
+copying build/lib/nova_api_proxy/common/histogram.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/common
+copying build/lib/nova_api_proxy/common/service.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/common
+copying build/lib/nova_api_proxy/common/utils.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/common
+copying build/lib/nova_api_proxy/common/config.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/common
+copying build/lib/nova_api_proxy/common/timestamp.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/common
+copying build/lib/nova_api_proxy/api_proxy.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy
+creating /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/apps
+copying build/lib/nova_api_proxy/apps/__init__.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/apps
+copying build/lib/nova_api_proxy/apps/proxy.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/apps
+copying build/lib/nova_api_proxy/apps/dispatcher.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/apps
+copying build/lib/nova_api_proxy/apps/acceptor.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/apps
+byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/common/exception.py to exception.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/common/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/common/histogram.py to histogram.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/common/service.py to service.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/common/utils.py to utils.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/common/config.py to config.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/common/timestamp.py to timestamp.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/api_proxy.py to api_proxy.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/apps/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/apps/proxy.py to proxy.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/apps/dispatcher.py to dispatcher.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages/nova_api_proxy/apps/acceptor.py to acceptor.cpython-37.pyc
 running install_egg_info
 running egg_info
 creating api_proxy.egg-info
@@ -166,53 +172,53 @@ writing top-level names to api_proxy.egg-info/top_level.txt
 writing manifest file 'api_proxy.egg-info/SOURCES.txt'
 reading manifest file 'api_proxy.egg-info/SOURCES.txt'
 writing manifest file 'api_proxy.egg-info/SOURCES.txt'
-Copying api_proxy.egg-info to /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7/site-packages/api_proxy-1.0.0-py3.7.egg-info
+Copying api_proxy.egg-info to /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7/site-packages/api_proxy-1.0.0-py3.7.egg-info
 running install_scripts
-Installing nova-api-proxy script to /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/bin
-----[ mark ]----
+Installing nova-api-proxy script to /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/bin
 + echo '----[' mark ']----'
-+ cat '/builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3*/site-packages/*/requires.txt'
-cat: '/builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3*/site-packages/*/requires.txt': No such file or directory
 ----[ mark ]----
++ cat '/builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3*/site-packages/*/requires.txt'
+cat: '/builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3*/site-packages/*/requires.txt': No such file or directory
 + :
+----[ mark ]----
 + echo '----[' mark ']----'
-+ /usr/bin/python setup.py install --root=/builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64 --install-lib=/usr/lib64/python2.7/site-packages --prefix=/usr --install-data=/usr/share --single-version-externally-managed
++ /usr/bin/python setup.py install --root=/builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64 --install-lib=/usr/lib64/python2.7/site-packages --prefix=/usr --install-data=/usr/share --single-version-externally-managed
 running install
 running build
 running build_py
 running install_lib
-creating /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64
-creating /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7
-creating /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages
-creating /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy
-creating /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/apps
-copying build/lib/nova_api_proxy/apps/dispatcher.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/apps
-copying build/lib/nova_api_proxy/apps/acceptor.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/apps
-copying build/lib/nova_api_proxy/apps/proxy.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/apps
-copying build/lib/nova_api_proxy/apps/__init__.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/apps
-copying build/lib/nova_api_proxy/api_proxy.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy
-creating /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/common
-copying build/lib/nova_api_proxy/common/exception.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/common
-copying build/lib/nova_api_proxy/common/service.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/common
-copying build/lib/nova_api_proxy/common/utils.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/common
-copying build/lib/nova_api_proxy/common/config.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/common
-copying build/lib/nova_api_proxy/common/__init__.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/common
-copying build/lib/nova_api_proxy/common/histogram.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/common
-copying build/lib/nova_api_proxy/common/timestamp.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/common
-copying build/lib/nova_api_proxy/__init__.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy
-byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/apps/dispatcher.py to dispatcher.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/apps/acceptor.py to acceptor.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/apps/proxy.py to proxy.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/apps/__init__.py to __init__.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/api_proxy.py to api_proxy.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/common/exception.py to exception.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/common/service.py to service.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/common/utils.py to utils.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/common/config.py to config.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/common/__init__.py to __init__.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/common/histogram.py to histogram.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/common/timestamp.py to timestamp.cpython-37.pyc
-byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/__init__.py to __init__.cpython-37.pyc
+creating /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64
+creating /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7
+creating /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages
+creating /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy
+copying build/lib/nova_api_proxy/__init__.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy
+creating /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/common
+copying build/lib/nova_api_proxy/common/exception.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/common
+copying build/lib/nova_api_proxy/common/__init__.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/common
+copying build/lib/nova_api_proxy/common/histogram.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/common
+copying build/lib/nova_api_proxy/common/service.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/common
+copying build/lib/nova_api_proxy/common/utils.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/common
+copying build/lib/nova_api_proxy/common/config.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/common
+copying build/lib/nova_api_proxy/common/timestamp.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/common
+copying build/lib/nova_api_proxy/api_proxy.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy
+creating /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/apps
+copying build/lib/nova_api_proxy/apps/__init__.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/apps
+copying build/lib/nova_api_proxy/apps/proxy.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/apps
+copying build/lib/nova_api_proxy/apps/dispatcher.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/apps
+copying build/lib/nova_api_proxy/apps/acceptor.py -> /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/apps
+byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/common/exception.py to exception.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/common/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/common/histogram.py to histogram.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/common/service.py to service.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/common/utils.py to utils.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/common/config.py to config.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/common/timestamp.py to timestamp.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/api_proxy.py to api_proxy.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/apps/__init__.py to __init__.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/apps/proxy.py to proxy.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/apps/dispatcher.py to dispatcher.cpython-37.pyc
+byte-compiling /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages/nova_api_proxy/apps/acceptor.py to acceptor.cpython-37.pyc
 running install_egg_info
 running egg_info
 writing api_proxy.egg-info/PKG-INFO
@@ -221,90 +227,94 @@ writing entry points to api_proxy.egg-info/entry_points.txt
 writing top-level names to api_proxy.egg-info/top_level.txt
 reading manifest file 'api_proxy.egg-info/SOURCES.txt'
 writing manifest file 'api_proxy.egg-info/SOURCES.txt'
-Copying api_proxy.egg-info to /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/python2.7/site-packages/api_proxy-1.0.0-py3.7.egg-info
+Copying api_proxy.egg-info to /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/python2.7/site-packages/api_proxy-1.0.0-py3.7.egg-info
 running install_scripts
-Installing nova-api-proxy script to /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/bin
-+ install -d -m 755 /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/local/etc/systemd/system/
-+ install -p -D -m 644 nova_api_proxy/scripts/api-proxy.service /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/local/etc/systemd/system//api-proxy.service
-+ install -d -m 755 /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/local/etc/rc.d/init.d
-+ install -p -D -m 755 nova_api_proxy/scripts/api-proxy /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/local/etc/rc.d/init.d/api-proxy
-+ install -d -m 755 /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/local/etc/proxy/
-+ install -p -D -m 700 nova_api_proxy/nova-api-proxy.conf /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/local/etc/proxy//nova-api-proxy.conf
-+ install -p -D -m 700 nova_api_proxy/api-proxy-paste.ini /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/local/etc/proxy//api-proxy-paste.ini
-+ rm -f /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/share/info/dir
-++ find /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64 -path 'etc/*' '!' -type d
+Installing nova-api-proxy script to /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/bin
++ install -d -m 755 /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/systemd/system
++ install -p -D -m 644 nova_api_proxy/scripts/api-proxy.service /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/systemd/system/api-proxy.service
++ install -d -m 755 /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/local/etc/init.d
++ install -p -D -m 755 nova_api_proxy/scripts/api-proxy /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/local/etc/init.d/api-proxy
++ install -d -m 755 /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/local/etc/proxy
++ install -p -D -m 700 nova_api_proxy/nova-api-proxy.conf /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/local/etc/proxy/nova-api-proxy.conf
++ install -p -D -m 700 nova_api_proxy/api-proxy-paste.ini /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/local/etc/proxy/api-proxy-paste.ini
++ rm -f /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/share/info/dir
+++ find /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64 -path 'etc/*' '!' -type d
 + test -z ''
-+ rm -rf '/builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/etc/*'
-+ rm -rf '/builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/share/factory/*'
-+ find /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64 -name __pycache__
++ rm -rf '/builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/etc/*'
++ rm -rf '/builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/share/factory/*'
++ find /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64 -name __pycache__
 + xargs rm -rf --
-+ '[' -d /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/share/mime ']'
++ '[' -d /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/share/mime ']'
 ++ getconf _NPROCESSORS_ONLN
 + RPM_XARGS_PFLAG=-P4
++ find /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64 -name '*.so.avx512' -print0
 + xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -5
-+ find /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64 -name '*.so.avx512' -print0
-+ find /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/haswell/avx512_1 -name '*.so*' -print0
-find: ‘/builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/haswell/avx512_1’: No such file or directory
-+ find /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64 -name '*.so.avx2' -print0
++ find /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/haswell/avx512_1 -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/haswell/avx512_1’: No such file or directory
++ find /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64 -name '*.so.avx2' -print0
 + xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -2
-+ find /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/haswell '!' -path '/usr/lib64/haswell/avx512_1/*' -name '*.so*' -print0
-find: ‘/builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/haswell’: No such file or directory
++ find /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/haswell '!' -path '/usr/lib64/haswell/avx512_1/*' -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/haswell’: No such file or directory
 + xargs -0rtn1 -P4 /usr/lib/rpm/clr/brp-create-abi
 + sort -u
-+ find /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib64/ -maxdepth 1 -name '*.so*' -type f -print0
++ find /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib64/ -maxdepth 1 -name '*.so*' -type f -print0
 + /usr/lib/rpm/find-debuginfo.sh --strict-build-id /builddir/build/BUILD/nova-api-proxy-1.0
 find: ‘debug’: No such file or directory
-+ '[' -d /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/debug ']'
++ '[' -d /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/debug ']'
 + :
-+ '[' -d /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/debug ']'
++ '[' -d /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/debug ']'
 + :
-+ '[' -d /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/src/debug ']'
++ '[' -d /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/src/debug ']'
 + :
-+ '[' -d /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/debug.force ']'
++ '[' -d /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/debug.force ']'
 + :
-+ '[' -d /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/src/debug.force ']'
++ '[' -d /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/src/debug.force ']'
 + :
 + /usr/lib/rpm/check-buildroot
 + /usr/lib/rpm/clr/brp-strip-static-archive /usr/bin/strip
 + /usr/lib/rpm/clr/brp-strip-comment-note /usr/bin/strip /usr/bin/objdump
 + /usr/lib/rpm/clr/brp-python-bytecompile
-[BYTECOMPILE] Building for /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64/usr/lib/python3.7 using /usr/bin/python3.7
-+ find /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64 -print0
+[BYTECOMPILE] Building for /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64/usr/lib/python3.7 using /usr/bin/python3.7
++ find /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64 -print0
 + xargs -0 touch -h -d '@1549052798 '
 + /usr/lib/rpm/clr/brp-java-repack-jars
-Processing files: nova-api-proxy-1.0-3.x86_64
-Provides: nova-api-proxy = 1.0-3 nova-api-proxy(x86-64) = 1.0-3
+Processing files: nova-api-proxy-1.0-7.x86_64
+Provides: nova-api-proxy = 1.0-7 nova-api-proxy(x86-64) = 1.0-7
 Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
 Requires: /bin/sh
-Processing files: nova-api-proxy-bin-1.0-3.x86_64
-Provides: nova-api-proxy-bin = 1.0-3 nova-api-proxy-bin(x86-64) = 1.0-3
+Processing files: nova-api-proxy-bin-1.0-7.x86_64
+Provides: nova-api-proxy-bin = 1.0-7 nova-api-proxy-bin(x86-64) = 1.0-7
 Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
 Requires: /usr/bin/python
-Processing files: nova-api-proxy-python-1.0-3.x86_64
-Provides: nova-api-proxy-python = 1.0-3 nova-api-proxy-python(x86-64) = 1.0-3
+Processing files: nova-api-proxy-python-1.0-7.x86_64
+Provides: nova-api-proxy-python = 1.0-7 nova-api-proxy-python(x86-64) = 1.0-7
 Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
 Requires: python(abi) = 2.7
-Processing files: nova-api-proxy-python3-1.0-3.x86_64
-Provides: nova-api-proxy-python3 = 1.0-3 nova-api-proxy-python3(x86-64) = 1.0-3
+Processing files: nova-api-proxy-python3-1.0-7.x86_64
+Provides: nova-api-proxy-python3 = 1.0-7 nova-api-proxy-python3(x86-64) = 1.0-7
 Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
 Requires: python(abi) = 3.7
-Processing files: nova-api-proxy-debuginfo-1.0-3.x86_64
-Processing files: nova-api-proxy-abi-1.0-3.x86_64
+Processing files: nova-api-proxy-services-1.0-7.x86_64
+Provides: nova-api-proxy-services = 1.0-7 nova-api-proxy-services(x86-64) = 1.0-7
+Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+Processing files: nova-api-proxy-debuginfo-1.0-7.x86_64
+Processing files: nova-api-proxy-abi-1.0-7.x86_64
 warning: Empty %files file /builddir/build/BUILD/nova-api-proxy-1.0/debugfiles.list
 warning: Empty %files file /builddir/build/BUILD/nova-api-proxy-1.0/abifiles.list
-Checking for unpackaged file(s): /usr/lib/rpm/check-files /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64
-Wrote: /builddir/build/RPMS/nova-api-proxy-1.0-3.x86_64.rpm
-Wrote: /builddir/build/RPMS/nova-api-proxy-bin-1.0-3.x86_64.rpm
-Wrote: /builddir/build/RPMS/nova-api-proxy-python-1.0-3.x86_64.rpm
-Wrote: /builddir/build/RPMS/nova-api-proxy-python3-1.0-3.x86_64.rpm
-Wrote: /builddir/build/RPMS/nova-api-proxy-debuginfo-1.0-3.x86_64.rpm
-Wrote: /builddir/build/RPMS/nova-api-proxy-abi-1.0-3.x86_64.rpm
-Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.E5jv5o
+Checking for unpackaged file(s): /usr/lib/rpm/check-files /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64
+Wrote: /builddir/build/RPMS/nova-api-proxy-1.0-7.x86_64.rpm
+Wrote: /builddir/build/RPMS/nova-api-proxy-bin-1.0-7.x86_64.rpm
+Wrote: /builddir/build/RPMS/nova-api-proxy-python-1.0-7.x86_64.rpm
+Wrote: /builddir/build/RPMS/nova-api-proxy-python3-1.0-7.x86_64.rpm
+Wrote: /builddir/build/RPMS/nova-api-proxy-services-1.0-7.x86_64.rpm
+Wrote: /builddir/build/RPMS/nova-api-proxy-debuginfo-1.0-7.x86_64.rpm
+Wrote: /builddir/build/RPMS/nova-api-proxy-abi-1.0-7.x86_64.rpm
+Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.Xw5FFh
 + umask 022
 + cd /builddir/build/BUILD
 + cd nova-api-proxy-1.0
-+ rm -rf /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64
-+ rm -rf /builddir/build/BUILDROOT/nova-api-proxy-1.0-3.x86_64
++ rm -rf /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64
++ rm -rf /builddir/build/BUILDROOT/nova-api-proxy-1.0-7.x86_64
 + exit 0
 Child return code was: 0
 LEAVE do --> 

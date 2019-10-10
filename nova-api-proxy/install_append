@@ -4,8 +4,8 @@
                              --install-data=/usr/share \
                              --single-version-externally-managed
 
-install -d -m 755 %{buildroot}%{local_etc_systemd}
-install -p -D -m 644 nova_api_proxy/scripts/api-proxy.service %{buildroot}%{local_etc_systemd}/api-proxy.service
+install -d -m 755 %{buildroot}%{_unitdir}
+install -p -D -m 644 nova_api_proxy/scripts/api-proxy.service %{buildroot}%{_unitdir}/api-proxy.service
 install -d -m 755 %{buildroot}%{local_initddir}
 install -p -D -m 755 nova_api_proxy/scripts/api-proxy %{buildroot}%{local_initddir}/api-proxy
 

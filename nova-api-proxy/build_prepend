@@ -1,6 +1,5 @@
-%define local_bindir /usr/bin/
-%define local_initddir /usr/local/etc/rc.d/init.d
+%define local_initddir /usr/local/etc/init.d
 %define pythonroot /usr/lib64/python2.7/site-packages
-%define local_etc_systemd /usr/local/etc/systemd/system/
-%define local_proxy_conf /usr/local/etc/proxy/
+%define _unitdir /usr/lib/systemd/system
+%define local_proxy_conf /usr/local/etc/proxy
 

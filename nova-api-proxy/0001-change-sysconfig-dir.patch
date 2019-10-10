@@ -1,0 +1,48 @@
+From 311955e4e3e4e4618bc83972bb572ec9353ea87c Mon Sep 17 00:00:00 2001
+From: chen-dq <chen.dq@neusoft.com>
+Date: Thu, 26 Sep 2019 02:41:45 +0000
+Subject: [PATCH] change-sysconfig-dir
+
+---
+ nova_api_proxy/scripts/api-proxy         | 4 ++--
+ nova_api_proxy/scripts/api-proxy.service | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/nova_api_proxy/scripts/api-proxy b/nova_api_proxy/scripts/api-proxy
+index aa1cd4f..ecce9fe 100644
+--- a/nova_api_proxy/scripts/api-proxy
++++ b/nova_api_proxy/scripts/api-proxy
+@@ -14,7 +14,7 @@
+ # Description:       OpenStack Compute (Nova) Ptoxy
+ ### END INIT INFO
+ 
+-. /etc/init.d/functions
++. /usr/local/etc/init.d/functions
+ 
+ # Linux Standard Base (LSB) Error Codes
+ RETVAL=0
+@@ -27,7 +27,7 @@ NOT_RUNNING=7
+ PROXY_NAME="nova-api-proxy"
+ DAEMON="/usr/bin/${PROXY_NAME}"
+ PIDFILE="/var/run/${PROXY_NAME}.pid"
+-CONFIGFILE="/etc/proxy/${PROXY_NAME}.conf"
++CONFIGFILE="/usr/local/etc/proxy/${PROXY_NAME}.conf"
+ 
+ if ! [ -x ${DAEMON} ] ; then
+ 	logger "${DAEMON} is missing"
+diff --git a/nova_api_proxy/scripts/api-proxy.service b/nova_api_proxy/scripts/api-proxy.service
+index ab3ac0a..7261dc3 100644
+--- a/nova_api_proxy/scripts/api-proxy.service
++++ b/nova_api_proxy/scripts/api-proxy.service
+@@ -6,7 +6,7 @@ Before=openstack-nova-conductor.service
+ [Service]
+ Type=simple
+ Restart=always
+-ExecStart=/usr/bin/nova-api-proxy --config-file=/etc/proxy/nova-api-proxy.conf
++ExecStart=/usr/bin/nova-api-proxy --config-file=/usr/local/etc/proxy/nova-api-proxy.conf
+ 
+ [Install]
+ WantedBy=multi-user.target
+-- 
+2.23.0
+

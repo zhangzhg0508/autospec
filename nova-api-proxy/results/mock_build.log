@@ -3,7 +3,7 @@ Start: init plugins
 INFO: selinux disabled
 Finish: init plugins
 Start: run
-INFO: Start(results/nova-api-proxy-1.0-3.src.rpm)  Config(clear)
+INFO: Start(results/nova-api-proxy-1.0-7.src.rpm)  Config(clear)
 Start: clean chroot
 Finish: clean chroot
 Start: chroot init
@@ -20,12 +20,12 @@ INFO: Mock Version: 1.2.14
 Start: dnf update
 Finish: dnf update
 Finish: chroot init
-Start: build phase for nova-api-proxy-1.0-3.src.rpm
-Start: build setup for nova-api-proxy-1.0-3.src.rpm
-Finish: build setup for nova-api-proxy-1.0-3.src.rpm
-Start: rpmbuild nova-api-proxy-1.0-3.src.rpm
-Finish: rpmbuild nova-api-proxy-1.0-3.src.rpm
-Finish: build phase for nova-api-proxy-1.0-3.src.rpm
-INFO: Done(results/nova-api-proxy-1.0-3.src.rpm) Config(clear) 0 minutes 18 seconds
+Start: build phase for nova-api-proxy-1.0-7.src.rpm
+Start: build setup for nova-api-proxy-1.0-7.src.rpm
+Finish: build setup for nova-api-proxy-1.0-7.src.rpm
+Start: rpmbuild nova-api-proxy-1.0-7.src.rpm
+Finish: rpmbuild nova-api-proxy-1.0-7.src.rpm
+Finish: build phase for nova-api-proxy-1.0-7.src.rpm
+INFO: Done(results/nova-api-proxy-1.0-7.src.rpm) Config(clear) 0 minutes 14 seconds
 INFO: Results and/or logs in: results/
 Finish: run

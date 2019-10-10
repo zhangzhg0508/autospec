@@ -1,42 +1,48 @@
-From e19e8e0003ecef9ffc240ba6db3971a5d45053bb Mon Sep 17 00:00:00 2001
-From: "chen.dq" <chen.dq@neusoft.com>
-Date: Mon, 9 Sep 2019 09:48:51 +0000
+From 6729d7a6e288e0378c9b941166fb41a9bae6a455 Mon Sep 17 00:00:00 2001
+From: chen-dq <chen.dq@neusoft.com>
+Date: Wed, 9 Oct 2019 06:45:10 +0000
 Subject: [PATCH nova-api-proxy] nova-api-proxy: Autospec creation for version
  1.0
 
 ---
- nova-api-proxy.spec | 8 ++++++--
+ build_prepend       | 3 +--
+ nova-api-proxy.spec | 9 ++++-----
  release             | 2 +-
- requires_add        | 4 ++++
- 3 files changed, 11 insertions(+), 3 deletions(-)
+ 3 files changed, 6 insertions(+), 8 deletions(-)
 
+diff --git a/build_prepend b/build_prepend
+index af65dc4..2ca2c41 100644
+--- a/build_prepend
++++ b/build_prepend
+@@ -1,5 +1,4 @@
+-%define local_bindir /usr/local/bin/
+-%define local_initddir /usr/local/etc/rc.d/init.d
++%define local_initddir /usr/local/etc/init.d
+ %define pythonroot /usr/lib64/python2.7/site-packages
+ %define _unitdir /usr/lib/systemd/system
+ %define local_proxy_conf /usr/local/etc/proxy
 diff --git a/nova-api-proxy.spec b/nova-api-proxy.spec
-index f5f771c..bd057b3 100644
+index ba22ebe..6092f52 100644
 --- a/nova-api-proxy.spec
 +++ b/nova-api-proxy.spec
-@@ -13,6 +13,10 @@ License  : Apache-2.0
- Requires: nova-api-proxy-bin = %{version}-%{release}
- Requires: nova-api-proxy-python = %{version}-%{release}
- Requires: nova-api-proxy-python3 = %{version}-%{release}
-+Requires: Paste
-+Requires: Routes
-+Requires: WebOb
-+Requires: eventlet
- BuildRequires : buildreq-distutils3
- BuildRequires : pip
- BuildRequires : setuptools
-diff --git a/requires_add b/requires_add
-index ecd3915..c80dcea 100644
---- a/requires_add
-+++ b/requires_add
-@@ -1,2 +1,6 @@
- # This file contains additional runtime requirements that did not get
- # picked up automatically. One name per line, no whitespace.
-+eventlet
-+Routes
-+WebOb
-+Paste
--- 
-2.23.0
-
-
+@@ -67,8 +67,7 @@ services components for the nova-api-proxy package.
+ 
+ %build
+ ## build_prepend content
+-%define local_bindir /usr/local/bin/
+-%define local_initddir /usr/local/etc/rc.d/init.d
++%define local_initddir /usr/local/etc/init.d
+ %define pythonroot /usr/lib64/python2.7/site-packages
+ %define _unitdir /usr/lib/systemd/system
+ %define local_proxy_conf /usr/local/etc/proxy
+@@ -115,9 +114,9 @@ rm -rf $RPM_BUILD_ROOT
+ 
+ %files
+ %defattr(-,root,root,-)
++/usr/local/etc/init.d/api-proxy
+ /usr/local/etc/proxy/api-proxy-paste.ini
+ /usr/local/etc/proxy/nova-api-proxy.conf
+-/usr/local/etc/rc.d/init.d/api-proxy
+ 
+ %files bin
+ %defattr(-,root,root,-)

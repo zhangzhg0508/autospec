@@ -4,7 +4,7 @@
 #
 Name     : nova-api-proxy
 Version  : 1.0
-Release  : 3
+Release  : 7
 URL      : file:///home/clear/tar/nova-api-proxy-1.0.tar.gz
 Source0  : file:///home/clear/tar/nova-api-proxy-1.0.tar.gz
 Summary  : No detailed summary available
@@ -13,6 +13,7 @@ License  : Apache-2.0
 Requires: nova-api-proxy-bin = %{version}-%{release}
 Requires: nova-api-proxy-python = %{version}-%{release}
 Requires: nova-api-proxy-python3 = %{version}-%{release}
+Requires: nova-api-proxy-services = %{version}-%{release}
 Requires: Paste
 Requires: Routes
 Requires: WebOb
@@ -20,6 +21,7 @@ Requires: eventlet
 BuildRequires : buildreq-distutils3
 BuildRequires : pip
 BuildRequires : setuptools
+Patch1: 0001-change-sysconfig-dir.patch
 
 %description
 No detailed description available
@@ -27,6 +29,7 @@ No detailed description available
 %package bin
 Summary: bin components for the nova-api-proxy package.
 Group: Binaries
+Requires: nova-api-proxy-services = %{version}-%{release}
 
 %description bin
 bin components for the nova-api-proxy package.
@@ -50,22 +53,30 @@ Requires: python3-core
 python3 components for the nova-api-proxy package.
 
 
+%package services
+Summary: services components for the nova-api-proxy package.
+Group: Systemd services
+
+%description services
+services components for the nova-api-proxy package.
+
+
 %prep
 %setup -q -n nova-api-proxy-1.0
+%patch1 -p1
 
 %build
 ## build_prepend content
-%define local_bindir /usr/bin/
-%define local_initddir /usr/local/etc/rc.d/init.d
+%define local_initddir /usr/local/etc/init.d
 %define pythonroot /usr/lib64/python2.7/site-packages
-%define local_etc_systemd /usr/local/etc/systemd/system/
-%define local_proxy_conf /usr/local/etc/proxy/
+%define _unitdir /usr/lib/systemd/system
+%define local_proxy_conf /usr/local/etc/proxy
 ## build_prepend end
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1568022530
+export SOURCE_DATE_EPOCH=1570603510
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -90,8 +101,8 @@ echo ----[ mark ]----
 --prefix=/usr \
 --install-data=/usr/share \
 --single-version-externally-managed
-install -d -m 755 %{buildroot}%{local_etc_systemd}
-install -p -D -m 644 nova_api_proxy/scripts/api-proxy.service %{buildroot}%{local_etc_systemd}/api-proxy.service
+install -d -m 755 %{buildroot}%{_unitdir}
+install -p -D -m 644 nova_api_proxy/scripts/api-proxy.service %{buildroot}%{_unitdir}/api-proxy.service
 install -d -m 755 %{buildroot}%{local_initddir}
 install -p -D -m 755 nova_api_proxy/scripts/api-proxy %{buildroot}%{local_initddir}/api-proxy
 install -d -m 755 %{buildroot}%{local_proxy_conf}
@@ -103,10 +114,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,-)
+/usr/local/etc/init.d/api-proxy
 /usr/local/etc/proxy/api-proxy-paste.ini
 /usr/local/etc/proxy/nova-api-proxy.conf
-/usr/local/etc/rc.d/init.d/api-proxy
-/usr/local/etc/systemd/system/api-proxy.service
 
 %files bin
 %defattr(-,root,root,-)
@@ -119,3 +129,7 @@ rm -rf $RPM_BUILD_ROOT
 %files python3
 %defattr(-,root,root,-)
 /usr/lib/python3*/*
+
+%files services
+%defattr(-,root,root,-)
+/usr/lib/systemd/system/api-proxy.service
