@@ -4,7 +4,7 @@
 #
 Name     : python-cephclient
 Version  : 13.2.2.0
-Release  : 2
+Release  : 3
 URL      : file:///home/clr/stx-tar/python-cephclient-13.2.2.0.tar.gz
 Source0  : file:///home/clr/stx-tar/python-cephclient-13.2.2.0.tar.gz
 Summary  : No detailed summary available
@@ -14,8 +14,6 @@ Requires: python-cephclient-python = %{version}-%{release}
 Requires: python-cephclient-python3 = %{version}-%{release}
 Requires: ipaddress
 Requires: python
-Requires: python-ipaddress
-Requires: python2-requests
 Requires: requests
 Requires: six
 BuildRequires : buildreq-distutils
@@ -60,7 +58,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1567588594
+export SOURCE_DATE_EPOCH=1570780862
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
