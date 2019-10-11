@@ -1,4 +1,5 @@
 # This file contains additional runtime requirements that did not get
 # picked up automatically. One name per line, no whitespace.
-pam
+#pam
+Linux-PAM
 openssh

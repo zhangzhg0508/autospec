@@ -1,37 +1,37 @@
-2019-09-20 10:50:40,739 - Mock Version: 1.2.14
-2019-09-20 10:50:40,994 - Start: dnf update
-2019-09-20 10:50:56,049 - Finish: dnf update
-2019-09-20 10:50:56,055 - Finish: chroot init
-2019-09-20 10:50:56,058 - Start: buildsrpm
-2019-09-20 10:50:56,063 - Start: rpmbuild -bs
-2019-09-20 10:50:56,102 - Finish: rpmbuild -bs
-2019-09-20 10:50:56,103 - Finish: buildsrpm
-2019-09-20 10:50:56,104 - Finish: run
-2019-09-20 10:50:59,111 - Mock Version: 1.2.14
-2019-09-20 10:50:59,372 - Start: dnf update
-2019-09-20 10:51:08,948 - Finish: dnf update
-2019-09-20 10:51:08,953 - Finish: chroot init
-2019-09-20 10:51:08,955 - Start: build phase for pam-config-1.0-1.src.rpm
-2019-09-20 10:51:08,957 - Start: build setup for pam-config-1.0-1.src.rpm
-2019-09-20 10:51:09,619 - Finish: build setup for pam-config-1.0-1.src.rpm
-2019-09-20 10:51:09,619 - Start: rpmbuild pam-config-1.0-1.src.rpm
-2019-09-20 10:51:12,861 - Mock Version: 1.2.14
-2019-09-20 10:51:13,124 - Start: dnf update
-2019-09-20 10:51:23,132 - Finish: dnf update
-2019-09-20 10:51:23,138 - Finish: chroot init
-2019-09-20 10:51:23,141 - Start: buildsrpm
-2019-09-20 10:51:23,146 - Start: rpmbuild -bs
-2019-09-20 10:51:23,185 - Finish: rpmbuild -bs
-2019-09-20 10:51:23,187 - Finish: buildsrpm
-2019-09-20 10:51:23,187 - Finish: run
-2019-09-20 10:51:26,253 - Mock Version: 1.2.14
-2019-09-20 10:51:26,516 - Start: dnf update
-2019-09-20 10:51:36,007 - Finish: dnf update
-2019-09-20 10:51:36,012 - Finish: chroot init
-2019-09-20 10:51:36,014 - Start: build phase for pam-config-1.0-1.src.rpm
-2019-09-20 10:51:36,016 - Start: build setup for pam-config-1.0-1.src.rpm
-2019-09-20 10:51:36,680 - Finish: build setup for pam-config-1.0-1.src.rpm
-2019-09-20 10:51:36,680 - Start: rpmbuild pam-config-1.0-1.src.rpm
-2019-09-20 10:51:36,833 - Finish: rpmbuild pam-config-1.0-1.src.rpm
-2019-09-20 10:51:36,834 - Finish: build phase for pam-config-1.0-1.src.rpm
-2019-09-20 10:51:36,835 - Finish: run
+2019-10-11 10:17:11,242 - Mock Version: 1.2.14
+2019-10-11 10:17:11,497 - Start: dnf update
+2019-10-11 10:17:48,159 - Finish: dnf update
+2019-10-11 10:17:48,164 - Finish: chroot init
+2019-10-11 10:17:48,167 - Start: buildsrpm
+2019-10-11 10:17:48,175 - Start: rpmbuild -bs
+2019-10-11 10:17:48,214 - Finish: rpmbuild -bs
+2019-10-11 10:17:48,215 - Finish: buildsrpm
+2019-10-11 10:17:48,216 - Finish: run
+2019-10-11 10:17:51,343 - Mock Version: 1.2.14
+2019-10-11 10:17:51,603 - Start: dnf update
+2019-10-11 10:18:25,562 - Finish: dnf update
+2019-10-11 10:18:25,568 - Finish: chroot init
+2019-10-11 10:18:25,569 - Start: build phase for pam-config-1.0-2.src.rpm
+2019-10-11 10:18:25,571 - Start: build setup for pam-config-1.0-2.src.rpm
+2019-10-11 10:19:16,079 - Finish: build setup for pam-config-1.0-2.src.rpm
+2019-10-11 10:19:16,079 - Start: rpmbuild pam-config-1.0-2.src.rpm
+2019-10-11 10:19:19,294 - Mock Version: 1.2.14
+2019-10-11 10:19:19,565 - Start: dnf update
+2019-10-11 10:19:52,553 - Finish: dnf update
+2019-10-11 10:19:52,559 - Finish: chroot init
+2019-10-11 10:19:52,562 - Start: buildsrpm
+2019-10-11 10:19:52,570 - Start: rpmbuild -bs
+2019-10-11 10:19:52,609 - Finish: rpmbuild -bs
+2019-10-11 10:19:52,610 - Finish: buildsrpm
+2019-10-11 10:19:52,611 - Finish: run
+2019-10-11 10:19:55,696 - Mock Version: 1.2.14
+2019-10-11 10:19:55,947 - Start: dnf update
+2019-10-11 10:20:28,747 - Finish: dnf update
+2019-10-11 10:20:28,752 - Finish: chroot init
+2019-10-11 10:20:28,754 - Start: build phase for pam-config-1.0-2.src.rpm
+2019-10-11 10:20:28,756 - Start: build setup for pam-config-1.0-2.src.rpm
+2019-10-11 10:21:20,604 - Finish: build setup for pam-config-1.0-2.src.rpm
+2019-10-11 10:21:20,604 - Start: rpmbuild pam-config-1.0-2.src.rpm
+2019-10-11 10:21:20,769 - Finish: rpmbuild pam-config-1.0-2.src.rpm
+2019-10-11 10:21:20,771 - Finish: build phase for pam-config-1.0-2.src.rpm
+2019-10-11 10:21:20,771 - Finish: run

@@ -4,15 +4,15 @@
 #
 Name     : pam-config
 Version  : 1.0
-Release  : 1
+Release  : 2
 URL      : file:///home/clr/stx-tar/pam-config-1.0.tar.gz
 Source0  : file:///home/clr/stx-tar/pam-config-1.0.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: pam-config-data = %{version}-%{release}
+Requires: Linux-PAM
 Requires: openssh
-Requires: pam
 Patch1: 0001-add-makefile.patch
 
 %description
@@ -35,7 +35,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1568947896
+export SOURCE_DATE_EPOCH=1570760480
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -48,7 +48,7 @@ make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1568947896
+export SOURCE_DATE_EPOCH=1570760480
 rm -rf %{buildroot}
 ## install_prepend content
 %define _sysconfdir	/usr/local/etc
