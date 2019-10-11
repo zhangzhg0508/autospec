@@ -3,5 +3,5 @@
 cgts-client
 Django
 pytz
-Rsix >= 1.10.0
+six >= 1.10.0
 pbr

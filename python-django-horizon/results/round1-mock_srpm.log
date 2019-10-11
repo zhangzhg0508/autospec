@@ -9,23 +9,20 @@ Finish: clean chroot
 Start: chroot init
 INFO: calling preinit hooks
 INFO: enabled root cache
-INFO: /home/clr/clearlinux/repo/clear.cfg newer than root cache; cache will be rebuilt
+Start: unpacking root cache
+Finish: unpacking root cache
 INFO: enabled dnf cache
 Start: cleaning dnf metadata
 Finish: cleaning dnf metadata
 Mock Version: 1.2.14
 INFO: Mock Version: 1.2.14
-WARNING: File /etc/hosts not present. It is not copied into the chroot.
-Start: dnf install
-Finish: dnf install
-Start: creating cache
-Finish: creating cache
+Start: dnf update
+Finish: dnf update
 Finish: chroot init
-INFO: Installed packages:
 Start: buildsrpm
 Start: rpmbuild -bs
 Finish: rpmbuild -bs
 Finish: buildsrpm
-INFO: Done(python-django-horizon.spec) Config(clear) 0 minutes 21 seconds
+INFO: Done(python-django-horizon.spec) Config(clear) 0 minutes 44 seconds
 INFO: Results and/or logs in: results/
 Finish: run

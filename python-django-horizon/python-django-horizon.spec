@@ -4,7 +4,7 @@
 #
 Name     : python-django-horizon
 Version  : 15.1.0
-Release  : 2
+Release  : 3
 URL      : file:///home/clr/stx-tar/python-django-horizon-15.1.0.tar.gz
 Source0  : file:///home/clr/stx-tar/python-django-horizon-15.1.0.tar.gz
 Source1  : file:///home/clr/stx-tar/horizon.tar.gz
@@ -17,10 +17,10 @@ Requires: python-django-horizon-python = %{version}-%{release}
 Requires: python-django-horizon-python3 = %{version}-%{release}
 Requires: python-django-horizon-services = %{version}-%{release}
 Requires: Django
-Requires: Rsix >= 1.10.0
 Requires: cgts-client
 Requires: pbr
 Requires: pytz
+Requires: six >= 1.10.0
 BuildRequires : Django
 BuildRequires : buildreq-distutils3
 BuildRequires : cgts-client
@@ -102,7 +102,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1569743261
+export SOURCE_DATE_EPOCH=1570782344
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
