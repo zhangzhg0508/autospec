@@ -1,0 +1,201 @@
+Mock Version: 1.2.14
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/snmp-ext.spec'], chrootPath='/var/lib/mock/clear-snmp-ext/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7ff73439dd10>timeout=0uid=1000gid=1000user='mockbuild'printOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/snmp-ext.spec'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/snmp-ext-1.0-1.src.rpm
+Child return code was: 0
+LEAVE do --> 
+
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/snmp-ext.spec '], chrootPath='/var/lib/mock/clear-snmp-ext/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7ff73439dd10>timeout=0uid=1000gid=1000user='mockbuild'private_network=TrueprintOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/snmp-ext.spec '] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.sAhDMU
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
++ rm -rf snmp-ext-1.0
++ /usr/bin/gzip -dc /builddir/build/SOURCES/snmp-ext-1.0.tar.gz
++ /usr/bin/tar -xf -
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd snmp-ext-1.0
++ /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ exit 0
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.y8kRyY
++ umask 022
++ cd /builddir/build/BUILD
++ cd snmp-ext-1.0
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CFLAGS
++ http_proxy=http://127.0.0.1:9/
++ export http_proxy
++ https_proxy=http://127.0.0.1:9/
++ export https_proxy
++ ftp_proxy=http://127.0.0.1:9/
++ export ftp_proxy
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export no_proxy
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CXXFLAGS
++ FFLAGS='-g -O3 -feliminate-unused-debug-types  -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -m64 -fasynchronous-unwind-tables -Wp,-D_REENTRANT -ftree-loop-distribute-patterns -Wl,-z -Wl,now -Wl,-z -Wl,relro -malign-data=abi -fno-semantic-interposition -ftree-vectorize  -ftree-loop-vectorize -Wl,--enable-new-dtags '
++ export FFLAGS
++ LD_AS_NEEDED=1
++ export LD_AS_NEEDED
++ PKG_CONFIG_LIBDIR=/usr/lib64/pkgconfig
++ export PKG_CONFIG_LIBDIR
++ PATH=/usr/lib64/ccache/bin:/usr/local/bin:/usr/bin
++ export PATH
+++ echo 1.0
+++ awk -F . '{print $1}'
++ MAJOR=1
+++ echo 1.0
+++ awk -F . '{print $2}'
++ MINOR=0
++ export http_proxy=http://127.0.0.1:9/
++ http_proxy=http://127.0.0.1:9/
++ export https_proxy=http://127.0.0.1:9/
++ https_proxy=http://127.0.0.1:9/
++ export no_proxy=localhost,127.0.0.1,0.0.0.0
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export LANG=C.UTF-8
++ LANG=C.UTF-8
++ export SOURCE_DATE_EPOCH=1570781939
++ SOURCE_DATE_EPOCH=1570781939
++ export GCC_IGNORE_WERROR=1
++ GCC_IGNORE_WERROR=1
++ export AR=gcc-ar
++ AR=gcc-ar
++ export RANLIB=gcc-ranlib
++ RANLIB=gcc-ranlib
++ export NM=gcc-nm
++ NM=gcc-nm
++ export 'CFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ export 'FCFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FCFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'FFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'CXXFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ make -j4 MAJOR=1 MINOR=0 PATCH=1
+g++ -fPIC -g -O2 -Wall -Werror -Wformat -Wformat-security -I./ -c cgtsActiveAlarms.c -o cgtsActiveAlarms.o
+g++ -fPIC -g -O2 -Wall -Werror -Wformat -Wformat-security -I./ -c cgtsAgentPlugin.c -o cgtsAgentPlugin.o
+g++ -fPIC -g -O2 -Wall -Werror -Wformat -Wformat-security -I./ -c cgtsEventLogs.c -o cgtsEventLogs.o
+g++ cgtsActiveAlarms.o cgtsAgentPlugin.o cgtsEventLogs.o -lfmcommon -lnetsnmp -lnetsnmpagent -luuid -o libcgtsAgentPlugin.so.1.0.1 -shared
+ln -sf libcgtsAgentPlugin.so.1.0.1 libcgtsAgentPlugin.so.1
+ln -sf libcgtsAgentPlugin.so.1.0.1 libcgtsAgentPlugin.so
++ exit 0
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.cxvqMY
++ umask 022
++ cd /builddir/build/BUILD
++ cd snmp-ext-1.0
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ rm -rf /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64
++ mkdir -p /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64
++ export SOURCE_DATE_EPOCH=1570781939
++ SOURCE_DATE_EPOCH=1570781939
++ rm -rf /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64
+++ echo 1.0
+++ awk -F . '{print $1}'
++ MAJOR=1
+++ echo 1.0
+++ awk -F . '{print $2}'
++ MINOR=0
++ make DEST_DIR=/builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64 LIB_DIR=/usr/lib64 MAJOR=1 MINOR=0 'MIBVER=%{mib_ver}' PATCH=1 install
+install -m 755 -d /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64/usr/lib64
+install -m 755 libcgtsAgentPlugin.so.1.0.1 /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64/usr/lib64
+install -m 755 -d /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64/usr/share/snmp/mibs
+install -m 644 mibs/wrsAlarmMib.mib.txt /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64/usr/share/snmp/mibs/
+install -m 644 mibs/wrsEnterpriseReg.mib.txt /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64/usr/share/snmp/mibs/
+ln -s libcgtsAgentPlugin.so.1.0.1 /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64/usr/lib64/libcgtsAgentPlugin.so.1
+ln -s libcgtsAgentPlugin.so.1.0.1 /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64/usr/lib64/libcgtsAgentPlugin.so
++ rm -f /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64/usr/share/info/dir
+++ find /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64 -path 'etc/*' '!' -type d
++ test -z ''
++ rm -rf '/builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64/etc/*'
++ rm -rf '/builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64/usr/share/factory/*'
++ find /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64 -name __pycache__
++ xargs rm -rf --
++ '[' -d /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64/usr/share/mime ']'
+++ getconf _NPROCESSORS_ONLN
++ RPM_XARGS_PFLAG=-P4
++ find /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64 -name '*.so.avx512' -print0
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -5
++ find /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64/usr/lib64/haswell/avx512_1 -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64/usr/lib64/haswell/avx512_1’: No such file or directory
++ find /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64 -name '*.so.avx2' -print0
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -2
++ find /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64/usr/lib64/haswell '!' -path '/usr/lib64/haswell/avx512_1/*' -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64/usr/lib64/haswell’: No such file or directory
++ find /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64/usr/lib64/ -maxdepth 1 -name '*.so*' -type f -print0
++ xargs -0rtn1 -P4 /usr/lib/rpm/clr/brp-create-abi
++ sort -u
+/usr/lib/rpm/clr/brp-create-abi /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64/usr/lib64/libcgtsAgentPlugin.so.1.0.1 
++ /usr/lib/rpm/find-debuginfo.sh --strict-build-id /builddir/build/BUILD/snmp-ext-1.0
+extracting debug info from /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64/usr/lib64/libcgtsAgentPlugin.so.1.0.1
+symlinked /usr/lib/debug/usr/lib64/libcgtsAgentPlugin.so.1.0.1.debug to /usr/lib/debug/usr/lib64/libcgtsAgentPlugin.so.1.debug
+symlinked /usr/lib/debug/usr/lib64/libcgtsAgentPlugin.so.1.0.1.debug to /usr/lib/debug/usr/lib64/libcgtsAgentPlugin.so.debug
+cpio: glibc-2.30/csu: Cannot stat: No such file or directory
+cpio: glibc-2.30/sysdeps/x86_64/crti.S: Cannot stat: No such file or directory
+cpio: glibc-2.30/sysdeps/x86_64/crtn.S: Cannot stat: No such file or directory
+41 blocks
++ '[' -d /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64/usr/lib/debug ']'
++ mkdir -p /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64/usr/share
++ '[' -d /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64/usr/lib/debug ']'
++ mv /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64/usr/lib/debug /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64/usr/share
++ '[' -d /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64/usr/src/debug ']'
++ mv /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64/usr/src/debug /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64/usr/share/debug/src
++ '[' -d /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64/usr/lib/debug.force ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64/usr/src/debug.force ']'
++ :
++ /usr/lib/rpm/check-buildroot
++ /usr/lib/rpm/clr/brp-strip-static-archive /usr/bin/strip
++ /usr/lib/rpm/clr/brp-strip-comment-note /usr/bin/strip /usr/bin/objdump
++ /usr/lib/rpm/clr/brp-python-bytecompile
++ find /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64 -print0
++ xargs -0 touch -h -d @1570781939
++ /usr/lib/rpm/clr/brp-java-repack-jars
+Processing files: snmp-ext-1.0-1.x86_64
+Processing files: snmp-ext-debuginfo-1.0-1.x86_64
+Processing files: snmp-ext-abi-1.0-1.x86_64
+warning: Empty %files file /builddir/build/BUILD/snmp-ext-1.0/abifiles.list
+Checking for unpackaged file(s): /usr/lib/rpm/check-files /builddir/build/BUILDROOT/snmp-ext-1.0-1.x86_64
+error: Installed (but unpackaged) file(s) found:
+   /usr/lib64/libcgtsAgentPlugin.so
+   /usr/lib64/libcgtsAgentPlugin.so.1
+   /usr/lib64/libcgtsAgentPlugin.so.1.0.1
+   /usr/share/snmp/mibs/wrsAlarmMib.mib.txt
+   /usr/share/snmp/mibs/wrsEnterpriseReg.mib.txt
+    Empty %files file /builddir/build/BUILD/snmp-ext-1.0/abifiles.list
+    Installed (but unpackaged) file(s) found:
+   /usr/lib64/libcgtsAgentPlugin.so
+   /usr/lib64/libcgtsAgentPlugin.so.1
+   /usr/lib64/libcgtsAgentPlugin.so.1.0.1
+   /usr/share/snmp/mibs/wrsAlarmMib.mib.txt
+   /usr/share/snmp/mibs/wrsEnterpriseReg.mib.txt
+RPM build errors:
+Child return code was: 1
+EXCEPTION: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/snmp-ext.spec 
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/mockbuild/trace_decorator.py", line 84, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python3.7/site-packages/mockbuild/util.py", line 531, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+mockbuild.exception.Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/snmp-ext.spec 
+LEAVE do --> EXCEPTION RAISED
+

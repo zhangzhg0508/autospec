@@ -1,0 +1,37 @@
+2019-10-11 08:19:02,438 - Mock Version: 1.2.14
+2019-10-11 08:19:02,710 - Start: dnf update
+2019-10-11 08:19:38,229 - Finish: dnf update
+2019-10-11 08:19:38,242 - Finish: chroot init
+2019-10-11 08:19:38,249 - Start: buildsrpm
+2019-10-11 08:19:38,255 - Start: rpmbuild -bs
+2019-10-11 08:19:38,300 - Finish: rpmbuild -bs
+2019-10-11 08:19:38,301 - Finish: buildsrpm
+2019-10-11 08:19:38,302 - Finish: run
+2019-10-11 08:19:41,660 - Mock Version: 1.2.14
+2019-10-11 08:19:42,215 - Start: dnf update
+2019-10-11 08:20:16,472 - Finish: dnf update
+2019-10-11 08:20:16,478 - Finish: chroot init
+2019-10-11 08:20:16,479 - Start: build phase for snmp-ext-1.0-1.src.rpm
+2019-10-11 08:20:16,482 - Start: build setup for snmp-ext-1.0-1.src.rpm
+2019-10-11 08:21:07,346 - Finish: build setup for snmp-ext-1.0-1.src.rpm
+2019-10-11 08:21:07,347 - Start: rpmbuild snmp-ext-1.0-1.src.rpm
+2019-10-11 08:21:12,014 - Mock Version: 1.2.14
+2019-10-11 08:21:12,273 - Start: dnf update
+2019-10-11 08:21:46,335 - Finish: dnf update
+2019-10-11 08:21:46,341 - Finish: chroot init
+2019-10-11 08:21:46,344 - Start: buildsrpm
+2019-10-11 08:21:46,350 - Start: rpmbuild -bs
+2019-10-11 08:21:46,390 - Finish: rpmbuild -bs
+2019-10-11 08:21:46,392 - Finish: buildsrpm
+2019-10-11 08:21:46,392 - Finish: run
+2019-10-11 08:21:49,853 - Mock Version: 1.2.14
+2019-10-11 08:21:50,128 - Start: dnf update
+2019-10-11 08:22:26,293 - Finish: dnf update
+2019-10-11 08:22:26,300 - Finish: chroot init
+2019-10-11 08:22:26,302 - Start: build phase for snmp-ext-1.0-1.src.rpm
+2019-10-11 08:22:26,305 - Start: build setup for snmp-ext-1.0-1.src.rpm
+2019-10-11 08:23:17,001 - Finish: build setup for snmp-ext-1.0-1.src.rpm
+2019-10-11 08:23:17,001 - Start: rpmbuild snmp-ext-1.0-1.src.rpm
+2019-10-11 08:23:17,308 - Finish: rpmbuild snmp-ext-1.0-1.src.rpm
+2019-10-11 08:23:17,310 - Finish: build phase for snmp-ext-1.0-1.src.rpm
+2019-10-11 08:23:17,310 - Finish: run
