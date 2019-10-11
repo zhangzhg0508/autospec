@@ -2,10 +2,10 @@
 # picked up automatically. One name per line, no whitespace.
 pbr
 cliff >= 1.14.0
-python-oslo-i18n >= 1.5.0
+oslo.i18n >= 1.5.0
 oslo.serialization >= 1.4.0
 oslo.utils >= 2.0.0
 keystoneauth1 >= 1.0.0
-python-six >= 1.9.0
-python-osc-lib >= 1.0.1
+six >= 1.9.0
+osc-lib >= 1.0.1
 pyparsing

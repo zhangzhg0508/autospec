@@ -4,7 +4,7 @@
 #
 Name     : python-aodhclient
 Version  : 1.2.0
-Release  : 1
+Release  : 2
 URL      : file:///home/clr/stx-tar/aodhclient-1.2.0.tar.gz
 Source0  : file:///home/clr/stx-tar/aodhclient-1.2.0.tar.gz
 Summary  : No detailed summary available
@@ -15,13 +15,13 @@ Requires: python-aodhclient-python = %{version}-%{release}
 Requires: python-aodhclient-python3 = %{version}-%{release}
 Requires: cliff >= 1.14.0
 Requires: keystoneauth1 >= 1.0.0
+Requires: osc-lib >= 1.0.1
+Requires: oslo.i18n >= 1.5.0
 Requires: oslo.serialization >= 1.4.0
 Requires: oslo.utils >= 2.0.0
 Requires: pbr
 Requires: pyparsing
-Requires: python-osc-lib >= 1.0.1
-Requires: python-oslo-i18n >= 1.5.0
-Requires: python-six >= 1.9.0
+Requires: six >= 1.9.0
 BuildRequires : buildreq-distutils3
 BuildRequires : git
 BuildRequires : pbr
@@ -87,7 +87,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1569205945
+export SOURCE_DATE_EPOCH=1570780204
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib

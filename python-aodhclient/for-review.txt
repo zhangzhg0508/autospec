@@ -1,36 +1,55 @@
-From 6b552f159204c9d86dc0fd91ab377fdb1c3f0247 Mon Sep 17 00:00:00 2001
+From 834925672d59ed539444dcaa77a9ea6ad08cee04 Mon Sep 17 00:00:00 2001
 From: fuyong <fuyong@neusoft.com>
-Date: Mon, 23 Sep 2019 10:32:25 +0800
+Date: Fri, 11 Oct 2019 15:50:05 +0800
 Subject: [PATCH python-aodhclient] python-aodhclient: Autospec creation for
  version 1.2.0
 
 ---
- build_prepend          | 1 +
- install_prepend        | 1 -
- python-aodhclient.spec | 4 ++--
- 3 files changed, 3 insertions(+), 3 deletions(-)
+ python-aodhclient.spec | 10 +++++-----
+ release                |  2 +-
+ requires_add           |  6 +++---
+ 3 files changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/build_prepend b/build_prepend
-index bb87927..9fef5a2 100644
---- a/build_prepend
-+++ b/build_prepend
-@@ -1 +1,2 @@
- export PBR_VERSION=%{version}
-+%define debug_package %{nil}
 diff --git a/python-aodhclient.spec b/python-aodhclient.spec
-index 4af6d86..0e40982 100644
+index 0e40982..f524842 100644
 --- a/python-aodhclient.spec
 +++ b/python-aodhclient.spec
-@@ -81,12 +81,13 @@ python3 components for the python-aodhclient package.
- %build
- ## build_prepend content
- export PBR_VERSION=%{version}
-+%define debug_package %{nil}
- ## build_prepend end
- export http_proxy=http://127.0.0.1:9/
- export https_proxy=http://127.0.0.1:9/
- export no_proxy=localhost,127.0.0.1,0.0.0.0
- export LANG=C.UTF-8
- export GCC_IGNORE_WERROR=1
- export AR=gcc-ar
- export RANLIB=gcc-ranlib
+@@ -15,13 +15,13 @@ Requires: python-aodhclient-python = %{version}-%{release}
+ Requires: python-aodhclient-python3 = %{version}-%{release}
+ Requires: cliff >= 1.14.0
+ Requires: keystoneauth1 >= 1.0.0
++Requires: osc-lib >= 1.0.1
++Requires: oslo.i18n >= 1.5.0
+ Requires: oslo.serialization >= 1.4.0
+ Requires: oslo.utils >= 2.0.0
+ Requires: pbr
+ Requires: pyparsing
+-Requires: python-osc-lib >= 1.0.1
+-Requires: python-oslo-i18n >= 1.5.0
+-Requires: python-six >= 1.9.0
++Requires: six >= 1.9.0
+ BuildRequires : buildreq-distutils3
+ BuildRequires : git
+ BuildRequires : pbr
+diff --git a/requires_add b/requires_add
+index 8fc070f..a30ad49 100644
+--- a/requires_add
++++ b/requires_add
+@@ -2,10 +2,10 @@
+ # picked up automatically. One name per line, no whitespace.
+ pbr
+ cliff >= 1.14.0
+-python-oslo-i18n >= 1.5.0
++oslo.i18n >= 1.5.0
+ oslo.serialization >= 1.4.0
+ oslo.utils >= 2.0.0
+ keystoneauth1 >= 1.0.0
+-python-six >= 1.9.0
+-python-osc-lib >= 1.0.1
++six >= 1.9.0
++osc-lib >= 1.0.1
+ pyparsing
+-- 
+2.23.0
+
+

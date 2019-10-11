@@ -23,6 +23,6 @@ Start: buildsrpm
 Start: rpmbuild -bs
 Finish: rpmbuild -bs
 Finish: buildsrpm
-INFO: Done(python-aodhclient.spec) Config(clear) 0 minutes 13 seconds
+INFO: Done(python-aodhclient.spec) Config(clear) 0 minutes 38 seconds
 INFO: Results and/or logs in: results/
 Finish: run
