@@ -11,4 +11,4 @@ Routes
 six
 tinyrpc
 WebOb
-python-ryu-common
+#python-ryu-common

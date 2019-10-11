@@ -3,7 +3,7 @@ Start: init plugins
 INFO: selinux disabled
 Finish: init plugins
 Start: run
-INFO: Start(results/python-ryu-4.19-2.src.rpm)  Config(clear)
+INFO: Start(results/python-ryu-4.19-3.src.rpm)  Config(clear)
 Start: clean chroot
 Finish: clean chroot
 Start: chroot init
@@ -20,12 +20,12 @@ INFO: Mock Version: 1.2.14
 Start: dnf update
 Finish: dnf update
 Finish: chroot init
-Start: build phase for python-ryu-4.19-2.src.rpm
-Start: build setup for python-ryu-4.19-2.src.rpm
-Finish: build setup for python-ryu-4.19-2.src.rpm
-Start: rpmbuild python-ryu-4.19-2.src.rpm
-Finish: rpmbuild python-ryu-4.19-2.src.rpm
-Finish: build phase for python-ryu-4.19-2.src.rpm
-INFO: Done(results/python-ryu-4.19-2.src.rpm) Config(clear) 0 minutes 36 seconds
+Start: build phase for python-ryu-4.19-3.src.rpm
+Start: build setup for python-ryu-4.19-3.src.rpm
+Finish: build setup for python-ryu-4.19-3.src.rpm
+Start: rpmbuild python-ryu-4.19-3.src.rpm
+Finish: rpmbuild python-ryu-4.19-3.src.rpm
+Finish: build phase for python-ryu-4.19-3.src.rpm
+INFO: Done(results/python-ryu-4.19-3.src.rpm) Config(clear) 1 minutes 50 seconds
 INFO: Results and/or logs in: results/
 Finish: run

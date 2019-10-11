@@ -1,63 +1,25 @@
-From 70bd41207f7da27f6c5a8218b6d7c72c2b40d719 Mon Sep 17 00:00:00 2001
+From 1e9319a67a99e5dbe51295ae0f6e99221aa7163d Mon Sep 17 00:00:00 2001
 From: fuyong <fuyong@neusoft.com>
-Date: Thu, 26 Sep 2019 16:23:30 +0800
+Date: Fri, 11 Oct 2019 17:00:37 +0800
 Subject: [PATCH python-ryu] python-ryu: Autospec creation for version 4.19
 
 ---
- install_append  |  2 ++
- install_prepend |  1 +
- python-ryu.spec | 24 ++++++++----------------
- release         |  2 +-
- 4 files changed, 12 insertions(+), 17 deletions(-)
- create mode 100644 install_append
+ python-ryu.spec | 5 ++---
+ release         | 2 +-
+ requires_add    | 2 +-
+ 3 files changed, 4 insertions(+), 5 deletions(-)
 
-diff --git a/install_append b/install_append
-new file mode 100644
-index 0000000..47fae76
---- /dev/null
-+++ b/install_append
-@@ -0,0 +1,2 @@
-+install -d -m 755 %{buildroot}%{_sysconfdir}/ryu
-+mv %{buildroot}/usr/etc/ryu/ryu.conf %{buildroot}%{_sysconfdir}/ryu/ryu.conf
-diff --git a/install_prepend b/install_prepend
-index bb87927..f21901f 100644
---- a/install_prepend
-+++ b/install_prepend
-@@ -1 +1,2 @@
- export PBR_VERSION=%{version}
-+%define _sysconfdir	/usr/local/etc
-diff --git a/python-ryu.spec b/python-ryu.spec
-index 8f07c17..ee6b709 100644
---- a/python-ryu.spec
-+++ b/python-ryu.spec
-@@ -125,24 +115,26 @@ export MAKEFLAGS=%{?_smp_mflags}
- rm -rf %{buildroot}
- ## install_prepend content
- export PBR_VERSION=%{version}
-+%define _sysconfdir	/usr/local/etc
- ## install_prepend end
- python3 -tt setup.py build  install --root=%{buildroot}
- echo ----[ mark ]----
- cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
- echo ----[ mark ]----
-+## install_append content
-+install -d -m 755 %{buildroot}%{_sysconfdir}/ryu
-+mv %{buildroot}/usr/etc/ryu/ryu.conf %{buildroot}%{_sysconfdir}/ryu/ryu.conf
-+## install_append end
- 
- %files
- %defattr(-,root,root,-)
-+/usr/local/etc/ryu/ryu.conf
- 
- %files bin
- %defattr(-,root,root,-)
- /usr/bin/ryu
- /usr/bin/ryu-manager
- 
--%files config
--%defattr(-,root,root,-)
--%config /usr/etc/ryu/ryu.conf
--
- %files python
- %defattr(-,root,root,-)
- 
+diff --git a/requires_add b/requires_add
+index a8612e3..aaabb46 100644
+--- a/requires_add
++++ b/requires_add
+@@ -11,4 +11,4 @@ Routes
+ six
+ tinyrpc
+ WebOb
+-python-ryu-common
++#python-ryu-common
+-- 
+2.23.0
+
+

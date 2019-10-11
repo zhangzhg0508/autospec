@@ -4,7 +4,7 @@
 #
 Name     : python-ryu
 Version  : 4.19
-Release  : 2
+Release  : 3
 URL      : file:///home/clr/stx-tar/python-ryu-4.19.tar.gz
 Source0  : file:///home/clr/stx-tar/python-ryu-4.19.tar.gz
 Summary  : No detailed summary available
@@ -22,7 +22,6 @@ Requires: msgpack
 Requires: netaddr
 Requires: oslo.config
 Requires: paramiko
-Requires: python-ryu-common
 Requires: six
 Requires: tinyrpc
 BuildRequires : Routes
@@ -93,7 +92,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1569486209
+export SOURCE_DATE_EPOCH=1570784437
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib

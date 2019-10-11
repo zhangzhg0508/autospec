@@ -1,37 +1,37 @@
-2019-09-26 16:21:53,128 - Mock Version: 1.2.14
-2019-09-26 16:21:53,385 - Start: dnf update
-2019-09-26 16:22:03,824 - Finish: dnf update
-2019-09-26 16:22:03,830 - Finish: chroot init
-2019-09-26 16:22:03,833 - Start: buildsrpm
-2019-09-26 16:22:03,842 - Start: rpmbuild -bs
-2019-09-26 16:22:03,887 - Finish: rpmbuild -bs
-2019-09-26 16:22:03,889 - Finish: buildsrpm
-2019-09-26 16:22:03,890 - Finish: run
-2019-09-26 16:22:06,994 - Mock Version: 1.2.14
-2019-09-26 16:22:07,234 - Start: dnf update
-2019-09-26 16:22:17,293 - Finish: dnf update
-2019-09-26 16:22:17,298 - Finish: chroot init
-2019-09-26 16:22:17,300 - Start: build phase for python-ryu-4.19-2.src.rpm
-2019-09-26 16:22:17,302 - Start: build setup for python-ryu-4.19-2.src.rpm
-2019-09-26 16:22:20,359 - Finish: build setup for python-ryu-4.19-2.src.rpm
-2019-09-26 16:22:20,359 - Start: rpmbuild python-ryu-4.19-2.src.rpm
-2019-09-26 16:22:41,402 - Mock Version: 1.2.14
-2019-09-26 16:22:41,660 - Start: dnf update
-2019-09-26 16:22:51,877 - Finish: dnf update
-2019-09-26 16:22:51,883 - Finish: chroot init
-2019-09-26 16:22:51,886 - Start: buildsrpm
-2019-09-26 16:22:51,896 - Start: rpmbuild -bs
-2019-09-26 16:22:51,942 - Finish: rpmbuild -bs
-2019-09-26 16:22:51,945 - Finish: buildsrpm
-2019-09-26 16:22:51,945 - Finish: run
-2019-09-26 16:22:55,119 - Mock Version: 1.2.14
-2019-09-26 16:22:55,367 - Start: dnf update
-2019-09-26 16:23:05,321 - Finish: dnf update
-2019-09-26 16:23:05,327 - Finish: chroot init
-2019-09-26 16:23:05,328 - Start: build phase for python-ryu-4.19-2.src.rpm
-2019-09-26 16:23:05,331 - Start: build setup for python-ryu-4.19-2.src.rpm
-2019-09-26 16:23:08,457 - Finish: build setup for python-ryu-4.19-2.src.rpm
-2019-09-26 16:23:08,457 - Start: rpmbuild python-ryu-4.19-2.src.rpm
-2019-09-26 16:23:28,433 - Finish: rpmbuild python-ryu-4.19-2.src.rpm
-2019-09-26 16:23:28,434 - Finish: build phase for python-ryu-4.19-2.src.rpm
-2019-09-26 16:23:28,435 - Finish: run
+2019-10-11 16:55:28,260 - Mock Version: 1.2.14
+2019-10-11 16:55:28,519 - Start: dnf update
+2019-10-11 16:56:02,782 - Finish: dnf update
+2019-10-11 16:56:02,788 - Finish: chroot init
+2019-10-11 16:56:02,791 - Start: buildsrpm
+2019-10-11 16:56:02,816 - Start: rpmbuild -bs
+2019-10-11 16:56:02,862 - Finish: rpmbuild -bs
+2019-10-11 16:56:02,865 - Finish: buildsrpm
+2019-10-11 16:56:02,866 - Finish: run
+2019-10-11 16:56:06,091 - Mock Version: 1.2.14
+2019-10-11 16:56:06,364 - Start: dnf update
+2019-10-11 16:56:43,189 - Finish: dnf update
+2019-10-11 16:56:43,194 - Finish: chroot init
+2019-10-11 16:56:43,196 - Start: build phase for python-ryu-4.19-3.src.rpm
+2019-10-11 16:56:43,198 - Start: build setup for python-ryu-4.19-3.src.rpm
+2019-10-11 16:57:50,157 - Finish: build setup for python-ryu-4.19-3.src.rpm
+2019-10-11 16:57:50,158 - Start: rpmbuild python-ryu-4.19-3.src.rpm
+2019-10-11 16:58:11,299 - Mock Version: 1.2.14
+2019-10-11 16:58:11,548 - Start: dnf update
+2019-10-11 16:58:45,076 - Finish: dnf update
+2019-10-11 16:58:45,081 - Finish: chroot init
+2019-10-11 16:58:45,084 - Start: buildsrpm
+2019-10-11 16:58:45,095 - Start: rpmbuild -bs
+2019-10-11 16:58:45,142 - Finish: rpmbuild -bs
+2019-10-11 16:58:45,145 - Finish: buildsrpm
+2019-10-11 16:58:45,146 - Finish: run
+2019-10-11 16:58:48,323 - Mock Version: 1.2.14
+2019-10-11 16:58:48,586 - Start: dnf update
+2019-10-11 16:59:22,463 - Finish: dnf update
+2019-10-11 16:59:22,468 - Finish: chroot init
+2019-10-11 16:59:22,470 - Start: build phase for python-ryu-4.19-3.src.rpm
+2019-10-11 16:59:22,472 - Start: build setup for python-ryu-4.19-3.src.rpm
+2019-10-11 17:00:16,049 - Finish: build setup for python-ryu-4.19-3.src.rpm
+2019-10-11 17:00:16,049 - Start: rpmbuild python-ryu-4.19-3.src.rpm
+2019-10-11 17:00:36,223 - Finish: rpmbuild python-ryu-4.19-3.src.rpm
+2019-10-11 17:00:36,224 - Finish: build phase for python-ryu-4.19-3.src.rpm
+2019-10-11 17:00:36,225 - Finish: run
