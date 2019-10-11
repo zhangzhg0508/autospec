@@ -1,0 +1,50 @@
+From 1dc07ad4d3ce235e8f842e1d4d015d84e5ecee5a Mon Sep 17 00:00:00 2001
+From: chen-dq <chen.dq@neusoft.com>
+Date: Fri, 11 Oct 2019 08:16:58 +0000
+Subject: [PATCH snmp-audittrail] snmp-audittrail: Autospec creation for
+ version 1.0
+
+---
+ release              |  2 +-
+ requires_add         |  2 ++
+ snmp-audittrail.spec | 10 ++++++----
+ 3 files changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/requires_add b/requires_add
+index ecd3915..1d440a1 100644
+--- a/requires_add
++++ b/requires_add
+@@ -1,2 +1,4 @@
+ # This file contains additional runtime requirements that did not get
+ # picked up automatically. One name per line, no whitespace.
++net-snmp
++R-uuid
+diff --git a/snmp-audittrail.spec b/snmp-audittrail.spec
+index a28075b..8d5903b 100644
+--- a/snmp-audittrail.spec
++++ b/snmp-audittrail.spec
+@@ -4,13 +4,15 @@
+ #
+ Name     : snmp-audittrail
+ Version  : 1.0
+ URL      : file:///home/clear/tar/snmp-audittrail-1.0.tar.gz
+ Source0  : file:///home/clear/tar/snmp-audittrail-1.0.tar.gz
+ Summary  : No detailed summary available
+ Group    : Development/Tools
+ License  : Apache-2.0
+ Requires: snmp-audittrail-lib = %{version}-%{release}
++Requires: R-uuid
++Requires: net-snmp
+ BuildRequires : R-uuid
+ BuildRequires : fm-common-dev
+ BuildRequires : net-snmp-dev
+@@ -84,4 +86,4 @@ make install DESTDIR=$RPM_BUILD_ROOT LIB_DIR=%{_libdir} MAJOR=$MAJOR MINOR=$MINO
+ %files lib
+ %defattr(-,root,root,-)
+ /usr/lib64/libsnmpAuditPlugin.so.1
+-/usr/lib64/libsnmpAuditPlugin.so.1.0.1
++/usr/lib64/libsnmpAuditPlugin.so.1.0.2
+-- 
+2.23.0
+
+

@@ -1,0 +1,45 @@
+2019-10-11 08:10:06,836 - Mock Version: 1.2.14
+2019-10-11 08:10:07,098 - Start: dnf update
+2019-10-11 08:10:41,481 - Finish: dnf update
+2019-10-11 08:10:41,485 - Start: Waiting for rootcache lock
+2019-10-11 08:10:42,652 - Finish: Waiting for rootcache lock
+2019-10-11 08:10:42,657 - Finish: chroot init
+2019-10-11 08:10:42,662 - Start: buildsrpm
+2019-10-11 08:10:42,672 - Start: rpmbuild -bs
+2019-10-11 08:10:42,714 - Finish: rpmbuild -bs
+2019-10-11 08:10:42,716 - Finish: buildsrpm
+2019-10-11 08:10:42,716 - Finish: run
+2019-10-11 08:11:19,344 - Mock Version: 1.2.14
+2019-10-11 08:11:19,605 - Start: dnf update
+2019-10-11 08:11:53,626 - Finish: dnf update
+2019-10-11 08:11:53,636 - Finish: chroot init
+2019-10-11 08:11:53,638 - Start: build phase for snmp-audittrail-1.0-2.src.rpm
+2019-10-11 08:11:53,642 - Start: build setup for snmp-audittrail-1.0-2.src.rpm
+2019-10-11 08:12:19,307 - Start: Waiting for yumcache lock
+2019-10-11 08:12:53,655 - Finish: Waiting for yumcache lock
+2019-10-11 08:13:23,031 - Finish: build setup for snmp-audittrail-1.0-2.src.rpm
+2019-10-11 08:13:23,031 - Start: rpmbuild snmp-audittrail-1.0-2.src.rpm
+2019-10-11 08:13:48,815 - Mock Version: 1.2.14
+2019-10-11 08:13:49,127 - Start: dnf update
+2019-10-11 08:13:49,132 - Start: Waiting for yumcache lock
+2019-10-11 08:14:14,262 - Finish: Waiting for yumcache lock
+2019-10-11 08:14:48,552 - Finish: dnf update
+2019-10-11 08:14:48,558 - Finish: chroot init
+2019-10-11 08:14:48,561 - Start: buildsrpm
+2019-10-11 08:14:48,571 - Start: rpmbuild -bs
+2019-10-11 08:14:48,611 - Finish: rpmbuild -bs
+2019-10-11 08:14:48,613 - Finish: buildsrpm
+2019-10-11 08:14:48,613 - Finish: run
+2019-10-11 08:14:51,952 - Mock Version: 1.2.14
+2019-10-11 08:14:52,324 - Start: dnf update
+2019-10-11 08:15:26,576 - Finish: dnf update
+2019-10-11 08:15:26,582 - Finish: chroot init
+2019-10-11 08:15:26,584 - Start: build phase for snmp-audittrail-1.0-2.src.rpm
+2019-10-11 08:15:26,586 - Start: build setup for snmp-audittrail-1.0-2.src.rpm
+2019-10-11 08:15:52,531 - Start: Waiting for yumcache lock
+2019-10-11 08:16:26,327 - Finish: Waiting for yumcache lock
+2019-10-11 08:16:55,541 - Finish: build setup for snmp-audittrail-1.0-2.src.rpm
+2019-10-11 08:16:55,542 - Start: rpmbuild snmp-audittrail-1.0-2.src.rpm
+2019-10-11 08:16:55,809 - Finish: rpmbuild snmp-audittrail-1.0-2.src.rpm
+2019-10-11 08:16:55,810 - Finish: build phase for snmp-audittrail-1.0-2.src.rpm
+2019-10-11 08:16:55,811 - Finish: run

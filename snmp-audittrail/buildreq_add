@@ -1,0 +1,8 @@
+# This file contains additional build requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+net-snmp-dev
+fm-common-dev
+#R-uuid-dev
+R-uuid
+openssl-dev
+util-linux-dev

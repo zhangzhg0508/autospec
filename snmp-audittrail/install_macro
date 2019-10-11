@@ -1,0 +1,1 @@
+make install DESTDIR=$RPM_BUILD_ROOT LIB_DIR=%{_libdir} MAJOR=$MAJOR MINOR=$MINOR PATCH=%{release}
