@@ -1,37 +1,37 @@
-2019-09-19 11:40:15,812 - Mock Version: 1.2.14
-2019-09-19 11:40:16,051 - Start: dnf update
-2019-09-19 11:40:26,221 - Finish: dnf update
-2019-09-19 11:40:26,227 - Finish: chroot init
-2019-09-19 11:40:26,229 - Start: buildsrpm
-2019-09-19 11:40:26,234 - Start: rpmbuild -bs
-2019-09-19 11:40:26,275 - Finish: rpmbuild -bs
-2019-09-19 11:40:26,276 - Finish: buildsrpm
-2019-09-19 11:40:26,277 - Finish: run
-2019-09-19 11:40:29,298 - Mock Version: 1.2.14
-2019-09-19 11:40:29,548 - Start: dnf update
-2019-09-19 11:40:39,517 - Finish: dnf update
-2019-09-19 11:40:39,522 - Finish: chroot init
-2019-09-19 11:40:39,524 - Start: build phase for pm-qos-mgr-1.0-1.src.rpm
-2019-09-19 11:40:39,526 - Start: build setup for pm-qos-mgr-1.0-1.src.rpm
-2019-09-19 11:40:41,299 - Finish: build setup for pm-qos-mgr-1.0-1.src.rpm
-2019-09-19 11:40:41,299 - Start: rpmbuild pm-qos-mgr-1.0-1.src.rpm
-2019-09-19 11:40:45,833 - Mock Version: 1.2.14
-2019-09-19 11:40:46,230 - Start: dnf update
-2019-09-19 11:40:55,922 - Finish: dnf update
-2019-09-19 11:40:55,927 - Finish: chroot init
-2019-09-19 11:40:55,930 - Start: buildsrpm
-2019-09-19 11:40:55,936 - Start: rpmbuild -bs
-2019-09-19 11:40:55,977 - Finish: rpmbuild -bs
-2019-09-19 11:40:55,978 - Finish: buildsrpm
-2019-09-19 11:40:55,979 - Finish: run
-2019-09-19 11:40:59,047 - Mock Version: 1.2.14
-2019-09-19 11:40:59,438 - Start: dnf update
-2019-09-19 11:41:09,019 - Finish: dnf update
-2019-09-19 11:41:09,024 - Finish: chroot init
-2019-09-19 11:41:09,026 - Start: build phase for pm-qos-mgr-1.0-1.src.rpm
-2019-09-19 11:41:09,028 - Start: build setup for pm-qos-mgr-1.0-1.src.rpm
-2019-09-19 11:41:10,711 - Finish: build setup for pm-qos-mgr-1.0-1.src.rpm
-2019-09-19 11:41:10,711 - Start: rpmbuild pm-qos-mgr-1.0-1.src.rpm
-2019-09-19 11:41:11,468 - Finish: rpmbuild pm-qos-mgr-1.0-1.src.rpm
-2019-09-19 11:41:11,470 - Finish: build phase for pm-qos-mgr-1.0-1.src.rpm
-2019-09-19 11:41:11,470 - Finish: run
+2019-10-11 10:11:32,230 - Mock Version: 1.2.14
+2019-10-11 10:11:32,491 - Start: dnf update
+2019-10-11 10:12:06,440 - Finish: dnf update
+2019-10-11 10:12:06,446 - Finish: chroot init
+2019-10-11 10:12:06,449 - Start: buildsrpm
+2019-10-11 10:12:06,456 - Start: rpmbuild -bs
+2019-10-11 10:12:06,497 - Finish: rpmbuild -bs
+2019-10-11 10:12:06,498 - Finish: buildsrpm
+2019-10-11 10:12:06,499 - Finish: run
+2019-10-11 10:12:09,685 - Mock Version: 1.2.14
+2019-10-11 10:12:09,944 - Start: dnf update
+2019-10-11 10:12:44,828 - Finish: dnf update
+2019-10-11 10:12:44,834 - Finish: chroot init
+2019-10-11 10:12:44,835 - Start: build phase for pm-qos-mgr-1.0-2.src.rpm
+2019-10-11 10:12:44,837 - Start: build setup for pm-qos-mgr-1.0-2.src.rpm
+2019-10-11 10:13:35,498 - Finish: build setup for pm-qos-mgr-1.0-2.src.rpm
+2019-10-11 10:13:35,498 - Start: rpmbuild pm-qos-mgr-1.0-2.src.rpm
+2019-10-11 10:13:39,745 - Mock Version: 1.2.14
+2019-10-11 10:13:40,003 - Start: dnf update
+2019-10-11 10:14:13,819 - Finish: dnf update
+2019-10-11 10:14:13,824 - Finish: chroot init
+2019-10-11 10:14:13,827 - Start: buildsrpm
+2019-10-11 10:14:13,835 - Start: rpmbuild -bs
+2019-10-11 10:14:13,876 - Finish: rpmbuild -bs
+2019-10-11 10:14:13,877 - Finish: buildsrpm
+2019-10-11 10:14:13,878 - Finish: run
+2019-10-11 10:14:16,941 - Mock Version: 1.2.14
+2019-10-11 10:14:17,206 - Start: dnf update
+2019-10-11 10:14:50,996 - Finish: dnf update
+2019-10-11 10:14:51,001 - Finish: chroot init
+2019-10-11 10:14:51,003 - Start: build phase for pm-qos-mgr-1.0-2.src.rpm
+2019-10-11 10:14:51,005 - Start: build setup for pm-qos-mgr-1.0-2.src.rpm
+2019-10-11 10:15:43,409 - Finish: build setup for pm-qos-mgr-1.0-2.src.rpm
+2019-10-11 10:15:43,409 - Start: rpmbuild pm-qos-mgr-1.0-2.src.rpm
+2019-10-11 10:15:44,164 - Finish: rpmbuild pm-qos-mgr-1.0-2.src.rpm
+2019-10-11 10:15:44,165 - Finish: build phase for pm-qos-mgr-1.0-2.src.rpm
+2019-10-11 10:15:44,166 - Finish: run

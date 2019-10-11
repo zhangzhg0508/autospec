@@ -23,6 +23,6 @@ Start: buildsrpm
 Start: rpmbuild -bs
 Finish: rpmbuild -bs
 Finish: buildsrpm
-INFO: Done(pm-qos-mgr.spec) Config(clear) 0 minutes 13 seconds
+INFO: Done(pm-qos-mgr.spec) Config(clear) 0 minutes 37 seconds
 INFO: Results and/or logs in: results/
 Finish: run
