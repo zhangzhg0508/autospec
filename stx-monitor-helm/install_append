@@ -1,0 +1,1 @@
+install -p -D -m 755 manifests/*.yaml ${RPM_BUILD_ROOT}%{armada_folder}

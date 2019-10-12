@@ -1,0 +1,37 @@
+2019-10-12 07:53:55,560 - Mock Version: 1.2.14
+2019-10-12 07:53:55,940 - Start: dnf update
+2019-10-12 07:54:06,087 - Finish: dnf update
+2019-10-12 07:54:06,093 - Finish: chroot init
+2019-10-12 07:54:06,096 - Start: buildsrpm
+2019-10-12 07:54:06,104 - Start: rpmbuild -bs
+2019-10-12 07:54:06,143 - Finish: rpmbuild -bs
+2019-10-12 07:54:06,145 - Finish: buildsrpm
+2019-10-12 07:54:06,145 - Finish: run
+2019-10-12 07:54:09,455 - Mock Version: 1.2.14
+2019-10-12 07:54:09,845 - Start: dnf update
+2019-10-12 07:54:20,021 - Finish: dnf update
+2019-10-12 07:54:20,027 - Finish: chroot init
+2019-10-12 07:54:20,029 - Start: build phase for stx-monitor-helm-1.0-2.src.rpm
+2019-10-12 07:54:20,031 - Start: build setup for stx-monitor-helm-1.0-2.src.rpm
+2019-10-12 07:54:20,890 - Finish: build setup for stx-monitor-helm-1.0-2.src.rpm
+2019-10-12 07:54:20,890 - Start: rpmbuild stx-monitor-helm-1.0-2.src.rpm
+2019-10-12 07:54:24,396 - Mock Version: 1.2.14
+2019-10-12 07:54:24,666 - Start: dnf update
+2019-10-12 07:54:34,662 - Finish: dnf update
+2019-10-12 07:54:34,668 - Finish: chroot init
+2019-10-12 07:54:34,671 - Start: buildsrpm
+2019-10-12 07:54:34,680 - Start: rpmbuild -bs
+2019-10-12 07:54:34,719 - Finish: rpmbuild -bs
+2019-10-12 07:54:34,721 - Finish: buildsrpm
+2019-10-12 07:54:34,722 - Finish: run
+2019-10-12 07:54:37,901 - Mock Version: 1.2.14
+2019-10-12 07:54:38,178 - Start: dnf update
+2019-10-12 07:54:48,042 - Finish: dnf update
+2019-10-12 07:54:48,048 - Finish: chroot init
+2019-10-12 07:54:48,050 - Start: build phase for stx-monitor-helm-1.0-2.src.rpm
+2019-10-12 07:54:48,052 - Start: build setup for stx-monitor-helm-1.0-2.src.rpm
+2019-10-12 07:54:48,913 - Finish: build setup for stx-monitor-helm-1.0-2.src.rpm
+2019-10-12 07:54:48,913 - Start: rpmbuild stx-monitor-helm-1.0-2.src.rpm
+2019-10-12 07:54:49,034 - Finish: rpmbuild stx-monitor-helm-1.0-2.src.rpm
+2019-10-12 07:54:49,035 - Finish: build phase for stx-monitor-helm-1.0-2.src.rpm
+2019-10-12 07:54:49,036 - Finish: run

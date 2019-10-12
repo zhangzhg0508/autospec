@@ -1,0 +1,86 @@
+From 0509d0249b558177284094d49021c6cf6a0296ba Mon Sep 17 00:00:00 2001
+From: chen-dq <chen.dq@neusoft.com>
+Date: Sat, 12 Oct 2019 07:54:49 +0000
+Subject: [PATCH stx-monitor-helm] stx-monitor-helm: Autospec creation for
+ version 1.0
+
+---
+ 0001-makefile_no_build.patch | 25 +++++++++++++++++++++++++
+ release                      |  2 +-
+ series                       |  1 +
+ stx-monitor-helm.spec        |  8 +++++---
+ upstream                     |  2 +-
+ 5 files changed, 33 insertions(+), 5 deletions(-)
+ create mode 100644 0001-makefile_no_build.patch
+ create mode 100644 series
+
+diff --git a/0001-makefile_no_build.patch b/0001-makefile_no_build.patch
+new file mode 100644
+index 0000000..3d0c99a
+--- /dev/null
++++ b/0001-makefile_no_build.patch
+@@ -0,0 +1,25 @@
++From b263dee975842820d72054bf8c5c3815cf3153a9 Mon Sep 17 00:00:00 2001
++From: chen-dq <chen.dq@neusoft.com>
++Date: Sat, 12 Oct 2019 07:52:45 +0000
++Subject: [PATCH] makefile_no_build
++
++---
++ Makefile | 2 +-
++ 1 file changed, 1 insertion(+), 1 deletion(-)
++
++diff --git a/Makefile b/Makefile
++index eff605d..e1e226e 100644
++--- a/Makefile
+++++ b/Makefile
++@@ -31,7 +31,7 @@ lint-%: init-%
++ 	if [ -d $* ]; then helm lint $*; fi
++ 
++ build-%: lint-%
++-	if [ -d $* ]; then helm package $*; fi
+++#	if [ -d $* ]; then helm package $*; fi
++ 
++ clean:
++ 	@echo "Clean all build artifacts"
++-- 
++2.23.0
++
+diff --git a/series b/series
+new file mode 100644
+index 0000000..99edc11
+--- /dev/null
++++ b/series
+@@ -0,0 +1 @@
++0001-makefile_no_build.patch
+diff --git a/stx-monitor-helm.spec b/stx-monitor-helm.spec
+index 49c070b..a52d4fa 100644
+--- a/stx-monitor-helm.spec
++++ b/stx-monitor-helm.spec
+@@ -4,13 +4,14 @@
+ #
+ Name     : stx-monitor-helm
+ Version  : 1.0
+ URL      : file:///home/clear/tar/stx-monitor-helm-1.0.tar.gz
+ Source0  : file:///home/clear/tar/stx-monitor-helm-1.0.tar.gz
+ Summary  : No detailed summary available
+ Group    : Development/Tools
+ License  : Apache-2.0
+ BuildRequires : monitor-helm
++Patch1: 0001-makefile_no_build.patch
+ 
+ %description
+ This directory contains all StarlingX charts that need to be built for this
+@@ -21,13 +22,14 @@ mechanism to populate these common charts.
+ 
+ %prep
+ %setup -q -n stx-monitor-helm-1.0
++%patch1 -p1
+ 
+ %build
+ export http_proxy=http://127.0.0.1:9/
+ export https_proxy=http://127.0.0.1:9/
+ export no_proxy=localhost,127.0.0.1,0.0.0.0
+ export LANG=C.UTF-8
+ export GCC_IGNORE_WERROR=1
+ export AR=gcc-ar
+ export RANLIB=gcc-ranlib

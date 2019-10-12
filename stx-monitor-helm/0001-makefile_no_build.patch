@@ -1,0 +1,25 @@
+From b263dee975842820d72054bf8c5c3815cf3153a9 Mon Sep 17 00:00:00 2001
+From: chen-dq <chen.dq@neusoft.com>
+Date: Sat, 12 Oct 2019 07:52:45 +0000
+Subject: [PATCH] makefile_no_build
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index eff605d..e1e226e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -31,7 +31,7 @@ lint-%: init-%
+ 	if [ -d $* ]; then helm lint $*; fi
+ 
+ build-%: lint-%
+-	if [ -d $* ]; then helm package $*; fi
++#	if [ -d $* ]; then helm package $*; fi
+ 
+ clean:
+ 	@echo "Clean all build artifacts"
+-- 
+2.23.0
+
