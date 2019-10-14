@@ -1,0 +1,37 @@
+2019-10-14 06:18:55,877 - Mock Version: 1.2.14
+2019-10-14 06:18:56,137 - Start: dnf update
+2019-10-14 06:19:07,010 - Finish: dnf update
+2019-10-14 06:19:07,016 - Finish: chroot init
+2019-10-14 06:19:07,020 - Start: buildsrpm
+2019-10-14 06:19:07,029 - Start: rpmbuild -bs
+2019-10-14 06:19:07,070 - Finish: rpmbuild -bs
+2019-10-14 06:19:07,072 - Finish: buildsrpm
+2019-10-14 06:19:07,072 - Finish: run
+2019-10-14 06:19:10,472 - Mock Version: 1.2.14
+2019-10-14 06:19:11,535 - Start: dnf update
+2019-10-14 06:19:21,662 - Finish: dnf update
+2019-10-14 06:19:21,668 - Finish: chroot init
+2019-10-14 06:19:21,670 - Start: build phase for stx-platform-helm-1.0-2.src.rpm
+2019-10-14 06:19:21,673 - Start: build setup for stx-platform-helm-1.0-2.src.rpm
+2019-10-14 06:19:23,084 - Finish: build setup for stx-platform-helm-1.0-2.src.rpm
+2019-10-14 06:19:23,084 - Start: rpmbuild stx-platform-helm-1.0-2.src.rpm
+2019-10-14 06:19:27,458 - Mock Version: 1.2.14
+2019-10-14 06:19:27,737 - Start: dnf update
+2019-10-14 06:19:38,385 - Finish: dnf update
+2019-10-14 06:19:38,391 - Finish: chroot init
+2019-10-14 06:19:38,394 - Start: buildsrpm
+2019-10-14 06:19:38,403 - Start: rpmbuild -bs
+2019-10-14 06:19:38,443 - Finish: rpmbuild -bs
+2019-10-14 06:19:38,444 - Finish: buildsrpm
+2019-10-14 06:19:38,445 - Finish: run
+2019-10-14 06:19:41,720 - Mock Version: 1.2.14
+2019-10-14 06:19:41,986 - Start: dnf update
+2019-10-14 06:19:51,565 - Finish: dnf update
+2019-10-14 06:19:51,571 - Finish: chroot init
+2019-10-14 06:19:51,572 - Start: build phase for stx-platform-helm-1.0-2.src.rpm
+2019-10-14 06:19:51,574 - Start: build setup for stx-platform-helm-1.0-2.src.rpm
+2019-10-14 06:19:52,935 - Finish: build setup for stx-platform-helm-1.0-2.src.rpm
+2019-10-14 06:19:52,935 - Start: rpmbuild stx-platform-helm-1.0-2.src.rpm
+2019-10-14 06:19:53,592 - Finish: rpmbuild stx-platform-helm-1.0-2.src.rpm
+2019-10-14 06:19:53,593 - Finish: build phase for stx-platform-helm-1.0-2.src.rpm
+2019-10-14 06:19:53,594 - Finish: run

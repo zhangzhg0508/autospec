@@ -1,0 +1,3 @@
+install -p -D -m 755 %{_builddir}/%{app_tarball} %{buildroot}/%{app_folder}
+install -d -m 755 ${RPM_BUILD_ROOT}/opt/extracharts
+install -p -D -m 755 helm-charts/node-feature-discovery-*.tgz ${RPM_BUILD_ROOT}/opt/extracharts

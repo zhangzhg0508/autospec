@@ -1,0 +1,66 @@
+From 415e5223437c4a68b41c98a256c4a3760861caea Mon Sep 17 00:00:00 2001
+From: chen-dq <chen.dq@neusoft.com>
+Date: Mon, 14 Oct 2019 06:19:54 +0000
+Subject: [PATCH stx-platform-helm] stx-platform-helm: Autospec creation for
+ version 1.0
+
+---
+ build_prepend          |  4 ++--
+ release                |  2 +-
+ stx-platform-helm.spec | 12 ++++++------
+ 3 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/build_prepend b/build_prepend
+index ea373ca..d67a428 100644
+--- a/build_prepend
++++ b/build_prepend
+@@ -43,7 +43,7 @@ kill %1
+ 
+ # Create a chart tarball compliant with sysinv kube-app.py
+ %define app_staging %{_builddir}/staging
+-%define app_tarball %{app_name}-%{version}-%{tis_patch_ver}.tgz
++%define app_tarball %{app_name}-%{version}-%{release}.tgz
+ 
+ # Setup staging
+ mkdir -p %{app_staging}
+@@ -56,7 +56,7 @@ cd %{app_staging}
+ 
+ # Populate metadata
+ sed -i 's/@APP_NAME@/%{app_name}/g' %{app_staging}/metadata.yaml
+-sed -i 's/@APP_VERSION@/%{version}-%{tis_patch_ver}/g' %{app_staging}/metadata.yaml
++sed -i 's/@APP_VERSION@/%{version}-%{release}/g' %{app_staging}/metadata.yaml
+ sed -i 's/@HELM_REPO@/%{helm_repo}/g' %{app_staging}/metadata.yaml
+ 
+ # package it up
+diff --git a/stx-platform-helm.spec b/stx-platform-helm.spec
+index f744808..025ca77 100644
+--- a/stx-platform-helm.spec
++++ b/stx-platform-helm.spec
+@@ -56,7 +56,7 @@ make node-feature-discovery
+ cd -
+ kill %1
+ %define app_staging %{_builddir}/staging
+-%define app_tarball %{app_name}-%{version}-%{tis_patch_ver}.tgz
++%define app_tarball %{app_name}-%{version}-%{release}.tgz
+ mkdir -p %{app_staging}
+ cp files/metadata.yaml %{app_staging}
+ cp manifests/manifest.yaml %{app_staging}
+@@ -64,7 +64,7 @@ mkdir -p %{app_staging}/charts
+ cp helm-charts/*.tgz %{app_staging}/charts
+ cd %{app_staging}
+ sed -i 's/@APP_NAME@/%{app_name}/g' %{app_staging}/metadata.yaml
+-sed -i 's/@APP_VERSION@/%{version}-%{tis_patch_ver}/g' %{app_staging}/metadata.yaml
++sed -i 's/@APP_VERSION@/%{version}-%{release}/g' %{app_staging}/metadata.yaml
+ sed -i 's/@HELM_REPO@/%{helm_repo}/g' %{app_staging}/metadata.yaml
+ find . -type f ! -name '*.md5' -print0 | xargs -0 md5sum > checksum.md5
+ tar -zcf %{_builddir}/%{app_tarball} -C %{app_staging}/ .
+@@ -100,4 +100,4 @@ install -p -D -m 755 helm-charts/node-feature-discovery-*.tgz ${RPM_BUILD_ROOT}/
+ %files
+ %defattr(-,root,root,-)
+ /opt/extracharts/node-feature-discovery-0.3.0.tgz
+-/usr/local/share/applications/helm/platform-integ-apps-1.0-%{tis_patch_ver}.tgz
++/usr/local/share/applications/helm/platform-integ-apps-1.0-2.tgz
+-- 
+2.23.0
+
+
