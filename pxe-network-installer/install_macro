@@ -1,0 +1,1 @@
+install -v -d -m 755 %{buildroot}/pxeboot

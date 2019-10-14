@@ -1,0 +1,6 @@
+# This file contains additional build requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+syslinux
+syslinux-extras
+grub
+#grub2-efi-x64-pxeboot

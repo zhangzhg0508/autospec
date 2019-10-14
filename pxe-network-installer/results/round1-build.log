@@ -1,0 +1,308 @@
+Mock Version: 1.2.14
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/pxe-network-installer.spec'], chrootPath='/var/lib/mock/clear-pxe-network-installer/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7ff696249fd0>timeout=0uid=1000gid=1000user='mockbuild'printOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bs --target x86_64 --nodeps /builddir/build/SPECS/pxe-network-installer.spec'] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Wrote: /builddir/build/SRPMS/pxe-network-installer-1-1.src.rpm
+Child return code was: 0
+LEAVE do --> 
+
+ENTER do(['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/pxe-network-installer.spec '], chrootPath='/var/lib/mock/clear-pxe-network-installer/root'env={'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'}shell=Falselogger=<mockbuild.trace_decorator.getLog object at 0x7ff696249fd0>timeout=0uid=1000gid=1000user='mockbuild'private_network=TrueprintOutput=False)
+Executing command: ['bash', '--login', '-c', '/usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/pxe-network-installer.spec '] with env {'TERM': 'vt100', 'SHELL': '/bin/bash', 'HOME': '/builddir', 'HOSTNAME': 'mock', 'PATH': '/usr/bin:/bin:/usr/sbin:/sbin', 'LANG': 'en_US.UTF-8', 'CCACHE_DIR': '/var/tmp/ccache', 'CCACHE_UMASK': '002'} and shell False
+Building target platforms: x86_64
+Building for target x86_64
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.fzpBda
++ umask 022
++ cd /builddir/build/BUILD
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ cd /builddir/build/BUILD
++ rm -rf pxe-network-installer
++ /usr/bin/gzip -dc /builddir/build/SOURCES/pxe-network-installer.tar.gz
++ /usr/bin/tar -xf -
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd pxe-network-installer
++ /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ exit 0
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.4bMKA8
++ umask 022
++ cd /builddir/build/BUILD
++ cd pxe-network-installer
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CFLAGS
++ http_proxy=http://127.0.0.1:9/
++ export http_proxy
++ https_proxy=http://127.0.0.1:9/
++ export https_proxy
++ ftp_proxy=http://127.0.0.1:9/
++ export ftp_proxy
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export no_proxy
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT'
++ export CXXFLAGS
++ FFLAGS='-g -O3 -feliminate-unused-debug-types  -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -m64 -fasynchronous-unwind-tables -Wp,-D_REENTRANT -ftree-loop-distribute-patterns -Wl,-z -Wl,now -Wl,-z -Wl,relro -malign-data=abi -fno-semantic-interposition -ftree-vectorize  -ftree-loop-vectorize -Wl,--enable-new-dtags '
++ export FFLAGS
++ LD_AS_NEEDED=1
++ export LD_AS_NEEDED
++ PKG_CONFIG_LIBDIR=/usr/lib64/pkgconfig
++ export PKG_CONFIG_LIBDIR
++ PATH=/usr/lib64/ccache/bin:/usr/local/bin:/usr/bin
++ export PATH
++ export http_proxy=http://127.0.0.1:9/
++ http_proxy=http://127.0.0.1:9/
++ export https_proxy=http://127.0.0.1:9/
++ https_proxy=http://127.0.0.1:9/
++ export no_proxy=localhost,127.0.0.1,0.0.0.0
++ no_proxy=localhost,127.0.0.1,0.0.0.0
++ export LANG=C.UTF-8
++ LANG=C.UTF-8
++ export SOURCE_DATE_EPOCH=1571040531
++ SOURCE_DATE_EPOCH=1571040531
++ export GCC_IGNORE_WERROR=1
++ GCC_IGNORE_WERROR=1
++ export AR=gcc-ar
++ AR=gcc-ar
++ export RANLIB=gcc-ranlib
++ RANLIB=gcc-ranlib
++ export NM=gcc-nm
++ NM=gcc-nm
++ export 'CFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ export 'FCFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FCFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'FFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ FFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4  -O3 -ffat-lto-objects -flto=4 '
++ export 'CXXFLAGS=-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ CXXFLAGS='-O2 -g -feliminate-unused-debug-types -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code -Wno-error -ftree-vectorize -ftree-slp-vectorize -Wl,--enable-new-dtags -fcf-protection=return -m64 -march=westmere -mtune=haswell -fasynchronous-unwind-tables -fno-omit-frame-pointer -Wp,-D_REENTRANT -O3 -ffat-lto-objects -flto=4 '
++ make -j4
+echo "no build"
+no build
++ exit 0
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.VkY1Ka
++ umask 022
++ cd /builddir/build/BUILD
++ cd pxe-network-installer
++ LANG=en_US.UTF-8
++ export LANG
++ unset DISPLAY
++ unset PYTHONOPTIMIZE
++ rm -rf /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64
++ mkdir -p /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64
++ export SOURCE_DATE_EPOCH=1571040531
++ SOURCE_DATE_EPOCH=1571040531
++ rm -rf /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64
++ install -v -d -m 755 /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot
+install: creating directory '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64'
+install: creating directory '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot'
++ install -v -d -m 755 /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files
+install: creating directory '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files'
++ install -v -d -m 755 /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/rel-5.3.4-846.native
+install: creating directory '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/rel-5.3.4-846.native'
++ install -v -d -m 755 /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/EFI
+install: creating directory '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/EFI'
++ install -v -d -m 755 /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/EFI/centos
+install: creating directory '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/EFI/centos'
++ ln -s /usr/lib/grub/x86_64-efi /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/EFI/centos/x86_64-efi
++ install -v -m 644 vmlinuz /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/rel-5.3.4-846.native/installer-bzImage_1.0
+'vmlinuz' -> '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/rel-5.3.4-846.native/installer-bzImage_1.0'
++ install -v -m 644 initrd.img /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/rel-5.3.4-846.native/installer-intel-x86-64-initrd_1.0
+'initrd.img' -> '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/rel-5.3.4-846.native/installer-intel-x86-64-initrd_1.0'
++ ln -s installer-bzImage_1.0 /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/rel-5.3.4-846.native/installer-bzImage
++ ln -s installer-intel-x86-64-initrd_1.0 /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/rel-5.3.4-846.native/installer-initrd
++ install -v -D -m 644 squashfs.img /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/www/pages/feed/rel-5.3.4-846.native/LiveOS/squashfs.img
+install: creating directory '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/www'
+install: creating directory '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/www/pages'
+install: creating directory '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/www/pages/feed'
+install: creating directory '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/www/pages/feed/rel-5.3.4-846.native'
+install: creating directory '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/www/pages/feed/rel-5.3.4-846.native/LiveOS'
+'squashfs.img' -> '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/www/pages/feed/rel-5.3.4-846.native/LiveOS/squashfs.img'
++ install -v -d -m 755 /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/usr/bin
+install: creating directory '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/usr'
+install: creating directory '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/usr/bin'
++ install -v -m 755 pxeboot-update.sh /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/usr/bin/pxeboot-update-5.3.4-846.native.sh
+'pxeboot-update.sh' -> '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/usr/bin/pxeboot-update-5.3.4-846.native.sh'
++ install -v -m 644 post_clone_iso_ks.cfg /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/post_clone_iso_ks.cfg
+'post_clone_iso_ks.cfg' -> '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/post_clone_iso_ks.cfg'
++ install -v -m 644 default /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/default
+'default' -> '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/default'
++ install -v -m 644 default.static /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/default.static
+'default.static' -> '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/default.static'
++ install -v -m 644 centos-pxe-controller-install /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/pxe-controller-install-5.3.4-846.native
+'centos-pxe-controller-install' -> '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/pxe-controller-install-5.3.4-846.native'
++ install -v -m 644 centos-pxe-worker-install /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/pxe-worker-install-5.3.4-846.native
+'centos-pxe-worker-install' -> '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/pxe-worker-install-5.3.4-846.native'
++ install -v -m 644 centos-pxe-smallsystem-install /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/pxe-smallsystem-install-5.3.4-846.native
+'centos-pxe-smallsystem-install' -> '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/pxe-smallsystem-install-5.3.4-846.native'
++ install -v -m 644 centos-pxe-storage-install /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/pxe-storage-install-5.3.4-846.native
+'centos-pxe-storage-install' -> '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/pxe-storage-install-5.3.4-846.native'
++ install -v -m 644 centos-pxe-worker_lowlatency-install /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/pxe-worker_lowlatency-install-5.3.4-846.native
+'centos-pxe-worker_lowlatency-install' -> '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/pxe-worker_lowlatency-install-5.3.4-846.native'
++ install -v -m 644 centos-pxe-smallsystem_lowlatency-install /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/pxe-smallsystem_lowlatency-install-5.3.4-846.native
+'centos-pxe-smallsystem_lowlatency-install' -> '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/pxe-smallsystem_lowlatency-install-5.3.4-846.native'
++ install -v -m 644 pxe-grub.cfg /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/grub.cfg
+'pxe-grub.cfg' -> '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/grub.cfg'
++ install -v -m 644 pxe-grub.cfg.static /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/grub.cfg.static
+'pxe-grub.cfg.static' -> '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/grub.cfg.static'
++ install -v -m 644 efiboot.img /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/rel-5.3.4-846.native/
+'efiboot.img' -> '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/rel-5.3.4-846.native/efiboot.img'
++ install -v -m 644 efi-centos-pxe-controller-install /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/efi-pxe-controller-install-5.3.4-846.native
+'efi-centos-pxe-controller-install' -> '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/efi-pxe-controller-install-5.3.4-846.native'
++ install -v -m 644 efi-centos-pxe-worker-install /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/efi-pxe-worker-install-5.3.4-846.native
+'efi-centos-pxe-worker-install' -> '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/efi-pxe-worker-install-5.3.4-846.native'
++ install -v -m 644 efi-centos-pxe-smallsystem-install /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/efi-pxe-smallsystem-install-5.3.4-846.native
+'efi-centos-pxe-smallsystem-install' -> '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/efi-pxe-smallsystem-install-5.3.4-846.native'
++ install -v -m 644 efi-centos-pxe-storage-install /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/efi-pxe-storage-install-5.3.4-846.native
+'efi-centos-pxe-storage-install' -> '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/efi-pxe-storage-install-5.3.4-846.native'
++ install -v -m 644 efi-centos-pxe-worker_lowlatency-install /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/efi-pxe-worker_lowlatency-install-5.3.4-846.native
+'efi-centos-pxe-worker_lowlatency-install' -> '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/efi-pxe-worker_lowlatency-install-5.3.4-846.native'
++ install -v -m 644 efi-centos-pxe-smallsystem_lowlatency-install /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/efi-pxe-smallsystem_lowlatency-install-5.3.4-846.native
+'efi-centos-pxe-smallsystem_lowlatency-install' -> '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/efi-pxe-smallsystem_lowlatency-install-5.3.4-846.native'
++ sed -i s/xxxSW_VERSIONxxx/5.3.4-846.native/g /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/pxe-controller-install-5.3.4-846.native /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/pxe-smallsystem-install-5.3.4-846.native /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/pxe-smallsystem_lowlatency-install-5.3.4-846.native /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/pxe-storage-install-5.3.4-846.native /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/pxe-worker-install-5.3.4-846.native /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/pxe-worker_lowlatency-install-5.3.4-846.native /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/efi-pxe-controller-install-5.3.4-846.native /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/efi-pxe-smallsystem-install-5.3.4-846.native /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/efi-pxe-smallsystem_lowlatency-install-5.3.4-846.native /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/efi-pxe-storage-install-5.3.4-846.native /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/efi-pxe-worker-install-5.3.4-846.native /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.cfg.files/efi-pxe-worker_lowlatency-install-5.3.4-846.native
++ install -v -m 0644 /usr/share/syslinux/menu.c32 /usr/share/syslinux/vesamenu.c32 /usr/share/syslinux/chain.c32 /usr/share/syslinux/linux.c32 /usr/share/syslinux/reboot.c32 /usr/share/syslinux/pxelinux.0 /usr/share/syslinux/gpxelinux.0 /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot
+'/usr/share/syslinux/menu.c32' -> '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/menu.c32'
+'/usr/share/syslinux/vesamenu.c32' -> '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/vesamenu.c32'
+'/usr/share/syslinux/chain.c32' -> '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/chain.c32'
+'/usr/share/syslinux/linux.c32' -> '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/linux.c32'
+'/usr/share/syslinux/reboot.c32' -> '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/reboot.c32'
+'/usr/share/syslinux/pxelinux.0' -> '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/pxelinux.0'
+'/usr/share/syslinux/gpxelinux.0' -> '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/gpxelinux.0'
++ install -v -m 0644 grub.cfg /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/EFI/
+'grub.cfg' -> '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/EFI/grub.cfg'
++ ln -s pxelinux.cfg/grub.cfg /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/pxeboot/grub.cfg
++ rm -f /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/usr/share/info/dir
+++ find /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64 -path 'etc/*' '!' -type d
++ test -z ''
++ rm -rf '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/etc/*'
++ rm -rf '/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/usr/share/factory/*'
++ find /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64 -name __pycache__
++ xargs rm -rf --
++ '[' -d /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/usr/share/mime ']'
+++ getconf _NPROCESSORS_ONLN
++ RPM_XARGS_PFLAG=-P4
++ find /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64 -name '*.so.avx512' -print0
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -5
++ find /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/usr/lib64/haswell/avx512_1 -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/usr/lib64/haswell/avx512_1’: No such file or directory
++ find /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64 -name '*.so.avx2' -print0
++ xargs -0rtn1 -P4 python /usr/share/clr-avx-tools/avxjudge.py -q -2
++ find /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/usr/lib64/haswell '!' -path '/usr/lib64/haswell/avx512_1/*' -name '*.so*' -print0
+find: ‘/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/usr/lib64/haswell’: No such file or directory
++ find /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/usr/lib64/ -maxdepth 1 -name '*.so*' -type f -print0
++ sort -u
++ xargs -0rtn1 -P4 /usr/lib/rpm/clr/brp-create-abi
+find: ‘/builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/usr/lib64/’: No such file or directory
++ /usr/lib/rpm/find-debuginfo.sh --strict-build-id /builddir/build/BUILD/pxe-network-installer
++ '[' -d /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/usr/lib/debug ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/usr/lib/debug ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/usr/src/debug ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/usr/lib/debug.force ']'
++ :
++ '[' -d /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64/usr/src/debug.force ']'
++ :
++ /usr/lib/rpm/check-buildroot
++ /usr/lib/rpm/clr/brp-strip-static-archive /usr/bin/strip
++ /usr/lib/rpm/clr/brp-strip-comment-note /usr/bin/strip /usr/bin/objdump
++ /usr/lib/rpm/clr/brp-python-bytecompile
++ xargs -0 touch -h -d @1571040531
++ find /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64 -print0
++ /usr/lib/rpm/clr/brp-java-repack-jars
+Processing files: pxe-network-installer-1-1.x86_64
+Processing files: pxe-network-installer-debuginfo-1-1.x86_64
+warning: Empty %files file /builddir/build/BUILD/pxe-network-installer/debugfiles.list
+warning: Empty %files file /builddir/build/BUILD/pxe-network-installer/abifiles.list
+Processing files: pxe-network-installer-abi-1-1.x86_64
+Checking for unpackaged file(s): /usr/lib/rpm/check-files /builddir/build/BUILDROOT/pxe-network-installer-1-1.x86_64
+error: Installed (but unpackaged) file(s) found:
+   /pxeboot/EFI/centos/x86_64-efi
+   /pxeboot/EFI/grub.cfg
+   /pxeboot/chain.c32
+   /pxeboot/gpxelinux.0
+   /pxeboot/grub.cfg
+   /pxeboot/linux.c32
+   /pxeboot/menu.c32
+   /pxeboot/post_clone_iso_ks.cfg
+   /pxeboot/pxelinux.0
+   /pxeboot/pxelinux.cfg.files/default
+   /pxeboot/pxelinux.cfg.files/default.static
+   /pxeboot/pxelinux.cfg.files/efi-pxe-controller-install-5.3.4-846.native
+   /pxeboot/pxelinux.cfg.files/efi-pxe-smallsystem-install-5.3.4-846.native
+   /pxeboot/pxelinux.cfg.files/efi-pxe-smallsystem_lowlatency-install-5.3.4-846.native
+   /pxeboot/pxelinux.cfg.files/efi-pxe-storage-install-5.3.4-846.native
+   /pxeboot/pxelinux.cfg.files/efi-pxe-worker-install-5.3.4-846.native
+   /pxeboot/pxelinux.cfg.files/efi-pxe-worker_lowlatency-install-5.3.4-846.native
+   /pxeboot/pxelinux.cfg.files/grub.cfg
+   /pxeboot/pxelinux.cfg.files/grub.cfg.static
+   /pxeboot/pxelinux.cfg.files/pxe-controller-install-5.3.4-846.native
+   /pxeboot/pxelinux.cfg.files/pxe-smallsystem-install-5.3.4-846.native
+   /pxeboot/pxelinux.cfg.files/pxe-smallsystem_lowlatency-install-5.3.4-846.native
+   /pxeboot/pxelinux.cfg.files/pxe-storage-install-5.3.4-846.native
+   /pxeboot/pxelinux.cfg.files/pxe-worker-install-5.3.4-846.native
+   /pxeboot/pxelinux.cfg.files/pxe-worker_lowlatency-install-5.3.4-846.native
+   /pxeboot/reboot.c32
+   /pxeboot/rel-5.3.4-846.native/efiboot.img
+   /pxeboot/rel-5.3.4-846.native/installer-bzImage
+   /pxeboot/rel-5.3.4-846.native/installer-bzImage_1.0
+   /pxeboot/rel-5.3.4-846.native/installer-initrd
+   /pxeboot/rel-5.3.4-846.native/installer-intel-x86-64-initrd_1.0
+   /pxeboot/vesamenu.c32
+   /usr/bin/pxeboot-update-5.3.4-846.native.sh
+   /www/pages/feed/rel-5.3.4-846.native/LiveOS/squashfs.img
+    Empty %files file /builddir/build/BUILD/pxe-network-installer/debugfiles.list
+    Empty %files file /builddir/build/BUILD/pxe-network-installer/abifiles.list
+    Installed (but unpackaged) file(s) found:
+   /pxeboot/EFI/centos/x86_64-efi
+   /pxeboot/EFI/grub.cfg
+   /pxeboot/chain.c32
+   /pxeboot/gpxelinux.0
+   /pxeboot/grub.cfg
+   /pxeboot/linux.c32
+   /pxeboot/menu.c32
+   /pxeboot/post_clone_iso_ks.cfg
+   /pxeboot/pxelinux.0
+   /pxeboot/pxelinux.cfg.files/default
+   /pxeboot/pxelinux.cfg.files/default.static
+   /pxeboot/pxelinux.cfg.files/efi-pxe-controller-install-5.3.4-846.native
+   /pxeboot/pxelinux.cfg.files/efi-pxe-smallsystem-install-5.3.4-846.native
+   /pxeboot/pxelinux.cfg.files/efi-pxe-smallsystem_lowlatency-install-5.3.4-846.native
+   /pxeboot/pxelinux.cfg.files/efi-pxe-storage-install-5.3.4-846.native
+   /pxeboot/pxelinux.cfg.files/efi-pxe-worker-install-5.3.4-846.native
+   /pxeboot/pxelinux.cfg.files/efi-pxe-worker_lowlatency-install-5.3.4-846.native
+   /pxeboot/pxelinux.cfg.files/grub.cfg
+   /pxeboot/pxelinux.cfg.files/grub.cfg.static
+   /pxeboot/pxelinux.cfg.files/pxe-controller-install-5.3.4-846.native
+   /pxeboot/pxelinux.cfg.files/pxe-smallsystem-install-5.3.4-846.native
+   /pxeboot/pxelinux.cfg.files/pxe-smallsystem_lowlatency-install-5.3.4-846.native
+   /pxeboot/pxelinux.cfg.files/pxe-storage-install-5.3.4-846.native
+   /pxeboot/pxelinux.cfg.files/pxe-worker-install-5.3.4-846.native
+   /pxeboot/pxelinux.cfg.files/pxe-worker_lowlatency-install-5.3.4-846.native
+   /pxeboot/reboot.c32
+   /pxeboot/rel-5.3.4-846.native/efiboot.img
+   /pxeboot/rel-5.3.4-846.native/installer-bzImage
+   /pxeboot/rel-5.3.4-846.native/installer-bzImage_1.0
+   /pxeboot/rel-5.3.4-846.native/installer-initrd
+   /pxeboot/rel-5.3.4-846.native/installer-intel-x86-64-initrd_1.0
+   /pxeboot/vesamenu.c32
+   /usr/bin/pxeboot-update-5.3.4-846.native.sh
+   /www/pages/feed/rel-5.3.4-846.native/LiveOS/squashfs.img
+RPM build errors:
+Child return code was: 1
+EXCEPTION: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/pxe-network-installer.spec 
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/mockbuild/trace_decorator.py", line 84, in trace
+    result = func(*args, **kw)
+  File "/usr/lib/python3.7/site-packages/mockbuild/util.py", line 531, in do
+    raise exception.Error("Command failed. See logs for output.\n # %s" % (command,), child.returncode)
+mockbuild.exception.Error: Command failed. See logs for output.
+ # bash --login -c /usr/bin/rpmbuild -bb --target x86_64 --nodeps  /builddir/build/SPECS/pxe-network-installer.spec 
+LEAVE do --> EXCEPTION RAISED
+

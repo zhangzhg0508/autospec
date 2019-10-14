@@ -1,0 +1,37 @@
+2019-10-14 08:08:54,812 - Mock Version: 1.2.14
+2019-10-14 08:08:55,067 - Start: dnf update
+2019-10-14 08:09:05,387 - Finish: dnf update
+2019-10-14 08:09:05,393 - Finish: chroot init
+2019-10-14 08:09:05,395 - Start: buildsrpm
+2019-10-14 08:09:05,707 - Start: rpmbuild -bs
+2019-10-14 08:09:07,674 - Finish: rpmbuild -bs
+2019-10-14 08:09:07,992 - Finish: buildsrpm
+2019-10-14 08:09:07,993 - Finish: run
+2019-10-14 08:09:11,346 - Mock Version: 1.2.14
+2019-10-14 08:09:12,952 - Start: dnf update
+2019-10-14 08:09:22,874 - Finish: dnf update
+2019-10-14 08:09:22,880 - Finish: chroot init
+2019-10-14 08:09:22,881 - Start: build phase for pxe-network-installer-1-1.src.rpm
+2019-10-14 08:09:22,883 - Start: build setup for pxe-network-installer-1-1.src.rpm
+2019-10-14 08:09:27,507 - Finish: build setup for pxe-network-installer-1-1.src.rpm
+2019-10-14 08:09:27,507 - Start: rpmbuild pxe-network-installer-1-1.src.rpm
+2019-10-14 08:09:36,561 - Mock Version: 1.2.14
+2019-10-14 08:09:36,820 - Start: dnf update
+2019-10-14 08:09:46,861 - Finish: dnf update
+2019-10-14 08:09:46,867 - Finish: chroot init
+2019-10-14 08:09:46,870 - Start: buildsrpm
+2019-10-14 08:09:47,502 - Start: rpmbuild -bs
+2019-10-14 08:09:49,452 - Finish: rpmbuild -bs
+2019-10-14 08:09:51,183 - Finish: buildsrpm
+2019-10-14 08:09:51,184 - Finish: run
+2019-10-14 08:09:54,460 - Mock Version: 1.2.14
+2019-10-14 08:09:54,731 - Start: dnf update
+2019-10-14 08:10:04,992 - Finish: dnf update
+2019-10-14 08:10:04,998 - Finish: chroot init
+2019-10-14 08:10:04,999 - Start: build phase for pxe-network-installer-1-1.src.rpm
+2019-10-14 08:10:05,001 - Start: build setup for pxe-network-installer-1-1.src.rpm
+2019-10-14 08:10:09,392 - Finish: build setup for pxe-network-installer-1-1.src.rpm
+2019-10-14 08:10:09,392 - Start: rpmbuild pxe-network-installer-1-1.src.rpm
+2019-10-14 08:10:25,731 - Finish: rpmbuild pxe-network-installer-1-1.src.rpm
+2019-10-14 08:10:25,732 - Finish: build phase for pxe-network-installer-1-1.src.rpm
+2019-10-14 08:10:25,733 - Finish: run
